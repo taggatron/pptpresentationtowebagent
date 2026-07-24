@@ -1,0 +1,18 @@
+{
+  "name": "pptpresentationtowebagent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent and web application that converts whole-slide image PPTX presentations into interactive web slide decks.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "convert": "node src/convert-deck.js",
+    "agent:gemini": "node src/gemini-segmenter.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "playwright": "^1.44.0",
+    "yauzl": "^3.0.0"
+  }
+}

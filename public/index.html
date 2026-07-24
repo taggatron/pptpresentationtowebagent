@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web Presentation Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="theme-dark">
+  <div id="app" class="app-container">
+
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand">
+          <span class="brand-icon">✨</span>
+          <span class="brand-title">Vibe Deck Agent</span>
+        </div>
+        <div class="deck-selector-wrapper">
+          <label for="deckSelect" class="sr-only">Select Presentation</label>
+          <select id="deckSelect" class="deck-select">
+            <option value="">Loading presentations...</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <h1 id="deckTitle" class="deck-title">Lesson 01: CELL STRUCTURE</h1>
+      </div>
+
+      <div class="header-right">
+        <div class="mode-badge" id="modeBadge">
+          <span class="pulse-dot"></span>
+          <span id="modeText">Interactive Mode</span>
+        </div>
+        <button id="toggleSidebarBtn" class="icon-btn" title="Toggle Slide Thumbnails (T)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/></svg>
+        </button>
+        <button id="fullscreenBtn" class="icon-btn" title="Toggle Fullscreen (F)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Viewport Area -->
+    <main class="main-content">
+      
+      <!-- Slide Stage Area -->
+      <div class="slide-stage" id="slideStage">
+        <div class="slide-wrapper" id="slideWrapper">
+          <img id="slideImage" class="slide-image" src="" alt="Slide View">
+          
+          <!-- Interactive Layer Overlay for Q&A Grid -->
+          <div id="interactiveOverlay" class="interactive-overlay hidden">
+            <!-- Dynamic interactive cards are rendered here via JS -->
+          </div>
+        </div>
+
+        <!-- Floating Q&A Controls for Interactive Slides -->
+        <div id="qaControls" class="qa-controls-bar hidden">
+          <span class="qa-label">💡 Interactive Starter Grid:</span>
+          <button id="revealAllBtn" class="btn btn-secondary">
+            <span>👁️</span> Reveal All Answers
+          </button>
+          <button id="hideAllBtn" class="btn btn-outline">
+            <span>🔒</span> Hide All Answers
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide Thumbnails Sidebar Drawer -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h3>Slides Overview</h3>
+          <span id="slideCountBadge" class="badge">15 Slides</span>
+        </div>
+        <div class="thumbnails-grid" id="thumbnailsGrid">
+          <!-- Slide thumbnails populated dynamically -->
+        </div>
+      </aside>
+    </main>
+
+    <!-- Bottom Controls & Navigation Bar -->
+    <footer class="app-footer">
+      <div class="progress-bar-container">
+        <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+      </div>
+
+      <div class="footer-controls">
+        <div class="nav-buttons">
+          <button id="prevBtn" class="btn btn-nav" title="Previous Slide (←)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            <span>Previous</span>
+          </button>
+          
+          <div class="slide-counter">
+            <span id="currentSlideNum">1</span>
+            <span class="counter-slash">/</span>
+            <span id="totalSlidesNum">15</span>
+          </div>
+
+          <button id="nextBtn" class="btn btn-nav" title="Next Slide (→ or Space)">
+            <span>Next</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="keyboard-hints">
+          <span class="key-tag">←</span> <span class="key-tag">→</span> Navigate &bull; <span class="key-tag">Click Box</span> Reveal Answer
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="/js/app.js" type="module"></script>
+</body>
+</html>
