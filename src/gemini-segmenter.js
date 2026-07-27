@@ -86,6 +86,9 @@ export async function generateSlideInteractivity(deckId, outputBaseDir) {
         }
       ];
     }
+
+    // Attach academic cognitive processing time guide
+    slide.cognitiveGuide = analyzeSlideCognitiveLoad(slide);
   }
 
   await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));

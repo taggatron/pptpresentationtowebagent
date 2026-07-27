@@ -32,6 +32,12 @@
       </div>
 
       <div class="header-right">
+        <div class="cognitive-badge" id="cognitiveBadge" title="Click to view Academic Cognitive Load Analysis">
+          <span class="cognitive-icon">⏱️</span>
+          <span class="cognitive-label">Processing Time:</span>
+          <span id="cognitiveTimeText" class="cognitive-value">~45–60s</span>
+          <span class="vci-pill" id="vciPill">VCI: 8.4</span>
+        </div>
         <div class="mode-badge" id="modeBadge">
           <span class="pulse-dot"></span>
           <span id="modeText">Interactive Mode</span>
@@ -114,6 +120,19 @@
       </div>
     </footer>
 
+  </div>
+
+  <!-- Cognitive Analysis Modal -->
+  <div id="cognitiveModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🧠 Academic Cognitive Load & Processing Guide</h3>
+        <button id="closeModalBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="cognitiveModalBody">
+        <!-- Filled dynamically by app.js -->
+      </div>
+    </div>
   </div>
 
   <script src="/js/app.js" type="module"></script>

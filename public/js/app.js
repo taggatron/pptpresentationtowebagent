@@ -23,6 +23,14 @@ const fullscreenBtn = document.getElementById("fullscreenBtn");
 const revealAllBtn = document.getElementById("revealAllBtn");
 const hideAllBtn = document.getElementById("hideAllBtn");
 
+// Cognitive Processing Elements
+const cognitiveBadge = document.getElementById("cognitiveBadge");
+const cognitiveTimeText = document.getElementById("cognitiveTimeText");
+const vciPill = document.getElementById("vciPill");
+const cognitiveModal = document.getElementById("cognitiveModal");
+const cognitiveModalBody = document.getElementById("cognitiveModalBody");
+const closeModalBtn = document.getElementById("closeModalBtn");
+
 // Initialize App
 async function init() {
   await fetchDecks();
@@ -104,6 +112,15 @@ function renderSlide(index) {
 
   // Highlight active thumbnail
   updateActiveThumbnail(index);
+
+  // Update Cognitive Processing Time Guide
+  if (slide.cognitiveGuide) {
+    cognitiveTimeText.textContent = `~${slide.cognitiveGuide.timeGuideDisplay}`;
+    vciPill.textContent = `VCI: ${slide.cognitiveGuide.vciScore}`;
+  } else {
+    cognitiveTimeText.textContent = "~30–45s";
+    vciPill.textContent = "VCI: 5.0";
+  }
 
   // Render Interactive Q&A Layer if applicable
   if (slide.isInteractive && slide.interactiveCells) {
@@ -225,9 +242,18 @@ function setupEventListeners() {
   revealAllBtn.addEventListener("click", () => setAllAnswersRevealed(true));
   hideAllBtn.addEventListener("click", () => setAllAnswersRevealed(false));
 
+  // Cognitive Processing Modal Event Listeners
+  cognitiveBadge.addEventListener("click", openCognitiveModal);
+  closeModalBtn.addEventListener("click", closeCognitiveModal);
+  cognitiveModal.addEventListener("click", (e) => {
+    if (e.target === cognitiveModal) closeCognitiveModal();
+  });
+
   // Keyboard Navigation
   document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+    if (e.key === "Escape") {
+      closeCognitiveModal();
+    } else if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
       e.preventDefault();
       renderSlide(currentSlideIndex + 1);
     } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
@@ -249,6 +275,57 @@ function setupEventListeners() {
       }
     }
   });
+}
+
+function openCognitiveModal() {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+  const g = slide.cognitiveGuide;
+
+  if (!g) return;
+
+  cognitiveModalBody.innerHTML = `
+    <div class="metric-grid">
+      <div class="metric-box">
+        <label>Recommended Processing Time</label>
+        <div class="val">~${g.timeGuideDisplay} (${g.estimatedTimeSeconds} sec)</div>
+      </div>
+      <div class="metric-box">
+        <label>Visual Complexity Index (VCI)</label>
+        <div class="val">${g.vciScore} / 10.0 (${g.complexityCategory})</div>
+      </div>
+      <div class="metric-box">
+        <label>Reading & Scan Burden</label>
+        <div class="val" style="font-size: 1.05rem; color: #93c5fd;">
+          ${g.breakdown.wordCount} words &bull; ${g.breakdown.visualElementsCount} visual zones
+        </div>
+      </div>
+      <div class="metric-box">
+        <label>Cognitive Load Distribution</label>
+        <div class="val" style="font-size: 1.05rem; color: #fca5a5;">
+          ${(g.breakdown.semanticProcessingMs / 1000).toFixed(1)}s Semantic Integration
+        </div>
+      </div>
+    </div>
+
+    <div class="academic-section">
+      <h4>📚 Academic Research & Measurement Foundations</h4>
+      <ul class="reference-list">
+        ${g.academicReferences.map(ref => `
+          <li class="reference-item">
+            <strong>${ref.citation}</strong>
+            <br><span style="color: #94a3b8;">${ref.relevance}</span>
+          </li>
+        `).join("")}
+      </ul>
+    </div>
+  `;
+
+  cognitiveModal.classList.remove("hidden");
+}
+
+function closeCognitiveModal() {
+  cognitiveModal.classList.add("hidden");
 }
 
 document.addEventListener("DOMContentLoaded", init);
