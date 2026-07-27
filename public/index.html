@@ -65,14 +65,26 @@
           </div>
         </div>
 
-        <!-- Floating Q&A Controls for Interactive Slides -->
+        <!-- Floating Q&A and Serial Build Controls for Interactive Slides -->
         <div id="qaControls" class="qa-controls-bar hidden">
-          <span class="qa-label">💡 Interactive Starter Grid:</span>
-          <button id="revealAllBtn" class="btn btn-secondary">
-            <span>👁️</span> Reveal All Answers
+          <div class="serial-build-group">
+            <span class="qa-label">🎬 Serial Build Step:</span>
+            <span id="serialStepBadge" class="build-step-badge">Step 1 / 6</span>
+            <button id="prevBuildStepBtn" class="btn btn-icon-small" title="Previous Build Step (Up/Left)">◀</button>
+            <button id="nextBuildStepBtn" class="btn btn-icon-small" title="Next Build Step (Down/Right)">▶</button>
+            <button id="autoPlayBuildsBtn" class="btn btn-outline-small" title="Toggle Auto Play Serial Build">
+              <span>▶</span> Auto Play
+            </button>
+          </div>
+          <div class="divider-v"></div>
+          <button id="editComponentBtn" class="btn btn-secondary-small" title="Gemini LM Selective Component Editor">
+            <span>✏️</span> Edit Components
           </button>
-          <button id="hideAllBtn" class="btn btn-outline">
-            <span>🔒</span> Hide All Answers
+          <button id="revealAllBtn" class="btn btn-secondary-small">
+            <span>👁️</span> Reveal All
+          </button>
+          <button id="hideAllBtn" class="btn btn-outline-small">
+            <span>🔒</span> Reset
           </button>
         </div>
       </div>
@@ -131,6 +143,33 @@
       </div>
       <div class="modal-body" id="cognitiveModalBody">
         <!-- Filled dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Selective Component Editor Modal -->
+  <div id="componentEditorModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>✏️ Gemini LM Selective Component Editor</h3>
+        <button id="closeComponentEditorBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="component-editor-info">
+          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+            Select slide components to edit or reorder serial build steps. You can dispatch selective component prompt revisions directly to your running Gemini LM session.
+          </p>
+        </div>
+        <div id="componentList" class="component-list-container">
+          <!-- Filled dynamically by app.js -->
+        </div>
+        <div class="gemini-prompt-box">
+          <label style="font-size: 0.8rem; font-weight: 600; color: #a5b4fc;">Gemini Selective Edit Instruction:</label>
+          <input type="text" id="geminiEditInput" class="gemini-input" placeholder="e.g. Highlight Cell 3 with cyan accent ring and add animation glow...">
+          <button id="sendGeminiEditBtn" class="btn btn-secondary" style="margin-top: 0.5rem; width: 100%;">
+            <span>✨</span> Dispatch Gemini Edit Instruction
+          </button>
+        </div>
       </div>
     </div>
   </div>

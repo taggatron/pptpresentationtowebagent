@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright";
 import { analyzeSlideCognitiveLoad } from "./cognitive-model.js";
+import { processSerialBuildSteps } from "./gemini-editor.js";
 
 /**
  * Generates cell grid segmentation and interactive overlay data for Q&A slides,
@@ -89,6 +90,9 @@ export async function generateSlideInteractivity(deckId, outputBaseDir) {
 
     // Attach academic cognitive processing time guide
     slide.cognitiveGuide = analyzeSlideCognitiveLoad(slide);
+
+    // Attach serial build step animation sequence
+    slide.serialAnimation = await processSerialBuildSteps(slide);
   }
 
   await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));

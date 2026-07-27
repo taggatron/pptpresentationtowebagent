@@ -1,8 +1,8 @@
-// Interactive Presentation Web Application
-
 let currentDeck = null;
 let currentSlideIndex = 0;
+let currentBuildStep = 1; // Serial build step index for current slide
 let answerStates = {}; // cellId -> boolean (true = revealed, false = masked)
+let autoPlayInterval = null;
 
 // DOM Elements
 const deckSelect = document.getElementById("deckSelect");
@@ -22,6 +22,18 @@ const slideCountBadge = document.getElementById("slideCountBadge");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const revealAllBtn = document.getElementById("revealAllBtn");
 const hideAllBtn = document.getElementById("hideAllBtn");
+
+// Serial Build Controls & Component Editor Elements
+const serialStepBadge = document.getElementById("serialStepBadge");
+const prevBuildStepBtn = document.getElementById("prevBuildStepBtn");
+const nextBuildStepBtn = document.getElementById("nextBuildStepBtn");
+const autoPlayBuildsBtn = document.getElementById("autoPlayBuildsBtn");
+const editComponentBtn = document.getElementById("editComponentBtn");
+const componentEditorModal = document.getElementById("componentEditorModal");
+const closeComponentEditorBtn = document.getElementById("closeComponentEditorBtn");
+const componentList = document.getElementById("componentList");
+const geminiEditInput = document.getElementById("geminiEditInput");
+const sendGeminiEditBtn = document.getElementById("sendGeminiEditBtn");
 
 // Cognitive Processing Elements
 const cognitiveBadge = document.getElementById("cognitiveBadge");
@@ -93,12 +105,17 @@ async function loadDeck(deckId) {
 }
 
 // Render active slide
-function renderSlide(index) {
+function renderSlide(index, targetStep = 1) {
   if (!currentDeck || index < 0 || index >= currentDeck.slides.length) return;
   
+  stopAutoPlay();
   currentSlideIndex = index;
   const slide = currentDeck.slides[index];
   
+  // Set build step range
+  const totalSteps = slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : 1;
+  currentBuildStep = Math.max(1, Math.min(targetStep, totalSteps));
+
   slideImage.src = slide.imageUrl;
   currentSlideNum.textContent = index + 1;
   
@@ -107,8 +124,8 @@ function renderSlide(index) {
   progressBar.style.width = `${pct}%`;
   
   // Update prev / next button states
-  prevBtn.disabled = index === 0;
-  nextBtn.disabled = index === currentDeck.slides.length - 1;
+  prevBtn.disabled = index === 0 && currentBuildStep === 1;
+  nextBtn.disabled = index === currentDeck.slides.length - 1 && currentBuildStep === totalSteps;
 
   // Highlight active thumbnail
   updateActiveThumbnail(index);
@@ -122,7 +139,7 @@ function renderSlide(index) {
     vciPill.textContent = "VCI: 5.0";
   }
 
-  // Render Interactive Q&A Layer if applicable
+  // Render Interactive Q&A Layer & Serial Animations if applicable
   if (slide.isInteractive && slide.interactiveCells) {
     renderInteractiveGrid(slide);
   } else {
@@ -131,21 +148,27 @@ function renderSlide(index) {
   }
 }
 
-// Render click-to-reveal cards for Q&A grid slide
+// Render click-to-reveal cards and serial build steps for Q&A grid slide
 function renderInteractiveGrid(slide) {
   interactiveOverlay.innerHTML = "";
   interactiveOverlay.classList.remove("hidden");
   qaControls.classList.remove("hidden");
 
-  slide.interactiveCells.forEach((cell) => {
-    // Default to masked if not previously toggled
-    if (answerStates[cell.id] === undefined) {
-      answerStates[cell.id] = false; // false = masked/hidden
-    }
+  const totalSteps = slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : slide.interactiveCells.length;
+  serialStepBadge.textContent = `Step ${currentBuildStep} / ${totalSteps}`;
+
+  slide.interactiveCells.forEach((cell, index) => {
+    // Serial step logic: component is revealed if step index <= currentBuildStep
+    const stepNum = index + 1;
+    const isBuildRevealed = stepNum <= currentBuildStep;
+    const isActiveStep = stepNum === currentBuildStep;
+
+    // Default or serial state
+    const isRevealed = answerStates[cell.id] !== undefined ? answerStates[cell.id] : isBuildRevealed;
+    answerStates[cell.id] = isRevealed;
 
     const card = document.createElement("div");
-    const isRevealed = answerStates[cell.id];
-    card.className = `qa-card-overlay ${isRevealed ? "revealed" : "masked"}`;
+    card.className = `qa-card-overlay ${isRevealed ? "revealed" : "masked"} ${isActiveStep ? "serial-active" : ""}`;
     
     // Position using percentages from manifest
     const b = cell.answerBounds || cell.bounds;
@@ -159,7 +182,7 @@ function renderInteractiveGrid(slide) {
       <div class="qa-card-content">
         <div class="qa-prompt-badge">
           <span>🔒</span>
-          <span>Click to Reveal Answer</span>
+          <span>Click to Reveal</span>
         </div>
         <div class="qa-prompt-subtext">${cell.question}</div>
       </div>
@@ -213,12 +236,161 @@ function updateActiveThumbnail(index) {
   });
 }
 
+// Serial Build Step Navigation
+function advanceSerialBuildStep() {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+  const totalSteps = slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : 1;
+
+  if (currentBuildStep < totalSteps) {
+    currentBuildStep++;
+    if (slide.isInteractive && slide.interactiveCells) {
+      // Reveal current step's component
+      const activeCell = slide.interactiveCells[currentBuildStep - 1];
+      if (activeCell) answerStates[activeCell.id] = true;
+      renderInteractiveGrid(slide);
+    }
+  } else if (currentSlideIndex < currentDeck.slides.length - 1) {
+    // Advance to next slide, build step 1
+    renderSlide(currentSlideIndex + 1, 1);
+  }
+}
+
+function regressSerialBuildStep() {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+
+  if (currentBuildStep > 1) {
+    currentBuildStep--;
+    if (slide.isInteractive && slide.interactiveCells) {
+      renderInteractiveGrid(slide);
+    }
+  } else if (currentSlideIndex > 0) {
+    // Go to previous slide at its last build step
+    const prevSlide = currentDeck.slides[currentSlideIndex - 1];
+    const prevSteps = prevSlide.serialAnimation ? prevSlide.serialAnimation.totalBuildSteps : 1;
+    renderSlide(currentSlideIndex - 1, prevSteps);
+  }
+}
+
+function toggleAutoPlay() {
+  if (autoPlayInterval) {
+    stopAutoPlay();
+  } else {
+    autoPlayBuildsBtn.classList.add("active");
+    autoPlayBuildsBtn.innerHTML = "<span>⏸</span> Pause";
+    autoPlayInterval = setInterval(() => {
+      advanceSerialBuildStep();
+    }, 2500);
+  }
+}
+
+function stopAutoPlay() {
+  if (autoPlayInterval) {
+    clearInterval(autoPlayInterval);
+    autoPlayInterval = null;
+    autoPlayBuildsBtn.classList.remove("active");
+    autoPlayBuildsBtn.innerHTML = "<span>▶</span> Auto Play";
+  }
+}
+
+// Selective Component Editor Drawer Modal
+function openComponentEditorModal() {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+
+  componentList.innerHTML = "";
+
+  if (slide.interactiveCells) {
+    slide.interactiveCells.forEach((cell, idx) => {
+      const isRev = answerStates[cell.id];
+      const row = document.createElement("div");
+      row.className = "component-item-row";
+      row.innerHTML = `
+        <div>
+          <strong>Step ${idx + 1}: ${cell.id}</strong>
+          <div style="color: #94a3b8; font-size: 0.75rem;">${cell.question}</div>
+        </div>
+        <button class="btn btn-outline-small" style="font-size: 0.72rem;">
+          ${isRev ? "👁️ Revealed" : "🔒 Masked"}
+        </button>
+      `;
+
+      row.querySelector("button").addEventListener("click", () => {
+        answerStates[cell.id] = !answerStates[cell.id];
+        openComponentEditorModal();
+        if (slide.isInteractive) renderInteractiveGrid(slide);
+      });
+
+      componentList.appendChild(row);
+    });
+  } else {
+    componentList.innerHTML = `<div style="color: #94a3b8; padding: 1rem; text-align: center;">No individual sub-components defined for slide ${slide.number}.</div>`;
+  }
+
+  componentEditorModal.classList.remove("hidden");
+}
+
+function closeComponentEditorModal() {
+  componentEditorModal.classList.add("hidden");
+}
+
+async function sendGeminiEditInstruction() {
+  if (!currentDeck) return;
+  const promptText = geminiEditInput.value.trim();
+  if (!promptText) return;
+
+  const slide = currentDeck.slides[currentSlideIndex];
+  sendGeminiEditBtn.disabled = true;
+  sendGeminiEditBtn.innerHTML = "<span>⏳</span> Dispatching to Gemini LM...";
+
+  try {
+    const res = await fetch(`/api/decks/${currentDeck.id}/slides/${slide.number}/edit-component`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        componentId: "active_slide",
+        editPrompt: promptText
+      })
+    });
+    const data = await res.json();
+    alert(`Gemini LM Revision Dispatched:\n${data.geminiResult.message}`);
+    geminiEditInput.value = "";
+  } catch (err) {
+    console.error("Error dispatching Gemini edit:", err);
+  } finally {
+    sendGeminiEditBtn.disabled = false;
+    sendGeminiEditBtn.innerHTML = "<span>✨</span> Dispatch Gemini Edit Instruction";
+    closeComponentEditorModal();
+  }
+}
+
+// Global controls for Q&A interactivity
+function setAllAnswersRevealed(revealed) {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+  if (slide && slide.interactiveCells) {
+    slide.interactiveCells.forEach((cell) => {
+      answerStates[cell.id] = revealed;
+    });
+    renderInteractiveGrid(slide);
+  }
+}
+
 // Event Listeners
 function setupEventListeners() {
   // Navigation buttons
-  prevBtn.addEventListener("click", () => renderSlide(currentSlideIndex - 1));
-  nextBtn.addEventListener("click", () => renderSlide(currentSlideIndex + 1));
-  
+  prevBtn.addEventListener("click", regressSerialBuildStep);
+  nextBtn.addEventListener("click", advanceSerialBuildStep);
+
+  prevBuildStepBtn.addEventListener("click", regressSerialBuildStep);
+  nextBuildStepBtn.addEventListener("click", advanceSerialBuildStep);
+  autoPlayBuildsBtn.addEventListener("click", toggleAutoPlay);
+
+  editComponentBtn.addEventListener("click", openComponentEditorModal);
+  closeComponentEditorBtn.addEventListener("click", closeComponentEditorModal);
+  sendGeminiEditBtn.addEventListener("click", sendGeminiEditInstruction);
+
   // Deck selection change
   deckSelect.addEventListener("change", (e) => {
     if (e.target.value) loadDeck(e.target.value);
@@ -248,23 +420,27 @@ function setupEventListeners() {
   cognitiveModal.addEventListener("click", (e) => {
     if (e.target === cognitiveModal) closeCognitiveModal();
   });
+  componentEditorModal.addEventListener("click", (e) => {
+    if (e.target === componentEditorModal) closeComponentEditorModal();
+  });
 
   // Keyboard Navigation
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeCognitiveModal();
+      closeComponentEditorModal();
     } else if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
       e.preventDefault();
-      renderSlide(currentSlideIndex + 1);
+      advanceSerialBuildStep();
     } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
       e.preventDefault();
-      renderSlide(currentSlideIndex - 1);
+      regressSerialBuildStep();
     } else if (e.key === "Home") {
       e.preventDefault();
-      renderSlide(0);
+      renderSlide(0, 1);
     } else if (e.key === "End" && currentDeck) {
       e.preventDefault();
-      renderSlide(currentDeck.slides.length - 1);
+      renderSlide(currentDeck.slides.length - 1, 1);
     } else if (e.key === "t" || e.key === "T") {
       sidebar.classList.toggle("collapsed");
     } else if (e.key === "f" || e.key === "F") {
