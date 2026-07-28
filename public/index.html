@@ -3,199 +3,306 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Web Presentation Agent</title>
+  <meta
+    name="description"
+    content="Convert image-based PowerPoint lessons into interactive, click-to-reveal web presentations."
+  >
+  <title>Vibe Deck Agent · Interactive Biology Lessons</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body class="theme-dark">
+<body class="theme-dark presenter-mode">
   <div id="app" class="app-container">
-
-    <!-- Top Navigation Header -->
     <header class="app-header">
       <div class="header-left">
-        <div class="brand">
-          <span class="brand-icon">✨</span>
+        <div class="brand" aria-label="Vibe Deck Agent">
+          <span class="brand-icon" aria-hidden="true">✦</span>
           <span class="brand-title">Vibe Deck Agent</span>
         </div>
         <div class="deck-selector-wrapper">
-          <label for="deckSelect" class="sr-only">Select Presentation</label>
+          <label for="deckSelect" class="sr-only">Select presentation</label>
           <select id="deckSelect" class="deck-select">
-            <option value="">Loading presentations...</option>
+            <option value="">Loading presentations…</option>
           </select>
         </div>
       </div>
 
       <div class="header-center">
-        <h1 id="deckTitle" class="deck-title">Lesson 01: CELL STRUCTURE</h1>
+        <h1 id="deckTitle" class="deck-title">CELL STRUCTURE</h1>
       </div>
 
       <div class="header-right">
-        <div class="cognitive-badge" id="cognitiveBadge" title="Click to view Academic Cognitive Load Analysis">
-          <span class="cognitive-icon">⏱️</span>
-          <span class="cognitive-label">Processing Time:</span>
+        <button
+          class="cognitive-badge"
+          id="cognitiveBadge"
+          type="button"
+          title="View the academic cognitive load analysis"
+        >
+          <span class="cognitive-icon" aria-hidden="true">◷</span>
+          <span class="cognitive-label">Processing:</span>
           <span id="cognitiveTimeText" class="cognitive-value">~45–60s</span>
           <span class="vci-pill" id="vciPill">VCI: 8.4</span>
-        </div>
-        <div class="mode-badge" id="modeBadge">
-          <span class="pulse-dot"></span>
-          <span id="modeText">Interactive Mode</span>
-        </div>
-        <button id="toggleSidebarBtn" class="icon-btn" title="Toggle Slide Thumbnails (T)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/></svg>
         </button>
-        <button id="fullscreenBtn" class="icon-btn" title="Toggle Fullscreen (F)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <button
+          class="mode-badge"
+          id="modeToggleBtn"
+          type="button"
+          aria-pressed="true"
+          title="Switch between presenter and student modes"
+        >
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span id="modeText">Presenter mode</span>
         </button>
+        <button
+          id="toggleSidebarBtn"
+          class="icon-btn"
+          type="button"
+          title="Toggle sidebar (T)"
+          aria-label="Toggle sidebar"
+          aria-expanded="true"
+        >▥</button>
+        <button
+          id="fullscreenBtn"
+          class="icon-btn"
+          type="button"
+          title="Toggle fullscreen (F)"
+          aria-label="Toggle fullscreen"
+        >⛶</button>
       </div>
     </header>
 
-    <!-- Main Viewport Area -->
     <main class="main-content">
-      
-      <!-- Slide Stage Area -->
-      <div class="slide-stage" id="slideStage">
+      <section class="slide-stage" id="slideStage" aria-label="Presentation stage">
         <div class="slide-wrapper" id="slideWrapper">
-          <img id="slideImage" class="slide-image" src="" alt="Slide View">
-          
-          <!-- Interactive Layer Overlay for Q&A Grid -->
-          <div id="interactiveOverlay" class="interactive-overlay hidden">
-            <!-- Dynamic interactive cards are rendered here via JS -->
-          </div>
-        </div>
-
-        <!-- Floating Q&A and Serial Build Controls for Interactive Slides -->
-        <div id="qaControls" class="qa-controls-bar hidden">
-          <div class="serial-build-group">
-            <span class="qa-label">🎬 Serial Build Step:</span>
-            <span id="serialStepBadge" class="build-step-badge">Step 1 / 6</span>
-            <button id="prevBuildStepBtn" class="btn btn-icon-small" title="Previous Build Step (Up/Left)">◀</button>
-            <button id="nextBuildStepBtn" class="btn btn-icon-small" title="Next Build Step (Down/Right)">▶</button>
-            <button id="autoPlayBuildsBtn" class="btn btn-outline-small" title="Toggle Auto Play Serial Build">
-              <span>▶</span> Auto Play
-            </button>
-          </div>
-          <div class="divider-v"></div>
-          <button id="editComponentBtn" class="btn btn-secondary-small" title="Gemini LM Selective Component Editor">
-            <span>✏️</span> Edit Components
-          </button>
-          <button id="revealAllBtn" class="btn btn-secondary-small">
-            <span>👁️</span> Reveal All
-          </button>
-          <button id="hideAllBtn" class="btn btn-outline-small">
-            <span>🔒</span> Reset
-          </button>
-        </div>
-      </div>
-
-      <!-- Sidebar Drawer (Slides Overview & Component Editor) -->
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-          <div class="sidebar-tabs">
-            <button id="tabOverviewBtn" class="sidebar-tab active">
-              <span>🖼️</span> Overview
-            </button>
-            <button id="tabEditorBtn" class="sidebar-tab">
-              <span>✏️</span> Component Editor
-            </button>
-          </div>
-          <span id="slideCountBadge" class="badge">15 Slides</span>
-        </div>
-
-        <!-- View 1: Slides Overview Thumbnails -->
-        <div class="thumbnails-grid" id="thumbnailsGrid">
-          <!-- Slide thumbnails populated dynamically -->
-        </div>
-
-        <!-- Selective Component & NotebookLM Slide Editor Modal -->
-  <div id="componentEditorModal" class="modal-overlay hidden">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>✏️ NotebookLM Slide Studio & Selective Component Editor</h3>
-        <button id="closeComponentEditorBtn" class="close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="component-editor-info">
-          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
-            Create progressive information reveals or revise selective slide components in NotebookLM studio.
-          </p>
-        </div>
-
-        <div id="componentList" class="component-list-container">
-          <!-- Filled dynamically by app.js -->
-        </div>
-
-        <!-- NotebookLM Revision Interface matching studio UI -->
-        <div class="notebooklm-revision-box">
-          <div class="revision-header-title" id="changeSlideHeading">Change slide 3</div>
-          <textarea id="geminiEditInput" class="notebooklm-textarea" rows="3" placeholder="e.g. 'Please only display the Step 1 Know text and the Eukaryotic and prokaryotic cells right next to this step... Keep the other steps visible but without text.'"></textarea>
-          
-          <div class="revision-footer-bar">
-            <div class="pending-changes-badge">
-              <span>Pending changes (1)</span>
-              <span style="font-size: 0.7rem; opacity: 0.8;">Generates in a few minutes</span>
+          <img id="slideImage" class="slide-image" src="" alt="Current presentation slide">
+          <div
+            id="interactiveOverlay"
+            class="interactive-overlay hidden"
+            aria-label="Interactive answer controls"
+          ></div>
+          <div
+            id="editTargetOverlay"
+            class="edit-target-overlay"
+            aria-label="Click a slide component to select it for editing"
+          >
+            <div id="editCursorHint" class="edit-cursor-hint" aria-hidden="true">
+              <span>⌖</span> Click a component to edit
             </div>
+            <div id="editTargetBox" class="edit-target-box hidden" aria-hidden="true">
+              <span id="editTargetBoxLabel" class="edit-target-box-label">Selected region</span>
+              <span class="edit-target-anchor" aria-hidden="true"></span>
+              <span class="edit-resize-handle" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="qaControls" class="qa-controls-bar hidden" aria-label="Answer controls">
+          <div class="serial-build-group">
+            <span class="qa-label">Reveal sequence</span>
+            <span id="serialStepBadge" class="build-step-badge">0 / 6</span>
+            <button id="prevBuildStepBtn" class="btn btn-icon-small" type="button" title="Previous reveal step">◀</button>
+            <button id="nextBuildStepBtn" class="btn btn-icon-small" type="button" title="Next reveal step">▶</button>
+            <button id="autoPlayBuildsBtn" class="btn btn-outline-small" type="button">
+              <span aria-hidden="true">▶</span> Auto play
+            </button>
+          </div>
+          <div class="divider-v" aria-hidden="true"></div>
+          <button id="editComponentBtn" class="btn btn-secondary-small" type="button">
+            <span aria-hidden="true">✎</span> Edit components
+          </button>
+          <button id="revealAllBtn" class="btn btn-secondary-small" type="button">
+            <span aria-hidden="true">◉</span> Reveal all
+          </button>
+          <button id="hideAllBtn" class="btn btn-outline-small" type="button">
+            <span aria-hidden="true">●</span> Hide all
+          </button>
+        </div>
+      </section>
+
+      <aside class="sidebar" id="sidebar" aria-label="Presentation sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-tabs" role="tablist" aria-label="Sidebar views">
+            <button
+              id="tabOverviewBtn"
+              class="sidebar-tab active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="thumbnailsGrid"
+            >
+              <span aria-hidden="true">▦</span> Overview
+            </button>
+            <button
+              id="tabEditorBtn"
+              class="sidebar-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="componentEditorView"
+            >
+              <span aria-hidden="true">✎</span> Components
+            </button>
+          </div>
+          <span id="slideCountBadge" class="badge">15 slides</span>
+        </div>
+
+        <div
+          class="thumbnails-grid"
+          id="thumbnailsGrid"
+          role="tabpanel"
+          aria-labelledby="tabOverviewBtn"
+        ></div>
+
+        <div
+          id="componentEditorView"
+          class="component-editor-view hidden"
+          role="tabpanel"
+          aria-labelledby="tabEditorBtn"
+        >
+          <div class="editor-panel-heading">
+            <div>
+              <p class="eyebrow">Selective component editor</p>
+              <h2 id="changeSlideHeading">Edit slide 2</h2>
+            </div>
+            <span class="autosave-badge"><span aria-hidden="true">●</span> Autosaves</span>
+          </div>
+
+          <p class="editor-panel-description">
+            Click any part of the slide, then type the exact change you want. Only the selected component is sent as the edit target.
+          </p>
+
+          <div class="point-edit-card">
+            <div class="point-edit-heading">
+              <span class="point-edit-icon" aria-hidden="true">⌖</span>
+              <div>
+                <strong>Point &amp; edit</strong>
+                <span>Typed instructions · no microphone</span>
+              </div>
+              <span id="editModeBadge" class="edit-mode-badge">Select on slide</span>
+            </div>
+            <p>
+              Click a detected component or any custom region. Drag the selection to reposition it, or use its corner handle to resize it.
+            </p>
+            <div id="selectedTargetSummary" class="selected-target-summary" aria-live="polite">
+              <div>
+                <span class="selected-target-kicker">Current target</span>
+                <strong id="selectedTargetName">Whole slide</strong>
+              </div>
+              <button id="clearEditTargetBtn" class="target-clear-btn hidden" type="button">
+                Clear target
+              </button>
+              <span id="selectedTargetMeta">Click the slide to isolate a component.</span>
+            </div>
+          </div>
+
+          <div class="agent-pathway-card">
+            <div class="agent-pathway-title">
+              <span class="agent-provider-mark" aria-hidden="true">✦</span>
+              <div>
+                <span class="agent-label">Default agent pathway</span>
+                <strong id="agentPathwayName">Google Gemini · Image chat</strong>
+              </div>
+            </div>
+            <label for="agentPathwaySelect" class="sr-only">Revision agent pathway</label>
+            <select id="agentPathwaySelect" class="agent-pathway-select">
+              <option value="gemini-image-chat" selected>Google Gemini · Image chat</option>
+              <option value="notebooklm-slide-revision">NotebookLM · Slide revision</option>
+              <option value="local-grid-segmentation">Local grid segmentation</option>
+            </select>
+            <p id="agentPathwayDescription" class="agent-pathway-description">
+              The slide image and your instruction are sent through the active Gemini image chat.
+            </p>
+          </div>
+
+          <div class="panel-section-title">
+            <span aria-hidden="true">⌗</span> Detected components
+          </div>
+          <div id="componentList" class="component-list-container"></div>
+
+          <div class="notebooklm-revision-box">
+            <label for="geminiEditInput" class="revision-header-title">
+              Type your edit instruction
+            </label>
+            <textarea
+              id="geminiEditInput"
+              class="notebooklm-textarea"
+              rows="4"
+              placeholder="For example: Make this diagram larger and change its labels to white."
+            ></textarea>
+
+            <div
+              id="agentStatus"
+              class="agent-status"
+              role="status"
+              aria-live="polite"
+            >Ready to revise through Google Gemini image chat.</div>
+
             <div class="revision-actions">
-              <button id="cancelRevisionBtn" class="btn btn-outline-small">Cancel</button>
-              <button id="sendGeminiEditBtn" class="btn btn-primary-bright">
-                <span>⚡</span> Generate revised deck
+              <button id="cancelRevisionBtn" class="btn btn-outline-small" type="button">Clear</button>
+              <button id="sendGeminiEditBtn" class="btn btn-primary-bright" type="button">
+                <span aria-hidden="true">✦</span> Send to Gemini
               </button>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
       </aside>
     </main>
 
-    <!-- Bottom Controls & Navigation Bar -->
     <footer class="app-footer">
       <div class="progress-bar-container">
-        <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+        <div
+          id="progressBar"
+          class="progress-bar"
+          style="width: 0%;"
+          role="progressbar"
+          aria-label="Lesson progress"
+          aria-valuemin="1"
+          aria-valuemax="15"
+          aria-valuenow="1"
+        ></div>
       </div>
 
       <div class="footer-controls">
         <div class="nav-buttons">
-          <button id="prevBtn" class="btn btn-nav" title="Previous Slide (←)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          <button id="prevBtn" class="btn btn-nav" type="button" title="Previous slide (Left arrow)">
+            <span aria-hidden="true">‹</span>
             <span>Previous</span>
           </button>
-          
-          <div class="slide-counter">
+
+          <div class="slide-counter" aria-label="Current slide">
             <span id="currentSlideNum">1</span>
             <span class="counter-slash">/</span>
             <span id="totalSlidesNum">15</span>
           </div>
 
-          <button id="nextBtn" class="btn btn-nav" title="Next Slide (→ or Space)">
+          <button id="nextBtn" class="btn btn-nav" type="button" title="Next slide (Right arrow or Space)">
             <span>Next</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            <span aria-hidden="true">›</span>
           </button>
         </div>
 
         <div class="keyboard-hints">
-          <span class="key-tag">←</span> <span class="key-tag">→</span> Navigate &bull; <span class="key-tag">Click Box</span> Reveal Answer
+          <span class="key-tag">←</span> <span class="key-tag">→</span> slides
+          <span class="hint-separator">·</span>
+          <span class="key-tag">↑</span> <span class="key-tag">↓</span> reveals
+          <span class="hint-separator">·</span>
+          click an answer to reveal
         </div>
       </div>
     </footer>
-
   </div>
 
-  <!-- Cognitive Analysis Modal -->
-  <div id="cognitiveModal" class="modal-overlay hidden">
+  <div id="cognitiveModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="cognitiveModalTitle">
     <div class="modal-card">
       <div class="modal-header">
-        <h3>🧠 Academic Cognitive Load & Processing Guide</h3>
-        <button id="closeModalBtn" class="close-btn">&times;</button>
+        <h3 id="cognitiveModalTitle">Academic cognitive load & processing guide</h3>
+        <button id="closeModalBtn" class="close-btn" type="button" aria-label="Close cognitive guide">&times;</button>
       </div>
-      <div class="modal-body" id="cognitiveModalBody">
-        <!-- Filled dynamically by app.js -->
-      </div>
+      <div class="modal-body" id="cognitiveModalBody"></div>
     </div>
   </div>
-
 
   <script src="/js/app.js" type="module"></script>
 </body>

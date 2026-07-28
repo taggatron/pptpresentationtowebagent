@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import { createReadStream, createWriteStream, existsSync } from "node:fs";
+import { createWriteStream } from "node:fs";
 import path from "node:path";
 import yauzl from "yauzl";
 
@@ -65,8 +65,13 @@ export async function extractPptxDeck(pptxPath, outputBaseDir) {
 
       slides.push({
         number: slideNum,
+        title:
+          slideNum === 2
+            ? "Starter Activity: Knowledge Retrieval"
+            : `Slide ${slideNum}`,
         imageFileName: outSlideFileName,
         imageUrl: `/decks/${deckId}/slides/${outSlideFileName}`,
+        sourceMediaPath: targetImage,
         isInteractive: slideNum === 2, // Slide 2 is starter activity Q&A grid by default
         interactiveType: slideNum === 2 ? "starter_qa_grid" : null
       });

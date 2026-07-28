@@ -8,7 +8,9 @@
   "scripts": {
     "start": "node src/server.js",
     "convert": "node src/convert-deck.js",
-    "agent:gemini": "node src/gemini-segmenter.js"
+    "agent:gemini": "node src/gemini-segmenter.js",
+    "test": "node --test",
+    "check": "node --check src/server.js && node --check src/gemini-image-gen.js && node --check public/js/app.js && node --test"
   },
   "dependencies": {
     "express": "^4.19.2",
