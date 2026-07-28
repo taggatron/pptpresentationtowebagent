@@ -24,6 +24,7 @@ async function isVisible(locator, timeout = 1500) {
 }
 
 async function attachSlideImage(page, imagePath) {
+  // Method 1: Direct file input if present in DOM
   try {
     const fileInputs = page.locator('input[type="file"]');
     if ((await fileInputs.count()) > 0) {
@@ -31,42 +32,79 @@ async function attachSlideImage(page, imagePath) {
       return true;
     }
   } catch {
-    // Continue to UI upload button fallback
+    // Continue to UI menu interaction
   }
 
+  // Method 2: Click add/upload trigger (.mat-focus-indicator / upload button) to open menu
   const uploadButton = page
     .locator(
-      'button[aria-label*="Upload" i], button[aria-label*="file" i], button[aria-label*="Add" i], button[aria-label*="image" i], button:has-text("Upload"), button:has-text("Add")'
+      'button[aria-label*="Upload" i], button[aria-label*="file" i], button[aria-label*="Add" i], button[aria-label*="image" i], button:has-text("Upload"), button:has-text("Add"), button:has(.mat-focus-indicator), .mat-focus-indicator'
     )
     .first();
 
-  if (!(await isVisible(uploadButton))) return false;
-
-  try {
-    const [fileChooser] = await Promise.all([
-      page.waitForEvent("filechooser", { timeout: 3000 }),
-      uploadButton.click()
-    ]);
-    await fileChooser.setFiles(imagePath);
-    return true;
-  } catch {
+  if (await isVisible(uploadButton)) {
     try {
-      const fileInputs = page.locator('input[type="file"]');
-      if ((await fileInputs.count()) > 0) {
-        await fileInputs.first().setInputFiles(imagePath);
+      await uploadButton.click();
+      await page.waitForTimeout(400);
+
+      // Check if "Upload files" option is visible in popup menu
+      const uploadFilesOption = page
+        .locator(
+          'button:has-text("Upload files"), div:has-text("Upload files"), span:has-text("Upload files"), li:has-text("Upload files"), [aria-label*="Upload files" i]'
+        )
+        .first();
+
+      if (await isVisible(uploadFilesOption, 1500)) {
+        const [fileChooser] = await Promise.all([
+          page.waitForEvent("filechooser", { timeout: 3000 }).catch(() => null),
+          uploadFilesOption.click().catch(() => {})
+        ]);
+
+        if (fileChooser) {
+          await fileChooser.setFiles(imagePath);
+          return true;
+        }
+      }
+    } catch {
+      // Fallback
+    }
+  }
+
+  // Method 3: Retry checking for file input after opening menu
+  try {
+    const fileInputs = page.locator('input[type="file"]');
+    if ((await fileInputs.count()) > 0) {
+      await fileInputs.first().setInputFiles(imagePath);
+      return true;
+    }
+  } catch {
+    // Ignore fallback failures
+  }
+
+  // Method 4: Direct filechooser on trigger button
+  if (await isVisible(uploadButton)) {
+    try {
+      const [fileChooser] = await Promise.all([
+        page.waitForEvent("filechooser", { timeout: 3000 }).catch(() => null),
+        uploadButton.click().catch(() => {})
+      ]);
+
+      if (fileChooser) {
+        await fileChooser.setFiles(imagePath);
         return true;
       }
     } catch {
-      // Ignore fallback failures
+      // Ignore
     }
-    return false;
   }
+
+  return false;
 }
 
 async function enterAndSendPrompt(page, promptText) {
   const input = page
     .locator(
-      'rich-textarea div[contenteditable="true"], rich-textarea, div[contenteditable="true"][role="textbox"], textarea'
+      'rich-textarea div[contenteditable="true"], div[contenteditable="true"][role="textbox"], div[contenteditable="true"], textarea[placeholder*="Describe" i], textarea, rich-textarea'
     )
     .first();
 
@@ -81,8 +119,12 @@ async function enterAndSendPrompt(page, promptText) {
     await page.keyboard.insertText(promptText);
   }
 
+  await page.waitForTimeout(300);
+
   const sendButton = page
-    .locator('button[aria-label*="Send" i], button:has-text("Send")')
+    .locator(
+      'button[aria-label*="Send" i], button[aria-label*="Submit" i], button[aria-label*="Generate" i], button:has-text("Send")'
+    )
     .first();
 
   if (await isVisible(sendButton)) {
@@ -120,12 +162,24 @@ export async function generateGeminiSlideImage(
           const browser = await chromium.connectOverCDP(cdpEndpoint);
           try {
             const context = browser.contexts()[0];
-            const page =
+            let page =
               context?.pages().find((candidate) => candidate.url().includes("gemini.google.com")) ||
               context?.pages()[0];
 
             if (page) {
               cdpConnected = true;
+
+              if (!page.url().includes("gemini.google.com/images")) {
+                try {
+                  await page.goto("https://gemini.google.com/images", {
+                    waitUntil: "domcontentloaded",
+                    timeout: 8000
+                  });
+                } catch {
+                  // Ignore if navigation is slow or already at destination
+                }
+              }
+
               imageAttached = await attachSlideImage(page, imagePath);
               if (!imageAttached) {
                 throw new Error("Gemini image upload control was not available.");
