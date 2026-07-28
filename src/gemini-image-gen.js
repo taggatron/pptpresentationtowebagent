@@ -104,19 +104,23 @@ export async function generateGeminiSlideImage(
 
         if (geminiTab) {
           const browser = await chromium.connectOverCDP(cdpEndpoint);
-          const context = browser.contexts()[0];
-          const page =
-            context?.pages().find((candidate) => candidate.url().includes("gemini.google.com")) ||
-            context?.pages()[0];
+          try {
+            const context = browser.contexts()[0];
+            const page =
+              context?.pages().find((candidate) => candidate.url().includes("gemini.google.com")) ||
+              context?.pages()[0];
 
-          if (page) {
-            cdpConnected = true;
-            imageAttached = await attachSlideImage(page, imagePath);
-            if (!imageAttached) {
-              throw new Error("Gemini image upload control was not available.");
+            if (page) {
+              cdpConnected = true;
+              imageAttached = await attachSlideImage(page, imagePath);
+              if (!imageAttached) {
+                throw new Error("Gemini image upload control was not available.");
+              }
+              await enterAndSendPrompt(page, finalPrompt);
+              promptSent = true;
             }
-            await enterAndSendPrompt(page, finalPrompt);
-            promptSent = true;
+          } finally {
+            await browser.close().catch(() => {});
           }
         } else {
           notice = "Chrome is connected, but no Gemini tab is open.";

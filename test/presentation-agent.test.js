@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
+import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -9,6 +10,7 @@ import {
   normalizeAgentPathway
 } from "../src/agent-config.js";
 import { createStarterCellGrid } from "../src/gemini-segmenter.js";
+import { generateGeminiSlideImage } from "../src/gemini-image-gen.js";
 import {
   buildTargetedRevisionPrompt,
   createApp,
@@ -154,4 +156,96 @@ test("server exposes the Gemini default and the Lesson 1 deck", async (t) => {
   assert.equal(revision.editTarget.id, "cell_1");
   assert.match(revision.prompt, /Answer 1/);
   assert.match(revision.prompt, /Make the selected answer label larger/);
+
+  const dedicatedEndpointResponse = await fetch(
+    `${baseUrl}/api/decks/Lesson_01_CELL_STRUCTURE/slides/2/generate-gemini-image`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        promptText: "Dedicated endpoint prompt.",
+        dispatch: false
+      })
+    }
+  );
+  assert.equal(dedicatedEndpointResponse.status, 200);
+  const dedicatedResult = await dedicatedEndpointResponse.json();
+  assert.equal(dedicatedResult.pathway, AGENT_PATHWAYS.GEMINI_IMAGE_CHAT);
+  assert.equal(dedicatedResult.dispatched, false);
+  assert.match(dedicatedResult.prompt, /Dedicated endpoint prompt/);
+});
+
+test("generateGeminiSlideImage handles missing images and queued dispatch", async () => {
+  const slideImage = path.join(
+    ROOT_DIR,
+    "public",
+    "decks",
+    "Lesson_01_CELL_STRUCTURE",
+    "slides",
+    "slide_01.png"
+  );
+
+  const queued = await generateGeminiSlideImage(
+    "Lesson_01_CELL_STRUCTURE",
+    1,
+    slideImage,
+    "Test prompt",
+    { dispatch: false }
+  );
+
+  assert.equal(queued.success, true);
+  assert.equal(queued.pathway, AGENT_PATHWAYS.GEMINI_IMAGE_CHAT);
+  assert.equal(queued.dispatched, false);
+  assert.equal(queued.status, "Dispatch was disabled for this run.");
+
+  await assert.rejects(
+    async () => {
+      await generateGeminiSlideImage(
+        "Lesson_01_CELL_STRUCTURE",
+        1,
+        path.join(ROOT_DIR, "non_existent_slide.png"),
+        "Test prompt",
+        { dispatch: false }
+      );
+    },
+    { code: "ENOENT" }
+  );
+});
+
+test("generateGeminiSlideImage checks CDP tabs when dispatch is enabled", async (t) => {
+  const server = http.createServer((req, res) => {
+    if (req.url === "/json/list") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify([{ id: "1", url: "https://example.com" }]));
+    } else {
+      res.writeHead(404);
+      res.end();
+    }
+  });
+
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => new Promise((resolve) => server.close(resolve)));
+
+  const address = server.address();
+  const cdpEndpoint = `http://127.0.0.1:${address.port}`;
+  const slideImage = path.join(
+    ROOT_DIR,
+    "public",
+    "decks",
+    "Lesson_01_CELL_STRUCTURE",
+    "slides",
+    "slide_01.png"
+  );
+
+  const result = await generateGeminiSlideImage(
+    "Lesson_01_CELL_STRUCTURE",
+    1,
+    slideImage,
+    "Test prompt with mock CDP",
+    { cdpEndpoint, dispatch: true }
+  );
+
+  assert.equal(result.success, true);
+  assert.equal(result.dispatched, false);
+  assert.equal(result.status, "Chrome is connected, but no Gemini tab is open.");
 });
