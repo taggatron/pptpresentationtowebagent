@@ -108,31 +108,45 @@
           <!-- Slide thumbnails populated dynamically -->
         </div>
 
-        <!-- View 2: Selective Component & Boundary Editor Panel -->
-        <div class="component-editor-view hidden" id="componentEditorView">
-          <div class="component-editor-info">
-            <div class="panel-section-title">
-              <span>📐</span> Component Boundaries & Positions
-            </div>
-            <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 0.5rem;">
-              Edit component X/Y position & Width/Height dimensions. Changes autosave automatically.
-            </p>
-          </div>
-          
-          <div id="componentList" class="component-list-container">
-            <!-- Populated dynamically by app.js with boundary X,Y,W,H inputs -->
-          </div>
+        <!-- Selective Component & NotebookLM Slide Editor Modal -->
+  <div id="componentEditorModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>✏️ NotebookLM Slide Studio & Selective Component Editor</h3>
+        <button id="closeComponentEditorBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="component-editor-info">
+          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+            Create progressive information reveals or revise selective slide components in NotebookLM studio.
+          </p>
+        </div>
 
-          <div class="gemini-prompt-box">
-            <label style="font-size: 0.78rem; font-weight: 600; color: #a5b4fc; display: block; margin-bottom: 0.3rem;">
-              Gemini Selective Edit Instruction:
-            </label>
-            <input type="text" id="geminiEditInput" class="gemini-input" placeholder="e.g. Highlight Cell 3 with cyan accent ring...">
-            <button id="sendGeminiEditBtn" class="btn btn-secondary-small" style="margin-top: 0.5rem; width: 100%; justify-content: center;">
-              <span>✨</span> Dispatch Gemini Edit Instruction
-            </button>
+        <div id="componentList" class="component-list-container">
+          <!-- Filled dynamically by app.js -->
+        </div>
+
+        <!-- NotebookLM Revision Interface matching studio UI -->
+        <div class="notebooklm-revision-box">
+          <div class="revision-header-title" id="changeSlideHeading">Change slide 3</div>
+          <textarea id="geminiEditInput" class="notebooklm-textarea" rows="3" placeholder="e.g. 'Please only display the Step 1 Know text and the Eukaryotic and prokaryotic cells right next to this step... Keep the other steps visible but without text.'"></textarea>
+          
+          <div class="revision-footer-bar">
+            <div class="pending-changes-badge">
+              <span>Pending changes (1)</span>
+              <span style="font-size: 0.7rem; opacity: 0.8;">Generates in a few minutes</span>
+            </div>
+            <div class="revision-actions">
+              <button id="cancelRevisionBtn" class="btn btn-outline-small">Cancel</button>
+              <button id="sendGeminiEditBtn" class="btn btn-primary-bright">
+                <span>⚡</span> Generate revised deck
+              </button>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
       </aside>
     </main>
 

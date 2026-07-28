@@ -85,6 +85,21 @@ app.post("/api/decks/:deckId/slides/:slideNum/edit-component", async (req, res) 
   }
 });
 
+// API to trigger live NotebookLM slide revisions
+app.post("/api/decks/:deckId/slides/:slideNum/revise-notebooklm", async (req, res) => {
+  try {
+    const { deckId, slideNum } = req.params;
+    const { revisionPrompt } = req.body;
+
+    const sNum = parseInt(slideNum, 10);
+    const nlmResult = await triggerNotebookLMRevision(deckId, sNum, revisionPrompt);
+
+    res.json({ success: true, deckId, slideNum: sNum, revisionPrompt, nlmResult });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // API to save updated component boundary size and position
 app.post("/api/decks/:deckId/slides/:slideNum/bounds", async (req, res) => {
   try {
