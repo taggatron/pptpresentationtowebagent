@@ -24,27 +24,41 @@ async function isVisible(locator, timeout = 1500) {
 }
 
 async function attachSlideImage(page, imagePath) {
-  const fileInput = page.locator('input[type="file"]').first();
-  if (await fileInput.count()) {
-    await fileInput.setInputFiles(imagePath);
-    return true;
+  try {
+    const fileInputs = page.locator('input[type="file"]');
+    if ((await fileInputs.count()) > 0) {
+      await fileInputs.first().setInputFiles(imagePath);
+      return true;
+    }
+  } catch {
+    // Continue to UI upload button fallback
   }
 
   const uploadButton = page
     .locator(
-      'button[aria-label*="Upload" i], button[aria-label*="file" i], button:has-text("Upload")'
+      'button[aria-label*="Upload" i], button[aria-label*="file" i], button[aria-label*="Add" i], button[aria-label*="image" i], button:has-text("Upload"), button:has-text("Add")'
     )
     .first();
 
   if (!(await isVisible(uploadButton))) return false;
 
   try {
-    const fileChooserPromise = page.waitForEvent("filechooser", { timeout: 3000 });
-    await uploadButton.click();
-    const fileChooser = await fileChooserPromise;
+    const [fileChooser] = await Promise.all([
+      page.waitForEvent("filechooser", { timeout: 3000 }),
+      uploadButton.click()
+    ]);
     await fileChooser.setFiles(imagePath);
     return true;
   } catch {
+    try {
+      const fileInputs = page.locator('input[type="file"]');
+      if ((await fileInputs.count()) > 0) {
+        await fileInputs.first().setInputFiles(imagePath);
+        return true;
+      }
+    } catch {
+      // Ignore fallback failures
+    }
     return false;
   }
 }
