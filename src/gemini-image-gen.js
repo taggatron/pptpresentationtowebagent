@@ -24,7 +24,28 @@ async function isVisible(locator, timeout = 1500) {
 }
 
 async function attachSlideImage(page, imagePath) {
-  // Method 1: Direct file input if present in DOM
+  const uploadFilesSelector = [
+    'button[data-test-id="local-images-files-uploader-button"]',
+    '[data-test-id="local-images-files-uploader-button"]',
+    'button[aria-label*="Upload files" i]',
+    'button:has-text("Upload files")',
+    'span.gem-menu-item-label:has-text("Upload files")',
+    'span:has-text("Upload files")'
+  ].join(", ");
+
+  const triggerSelector = [
+    'button[data-test-id*="uploader"]',
+    'button[aria-label*="Upload" i]',
+    'button[aria-label*="file" i]',
+    'button[aria-label*="Add" i]',
+    'button[aria-label*="image" i]',
+    'button:has-text("Upload")',
+    'button:has-text("Add")',
+    'button:has(.mat-focus-indicator)',
+    '.mat-focus-indicator'
+  ].join(", ");
+
+  // Step 1: Try setting files on existing input[type="file"]
   try {
     const fileInputs = page.locator('input[type="file"]');
     if ((await fileInputs.count()) > 0) {
@@ -32,45 +53,50 @@ async function attachSlideImage(page, imagePath) {
       return true;
     }
   } catch {
-    // Continue to UI menu interaction
+    // Fall through
   }
 
-  // Method 2: Click add/upload trigger (.mat-focus-indicator / upload button) to open menu
-  const uploadButton = page
-    .locator(
-      'button[aria-label*="Upload" i], button[aria-label*="file" i], button[aria-label*="Add" i], button[aria-label*="image" i], button:has-text("Upload"), button:has-text("Add"), button:has(.mat-focus-indicator), .mat-focus-indicator'
-    )
-    .first();
-
-  if (await isVisible(uploadButton)) {
+  // Step 2: Check if "Upload files" menu item is already open/visible
+  const directUploadOption = page.locator(uploadFilesSelector).first();
+  if (await isVisible(directUploadOption, 1000)) {
     try {
-      await uploadButton.click();
+      const [fileChooser] = await Promise.all([
+        page.waitForEvent("filechooser", { timeout: 4000 }).catch(() => null),
+        directUploadOption.click().catch(() => {})
+      ]);
+      if (fileChooser) {
+        await fileChooser.setFiles(imagePath);
+        return true;
+      }
+    } catch {
+      // Fall through
+    }
+  }
+
+  // Step 3: Click the add/upload menu trigger button
+  const triggerButton = page.locator(triggerSelector).first();
+  if (await isVisible(triggerButton, 2000)) {
+    try {
+      await triggerButton.click();
       await page.waitForTimeout(400);
 
-      // Check if "Upload files" option is visible in popup menu
-      const uploadFilesOption = page
-        .locator(
-          'button:has-text("Upload files"), div:has-text("Upload files"), span:has-text("Upload files"), li:has-text("Upload files"), [aria-label*="Upload files" i]'
-        )
-        .first();
-
-      if (await isVisible(uploadFilesOption, 1500)) {
+      const menuOption = page.locator(uploadFilesSelector).first();
+      if (await isVisible(menuOption, 2000)) {
         const [fileChooser] = await Promise.all([
-          page.waitForEvent("filechooser", { timeout: 3000 }).catch(() => null),
-          uploadFilesOption.click().catch(() => {})
+          page.waitForEvent("filechooser", { timeout: 4000 }).catch(() => null),
+          menuOption.click().catch(() => {})
         ]);
-
         if (fileChooser) {
           await fileChooser.setFiles(imagePath);
           return true;
         }
       }
     } catch {
-      // Fallback
+      // Fall through
     }
   }
 
-  // Method 3: Retry checking for file input after opening menu
+  // Step 4: Check if file input appeared after menu interaction
   try {
     const fileInputs = page.locator('input[type="file"]');
     if ((await fileInputs.count()) > 0) {
@@ -78,23 +104,22 @@ async function attachSlideImage(page, imagePath) {
       return true;
     }
   } catch {
-    // Ignore fallback failures
+    // Fall through
   }
 
-  // Method 4: Direct filechooser on trigger button
-  if (await isVisible(uploadButton)) {
+  // Step 5: Direct filechooser on trigger button fallback
+  if (await isVisible(triggerButton)) {
     try {
       const [fileChooser] = await Promise.all([
-        page.waitForEvent("filechooser", { timeout: 3000 }).catch(() => null),
-        uploadButton.click().catch(() => {})
+        page.waitForEvent("filechooser", { timeout: 4000 }).catch(() => null),
+        triggerButton.click().catch(() => {})
       ]);
-
       if (fileChooser) {
         await fileChooser.setFiles(imagePath);
         return true;
       }
     } catch {
-      // Ignore
+      // Fall through
     }
   }
 
