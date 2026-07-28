@@ -423,6 +423,14 @@ export function startServer(
   port = Number(process.env.PORT) || 3000,
   host = process.env.HOST || "127.0.0.1"
 ) {
+  process.on("unhandledRejection", (reason) => {
+    console.warn("[Presentation Web Agent] Suppressed unhandledRejection:", reason?.message || reason);
+  });
+
+  process.on("uncaughtException", (error) => {
+    console.warn("[Presentation Web Agent] Suppressed uncaughtException:", error?.message || error);
+  });
+
   const app = createApp();
   const server = app.listen(port, host, () => {
     console.log(`[Presentation Web Agent] Server listening at http://${host}:${port}`);
