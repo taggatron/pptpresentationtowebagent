@@ -3,6 +3,7 @@ import path from "node:path";
 import { chromium } from "playwright";
 import { analyzeSlideCognitiveLoad } from "./cognitive-model.js";
 import { processSerialBuildSteps } from "./gemini-editor.js";
+import { generateProgressiveBuildsForSlide } from "./notebooklm-revisor.js";
 
 /**
  * Generates cell grid segmentation and interactive overlay data for Q&A slides,
@@ -93,6 +94,17 @@ export async function generateSlideInteractivity(deckId, outputBaseDir) {
 
     // Attach serial build step animation sequence
     slide.serialAnimation = await processSerialBuildSteps(slide);
+
+    // If slide has High Cognitive Processing Time (or is Slide 3 / starter grid), configure progressive builds
+    if (slide.cognitiveGuide.estimatedTimeSeconds >= 35 || slide.number === 3 || slide.isInteractive) {
+      slide.hasProgressiveBuilds = true;
+      slide.progressiveBuilds = [
+        { version: 1, label: "Build 1: Step 1 Focus", imageUrl: slide.imageUrl },
+        { version: 2, label: "Build 2: Step 1 & 2 Focus", imageUrl: slide.imageUrl },
+        { version: 3, label: "Build 3: Full Slide Diagram", imageUrl: slide.imageUrl }
+      ];
+      slide.revisionData = await generateProgressiveBuildsForSlide(deckId, slide.number, slide.gridTitle || `Slide ${slide.number}`);
+    }
   }
 
   await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));

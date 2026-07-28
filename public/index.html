@@ -89,14 +89,49 @@
         </div>
       </div>
 
-      <!-- Slide Thumbnails Sidebar Drawer -->
+      <!-- Sidebar Drawer (Slides Overview & Component Editor) -->
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-          <h3>Slides Overview</h3>
+          <div class="sidebar-tabs">
+            <button id="tabOverviewBtn" class="sidebar-tab active">
+              <span>🖼️</span> Overview
+            </button>
+            <button id="tabEditorBtn" class="sidebar-tab">
+              <span>✏️</span> Component Editor
+            </button>
+          </div>
           <span id="slideCountBadge" class="badge">15 Slides</span>
         </div>
+
+        <!-- View 1: Slides Overview Thumbnails -->
         <div class="thumbnails-grid" id="thumbnailsGrid">
           <!-- Slide thumbnails populated dynamically -->
+        </div>
+
+        <!-- View 2: Selective Component & Boundary Editor Panel -->
+        <div class="component-editor-view hidden" id="componentEditorView">
+          <div class="component-editor-info">
+            <div class="panel-section-title">
+              <span>📐</span> Component Boundaries & Positions
+            </div>
+            <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 0.5rem;">
+              Edit component X/Y position & Width/Height dimensions. Changes autosave automatically.
+            </p>
+          </div>
+          
+          <div id="componentList" class="component-list-container">
+            <!-- Populated dynamically by app.js with boundary X,Y,W,H inputs -->
+          </div>
+
+          <div class="gemini-prompt-box">
+            <label style="font-size: 0.78rem; font-weight: 600; color: #a5b4fc; display: block; margin-bottom: 0.3rem;">
+              Gemini Selective Edit Instruction:
+            </label>
+            <input type="text" id="geminiEditInput" class="gemini-input" placeholder="e.g. Highlight Cell 3 with cyan accent ring...">
+            <button id="sendGeminiEditBtn" class="btn btn-secondary-small" style="margin-top: 0.5rem; width: 100%; justify-content: center;">
+              <span>✨</span> Dispatch Gemini Edit Instruction
+            </button>
+          </div>
         </div>
       </aside>
     </main>
@@ -147,32 +182,6 @@
     </div>
   </div>
 
-  <!-- Selective Component Editor Modal -->
-  <div id="componentEditorModal" class="modal-overlay hidden">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>✏️ Gemini LM Selective Component Editor</h3>
-        <button id="closeComponentEditorBtn" class="close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="component-editor-info">
-          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
-            Select slide components to edit or reorder serial build steps. You can dispatch selective component prompt revisions directly to your running Gemini LM session.
-          </p>
-        </div>
-        <div id="componentList" class="component-list-container">
-          <!-- Filled dynamically by app.js -->
-        </div>
-        <div class="gemini-prompt-box">
-          <label style="font-size: 0.8rem; font-weight: 600; color: #a5b4fc;">Gemini Selective Edit Instruction:</label>
-          <input type="text" id="geminiEditInput" class="gemini-input" placeholder="e.g. Highlight Cell 3 with cyan accent ring and add animation glow...">
-          <button id="sendGeminiEditBtn" class="btn btn-secondary" style="margin-top: 0.5rem; width: 100%;">
-            <span>✨</span> Dispatch Gemini Edit Instruction
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script src="/js/app.js" type="module"></script>
 </body>

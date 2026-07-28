@@ -69,6 +69,7 @@ body {
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #a5b4fc, #6366f1, #38bdf8);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -632,17 +633,185 @@ body {
 }
 
 .sidebar-header {
-  padding: 1rem 1.25rem;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: var(--glass-border);
+  gap: 0.5rem;
 }
 
-.sidebar-header h3 {
-  font-family: var(--font-heading);
-  font-size: 1rem;
+.sidebar-tabs {
+  display: flex;
+  gap: 0.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-tab {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
   font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar-tab:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-tab.active {
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+.component-editor-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.75rem;
+  overflow-y: auto;
+}
+
+.component-editor-view.hidden {
+  display: none;
+}
+
+.panel-section-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #a5b4fc;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.component-card-editor {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: all 0.2s ease;
+}
+
+.component-card-editor:hover, .component-card-editor.active-editing {
+  border-color: var(--accent-cyan);
+  background: rgba(30, 41, 59, 0.9);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+}
+
+.component-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.component-title-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.component-question-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+
+.boundary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.boundary-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  align-items: center;
+}
+
+.boundary-field label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.bounds-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #38bdf8;
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.2rem 0.1rem;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.bounds-input:focus {
+  border-color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.15);
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.3);
+}
+
+.gemini-prompt-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.gemini-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  outline: none;
+}
+
+.gemini-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.autosave-badge {
+  font-size: 0.68rem;
+  color: #34d399;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .badge {
@@ -661,6 +830,11 @@ body {
   flex-direction: column;
   gap: 0.75rem;
 }
+
+.thumbnails-grid.hidden {
+  display: none;
+}
+
 
 .thumb-item {
   position: relative;

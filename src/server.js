@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { extractPptxDeck } from "./pptx-extractor.js";
 import { generateSlideInteractivity } from "./gemini-segmenter.js";
 import { editSlideComponentViaGemini } from "./gemini-editor.js";
+import { triggerNotebookLMRevision } from "./notebooklm-revisor.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -84,6 +85,41 @@ app.post("/api/decks/:deckId/slides/:slideNum/edit-component", async (req, res) 
   }
 });
 
+// API to save updated component boundary size and position
+app.post("/api/decks/:deckId/slides/:slideNum/bounds", async (req, res) => {
+  try {
+    const { deckId, slideNum } = req.params;
+    const { cellId, bounds, interactiveCells } = req.body;
+
+    const manifestPath = path.join(DECKS_DIR, deckId, "manifest.json");
+    const raw = await fs.readFile(manifestPath, "utf-8");
+    const manifest = JSON.parse(raw);
+
+    const sNum = parseInt(slideNum, 10);
+    const slide = manifest.slides.find((s) => s.number === sNum);
+
+    if (!slide) {
+      return res.status(404).json({ error: `Slide ${slideNum} not found` });
+    }
+
+    if (interactiveCells && Array.isArray(interactiveCells)) {
+      slide.interactiveCells = interactiveCells;
+    } else if (cellId && bounds && slide.interactiveCells) {
+      const cell = slide.interactiveCells.find((c) => c.id === cellId);
+      if (cell) {
+        cell.answerBounds = { ...bounds };
+        cell.bounds = { ...bounds };
+      }
+    }
+
+    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+    res.json({ success: true, slide });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 // API to trigger conversion of a PPTX file or directory
 app.post("/api/convert", async (req, res) => {
   try {
@@ -114,6 +150,19 @@ app.post("/api/convert", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`[Presentation Web Agent] Server listening at http://localhost:${PORT}`);
-});
+function startServer(port) {
+  const server = app.listen(port, () => {
+    console.log(`[Presentation Web Agent] Server listening at http://localhost:${port}`);
+  });
+
+  server.on("error", (err) => {
+    if (err.code === "EADDRINUSE") {
+      console.warn(`[Presentation Web Agent] Port ${port} is in use, trying port ${port + 1}...`);
+      startServer(port + 1);
+    } else {
+      console.error("[Presentation Web Agent] Server error:", err);
+    }
+  });
+}
+
+startServer(PORT);

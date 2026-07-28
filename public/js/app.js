@@ -29,11 +29,16 @@ const prevBuildStepBtn = document.getElementById("prevBuildStepBtn");
 const nextBuildStepBtn = document.getElementById("nextBuildStepBtn");
 const autoPlayBuildsBtn = document.getElementById("autoPlayBuildsBtn");
 const editComponentBtn = document.getElementById("editComponentBtn");
-const componentEditorModal = document.getElementById("componentEditorModal");
-const closeComponentEditorBtn = document.getElementById("closeComponentEditorBtn");
 const componentList = document.getElementById("componentList");
 const geminiEditInput = document.getElementById("geminiEditInput");
 const sendGeminiEditBtn = document.getElementById("sendGeminiEditBtn");
+
+// Sidebar Tab Elements
+const tabOverviewBtn = document.getElementById("tabOverviewBtn");
+const tabEditorBtn = document.getElementById("tabEditorBtn");
+const componentEditorView = document.getElementById("componentEditorView");
+let activeSidebarTab = "overview"; // "overview" | "editor"
+let autosaveTimer = null;
 
 // Cognitive Processing Elements
 const cognitiveBadge = document.getElementById("cognitiveBadge");
@@ -111,6 +116,9 @@ function renderSlide(index, targetStep = 1) {
   stopAutoPlay();
   currentSlideIndex = index;
   const slide = currentDeck.slides[index];
+
+  // Restore saved boundary overrides from localStorage if present
+  restoreSavedBoundsForSlide(slide);
   
   // Set build step range
   const totalSteps = slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : 1;
@@ -146,6 +154,31 @@ function renderSlide(index, targetStep = 1) {
     interactiveOverlay.classList.add("hidden");
     qaControls.classList.add("hidden");
   }
+
+  // Update component editor panel if active
+  if (activeSidebarTab === "editor") {
+    renderComponentEditorPanel();
+  }
+}
+
+// Restore custom boundary overrides from localStorage
+function restoreSavedBoundsForSlide(slide) {
+  if (!currentDeck || !slide || !slide.interactiveCells) return;
+  const storageKey = `deck_bounds_${currentDeck.id}_slide_${slide.number}`;
+  try {
+    const raw = localStorage.getItem(storageKey);
+    if (raw) {
+      const savedBoundsMap = JSON.parse(raw);
+      slide.interactiveCells.forEach((cell) => {
+        if (savedBoundsMap[cell.id]) {
+          cell.answerBounds = { ...savedBoundsMap[cell.id] };
+          cell.bounds = { ...savedBoundsMap[cell.id] };
+        }
+      });
+    }
+  } catch (err) {
+    console.warn("Could not load bounds from localStorage:", err);
+  }
 }
 
 // Render click-to-reveal cards and serial build steps for Q&A grid slide
@@ -168,6 +201,7 @@ function renderInteractiveGrid(slide) {
     answerStates[cell.id] = isRevealed;
 
     const card = document.createElement("div");
+    card.id = `qa_card_${cell.id}`;
     card.className = `qa-card-overlay ${isRevealed ? "revealed" : "masked"} ${isActiveStep ? "serial-active" : ""}`;
     
     // Position using percentages from manifest
@@ -191,6 +225,7 @@ function renderInteractiveGrid(slide) {
     card.addEventListener("click", () => {
       answerStates[cell.id] = !answerStates[cell.id];
       renderInteractiveGrid(slide);
+      if (activeSidebarTab === "editor") renderComponentEditorPanel();
     });
 
     interactiveOverlay.appendChild(card);
@@ -206,6 +241,7 @@ function setAllAnswersRevealed(revealed) {
       answerStates[cell.id] = revealed;
     });
     renderInteractiveGrid(slide);
+    if (activeSidebarTab === "editor") renderComponentEditorPanel();
   }
 }
 
@@ -236,103 +272,158 @@ function updateActiveThumbnail(index) {
   });
 }
 
-// Serial Build Step Navigation
-function advanceSerialBuildStep() {
-  if (!currentDeck) return;
-  const slide = currentDeck.slides[currentSlideIndex];
-  const totalSteps = slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : 1;
+// Sidebar Tab Switcher
+function switchSidebarTab(tabName) {
+  activeSidebarTab = tabName;
+  sidebar.classList.remove("collapsed");
 
-  if (currentBuildStep < totalSteps) {
-    currentBuildStep++;
-    if (slide.isInteractive && slide.interactiveCells) {
-      // Reveal current step's component
-      const activeCell = slide.interactiveCells[currentBuildStep - 1];
-      if (activeCell) answerStates[activeCell.id] = true;
-      renderInteractiveGrid(slide);
-    }
-  } else if (currentSlideIndex < currentDeck.slides.length - 1) {
-    // Advance to next slide, build step 1
-    renderSlide(currentSlideIndex + 1, 1);
-  }
-}
-
-function regressSerialBuildStep() {
-  if (!currentDeck) return;
-  const slide = currentDeck.slides[currentSlideIndex];
-
-  if (currentBuildStep > 1) {
-    currentBuildStep--;
-    if (slide.isInteractive && slide.interactiveCells) {
-      renderInteractiveGrid(slide);
-    }
-  } else if (currentSlideIndex > 0) {
-    // Go to previous slide at its last build step
-    const prevSlide = currentDeck.slides[currentSlideIndex - 1];
-    const prevSteps = prevSlide.serialAnimation ? prevSlide.serialAnimation.totalBuildSteps : 1;
-    renderSlide(currentSlideIndex - 1, prevSteps);
-  }
-}
-
-function toggleAutoPlay() {
-  if (autoPlayInterval) {
-    stopAutoPlay();
+  if (tabName === "overview") {
+    tabOverviewBtn.classList.add("active");
+    tabEditorBtn.classList.remove("active");
+    thumbnailsGrid.classList.remove("hidden");
+    componentEditorView.classList.add("hidden");
   } else {
-    autoPlayBuildsBtn.classList.add("active");
-    autoPlayBuildsBtn.innerHTML = "<span>⏸</span> Pause";
-    autoPlayInterval = setInterval(() => {
-      advanceSerialBuildStep();
-    }, 2500);
+    tabEditorBtn.classList.add("active");
+    tabOverviewBtn.classList.remove("active");
+    thumbnailsGrid.classList.add("hidden");
+    componentEditorView.classList.remove("hidden");
+    renderComponentEditorPanel();
   }
 }
 
-function stopAutoPlay() {
-  if (autoPlayInterval) {
-    clearInterval(autoPlayInterval);
-    autoPlayInterval = null;
-    autoPlayBuildsBtn.classList.remove("active");
-    autoPlayBuildsBtn.innerHTML = "<span>▶</span> Auto Play";
-  }
-}
-
-// Selective Component Editor Drawer Modal
-function openComponentEditorModal() {
+// Render Selective Component & Boundary Editor inside Sidebar
+function renderComponentEditorPanel() {
   if (!currentDeck) return;
   const slide = currentDeck.slides[currentSlideIndex];
 
   componentList.innerHTML = "";
 
-  if (slide.interactiveCells) {
+  if (slide.interactiveCells && slide.interactiveCells.length > 0) {
     slide.interactiveCells.forEach((cell, idx) => {
       const isRev = answerStates[cell.id];
-      const row = document.createElement("div");
-      row.className = "component-item-row";
-      row.innerHTML = `
-        <div>
-          <strong>Step ${idx + 1}: ${cell.id}</strong>
-          <div style="color: #94a3b8; font-size: 0.75rem;">${cell.question}</div>
+      const b = cell.answerBounds || cell.bounds || { x: 0, y: 0, w: 20, h: 20 };
+
+      const card = document.createElement("div");
+      card.className = "component-card-editor";
+      card.innerHTML = `
+        <div class="component-card-header">
+          <div>
+            <span class="component-title-text">Step ${idx + 1}: ${cell.id}</span>
+            <div class="component-question-sub">${cell.question}</div>
+          </div>
+          <button class="btn btn-outline-small toggle-reveal-btn" style="font-size: 0.7rem;">
+            ${isRev ? "👁️ Revealed" : "🔒 Masked"}
+          </button>
         </div>
-        <button class="btn btn-outline-small" style="font-size: 0.72rem;">
-          ${isRev ? "👁️ Revealed" : "🔒 Masked"}
-        </button>
+
+        <div class="boundary-grid">
+          <div class="boundary-field">
+            <label>X (%)</label>
+            <input type="number" step="0.5" class="bounds-input input-x" value="${b.x.toFixed(1)}">
+          </div>
+          <div class="boundary-field">
+            <label>Y (%)</label>
+            <input type="number" step="0.5" class="bounds-input input-y" value="${b.y.toFixed(1)}">
+          </div>
+          <div class="boundary-field">
+            <label>W (%)</label>
+            <input type="number" step="0.5" class="bounds-input input-w" value="${b.w.toFixed(1)}">
+          </div>
+          <div class="boundary-field">
+            <label>H (%)</label>
+            <input type="number" step="0.5" class="bounds-input input-h" value="${b.h.toFixed(1)}">
+          </div>
+        </div>
       `;
 
-      row.querySelector("button").addEventListener("click", () => {
+      // Toggle mask/reveal state
+      card.querySelector(".toggle-reveal-btn").addEventListener("click", () => {
         answerStates[cell.id] = !answerStates[cell.id];
-        openComponentEditorModal();
         if (slide.isInteractive) renderInteractiveGrid(slide);
+        renderComponentEditorPanel();
       });
 
-      componentList.appendChild(row);
+      // Boundary inputs event listeners (X, Y, W, H)
+      const inputX = card.querySelector(".input-x");
+      const inputY = card.querySelector(".input-y");
+      const inputW = card.querySelector(".input-w");
+      const inputH = card.querySelector(".input-h");
+
+      const updateBoundaryValues = () => {
+        const x = parseFloat(inputX.value) || 0;
+        const y = parseFloat(inputY.value) || 0;
+        const w = Math.max(1, parseFloat(inputW.value) || 10);
+        const h = Math.max(1, parseFloat(inputH.value) || 10);
+
+        const newBounds = { x, y, w, h };
+        cell.answerBounds = { ...newBounds };
+        cell.bounds = { ...newBounds };
+
+        // Live update card overlay position on canvas
+        const overlayCard = document.getElementById(`qa_card_${cell.id}`);
+        if (overlayCard) {
+          overlayCard.style.left = `${x}%`;
+          overlayCard.style.top = `${y}%`;
+          overlayCard.style.width = `${w}%`;
+          overlayCard.style.height = `${h}%`;
+        }
+
+        // Trigger autosave
+        triggerAutosaveBounds(slide);
+      };
+
+      [inputX, inputY, inputW, inputH].forEach((input) => {
+        input.addEventListener("input", updateBoundaryValues);
+        input.addEventListener("focus", () => {
+          card.classList.add("active-editing");
+          const overlayCard = document.getElementById(`qa_card_${cell.id}`);
+          if (overlayCard) overlayCard.classList.add("serial-active");
+        });
+        input.addEventListener("blur", () => {
+          card.classList.remove("active-editing");
+          const overlayCard = document.getElementById(`qa_card_${cell.id}`);
+          if (overlayCard) overlayCard.classList.remove("serial-active");
+        });
+      });
+
+      componentList.appendChild(card);
     });
   } else {
-    componentList.innerHTML = `<div style="color: #94a3b8; padding: 1rem; text-align: center;">No individual sub-components defined for slide ${slide.number}.</div>`;
+    componentList.innerHTML = `
+      <div style="color: #94a3b8; padding: 1.5rem 1rem; text-align: center; font-size: 0.8rem;">
+        No interactive sub-components available on slide ${slide.number}.
+      </div>
+    `;
   }
-
-  componentEditorModal.classList.remove("hidden");
 }
 
-function closeComponentEditorModal() {
-  componentEditorModal.classList.add("hidden");
+// Trigger debounced autosave of boundary changes to server & localStorage
+function triggerAutosaveBounds(slide) {
+  if (autosaveTimer) clearTimeout(autosaveTimer);
+
+  // 1. Instant local storage persistence
+  const storageKey = `deck_bounds_${currentDeck.id}_slide_${slide.number}`;
+  const boundsMap = {};
+  slide.interactiveCells.forEach((c) => {
+    boundsMap[c.id] = c.answerBounds || c.bounds;
+  });
+  localStorage.setItem(storageKey, JSON.stringify(boundsMap));
+
+  // 2. Debounced API autosave to backend manifest.json
+  autosaveTimer = setTimeout(async () => {
+    try {
+      await fetch(`/api/decks/${currentDeck.id}/slides/${slide.number}/bounds`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          interactiveCells: slide.interactiveCells
+        })
+      });
+      console.log(`[Autosave] Component boundaries saved for slide ${slide.number}`);
+    } catch (err) {
+      console.error("Autosave error:", err);
+    }
+  }, 400);
 }
 
 async function sendGeminiEditInstruction() {
@@ -361,19 +452,6 @@ async function sendGeminiEditInstruction() {
   } finally {
     sendGeminiEditBtn.disabled = false;
     sendGeminiEditBtn.innerHTML = "<span>✨</span> Dispatch Gemini Edit Instruction";
-    closeComponentEditorModal();
-  }
-}
-
-// Global controls for Q&A interactivity
-function setAllAnswersRevealed(revealed) {
-  if (!currentDeck) return;
-  const slide = currentDeck.slides[currentSlideIndex];
-  if (slide && slide.interactiveCells) {
-    slide.interactiveCells.forEach((cell) => {
-      answerStates[cell.id] = revealed;
-    });
-    renderInteractiveGrid(slide);
   }
 }
 
@@ -387,9 +465,15 @@ function setupEventListeners() {
   nextBuildStepBtn.addEventListener("click", advanceSerialBuildStep);
   autoPlayBuildsBtn.addEventListener("click", toggleAutoPlay);
 
-  editComponentBtn.addEventListener("click", openComponentEditorModal);
-  closeComponentEditorBtn.addEventListener("click", closeComponentEditorModal);
+  // Edit components button in QA bar opens Component Editor sidebar tab
+  editComponentBtn.addEventListener("click", () => switchSidebarTab("editor"));
+
+  // Sidebar Tab Switcher Listeners
+  if (tabOverviewBtn) tabOverviewBtn.addEventListener("click", () => switchSidebarTab("overview"));
+  if (tabEditorBtn) tabEditorBtn.addEventListener("click", () => switchSidebarTab("editor"));
+
   sendGeminiEditBtn.addEventListener("click", sendGeminiEditInstruction);
+
 
   // Deck selection change
   deckSelect.addEventListener("change", (e) => {
@@ -420,16 +504,13 @@ function setupEventListeners() {
   cognitiveModal.addEventListener("click", (e) => {
     if (e.target === cognitiveModal) closeCognitiveModal();
   });
-  componentEditorModal.addEventListener("click", (e) => {
-    if (e.target === componentEditorModal) closeComponentEditorModal();
-  });
 
   // Keyboard Navigation
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeCognitiveModal();
-      closeComponentEditorModal();
     } else if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+
       e.preventDefault();
       advanceSerialBuildStep();
     } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
