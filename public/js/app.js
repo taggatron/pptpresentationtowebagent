@@ -1,8 +1,12 @@
+// Interactive Presentation Web Application
+
 let currentDeck = null;
 let currentSlideIndex = 0;
 let currentBuildStep = 1; // Serial build step index for current slide
 let answerStates = {}; // cellId -> boolean (true = revealed, false = masked)
 let autoPlayInterval = null;
+let activeSidebarTab = "overview"; // "overview" | "editor"
+let autosaveTimer = null;
 
 // DOM Elements
 const deckSelect = document.getElementById("deckSelect");
@@ -32,13 +36,13 @@ const editComponentBtn = document.getElementById("editComponentBtn");
 const componentList = document.getElementById("componentList");
 const geminiEditInput = document.getElementById("geminiEditInput");
 const sendGeminiEditBtn = document.getElementById("sendGeminiEditBtn");
+const changeSlideHeading = document.getElementById("changeSlideHeading");
+const cancelRevisionBtn = document.getElementById("cancelRevisionBtn");
 
 // Sidebar Tab Elements
 const tabOverviewBtn = document.getElementById("tabOverviewBtn");
 const tabEditorBtn = document.getElementById("tabEditorBtn");
 const componentEditorView = document.getElementById("componentEditorView");
-let activeSidebarTab = "overview"; // "overview" | "editor"
-let autosaveTimer = null;
 
 // Cognitive Processing Elements
 const cognitiveBadge = document.getElementById("cognitiveBadge");
@@ -47,6 +51,70 @@ const vciPill = document.getElementById("vciPill");
 const cognitiveModal = document.getElementById("cognitiveModal");
 const cognitiveModalBody = document.getElementById("cognitiveModalBody");
 const closeModalBtn = document.getElementById("closeModalBtn");
+const componentEditorModal = document.getElementById("componentEditorModal");
+const closeComponentEditorBtn = document.getElementById("closeComponentEditorBtn");
+
+// AutoPlay Functions
+function stopAutoPlay() {
+  if (autoPlayInterval) {
+    clearInterval(autoPlayInterval);
+    autoPlayInterval = null;
+    if (autoPlayBuildsBtn) {
+      autoPlayBuildsBtn.classList.remove("active");
+      autoPlayBuildsBtn.innerHTML = "<span>▶</span> Auto Play";
+    }
+  }
+}
+
+function toggleAutoPlay() {
+  if (autoPlayInterval) {
+    stopAutoPlay();
+  } else {
+    if (autoPlayBuildsBtn) {
+      autoPlayBuildsBtn.classList.add("active");
+      autoPlayBuildsBtn.innerHTML = "<span>⏸</span> Pause";
+    }
+    autoPlayInterval = setInterval(() => {
+      advanceSerialBuildStep();
+    }, 2500);
+  }
+}
+
+// Serial Build Step Navigation
+function advanceSerialBuildStep() {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+  const totalSteps = slide.progressiveBuilds
+    ? slide.progressiveBuilds.length
+    : (slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : 1);
+
+  if (currentBuildStep < totalSteps) {
+    currentBuildStep++;
+    if (slide.isInteractive && slide.interactiveCells) {
+      const activeCell = slide.interactiveCells[currentBuildStep - 1];
+      if (activeCell) answerStates[activeCell.id] = true;
+    }
+    renderSlide(currentSlideIndex, currentBuildStep);
+  } else if (currentSlideIndex < currentDeck.slides.length - 1) {
+    renderSlide(currentSlideIndex + 1, 1);
+  }
+}
+
+function regressSerialBuildStep() {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+
+  if (currentBuildStep > 1) {
+    currentBuildStep--;
+    renderSlide(currentSlideIndex, currentBuildStep);
+  } else if (currentSlideIndex > 0) {
+    const prevSlide = currentDeck.slides[currentSlideIndex - 1];
+    const prevSteps = prevSlide.progressiveBuilds
+      ? prevSlide.progressiveBuilds.length
+      : (prevSlide.serialAnimation ? prevSlide.serialAnimation.totalBuildSteps : 1);
+    renderSlide(currentSlideIndex - 1, prevSteps);
+  }
+}
 
 // Initialize App
 async function init() {
@@ -72,7 +140,6 @@ async function fetchDecks() {
       // Load first deck
       await loadDeck(data.decks[0].id);
     } else {
-      // Trigger automatic conversion of trial deck if empty
       deckTitle.textContent = "Converting Trial Deck...";
       const convertRes = await fetch("/api/convert", {
         method: "POST",
@@ -103,61 +170,9 @@ async function loadDeck(deckId) {
     
     currentSlideIndex = 0;
     renderThumbnails();
-    renderSlide(0);
+    renderSlide(0, 1);
   } catch (err) {
     console.error(`Error loading deck ${deckId}:`, err);
-  }
-}
-
-// Render active slide
-function renderSlide(index, targetStep = 1) {
-  if (!currentDeck || index < 0 || index >= currentDeck.slides.length) return;
-  
-  stopAutoPlay();
-  currentSlideIndex = index;
-  const slide = currentDeck.slides[index];
-
-  // Restore saved boundary overrides from localStorage if present
-  restoreSavedBoundsForSlide(slide);
-  
-  // Set build step range
-  const totalSteps = slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : 1;
-  currentBuildStep = Math.max(1, Math.min(targetStep, totalSteps));
-
-  slideImage.src = slide.imageUrl;
-  currentSlideNum.textContent = index + 1;
-  
-  // Progress bar percentage
-  const pct = ((index + 1) / currentDeck.slides.length) * 100;
-  progressBar.style.width = `${pct}%`;
-  
-  // Update prev / next button states
-  prevBtn.disabled = index === 0 && currentBuildStep === 1;
-  nextBtn.disabled = index === currentDeck.slides.length - 1 && currentBuildStep === totalSteps;
-
-  // Highlight active thumbnail
-  updateActiveThumbnail(index);
-
-  // Update Cognitive Processing Time Guide
-  if (slide.cognitiveGuide) {
-    cognitiveTimeText.textContent = `~${slide.cognitiveGuide.timeGuideDisplay}`;
-    vciPill.textContent = `VCI: ${slide.cognitiveGuide.vciScore}`;
-  } else {
-    cognitiveTimeText.textContent = "~30–45s";
-    vciPill.textContent = "VCI: 5.0";
-  }
-
-  // Render Interactive Q&A Layer & Serial Animations if applicable
-  if (slide.isInteractive && slide.interactiveCells) {
-    renderInteractiveGrid(slide);
-  } else {
-    interactiveOverlay.classList.add("hidden");
-    qaControls.classList.add("hidden");
-  }
-
-  // Update component editor panel if active
-  if (activeSidebarTab === "editor") {
-    renderComponentEditorPanel();
   }
 }
 
@@ -181,22 +196,77 @@ function restoreSavedBoundsForSlide(slide) {
   }
 }
 
+// Render active slide
+function renderSlide(index, targetStep = 1) {
+  if (!currentDeck || index < 0 || index >= currentDeck.slides.length) return;
+  
+  stopAutoPlay();
+  currentSlideIndex = index;
+  const slide = currentDeck.slides[index];
+
+  restoreSavedBoundsForSlide(slide);
+  
+  const totalSteps = slide.progressiveBuilds
+    ? slide.progressiveBuilds.length
+    : (slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : 1);
+    
+  currentBuildStep = Math.max(1, Math.min(targetStep, totalSteps));
+
+  // Handle progressive image builds vs standard slide image
+  if (slide.progressiveBuilds && slide.progressiveBuilds.length > 0) {
+    const buildObj = slide.progressiveBuilds[currentBuildStep - 1] || slide.progressiveBuilds[0];
+    slideImage.src = buildObj.imageUrl || slide.imageUrl;
+  } else {
+    slideImage.src = slide.imageUrl;
+  }
+
+  currentSlideNum.textContent = index + 1;
+  
+  const pct = ((index + 1) / currentDeck.slides.length) * 100;
+  progressBar.style.width = `${pct}%`;
+  
+  prevBtn.disabled = index === 0 && currentBuildStep === 1;
+  nextBtn.disabled = index === currentDeck.slides.length - 1 && currentBuildStep === totalSteps;
+
+  updateActiveThumbnail(index);
+
+  if (slide.cognitiveGuide) {
+    cognitiveTimeText.textContent = `~${slide.cognitiveGuide.timeGuideDisplay}`;
+    vciPill.textContent = `VCI: ${slide.cognitiveGuide.vciScore}`;
+  } else {
+    cognitiveTimeText.textContent = "~30–45s";
+    vciPill.textContent = "VCI: 5.0";
+  }
+
+  if (slide.isInteractive && slide.interactiveCells) {
+    renderInteractiveGrid(slide);
+  } else {
+    interactiveOverlay.classList.add("hidden");
+    qaControls.classList.add("hidden");
+  }
+
+  if (activeSidebarTab === "editor") {
+    renderComponentEditorPanel();
+  }
+}
+
 // Render click-to-reveal cards and serial build steps for Q&A grid slide
 function renderInteractiveGrid(slide) {
   interactiveOverlay.innerHTML = "";
   interactiveOverlay.classList.remove("hidden");
   qaControls.classList.remove("hidden");
 
-  const totalSteps = slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : slide.interactiveCells.length;
-  serialStepBadge.textContent = `Step ${currentBuildStep} / ${totalSteps}`;
+  const totalSteps = slide.progressiveBuilds
+    ? slide.progressiveBuilds.length
+    : (slide.serialAnimation ? slide.serialAnimation.totalBuildSteps : slide.interactiveCells.length);
+
+  if (serialStepBadge) serialStepBadge.textContent = `Step ${currentBuildStep} / ${totalSteps}`;
 
   slide.interactiveCells.forEach((cell, index) => {
-    // Serial step logic: component is revealed if step index <= currentBuildStep
     const stepNum = index + 1;
     const isBuildRevealed = stepNum <= currentBuildStep;
     const isActiveStep = stepNum === currentBuildStep;
 
-    // Default or serial state
     const isRevealed = answerStates[cell.id] !== undefined ? answerStates[cell.id] : isBuildRevealed;
     answerStates[cell.id] = isRevealed;
 
@@ -204,7 +274,6 @@ function renderInteractiveGrid(slide) {
     card.id = `qa_card_${cell.id}`;
     card.className = `qa-card-overlay ${isRevealed ? "revealed" : "masked"} ${isActiveStep ? "serial-active" : ""}`;
     
-    // Position using percentages from manifest
     const b = cell.answerBounds || cell.bounds;
     card.style.left = `${b.x}%`;
     card.style.top = `${b.y}%`;
@@ -247,6 +316,7 @@ function setAllAnswersRevealed(revealed) {
 
 // Render Thumbnails in sidebar
 function renderThumbnails() {
+  if (!thumbnailsGrid) return;
   thumbnailsGrid.innerHTML = "";
   currentDeck.slides.forEach((slide, i) => {
     const thumb = document.createElement("div");
@@ -255,12 +325,13 @@ function renderThumbnails() {
       <img src="${slide.imageUrl}" alt="Slide ${i + 1}">
       <span class="thumb-num">${i + 1}</span>
     `;
-    thumb.addEventListener("click", () => renderSlide(i));
+    thumb.addEventListener("click", () => renderSlide(i, 1));
     thumbnailsGrid.appendChild(thumb);
   });
 }
 
 function updateActiveThumbnail(index) {
+  if (!thumbnailsGrid) return;
   const items = thumbnailsGrid.querySelectorAll(".thumb-item");
   items.forEach((item, i) => {
     if (i === index) {
@@ -278,22 +349,22 @@ function switchSidebarTab(tabName) {
   sidebar.classList.remove("collapsed");
 
   if (tabName === "overview") {
-    tabOverviewBtn.classList.add("active");
-    tabEditorBtn.classList.remove("active");
-    thumbnailsGrid.classList.remove("hidden");
-    componentEditorView.classList.add("hidden");
+    if (tabOverviewBtn) tabOverviewBtn.classList.add("active");
+    if (tabEditorBtn) tabEditorBtn.classList.remove("active");
+    if (thumbnailsGrid) thumbnailsGrid.classList.remove("hidden");
+    if (componentEditorView) componentEditorView.classList.add("hidden");
   } else {
-    tabEditorBtn.classList.add("active");
-    tabOverviewBtn.classList.remove("active");
-    thumbnailsGrid.classList.add("hidden");
-    componentEditorView.classList.remove("hidden");
+    if (tabEditorBtn) tabEditorBtn.classList.add("active");
+    if (tabOverviewBtn) tabOverviewBtn.classList.remove("active");
+    if (thumbnailsGrid) thumbnailsGrid.classList.add("hidden");
+    if (componentEditorView) componentEditorView.classList.remove("hidden");
     renderComponentEditorPanel();
   }
 }
 
 // Render Selective Component & Boundary Editor inside Sidebar
 function renderComponentEditorPanel() {
-  if (!currentDeck) return;
+  if (!currentDeck || !componentList) return;
   const slide = currentDeck.slides[currentSlideIndex];
 
   componentList.innerHTML = "";
@@ -336,14 +407,12 @@ function renderComponentEditorPanel() {
         </div>
       `;
 
-      // Toggle mask/reveal state
       card.querySelector(".toggle-reveal-btn").addEventListener("click", () => {
         answerStates[cell.id] = !answerStates[cell.id];
         if (slide.isInteractive) renderInteractiveGrid(slide);
         renderComponentEditorPanel();
       });
 
-      // Boundary inputs event listeners (X, Y, W, H)
       const inputX = card.querySelector(".input-x");
       const inputY = card.querySelector(".input-y");
       const inputW = card.querySelector(".input-w");
@@ -359,7 +428,6 @@ function renderComponentEditorPanel() {
         cell.answerBounds = { ...newBounds };
         cell.bounds = { ...newBounds };
 
-        // Live update card overlay position on canvas
         const overlayCard = document.getElementById(`qa_card_${cell.id}`);
         if (overlayCard) {
           overlayCard.style.left = `${x}%`;
@@ -368,7 +436,6 @@ function renderComponentEditorPanel() {
           overlayCard.style.height = `${h}%`;
         }
 
-        // Trigger autosave
         triggerAutosaveBounds(slide);
       };
 
@@ -397,11 +464,10 @@ function renderComponentEditorPanel() {
   }
 }
 
-// Trigger debounced autosave of boundary changes to server & localStorage
+// Trigger debounced autosave of boundary changes
 function triggerAutosaveBounds(slide) {
   if (autosaveTimer) clearTimeout(autosaveTimer);
 
-  // 1. Instant local storage persistence
   const storageKey = `deck_bounds_${currentDeck.id}_slide_${slide.number}`;
   const boundsMap = {};
   slide.interactiveCells.forEach((c) => {
@@ -409,7 +475,6 @@ function triggerAutosaveBounds(slide) {
   });
   localStorage.setItem(storageKey, JSON.stringify(boundsMap));
 
-  // 2. Debounced API autosave to backend manifest.json
   autosaveTimer = setTimeout(async () => {
     try {
       await fetch(`/api/decks/${currentDeck.id}/slides/${slide.number}/bounds`, {
@@ -426,112 +491,66 @@ function triggerAutosaveBounds(slide) {
   }, 400);
 }
 
+// Modal open / close logic
+function openComponentEditorModal() {
+  if (!currentDeck) return;
+  const slide = currentDeck.slides[currentSlideIndex];
+  
+  if (changeSlideHeading) changeSlideHeading.textContent = `Change slide ${slide.number}`;
+  if (geminiEditInput && !geminiEditInput.value) {
+    geminiEditInput.value = `Please only display the first leftmost organelle container and text description keeping all other 'slide' elements the same`;
+  }
+
+  if (componentEditorModal) componentEditorModal.classList.remove("hidden");
+}
+
+function closeComponentEditorModal() {
+  if (componentEditorModal) componentEditorModal.classList.add("hidden");
+}
+
 async function sendGeminiEditInstruction() {
   if (!currentDeck) return;
-  const promptText = geminiEditInput.value.trim();
+  const promptText = geminiEditInput ? geminiEditInput.value.trim() : "";
   if (!promptText) return;
 
   const slide = currentDeck.slides[currentSlideIndex];
-  sendGeminiEditBtn.disabled = true;
-  sendGeminiEditBtn.innerHTML = "<span>⏳</span> Dispatching to Gemini LM...";
+  if (sendGeminiEditBtn) {
+    sendGeminiEditBtn.disabled = true;
+    sendGeminiEditBtn.innerHTML = "<span>⏳</span> Generating revised build image...";
+  }
 
   try {
-    const res = await fetch(`/api/decks/${currentDeck.id}/slides/${slide.number}/edit-component`, {
+    const res = await fetch(`/api/decks/${currentDeck.id}/slides/${slide.number}/generate-gemini-image`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        componentId: "active_slide",
-        editPrompt: promptText
+        promptText
       })
     });
     const data = await res.json();
-    alert(`Gemini LM Revision Dispatched:\n${data.geminiResult.message}`);
-    geminiEditInput.value = "";
+    
+    // Dynamically attach generated build image to slide
+    if (data.success && data.imageUrl) {
+      if (!slide.progressiveBuilds) slide.progressiveBuilds = [];
+      slide.progressiveBuilds.unshift({
+        version: slide.progressiveBuilds.length + 1,
+        label: `Build ${slide.progressiveBuilds.length + 1}: Gemini Revised`,
+        imageUrl: data.imageUrl
+      });
+      slide.hasProgressiveBuilds = true;
+      renderSlide(currentSlideIndex, 1);
+    }
+
+    alert(`Gemini Web App Image Revision Dispatched:\n${data.status}`);
   } catch (err) {
     console.error("Error dispatching Gemini edit:", err);
   } finally {
-    sendGeminiEditBtn.disabled = false;
-    sendGeminiEditBtn.innerHTML = "<span>✨</span> Dispatch Gemini Edit Instruction";
+    if (sendGeminiEditBtn) {
+      sendGeminiEditBtn.disabled = false;
+      sendGeminiEditBtn.innerHTML = "<span>⚡</span> Generate revised deck";
+    }
+    closeComponentEditorModal();
   }
-}
-
-// Event Listeners
-function setupEventListeners() {
-  // Navigation buttons
-  prevBtn.addEventListener("click", regressSerialBuildStep);
-  nextBtn.addEventListener("click", advanceSerialBuildStep);
-
-  prevBuildStepBtn.addEventListener("click", regressSerialBuildStep);
-  nextBuildStepBtn.addEventListener("click", advanceSerialBuildStep);
-  autoPlayBuildsBtn.addEventListener("click", toggleAutoPlay);
-
-  // Edit components button in QA bar opens Component Editor sidebar tab
-  editComponentBtn.addEventListener("click", () => switchSidebarTab("editor"));
-
-  // Sidebar Tab Switcher Listeners
-  if (tabOverviewBtn) tabOverviewBtn.addEventListener("click", () => switchSidebarTab("overview"));
-  if (tabEditorBtn) tabEditorBtn.addEventListener("click", () => switchSidebarTab("editor"));
-
-  sendGeminiEditBtn.addEventListener("click", sendGeminiEditInstruction);
-
-
-  // Deck selection change
-  deckSelect.addEventListener("change", (e) => {
-    if (e.target.value) loadDeck(e.target.value);
-  });
-
-  // Sidebar toggle
-  toggleSidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("collapsed");
-  });
-
-  // Fullscreen toggle
-  fullscreenBtn.addEventListener("click", () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  });
-
-  // Interactivity global buttons
-  revealAllBtn.addEventListener("click", () => setAllAnswersRevealed(true));
-  hideAllBtn.addEventListener("click", () => setAllAnswersRevealed(false));
-
-  // Cognitive Processing Modal Event Listeners
-  cognitiveBadge.addEventListener("click", openCognitiveModal);
-  closeModalBtn.addEventListener("click", closeCognitiveModal);
-  cognitiveModal.addEventListener("click", (e) => {
-    if (e.target === cognitiveModal) closeCognitiveModal();
-  });
-
-  // Keyboard Navigation
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeCognitiveModal();
-    } else if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
-
-      e.preventDefault();
-      advanceSerialBuildStep();
-    } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
-      e.preventDefault();
-      regressSerialBuildStep();
-    } else if (e.key === "Home") {
-      e.preventDefault();
-      renderSlide(0, 1);
-    } else if (e.key === "End" && currentDeck) {
-      e.preventDefault();
-      renderSlide(currentDeck.slides.length - 1, 1);
-    } else if (e.key === "t" || e.key === "T") {
-      sidebar.classList.toggle("collapsed");
-    } else if (e.key === "f" || e.key === "F") {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
-    }
-  });
 }
 
 function openCognitiveModal() {
@@ -539,7 +558,7 @@ function openCognitiveModal() {
   const slide = currentDeck.slides[currentSlideIndex];
   const g = slide.cognitiveGuide;
 
-  if (!g) return;
+  if (!g || !cognitiveModalBody) return;
 
   cognitiveModalBody.innerHTML = `
     <div class="metric-grid">
@@ -578,11 +597,94 @@ function openCognitiveModal() {
     </div>
   `;
 
-  cognitiveModal.classList.remove("hidden");
+  if (cognitiveModal) cognitiveModal.classList.remove("hidden");
 }
 
 function closeCognitiveModal() {
-  cognitiveModal.classList.add("hidden");
+  if (cognitiveModal) cognitiveModal.classList.add("hidden");
+}
+
+// Event Listeners
+function setupEventListeners() {
+  if (prevBtn) prevBtn.addEventListener("click", regressSerialBuildStep);
+  if (nextBtn) nextBtn.addEventListener("click", advanceSerialBuildStep);
+
+  if (prevBuildStepBtn) prevBuildStepBtn.addEventListener("click", regressSerialBuildStep);
+  if (nextBuildStepBtn) nextBuildStepBtn.addEventListener("click", advanceSerialBuildStep);
+  if (autoPlayBuildsBtn) autoPlayBuildsBtn.addEventListener("click", toggleAutoPlay);
+
+  if (editComponentBtn) editComponentBtn.addEventListener("click", openComponentEditorModal);
+  if (closeComponentEditorBtn) closeComponentEditorBtn.addEventListener("click", closeComponentEditorModal);
+  if (cancelRevisionBtn) cancelRevisionBtn.addEventListener("click", closeComponentEditorModal);
+  if (sendGeminiEditBtn) sendGeminiEditBtn.addEventListener("click", sendGeminiEditInstruction);
+
+  if (tabOverviewBtn) tabOverviewBtn.addEventListener("click", () => switchSidebarTab("overview"));
+  if (tabEditorBtn) tabEditorBtn.addEventListener("click", () => switchSidebarTab("editor"));
+
+  if (deckSelect) {
+    deckSelect.addEventListener("change", (e) => {
+      if (e.target.value) loadDeck(e.target.value);
+    });
+  }
+
+  if (toggleSidebarBtn) {
+    toggleSidebarBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+    });
+  }
+
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener("click", () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  }
+
+  if (revealAllBtn) revealAllBtn.addEventListener("click", () => setAllAnswersRevealed(true));
+  if (hideAllBtn) hideAllBtn.addEventListener("click", () => setAllAnswersRevealed(false));
+
+  if (cognitiveBadge) cognitiveBadge.addEventListener("click", openCognitiveModal);
+  if (closeModalBtn) closeModalBtn.addEventListener("click", closeCognitiveModal);
+  if (cognitiveModal) {
+    cognitiveModal.addEventListener("click", (e) => {
+      if (e.target === cognitiveModal) closeCognitiveModal();
+    });
+  }
+  if (componentEditorModal) {
+    componentEditorModal.addEventListener("click", (e) => {
+      if (e.target === componentEditorModal) closeComponentEditorModal();
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeCognitiveModal();
+      closeComponentEditorModal();
+    } else if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+      e.preventDefault();
+      advanceSerialBuildStep();
+    } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      e.preventDefault();
+      regressSerialBuildStep();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      renderSlide(0, 1);
+    } else if (e.key === "End" && currentDeck) {
+      e.preventDefault();
+      renderSlide(currentDeck.slides.length - 1, 1);
+    } else if (e.key === "t" || e.key === "T") {
+      sidebar.classList.toggle("collapsed");
+    } else if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);
