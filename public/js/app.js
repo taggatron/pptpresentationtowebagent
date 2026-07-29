@@ -855,6 +855,34 @@ function renderComponentEditorPanel() {
 
     componentList.appendChild(card);
   });
+
+  renderVersionHistoryOptions(slide);
+}
+
+function renderVersionHistoryOptions(slide) {
+  const versionSelect = document.getElementById("versionSelect");
+  if (!versionSelect) return;
+
+  const history =
+    slide.history && slide.history.length > 0
+      ? slide.history
+      : [
+          {
+            id: "original",
+            label: "Original Slide Image",
+            imageUrl: slide.originalImageUrl || slide.imageUrl
+          }
+        ];
+
+  versionSelect.innerHTML = history
+    .map(
+      (entry) => `
+      <option value="${escapeHtml(entry.id)}" data-url="${escapeHtml(entry.imageUrl)}">
+        ${escapeHtml(entry.label)}
+      </option>
+    `
+    )
+    .join("");
 }
 
 function triggerAutosaveBounds(slide) {
@@ -928,6 +956,9 @@ async function sendRevisionInstruction() {
   const slide = currentDeck.slides[currentSlideIndex];
   const pathway = selectedAgentPathway();
   const selectedTarget = getSelectedEditTarget(slide);
+  const isAnimationStepCheckbox = document.getElementById("isAnimationStepCheckbox");
+  const isAnimationStep = Boolean(isAnimationStepCheckbox?.checked);
+
   const editTarget = selectedTarget || {
     type: "slide",
     id: "slide",
@@ -950,7 +981,8 @@ async function sendRevisionInstruction() {
           promptText,
           pathway,
           componentId: editTarget.id,
-          editTarget
+          editTarget,
+          isAnimationStep
         })
       }
     );
@@ -958,8 +990,44 @@ async function sendRevisionInstruction() {
     if (!response.ok) throw new Error(data.error || "Revision request failed.");
 
     if (data.imageUrl) {
-      slide.imageUrl = data.imageUrl;
-      slideImage.src = data.imageUrl;
+      if (data.isAnimationStep) {
+        slide.hasProgressiveBuilds = true;
+        if (!Array.isArray(slide.progressiveBuilds)) {
+          slide.progressiveBuilds = [
+            { version: 1, label: "Build 1: Initial View", imageUrl: slide.imageUrl }
+          ];
+        }
+        const nextVersion = slide.progressiveBuilds.length + 1;
+        const buildLabel = `Build ${nextVersion}: ${editTarget.label || "Custom Edit"}`;
+        slide.progressiveBuilds.push({
+          version: nextVersion,
+          label: buildLabel,
+          imageUrl: data.imageUrl
+        });
+        currentBuildStep = slide.progressiveBuilds.length;
+        renderProgressiveBuildControls(slide);
+      } else {
+        slide.imageUrl = data.imageUrl;
+        slideImage.src = data.imageUrl;
+      }
+
+      if (!Array.isArray(slide.history)) {
+        slide.history = [
+          {
+            id: "ver_orig",
+            label: "Original Slide Image",
+            imageUrl: slide.originalImageUrl || slide.imageUrl
+          }
+        ];
+      }
+      slide.history.push({
+        id: `ver_${Date.now()}`,
+        label: data.isAnimationStep
+          ? `Build ${slide.progressiveBuilds.length}: ${editTarget.label}`
+          : `Edit: ${editTarget.label}`,
+        imageUrl: data.imageUrl
+      });
+      renderVersionHistoryOptions(slide);
     }
 
     agentStatus.className = `agent-status ${data.dispatched ? "success" : "queued"}`;
@@ -1155,6 +1223,48 @@ function setupEventListeners() {
     setSelectedEditTarget(null, { focusInput: true });
   });
   sendGeminiEditBtn?.addEventListener("click", sendRevisionInstruction);
+  const revertVersionBtn = document.getElementById("revertVersionBtn");
+  if (revertVersionBtn) {
+    revertVersionBtn.addEventListener("click", async () => {
+      if (!currentDeck) return;
+      const slide = currentDeck.slides[currentSlideIndex];
+      const versionSelect = document.getElementById("versionSelect");
+      const selectedOption = versionSelect?.selectedOptions[0];
+      const versionId = versionSelect?.value;
+      const imageUrl = selectedOption?.getAttribute("data-url");
+
+      try {
+        revertVersionBtn.disabled = true;
+        revertVersionBtn.textContent = "Reverting...";
+        const res = await fetch(
+          `/api/decks/${encodeURIComponent(currentDeck.id)}/slides/${slide.number}/revert`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ versionId, imageUrl })
+          }
+        );
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Revert failed.");
+
+        if (data.restoredUrl) {
+          slide.imageUrl = data.restoredUrl;
+          slideImage.src = data.restoredUrl;
+          if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
+            slide.progressiveBuilds.forEach((b) => (b.imageUrl = data.restoredUrl));
+          }
+        }
+        agentStatus.className = "agent-status success";
+        agentStatus.textContent = "Slide reverted to selected version.";
+      } catch (err) {
+        agentStatus.className = "agent-status error";
+        agentStatus.textContent = err.message;
+      } finally {
+        revertVersionBtn.disabled = false;
+        revertVersionBtn.textContent = "Revert to selected version";
+      }
+    });
+  }
   geminiEditInput?.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
       event.preventDefault();

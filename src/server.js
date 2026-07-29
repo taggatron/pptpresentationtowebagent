@@ -144,6 +144,7 @@ async function runRevision({
   componentId,
   editTarget,
   pathway,
+  isAnimationStep = true,
   dispatch = true
 }) {
   const selectedPathway = normalizeAgentPathway(pathway);
@@ -163,47 +164,62 @@ async function runRevision({
     normalizedEditTarget
   );
 
+  let result;
   if (selectedPathway === AGENT_PATHWAYS.GEMINI_IMAGE_CHAT) {
     const imagePath = path.join(decksDir, manifest.id, "slides", slide.imageFileName);
-    const result = await generateGeminiSlideImage(
+    result = await generateGeminiSlideImage(
       manifest.id,
       sNum,
       imagePath,
       targetedPrompt,
       { dispatch, decksDir }
     );
-    if (result.imageUrl) {
-      slide.imageUrl = result.imageUrl;
-      if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
-        slide.progressiveBuilds.forEach((build) => {
-          build.imageUrl = result.imageUrl;
-        });
+  } else if (selectedPathway === AGENT_PATHWAYS.NOTEBOOKLM_SLIDE_REVISION) {
+    result = await triggerNotebookLMRevision(manifest.id, sNum, targetedPrompt);
+  } else {
+    result = await editSlideComponentViaGemini(
+      manifest.id,
+      sNum,
+      normalizedEditTarget.id,
+      targetedPrompt
+    );
+  }
+
+  if (result.imageUrl) {
+    if (isAnimationStep) {
+      slide.hasProgressiveBuilds = true;
+      if (!Array.isArray(slide.progressiveBuilds)) {
+        slide.progressiveBuilds = [
+          { version: 1, label: "Build 1: Initial View", imageUrl: slide.imageUrl }
+        ];
       }
-      const manifestPath = path.join(decksDir, manifest.id, "manifest.json");
-      await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+      const nextVersion = slide.progressiveBuilds.length + 1;
+      const stepLabel = `Build ${nextVersion}: ${normalizedEditTarget.label || "Custom Edit"}`;
+      slide.progressiveBuilds.push({
+        version: nextVersion,
+        label: stepLabel,
+        imageUrl: result.imageUrl
+      });
+
+      if (!slide.serialAnimation) {
+        slide.serialAnimation = { totalBuildSteps: 0, autoAdvanceDelayMs: 3000, serialSteps: [] };
+      }
+      slide.serialAnimation.serialSteps.push({
+        step: nextVersion,
+        title: stepLabel,
+        componentIds: [normalizedEditTarget.id],
+        targetBounds: normalizedEditTarget.bounds,
+        revealType: "fade-in"
+      });
+      slide.serialAnimation.totalBuildSteps = slide.progressiveBuilds.length;
+    } else {
+      slide.imageUrl = result.imageUrl;
     }
-    return { ...result, editTarget: normalizedEditTarget };
+    const manifestPath = path.join(decksDir, manifest.id, "manifest.json");
+    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
   }
 
-  if (selectedPathway === AGENT_PATHWAYS.NOTEBOOKLM_SLIDE_REVISION) {
-    const result = await triggerNotebookLMRevision(manifest.id, sNum, targetedPrompt);
-    return { ...result, pathway: selectedPathway, editTarget: normalizedEditTarget };
-  }
-
-  const result = await editSlideComponentViaGemini(
-    manifest.id,
-    sNum,
-    normalizedEditTarget.id,
-    targetedPrompt
-  );
-
-  return {
-    ...result,
-    pathway: selectedPathway,
-    editTarget: normalizedEditTarget,
-    dispatched: false,
-    status: "Component edit was registered using the local segmentation fallback."
-  };
+  return { ...result, isAnimationStep, editTarget: normalizedEditTarget };
 }
 
 export function createApp({
@@ -241,7 +257,7 @@ export function createApp({
       decks.sort(
         (a, b) =>
           lessonSortValue(a) - lessonSortValue(b) ||
-          String(a.title).localeCompare(String(b.title))
+          String(a.title).localeCompare(String(a.title))
       );
       res.json({ decks, defaultDeckId: decks[0]?.id || null });
     } catch (error) {
@@ -268,6 +284,7 @@ export function createApp({
         componentId: req.body.componentId,
         editTarget: req.body.editTarget,
         pathway: req.body.pathway,
+        isAnimationStep: req.body.isAnimationStep !== false,
         dispatch: req.body.dispatch !== false
       });
       res.json(result);

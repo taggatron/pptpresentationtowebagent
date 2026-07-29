@@ -232,6 +232,12 @@
               placeholder="For example: Make this diagram larger and change its labels to white."
             ></textarea>
 
+            <label class="animation-step-toggle" title="Check to integrate this edit as a new step in the slide animation sequence. Uncheck to edit the main slide image directly.">
+              <input type="checkbox" id="isAnimationStepCheckbox" checked />
+              <span class="toggle-switch"></span>
+              <span class="toggle-label">Integrate edit as animation step</span>
+            </label>
+
             <div
               id="agentStatus"
               class="agent-status"
@@ -242,7 +248,23 @@
             <div class="revision-actions">
               <button id="cancelRevisionBtn" class="btn btn-outline-small" type="button">Clear</button>
               <button id="sendGeminiEditBtn" class="btn btn-primary-bright" type="button">
-                <span aria-hidden="true">✦</span> Send to Gemini
+                <span aria-hidden="true">✦</span> Apply typed edit
+              </button>
+            </div>
+
+            <div class="version-history-card">
+              <div class="version-history-title">
+                <span class="version-icon" aria-hidden="true">↺</span>
+                <div>
+                  <strong>Version history</strong>
+                  <span>Revert to original slide or any past revision</span>
+                </div>
+              </div>
+              <select id="versionSelect" class="version-select" aria-label="Select slide version">
+                <option value="original">Original Slide Image</option>
+              </select>
+              <button id="revertVersionBtn" class="btn btn-outline-small" type="button">
+                Revert to selected version
               </button>
             </div>
           </div>

@@ -166,50 +166,60 @@ async function enterAndSendPrompt(page, promptText) {
 
 async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
   if (!decksDir) return null;
-  try {
-    const imgLocator = page
-      .locator(
-        'img[src*="googleusercontent"], img[src*="blob:"], image-viewer img, .image-canvas img, img[alt*="Generated" i]'
-      )
-      .last();
 
-    if (await isVisible(imgLocator, 20000)) {
-      const src = await imgLocator.getAttribute("src");
-      if (src) {
-        let buffer = null;
-        if (src.startsWith("data:image/")) {
-          const base64Data = src.split(",")[1];
-          buffer = Buffer.from(base64Data, "base64");
-        } else if (src.startsWith("http") || src.startsWith("blob:")) {
-          buffer = await page
-            .evaluate(async (url) => {
-              const res = await fetch(url);
-              const blob = await res.blob();
-              return new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onloadend = () => resolve(reader.result);
-                reader.readAsDataURL(blob);
-              });
-            })
-            .then((dataUrl) => Buffer.from(dataUrl.split(",")[1], "base64"))
-            .catch(() => null);
-        }
+  const imageSelectors = [
+    'image-viewer img',
+    '.image-container img',
+    '.image-canvas img',
+    'img[src*="googleusercontent"]',
+    'img[src*="blob:"]',
+    'img[alt*="Generated" i]',
+    'figure img',
+    '.model-response-text img'
+  ].join(", ");
 
-        if (buffer) {
-          const fileName = `slide_${String(slideNum).padStart(2, "0")}_revised_${Date.now()}.png`;
-          const slideDir = path.join(decksDir, deckId, "slides");
-          await fs.mkdir(slideDir, { recursive: true });
-          const savePath = path.join(slideDir, fileName);
-          await fs.writeFile(savePath, buffer);
-          const relativeUrl = `/decks/${deckId}/slides/${fileName}`;
-          console.log(`[Gemini Image Gen] Captured generated image: ${relativeUrl}`);
-          return relativeUrl;
+  const startTime = Date.now();
+  const maxWaitMs = 45000;
+
+  console.log(`[Gemini Image Gen] Waiting for Gemini image generation completion for Slide ${slideNum}...`);
+
+  while (Date.now() - startTime < maxWaitMs) {
+    try {
+      const candidates = page.locator(imageSelectors);
+      const count = await candidates.count();
+
+      if (count > 0) {
+        const lastImg = candidates.nth(count - 1);
+        if (await isVisible(lastImg, 1000)) {
+          const isLoaded = await lastImg
+            .evaluate(
+              (img) =>
+                Boolean(img.complete && (img.naturalWidth > 100 || img.width > 100))
+            )
+            .catch(() => false);
+
+          if (isLoaded) {
+            const buffer = await lastImg.screenshot({ type: "png" }).catch(() => null);
+            if (buffer && buffer.length > 5000) {
+              const fileName = `slide_${String(slideNum).padStart(2, "0")}_revised_${Date.now()}.png`;
+              const slideDir = path.join(decksDir, deckId, "slides");
+              await fs.mkdir(slideDir, { recursive: true });
+              const savePath = path.join(slideDir, fileName);
+              await fs.writeFile(savePath, buffer);
+              const relativeUrl = `/decks/${deckId}/slides/${fileName}`;
+              console.log(`[Gemini Image Gen] Successfully captured generated image to ${relativeUrl}`);
+              return relativeUrl;
+            }
+          }
         }
       }
+    } catch {
+      // Continue polling
     }
-  } catch (error) {
-    console.warn("[Gemini Image Gen] Image capture notice:", error.message);
+    await page.waitForTimeout(2500);
   }
+
+  console.warn(`[Gemini Image Gen] Timed out waiting for Gemini image generation after ${maxWaitMs / 1000}s.`);
   return null;
 }
 
