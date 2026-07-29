@@ -25,6 +25,10 @@ async function isVisible(locator, timeout = 1500) {
 
 async function attachSlideImage(page, imagePath) {
   const triggerSelectors = [
+    'button[aria-label*="Upload and tools" i]',
+    'button.hidden-local-file-image-selector-button',
+    '.hidden-local-file-image-selector-button',
+    '[xapfileselectortrigger]',
     'button[data-test-id="local-images-files-uploader-button"]',
     'button[data-test-id*="uploader"]',
     'button[data-test-id*="add"]',
@@ -41,6 +45,9 @@ async function attachSlideImage(page, imagePath) {
   ];
 
   const uploadFilesSelectors = [
+    'button.hidden-local-file-image-selector-button',
+    '.hidden-local-file-image-selector-button',
+    '[xapfileselectortrigger]',
     'button[data-test-id="local-images-files-uploader-button"]',
     '[data-test-id="local-images-files-uploader-button"]',
     'button[aria-label*="Upload files" i]',
@@ -168,14 +175,18 @@ async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
   if (!decksDir) return null;
 
   const imageSelectors = [
+    'model-response img:not([src*="avatar"]):not([src*="profile"])',
+    'message-content img:not([src*="avatar"]):not([src*="profile"])',
+    '.conversation-container img:not([src*="avatar"]):not([src*="profile"])',
     'image-viewer img',
     '.image-container img',
     '.image-canvas img',
-    'img[src*="googleusercontent"]',
+    'generated-image img',
+    'img[src*="googleusercontent.com"]',
+    'img[src*="ggpht.com"]',
     'img[src*="blob:"]',
     'img[alt*="Generated" i]',
-    'figure img',
-    '.model-response-text img'
+    'figure img'
   ].join(", ");
 
   const startTime = Date.now();
@@ -183,40 +194,113 @@ async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
 
   console.log(`[Gemini Image Gen] Waiting for Gemini image generation completion for Slide ${slideNum}...`);
 
+  // Step 1: Wait for generation progress indicator / spinner to detach if active
+  try {
+    const spinner = page
+      .locator('mat-progress-spinner, [role="progressbar"], .loading-indicator, .pending-response, .sparkle-spinner')
+      .first();
+    if (await isVisible(spinner, 2500)) {
+      console.log("[Gemini Image Gen] Generation spinner active. Waiting for response completion...");
+      await spinner.waitFor({ state: "detached", timeout: 40000 }).catch(() => {});
+      await page.waitForTimeout(2000);
+    }
+  } catch {}
+
+  // Step 2: Poll for valid generated image in DOM
   while (Date.now() - startTime < maxWaitMs) {
     try {
       const candidates = page.locator(imageSelectors);
       const count = await candidates.count();
 
       if (count > 0) {
-        const lastImg = candidates.nth(count - 1);
-        if (await isVisible(lastImg, 1000)) {
-          const isLoaded = await lastImg
-            .evaluate(
-              (img) =>
-                Boolean(img.complete && (img.naturalWidth > 100 || img.width > 100))
-            )
+        for (let i = count - 1; i >= 0; i--) {
+          const imgLoc = candidates.nth(i);
+          if (!(await isVisible(imgLoc, 1000))) continue;
+
+          const isCandidateValid = await imgLoc
+            .evaluate((img) => {
+              if (!img) return false;
+              const width = img.naturalWidth || img.width || 0;
+              const height = img.naturalHeight || img.height || 0;
+              const src = img.src || "";
+              if (
+                src.includes("avatar") ||
+                src.includes("profile") ||
+                src.includes("favicon") ||
+                src.endsWith(".svg")
+              ) {
+                return false;
+              }
+              return Boolean(img.complete && width > 150 && height > 150);
+            })
             .catch(() => false);
 
-          if (isLoaded) {
-            const buffer = await lastImg.screenshot({ type: "png" }).catch(() => null);
-            if (buffer && buffer.length > 5000) {
-              const fileName = `slide_${String(slideNum).padStart(2, "0")}_revised_${Date.now()}.png`;
-              const slideDir = path.join(decksDir, deckId, "slides");
-              await fs.mkdir(slideDir, { recursive: true });
-              const savePath = path.join(slideDir, fileName);
-              await fs.writeFile(savePath, buffer);
-              const relativeUrl = `/decks/${deckId}/slides/${fileName}`;
-              console.log(`[Gemini Image Gen] Successfully captured generated image to ${relativeUrl}`);
-              return relativeUrl;
+          if (!isCandidateValid) continue;
+
+          let buffer = null;
+
+          // Attempt 1: Off-screen Canvas bitmap extraction (guarantees zero UI overlays or DevTools drawers)
+          try {
+            const dataUrl = await page.evaluate(async (img) => {
+              if (!img) return null;
+              const canvas = document.createElement("canvas");
+              canvas.width = img.naturalWidth || img.width || 1280;
+              canvas.height = img.naturalHeight || img.height || 720;
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0);
+              return canvas.toDataURL("image/png");
+            }, await imgLoc.elementHandle());
+
+            if (dataUrl && dataUrl.startsWith("data:image/")) {
+              buffer = Buffer.from(dataUrl.split(",")[1], "base64");
             }
+          } catch {}
+
+          // Attempt 2: Direct image blob fetch
+          if (!buffer || buffer.length < 5000) {
+            try {
+              const dataUrl = await page.evaluate(async (img) => {
+                if (!img || !img.src) return null;
+                const response = await fetch(img.src);
+                const blob = await response.blob();
+                return new Promise((resolve) => {
+                  const reader = new FileReader();
+                  reader.onloadend = () => resolve(reader.result);
+                  reader.readAsDataURL(blob);
+                });
+              }, await imgLoc.elementHandle());
+
+              if (dataUrl && dataUrl.startsWith("data:image/")) {
+                buffer = Buffer.from(dataUrl.split(",")[1], "base64");
+              }
+            } catch {}
+          }
+
+          // Attempt 3: Element screenshot fallback
+          if (!buffer || buffer.length < 5000) {
+            try {
+              buffer = await imgLoc.screenshot({ type: "png" });
+            } catch {}
+          }
+
+          if (buffer && buffer.length > 5000) {
+            const fileName = `slide_${String(slideNum).padStart(2, "0")}_revised_${Date.now()}.png`;
+            const slideDir = path.join(decksDir, deckId, "slides");
+            await fs.mkdir(slideDir, { recursive: true });
+            const savePath = path.join(slideDir, fileName);
+            await fs.writeFile(savePath, buffer);
+            const relativeUrl = `/decks/${deckId}/slides/${fileName}`;
+            console.log(
+              `[Gemini Image Gen] Successfully captured generated image (${buffer.length} bytes) to ${relativeUrl}`
+            );
+            return relativeUrl;
           }
         }
       }
     } catch {
       // Continue polling
     }
-    await page.waitForTimeout(2500);
+    await page.waitForTimeout(2000);
   }
 
   console.warn(`[Gemini Image Gen] Timed out waiting for Gemini image generation after ${maxWaitMs / 1000}s.`);
