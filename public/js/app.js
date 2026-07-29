@@ -365,15 +365,55 @@ function toggleAutoPlay() {
   }, delay);
 }
 
+function renderProgressiveBuildControls(slide) {
+  interactiveOverlay.innerHTML = "";
+  interactiveOverlay.classList.remove("hidden");
+  qaControls.classList.remove("hidden");
+  updateBuildStepButtons(slide);
+
+  const totalSteps = slide.progressiveBuilds.length;
+  const currentBuild = currentBuildStep > 0 ? slide.progressiveBuilds[currentBuildStep - 1] : null;
+
+  if (serialStepBadge) {
+    serialStepBadge.textContent =
+      currentBuildStep === 0
+        ? `0 / ${totalSteps} · Initial view`
+        : `${currentBuildStep} / ${totalSteps} · ${currentBuild?.label || `Build ${currentBuildStep}`}`;
+  }
+
+  if (currentBuild?.imageUrl) {
+    slideImage.src = currentBuild.imageUrl;
+  } else {
+    slideImage.src = slide.imageUrl;
+  }
+
+  const stepConfig = slide.serialAnimation?.serialSteps?.[currentBuildStep - 1];
+  if (stepConfig) {
+    const card = document.createElement("div");
+    card.className = "qa-card-overlay serial-active revealed";
+    const bounds = stepConfig.targetBounds || { x: 10, y: 10, w: 80, h: 80 };
+    card.style.left = `${bounds.x}%`;
+    card.style.top = `${bounds.y}%`;
+    card.style.width = `${bounds.w}%`;
+    card.style.height = `${bounds.h}%`;
+    interactiveOverlay.appendChild(card);
+  }
+}
+
 function advanceSerialBuildStep() {
   if (!currentDeck) return;
   const slide = currentDeck.slides[currentSlideIndex];
-  if (!slide?.isInteractive) return;
+  if (!slide?.isInteractive && !slide?.hasProgressiveBuilds) return;
 
   const totalSteps = getTotalBuildSteps(slide);
   if (currentBuildStep < totalSteps) {
-    applyInteractiveBuildStep(slide, currentBuildStep + 1);
-    renderInteractiveGrid(slide);
+    currentBuildStep++;
+    if (slide.isInteractive && slide.interactiveCells) {
+      applyInteractiveBuildStep(slide, currentBuildStep);
+      renderInteractiveGrid(slide);
+    } else if (slide.hasProgressiveBuilds) {
+      renderProgressiveBuildControls(slide);
+    }
     if (activeSidebarTab === "editor") renderComponentEditorPanel();
   } else {
     stopAutoPlay();
@@ -383,10 +423,15 @@ function advanceSerialBuildStep() {
 function regressSerialBuildStep() {
   if (!currentDeck) return;
   const slide = currentDeck.slides[currentSlideIndex];
-  if (!slide?.isInteractive || currentBuildStep <= 0) return;
+  if ((!slide?.isInteractive && !slide?.hasProgressiveBuilds) || currentBuildStep <= 0) return;
 
-  applyInteractiveBuildStep(slide, currentBuildStep - 1);
-  renderInteractiveGrid(slide);
+  currentBuildStep--;
+  if (slide.isInteractive && slide.interactiveCells) {
+    applyInteractiveBuildStep(slide, currentBuildStep);
+    renderInteractiveGrid(slide);
+  } else if (slide.hasProgressiveBuilds) {
+    renderProgressiveBuildControls(slide);
+  }
   if (activeSidebarTab === "editor") {
     renderComponentEditorPanel();
     updateAgentPathwayCopy();
@@ -536,6 +581,8 @@ function renderSlide(index) {
 
   if (slide.isInteractive && slide.interactiveCells) {
     renderInteractiveGrid(slide);
+  } else if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
+    renderProgressiveBuildControls(slide);
   } else {
     interactiveOverlay.classList.add("hidden");
     interactiveOverlay.innerHTML = "";

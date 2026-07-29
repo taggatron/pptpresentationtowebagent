@@ -130,14 +130,21 @@ export async function generateSlideInteractivity(
       slide.hasProgressiveBuilds = false;
       delete slide.progressiveBuilds;
       delete slide.revisionData;
-    } else if (slide.cognitiveGuide.estimatedTimeSeconds >= 35 || slide.number === 3) {
+    } else if (
+      slide.cognitiveGuide.estimatedTimeSeconds >= 28 ||
+      Number.parseFloat(slide.cognitiveGuide.vciScore) >= 6.0
+    ) {
       slide.hasProgressiveBuilds = true;
       slide.progressiveBuilds = [
         { version: 1, label: "Build 1: Step 1 Focus", imageUrl: slide.imageUrl },
         { version: 2, label: "Build 2: Step 1 & 2 Focus", imageUrl: slide.imageUrl },
         { version: 3, label: "Build 3: Full Slide Diagram", imageUrl: slide.imageUrl }
       ];
-      slide.revisionData = await generateProgressiveBuildsForSlide(deckId, slide.number, slide.gridTitle || `Slide ${slide.number}`);
+      slide.revisionData = await generateProgressiveBuildsForSlide(
+        deckId,
+        slide.number,
+        slide.gridTitle || `Slide ${slide.number}`
+      );
     }
   }
 
