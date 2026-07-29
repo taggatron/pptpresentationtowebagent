@@ -57,62 +57,57 @@ async function attachSlideImage(page, imagePath) {
     'span:has-text("Upload files")'
   ];
 
-  // Try direct file input if already available
-  try {
-    const fileInput = page.locator('input[type="file"]').first();
-    if (await isVisible(fileInput, 1000)) {
-      await fileInput.setInputFiles(imagePath);
-      await page.waitForTimeout(800);
-      return true;
-    }
-  } catch {}
-
-  // Find and click the (+) trigger button
-  for (const sel of triggerSelectors) {
+  // Try up to 3 attempts with retry delays
+  for (let attempt = 0; attempt < 3; attempt++) {
+    // Check direct file input first
     try {
-      const btn = page.locator(sel).first();
-      if (await isVisible(btn, 1500)) {
-        await btn.click();
-        await page.waitForTimeout(600);
-
-        // Check if "Upload files" menu option appears
-        for (const menuSel of uploadFilesSelectors) {
-          try {
-            const menuOption = page.locator(menuSel).first();
-            if (await isVisible(menuOption, 1500)) {
-              const [fileChooser] = await Promise.all([
-                page.waitForEvent("filechooser", { timeout: 5000 }).catch(() => null),
-                menuOption.click().catch(() => {})
-              ]);
-              if (fileChooser) {
-                await fileChooser.setFiles(imagePath);
-                await page.waitForTimeout(1200);
-                return true;
-              }
-            }
-          } catch {}
-        }
-
-        // Check if file input appeared after click
-        const fileInput = page.locator('input[type="file"]').first();
-        if (await isVisible(fileInput, 1500)) {
-          await fileInput.setInputFiles(imagePath);
-          await page.waitForTimeout(1200);
-          return true;
-        }
+      const fileInput = page.locator('input[type="file"]').first();
+      if (await isVisible(fileInput, 1500)) {
+        await fileInput.setInputFiles(imagePath);
+        await page.waitForTimeout(1000);
+        return true;
       }
     } catch {}
-  }
 
-  // Fallback: setInputFiles on any input[type="file"] in DOM
-  try {
-    const fileInputs = page.locator('input[type="file"]');
-    if ((await fileInputs.count()) > 0) {
-      await fileInputs.first().setInputFiles(imagePath);
-      await page.waitForTimeout(1200);
-      return true;
+    // Check trigger buttons
+    for (const sel of triggerSelectors) {
+      try {
+        const btn = page.locator(sel).first();
+        if (await isVisible(btn, 2000)) {
+          await btn.click();
+          await page.waitForTimeout(800);
+
+          // Check if "Upload files" menu option appears
+          for (const menuSel of uploadFilesSelectors) {
+            try {
+              const menuOption = page.locator(menuSel).first();
+              if (await isVisible(menuOption, 1500)) {
+                const [fileChooser] = await Promise.all([
+                  page.waitForEvent("filechooser", { timeout: 5000 }).catch(() => null),
+                  menuOption.click().catch(() => {})
+                ]);
+                if (fileChooser) {
+                  await fileChooser.setFiles(imagePath);
+                  await page.waitForTimeout(1200);
+                  return true;
+                }
+              }
+            } catch {}
+          }
+
+          // Check if file input appeared after click
+          const fileInput = page.locator('input[type="file"]').first();
+          if (await isVisible(fileInput, 1500)) {
+            await fileInput.setInputFiles(imagePath);
+            await page.waitForTimeout(1200);
+            return true;
+          }
+        }
+      } catch {}
     }
-  } catch {}
+
+    await page.waitForTimeout(1500);
+  }
 
   return false;
 }
@@ -239,15 +234,34 @@ async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
 
           let buffer = null;
 
-          // Attempt 1: Off-screen Canvas bitmap extraction (guarantees zero UI overlays or DevTools drawers)
+          // Attempt 1: Off-screen High-Resolution Canvas bitmap extraction (1920x1080 / 2560x1440 HD rendering with bicubic smoothing)
           try {
             const dataUrl = await page.evaluate(async (img) => {
               if (!img) return null;
+
+              // Check for full size image URL if googleusercontent CDN
+              let src = img.src || "";
+              if (src.includes("googleusercontent.com") && src.includes("=s")) {
+                src = src.replace(/=s\d+/, "=s2048");
+              }
+
+              // Determine high definition canvas target dimensions (min width 1920px HD presentation standard)
+              const nativeWidth = img.naturalWidth || img.width || 1280;
+              const nativeHeight = img.naturalHeight || img.height || 720;
+              const minTargetWidth = 1920;
+              const scale = nativeWidth < minTargetWidth ? minTargetWidth / nativeWidth : 1;
+
+              const targetWidth = Math.round(nativeWidth * scale);
+              const targetHeight = Math.round(nativeHeight * scale);
+
               const canvas = document.createElement("canvas");
-              canvas.width = img.naturalWidth || img.width || 1280;
-              canvas.height = img.naturalHeight || img.height || 720;
+              canvas.width = targetWidth;
+              canvas.height = targetHeight;
               const ctx = canvas.getContext("2d");
-              ctx.drawImage(img, 0, 0);
+
+              ctx.imageSmoothingEnabled = true;
+              ctx.imageSmoothingQuality = "high";
+              ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
               return canvas.toDataURL("image/png");
             }, await imgLoc.elementHandle());
 
@@ -256,12 +270,16 @@ async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
             }
           } catch {}
 
-          // Attempt 2: Direct image blob fetch
+          // Attempt 2: High-resolution direct image fetch
           if (!buffer || buffer.length < 5000) {
             try {
               const dataUrl = await page.evaluate(async (img) => {
                 if (!img || !img.src) return null;
-                const response = await fetch(img.src);
+                let fetchUrl = img.src;
+                if (fetchUrl.includes("googleusercontent.com") && fetchUrl.includes("=s")) {
+                  fetchUrl = fetchUrl.replace(/=s\d+/, "=s2048");
+                }
+                const response = await fetch(fetchUrl);
                 const blob = await response.blob();
                 return new Promise((resolve) => {
                   const reader = new FileReader();

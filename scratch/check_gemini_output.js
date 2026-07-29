@@ -39,23 +39,39 @@ async function main() {
     })).catch(() => null);
 
     if (info && info.complete && info.naturalWidth > 150) {
-      console.log("Extracting pure image bitmap via canvas for candidate:", info.src.slice(0, 50));
-      
+      console.log("Extracting HD 1080p image bitmap via high-res canvas for candidate:", info.src.slice(0, 50));
+
       const dataUrl = await page.evaluate(async (img) => {
+        let src = img.src || "";
+        if (src.includes("googleusercontent.com") && src.includes("=s")) {
+          src = src.replace(/=s\d+/, "=s2048");
+        }
+
+        const nativeWidth = img.naturalWidth || img.width || 1280;
+        const nativeHeight = img.naturalHeight || img.height || 720;
+        const minTargetWidth = 1920;
+        const scale = nativeWidth < minTargetWidth ? minTargetWidth / nativeWidth : 1;
+
+        const targetWidth = Math.round(nativeWidth * scale);
+        const targetHeight = Math.round(nativeHeight * scale);
+
         const canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth || img.width;
-        canvas.height = img.naturalHeight || img.height;
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
         const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
         return canvas.toDataURL("image/png");
       }, await imgLoc.elementHandle()).catch(() => null);
 
       if (dataUrl && dataUrl.startsWith("data:image/")) {
         const buffer = Buffer.from(dataUrl.split(",")[1], "base64");
         const decksDir = "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks";
-        const savePath = path.join(decksDir, "Lesson_01_CELL_STRUCTURE", "slides", "slide_01_revised_clean.png");
+        const savePath = path.join(decksDir, "Lesson_01_CELL_STRUCTURE", "slides", "slide_01_revised_hd.png");
         await fs.writeFile(savePath, buffer);
-        console.log(`Successfully extracted pure clean image (${buffer.length} bytes) to ${savePath}!`);
+        console.log(`Successfully extracted high-res HD image (${buffer.length} bytes) to ${savePath}!`);
         break;
       }
     }

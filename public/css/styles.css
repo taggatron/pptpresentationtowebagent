@@ -38,6 +38,7 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Header Styling */
@@ -537,11 +538,14 @@ body {
   flex: 1;
   position: relative;
   overflow: hidden;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Slide Stage */
 .slide-stage {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -550,6 +554,7 @@ body {
   padding: 1rem;
   position: relative;
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 .slide-wrapper {
@@ -843,6 +848,7 @@ body {
 /* Sidebar Drawer */
 .sidebar {
   width: 390px;
+  flex-shrink: 0;
   background: var(--bg-sidebar);
   border-left: var(--glass-border);
   display: flex;

@@ -555,6 +555,12 @@ function renderSlide(index) {
   const slide = currentDeck.slides[index];
   restoreSavedBoundsForSlide(slide);
 
+  const mainContentEl = document.querySelector(".main-content");
+  if (mainContentEl) mainContentEl.scrollLeft = 0;
+  if (slideStage) slideStage.scrollLeft = 0;
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
+
   if (slide.isInteractive && slide.interactiveCells) {
     applyInteractiveBuildStep(slide, 0);
   }
@@ -690,8 +696,20 @@ function updateActiveThumbnail(index) {
   items.forEach((item, itemIndex) => {
     item.classList.toggle("active", itemIndex === index);
     item.setAttribute("aria-current", itemIndex === index ? "true" : "false");
-    if (itemIndex === index) {
-      item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (itemIndex === index && thumbnailsGrid) {
+      const containerTop = thumbnailsGrid.scrollTop;
+      const containerHeight = thumbnailsGrid.clientHeight;
+      const itemTop = item.offsetTop;
+      const itemHeight = item.offsetHeight;
+
+      if (itemTop < containerTop) {
+        thumbnailsGrid.scrollTo({ top: itemTop, behavior: "smooth" });
+      } else if (itemTop + itemHeight > containerTop + containerHeight) {
+        thumbnailsGrid.scrollTo({
+          top: itemTop + itemHeight - containerHeight,
+          behavior: "smooth"
+        });
+      }
     }
   });
 }
