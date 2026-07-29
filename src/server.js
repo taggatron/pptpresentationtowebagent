@@ -309,7 +309,9 @@ export function createApp({
       const { versionId, imageUrl } = req.body;
       const targetVersion =
         slide.history?.find((v) => v.id === versionId || v.imageUrl === imageUrl) ||
-        (versionId === "original" ? { imageUrl: slide.originalImageUrl || slide.imageUrl } : null);
+        (versionId === "original" || versionId === "ver_orig"
+          ? { imageUrl: slide.originalImageUrl || slide.imageUrl }
+          : null);
 
       const restoredUrl = targetVersion?.imageUrl || imageUrl || slide.originalImageUrl || slide.imageUrl;
       if (restoredUrl) {

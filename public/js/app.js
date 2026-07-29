@@ -1262,18 +1262,29 @@ function setupEventListeners() {
             body: JSON.stringify({ versionId, imageUrl })
           }
         );
-        const data = await res.json();
+        
+        let data = {};
+        const contentType = res.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          data = await res.json();
+        } else {
+          const text = await res.text();
+          throw new Error(`Server returned non-JSON error (${res.status}): ${text.replace(/<[^>]*>/g, " ").trim().slice(0, 100)}`);
+        }
+
         if (!res.ok) throw new Error(data.error || "Revert failed.");
 
         if (data.restoredUrl) {
           slide.imageUrl = data.restoredUrl;
-          slideImage.src = data.restoredUrl;
+          if (slideImage) slideImage.src = data.restoredUrl;
           if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
             slide.progressiveBuilds.forEach((b) => (b.imageUrl = data.restoredUrl));
           }
+          // Re-render slide stage live on screen
+          renderSlideStage(slide);
         }
         agentStatus.className = "agent-status success";
-        agentStatus.textContent = "Slide reverted to selected version.";
+        agentStatus.textContent = "Slide successfully reverted to selected version!";
       } catch (err) {
         agentStatus.className = "agent-status error";
         agentStatus.textContent = err.message;
