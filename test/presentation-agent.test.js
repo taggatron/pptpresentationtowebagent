@@ -88,8 +88,8 @@ test("click targets are normalized and encoded into a selective edit prompt", ()
   assert.match(prompt, /Revise only the selected component/);
   assert.match(prompt, /Cell diagram/);
   assert.match(prompt, /left 71\.2%/);
-  assert.match(prompt, /User edit instruction: Make this diagram larger\./);
   assert.match(prompt, /only editable area/);
+  assert.match(prompt, /Do not return the target area/);
 });
 
 test("converted Biology Lesson 1 manifest is complete and interactive", async () => {

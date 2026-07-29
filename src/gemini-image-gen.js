@@ -13,7 +13,7 @@ import { AGENT_PATHWAYS } from "./agent-config.js";
  */
 
 export const DEFAULT_GEMINI_IMAGE_PROMPT_TEMPLATE =
-  "Create a revised version of this slide that keeps its visual style and layout. Apply only the requested component change and leave every other slide element unchanged.";
+  "Create a revised version of this slide that keeps its visual style and layout. Apply only the requested component change and leave every other slide element unchanged. Do not return the target area. Do not render any bounding boxes, selection highlights, grid overlays, or target markers on the generated image.";
 
 async function isVisible(locator, timeout = 1500) {
   try {
