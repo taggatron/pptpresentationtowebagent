@@ -107,7 +107,7 @@ export function buildTargetedRevisionPrompt(promptText, editTarget) {
       "Revise the supplied slide image.",
       `User edit instruction: ${instruction}`,
       "Preserve the slide dimensions and keep every element not named by the instruction unchanged.",
-      "Do not return the target area. Do not render any bounding boxes, selection highlights, grid overlays, or target markers on the generated image."
+      "Do not return the target area."
     ].join("\n");
   }
 
@@ -120,7 +120,7 @@ export function buildTargetedRevisionPrompt(promptText, editTarget) {
     `Pointer anchor: ${pointX.toFixed(1)}% from the left and ${pointY.toFixed(1)}% from the top.`,
     `User edit instruction: ${instruction}`,
     "Treat the target bounds as the only editable area. Keep every other element, position, type style, colour, background, and slide dimension unchanged.",
-    "Do not return the target area. Do not render any bounding boxes, selection highlights, grid overlays, or target markers on the generated image."
+    "Do not return the target area."
   ].join("\n");
 }
 
