@@ -170,8 +170,18 @@ async function runRevision({
       sNum,
       imagePath,
       targetedPrompt,
-      { dispatch }
+      { dispatch, decksDir }
     );
+    if (result.imageUrl) {
+      slide.imageUrl = result.imageUrl;
+      if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
+        slide.progressiveBuilds.forEach((build) => {
+          build.imageUrl = result.imageUrl;
+        });
+      }
+      const manifestPath = path.join(decksDir, manifest.id, "manifest.json");
+      await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+    }
     return { ...result, editTarget: normalizedEditTarget };
   }
 

@@ -24,82 +24,88 @@ async function isVisible(locator, timeout = 1500) {
 }
 
 async function attachSlideImage(page, imagePath) {
-  const triggerSelector = [
-    'button:has(.mat-focus-indicator)',
-    '.mat-focus-indicator',
+  const triggerSelectors = [
+    'button[data-test-id="local-images-files-uploader-button"]',
     'button[data-test-id*="uploader"]',
+    'button[data-test-id*="add"]',
+    'button:has(mat-icon[fonticon="add"])',
+    'button:has(mat-icon[fonticon="attach_file"])',
+    'button:has(mat-icon:has-text("add"))',
+    'button[aria-label*="Add" i]',
     'button[aria-label*="Upload" i]',
     'button[aria-label*="file" i]',
-    'button[aria-label*="Add" i]',
     'button[aria-label*="image" i]',
-    'button:has-text("Upload")',
-    'button:has-text("Add")'
-  ].join(", ");
+    'button:has(.mat-focus-indicator)',
+    '.mat-focus-indicator',
+    'button:has-text("+")'
+  ];
 
-  const uploadFilesSelector = [
+  const uploadFilesSelectors = [
     'button[data-test-id="local-images-files-uploader-button"]',
     '[data-test-id="local-images-files-uploader-button"]',
     'button[aria-label*="Upload files" i]',
+    '[aria-label*="Upload files" i]',
     'button:has-text("Upload files")',
     'span.gem-menu-item-label:has-text("Upload files")',
     'span:has-text("Upload files")'
-  ].join(", ");
+  ];
 
-  // Step 1: Open popup menu at trigger button (.mat-focus-indicator) FIRST
-  const triggerButton = page.locator(triggerSelector).first();
-  if (await isVisible(triggerButton, 3000)) {
+  // Try direct file input if already available
+  try {
+    const fileInput = page.locator('input[type="file"]').first();
+    if (await isVisible(fileInput, 1000)) {
+      await fileInput.setInputFiles(imagePath);
+      await page.waitForTimeout(800);
+      return true;
+    }
+  } catch {}
+
+  // Find and click the (+) trigger button
+  for (const sel of triggerSelectors) {
     try {
-      await triggerButton.click();
-      await page.waitForTimeout(500);
+      const btn = page.locator(sel).first();
+      if (await isVisible(btn, 1500)) {
+        await btn.click();
+        await page.waitForTimeout(600);
 
-      // Locate "Upload files" button inside the open popup menu
-      const uploadFilesOption = page.locator(uploadFilesSelector).first();
-      if (await isVisible(uploadFilesOption, 2500)) {
-        const [fileChooser] = await Promise.all([
-          page.waitForEvent("filechooser", { timeout: 5000 }).catch(() => null),
-          uploadFilesOption.click().catch(() => {})
-        ]);
+        // Check if "Upload files" menu option appears
+        for (const menuSel of uploadFilesSelectors) {
+          try {
+            const menuOption = page.locator(menuSel).first();
+            if (await isVisible(menuOption, 1500)) {
+              const [fileChooser] = await Promise.all([
+                page.waitForEvent("filechooser", { timeout: 5000 }).catch(() => null),
+                menuOption.click().catch(() => {})
+              ]);
+              if (fileChooser) {
+                await fileChooser.setFiles(imagePath);
+                await page.waitForTimeout(1200);
+                return true;
+              }
+            }
+          } catch {}
+        }
 
-        if (fileChooser) {
-          await fileChooser.setFiles(imagePath);
-          await page.waitForTimeout(800);
+        // Check if file input appeared after click
+        const fileInput = page.locator('input[type="file"]').first();
+        if (await isVisible(fileInput, 1500)) {
+          await fileInput.setInputFiles(imagePath);
+          await page.waitForTimeout(1200);
           return true;
         }
       }
-    } catch {
-      // Fall through to fallback
-    }
+    } catch {}
   }
 
-  // Step 2: Fallback if popup menu item is already open/visible
-  const directUploadOption = page.locator(uploadFilesSelector).first();
-  if (await isVisible(directUploadOption, 1000)) {
-    try {
-      const [fileChooser] = await Promise.all([
-        page.waitForEvent("filechooser", { timeout: 4000 }).catch(() => null),
-        directUploadOption.click().catch(() => {})
-      ]);
-      if (fileChooser) {
-        await fileChooser.setFiles(imagePath);
-        await page.waitForTimeout(800);
-        return true;
-      }
-    } catch {
-      // Fall through
-    }
-  }
-
-  // Step 3: Fallback direct setInputFiles on existing file input
+  // Fallback: setInputFiles on any input[type="file"] in DOM
   try {
     const fileInputs = page.locator('input[type="file"]');
     if ((await fileInputs.count()) > 0) {
       await fileInputs.first().setInputFiles(imagePath);
-      await page.waitForTimeout(800);
+      await page.waitForTimeout(1200);
       return true;
     }
-  } catch {
-    // Fall through
-  }
+  } catch {}
 
   return false;
 }
@@ -122,19 +128,89 @@ async function enterAndSendPrompt(page, promptText) {
     await page.keyboard.insertText(promptText);
   }
 
-  await page.waitForTimeout(300);
+  await page.waitForTimeout(500);
 
-  const sendButton = page
-    .locator(
-      'button[aria-label*="Send" i], button[aria-label*="Submit" i], button[aria-label*="Generate" i], button:has-text("Send")'
-    )
-    .first();
+  const sendSelectors = [
+    'button[data-test-id="send-button"]',
+    'button[data-test-id*="send"]',
+    'button[data-test-id*="submit"]',
+    'button[aria-label*="Send" i]',
+    'button[aria-label*="Submit" i]',
+    'button[aria-label*="Generate" i]',
+    'button[aria-label*="Run" i]',
+    'button:has(mat-icon[fonticon="send"])',
+    'button:has(mat-icon[fonticon="arrow_forward"])',
+    'button:has(mat-icon[fonticon="spark"])',
+    'button:has-text("Send")'
+  ];
 
-  if (await isVisible(sendButton)) {
-    await sendButton.click();
-  } else {
-    await input.press("Enter");
+  let clicked = false;
+  for (const sel of sendSelectors) {
+    try {
+      const btn = page.locator(sel).first();
+      if (await isVisible(btn, 1200)) {
+        await btn.click();
+        clicked = true;
+        break;
+      }
+    } catch {}
   }
+
+  if (!clicked) {
+    try {
+      await input.press("Enter");
+      await page.keyboard.press("Enter");
+    } catch {}
+  }
+}
+
+async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
+  if (!decksDir) return null;
+  try {
+    const imgLocator = page
+      .locator(
+        'img[src*="googleusercontent"], img[src*="blob:"], image-viewer img, .image-canvas img, img[alt*="Generated" i]'
+      )
+      .last();
+
+    if (await isVisible(imgLocator, 20000)) {
+      const src = await imgLocator.getAttribute("src");
+      if (src) {
+        let buffer = null;
+        if (src.startsWith("data:image/")) {
+          const base64Data = src.split(",")[1];
+          buffer = Buffer.from(base64Data, "base64");
+        } else if (src.startsWith("http") || src.startsWith("blob:")) {
+          buffer = await page
+            .evaluate(async (url) => {
+              const res = await fetch(url);
+              const blob = await res.blob();
+              return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.readAsDataURL(blob);
+              });
+            })
+            .then((dataUrl) => Buffer.from(dataUrl.split(",")[1], "base64"))
+            .catch(() => null);
+        }
+
+        if (buffer) {
+          const fileName = `slide_${String(slideNum).padStart(2, "0")}_revised_${Date.now()}.png`;
+          const slideDir = path.join(decksDir, deckId, "slides");
+          await fs.mkdir(slideDir, { recursive: true });
+          const savePath = path.join(slideDir, fileName);
+          await fs.writeFile(savePath, buffer);
+          const relativeUrl = `/decks/${deckId}/slides/${fileName}`;
+          console.log(`[Gemini Image Gen] Captured generated image: ${relativeUrl}`);
+          return relativeUrl;
+        }
+      }
+    }
+  } catch (error) {
+    console.warn("[Gemini Image Gen] Image capture notice:", error.message);
+  }
+  return null;
 }
 
 export async function generateGeminiSlideImage(
@@ -142,7 +218,7 @@ export async function generateGeminiSlideImage(
   slideNum,
   imagePath,
   promptText,
-  { cdpEndpoint = "http://127.0.0.1:9333", dispatch = true } = {}
+  { cdpEndpoint = "http://127.0.0.1:9333", dispatch = true, decksDir = null } = {}
 ) {
   const finalPrompt = promptText || DEFAULT_GEMINI_IMAGE_PROMPT_TEMPLATE;
   await fs.access(imagePath);
@@ -151,6 +227,7 @@ export async function generateGeminiSlideImage(
   let imageAttached = false;
   let promptSent = false;
   let notice = null;
+  let capturedImageUrl = null;
 
   if (dispatch) {
     try {
@@ -179,7 +256,7 @@ export async function generateGeminiSlideImage(
                     timeout: 8000
                   });
                 } catch {
-                  // Ignore if navigation is slow or already at destination
+                  // Ignore navigation timeouts if page is responsive
                 }
               }
 
@@ -187,8 +264,18 @@ export async function generateGeminiSlideImage(
               if (!imageAttached) {
                 throw new Error("Gemini image upload control was not available.");
               }
+
               await enterAndSendPrompt(page, finalPrompt);
               promptSent = true;
+
+              if (decksDir) {
+                capturedImageUrl = await captureGeneratedGeminiImage(
+                  page,
+                  deckId,
+                  slideNum,
+                  decksDir
+                );
+              }
             }
           } finally {
             try {
@@ -196,7 +283,7 @@ export async function generateGeminiSlideImage(
                 await browser.disconnect();
               }
             } catch {
-              // Ignore disconnect errors to keep Chrome process active
+              // Keep browser active
             }
           }
         } else {
@@ -224,10 +311,12 @@ export async function generateGeminiSlideImage(
     imageAttached,
     promptSent,
     dispatched,
-    imageUrl: null,
+    imageUrl: capturedImageUrl,
     timestamp: new Date().toISOString(),
     status: dispatched
-      ? "Slide image and revision prompt were sent to Google Gemini image chat."
+      ? capturedImageUrl
+        ? "Slide image generated and automatically incorporated into presentation."
+        : "Slide image and revision prompt were sent to Google Gemini image chat."
       : notice || "Gemini image-chat revision is queued until a connected Gemini tab is available."
   };
 }
