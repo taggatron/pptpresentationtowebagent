@@ -54,6 +54,19 @@ body {
   height: 64px;
 }
 
+/* Hide header in fullscreen mode */
+:fullscreen .app-header,
+:-webkit-full-screen .app-header,
+body.is-fullscreen .app-header {
+  display: none !important;
+}
+
+:fullscreen .app-layout,
+:-webkit-full-screen .app-layout,
+body.is-fullscreen .app-layout {
+  height: 100vh !important;
+}
+
 .header-left, .header-right {
   display: flex;
   align-items: center;

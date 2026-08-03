@@ -1376,13 +1376,29 @@ function setupEventListeners() {
   editTargetOverlay?.addEventListener("pointerup", finishEditPointerInteraction);
   editTargetOverlay?.addEventListener("pointercancel", finishEditPointerInteraction);
 
+  const updateFullscreenClass = () => {
+    const isFS = Boolean(document.fullscreenElement || document.webkitIsFullScreen);
+    document.body.classList.toggle("is-fullscreen", isFS);
+  };
+
   fullscreenBtn?.addEventListener("click", () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
+    if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      }
     } else {
-      document.exitFullscreen();
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
     }
   });
+
+  document.addEventListener("fullscreenchange", updateFullscreenClass);
+  document.addEventListener("webkitfullscreenchange", updateFullscreenClass);
 
   slideStage?.addEventListener(
     "touchstart",
