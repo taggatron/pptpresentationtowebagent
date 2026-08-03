@@ -373,6 +373,8 @@ function renderProgressiveBuildControls(slide) {
 
   const totalSteps = slide.progressiveBuilds.length;
   const currentBuild = currentBuildStep > 0 ? slide.progressiveBuilds[currentBuildStep - 1] : null;
+  const videoUrl = currentBuild?.videoUrl || (currentBuildStep === 1 && slide.videoUrl ? slide.videoUrl : null);
+  const slideVideo = document.getElementById("slideVideo");
 
   if (serialStepBadge) {
     serialStepBadge.textContent =
@@ -381,10 +383,27 @@ function renderProgressiveBuildControls(slide) {
         : `${currentBuildStep} / ${totalSteps} · ${currentBuild?.label || `Build ${currentBuildStep}`}`;
   }
 
-  if (currentBuild?.imageUrl) {
-    slideImage.src = currentBuild.imageUrl;
+  if (videoUrl) {
+    slideImage.classList.add("hidden");
+    if (slideVideo) {
+      slideVideo.classList.remove("hidden");
+      const fullUrl = new URL(videoUrl, window.location.href).href;
+      if (slideVideo.src !== fullUrl) {
+        slideVideo.src = videoUrl;
+      }
+      slideVideo.play().catch(() => {});
+    }
   } else {
-    slideImage.src = slide.imageUrl;
+    if (slideVideo) {
+      slideVideo.pause();
+      slideVideo.classList.add("hidden");
+    }
+    slideImage.classList.remove("hidden");
+    if (currentBuild?.imageUrl) {
+      slideImage.src = currentBuild.imageUrl;
+    } else {
+      slideImage.src = slide.imageUrl;
+    }
   }
 
   const stepConfig = slide.serialAnimation?.serialSteps?.[currentBuildStep - 1];
@@ -551,8 +570,8 @@ function renderSlide(index) {
 
   stopAutoPlay();
   currentSlideIndex = index;
-  currentBuildStep = 0;
   const slide = currentDeck.slides[index];
+  currentBuildStep = slide?.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds) && slide.progressiveBuilds.length > 0 ? 1 : 0;
   restoreSavedBoundsForSlide(slide);
 
   const mainContentEl = document.querySelector(".main-content");

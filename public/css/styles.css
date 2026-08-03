@@ -571,11 +571,17 @@ body {
   justify-content: center;
 }
 
-.slide-image {
+.slide-image,
+.slide-video {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
+  border-radius: var(--radius-md);
+  user-select: none;
+}
+
+.slide-video.hidden {
+  display: none !important;
 }
 
 /* Interactive Q&A Overlay */
