@@ -636,11 +636,7 @@ function renderInteractiveGrid(slide) {
       prompt.className = "qa-prompt-badge";
       prompt.textContent = "Click to reveal";
 
-      const subtext = document.createElement("span");
-      subtext.className = "qa-prompt-subtext";
-      subtext.textContent = cell.question;
-
-      content.append(prompt, subtext);
+      content.appendChild(prompt);
       card.appendChild(content);
     }
 
