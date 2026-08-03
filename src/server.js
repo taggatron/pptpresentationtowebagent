@@ -343,6 +343,14 @@ export function createApp({
       slide.hasProgressiveBuilds = false;
       delete slide.progressiveBuilds;
       delete slide.serialAnimation;
+
+      const latestVersion = slide.history && slide.history.length > 0
+        ? slide.history[slide.history.length - 1]
+        : null;
+      if (latestVersion && latestVersion.imageUrl) {
+        slide.imageUrl = latestVersion.imageUrl;
+      }
+
       await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 
       res.json({ success: true, slide });
