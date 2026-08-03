@@ -1294,6 +1294,47 @@ function setupEventListeners() {
       }
     });
   }
+
+  const clearSequenceBtn = document.getElementById("clearSequenceBtn");
+  if (clearSequenceBtn) {
+    clearSequenceBtn.addEventListener("click", async () => {
+      if (!currentDeck) return;
+      const slide = currentDeck.slides[currentSlideIndex];
+      try {
+        clearSequenceBtn.disabled = true;
+        clearSequenceBtn.textContent = "Clearing...";
+        const res = await fetch(
+          `/api/decks/${encodeURIComponent(currentDeck.id)}/slides/${slide.number}/clear-sequence`,
+          { method: "POST" }
+        );
+
+        let data = {};
+        const contentType = res.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          data = await res.json();
+        } else {
+          const text = await res.text();
+          throw new Error(`Server returned error (${res.status}): ${text.replace(/<[^>]*>/g, " ").trim().slice(0, 100)}`);
+        }
+
+        if (!res.ok) throw new Error(data.error || "Clear reveal sequence failed.");
+
+        slide.hasProgressiveBuilds = false;
+        delete slide.progressiveBuilds;
+        delete slide.serialAnimation;
+        renderSlideStage(slide);
+
+        agentStatus.className = "agent-status success";
+        agentStatus.textContent = "Reveal sequence successfully removed for this slide!";
+      } catch (err) {
+        agentStatus.className = "agent-status error";
+        agentStatus.textContent = err.message;
+      } finally {
+        clearSequenceBtn.disabled = false;
+        clearSequenceBtn.textContent = "Clear reveal sequence";
+      }
+    });
+  }
   geminiEditInput?.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
       event.preventDefault();

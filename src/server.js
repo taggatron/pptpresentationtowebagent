@@ -330,6 +330,27 @@ export function createApp({
     }
   });
 
+  app.post("/api/decks/:deckId/slides/:slideNum/clear-sequence", async (req, res) => {
+    try {
+      const { manifestPath, manifest } = await readManifest(decksDir, req.params.deckId);
+      const sNum = Number.parseInt(req.params.slideNum, 10);
+      const slide = manifest.slides.find((candidate) => candidate.number === sNum);
+
+      if (!slide) {
+        return res.status(404).json({ error: `Slide ${req.params.slideNum} not found` });
+      }
+
+      slide.hasProgressiveBuilds = false;
+      delete slide.progressiveBuilds;
+      delete slide.serialAnimation;
+      await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+
+      res.json({ success: true, slide });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
   // Backward-compatible Gemini image endpoint. The generic revision route above
   // is used by the current sidebar and defaults to this pathway.
   app.post(
