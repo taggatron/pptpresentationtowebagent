@@ -514,10 +514,7 @@ export function createApp({
   return app;
 }
 
-export function startServer(
-  port = Number(process.env.PORT) || 3000,
-  host = process.env.HOST || "127.0.0.1"
-) {
+export function startServer(port = Number(process.env.PORT) || 3000) {
   process.on("unhandledRejection", (reason) => {
     console.warn("[Presentation Web Agent] Suppressed unhandledRejection:", reason?.message || reason);
   });
@@ -527,8 +524,8 @@ export function startServer(
   });
 
   const app = createApp();
-  const server = app.listen(port, host, () => {
-    console.log(`[Presentation Web Agent] Server listening at http://${host}:${port}`);
+  const server = app.listen(port, () => {
+    console.log(`[Presentation Web Agent] Server listening at http://127.0.0.1:${port}`);
   });
 
   server.on("error", (error) => {
@@ -536,7 +533,7 @@ export function startServer(
       console.warn(
         `[Presentation Web Agent] Port ${port} is in use, trying port ${port + 1}...`
       );
-      startServer(port + 1, host);
+      startServer(port + 1);
     } else {
       console.error("[Presentation Web Agent] Server error:", error);
     }
@@ -545,6 +542,7 @@ export function startServer(
   return server;
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+const isMain = Boolean(process.argv[1] && process.argv[1].endsWith("server.js"));
+if (isMain && process.env.NODE_ENV !== "test") {
   startServer();
 }
