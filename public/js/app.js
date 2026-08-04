@@ -577,6 +577,13 @@ function renderSlide(index) {
   if (!currentDeck || index < 0 || index >= currentDeck.slides.length) return;
 
   stopAutoPlay();
+  const slideVideo = document.getElementById("slideVideo");
+  if (slideVideo) {
+    slideVideo.pause();
+    slideVideo.classList.add("hidden");
+  }
+  slideImage.classList.remove("hidden");
+
   currentSlideIndex = index;
   const slide = currentDeck.slides[index];
   currentBuildStep = slide?.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds) && slide.progressiveBuilds.length > 0 ? 1 : 0;
