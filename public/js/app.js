@@ -539,7 +539,14 @@ async function fetchDecks() {
       data.decks.forEach((deck) => {
         const option = document.createElement("option");
         option.value = deck.id;
-        option.textContent = deck.title || deck.id;
+        let displayTitle = deck.title || deck.id;
+        if (!/^\d+\./.test(displayTitle)) {
+          const match = deck.id.match(/^Lesson_(\d+)_/i);
+          if (match) {
+            displayTitle = `${parseInt(match[1], 10)}. ${displayTitle}`;
+          }
+        }
+        option.textContent = displayTitle;
         deckSelect.appendChild(option);
       });
 

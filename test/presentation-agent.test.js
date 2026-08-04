@@ -97,7 +97,7 @@ test("converted Biology Lesson 1 manifest is complete and interactive", async ()
   const slideTwo = manifest.slides.find((slide) => slide.number === 2);
 
   assert.equal(manifest.id, "Lesson_01_CELL_STRUCTURE");
-  assert.equal(manifest.totalSlides, 15);
+  assert.equal(manifest.totalSlides, 16);
   assert.equal(manifest.agent.defaultPathway, AGENT_PATHWAYS.GEMINI_IMAGE_CHAT);
   assert.equal(slideTwo.interactiveCells.length, 6);
   assert.equal(slideTwo.serialAnimation.totalBuildSteps, 6);
@@ -128,7 +128,7 @@ test("server exposes the Gemini default and the Lesson 1 deck", async (t) => {
   );
   assert.equal(deckResponse.status, 200);
   const deck = await deckResponse.json();
-  assert.equal(deck.totalSlides, 15);
+  assert.equal(deck.totalSlides, 16);
 
   const revisionResponse = await fetch(
     `${baseUrl}/api/decks/Lesson_01_CELL_STRUCTURE/slides/2/revise`,
