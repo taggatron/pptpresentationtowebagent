@@ -19,6 +19,10 @@ const deckTitle = document.getElementById("deckTitle");
 const slideImage = document.getElementById("slideImage");
 const slideStage = document.getElementById("slideStage");
 const slideWrapper = document.getElementById("slideWrapper");
+const webEmbedLayer = document.getElementById("webEmbedLayer");
+const webEmbedFrame = document.getElementById("webEmbedFrame");
+const webEmbedFocusLink = document.getElementById("webEmbedFocusLink");
+const webEmbedHint = document.getElementById("webEmbedHint");
 const interactiveOverlay = document.getElementById("interactiveOverlay");
 const editTargetOverlay = document.getElementById("editTargetOverlay");
 const editTargetBox = document.getElementById("editTargetBox");
@@ -612,6 +616,45 @@ function restoreSavedBoundsForSlide(slide) {
   }
 }
 
+function hideWebEmbed() {
+  if (!webEmbedLayer) return;
+  webEmbedLayer.classList.add("hidden");
+  if (webEmbedFrame && webEmbedFrame.src !== "about:blank") {
+    webEmbedFrame.src = "about:blank";
+  }
+  if (webEmbedFocusLink) {
+    webEmbedFocusLink.href = "https://codexvirtualchemlab.vercel.app/";
+    webEmbedFocusLink.textContent = "Open focus mode in new tab";
+  }
+  if (webEmbedHint) {
+    webEmbedHint.textContent = "";
+  }
+}
+
+function renderWebEmbed(slide) {
+  const embed = slide?.webEmbed;
+  if (!embed?.url || !webEmbedLayer || !webEmbedFrame) return false;
+
+  slideImage.classList.add("hidden");
+  interactiveOverlay.classList.add("hidden");
+  interactiveOverlay.innerHTML = "";
+  qaControls.classList.add("hidden");
+
+  webEmbedFrame.src = embed.url;
+  if (webEmbedFocusLink) {
+    webEmbedFocusLink.href = embed.focusUrl || embed.url;
+    webEmbedFocusLink.textContent = embed.focusLabel || "Open focus mode in new tab";
+  }
+  if (webEmbedHint) {
+    webEmbedHint.textContent =
+      embed.instructions ||
+      "If focus mode does not auto-open, click FOCUS MODE in the virtual lab header.";
+  }
+
+  webEmbedLayer.classList.remove("hidden");
+  return true;
+}
+
 function renderSlide(index) {
   if (!currentDeck || index < 0 || index >= currentDeck.slides.length) return;
 
@@ -622,6 +665,7 @@ function renderSlide(index) {
     cleanupVideoSegmentHandler(slideVideo);
     slideVideo.classList.add("hidden");
   }
+  hideWebEmbed();
   slideImage.classList.remove("hidden");
 
   currentSlideIndex = index;
@@ -659,7 +703,9 @@ function renderSlide(index) {
     vciPill.textContent = "VCI: 5.0";
   }
 
-  if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
+  if (slide.interactiveType === "web_embed" && slide.webEmbed?.url) {
+    renderWebEmbed(slide);
+  } else if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
     renderProgressiveBuildControls(slide);
     if (slide.isInteractive && slide.interactiveCells) {
       renderInteractiveGrid(slide);

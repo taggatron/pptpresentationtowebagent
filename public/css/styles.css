@@ -660,6 +660,70 @@ body.is-fullscreen .nav-buttons {
   -webkit-appearance: none !important;
 }
 
+.web-embed-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  background: #020617;
+}
+
+.web-embed-layer.hidden {
+  display: none;
+}
+
+.web-embed-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #020617;
+}
+
+.web-embed-toolbar {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  right: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+.web-embed-focus-link {
+  pointer-events: auto;
+  font-size: 0.72rem;
+  color: #c4f1ff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(103, 232, 249, 0.4);
+  background: rgba(8, 47, 73, 0.35);
+  border-radius: 999px;
+  padding: 0.22rem 0.5rem;
+}
+
+.web-embed-focus-link:hover {
+  color: #ecfeff;
+  border-color: rgba(103, 232, 249, 0.8);
+  background: rgba(8, 47, 73, 0.6);
+}
+
+.web-embed-hint {
+  font-size: 0.66rem;
+  color: #dbeafe;
+  opacity: 0.95;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Interactive Q&A Overlay */
 .interactive-overlay {
   position: absolute;

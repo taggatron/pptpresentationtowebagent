@@ -78,6 +78,27 @@
         <div class="slide-wrapper" id="slideWrapper">
           <img id="slideImage" class="slide-image" src="" alt="Current presentation slide">
           <video id="slideVideo" class="slide-video hidden" playsinline preload="auto"></video>
+          <div id="webEmbedLayer" class="web-embed-layer hidden" aria-label="Embedded practical">
+            <iframe
+              id="webEmbedFrame"
+              class="web-embed-frame"
+              src="about:blank"
+              title="Embedded practical focus mode"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              allowfullscreen
+            ></iframe>
+            <div class="web-embed-toolbar">
+              <a
+                id="webEmbedFocusLink"
+                class="web-embed-focus-link"
+                href="https://codexvirtualchemlab.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Open focus mode in new tab</a>
+              <span id="webEmbedHint" class="web-embed-hint"></span>
+            </div>
+          </div>
           <div
             id="interactiveOverlay"
             class="interactive-overlay hidden"
