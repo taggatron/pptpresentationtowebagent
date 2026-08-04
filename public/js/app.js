@@ -427,11 +427,19 @@ function advanceSerialBuildStep() {
   const totalSteps = getTotalBuildSteps(slide);
   if (currentBuildStep < totalSteps) {
     currentBuildStep++;
-    if (slide.isInteractive && slide.interactiveCells) {
+    if (slide.hasProgressiveBuilds) {
+      renderProgressiveBuildControls(slide);
+      if (slide.isInteractive && slide.interactiveCells) {
+        applyInteractiveBuildStep(slide, currentBuildStep);
+        renderInteractiveGrid(slide);
+        const currentBuild = currentBuildStep > 0 ? slide.progressiveBuilds[currentBuildStep - 1] : null;
+        if (currentBuild?.videoUrl) {
+          interactiveOverlay.classList.add("hidden");
+        }
+      }
+    } else if (slide.isInteractive && slide.interactiveCells) {
       applyInteractiveBuildStep(slide, currentBuildStep);
       renderInteractiveGrid(slide);
-    } else if (slide.hasProgressiveBuilds) {
-      renderProgressiveBuildControls(slide);
     }
     if (activeSidebarTab === "editor") renderComponentEditorPanel();
   } else {
@@ -604,10 +612,17 @@ function renderSlide(index) {
     vciPill.textContent = "VCI: 5.0";
   }
 
-  if (slide.isInteractive && slide.interactiveCells) {
-    renderInteractiveGrid(slide);
-  } else if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
+  if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
     renderProgressiveBuildControls(slide);
+    if (slide.isInteractive && slide.interactiveCells) {
+      renderInteractiveGrid(slide);
+      const currentBuild = currentBuildStep > 0 ? slide.progressiveBuilds[currentBuildStep - 1] : null;
+      if (currentBuild?.videoUrl) {
+        interactiveOverlay.classList.add("hidden");
+      }
+    }
+  } else if (slide.isInteractive && slide.interactiveCells) {
+    renderInteractiveGrid(slide);
   } else {
     interactiveOverlay.classList.add("hidden");
     interactiveOverlay.innerHTML = "";
