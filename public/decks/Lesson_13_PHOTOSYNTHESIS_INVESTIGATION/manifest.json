@@ -577,64 +577,62 @@
       "imageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_07.png",
       "isInteractive": false,
       "interactiveType": "web_embed",
-      "autoAdvanceMs": 2600,
       "webEmbed": {
-        "url": "https://codexvirtualchemlab.vercel.app/",
-        "focusUrl": "https://codexvirtualchemlab.vercel.app/",
-        "focusLabel": "Open pondweed photosynthesis focus mode",
-        "instructions": "Transitioning: selecting Biology practicals, then enabling Focus Mode.",
-        "transitionSequence": [
-          {
-            "label": "Selecting Biology",
-            "xPct": 18.5,
-            "yPct": 4.2,
-            "delayMs": 450
-          },
-          {
-            "label": "Enabling Focus Mode",
-            "xPct": 91,
-            "yPct": 4.2,
-            "delayMs": 1300
-          }
-        ]
+        "url": "https://codexvirtualchemlab.vercel.app/?pondweed-focus=1"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 3,
-        "timeGuideDisplay": "2-4s",
-        "vciScore": "2.0",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 23,
+        "timeGuideDisplay": "19–27s",
+        "vciScore": "5.1",
+        "complexityCategory": "Moderate",
         "breakdown": {
-          "visualGistMs": 200,
-          "visualScanMs": 500,
-          "readingMs": 500,
-          "semanticProcessingMs": 1200,
-          "wordCount": 5,
-          "visualElementsCount": 3
+          "visualGistMs": 250,
+          "visualScanMs": 2450,
+          "readingMs": 10500,
+          "semanticProcessingMs": 10000,
+          "wordCount": 35,
+          "visualElementsCount": 7
         },
         "academicReferences": [
           {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Short transition segment designed to minimize extraneous load before practical interaction."
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 2,
-        "autoAdvanceDelayMs": 1200,
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3000,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Select Biology practicals",
+            "title": "Title & Header",
             "componentIds": [
-              "subject_biology"
+              "header"
             ],
             "revealType": "highlight"
           },
           {
             "step": 2,
-            "title": "Enable Focus Mode",
+            "title": "Main Visual Content",
             "componentIds": [
-              "focus_mode"
+              "main_content"
+            ],
+            "revealType": "fade-in"
+          },
+          {
+            "step": 3,
+            "title": "Key Takeaway / Summary",
+            "componentIds": [
+              "footer_summary"
             ],
             "revealType": "highlight"
           }
@@ -648,10 +646,7 @@
       "isInteractive": false,
       "interactiveType": "web_embed",
       "webEmbed": {
-        "url": "https://codexvirtualchemlab.vercel.app/",
-        "focusUrl": "https://codexvirtualchemlab.vercel.app/",
-        "focusLabel": "Open pondweed photosynthesis focus mode",
-        "instructions": "Use the in-app FOCUS MODE toggle to isolate the photosynthesis investigation controls."
+        "url": "https://codexvirtualchemlab.vercel.app/?pondweed-focus=1"
       },
       "cognitiveGuide": {
         "estimatedTimeSeconds": 23,
