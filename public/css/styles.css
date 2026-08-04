@@ -54,7 +54,7 @@ body {
   height: 64px;
 }
 
-/* Hide header, overview sidebar, and reveal sequence container in fullscreen mode */
+/* Hide header, overview sidebar, reveal sequence container, and navigation hints in fullscreen mode */
 :fullscreen .app-header,
 :-webkit-full-screen .app-header,
 body.is-fullscreen .app-header,
@@ -63,7 +63,10 @@ body.is-fullscreen .app-header,
 body.is-fullscreen .sidebar,
 :fullscreen .qa-controls-bar,
 :-webkit-full-screen .qa-controls-bar,
-body.is-fullscreen .qa-controls-bar {
+body.is-fullscreen .qa-controls-bar,
+:fullscreen .keyboard-hints,
+:-webkit-full-screen .keyboard-hints,
+body.is-fullscreen .keyboard-hints {
   display: none !important;
 }
 
@@ -82,15 +85,22 @@ body.is-fullscreen .slide-stage {
   height: 100vh !important;
   max-width: none !important;
   padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 :fullscreen .slide-wrapper,
 :-webkit-full-screen .slide-wrapper,
 body.is-fullscreen .slide-wrapper {
-  max-width: none !important;
-  width: 100vw !important;
-  height: 100vh !important;
+  position: relative !important;
+  aspect-ratio: 16 / 9 !important;
+  width: min(100vw, calc(100vh * (16 / 9))) !important;
+  height: min(100vh, calc(100vw * (9 / 16))) !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
   border-radius: 0 !important;
+  margin: auto !important;
 }
 
 .header-left, .header-right {
