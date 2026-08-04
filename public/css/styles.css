@@ -103,6 +103,22 @@ body.is-fullscreen .slide-wrapper {
   margin: auto !important;
 }
 
+:fullscreen .footer-controls,
+:-webkit-full-screen .footer-controls,
+body.is-fullscreen .footer-controls {
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+:fullscreen .nav-buttons,
+:-webkit-full-screen .nav-buttons,
+body.is-fullscreen .nav-buttons {
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .header-left, .header-right {
   display: flex;
   align-items: center;
