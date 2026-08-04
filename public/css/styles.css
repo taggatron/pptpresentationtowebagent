@@ -54,10 +54,13 @@ body {
   height: 64px;
 }
 
-/* Hide header in fullscreen mode */
+/* Hide header and overview sidebar in fullscreen mode */
 :fullscreen .app-header,
 :-webkit-full-screen .app-header,
-body.is-fullscreen .app-header {
+body.is-fullscreen .app-header,
+:fullscreen .sidebar,
+:-webkit-full-screen .sidebar,
+body.is-fullscreen .sidebar {
   display: none !important;
 }
 
@@ -65,6 +68,26 @@ body.is-fullscreen .app-header {
 :-webkit-full-screen .app-layout,
 body.is-fullscreen .app-layout {
   height: 100vh !important;
+  width: 100vw !important;
+}
+
+:fullscreen .slide-stage,
+:-webkit-full-screen .slide-stage,
+body.is-fullscreen .slide-stage {
+  flex: 1 1 100% !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+:fullscreen .slide-wrapper,
+:-webkit-full-screen .slide-wrapper,
+body.is-fullscreen .slide-wrapper {
+  max-width: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
 }
 
 .header-left, .header-right {
@@ -599,6 +622,13 @@ body.is-fullscreen .app-layout {
 .slide-image.hidden,
 .slide-video.hidden {
   display: none !important;
+}
+
+.slide-video::-webkit-media-controls,
+.slide-video::-webkit-media-controls-enclosure,
+.slide-video::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none !important;
 }
 
 /* Interactive Q&A Overlay */

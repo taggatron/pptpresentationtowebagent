@@ -395,6 +395,8 @@ function renderProgressiveBuildControls(slide) {
   if (videoUrl) {
     slideImage.classList.add("hidden");
     if (slideVideo) {
+      slideVideo.controls = false;
+      slideVideo.removeAttribute("controls");
       slideVideo.classList.remove("hidden");
       const fullUrl = new URL(videoUrl, window.location.href).href;
       if (slideVideo.src !== fullUrl) {
