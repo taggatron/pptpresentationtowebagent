@@ -13,6 +13,8 @@ let touchStartX = null;
 let agentPathways = [];
 let editTargetsBySlide = {};
 let editPointerInteraction = null;
+let slideAutoAdvanceTimer = null;
+let webEmbedTransitionTimers = [];
 
 const deckSelect = document.getElementById("deckSelect");
 const deckTitle = document.getElementById("deckTitle");
@@ -23,6 +25,8 @@ const webEmbedLayer = document.getElementById("webEmbedLayer");
 const webEmbedFrame = document.getElementById("webEmbedFrame");
 const webEmbedFocusLink = document.getElementById("webEmbedFocusLink");
 const webEmbedHint = document.getElementById("webEmbedHint");
+const webEmbedTransition = document.getElementById("webEmbedTransition");
+const webEmbedCursor = document.getElementById("webEmbedCursor");
 const interactiveOverlay = document.getElementById("interactiveOverlay");
 const editTargetOverlay = document.getElementById("editTargetOverlay");
 const editTargetBox = document.getElementById("editTargetBox");
@@ -618,6 +622,7 @@ function restoreSavedBoundsForSlide(slide) {
 
 function hideWebEmbed() {
   if (!webEmbedLayer) return;
+  clearWebEmbedTransition();
   webEmbedLayer.classList.add("hidden");
   if (webEmbedFrame && webEmbedFrame.src !== "about:blank") {
     webEmbedFrame.src = "about:blank";
@@ -629,6 +634,56 @@ function hideWebEmbed() {
   if (webEmbedHint) {
     webEmbedHint.textContent = "";
   }
+}
+
+function clearWebEmbedTransition() {
+  webEmbedTransitionTimers.forEach((timerId) => clearTimeout(timerId));
+  webEmbedTransitionTimers = [];
+
+  if (webEmbedTransition) {
+    webEmbedTransition.classList.add("hidden");
+  }
+  if (webEmbedCursor) {
+    webEmbedCursor.classList.remove("clicking");
+    webEmbedCursor.style.opacity = "0";
+  }
+}
+
+function runWebEmbedTransition(steps) {
+  if (!webEmbedTransition || !webEmbedCursor || !Array.isArray(steps) || !steps.length) return;
+
+  clearWebEmbedTransition();
+  webEmbedTransition.classList.remove("hidden");
+
+  steps.forEach((step) => {
+    const delay = Math.max(0, Number(step?.delayMs) || 0);
+    const x = clamp(Number(step?.xPct) || 50, 0, 100);
+    const y = clamp(Number(step?.yPct) || 50, 0, 100);
+
+    const timerId = setTimeout(() => {
+      webEmbedCursor.style.left = `${x}%`;
+      webEmbedCursor.style.top = `${y}%`;
+      webEmbedCursor.style.opacity = "1";
+      webEmbedCursor.classList.remove("clicking");
+      // Reflow to reliably restart pulse animation.
+      void webEmbedCursor.offsetWidth;
+      webEmbedCursor.classList.add("clicking");
+
+      if (webEmbedHint && step?.label) {
+        webEmbedHint.textContent = step.label;
+      }
+    }, delay);
+
+    webEmbedTransitionTimers.push(timerId);
+  });
+
+  const finalDelay =
+    Math.max(...steps.map((step) => Math.max(0, Number(step?.delayMs) || 0))) + 620;
+  const hideTimer = setTimeout(() => {
+    if (webEmbedCursor) webEmbedCursor.style.opacity = "0";
+    if (webEmbedTransition) webEmbedTransition.classList.add("hidden");
+  }, finalDelay);
+  webEmbedTransitionTimers.push(hideTimer);
 }
 
 function renderWebEmbed(slide) {
@@ -652,11 +707,19 @@ function renderWebEmbed(slide) {
   }
 
   webEmbedLayer.classList.remove("hidden");
+  if (Array.isArray(embed.transitionSequence) && embed.transitionSequence.length > 0) {
+    runWebEmbedTransition(embed.transitionSequence);
+  }
   return true;
 }
 
 function renderSlide(index) {
   if (!currentDeck || index < 0 || index >= currentDeck.slides.length) return;
+
+  if (slideAutoAdvanceTimer) {
+    clearTimeout(slideAutoAdvanceTimer);
+    slideAutoAdvanceTimer = null;
+  }
 
   stopAutoPlay();
   const slideVideo = document.getElementById("slideVideo");
@@ -720,6 +783,12 @@ function renderSlide(index) {
     interactiveOverlay.classList.add("hidden");
     interactiveOverlay.innerHTML = "";
     qaControls.classList.add("hidden");
+  }
+
+  if (Number.isFinite(slide.autoAdvanceMs) && slide.autoAdvanceMs > 0 && index < currentDeck.slides.length - 1) {
+    slideAutoAdvanceTimer = setTimeout(() => {
+      renderSlide(index + 1);
+    }, slide.autoAdvanceMs);
   }
 
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
