@@ -542,7 +542,6 @@ export function startServer(port = Number(process.env.PORT) || 3000) {
   return server;
 }
 
-const isMain = Boolean(process.argv[1] && process.argv[1].endsWith("server.js"));
-if (isMain && process.env.NODE_ENV !== "test") {
+if (process.env.NODE_ENV !== "test") {
   startServer();
 }
