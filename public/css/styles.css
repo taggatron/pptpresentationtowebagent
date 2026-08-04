@@ -54,13 +54,16 @@ body {
   height: 64px;
 }
 
-/* Hide header and overview sidebar in fullscreen mode */
+/* Hide header, overview sidebar, and reveal sequence container in fullscreen mode */
 :fullscreen .app-header,
 :-webkit-full-screen .app-header,
 body.is-fullscreen .app-header,
 :fullscreen .sidebar,
 :-webkit-full-screen .sidebar,
-body.is-fullscreen .sidebar {
+body.is-fullscreen .sidebar,
+:fullscreen .qa-controls-bar,
+:-webkit-full-screen .qa-controls-bar,
+body.is-fullscreen .qa-controls-bar {
   display: none !important;
 }
 
