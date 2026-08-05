@@ -118,11 +118,11 @@ export async function generateSlideInteractivity(
       };
     }
 
-    // Attach academic cognitive processing time guide
-    slide.cognitiveGuide = analyzeSlideCognitiveLoad(slide);
-
     // Attach serial build step animation sequence
     slide.serialAnimation = await processSerialBuildSteps(slide);
+
+    // Attach academic cognitive processing time guide (incorporating text, components & build steps)
+    slide.cognitiveGuide = analyzeSlideCognitiveLoad(slide);
 
     // Interactive slides use their six answer-reveal steps directly. Static,
     // non-interactive high-load slides retain the progressive revision prompt set.

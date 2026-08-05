@@ -11,6 +11,7 @@ import {
 } from "../src/agent-config.js";
 import { createStarterCellGrid } from "../src/gemini-segmenter.js";
 import { generateGeminiSlideImage } from "../src/gemini-image-gen.js";
+import { analyzeSlideCognitiveLoad } from "../src/cognitive-model.js";
 import {
   buildTargetedRevisionPrompt,
   createApp,
@@ -249,3 +250,40 @@ test("generateGeminiSlideImage checks CDP tabs when dispatch is enabled", async 
   assert.equal(result.dispatched, false);
   assert.equal(result.status, "Chrome is connected, but no Gemini tab is open.");
 });
+
+test("cognitive model dynamically adjusts processing time and metrics based on slide content", () => {
+  const titleSlide = {
+    number: 1,
+    title: "1. Cell Structure"
+  };
+
+  const simpleSlide = {
+    number: 5,
+    title: "Key Definitions",
+    text: "Cells are basic units of life."
+  };
+
+  const complexScientificSlide = {
+    number: 6,
+    title: "Mitochondria Respiration & Chloroplast Photosynthesis",
+    text: "Glucose + Oxygen → Carbon Dioxide + Water. Mitochondria produce ATP energy through cellular respiration. Chloroplast organelles perform photosynthesis in plant cytoplasm.",
+    components: [
+      { label: "Mitochondria Diagram", text: "Inner membrane folds" },
+      { label: "Chloroplast Diagram", text: "Thylakoid stacks" }
+    ]
+  };
+
+  const loadTitle = analyzeSlideCognitiveLoad(titleSlide);
+  const loadSimple = analyzeSlideCognitiveLoad(simpleSlide);
+  const loadComplex = analyzeSlideCognitiveLoad(complexScientificSlide);
+
+  assert.ok(loadTitle.estimatedTimeSeconds < loadSimple.estimatedTimeSeconds);
+  assert.ok(loadSimple.estimatedTimeSeconds < loadComplex.estimatedTimeSeconds);
+
+  assert.ok(loadComplex.breakdown.wordCount > loadSimple.breakdown.wordCount);
+  assert.ok(loadComplex.breakdown.visualElementsCount > loadSimple.breakdown.visualElementsCount);
+  assert.ok(loadComplex.breakdown.semanticProcessingMs > loadSimple.breakdown.semanticProcessingMs);
+
+  assert.notEqual(loadSimple.timeGuideDisplay, loadComplex.timeGuideDisplay);
+});
+

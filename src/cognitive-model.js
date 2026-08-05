@@ -7,65 +7,149 @@
  * 3. Sweller (1988) & Mayer (2021) - Cognitive Load Theory & Multimedia Learning Principles
  */
 
-export function analyzeSlideCognitiveLoad(slide) {
-  const isInteractiveGrid = slide.isInteractive && slide.interactiveType === "starter_qa_grid";
-  
-  let baseGistMs = 250; // Potter (1976) visual gist perception (~150-250ms)
-  let wordCount = 0;
-  let visualElementsCount = 1; // Base background / layout container
-  let intrinsicSemanticLoadMs = 0;
-  let complexityCategory = "Low";
-  let vciScore = 2.5; // Visual Complexity Index (1.0 to 10.0 scale)
+// List of academic / domain terms common in science & education to identify jargon density
+const TECHNICAL_TERMS = new Set([
+  "photosynthesis", "respiration", "mitochondria", "chloroplast", "organelle",
+  "microscope", "magnification", "chromosome", "nucleus", "cytoplasm",
+  "membrane", "equation", "calculation", "specialised", "ribosome",
+  "vacuole", "eukaryote", "prokaryote", "diffusion", "osmosis"
+]);
 
-  if (isInteractiveGrid && slide.interactiveCells) {
-    // 6-question starter activity grid
-    // High visual clutter & high semantic retrieval load
-    visualElementsCount = 18; // 6 containers + 6 question boxes + 6 answer zones
-    
-    // Total text in 6 cells
-    const textSample = slide.interactiveCells
-      .map((c) => `${c.question} ${c.expectedAnswer}`)
-      .join(" ");
-    wordCount = textSample.split(/\s+/).length; // approx ~80-120 words
-    
-    // Sweller Intrinsic Load: Active recall for 6 distinct scientific questions
-    intrinsicSemanticLoadMs = 6 * 7500; // ~7.5 seconds per Q&A retrieval concept
-    vciScore = 8.4; // High visual clutter (grid, multiple text regions)
-    complexityCategory = "High";
-  } else if (slide.number === 1) {
-    // Title / Cover slide
-    wordCount = 15;
-    visualElementsCount = 4;
-    intrinsicSemanticLoadMs = 4000;
-    vciScore = 3.2;
-    complexityCategory = "Low";
-  } else if (slide.number % 3 === 0) {
-    // Diagram / Equation / Conceptual slide
-    wordCount = 45;
-    visualElementsCount = 10;
-    intrinsicSemanticLoadMs = 15000; // ~15 seconds diagram & relationship decoding
-    vciScore = 6.5;
-    complexityCategory = "Moderate";
-  } else {
-    // Standard informational content slide
-    wordCount = 35;
-    visualElementsCount = 7;
-    intrinsicSemanticLoadMs = 10000;
-    vciScore = 5.1;
-    complexityCategory = "Moderate";
+/**
+ * Extracts all readable text from a slide object dynamically.
+ */
+function extractSlideText(slide) {
+  const parts = [];
+
+  if (slide.title) parts.push(slide.title);
+  if (slide.gridTitle) parts.push(slide.gridTitle);
+  if (typeof slide.text === "string") parts.push(slide.text);
+  else if (Array.isArray(slide.text)) parts.push(...slide.text);
+
+  if (slide.notes) parts.push(slide.notes);
+
+  if (Array.isArray(slide.interactiveCells)) {
+    for (const cell of slide.interactiveCells) {
+      if (cell.question) parts.push(cell.question);
+      if (cell.expectedAnswer) parts.push(cell.expectedAnswer);
+    }
   }
 
-  // Reading time @ 200 words per minute (~300ms per word)
-  const readingTimeMs = wordCount * 300;
+  if (Array.isArray(slide.components)) {
+    for (const comp of slide.components) {
+      if (comp.label) parts.push(comp.label);
+      if (comp.text) parts.push(comp.text);
+      if (comp.content) parts.push(comp.content);
+    }
+  }
 
-  // Visual search time based on Rosenholtz Set-Size / Feature Congestion (~350ms per visual element scan)
-  const visualScanMs = visualElementsCount * 350;
+  if (slide.serialAnimation?.serialSteps) {
+    for (const step of slide.serialAnimation.serialSteps) {
+      if (step.title) parts.push(step.title);
+    }
+  }
 
-  // Total estimated cognitive processing time (ms)
+  return parts.join(" ");
+}
+
+/**
+ * Counts visual zones dynamically from slide components and structures.
+ */
+function countVisualZones(slide) {
+  let zones = 1; // Base background / slide container
+
+  if (slide.title || slide.gridTitle) zones += 1;
+  if (slide.imageUrl || slide.originalImageUrl) zones += 1;
+
+  if (Array.isArray(slide.interactiveCells) && slide.interactiveCells.length > 0) {
+    // Each interactive cell adds question box + answer reveal zone
+    zones += slide.interactiveCells.length * 2.5;
+  } else if (Array.isArray(slide.components) && slide.components.length > 0) {
+    zones += slide.components.length;
+  } else if (slide.serialAnimation?.serialSteps) {
+    zones += slide.serialAnimation.serialSteps.length;
+  } else if (Array.isArray(slide.progressiveBuilds)) {
+    zones += slide.progressiveBuilds.length;
+  }
+
+  return Math.max(2, Math.round(zones));
+}
+
+export function analyzeSlideCognitiveLoad(slide) {
+  const baseGistMs = 250; // Potter (1976) visual gist perception (~150-250ms)
+  
+  // 1. Dynamic Text & Vocabulary Analysis
+  const rawText = extractSlideText(slide);
+  const words = rawText.trim().split(/\s+/).filter((w) => w.length > 0);
+  const wordCount = words.length > 0 ? words.length : (slide.number === 1 ? 15 : 35);
+
+  let technicalWordCount = 0;
+  for (const word of words) {
+    const cleanWord = word.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (cleanWord.length >= 8 || TECHNICAL_TERMS.has(cleanWord)) {
+      technicalWordCount++;
+    }
+  }
+  const jargonRatio = words.length > 0 ? technicalWordCount / words.length : 0.15;
+
+  // Reading time @ 200 wpm (~300ms/word baseline), scaled by technical jargon density up to 450ms/word
+  const msPerWord = 300 * (1 + 0.5 * jargonRatio);
+  const readingTimeMs = wordCount * msPerWord;
+
+  // 2. Dynamic Visual Scanning & Zone Burden
+  const visualElementsCount = countVisualZones(slide);
+  // Rosenholtz feature congestion: search time scales per zone + clutter density penalty
+  const perZoneScanMs = 350 * (1 + 0.02 * Math.max(0, visualElementsCount - 5));
+  const visualScanMs = visualElementsCount * perZoneScanMs;
+
+  // 3. Dynamic Intrinsic Load (Semantic Integration)
+  const isInteractiveGrid = slide.isInteractive && slide.interactiveType === "starter_qa_grid";
+  let intrinsicSemanticLoadMs = 0;
+
+  if (isInteractiveGrid && Array.isArray(slide.interactiveCells) && slide.interactiveCells.length > 0) {
+    // Active recall retrieval for interactive Q&A grid cells (~6.5s-7.5s per cell)
+    intrinsicSemanticLoadMs = slide.interactiveCells.length * 7000;
+  } else if (slide.number === 1) {
+    // Title slide orientation & context setting
+    intrinsicSemanticLoadMs = 3500 + wordCount * 50;
+  } else {
+    // Base conceptual integration load
+    let baseSemanticMs = 6000;
+
+    // Check for mathematical / calculation elements (equations, units, formulas)
+    const hasFormulaOrEquation = /[=→×÷%]|equation|calculation|magnification|microscope/i.test(rawText);
+    if (hasFormulaOrEquation) {
+      baseSemanticMs += 6000; // Formula decoding & procedural reasoning load
+    }
+
+    // Check for visual diagram schema decoding (labeled components / multi-step builds)
+    const hasDiagram = (slide.components && slide.components.length > 0) ||
+                       (slide.serialAnimation?.serialSteps && slide.serialAnimation.serialSteps.length > 1) ||
+                       (slide.number % 3 === 0);
+    if (hasDiagram) {
+      baseSemanticMs += 5000; // Cross-referencing visual diagram labels with schema
+    }
+
+    // Vocabulary schema acquisition load
+    const jargonIntegrationMs = technicalWordCount * 400;
+
+    intrinsicSemanticLoadMs = baseSemanticMs + jargonIntegrationMs;
+  }
+
+  // 4. Dynamic Visual Complexity Index (VCI) calculation (1.0 to 10.0 scale)
+  let rawVci = 1.8 + (visualElementsCount * 0.3) + (wordCount * 0.035) + (jargonRatio * 2.5);
+  if (isInteractiveGrid) rawVci += 1.5;
+  const vciScore = Math.min(10.0, Math.max(1.0, rawVci));
+
+  let complexityCategory = "Low";
+  if (vciScore >= 7.0) complexityCategory = "High";
+  else if (vciScore >= 4.5) complexityCategory = "Moderate";
+
+  // 5. Total Estimated Processing Time & Display Range
   const totalMs = baseGistMs + visualScanMs + readingTimeMs + intrinsicSemanticLoadMs;
   const totalSeconds = Math.round(totalMs / 1000);
 
-  // Formatted estimate string (e.g. "45 - 60s")
+  // Formatted variance estimate range (+/- 15%)
   const minSec = Math.max(5, Math.floor(totalSeconds * 0.85));
   const maxSec = Math.ceil(totalSeconds * 1.15);
   const timeGuideStr = `${minSec}–${maxSec}s`;
@@ -76,7 +160,7 @@ export function analyzeSlideCognitiveLoad(slide) {
     vciScore: vciScore.toFixed(1),
     complexityCategory,
     breakdown: {
-      visualGistMs: baseGistMs,
+      visualGistMs: Math.round(baseGistMs),
       visualScanMs: Math.round(visualScanMs),
       readingMs: Math.round(readingTimeMs),
       semanticProcessingMs: Math.round(intrinsicSemanticLoadMs),
@@ -99,3 +183,4 @@ export function analyzeSlideCognitiveLoad(slide) {
     ]
   };
 }
+
