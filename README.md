@@ -1,5 +1,6 @@
 # ✦ Vibe Deck Agent · PPTX-to-Interactive Web Presentation System
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=flat-square&logo=vercel&logoColor=white)](https://pptpresentationtowebagent.vercel.app)
 [![Node.js](https://img.shields.io/badge/Node.js-v20%2B-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.19-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
 [![Playwright](https://img.shields.io/badge/Playwright-CDP%20Automation-2EAD33?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
@@ -9,6 +10,8 @@
 [![Architecture](https://img.shields.io/badge/Architecture-Autonomous%20Agent-orange?style=flat-square)]()
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
+> 🚀 **Live Demo on Vercel**: [https://pptpresentationtowebagent.vercel.app](https://pptpresentationtowebagent.vercel.app)
+>
 > **An agentic, multimodal AI system and modern web platform that ingests whole-slide image PowerPoint presentations (`.pptx`), extracts visual and semantic components, models cognitive processing complexity, and orchestrates live AI-driven slide revisions and interactive reveal sequences.**
 
 ---
