@@ -558,6 +558,13 @@ export function startServer(port = Number(process.env.PORT) || 3000) {
   return server;
 }
 
-if (process.env.NODE_ENV !== "test") {
+const defaultApp = createApp();
+export default defaultApp;
+
+const isDirectRun =
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (process.env.NODE_ENV !== "test" && !process.env.VERCEL && isDirectRun) {
   startServer();
 }
