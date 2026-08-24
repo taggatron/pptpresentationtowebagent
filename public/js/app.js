@@ -638,6 +638,23 @@ function renderWebEmbed(slide) {
   return true;
 }
 
+function getRagStatus(cognitiveGuide) {
+  if (!cognitiveGuide) {
+    return { level: "low", label: "Low Processing", color: "green", class: "rag-low", badgeText: "Low" };
+  }
+  const category = (cognitiveGuide.complexityCategory || "").toLowerCase();
+  const vci = Number(cognitiveGuide.vciScore) || 0;
+  const time = cognitiveGuide.estimatedTimeSeconds || 0;
+
+  if (category === "high" || vci >= 7.0 || time >= 36) {
+    return { level: "high", label: "High Processing", color: "red", class: "rag-high", badgeText: "High" };
+  }
+  if (category === "moderate" || category === "medium" || vci >= 4.5 || time >= 20) {
+    return { level: "medium", label: "Medium Processing", color: "amber", class: "rag-medium", badgeText: "Med" };
+  }
+  return { level: "low", label: "Low Processing", color: "green", class: "rag-low", badgeText: "Low" };
+}
+
 function renderSlide(index) {
   if (!currentDeck || index < 0 || index >= currentDeck.slides.length) return;
 
@@ -683,12 +700,30 @@ function renderSlide(index) {
 
   updateActiveThumbnail(index);
 
+  const rag = getRagStatus(slide.cognitiveGuide);
+  if (cognitiveBadge) {
+    cognitiveBadge.classList.remove("rag-low", "rag-medium", "rag-high");
+    cognitiveBadge.classList.add(rag.class);
+  }
+
   if (slide.cognitiveGuide) {
     cognitiveTimeText.textContent = `~${slide.cognitiveGuide.timeGuideDisplay}`;
     vciPill.textContent = `VCI: ${slide.cognitiveGuide.vciScore}`;
+    if (cognitiveBadge) {
+        cognitiveBadge.setAttribute(
+          "title",
+          `Cognitive Load: ${rag.label} (~${slide.cognitiveGuide.timeGuideDisplay}, VCI: ${slide.cognitiveGuide.vciScore}). Click for full breakdown.`
+        );
+    }
   } else {
     cognitiveTimeText.textContent = "~30–45s";
     vciPill.textContent = "VCI: 5.0";
+    if (cognitiveBadge) {
+        cognitiveBadge.setAttribute(
+          "title",
+          "View academic cognitive load & processing time analysis"
+        );
+    }
   }
 
   if (slide.interactiveType === "web_embed" && slide.webEmbed?.url) {
@@ -802,7 +837,12 @@ function renderThumbnails() {
     number.className = "thumb-num";
     number.textContent = String(index + 1);
 
-    thumb.append(image, number);
+    const rag = getRagStatus(slide.cognitiveGuide);
+    const ragDot = document.createElement("span");
+    ragDot.className = `thumb-rag-dot ${rag.class}`;
+    ragDot.title = `${rag.label}: ~${slide.cognitiveGuide?.timeGuideDisplay || '20s'}`;
+
+    thumb.append(image, number, ragDot);
     thumb.addEventListener("click", () => renderSlide(index));
     thumbnailsGrid.appendChild(thumb);
   });
@@ -1281,10 +1321,24 @@ function togglePresenterMode() {
 
 function openCognitiveModal() {
   if (!currentDeck) return;
-  const guide = currentDeck.slides[currentSlideIndex].cognitiveGuide;
+  const slide = currentDeck.slides[currentSlideIndex];
+  const guide = slide?.cognitiveGuide;
   if (!guide) return;
 
+  const rag = getRagStatus(guide);
+
   cognitiveModalBody.innerHTML = `
+    <div class="cognitive-rag-banner ${rag.class}">
+      <div class="rag-banner-left">
+        <span class="rag-banner-dot" aria-hidden="true"></span>
+        <div>
+          <span class="rag-banner-kicker">Slide ${slide.number} · Cognitive Demand</span>
+          <strong class="rag-banner-title">${rag.label}</strong>
+        </div>
+      </div>
+      <span class="rag-banner-pill">~${escapeHtml(guide.timeGuideDisplay)}</span>
+    </div>
+
     <div class="metric-grid">
       <div class="metric-box">
         <label>Recommended processing time</label>
@@ -1292,17 +1346,39 @@ function openCognitiveModal() {
       </div>
       <div class="metric-box">
         <label>Visual complexity index</label>
-        <div class="val">${escapeHtml(guide.vciScore)} / 10</div>
+        <div class="val">${escapeHtml(guide.vciScore)} / 10 <span class="vci-cat-label">(${guide.complexityCategory})</span></div>
       </div>
       <div class="metric-box">
         <label>Reading and scan burden</label>
         <div class="val metric-secondary">${guide.breakdown.wordCount} words · ${guide.breakdown.visualElementsCount} zones</div>
       </div>
       <div class="metric-box">
-        <label>Semantic integration</label>
-        <div class="val metric-secondary">${(guide.breakdown.semanticProcessingMs / 1000).toFixed(1)} seconds</div>
+        <label>Semantic integration load</label>
+        <div class="val metric-secondary">${(guide.breakdown.semanticProcessingMs / 1000).toFixed(1)}s active decoding</div>
       </div>
     </div>
+
+    <div class="rag-modal-scale-card">
+      <div class="rag-scale-title">
+        <span aria-hidden="true">🚥</span>
+        <strong>RAG Processing Time Reference</strong>
+      </div>
+      <div class="rag-scale-row">
+        <div class="rag-scale-badge rag-pill-green">
+          <span class="rag-dot" aria-hidden="true"></span>
+          <span><strong>Low (~5–19s)</strong>: Quick orientation / summary</span>
+        </div>
+        <div class="rag-scale-badge rag-pill-amber">
+          <span class="rag-dot" aria-hidden="true"></span>
+          <span><strong>Medium (~20–35s)</strong>: Multi-zone concept decoding</span>
+        </div>
+        <div class="rag-scale-badge rag-pill-red">
+          <span class="rag-dot" aria-hidden="true"></span>
+          <span><strong>High (~36s+)</strong>: Dense diagrams &amp; active recall</span>
+        </div>
+      </div>
+    </div>
+
     <div class="academic-section">
       <h4>Research foundations</h4>
       <ul class="reference-list">

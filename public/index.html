@@ -64,6 +64,13 @@
           aria-expanded="true"
         >▥</button>
         <button
+          id="aboutAppBtn"
+          class="icon-btn"
+          type="button"
+          title="About Vibe Deck & RAG Processing Guide"
+          aria-label="About this app"
+        >ⓘ</button>
+        <button
           id="fullscreenBtn"
           class="icon-btn"
           type="button"
@@ -340,6 +347,122 @@
         <button id="closeModalBtn" class="close-btn" type="button" aria-label="Close cognitive guide">&times;</button>
       </div>
       <div class="modal-body" id="cognitiveModalBody"></div>
+    </div>
+  </div>
+
+  <div id="welcomeModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="welcomeModalTitle">
+    <div class="modal-card welcome-modal-card">
+      <div class="modal-header welcome-modal-header">
+        <div class="welcome-header-badge">
+          <span class="brand-icon" aria-hidden="true">✦</span>
+          <span class="brand-title">Vibe Deck Agent</span>
+          <span class="welcome-version-pill">v1.0</span>
+        </div>
+        <button id="closeWelcomeModalBtn" class="close-btn" type="button" aria-label="Close welcome guide">&times;</button>
+      </div>
+      <div class="modal-body welcome-modal-body">
+        <div class="welcome-hero">
+          <h2 id="welcomeModalTitle">Interactive Slide Decks &amp; Cognitive Load Modeling</h2>
+          <p class="welcome-tagline">
+            Vibe Deck Agent transforms static whole-slide PowerPoint presentations into intelligent, interactive web lessons featuring active recall retrieval grids, multimodal generative AI editing, and psychophysics-backed cognitive pacing guides.
+          </p>
+        </div>
+
+        <div class="welcome-features-grid">
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon" aria-hidden="true">🎯</div>
+            <div class="welcome-feature-content">
+              <h4>Active Recall &amp; Click-to-Reveal</h4>
+              <p>Starter activity grids hide answers behind interactive hotspots. Click individual question cells or use reveal steps to unmask answers sequentially.</p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon" aria-hidden="true">✦</div>
+            <div class="welcome-feature-content">
+              <h4>Point &amp; Edit Multimodal AI</h4>
+              <p>Click any visual element on the slide canvas and type natural language instructions to generate precision revisions via Google Gemini &amp; NotebookLM.</p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon" aria-hidden="true">🎬</div>
+            <div class="welcome-feature-content">
+              <h4>Serial Build Step Sequences</h4>
+              <p>Complex slides are segmented into progressive build sequences (Know → Identify → Explain) with step-by-step playback and auto-advance.</p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon" aria-hidden="true">🧪</div>
+            <div class="welcome-feature-content">
+              <h4>Interactive Practical Simulators</h4>
+              <p>Integrated full-screen digital microscopy and science practical simulators embedded directly within the slide workflow.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rag-guide-card">
+          <div class="rag-guide-header">
+            <span class="rag-guide-icon" aria-hidden="true">⏱</span>
+            <div>
+              <h3>RAG Cognitive Processing Time Guide</h3>
+              <p>
+                Every slide is evaluated in real time using <strong>Rosenholtz Visual Clutter</strong> (2007) and <strong>Sweller Cognitive Load Theory</strong> (1988). The processing badge is color-coded to help teachers and students pace the lesson:
+              </p>
+            </div>
+          </div>
+
+          <div class="rag-legend-grid">
+            <div class="rag-pill-item rag-pill-green">
+              <div class="rag-pill-indicator">
+                <span class="rag-dot" aria-hidden="true"></span>
+                <strong>Low Processing</strong>
+                <span class="rag-time-badge">~5–19s · VCI &lt; 4.5</span>
+              </div>
+              <p>Quick orientation, titles, key takeaway summaries, or single-concept slides requiring minimal working memory.</p>
+            </div>
+
+            <div class="rag-pill-item rag-pill-amber">
+              <div class="rag-pill-indicator">
+                <span class="rag-dot" aria-hidden="true"></span>
+                <strong>Medium Processing</strong>
+                <span class="rag-time-badge">~20–35s · VCI 4.5–6.9</span>
+              </div>
+              <p>Multi-zone conceptual layouts, technical vocabulary acquisition, and comparative dual callout diagrams.</p>
+            </div>
+
+            <div class="rag-pill-item rag-pill-red">
+              <div class="rag-pill-indicator">
+                <span class="rag-dot" aria-hidden="true"></span>
+                <strong>High Processing</strong>
+                <span class="rag-time-badge">~36s+ · VCI ≥ 7.0</span>
+              </div>
+              <p>Dense scientific diagrams, multi-stage calculation formulas, active retrieval practice, or high-load synthesis.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-shortcuts-bar">
+          <span class="shortcuts-title">Keyboard &amp; Gestures:</span>
+          <span><kbd>→</kbd> <kbd>Space</kbd> Next Slide</span>
+          <span><kbd>←</kbd> Prev Slide</span>
+          <span><kbd>↑</kbd> <kbd>↓</kbd> Reveal Steps</span>
+          <span><kbd>T</kbd> Sidebar</span>
+          <span><kbd>F</kbd> Fullscreen</span>
+        </div>
+
+        <div class="welcome-modal-footer">
+          <label class="welcome-dont-show">
+            <input type="checkbox" id="dontShowWelcomeCheckbox">
+            <span>Don't show this guide on startup</span>
+          </label>
+          <button id="getStartedBtn" class="btn btn-primary-bright" type="button">
+            <span>Start Exploring Lessons</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 

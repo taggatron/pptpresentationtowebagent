@@ -174,10 +174,6 @@ export function analyzeSlideCognitiveLoad(slide) {
   if (isInteractiveGrid) rawVci += 1.5;
   const vciScore = Math.min(10.0, Math.max(1.0, rawVci));
 
-  let complexityCategory = "Low";
-  if (vciScore >= 7.0) complexityCategory = "High";
-  else if (vciScore >= 4.5) complexityCategory = "Moderate";
-
   // 5. Total Estimated Processing Time & Display Range
   const totalMs = baseGistMs + visualScanMs + readingTimeMs + intrinsicSemanticLoadMs;
   const totalSeconds = Math.round(totalMs / 1000);
@@ -187,11 +183,32 @@ export function analyzeSlideCognitiveLoad(slide) {
   const maxSec = Math.ceil(totalSeconds * 1.15);
   const timeGuideStr = `${minSec}–${maxSec}s`;
 
+  // 6. RAG Categorization (Red - Amber - Green)
+  let complexityCategory = "Low";
+  let ragLevel = "low";
+  let ragColor = "green";
+  let ragLabel = "Low Processing";
+
+  if (vciScore >= 7.0 || totalSeconds >= 36) {
+    complexityCategory = "High";
+    ragLevel = "high";
+    ragColor = "red";
+    ragLabel = "High Processing";
+  } else if (vciScore >= 4.5 || totalSeconds >= 20) {
+    complexityCategory = "Moderate";
+    ragLevel = "medium";
+    ragColor = "amber";
+    ragLabel = "Medium Processing";
+  }
+
   return {
     estimatedTimeSeconds: totalSeconds,
     timeGuideDisplay: timeGuideStr,
     vciScore: vciScore.toFixed(1),
     complexityCategory,
+    ragLevel,
+    ragColor,
+    ragLabel,
     breakdown: {
       visualGistMs: Math.round(baseGistMs),
       visualScanMs: Math.round(visualScanMs),
