@@ -129,6 +129,18 @@ function lessonSortValue(deck) {
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
+async function saveManifestFile(manifestPath, manifest) {
+  try {
+    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+  } catch (error) {
+    if (error.code === "EROFS" || error.code === "EACCES") {
+      console.warn(`[Server] Read-only filesystem (${error.code}), skipped disk write for ${manifestPath}`);
+    } else {
+      throw error;
+    }
+  }
+}
+
 async function readManifest(decksDir, deckId) {
   const safeDeckId = assertSafeDeckId(deckId);
   const manifestPath = path.join(decksDir, safeDeckId, "manifest.json");
@@ -216,7 +228,7 @@ async function runRevision({
       slide.imageUrl = result.imageUrl;
     }
     const manifestPath = path.join(decksDir, manifest.id, "manifest.json");
-    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+    await saveManifestFile(manifestPath, manifest);
   }
 
   return { ...result, isAnimationStep, editTarget: normalizedEditTarget };
@@ -240,7 +252,11 @@ export function createApp({
 
   app.get("/api/decks", async (req, res) => {
     try {
-      await fs.mkdir(decksDir, { recursive: true });
+      try {
+        await fs.mkdir(decksDir, { recursive: true });
+      } catch (err) {
+        if (err.code !== "EROFS" && err.code !== "EEXIST") throw err;
+      }
       const entries = await fs.readdir(decksDir, { withFileTypes: true });
       const decks = [];
 
@@ -321,7 +337,7 @@ export function createApp({
             b.imageUrl = restoredUrl;
           });
         }
-        await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+        await saveManifestFile(manifestPath, manifest);
       }
 
       res.json({ success: true, restoredUrl, slide });
@@ -351,7 +367,7 @@ export function createApp({
         slide.imageUrl = latestVersion.imageUrl;
       }
 
-      await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+      await saveManifestFile(manifestPath, manifest);
 
       res.json({ success: true, slide });
     } catch (error) {
@@ -402,7 +418,7 @@ export function createApp({
           slide.serialAnimation.totalBuildSteps = req.body.serialSteps.length;
         }
 
-        await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+        await saveManifestFile(manifestPath, manifest);
 
         const agentResult = await runRevision({
           decksDir,
@@ -467,7 +483,7 @@ export function createApp({
         }
       }
 
-      await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+      await saveManifestFile(manifestPath, manifest);
       res.json({ success: true, slide });
     } catch (error) {
       res.status(error.statusCode || 500).json({ error: error.message });
