@@ -303,4 +303,20 @@ test("welcome modal and RAG guide are present in index.html", async () => {
   assert.match(html, /rag-pill-red/);
 });
 
+test("light theme is default and theme toggle button is present", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+  assert.match(html, /class="theme-light presenter-mode"/);
+  assert.match(html, /id="themeToggleBtn"/);
+
+  const js = await fs.readFile(path.join(ROOT_DIR, "public", "js", "app.js"), "utf-8");
+  assert.match(js, /initTheme\(\)/);
+  assert.match(js, /applyTheme/);
+  assert.match(js, /vibeDeck_theme/);
+
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(css, /--bg-app:\s*#f8fafc/);
+  assert.match(css, /body\.theme-dark/);
+});
+
+
 

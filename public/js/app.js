@@ -500,7 +500,42 @@ function regressSerialBuildStep() {
   }
 }
 
+function initTheme() {
+  const themeToggleBtn = document.getElementById("themeToggleBtn");
+  const savedTheme = localStorage.getItem("vibeDeck_theme") || "light";
+
+  applyTheme(savedTheme);
+
+  themeToggleBtn?.addEventListener("click", () => {
+    const isCurrentlyDark = document.body.classList.contains("theme-dark");
+    const newTheme = isCurrentlyDark ? "light" : "dark";
+    applyTheme(newTheme);
+    localStorage.setItem("vibeDeck_theme", newTheme);
+  });
+}
+
+function applyTheme(theme) {
+  const themeToggleBtn = document.getElementById("themeToggleBtn");
+  const isDark = theme === "dark";
+
+  document.body.classList.toggle("theme-dark", isDark);
+  document.body.classList.toggle("theme-light", !isDark);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.textContent = isDark ? "☀️" : "🌙";
+    themeToggleBtn.setAttribute(
+      "title",
+      isDark ? "Switch to Light theme" : "Switch to Dark theme"
+    );
+    themeToggleBtn.setAttribute(
+      "aria-label",
+      isDark ? "Switch to Light theme" : "Switch to Dark theme"
+    );
+  }
+}
+
 async function init() {
+  initTheme();
   setupEventListeners();
   initWelcomeModal();
   await loadAgentPathways();
