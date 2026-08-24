@@ -285,5 +285,22 @@ test("cognitive model dynamically adjusts processing time and metrics based on s
   assert.ok(loadComplex.breakdown.semanticProcessingMs > loadSimple.breakdown.semanticProcessingMs);
 
   assert.notEqual(loadSimple.timeGuideDisplay, loadComplex.timeGuideDisplay);
+  assert.equal(loadTitle.ragColor, "green");
+  assert.equal(loadTitle.ragLevel, "low");
+  assert.ok(["amber", "red"].includes(loadComplex.ragColor));
 });
+
+test("welcome modal and RAG guide are present in index.html", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+  assert.match(html, /id="welcomeModal"/);
+  assert.match(html, /id="aboutAppBtn"/);
+  assert.match(html, /id="closeWelcomeModalBtn"/);
+  assert.match(html, /id="getStartedBtn"/);
+  assert.match(html, /id="dontShowWelcomeCheckbox"/);
+  assert.match(html, /RAG Cognitive Processing Time Guide/);
+  assert.match(html, /rag-pill-green/);
+  assert.match(html, /rag-pill-amber/);
+  assert.match(html, /rag-pill-red/);
+});
+
 

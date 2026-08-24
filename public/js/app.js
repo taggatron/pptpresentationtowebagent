@@ -502,6 +502,7 @@ function regressSerialBuildStep() {
 
 async function init() {
   setupEventListeners();
+  initWelcomeModal();
   await loadAgentPathways();
   await fetchDecks();
 }
@@ -1402,6 +1403,43 @@ function closeCognitiveModal() {
   cognitiveModal?.classList.add("hidden");
 }
 
+function initWelcomeModal() {
+  const welcomeModal = document.getElementById("welcomeModal");
+  const closeWelcomeModalBtn = document.getElementById("closeWelcomeModalBtn");
+  const getStartedBtn = document.getElementById("getStartedBtn");
+  const aboutAppBtn = document.getElementById("aboutAppBtn");
+  const dontShowWelcomeCheckbox = document.getElementById("dontShowWelcomeCheckbox");
+
+  const hidePref = localStorage.getItem("vibeDeck_hide_welcome_modal") === "true";
+  if (dontShowWelcomeCheckbox) {
+    dontShowWelcomeCheckbox.checked = hidePref;
+  }
+
+  // Open automatically on startup unless explicitly opted out
+  if (!hidePref && welcomeModal) {
+    welcomeModal.classList.remove("hidden");
+  }
+
+  function closeWelcome() {
+    if (dontShowWelcomeCheckbox) {
+      localStorage.setItem("vibeDeck_hide_welcome_modal", String(dontShowWelcomeCheckbox.checked));
+    }
+    welcomeModal?.classList.add("hidden");
+  }
+
+  function openWelcome() {
+    welcomeModal?.classList.remove("hidden");
+  }
+
+  closeWelcomeModalBtn?.addEventListener("click", closeWelcome);
+  getStartedBtn?.addEventListener("click", closeWelcome);
+  aboutAppBtn?.addEventListener("click", openWelcome);
+
+  welcomeModal?.addEventListener("click", (event) => {
+    if (event.target === welcomeModal) closeWelcome();
+  });
+}
+
 function goToPreviousSlide() {
   if (currentSlideIndex > 0) renderSlide(currentSlideIndex - 1);
 }
@@ -1609,7 +1647,10 @@ function setupEventListeners() {
       target?.isContentEditable;
     if (typing) return;
 
-    if (event.key === "Escape" && !cognitiveModal?.classList.contains("hidden")) {
+    const welcomeModal = document.getElementById("welcomeModal");
+    if (event.key === "Escape" && welcomeModal && !welcomeModal.classList.contains("hidden")) {
+      welcomeModal.classList.add("hidden");
+    } else if (event.key === "Escape" && !cognitiveModal?.classList.contains("hidden")) {
       closeCognitiveModal();
     } else if (
       event.key === "Escape" &&
