@@ -293,18 +293,20 @@ export function createGeminiBrowserQueueRunner({
     let lastError = null;
     for (let attempt = 0; attempt < 2; attempt += 1) {
       try {
-        if ((await tab.url()) === GEMINI_IMAGES_URL) {
-          await tab.reload();
-        } else {
-          await tab.goto(GEMINI_IMAGES_URL);
-        }
-        await tab.playwright
-          .waitForLoadState({ state: "domcontentloaded", timeoutMs: 20_000 })
-          .catch(() => {});
+        await tab.goto(GEMINI_IMAGES_URL, { waitUntil: "domcontentloaded", timeoutMs: 25_000 });
         await tab.playwright.waitForTimeout(1_000);
-        await tab.playwright
+
+        const newChatBtn = tab.playwright
+          .getByRole("button", { name: /New chat/i })
+          .or(tab.playwright.locator('button[aria-label*="New chat" i]'));
+        if ((await newChatBtn.count().catch(() => 0)) > 0) {
+          await newChatBtn.first().click().catch(() => {});
+        }
+
+        const promptBox = tab.playwright
           .getByRole("textbox", { name: "Enter a prompt for Gemini" })
-          .waitFor({ state: "visible", timeoutMs: 20_000 });
+          .or(tab.playwright.locator('rich-textarea div[contenteditable="true"]'));
+        await promptBox.first().waitFor({ state: "visible", timeoutMs: 20_000 });
         return;
       } catch (error) {
         lastError = error;
@@ -315,54 +317,39 @@ export function createGeminiBrowserQueueRunner({
 
   async function uploadSlideSource(tab, sourcePath) {
     await withUploadLock(async () => {
-      // 1. Direct file input check (fastest & most reliable)
-      try {
-        const fileInput = tab.playwright.locator('input[type="file"]').first();
-        if ((await fileInput.count().catch(() => 0)) > 0) {
-          await fileInput.setInputFiles(sourcePath, { timeoutMs: 10_000 });
-          await tab.playwright.waitForTimeout(1_200);
-          return;
-        }
-      } catch {}
+      // 1. Open the Upload and tools popup menu
+      const uploadBtn = tab.playwright
+        .locator('button[aria-label*="Upload and tools" i]')
+        .or(tab.playwright.getByRole("button", { name: /Upload and tools/i }))
+        .first();
+      await uploadBtn.waitFor({ state: "visible", timeoutMs: 15_000 });
+      await uploadBtn.click({ timeoutMs: 10_000 });
+      await tab.playwright.waitForTimeout(500);
 
-      // 2. Button trigger fallback
-      const triggerLocators = [
-        tab.playwright.getByRole("button", { name: /Upload and tools|Upload files|Upload image|Add/i }),
-        tab.playwright.locator('button[aria-label*="Upload" i], button[aria-label*="Add" i], button:has(mat-icon)'),
-        tab.playwright.locator('button.hidden-local-file-image-selector-button, [xapfileselectortrigger]')
-      ];
+      // 2. Locate the "Upload files" action item
+      const uploadFilesBtn = tab.playwright
+        .locator(
+          'button[data-test-id="local-images-files-uploader-button"], [role="menuitem"]:has-text("Upload files")'
+        )
+        .or(tab.playwright.getByRole("menuitem", { name: /Upload files/i }))
+        .first();
+      await uploadFilesBtn.waitFor({ state: "visible", timeoutMs: 10_000 });
 
-      for (const loc of triggerLocators) {
-        const count = await loc.count().catch(() => 0);
-        if (count > 0) {
-          try {
-            await loc.first().click({ timeoutMs: 5_000 });
-            await tab.playwright.waitForTimeout(500);
-            break;
-          } catch {}
-        }
-      }
+      // 3. Trigger native filechooser and set the file
+      const [fileChooser] = await Promise.all([
+        tab.playwright.waitForEvent("filechooser", { timeoutMs: 15_000 }),
+        uploadFilesBtn.click({ timeoutMs: 10_000 })
+      ]);
+      await fileChooser.setFiles([sourcePath]);
 
-      // Check if file chooser or menu item is available
-      const uploadMenuItem = tab.playwright.getByRole("menuitem", { name: /Upload files|Upload image/i });
-      const directInput = tab.playwright.locator('input[type="file"]').first();
-      const filesButton = (await uploadMenuItem.count().catch(() => 0)) > 0
-        ? uploadMenuItem
-        : directInput;
-
-      if ((await filesButton.count().catch(() => 0)) > 0) {
-        const isFileInput = (await filesButton.getAttribute("type").catch(() => "")) === "file";
-        if (isFileInput) {
-          await filesButton.setInputFiles(sourcePath, { timeoutMs: 15_000 });
-        } else {
-          const [chooser] = await Promise.all([
-            tab.playwright.waitForEvent("filechooser", { timeoutMs: 12_000 }),
-            filesButton.click({ timeoutMs: 12_000 })
-          ]);
-          await chooser.setFiles([sourcePath], { timeoutMs: 20_000 });
-        }
-      }
-      await tab.playwright.waitForTimeout(1_200);
+      // 4. Wait for the attachment thumbnail to mount in the composer
+      const attachmentPreview = tab.playwright
+        .locator(
+          '.gem-attachment-style-img, img[src^="blob:"], [data-test-id="attachment-preview"], image-preview'
+        )
+        .first();
+      await attachmentPreview.waitFor({ state: "visible", timeoutMs: 15_000 }).catch(() => {});
+      await tab.playwright.waitForTimeout(800);
     });
   }
 
@@ -653,18 +640,20 @@ export function createGeminiBrowserQueueRunner({
     let lastError = null;
     for (let attempt = 0; attempt < 2; attempt += 1) {
       try {
-        if ((await tab.url()).startsWith(GEMINI_APP_URL)) {
-          await tab.reload();
-        } else {
-          await tab.goto(GEMINI_APP_URL);
-        }
-        await tab.playwright
-          .waitForLoadState({ state: "domcontentloaded", timeoutMs: 20_000 })
-          .catch(() => {});
+        await tab.goto(GEMINI_APP_URL, { waitUntil: "domcontentloaded", timeoutMs: 25_000 });
         await tab.playwright.waitForTimeout(1_000);
-        await tab.playwright
+
+        const newChatBtn = tab.playwright
+          .getByRole("button", { name: /New chat/i })
+          .or(tab.playwright.locator('button[aria-label*="New chat" i]'));
+        if ((await newChatBtn.count().catch(() => 0)) > 0) {
+          await newChatBtn.first().click().catch(() => {});
+        }
+
+        const promptBox = tab.playwright
           .getByRole("textbox", { name: "Enter a prompt for Gemini" })
-          .waitFor({ state: "visible", timeoutMs: 20_000 });
+          .or(tab.playwright.locator('rich-textarea div[contenteditable="true"]'));
+        await promptBox.first().waitFor({ state: "visible", timeoutMs: 20_000 });
         return;
       } catch (error) {
         lastError = error;
