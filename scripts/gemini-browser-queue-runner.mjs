@@ -394,22 +394,73 @@ export function createGeminiBrowserQueueRunner({
   }
 
   async function copyNewestImage(tab, workerName) {
-    return withClipboardLock(async () => {
-      await tab.clipboard.writeText(`gemini-export-${workerName}-${Date.now()}`);
-      await tab.playwright
-        .getByRole("button", { name: "Copy image" })
-        .last()
-        .click({ timeoutMs: 15_000 });
-      for (let index = 0; index < 16; index += 1) {
-        await tab.playwright.waitForTimeout(400);
-        const clipboardItems = await tab.clipboard.read();
-        const imageEntry = clipboardItems
-          .flatMap((item) => item.entries || [])
-          .find((entry) => entry.mimeType === "image/png" && entry.base64);
-        if (imageEntry) return Buffer.from(imageEntry.base64, "base64");
-      }
-      throw new Error("Gemini Copy image did not produce a PNG clipboard payload.");
-    });
+    // Attempt 1: Native Copy Image via clipboard
+    try {
+      const buffer = await withClipboardLock(async () => {
+        await tab.clipboard.writeText(`gemini-export-${workerName}-${Date.now()}`);
+        const copyBtn = tab.playwright.getByRole("button", { name: "Copy image" });
+        if ((await copyBtn.count().catch(() => 0)) > 0) {
+          await copyBtn.last().click({ timeoutMs: 5_000 });
+          for (let index = 0; index < 12; index += 1) {
+            await tab.playwright.waitForTimeout(300);
+            const clipboardItems = await tab.clipboard.read();
+            const imageEntry = clipboardItems
+              .flatMap((item) => item.entries || [])
+              .find((entry) => entry.mimeType === "image/png" && entry.base64);
+            if (imageEntry) return Buffer.from(imageEntry.base64, "base64");
+          }
+        }
+        return null;
+      });
+      if (buffer) return buffer;
+    } catch {}
+
+    // Attempt 2: High-resolution direct image / canvas extraction
+    const dataUrl = await tab.playwright
+      .evaluate(async () => {
+        const imgs = Array.from(
+          document.querySelectorAll(
+            'model-response img, message-content img, generated-image img, img[src*="googleusercontent"], img[src*="blob:"]'
+          )
+        );
+        const valid = imgs.filter(
+          (img) =>
+            (img.naturalWidth > 200 || img.width > 200) &&
+            (img.naturalHeight > 200 || img.height > 200) &&
+            !img.src.includes("avatar") &&
+            !img.src.includes("profile")
+        );
+        if (valid.length === 0) return null;
+        const target = valid[valid.length - 1];
+
+        let src = target.src || "";
+        if (src.includes("googleusercontent.com") && src.includes("=s")) {
+          src = src.replace(/=s\d+/, "=s2048");
+        }
+        try {
+          const resp = await fetch(src);
+          const blob = await resp.blob();
+          return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.readAsDataURL(blob);
+          });
+        } catch {
+          const canvas = document.createElement("canvas");
+          canvas.width = target.naturalWidth || target.width || 1920;
+          canvas.height = target.naturalHeight || target.height || 1080;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(target, 0, 0, canvas.width, canvas.height);
+          return canvas.toDataURL("image/png");
+        }
+      })
+      .catch(() => null);
+
+    if (dataUrl && dataUrl.startsWith("data:image/")) {
+      return Buffer.from(dataUrl.split(",")[1], "base64");
+    }
+
+    throw new Error("Could not extract generated Gemini image buffer via clipboard or DOM canvas.");
   }
 
   async function generateCellAsset(tab, slide, cell, workerName, slideHashes) {
@@ -435,12 +486,18 @@ export function createGeminiBrowserQueueRunner({
         .getByRole("button", { name: "Copy prompt" })
         .count()
         .catch(() => 0);
-      await promptBox.fill(prompt, { timeoutMs: 15_000 });
+      await promptBox.click().catch(() => {});
+      await tab.playwright.keyboard.insertText(prompt);
+      await tab.playwright.waitForTimeout(400);
+
       const sendButton = tab.playwright.getByRole("button", {
         name: "Send message"
       });
-      await sendButton.waitFor({ state: "visible", timeoutMs: 20_000 });
-      await sendButton.click({ timeoutMs: 15_000 });
+      if (await sendButton.isVisible().catch(() => false)) {
+        await sendButton.click({ timeoutMs: 10_000 }).catch(() => {});
+      } else {
+        await tab.playwright.keyboard.press("Enter").catch(() => {});
+      }
 
       // Gemini occasionally accepts the click at the browser layer before its
       // composer is ready, leaving the entire prompt visibly unsent. Confirm
@@ -665,12 +722,18 @@ export function createGeminiBrowserQueueRunner({
         const promptBox = tab.playwright.getByRole("textbox", {
           name: "Enter a prompt for Gemini"
         });
-        await promptBox.fill(slideItem.prompt, { timeoutMs: 15_000 });
+        await promptBox.click().catch(() => {});
+        await tab.playwright.keyboard.insertText(slideItem.prompt);
+        await tab.playwright.waitForTimeout(400);
+
         const sendButton = tab.playwright.getByRole("button", {
           name: "Send message"
         });
-        await sendButton.waitFor({ state: "visible", timeoutMs: 20_000 });
-        await sendButton.click({ timeoutMs: 15_000 });
+        if (await sendButton.isVisible().catch(() => false)) {
+          await sendButton.click({ timeoutMs: 10_000 }).catch(() => {});
+        } else {
+          await tab.playwright.keyboard.press("Enter").catch(() => {});
+        }
 
         const responseText = await waitForResponseText(tab);
         const normalized = normalizeGeminiSlideAnalysis(responseText, {

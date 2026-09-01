@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T16:05:29.561Z",
+  "sourceHash": "236328160490021f2ce80bbb7a30c62ae184f84544d94202744ae9c45460649a",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Misconception Buster: Breathing ≠ Respiration",
+    "description": "A two-column comparison slide contrasting Ventilation (Breathing) with Cellular Respiration across process type, location, and purpose, with supporting icon illustrations for lungs and mitochondrion.",
+    "layout": "The title is centred at the top. The body is split into two equal columns divided by a dashed vertical line: the left column covers 'Ventilation (Breathing)' with a blue lung graphic and a three-row comparative table/list, and the right column covers 'Cellular Respiration' with a glowing green mitochondrion graphic and corresponding rows.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Misconception Buster: Breathing ≠ Respiration",
+        "dependencies": []
+      },
+      {
+        "id": "ventilation_column",
+        "role": "comparison_item",
+        "position": "centre-left",
+        "visibleText": "Ventilation (Breathing)\nType of process: Physical mechanical mechanism.\nLocation: Only in the lungs (specialised organs).\nPurpose: Gas exchange (moving oxygen into the blood and carbon dioxide out).",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "cellular_respiration_column",
+        "role": "comparison_item",
+        "position": "centre-right",
+        "visibleText": "Cellular Respiration\nType of process: Universal chemical process.\nLocation: Inside all living cells (specifically the mitochondria).\nPurpose: Releasing trapped chemical energy (ATP) to power the cell.",
+        "dependencies": [
+          "slide_title",
+          "ventilation_column"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "comparison",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Show title and ventilation column",
+        "componentIds": [
+          "slide_title",
+          "ventilation_column"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Reveal cellular respiration comparison column",
+        "componentIds": [
+          "slide_title",
+          "ventilation_column",
+          "cellular_respiration_column"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}
