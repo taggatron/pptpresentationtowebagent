@@ -1,6 +1,8 @@
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { chromium } from "playwright";
 import {
   buildGeminiSlideAnalysisPrompt,
   normalizeGeminiSlideAnalysis
@@ -753,4 +755,145 @@ export function createGeminiBrowserQueueRunner({
     progressPath,
     flushProgress
   };
+}
+
+export function wrapPlaywrightPage(page) {
+  return {
+    url: () => page.url(),
+    goto: (url, opts) => page.goto(url, opts),
+    reload: (opts) => page.reload(opts),
+    playwright: page,
+    clipboard: {
+      writeText: async (text) => {
+        await page.evaluate((t) => navigator.clipboard.writeText(t), text).catch(() => {});
+      },
+      read: async () => {
+        return await page
+          .evaluate(async () => {
+            try {
+              const items = await navigator.clipboard.read();
+              const results = [];
+              for (const item of items) {
+                const entries = [];
+                for (const type of item.types) {
+                  if (type === "image/png") {
+                    const blob = await item.getType(type);
+                    const reader = new FileReader();
+                    const base64 = await new Promise((resolve) => {
+                      reader.onloadend = () => resolve(reader.result.split(",")[1]);
+                      reader.readAsDataURL(blob);
+                    });
+                    entries.push({ mimeType: type, base64 });
+                  }
+                }
+                results.push({ entries });
+              }
+              return results;
+            } catch {
+              return [];
+            }
+          })
+          .catch(() => []);
+      }
+    }
+  };
+}
+
+export async function runParallelBrowserQueue({
+  repoRoot = process.cwd(),
+  cdpEndpoint = "http://127.0.0.1:9333",
+  concurrency = 4,
+  mode = "all"
+} = {}) {
+  const decksRoot = path.join(repoRoot, "public", "decks");
+  const deckDirs = (await fs.readdir(decksRoot)).filter((entry) => !entry.startsWith(".")).sort();
+
+  // Partition decks across the concurrency workers
+  const deckGroups = Array.from({ length: concurrency }, () => []);
+  deckDirs.forEach((deckDir, index) => {
+    deckGroups[index % concurrency].push(deckDir);
+  });
+
+  const analysisQueues = await buildAnalysisQueues(repoRoot, deckGroups);
+  const missingQueues = await buildMissingQueues(repoRoot, deckGroups);
+
+  const totalPlanned =
+    mode === "analysis"
+      ? analysisQueues.reduce((sum, q) => sum + q.length, 0)
+      : mode === "generation"
+      ? missingQueues.reduce((sum, q) => sum + q.reduce((c, s) => c + s.cells.length, 0), 0)
+      : analysisQueues.reduce((sum, q) => sum + q.length, 0) +
+        missingQueues.reduce((sum, q) => sum + q.reduce((c, s) => c + s.cells.length, 0), 0);
+
+  console.log(`[Queue Runner] Initializing parallel queue runner with ${concurrency} workers.`);
+  console.log(`[Queue Runner] Mode: ${mode}, Total items planned: ${totalPlanned}`);
+
+  const runner = createGeminiBrowserQueueRunner({
+    repoRoot,
+    totalPlanned
+  });
+
+  let browser;
+  try {
+    browser = await chromium.connectOverCDP(cdpEndpoint);
+  } catch (error) {
+    console.warn(`[Queue Runner] Could not connect to CDP endpoint ${cdpEndpoint}: ${error.message}`);
+    return {
+      success: false,
+      error: `Could not connect to Chrome CDP on ${cdpEndpoint}. Ensure Chrome is running with --remote-debugging-port=9333.`,
+      runner
+    };
+  }
+
+  const context = browser.contexts()[0];
+  if (!context) {
+    throw new Error("No browser context found on CDP connection.");
+  }
+
+  const workers = [];
+  for (let i = 0; i < concurrency; i += 1) {
+    const workerName = `worker_${i + 1}`;
+    const page = await context.newPage();
+    const tab = wrapPlaywrightPage(page);
+
+    workers.push(async () => {
+      try {
+        if (mode === "analysis" || mode === "all") {
+          const queue = analysisQueues[i] || [];
+          if (queue.length > 0) {
+            console.log(`[${workerName}] Starting analysis queue with ${queue.length} slides.`);
+            await runner.processAnalysisQueue(tab, queue, `${workerName}_analysis`);
+          }
+        }
+
+        if (mode === "generation" || mode === "all") {
+          const queue = missingQueues[i] || [];
+          if (queue.length > 0) {
+            console.log(`[${workerName}] Starting image generation queue with ${queue.length} slides.`);
+            await runner.processQueue(tab, queue, `${workerName}_generation`);
+          }
+        }
+      } finally {
+        await page.close().catch(() => {});
+      }
+    });
+  }
+
+  await Promise.all(workers.map((fn) => fn()));
+  await browser.disconnect().catch(() => {});
+
+  console.log(`[Queue Runner] Parallel queue completed. Saved: ${runner.progress.saved}, Failed: ${runner.progress.failed}`);
+  return {
+    success: true,
+    progress: runner.progress
+  };
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const mode = process.argv[2] || "all";
+  const concurrency = Number(process.argv[3]) || 4;
+  runParallelBrowserQueue({ mode, concurrency }).catch((error) => {
+    console.error("[Queue Runner] Error:", error);
+    process.exitCode = 1;
+  });
 }
