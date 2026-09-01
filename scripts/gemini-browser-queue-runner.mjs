@@ -625,23 +625,27 @@ export function createGeminiBrowserQueueRunner({
         (await stopButton.count().catch(() => 0)) > 0 ||
         (await spinner.count().catch(() => 0)) > 0;
 
-      if (!isGenerating) {
-        const responseLocators = [
-          tab.playwright.locator("model-response"),
-          tab.playwright.locator("message-content"),
-          tab.playwright.locator(".response-container"),
-          tab.playwright.locator(".model-response-text")
-        ];
-        for (const loc of responseLocators) {
-          const count = await loc.count().catch(() => 0);
-          if (count > 0) {
-            const text = await loc.last().innerText().catch(() => "");
-            if (text && text.trim().length > 20) {
-              return text.trim();
-            }
+      // Extract all message content candidates
+      const texts = await tab.playwright
+        .evaluate(() => {
+          const elements = Array.from(
+            document.querySelectorAll("message-content .markdown, message-content, model-response, .markdown")
+          );
+          return elements
+            .map((el) => (el.innerText || "").trim())
+            .filter((t) => t.length > 20);
+        })
+        .catch(() => []);
+
+      for (let i = texts.length - 1; i >= 0; i -= 1) {
+        const candidate = texts[i];
+        if (candidate.includes("schemaVersion") || (candidate.includes("{") && candidate.includes("}"))) {
+          if (!isGenerating) {
+            return candidate;
           }
         }
       }
+
       await tab.playwright.waitForTimeout(1_500);
     }
     throw new Error("Timed out waiting for Gemini text response.");

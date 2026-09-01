@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Progress Dashboard | Presentation Web Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #0b0f19;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(28, 36, 56, 0.95);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(99, 102, 241, 0.3);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent-primary: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      --status-green: #10b981;
+      --status-green-bg: rgba(16, 185, 129, 0.15);
+      --status-amber: #f59e0b;
+      --status-amber-bg: rgba(245, 158, 11, 0.15);
+      --status-blue: #3b82f6;
+      --status-blue-bg: rgba(59, 130, 246, 0.15);
+      --status-purple: #8b5cf6;
+      --status-purple-bg: rgba(139, 92, 246, 0.15);
+      --status-red: #ef4444;
+      --status-red-bg: rgba(239, 68, 68, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .logo-group h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a5b4fc, #6366f1, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-group p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #fff;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: #4f46e5;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-primary);
+      opacity: 0.8;
+    }
+
+    .metric-card.success::before { background: var(--status-green); }
+    .metric-card.warning::before { background: var(--status-amber); }
+    .metric-card.info::before { background: var(--status-blue); }
+    .metric-card.purple::before { background: var(--status-purple); }
+
+    .metric-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .metric-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0.4rem 0 0.2rem;
+      color: #fff;
+    }
+
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .deck-nav {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .deck-tab {
+      padding: 0.6rem 1.1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .deck-tab:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .deck-tab.active {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--accent-primary);
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .slides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .slide-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .slide-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-highlight);
+    }
+
+    .slide-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .slide-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-badges {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-green { background: var(--status-green-bg); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-amber { background: var(--status-amber-bg); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-blue { background: var(--status-blue-bg); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-purple { background: var(--status-purple-bg); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .badge-gray { background: rgba(255, 255, 255, 0.1); color: #d1d5db; border: 1px solid rgba(255, 255, 255, 0.15); }
+
+    .slide-content {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .slide-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #818cf8;
+    }
+
+    .slide-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      line-height: 1.35;
+    }
+
+    .cells-list {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .cell-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.45rem 0.65rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .cell-name {
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+    }
+
+    .pulse {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+      animation: pulse 1.8s infinite;
+      margin-right: 6px;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-group">
+        <h1>Autonomous Gemini Queue Dashboard</h1>
+        <p>Real-Time Slide Vision Analysis, Cumulative Generation & QA Approval Monitor</p>
+      </div>
+      <div class="header-actions">
+        <span id="pollIndicator" style="font-size:0.85rem; color:var(--text-muted); display:flex; align-items:center;">
+          <span class="pulse"></span> Live Auto-Polling
+        </span>
+        <button id="refreshBtn" class="btn btn-secondary">Refresh</button>
+        <a href="/index.html" class="btn btn-primary">Open Presentation Player</a>
+      </div>
+    </header>
+
+    <div class="metrics-grid" id="metricsGrid">
+      <div class="metric-card">
+        <div class="metric-title">Total Presentation Decks</div>
+        <div class="metric-value" id="statDecks">-</div>
+        <div class="metric-sub" id="statSlidesSub">- total slides</div>
+      </div>
+      <div class="metric-card info">
+        <div class="metric-title">Vision Analysis Completed</div>
+        <div class="metric-value" id="statAnalyzed">-</div>
+        <div class="metric-sub" id="statAnalyzedSub">structured JSON sidecars</div>
+      </div>
+      <div class="metric-card warning">
+        <div class="metric-title">Planned Image Cells</div>
+        <div class="metric-value" id="statPlanned">-</div>
+        <div class="metric-sub" id="statPendingSub">- pending generation</div>
+      </div>
+      <div class="metric-card success">
+        <div class="metric-title">Approved & Live</div>
+        <div class="metric-value" id="statApproved">-</div>
+        <div class="metric-sub" id="statApprovedSub">passed QA gate</div>
+      </div>
+      <div class="metric-card purple">
+        <div class="metric-title">Protected Slides</div>
+        <div class="metric-value" id="statProtected">-</div>
+        <div class="metric-sub">videos & 6-box starter grids</div>
+      </div>
+    </div>
+
+    <nav class="deck-nav" id="deckNav"></nav>
+
+    <div class="slides-grid" id="slidesGrid"></div>
+  </div>
+
+  <script>
+    let currentData = null;
+    let selectedDeckId = null;
+
+    async function fetchStatus() {
+      try {
+        const res = await fetch("/api/agent/status");
+        if (!res.ok) throw new Error("Network error");
+        currentData = await res.json();
+        renderDashboard();
+      } catch (err) {
+        console.error("Failed to load status:", err);
+      }
+    }
+
+    function renderDashboard() {
+      if (!currentData || !currentData.stats) return;
+      const { stats, decks } = currentData;
+
+      document.getElementById("statDecks").textContent = stats.totalDecks;
+      document.getElementById("statSlidesSub").textContent = `${stats.totalSlides} total slides across decks`;
+      document.getElementById("statAnalyzed").textContent = stats.totalAnalyzed;
+      document.getElementById("statAnalyzedSub").textContent = `${Math.round((stats.totalAnalyzed / stats.totalSlides) * 100)}% of presentation catalog`;
+      document.getElementById("statPlanned").textContent = stats.totalPlannedCells;
+      document.getElementById("statPendingSub").textContent = `${stats.pendingCells} cells awaiting Gemini render`;
+      document.getElementById("statApproved").textContent = stats.totalApprovedCells;
+      document.getElementById("statApprovedSub").textContent = `${stats.totalApprovedSlides} slides fully playable`;
+      document.getElementById("statProtected").textContent = stats.totalVideoSlides + stats.totalStarterSlides;
+
+      if (!selectedDeckId && decks.length > 0) {
+        selectedDeckId = decks[0].id;
+      }
+
+      renderDeckNav(decks);
+      renderSlides(decks.find(d => d.id === selectedDeckId) || decks[0]);
+    }
+
+    function renderDeckNav(decks) {
+      const nav = document.getElementById("deckNav");
+      nav.innerHTML = "";
+      decks.forEach(deck => {
+        const btn = document.createElement("button");
+        btn.className = `deck-tab ${deck.id === selectedDeckId ? "active" : ""}`;
+        btn.textContent = `${deck.id.replace(/_/g, " ")} (${deck.approvedSlidesCount}/${deck.slideCount})`;
+        btn.onclick = () => {
+          selectedDeckId = deck.id;
+          renderDashboard();
+        };
+        nav.appendChild(btn);
+      });
+    }
+
+    function renderSlides(deck) {
+      const grid = document.getElementById("slidesGrid");
+      grid.innerHTML = "";
+      if (!deck || !deck.slides) return;
+
+      deck.slides.forEach(slide => {
+        const card = document.createElement("div");
+        card.className = "slide-card";
+
+        const badgeHtml = slide.isVideo
+          ? '<span class="badge badge-purple">Protected Video</span>'
+          : slide.isStarter
+          ? '<span class="badge badge-purple">Starter QA Grid</span>'
+          : slide.isQuestion
+          ? '<span class="badge badge-blue">Question Overlays</span>'
+          : slide.isFullyApproved
+          ? '<span class="badge badge-green">Approved Playable</span>'
+          : slide.isAnalyzed
+          ? '<span class="badge badge-amber">Analyzed / In Queue</span>'
+          : '<span class="badge badge-gray">Queued</span>';
+
+        const cellsHtml = slide.cells.map(c => `
+          <div class="cell-row">
+            <span class="cell-name">${c.label || c.id}</span>
+            <span class="badge ${c.qaStatus === 'approved' ? 'badge-green' : c.qaStatus === 'pending' ? 'badge-amber' : 'badge-gray'}">
+              ${c.qaStatus}
+            </span>
+          </div>
+        `).join("");
+
+        card.innerHTML = `
+          <div class="slide-thumb">
+            <img src="${slide.imageUrl}" alt="Slide ${slide.number}" loading="lazy" />
+            <div class="slide-badges">${badgeHtml}</div>
+          </div>
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-num">Slide ${slide.number}</span>
+            </div>
+            <div class="slide-title">${slide.title}</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">
+              Strategy: <strong>${slide.strategy}</strong>
+            </div>
+            ${slide.cells.length > 0 ? `<div class="cells-list">${cellsHtml}</div>` : ''}
+            <div style="margin-top:1rem; display:flex; gap:0.5rem;">
+              <a href="/index.html?deck=${deck.id}&slide=${slide.number}" target="_blank" class="btn btn-secondary" style="font-size:0.75rem; padding:0.4rem 0.8rem; width:100%; justify-content:center;">
+                Preview in Player ↗
+              </a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    document.getElementById("refreshBtn").onclick = fetchStatus;
+    fetchStatus();
+    setInterval(fetchStatus, 2500);
+  </script>
+</body>
+</html>

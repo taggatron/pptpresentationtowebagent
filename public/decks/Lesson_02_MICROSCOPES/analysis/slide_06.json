@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T11:03:29.520Z",
+  "sourceHash": "6f358f54a3a3c7418b60732f11da42a349bfdbd2a251da85e3d58c1a7ed8678f",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Safe and accurate focusing technique",
+    "description": "A vertical 3-step process slide explaining microscope focusing safety and accuracy, featuring three stacked rectangular panels for Set-up, Safety Check, and Focusing, each with an illustrative line drawing on the left and instructions on the right.",
+    "layout": "The title sits at the top-left over a light grid background. Below it are three vertically stacked rectangular cards representing sequential steps: Set-up (top), Safety Check (middle, framed with a highlighted warning box), and Focusing (bottom). Each card pairs a left-side diagram with right-side explanatory text.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Safe and accurate focusing technique",
+        "dependencies": []
+      },
+      {
+        "id": "setup_card",
+        "role": "process_step",
+        "position": "top-centre",
+        "visibleText": "Set-up\nStart with the lowest power objective lens and turn the coarse focus dial to move the stage as close to the lens as possible.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "safety_check_card",
+        "role": "process_step",
+        "position": "centre",
+        "visibleText": "Safety Check\nAlways look from the side of the microscope when moving the stage upwards.\nNever move the stage upwards while looking through the eyepiece—the lens can crush the slide and damage the equipment.",
+        "dependencies": [
+          "setup_card"
+        ]
+      },
+      {
+        "id": "focusing_card",
+        "role": "process_step",
+        "position": "bottom-centre",
+        "visibleText": "Focusing\nLook through the eyepiece and turn the coarse focus dial to move the stage downwards until the image appears. Then, use the fine focus dial to sharpen the resolution.",
+        "dependencies": [
+          "safety_check_card"
+        ]
+      },
+      {
+        "id": "notebooklm_logo",
+        "role": "attribution",
+        "position": "bottom-right",
+        "visibleText": "NotebookLM",
+        "dependencies": []
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "process",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Set-up & Safety Check",
+        "componentIds": [
+          "slide_title",
+          "notebooklm_logo",
+          "setup_card",
+          "safety_check_card"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Focusing Technique",
+        "componentIds": [
+          "slide_title",
+          "notebooklm_logo",
+          "setup_card",
+          "safety_check_card",
+          "focusing_card"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

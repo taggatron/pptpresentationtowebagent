@@ -842,6 +842,117 @@ export function createApp({
     }
   });
 
+  app.get("/api/agent/status", async (req, res) => {
+    try {
+      const deckDirs = (await fs.readdir(decksDir)).filter((d) => !d.startsWith(".")).sort();
+      let totalSlides = 0;
+      let totalAnalyzed = 0;
+      let totalPlannedCells = 0;
+      let totalApprovedCells = 0;
+      let totalApprovedSlides = 0;
+      let totalVideoSlides = 0;
+      let totalStarterSlides = 0;
+      let totalQuestionSlides = 0;
+      const decksSummary = [];
+
+      for (const deckId of deckDirs) {
+        const manifestPath = path.join(decksDir, deckId, "manifest.json");
+        const analysisDir = path.join(decksDir, deckId, "analysis");
+        let manifest = null;
+        try {
+          manifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
+        } catch {
+          continue;
+        }
+
+        let analyzedSlideNums = new Set();
+        try {
+          const sidecarFiles = await fs.readdir(analysisDir);
+          for (const file of sidecarFiles) {
+            const m = file.match(/^slide_(\d+)\.json$/);
+            if (m) analyzedSlideNums.add(Number(m[1]));
+          }
+        } catch {}
+
+        const slides = [];
+        for (const slide of manifest.slides || []) {
+          totalSlides += 1;
+          const isVideo = hasProtectedVideoMedia(slide);
+          const isStarter = isSixBoxStarterQuestionSlide(slide);
+          const isQuestion = Boolean(slide.interactiveCells && slide.interactiveCells.length > 0 && !isStarter);
+          if (isVideo) totalVideoSlides += 1;
+          if (isStarter) totalStarterSlides += 1;
+          if (isQuestion) totalQuestionSlides += 1;
+
+          const isAnalyzed = analyzedSlideNums.has(slide.number) || Boolean(slide.agentAnalysis?.slideDecomposition);
+          if (isAnalyzed) totalAnalyzed += 1;
+
+          const cells = Array.isArray(slide.geminiImageCells) ? slide.geminiImageCells : [];
+          totalPlannedCells += cells.length;
+          const approvedCellsCount = cells.filter((c) => c.qaStatus === "approved").length;
+          totalApprovedCells += approvedCellsCount;
+
+          const isFullyApproved = Boolean(slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds) && slide.progressiveBuilds.length > 0);
+          if (isFullyApproved) totalApprovedSlides += 1;
+
+          slides.push({
+            number: slide.number,
+            title: slide.title || slide.gridTitle || `Slide ${slide.number}`,
+            imageUrl: slide.imageUrl,
+            isVideo,
+            isStarter,
+            isQuestion,
+            isAnalyzed,
+            isFullyApproved,
+            strategy: slide.animationPlan?.strategy || (isVideo ? "protected-video" : isStarter ? "starter-qa-grid" : "none"),
+            cells: cells.map((c) => ({
+              id: c.id,
+              order: c.order,
+              label: c.label,
+              qaStatus: c.qaStatus || "not-started",
+              outputImageUrl: c.outputImageUrl || null
+            })),
+            progressiveBuilds: Array.isArray(slide.progressiveBuilds) ? slide.progressiveBuilds : []
+          });
+        }
+
+        decksSummary.push({
+          id: manifest.id,
+          title: manifest.title,
+          slideCount: manifest.slides?.length || 0,
+          analyzedCount: slides.filter((s) => s.isAnalyzed).length,
+          approvedSlidesCount: slides.filter((s) => s.isFullyApproved).length,
+          slides
+        });
+      }
+
+      let runnerProgress = null;
+      try {
+        runnerProgress = JSON.parse(await fs.readFile("/private/tmp/pptpresentationtowebagent-gemini-progress.json", "utf8"));
+      } catch {}
+
+      res.json({
+        success: true,
+        stats: {
+          totalDecks: decksSummary.length,
+          totalSlides,
+          totalAnalyzed,
+          totalPlannedCells,
+          totalApprovedCells,
+          totalApprovedSlides,
+          totalVideoSlides,
+          totalStarterSlides,
+          totalQuestionSlides,
+          pendingCells: totalPlannedCells - totalApprovedCells
+        },
+        decks: decksSummary,
+        runnerProgress
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   return app;
 }
 

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T11:03:29.507Z",
+  "sourceHash": "fd749d937358b98e51174cef8d8d5ea974e555c2c7565f2cc562c9f499becc48",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Identify the microscope components",
+    "description": "A light microscope illustration positioned centrally on a light grid background, surrounded by seven numbered white callout boxes (1 to 4 on the left, 5 to 7 on the right) with pointer lines indicating specific parts of the microscope.",
+    "layout": "Centered title at the top, a central 3D illustration of a compound microscope, with four numbered boxes stacked vertically on the left pointing to various parts and three numbered boxes stacked vertically on the right pointing to adjustment and base mechanisms.",
+    "components": [
+      {
+        "id": "title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Identify the microscope components",
+        "dependencies": []
+      },
+      {
+        "id": "microscope_diagram",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "",
+        "dependencies": [
+          "title"
+        ]
+      },
+      {
+        "id": "item_1",
+        "role": "question",
+        "position": "top-left",
+        "visibleText": "1",
+        "dependencies": [
+          "microscope_diagram"
+        ]
+      },
+      {
+        "id": "item_2",
+        "role": "question",
+        "position": "mid-left",
+        "visibleText": "2",
+        "dependencies": [
+          "microscope_diagram"
+        ]
+      },
+      {
+        "id": "item_3",
+        "role": "question",
+        "position": "lower-mid-left",
+        "visibleText": "3",
+        "dependencies": [
+          "microscope_diagram"
+        ]
+      },
+      {
+        "id": "item_4",
+        "role": "question",
+        "position": "bottom-left",
+        "visibleText": "4",
+        "dependencies": [
+          "microscope_diagram"
+        ]
+      },
+      {
+        "id": "item_5",
+        "role": "question",
+        "position": "mid-right",
+        "visibleText": "5",
+        "dependencies": [
+          "microscope_diagram"
+        ]
+      },
+      {
+        "id": "item_6",
+        "role": "question",
+        "position": "lower-mid-right",
+        "visibleText": "6",
+        "dependencies": [
+          "microscope_diagram"
+        ]
+      },
+      {
+        "id": "item_7",
+        "role": "question",
+        "position": "bottom-right",
+        "visibleText": "7",
+        "dependencies": [
+          "microscope_diagram"
+        ]
+      }
+    ],
+    "isQuestionSlide": true,
+    "recommendedStrategy": "question-base-overlay",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Microscope identification prompt",
+        "componentIds": [
+          "title",
+          "microscope_diagram",
+          "item_1",
+          "item_2",
+          "item_3",
+          "item_4",
+          "item_5",
+          "item_6",
+          "item_7"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}
