@@ -744,6 +744,21 @@ export function createGeminiBrowserQueueRunner({
         }
       }
 
+      // Check for Gemini error toast / snackbar
+      const hasErrorToast = await tab.playwright
+        .evaluate(() => {
+          const body = (document.body.innerText || "").toLowerCase();
+          return (
+            body.includes("check your internet connection and try again") ||
+            body.includes("something went wrong")
+          );
+        })
+        .catch(() => false);
+
+      if (hasErrorToast) {
+        throw new Error("Gemini returned 'Check your internet connection and try again' error toast.");
+      }
+
       await tab.playwright.waitForTimeout(1_500);
     }
     throw new Error("Timed out waiting for Gemini text response.");
