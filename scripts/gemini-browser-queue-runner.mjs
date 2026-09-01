@@ -880,7 +880,7 @@ export async function runParallelBrowserQueue({
   }
 
   await Promise.all(workers.map((fn) => fn()));
-  await browser.disconnect().catch(() => {});
+  await browser.close().catch(() => {});
 
   console.log(`[Queue Runner] Parallel queue completed. Saved: ${runner.progress.saved}, Failed: ${runner.progress.failed}`);
   return {
