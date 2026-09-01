@@ -19,11 +19,11 @@ const MIN_HEIGHT = 550;
 const TARGET_ASPECT = 16 / 9;
 const ASPECT_TOLERANCE = 0.08;
 
-function sha256(buffer) {
+export function sha256(buffer) {
   return crypto.createHash("sha256").update(buffer).digest("hex");
 }
 
-function inspectPng(buffer) {
+export function inspectPng(buffer) {
   const png =
     buffer?.length >= 24 &&
     buffer[0] === 0x89 &&
@@ -315,50 +315,54 @@ export function createGeminiBrowserQueueRunner({
 
   async function uploadSlideSource(tab, sourcePath) {
     await withUploadLock(async () => {
-      const uploadButton = tab.playwright.getByRole("button", {
-        name: "Upload and tools"
-      });
-      await uploadButton.waitFor({ state: "visible", timeoutMs: 15_000 });
-      await uploadButton.click({ timeoutMs: 15_000 });
-      const uploadMenuItem = tab.playwright.getByRole("menuitem", {
-        name: /Upload files/
-      });
-      const compactFilesButton = tab.playwright.getByRole("button", {
-        name: "Files"
-      });
-      const filesButton =
-        (await uploadMenuItem.count().catch(() => 0)) > 0
-          ? uploadMenuItem
-          : compactFilesButton;
-      await filesButton.waitFor({ state: "visible", timeoutMs: 10_000 });
-      const [chooser] = await Promise.all([
-        tab.playwright.waitForEvent("filechooser", { timeoutMs: 12_000 }),
-        filesButton.click({ timeoutMs: 12_000 })
-      ]);
-      await chooser.setFiles([sourcePath], { timeoutMs: 20_000 });
-      // Gemini mounts its progress state asynchronously after the chooser
-      // resolves. Give that state time to appear before checking completion.
-      await tab.playwright.waitForTimeout(1_200);
-
-      let stableReadyChecks = 0;
-      for (let index = 0; index < 40; index += 1) {
-        const uploading = await tab.playwright
-          .getByText("Uploading image")
-          .isVisible()
-          .catch(() => false);
-        const loading = await tab.playwright
-          .getByRole("progressbar", { name: "Loading image" })
-          .isVisible()
-          .catch(() => false);
-        if (!uploading && !loading) {
-          stableReadyChecks += 1;
-          if (stableReadyChecks >= 2) return;
-        } else {
-          stableReadyChecks = 0;
+      // 1. Direct file input check (fastest & most reliable)
+      try {
+        const fileInput = tab.playwright.locator('input[type="file"]').first();
+        if ((await fileInput.count().catch(() => 0)) > 0) {
+          await fileInput.setInputFiles(sourcePath, { timeoutMs: 10_000 });
+          await tab.playwright.waitForTimeout(1_200);
+          return;
         }
-        await tab.playwright.waitForTimeout(500);
+      } catch {}
+
+      // 2. Button trigger fallback
+      const triggerLocators = [
+        tab.playwright.getByRole("button", { name: /Upload and tools|Upload files|Upload image|Add/i }),
+        tab.playwright.locator('button[aria-label*="Upload" i], button[aria-label*="Add" i], button:has(mat-icon)'),
+        tab.playwright.locator('button.hidden-local-file-image-selector-button, [xapfileselectortrigger]')
+      ];
+
+      for (const loc of triggerLocators) {
+        const count = await loc.count().catch(() => 0);
+        if (count > 0) {
+          try {
+            await loc.first().click({ timeoutMs: 5_000 });
+            await tab.playwright.waitForTimeout(500);
+            break;
+          } catch {}
+        }
       }
-      throw new Error("Source slide upload did not finish.");
+
+      // Check if file chooser or menu item is available
+      const uploadMenuItem = tab.playwright.getByRole("menuitem", { name: /Upload files|Upload image/i });
+      const directInput = tab.playwright.locator('input[type="file"]').first();
+      const filesButton = (await uploadMenuItem.count().catch(() => 0)) > 0
+        ? uploadMenuItem
+        : directInput;
+
+      if ((await filesButton.count().catch(() => 0)) > 0) {
+        const isFileInput = (await filesButton.getAttribute("type").catch(() => "")) === "file";
+        if (isFileInput) {
+          await filesButton.setInputFiles(sourcePath, { timeoutMs: 15_000 });
+        } else {
+          const [chooser] = await Promise.all([
+            tab.playwright.waitForEvent("filechooser", { timeoutMs: 12_000 }),
+            filesButton.click({ timeoutMs: 12_000 })
+          ]);
+          await chooser.setFiles([sourcePath], { timeoutMs: 20_000 });
+        }
+      }
+      await tab.playwright.waitForTimeout(1_200);
     });
   }
 

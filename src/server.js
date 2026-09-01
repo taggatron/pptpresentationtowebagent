@@ -13,6 +13,7 @@ import {
 import { triggerNotebookLMRevision } from "./notebooklm-revisor.js";
 import {
   hasProtectedVideoMedia,
+  isSixBoxStarterQuestionSlide,
   isVideoMedia,
   normalizeMediaBuilds,
   removeGeneratedImageBuildsPreservingVideo,
