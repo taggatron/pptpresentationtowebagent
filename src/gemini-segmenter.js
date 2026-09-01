@@ -153,6 +153,7 @@ export async function generateSlideInteractivity(
 
     const slideDecomposition = await loadGeminiSlideAnalysis(targetDir, slide);
     if (slideDecomposition) {
+      slide.title = slide.title || slideDecomposition.analysis?.title || slideDecomposition.title || slide.title;
       slide.agentAnalysis = {
         ...(slide.agentAnalysis || {}),
         slideDecomposition,
