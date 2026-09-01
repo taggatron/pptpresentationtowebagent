@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import {
   SLIDE_ANALYSIS_SCHEMA_VERSION,
   buildGeminiSlideAnalysisPrompt,
-  normalizeGeminiSlideAnalysis
+  normalizeGeminiSlideAnalysis,
+  processSerialBuildSteps
 } from "../src/gemini-editor.js";
 
 function component(id, role, dependencies = [], overrides = {}) {
@@ -112,7 +113,7 @@ test("normalizer rejects unknown, non-cumulative, and incomplete build reference
   nonCumulative.recommendedBuilds[1].componentIds = ["Title Block", "Second Panel"];
   assert.throws(
     () => normalizeGeminiSlideAnalysis(nonCumulative),
-    /not cumulative.*First Panel/i
+    /not cumulative.*(?:first_panel|First Panel)/i
   );
 
   const incomplete = validAnalysis();
@@ -194,5 +195,49 @@ test("normalizer does not permit reviewed question slides to be downgraded", () 
       }),
     /must be marked as a question slide/i
   );
+});
+
+test("normalizer rejects invalid JSON, self-dependencies, and missing required properties", () => {
+  assert.throws(
+    () => normalizeGeminiSlideAnalysis("not valid json"),
+    /not valid JSON|must be a JSON object/i
+  );
+
+  assert.throws(
+    () => normalizeGeminiSlideAnalysis(JSON.stringify(["array instead of object"])),
+    /JSON must contain one object/i
+  );
+
+  const missingTitle = validAnalysis({ title: "" });
+  assert.throws(
+    () => normalizeGeminiSlideAnalysis(missingTitle),
+    /Slide analysis title is required/i
+  );
+
+  const selfDep = validAnalysis();
+  selfDep.components[0].dependencies = ["Title Block"];
+  assert.throws(
+    () => normalizeGeminiSlideAnalysis(selfDep),
+    /cannot depend on itself/i
+  );
+});
+
+test("processSerialBuildSteps delegates to the real slide animation planner instead of hardcoded stubs", async () => {
+  const slide = {
+    number: 4,
+    title: "The Myth of the Normal Cell",
+    text: "The Myth: cells are flat 2D circles.\nThe Reality: cells are complex 3D structures.\nKey Insight: 3D geometry affects organelle positioning.",
+    contentAnalysis: {
+      transcript: "The Myth: cells are flat 2D circles.\nThe Reality: cells are complex 3D structures.\nKey Insight: 3D geometry affects organelle positioning.",
+      role: "instructional-content"
+    }
+  };
+
+  const serial = await processSerialBuildSteps(slide);
+  assert.ok(serial.totalBuildSteps >= 1);
+  assert.ok(Array.isArray(serial.serialSteps));
+  // Must NOT have legacy stubs like ["header", "main_content", "footer_summary"]
+  const allIds = serial.serialSteps.flatMap((s) => s.componentIds || []);
+  assert.equal(allIds.includes("header") && allIds.includes("footer_summary"), false);
 });
 

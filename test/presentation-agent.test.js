@@ -14,7 +14,9 @@ import { createStarterCellGrid } from "../src/gemini-segmenter.js";
 import { generateGeminiSlideImage } from "../src/gemini-image-gen.js";
 import { analyzeSlideCognitiveLoad } from "../src/cognitive-model.js";
 import {
+  buildGeminiVisualQaPrompt,
   validateGeneratedSlideImage,
+  validateSemanticBuildQa,
   validateVisualQaChecklist
 } from "../src/image-build-qa.js";
 import { CURRENT_STARTER_DECK_IDS, getCurrentStarterGrid } from "../src/current-slide-catalog.js";
@@ -1143,4 +1145,160 @@ test("light theme is default and theme toggle button is present", async () => {
   const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
   assert.match(css, /--bg-app:\s*#f8fafc/);
   assert.match(css, /body\.theme-dark/);
+});
+
+test("semantic build QA enforces exact titles, component presence, omission of later stages, and zero hallucination", () => {
+  const validReport = {
+    pass: true,
+    titleExact: true,
+    expectedComponentsPresent: true,
+    laterComponentsAbsent: true,
+    inventedContent: false,
+    layoutFidelity: "high",
+    issues: []
+  };
+  const validResult = validateSemanticBuildQa(validReport);
+  assert.equal(validResult.passed, true);
+  assert.equal(validResult.issues.length, 0);
+
+  const titleMismatch = validateSemanticBuildQa({
+    ...validReport,
+    pass: false,
+    titleExact: false
+  });
+  assert.equal(titleMismatch.passed, false);
+  assert.match(titleMismatch.issues.join(" "), /title wording does not match/i);
+
+  const componentLeakage = validateSemanticBuildQa({
+    ...validReport,
+    pass: false,
+    laterComponentsAbsent: false
+  });
+  assert.equal(componentLeakage.passed, false);
+  assert.match(componentLeakage.issues.join(" "), /later builds leaked/i);
+
+  const inventedDiagrams = validateSemanticBuildQa({
+    ...validReport,
+    pass: false,
+    inventedContent: true
+  });
+  assert.equal(inventedDiagrams.passed, false);
+  assert.match(inventedDiagrams.issues.join(" "), /invented diagrams/i);
+
+  const missingExpected = validateSemanticBuildQa({
+    ...validReport,
+    pass: false,
+    expectedComponentsPresent: false
+  });
+  assert.equal(missingExpected.passed, false);
+  assert.match(missingExpected.issues.join(" "), /expected current-build components are missing/i);
+
+  const lowFidelity = validateSemanticBuildQa({
+    ...validReport,
+    pass: false,
+    layoutFidelity: "low"
+  });
+  assert.equal(lowFidelity.passed, false);
+  assert.match(lowFidelity.issues.join(" "), /layout fidelity is low/i);
+});
+
+test("buildGeminiVisualQaPrompt structures the visual QA inspection contract", () => {
+  const prompt = buildGeminiVisualQaPrompt({
+    deckTitle: "Lesson 10: Fermentation Practical",
+    slideNumber: 3,
+    buildNumber: 1,
+    totalBuilds: 3,
+    expectedTitle: "FERMENTATION PRACTICAL",
+    showNow: "Step 1 apparatus and yeast flask",
+    temporarilyOmit: "Step 2 and Step 3 water bath and test tube"
+  });
+
+  assert.match(prompt, /Perform visual quality assurance/);
+  assert.match(prompt, /FERMENTATION PRACTICAL/);
+  assert.match(prompt, /"titleExact": true/);
+  assert.match(prompt, /"expectedComponentsPresent": true/);
+  assert.match(prompt, /"laterComponentsAbsent": true/);
+  assert.match(prompt, /"inventedContent": false/);
+  assert.match(prompt, /"layoutFidelity": "high"/);
+});
+
+test("numbered steps are never confused with slide titles", () => {
+  const slide = {
+    number: 3,
+    title: "Fermentation Practical Procedure",
+    text: "Step 1: Set up the yeast flask.\nStep 2: Place in water bath.\nStep 3: Measure gas production.",
+    contentAnalysis: {
+      transcript: "Step 1: Set up the yeast flask.\nStep 2: Place in water bath.\nStep 3: Measure gas production.",
+      role: "instructional-content"
+    }
+  };
+
+  const planned = planSlideAnimation(slide);
+  assert.equal(planned.geminiImageCells[0].prompt.includes("Step 1: Set up the yeast flask"), true);
+  // Title must not become just "Step 1"
+  assert.notEqual(planned.animationPlan?.title, "Step 1");
+  assert.match(planned.geminiImageCells[0].prompt, /Fermentation Practical Procedure/);
+});
+
+test("full multi-word slide titles are preserved without truncation in generation prompts", () => {
+  const slide = {
+    number: 1,
+    title: "FERMENTATION PRACTICAL",
+    deckTitle: "Lesson 10: Fermentation Practical",
+    contentAnalysis: {
+      role: "title",
+      transcript: "FERMENTATION PRACTICAL"
+    }
+  };
+
+  const planned = planSlideAnimation(slide);
+  assert.equal(planned.geminiImageCells.length, 1);
+  assert.match(planned.geminiImageCells[0].prompt, /FERMENTATION PRACTICAL/);
+  // Never shortened to just "FERMENTATION"
+  assert.doesNotMatch(planned.geminiImageCells[0].prompt, /"FERMENTATION"[^A-Z]/);
+});
+
+test("atomic activation strictly prevents partial approvals from becoming playable", () => {
+  const slide = {
+    number: 4,
+    title: "Cell Comparison",
+    imageUrl: "/slides/slide_04.png",
+    geminiImageCells: [
+      {
+        id: "gemini_slide_4_1_comparison",
+        order: 1,
+        label: "Build 1: Myth",
+        outputImageUrl: "/slides/slide_04_build_1.png",
+        qaStatus: "approved"
+      },
+      {
+        id: "gemini_slide_4_2_comparison",
+        order: 2,
+        label: "Build 2: Reality",
+        outputImageUrl: "/slides/slide_04_build_2.png",
+        qaStatus: "approved"
+      },
+      {
+        id: "gemini_slide_4_3_comparison",
+        order: 3,
+        label: "Build 3: Key Insight",
+        outputImageUrl: null,
+        qaStatus: "pending"
+      }
+    ]
+  };
+
+  const synced = syncQaApprovedGeminiSequence(slide);
+  assert.equal(synced.hasProgressiveBuilds, false);
+  assert.equal(synced.progressiveBuilds, undefined);
+  assert.equal(synced.serialAnimation, undefined);
+
+  // Now approve the 3rd cell
+  slide.geminiImageCells[2].outputImageUrl = "/slides/slide_04_build_3.png";
+  slide.geminiImageCells[2].qaStatus = "approved";
+
+  const fullySynced = syncQaApprovedGeminiSequence(slide);
+  assert.equal(fullySynced.hasProgressiveBuilds, true);
+  assert.equal(fullySynced.progressiveBuilds.length, 3);
+  assert.equal(fullySynced.serialAnimation.totalBuildSteps, 3);
 });

@@ -160,6 +160,8 @@ export async function generateSlideInteractivity(
         segmentationSource: "gemini-multimodal-slide-analysis",
         status: "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       };
+    } else if (slide.agentAnalysis?.slideDecomposition) {
+      delete slide.agentAnalysis.slideDecomposition;
     }
 
     const reviewedStarter = slide.number === 2 ? getCurrentStarterGrid(manifest.id) : null;

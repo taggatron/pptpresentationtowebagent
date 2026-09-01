@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright";
+import { planSlideAnimation } from "./slide-animation-planner.js";
 
 export const SLIDE_ANALYSIS_SCHEMA_VERSION = 1;
 
@@ -412,34 +413,28 @@ export function normalizeGeminiSlideAnalysis(raw, { slide } = {}) {
  */
 
 export async function processSerialBuildSteps(slide) {
-  if (slide.isInteractive && slide.interactiveCells) {
-    // 6-question grid: create serial build steps 1 through 6
-    const serialSteps = slide.interactiveCells.map((cell, index) => ({
-      step: index + 1,
-      title: `Step ${index + 1}: ${cell.question}`,
-      componentIds: [cell.id],
-      targetBounds: cell.answerBounds || cell.bounds,
-      revealType: "unmask", // 'unmask' | 'highlight' | 'fade-in'
-    }));
-
+  const planned = planSlideAnimation(slide);
+  if (planned.serialAnimation) {
+    return planned.serialAnimation;
+  }
+  if (Array.isArray(planned.geminiImageCells) && planned.geminiImageCells.length > 0) {
     return {
-      totalBuildSteps: serialSteps.length,
-      autoAdvanceDelayMs: 2500,
-      serialSteps,
+      totalBuildSteps: planned.geminiImageCells.length,
+      autoAdvanceDelayMs: 3200,
+      serialSteps: planned.geminiImageCells.map((cell, index) => ({
+        step: index + 1,
+        buildId: cell.id,
+        title: cell.label,
+        componentIds: [cell.id],
+        targetBounds: { x: 0, y: 0, w: 100, h: 100 },
+        revealType: "crossfade"
+      }))
     };
   }
-
-  // Multi-component slide heuristic (Header, Content Box 1, Content Box 2)
-  const defaultSteps = [
-    { step: 1, title: "Title & Header", componentIds: ["header"], revealType: "highlight" },
-    { step: 2, title: "Main Visual Content", componentIds: ["main_content"], revealType: "fade-in" },
-    { step: 3, title: "Key Takeaway / Summary", componentIds: ["footer_summary"], revealType: "highlight" }
-  ];
-
   return {
-    totalBuildSteps: defaultSteps.length,
-    autoAdvanceDelayMs: 3000,
-    serialSteps: defaultSteps
+    totalBuildSteps: 0,
+    autoAdvanceDelayMs: 3200,
+    serialSteps: []
   };
 }
 

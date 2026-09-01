@@ -5,6 +5,7 @@ import {
   buildGeminiSlideAnalysisPrompt,
   normalizeGeminiSlideAnalysis
 } from "../src/gemini-editor.js";
+import { generateSlideInteractivity } from "../src/gemini-segmenter.js";
 
 const GEMINI_IMAGES_URL = "https://gemini.google.com/images";
 const GEMINI_APP_URL = "https://gemini.google.com/app";
@@ -585,8 +586,169 @@ export function createGeminiBrowserQueueRunner({
     return worker;
   }
 
+  async function prepareFreshAppChat(tab) {
+    let lastError = null;
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        if ((await tab.url()).startsWith(GEMINI_APP_URL)) {
+          await tab.reload();
+        } else {
+          await tab.goto(GEMINI_APP_URL);
+        }
+        await tab.playwright
+          .waitForLoadState({ state: "domcontentloaded", timeoutMs: 20_000 })
+          .catch(() => {});
+        await tab.playwright.waitForTimeout(1_000);
+        await tab.playwright
+          .getByRole("textbox", { name: "Enter a prompt for Gemini" })
+          .waitFor({ state: "visible", timeoutMs: 20_000 });
+        return;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    throw lastError || new Error("Gemini app chat did not become ready.");
+  }
+
+  async function waitForResponseText(tab, timeoutMs = 90_000) {
+    const startedAt = Date.now();
+    await tab.playwright.waitForTimeout(2_000);
+
+    while (Date.now() - startedAt < timeoutMs) {
+      const stopButton = tab.playwright.getByRole("button", { name: /Stop/i });
+      const spinner = tab.playwright.locator(
+        'mat-progress-spinner, [role="progressbar"], .loading-indicator'
+      );
+      const isGenerating =
+        (await stopButton.count().catch(() => 0)) > 0 ||
+        (await spinner.count().catch(() => 0)) > 0;
+
+      if (!isGenerating) {
+        const responseLocators = [
+          tab.playwright.locator("model-response"),
+          tab.playwright.locator("message-content"),
+          tab.playwright.locator(".response-container"),
+          tab.playwright.locator(".model-response-text")
+        ];
+        for (const loc of responseLocators) {
+          const count = await loc.count().catch(() => 0);
+          if (count > 0) {
+            const text = await loc.last().innerText().catch(() => "");
+            if (text && text.trim().length > 20) {
+              return text.trim();
+            }
+          }
+        }
+      }
+      await tab.playwright.waitForTimeout(1_500);
+    }
+    throw new Error("Timed out waiting for Gemini text response.");
+  }
+
+  async function analyzeSlideAsset(tab, slideItem, workerName) {
+    let lastError = null;
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        await prepareFreshAppChat(tab);
+        await uploadSlideSource(tab, slideItem.sourcePath);
+
+        const promptBox = tab.playwright.getByRole("textbox", {
+          name: "Enter a prompt for Gemini"
+        });
+        await promptBox.fill(slideItem.prompt, { timeoutMs: 15_000 });
+        const sendButton = tab.playwright.getByRole("button", {
+          name: "Send message"
+        });
+        await sendButton.waitFor({ state: "visible", timeoutMs: 20_000 });
+        await sendButton.click({ timeoutMs: 15_000 });
+
+        const responseText = await waitForResponseText(tab);
+        const normalized = normalizeGeminiSlideAnalysis(responseText, {
+          slide: slideItem.slide
+        });
+
+        const sidecarPayload = {
+          schemaVersion: 1,
+          provider: "google-gemini",
+          analyzedAt: new Date().toISOString(),
+          sourceHash: slideItem.sourceHash,
+          analysis: normalized
+        };
+
+        await writeJsonAtomically(slideItem.sidecarPath, sidecarPayload);
+        const decksRoot = path.join(repoRoot, "public", "decks");
+        await generateSlideInteractivity(slideItem.deckId, decksRoot);
+
+        return {
+          ok: true,
+          sidecarPath: slideItem.sidecarPath,
+          title: normalized.title,
+          strategy: normalized.recommendedStrategy,
+          buildCount: normalized.recommendedBuilds?.length || 0,
+          attempt: attempt + 1
+        };
+      } catch (error) {
+        lastError = error;
+        await tab.playwright.waitForTimeout(2_000);
+      }
+    }
+    return {
+      ok: false,
+      error: lastError ? lastError.message : "Failed to analyze slide image."
+    };
+  }
+
+  async function processAnalysisQueue(tab, slides, workerName) {
+    progress.workers[workerName] = {
+      state: "running",
+      planned: slides.length,
+      saved: 0,
+      failed: 0,
+      current: null
+    };
+    await flushProgress();
+
+    for (let slideIndex = 0; slideIndex < slides.length; slideIndex += 1) {
+      const slideItem = slides[slideIndex];
+      const worker = progress.workers[workerName];
+      worker.current = {
+        deckId: slideItem.deckId,
+        slideNum: slideItem.slideNum,
+        title: slideItem.title,
+        slideIndex: slideIndex + 1,
+        slideCount: slides.length
+      };
+      await flushProgress();
+
+      const result = await analyzeSlideAsset(tab, slideItem, workerName);
+      if (result.ok) {
+        progress.saved += 1;
+        worker.saved += 1;
+        worker.lastSaved = result;
+      } else {
+        progress.failed += 1;
+        worker.failed += 1;
+        progress.failures.push({
+          workerName,
+          deckId: slideItem.deckId,
+          slideNum: slideItem.slideNum,
+          ...result
+        });
+      }
+      await flushProgress();
+    }
+
+    const worker = progress.workers[workerName];
+    worker.state = "complete";
+    worker.current = null;
+    worker.finishedAt = new Date().toISOString();
+    await flushProgress();
+    return worker;
+  }
+
   return {
     processQueue,
+    processAnalysisQueue,
     progress,
     progressPath,
     flushProgress

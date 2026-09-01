@@ -166,3 +166,85 @@ export function validateVisualQaChecklist(checklist) {
   };
 }
 
+export function buildGeminiVisualQaPrompt({
+  deckTitle,
+  slideNumber,
+  buildNumber,
+  totalBuilds,
+  expectedTitle,
+  showNow,
+  temporarilyOmit
+} = {}) {
+  return `Perform visual quality assurance on this generated cumulative presentation slide build.
+
+Source context: ${deckTitle || "Presentation"}, Slide ${slideNumber || "N"}, Build ${buildNumber || 1} of ${totalBuilds || 1}.
+Expected visible title: "${expectedTitle || ""}".
+Expected to SHOW NOW: ${showNow || "Components for this build."}
+Expected to TEMPORARILY OMIT: ${temporarilyOmit || "Later build components."}
+
+Compare the generated slide image against the source slide image.
+Return JSON only with no Markdown formatting, using this schema:
+{
+  "pass": true,
+  "titleExact": true,
+  "expectedComponentsPresent": true,
+  "laterComponentsAbsent": true,
+  "inventedContent": false,
+  "layoutFidelity": "high",
+  "issues": []
+}
+
+QA Rules:
+1. titleExact: true only if the exact source title wording is reproduced without dropped words, truncation, or substitution.
+2. expectedComponentsPresent: true only if all items in SHOW NOW are visibly present in their correct positions.
+3. laterComponentsAbsent: true only if all items in TEMPORARILY OMIT are completely absent (clean background, no ghosting or leakage).
+4. inventedContent: false if no ungrounded diagrams, equations, molecules, arrows, or decorative clutter have been fabricated.
+5. layoutFidelity: "high", "medium", or "low" describing how faithfully the background, font styling, and canvas layout match the source.
+6. pass: true only if titleExact is true, expectedComponentsPresent is true, laterComponentsAbsent is true, inventedContent is false, and layoutFidelity is not "low".`;
+}
+
+export function validateSemanticBuildQa(qaReport) {
+  if (!qaReport || typeof qaReport !== "object") {
+    return {
+      passed: false,
+      issues: ["Missing QA report."]
+    };
+  }
+
+  const issues = Array.isArray(qaReport.issues) ? [...qaReport.issues] : [];
+  if (qaReport.titleExact !== true) {
+    issues.push("Title wording does not match the source slide exactly.");
+  }
+  if (qaReport.expectedComponentsPresent !== true) {
+    issues.push("Expected current-build components are missing from the generated image.");
+  }
+  if (qaReport.laterComponentsAbsent !== true) {
+    issues.push("Components scheduled for later builds leaked into this build.");
+  }
+  if (qaReport.inventedContent === true) {
+    issues.push("Generated image contains invented diagrams, equations, or annotations not present in source.");
+  }
+  if (qaReport.layoutFidelity === "low") {
+    issues.push("Layout fidelity is low; canvas style or alignment deviates significantly from the source.");
+  }
+
+  const passed =
+    qaReport.pass === true &&
+    qaReport.titleExact === true &&
+    qaReport.expectedComponentsPresent === true &&
+    qaReport.laterComponentsAbsent === true &&
+    qaReport.inventedContent === false &&
+    qaReport.layoutFidelity !== "low" &&
+    issues.length === 0;
+
+  return {
+    passed,
+    titleExact: qaReport.titleExact === true,
+    expectedComponentsPresent: qaReport.expectedComponentsPresent === true,
+    laterComponentsAbsent: qaReport.laterComponentsAbsent === true,
+    inventedContent: qaReport.inventedContent === true,
+    layoutFidelity: qaReport.layoutFidelity || "medium",
+    issues
+  };
+}
+
