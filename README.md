@@ -51,8 +51,10 @@ Implements a computational model of human visual processing and working memory b
 - **Spatially Grounded Prompt Synthesis**: Converts pixel interactions into normalized percentage boundaries (`left`, `top`, `width`, `height`) and anchor points passed to Google Gemini to restrict generative revisions strictly to the selected component while preserving typography, colors, and layout fidelity.
 
 ### 3. 🎬 Dynamic Serial Build Animations & Active Retrieval Grids
-- **Interactive Knowledge Retrieval Grids**: Automatically identifies 6-cell Q&A starter grids (e.g., 3×2 retrieval practice) and generates precise masking overlays for single-click answer reveals.
-- **Progressive Step Synthesis**: Automatically creates multi-step build sequences for high-complexity slides, enabling sequential knowledge delivery (Know → Identify → Explain) with auto-play, manual step stepping, and unmasking transitions.
+- **Reviewed Question Reveals**: Deck-specific starter grids and question slides use precise `unmask` or generated-answer `overlay` regions; related regions can be grouped so one answer never leaks through another mask.
+- **Gemini Still-Image Cells**: Every non-video slide except the reviewed six-box starter grids receives 1–3 density-aware, cumulative, full-canvas image prompts. Clear question slides use a question-only image followed by cumulative answer images. There are no spotlight, dimming, crop, or focus-box fallbacks.
+- **QA-Gated Playback**: Generated images remain private planning assets until every cell in the slide passes file validation and an explicit visual checklist (full canvas, style match, cumulative content, legibility, and no focus treatment). The complete approved set is then added atomically to the click sequence.
+- **Protected Video Routing**: Existing or newly detected Gemini videos take precedence over automatic image decomposition. Video URLs, posters, ordering, and segment timings survive regeneration, clearing, and PPTX reconversion.
 
 ### 4. 🔄 Multi-Pathway Agent Orchestration & Resilient Fallbacks
 Architected with a multi-tiered fallback strategy:
@@ -157,6 +159,10 @@ pptpresentationtowebagent/
 │   ├── convert-deck.js          # CLI batch ingestion script for PPTX directories
 │   ├── gemini-editor.js         # Serial build step segmenter and component editor
 │   ├── gemini-image-gen.js      # Playwright CDP automation for Gemini image chat
+│   ├── slide-animation-planner.js # Media-safe question/build animation planner
+│   ├── current-slide-catalog.js # Reviewed deck-specific starter grids
+│   ├── current-question-catalog.js # Reviewed question and answer regions
+│   ├── enrich-current-decks.js # OCR-backed current-deck analysis runner
 │   ├── notebooklm-revisor.js    # NotebookLM slide studio automation agent
 │   ├── pptx-extractor.js        # OpenXML streaming archive parser & manifest generator
 │   └── server.js                # Express REST API, coordinate normalizer & static server
@@ -195,9 +201,11 @@ pptpresentationtowebagent/
 | Method | Endpoint | Payload Sample | Description |
 | :--- | :--- | :--- | :--- |
 | `POST` | `/api/decks/:deckId/slides/:slideNum/revise` | `{"promptText": "Enlarge label", "editTarget": {...}, "pathway": "gemini-image-chat"}` | Triggers targeted AI revision for a specific slide region or component. |
+| `POST` | `/api/decks/:deckId/slides/:slideNum/builds/:buildId/generate` | `{}` | Generates or regenerates one planned Gemini still-image cell without replacing protected video media. |
+| `POST` | `/api/decks/:deckId/slides/:slideNum/builds/:buildId/qa` | `{ approved, imageUrl?, visualChecks, reviewer?, notes? }` | Approves or rejects a generated still after technical and visual QA; playback updates only when the full planned set is approved. |
 | `POST` | `/api/decks/:deckId/slides/:slideNum/revert` | `{"versionId": "original"}` | Reverts a slide to its initial state or a selected historical revision. |
 | `POST` | `/api/decks/:deckId/slides/:slideNum/bounds` | `{"cellId": "cell_1", "bounds": {"x": 5, "y": 34, "w": 43, "h": 9}}` | Persists custom interactive hotspot boundaries. |
-| `POST` | `/api/decks/:deckId/slides/:slideNum/clear-sequence` | `{}` | Resets dynamic build steps and restores the latest base image. |
+| `POST` | `/api/decks/:deckId/slides/:slideNum/clear-sequence` | `{}` | Removes planner-owned Gemini still cells while preserving protected video and authored frames. |
 
 ---
 
@@ -222,19 +230,8 @@ Execute the comprehensive automated test suite with the native Node.js test runn
 ```bash
 npm test
 ```
-*Output:*
-```
-✔ Google Gemini image chat is the default agent pathway (0.32ms)
-✔ Lesson 1 starter grid contains six valid answer masks (0.53ms)
-✔ component editing is rendered in the sidebar, not a modal (1.70ms)
-✔ click targets are normalized and encoded into a selective edit prompt (0.22ms)
-✔ converted Biology Lesson 1 manifest is complete and interactive (0.76ms)
-✔ server exposes the Gemini default and the Lesson 1 deck (32.30ms)
-✔ generateGeminiSlideImage handles missing images and queued dispatch (2.24ms)
-✔ generateGeminiSlideImage checks CDP tabs when dispatch is enabled (2.83ms)
-✔ cognitive model dynamically adjusts processing time and metrics based on slide content (0.65ms)
-ℹ tests 9 | pass 9 | fail 0 | duration 302ms
-```
+
+The suite validates all 150 current slides, catalog-to-manifest parity, grouped answer regions, planner idempotence, local media assets, web-embed exclusion, and byte-for-byte preservation of the Lesson 9 Gemini video sequences.
 
 ### Converting a Slide Deck
 ```bash
@@ -247,6 +244,12 @@ npm run convert path/to/presentation.pptx
 npm start
 ```
 Open your browser and navigate to **`http://localhost:3000`**.
+
+To rerun OCR-backed analysis and materialise the reviewed animation plan across every current deck:
+
+```bash
+npm run analyze:current-slides
+```
 
 ---
 

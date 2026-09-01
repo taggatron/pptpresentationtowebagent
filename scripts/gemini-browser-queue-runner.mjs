@@ -1,0 +1,594 @@
+import crypto from "node:crypto";
+import fs from "node:fs/promises";
+import path from "node:path";
+import {
+  buildGeminiSlideAnalysisPrompt,
+  normalizeGeminiSlideAnalysis
+} from "../src/gemini-editor.js";
+
+const GEMINI_IMAGES_URL = "https://gemini.google.com/images";
+const GEMINI_APP_URL = "https://gemini.google.com/app";
+const GEMINI_ANALYSIS_SCHEMA = "gemini-slide-analysis/v1";
+const GEMINI_ANALYSIS_PROVIDER = "google-gemini";
+const MIN_BYTES = 20_000;
+const MIN_WIDTH = 1_000;
+const MIN_HEIGHT = 550;
+const TARGET_ASPECT = 16 / 9;
+const ASPECT_TOLERANCE = 0.08;
+
+function sha256(buffer) {
+  return crypto.createHash("sha256").update(buffer).digest("hex");
+}
+
+function inspectPng(buffer) {
+  const png =
+    buffer?.length >= 24 &&
+    buffer[0] === 0x89 &&
+    buffer.toString("ascii", 1, 4) === "PNG";
+  const width = png ? buffer.readUInt32BE(16) : 0;
+  const height = png ? buffer.readUInt32BE(20) : 0;
+  const aspect = height ? width / height : 0;
+  return {
+    png,
+    width,
+    height,
+    aspect,
+    bytes: buffer?.length || 0,
+    passed: Boolean(
+      png &&
+        buffer.length >= MIN_BYTES &&
+        width >= MIN_WIDTH &&
+        height >= MIN_HEIGHT &&
+        Math.abs(aspect - TARGET_ASPECT) <= ASPECT_TOLERANCE
+    )
+  };
+}
+
+function createMutex() {
+  let tail = Promise.resolve();
+  return async (operation) => {
+    let release;
+    const mine = new Promise((resolve) => {
+      release = resolve;
+    });
+    const before = tail;
+    tail = mine;
+    await before.catch(() => {});
+    try {
+      return await operation();
+    } finally {
+      release();
+    }
+  };
+}
+
+function outputPathFor(repoRoot, slide, cell) {
+  return path.join(
+    repoRoot,
+    "public",
+    "decks",
+    slide.deckId,
+    "slides",
+    `slide_${String(slide.slideNum).padStart(2, "0")}_${cell.id}.png`
+  );
+}
+
+function slideHasVideo(slide) {
+  if (slide?.videoUrl) return true;
+  if (
+    Array.isArray(slide?.progressiveBuilds) &&
+    slide.progressiveBuilds.some((build) => build?.videoUrl)
+  ) {
+    return true;
+  }
+  return Boolean(
+    slide?.serialAnimation?.videoUrl ||
+      slide?.serialAnimation?.serialSteps?.some(
+        (step) => step?.videoUrl || step?.revealType === "play-video"
+      )
+  );
+}
+
+function isSixBoxStarterSlide(slide) {
+  return slide?.interactiveType === "starter_qa_grid";
+}
+
+function analysisSidecarPathFor(repoRoot, deckDir, slideNumber) {
+  return path.join(
+    repoRoot,
+    "public",
+    "decks",
+    deckDir,
+    "analysis",
+    `slide_${String(slideNumber).padStart(2, "0")}.json`
+  );
+}
+
+async function readMatchingAnalysisSidecar(sidecarPath, sourceHash) {
+  try {
+    const sidecar = JSON.parse(await fs.readFile(sidecarPath, "utf8"));
+    return sidecar?.sourceHash === sourceHash;
+  } catch {
+    return false;
+  }
+}
+
+async function writeJsonAtomically(destinationPath, value) {
+  await fs.mkdir(path.dirname(destinationPath), { recursive: true });
+  const temporaryPath = path.join(
+    path.dirname(destinationPath),
+    `.${path.basename(destinationPath)}.${process.pid}.${crypto.randomUUID()}.tmp`
+  );
+  try {
+    await fs.writeFile(temporaryPath, `${JSON.stringify(value, null, 2)}\n`);
+    await fs.rename(temporaryPath, destinationPath);
+  } catch (error) {
+    await fs.unlink(temporaryPath).catch(() => {});
+    throw error;
+  }
+}
+
+export async function buildAnalysisQueues(repoRoot, deckGroups) {
+  const decksRoot = path.join(repoRoot, "public", "decks");
+  const deckDirs = (await fs.readdir(decksRoot)).sort();
+  const slides = [];
+
+  for (const deckDir of deckDirs) {
+    const manifestPath = path.join(decksRoot, deckDir, "manifest.json");
+    let manifest;
+    try {
+      manifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
+    } catch {
+      continue;
+    }
+
+    for (const manifestSlide of manifest.slides || []) {
+      if (slideHasVideo(manifestSlide) || isSixBoxStarterSlide(manifestSlide)) {
+        continue;
+      }
+
+      const cells = manifestSlide.geminiImageCells || [];
+      const hasPendingCell = cells.some((cell) => cell.qaStatus !== "approved");
+      const hasApprovedCell = cells.some((cell) => cell.qaStatus === "approved");
+      if (!hasPendingCell || hasApprovedCell) continue;
+
+      const sourceUrl =
+        cells.find((cell) => cell.qaStatus !== "approved")?.sourceImageUrl ||
+        manifestSlide.imageUrl;
+      if (!sourceUrl) continue;
+
+      const sourcePath = path.join(
+        repoRoot,
+        "public",
+        sourceUrl.replace(/^\//, "")
+      );
+      let sourceHash;
+      try {
+        sourceHash = sha256(await fs.readFile(sourcePath));
+      } catch {
+        continue;
+      }
+
+      const sidecarPath = analysisSidecarPathFor(
+        repoRoot,
+        deckDir,
+        manifestSlide.number
+      );
+      if (await readMatchingAnalysisSidecar(sidecarPath, sourceHash)) continue;
+
+      const interactiveCellCount = Array.isArray(manifestSlide.interactiveCells)
+        ? manifestSlide.interactiveCells.length
+        : 0;
+      const slide = {
+        number: manifestSlide.number,
+        title: manifestSlide.title || null,
+        imageFileName:
+          manifestSlide.imageFileName || path.basename(sourcePath),
+        interactiveCellCount
+      };
+
+      slides.push({
+        deckId: manifest.id || deckDir,
+        deckDir,
+        deckTitle: manifest.title || manifest.id || deckDir,
+        slideNum: manifestSlide.number,
+        title: manifestSlide.title || null,
+        slide,
+        sourcePath,
+        sourceHash,
+        sidecarPath,
+        prompt: buildGeminiSlideAnalysisPrompt({
+          deckTitle: manifest.title || manifest.id || deckDir,
+          slideNumber: manifestSlide.number,
+          knownQuestionCount: interactiveCellCount
+        })
+      });
+    }
+  }
+
+  return deckGroups.map((deckIds) =>
+    slides.filter(
+      (slide) =>
+        deckIds.includes(slide.deckId) || deckIds.includes(slide.deckDir)
+    )
+  );
+}
+
+export async function buildMissingQueues(repoRoot, deckGroups) {
+  const decksRoot = path.join(repoRoot, "public", "decks");
+  const deckDirs = (await fs.readdir(decksRoot)).sort();
+  const slides = [];
+
+  for (const deckDir of deckDirs) {
+    const manifestPath = path.join(decksRoot, deckDir, "manifest.json");
+    let manifest;
+    try {
+      manifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
+    } catch {
+      continue;
+    }
+
+    for (const slide of manifest.slides || []) {
+      const pendingCells = (slide.geminiImageCells || []).filter(
+        (cell) => cell.qaStatus !== "approved"
+      );
+      if (!pendingCells.length) continue;
+      const sourceUrl = pendingCells[0].sourceImageUrl || slide.imageUrl;
+      const queued = {
+        deckId: manifest.id,
+        slideNum: slide.number,
+        title: slide.title,
+        sourcePath: path.join(repoRoot, "public", sourceUrl.replace(/^\//, "")),
+        cells: []
+      };
+      for (const cell of pendingCells) {
+        const outputPath = outputPathFor(repoRoot, queued, cell);
+        try {
+          await fs.access(outputPath);
+        } catch {
+          queued.cells.push({
+            id: cell.id,
+            order: cell.order,
+            prompt: cell.prompt,
+            label: cell.label
+          });
+        }
+      }
+      if (queued.cells.length) slides.push(queued);
+    }
+  }
+
+  return deckGroups.map((deckIds) =>
+    slides.filter((slide) => deckIds.includes(slide.deckId))
+  );
+}
+
+export function createGeminiBrowserQueueRunner({
+  repoRoot,
+  totalPlanned,
+  progressPath = "/private/tmp/pptpresentationtowebagent-gemini-progress.json"
+}) {
+  const withClipboardLock = createMutex();
+  const withUploadLock = createMutex();
+  const withProgressLock = createMutex();
+  const progress = {
+    startedAt: new Date().toISOString(),
+    totalPlanned,
+    saved: 0,
+    failed: 0,
+    workers: {},
+    failures: []
+  };
+
+  async function flushProgress() {
+    await withProgressLock(() =>
+      fs.writeFile(progressPath, JSON.stringify(progress, null, 2))
+    );
+  }
+
+  async function prepareFreshImageChat(tab) {
+    let lastError = null;
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        if ((await tab.url()) === GEMINI_IMAGES_URL) {
+          await tab.reload();
+        } else {
+          await tab.goto(GEMINI_IMAGES_URL);
+        }
+        await tab.playwright
+          .waitForLoadState({ state: "domcontentloaded", timeoutMs: 20_000 })
+          .catch(() => {});
+        await tab.playwright.waitForTimeout(1_000);
+        await tab.playwright
+          .getByRole("textbox", { name: "Enter a prompt for Gemini" })
+          .waitFor({ state: "visible", timeoutMs: 20_000 });
+        return;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    throw lastError || new Error("Gemini Images chat did not become ready.");
+  }
+
+  async function uploadSlideSource(tab, sourcePath) {
+    await withUploadLock(async () => {
+      const uploadButton = tab.playwright.getByRole("button", {
+        name: "Upload and tools"
+      });
+      await uploadButton.waitFor({ state: "visible", timeoutMs: 15_000 });
+      await uploadButton.click({ timeoutMs: 15_000 });
+      const uploadMenuItem = tab.playwright.getByRole("menuitem", {
+        name: /Upload files/
+      });
+      const compactFilesButton = tab.playwright.getByRole("button", {
+        name: "Files"
+      });
+      const filesButton =
+        (await uploadMenuItem.count().catch(() => 0)) > 0
+          ? uploadMenuItem
+          : compactFilesButton;
+      await filesButton.waitFor({ state: "visible", timeoutMs: 10_000 });
+      const [chooser] = await Promise.all([
+        tab.playwright.waitForEvent("filechooser", { timeoutMs: 12_000 }),
+        filesButton.click({ timeoutMs: 12_000 })
+      ]);
+      await chooser.setFiles([sourcePath], { timeoutMs: 20_000 });
+      // Gemini mounts its progress state asynchronously after the chooser
+      // resolves. Give that state time to appear before checking completion.
+      await tab.playwright.waitForTimeout(1_200);
+
+      let stableReadyChecks = 0;
+      for (let index = 0; index < 40; index += 1) {
+        const uploading = await tab.playwright
+          .getByText("Uploading image")
+          .isVisible()
+          .catch(() => false);
+        const loading = await tab.playwright
+          .getByRole("progressbar", { name: "Loading image" })
+          .isVisible()
+          .catch(() => false);
+        if (!uploading && !loading) {
+          stableReadyChecks += 1;
+          if (stableReadyChecks >= 2) return;
+        } else {
+          stableReadyChecks = 0;
+        }
+        await tab.playwright.waitForTimeout(500);
+      }
+      throw new Error("Source slide upload did not finish.");
+    });
+  }
+
+  async function waitForGeneratedImage(tab, baseline, timeoutMs = 180_000) {
+    const startedAt = Date.now();
+    let lastCounts = null;
+    while (Date.now() - startedAt < timeoutMs) {
+      const imageButtons = tab.playwright.getByRole("button", {
+        name: /AI generated/
+      });
+      const copyButtons = tab.playwright.getByRole("button", {
+        name: "Copy image"
+      });
+      const imageCount = await imageButtons.count().catch(() => 0);
+      const copyCount = await copyButtons.count().catch(() => 0);
+      lastCounts = { imageCount, copyCount };
+      if (imageCount > baseline && copyCount > baseline) {
+        // The full-resolution clipboard payload is the authoritative readiness
+        // signal; DOM natural-size inspection is unreliable on Gemini's long
+        // sidebar layout and is validated after copying instead.
+        await tab.playwright.waitForTimeout(750);
+        return lastCounts;
+      }
+      await tab.playwright.waitForTimeout(1_500);
+    }
+    throw new Error(
+      `Timed out waiting for a generated image and Copy image control; last counts ${JSON.stringify(lastCounts)}`
+    );
+  }
+
+  async function copyNewestImage(tab, workerName) {
+    return withClipboardLock(async () => {
+      await tab.clipboard.writeText(`gemini-export-${workerName}-${Date.now()}`);
+      await tab.playwright
+        .getByRole("button", { name: "Copy image" })
+        .last()
+        .click({ timeoutMs: 15_000 });
+      for (let index = 0; index < 16; index += 1) {
+        await tab.playwright.waitForTimeout(400);
+        const clipboardItems = await tab.clipboard.read();
+        const imageEntry = clipboardItems
+          .flatMap((item) => item.entries || [])
+          .find((entry) => entry.mimeType === "image/png" && entry.base64);
+        if (imageEntry) return Buffer.from(imageEntry.base64, "base64");
+      }
+      throw new Error("Gemini Copy image did not produce a PNG clipboard payload.");
+    });
+  }
+
+  async function generateCellAsset(tab, slide, cell, workerName, slideHashes) {
+    let lastBuffer = null;
+    let lastInspection = null;
+    let lastHash = null;
+    const sourceBuffer = await fs.readFile(slide.sourcePath);
+    const sourceHash = sha256(sourceBuffer);
+
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const baseline = await tab.playwright
+        .getByRole("button", { name: /AI generated/ })
+        .count()
+        .catch(() => 0);
+      const prompt =
+        attempt === 0
+          ? cell.prompt
+          : `${cell.prompt}\nQA CORRECTION: The previous result failed the file-level build check. Regenerate this exact cumulative build as a distinct, complete 16:9 slide canvas. Follow Show now and Temporarily omit precisely; do not return the unchanged source or duplicate another build.`;
+      const promptBox = tab.playwright.getByRole("textbox", {
+        name: "Enter a prompt for Gemini"
+      });
+      const submittedPromptCount = await tab.playwright
+        .getByRole("button", { name: "Copy prompt" })
+        .count()
+        .catch(() => 0);
+      await promptBox.fill(prompt, { timeoutMs: 15_000 });
+      const sendButton = tab.playwright.getByRole("button", {
+        name: "Send message"
+      });
+      await sendButton.waitFor({ state: "visible", timeoutMs: 20_000 });
+      await sendButton.click({ timeoutMs: 15_000 });
+
+      // Gemini occasionally accepts the click at the browser layer before its
+      // composer is ready, leaving the entire prompt visibly unsent. Confirm
+      // that the composer clears or a new submitted-prompt control appears;
+      // retry the explicit Send button once instead of waiting three minutes
+      // for an image that was never requested.
+      let promptSubmitted = false;
+      for (let check = 0; check < 24; check += 1) {
+        await tab.playwright.waitForTimeout(500);
+        const composerText = await promptBox.textContent().catch(() => "");
+        const promptCount = await tab.playwright
+          .getByRole("button", { name: "Copy prompt" })
+          .count()
+          .catch(() => submittedPromptCount);
+        if (!String(composerText || "").trim() || promptCount > submittedPromptCount) {
+          promptSubmitted = true;
+          break;
+        }
+        if (check === 9) {
+          await sendButton.waitFor({ state: "visible", timeoutMs: 10_000 });
+          await sendButton.click({ timeoutMs: 15_000 });
+        }
+      }
+      if (!promptSubmitted) {
+        throw new Error("Gemini prompt remained in the composer after two Send attempts.");
+      }
+      await waitForGeneratedImage(tab, baseline);
+      lastBuffer = await copyNewestImage(tab, workerName);
+      lastInspection = inspectPng(lastBuffer);
+      lastHash = sha256(lastBuffer);
+
+      if (
+        lastInspection.passed &&
+        lastHash !== sourceHash &&
+        !slideHashes.has(lastHash)
+      ) {
+        const outputPath = outputPathFor(repoRoot, slide, cell);
+        await fs.writeFile(outputPath, lastBuffer);
+        slideHashes.add(lastHash);
+        return {
+          ok: true,
+          path: outputPath,
+          bytes: lastInspection.bytes,
+          width: lastInspection.width,
+          height: lastInspection.height,
+          sha256: lastHash,
+          attempt: attempt + 1
+        };
+      }
+    }
+
+    const failedPath = outputPathFor(repoRoot, slide, cell).replace(
+      /\.png$/,
+      "_qa_failed.png"
+    );
+    if (lastBuffer) await fs.writeFile(failedPath, lastBuffer);
+    return {
+      ok: false,
+      path: failedPath,
+      inspection: lastInspection,
+      sha256: lastHash,
+      error:
+        "Generated image failed automatic resolution, aspect, source-distinctness, or sequence-uniqueness checks after retry."
+    };
+  }
+
+  async function processQueue(tab, slides, workerName) {
+    progress.workers[workerName] = {
+      state: "running",
+      planned: slides.reduce((count, slide) => count + slide.cells.length, 0),
+      saved: 0,
+      failed: 0,
+      current: null
+    };
+    await flushProgress();
+
+    for (let slideIndex = 0; slideIndex < slides.length; slideIndex += 1) {
+      const slide = slides[slideIndex];
+      const worker = progress.workers[workerName];
+      worker.current = {
+        deckId: slide.deckId,
+        slideNum: slide.slideNum,
+        title: slide.title,
+        slideIndex: slideIndex + 1,
+        slideCount: slides.length,
+        cellId: null
+      };
+      await flushProgress();
+
+      let processedCellCount = 0;
+      try {
+        await prepareFreshImageChat(tab);
+        await uploadSlideSource(tab, slide.sourcePath);
+        const slideHashes = new Set();
+
+        for (const cell of slide.cells) {
+          worker.current.cellId = cell.id;
+          await flushProgress();
+          const result = await generateCellAsset(
+            tab,
+            slide,
+            cell,
+            workerName,
+            slideHashes
+          );
+          if (result.ok) {
+            progress.saved += 1;
+            worker.saved += 1;
+            worker.lastSaved = result;
+          } else {
+            progress.failed += 1;
+            worker.failed += 1;
+            progress.failures.push({
+              workerName,
+              deckId: slide.deckId,
+              slideNum: slide.slideNum,
+              cellId: cell.id,
+              ...result
+            });
+          }
+          processedCellCount += 1;
+          await flushProgress();
+        }
+      } catch (error) {
+        // Earlier cells on this slide may already have been saved. Count only
+        // the current and later cells so progress remains truthful and a retry
+        // queue can pick up exactly what is still missing.
+        const failedCellIds = slide.cells
+          .slice(processedCellCount)
+          .map((cell) => cell.id);
+        progress.failed += failedCellIds.length;
+        worker.failed += failedCellIds.length;
+        progress.failures.push({
+          workerName,
+          deckId: slide.deckId,
+          slideNum: slide.slideNum,
+          cellIds: failedCellIds,
+          error: String(error)
+        });
+        await flushProgress();
+      }
+    }
+
+    const worker = progress.workers[workerName];
+    worker.state = "complete";
+    worker.current = null;
+    worker.finishedAt = new Date().toISOString();
+    await flushProgress();
+    return worker;
+  }
+
+  return {
+    processQueue,
+    progress,
+    progressPath,
+    flushProgress
+  };
+}

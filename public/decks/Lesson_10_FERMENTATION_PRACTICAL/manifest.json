@@ -13,15 +13,18 @@
       "cognitiveGuide": {
         "estimatedTimeSeconds": 9,
         "timeGuideDisplay": "7–11s",
-        "vciScore": "3.9",
+        "vciScore": "3.5",
         "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 4000,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 3600,
+          "semanticProcessingMs": 4050,
+          "wordCount": 11,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -38,33 +41,245 @@
           }
         ]
       },
+      "text": "Lesson 10: a eanatt\nFERMENTATION [—?).\nPRACTICAL L\ni\nIN Z|",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "616f3f3b83dfc8ad46bdd82dfda201dfdb384a0d8a5e0e6e6b3074ee6fbb34ba",
+        "transcript": "Lesson 10: a eanatt\nFERMENTATION [—?).\nPRACTICAL L\ni\nIN Z|",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 1,
+        "approvedCellCount": 1,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"10. Fermentation Practical\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"10. Fermentation Practical\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_01.png",
+          "generatedAt": "2026-09-01T07:13:19.401Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:13:19.401Z",
+            "reviewer": "root-visual-qa",
+            "notes": "Approved after direct original-resolution comparison with the source: full 16:9 graph-paper canvas, exact full title including PRACTICAL, complete flask illustration, matching palette and layout, legible content, and no focus/spotlight treatment.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "703236 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+              "byteLength": 703236,
+              "sha256": "c4a6774809f1b4dd986305a8c8aa46d2a1891c4b2fa172c408205a6e3e475990",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "616f3f3b83dfc8ad46bdd82dfda201dfdb384a0d8a5e0e6e6b3074ee6fbb34ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Complete the instructional build",
+          "imageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_01.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"10. Fermentation Practical\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"10. Fermentation Practical\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:13:19.401Z",
+            "reviewer": "root-visual-qa",
+            "notes": "Approved after direct original-resolution comparison with the source: full 16:9 graph-paper canvas, exact full title including PRACTICAL, complete flask illustration, matching palette and layout, legible content, and no focus/spotlight treatment.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "703236 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+              "byteLength": 703236,
+              "sha256": "c4a6774809f1b4dd986305a8c8aa46d2a1891c4b2fa172c408205a6e3e475990",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "616f3f3b83dfc8ad46bdd82dfda201dfdb384a0d8a5e0e6e6b3074ee6fbb34ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        }
+      ],
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "buildId": "gemini_slide_1_1_component_reveal",
+            "title": "Build 1: Complete the instructional build",
             "componentIds": [
-              "header"
+              "gemini_slide_1_1_component_reveal"
             ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
           }
         ]
       }
@@ -75,7 +290,7 @@
       "imageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_02.png",
       "isInteractive": true,
       "interactiveType": "starter_qa_grid",
-      "gridTitle": "Starter Activity: Knowledge Retrieval",
+      "gridTitle": "Starter: Retrieval Practice",
       "interactiveCells": [
         {
           "id": "cell_1",
@@ -89,12 +304,16 @@
           },
           "answerBounds": {
             "x": 5.2,
-            "y": 34.5,
+            "y": 33.5,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "What scientific instrument is essential for viewing cells?",
-          "expectedAnswer": "Light microscope (or electron microscope)."
+          "question": "State the word equation for anaerobic respiration in yeast.",
+          "expectedAnswer": "Glucose → Ethanol + Carbon Dioxide.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_2",
@@ -108,12 +327,16 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 34.5,
+            "y": 33.5,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "What is the fundamental building block of all living organisms?",
-          "expectedAnswer": "The cell."
+          "question": "What is an independent variable?",
+          "expectedAnswer": "The variable that you change.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_3",
@@ -127,12 +350,16 @@
           },
           "answerBounds": {
             "x": 5.2,
-            "y": 59.3,
+            "y": 58.3,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Are cells flat, 2-dimensional circles or 3-dimensional structures?",
-          "expectedAnswer": "3-dimensional structures."
+          "question": "What is a dependent variable?",
+          "expectedAnswer": "The variable that you measure.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_4",
@@ -146,12 +373,16 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 59.3,
+            "y": 58.3,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Write the word equation for cellular respiration.",
-          "expectedAnswer": "Glucose + Oxygen → Carbon Dioxide + Water."
+          "question": "What is a control variable?",
+          "expectedAnswer": "A variable kept the same for a fair test.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_5",
@@ -165,12 +396,16 @@
           },
           "answerBounds": {
             "x": 5.2,
-            "y": 84.1,
+            "y": 83.1,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Write the word equation for photosynthesis.",
-          "expectedAnswer": "Carbon Dioxide + Water → Glucose + Oxygen."
+          "question": "Which biological molecules control the rate of respiration?",
+          "expectedAnswer": "Enzymes.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_6",
@@ -184,25 +419,32 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 84.1,
+            "y": 83.1,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Name one type of specialised human cell you already know.",
-          "expectedAnswer": "Any valid cell (e.g., red blood cell, nerve cell, sperm cell)."
+          "question": "What happens to enzymes if the temperature is too high?",
+          "expectedAnswer": "They denature; the active site changes shape.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 80,
-        "timeGuideDisplay": "68–92s",
+        "estimatedTimeSeconds": 104,
+        "timeGuideDisplay": "88–120s",
         "vciScore": "10.0",
         "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 7938,
-          "readingMs": 30150,
+          "readingMs": 53700,
           "semanticProcessingMs": 42000,
-          "wordCount": 89,
+          "wordCount": 160,
           "visualElementsCount": 18
         },
         "academicReferences": [
@@ -226,89 +468,150 @@
         "serialSteps": [
           {
             "step": 1,
-            "title": "Step 1: What scientific instrument is essential for viewing cells?",
+            "title": "Reveal: State the word equation for anaerobic respiration in yeast.",
             "componentIds": [
               "cell_1"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 2,
-            "title": "Step 2: What is the fundamental building block of all living organisms?",
+            "title": "Reveal: What is an independent variable?",
             "componentIds": [
               "cell_2"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 3,
-            "title": "Step 3: Are cells flat, 2-dimensional circles or 3-dimensional structures?",
+            "title": "Reveal: What is a dependent variable?",
             "componentIds": [
               "cell_3"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 4,
-            "title": "Step 4: Write the word equation for cellular respiration.",
+            "title": "Reveal: What is a control variable?",
             "componentIds": [
               "cell_4"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 5,
-            "title": "Step 5: Write the word equation for photosynthesis.",
+            "title": "Reveal: Which biological molecules control the rate of respiration?",
             "componentIds": [
               "cell_5"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 6,
-            "title": "Step 6: Name one type of specialised human cell you already know.",
+            "title": "Reveal: What happens to enzymes if the temperature is too high?",
             "componentIds": [
               "cell_6"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           }
         ]
+      },
+      "text": "Starter: Retrieval Practice\nState the word equation for : . :\nanaerobic respiration in yeast. What is an independent variable?\nGlucose -> Ethanol + Carbon Dioxide The variable you change\nWhat is a dependent variable? What is a control variable?\nThe variable you measure A variable kept the same for a fair test\nWhich biological molecules control What happens to enzymes if the\nthe rate of respiration? temperature is too high?\nEnzymes They denature / active site changes shape",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "e646a6ff252a7f5e60df502f36788863cca0dae47fcd3c904c75981b24187b40",
+        "transcript": "Starter: Retrieval Practice\nState the word equation for : . :\nanaerobic respiration in yeast. What is an independent variable?\nGlucose -> Ethanol + Carbon Dioxide The variable you change\nWhat is a dependent variable? What is a control variable?\nThe variable you measure A variable kept the same for a fair test\nWhich biological molecules control What happens to enzymes if the\nthe rate of respiration? temperature is too high?\nEnzymes They denature / active site changes shape",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "State the word equation for : . : anaerobic respiration in yeast. What is an independent variable?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What is a dependent variable?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "What is a control variable?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "Which biological molecules control What happens to enzymes if the the rate of respiration?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_5",
+            "question": "is too high?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 6
+      },
+      "title": "Starter: Retrieval Practice",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 16,
+        "detectionSource": "manifest-cells"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "question-reveal",
+        "reason": "The six-box starter grid is intentionally excluded from Gemini still-image builds.",
+        "protectedVideoCount": 0
       }
     },
     {
@@ -318,17 +621,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 50,
+        "timeGuideDisplay": "42–58s",
+        "vciScore": "6.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 28950,
+          "semanticProcessingMs": 19400,
+          "wordCount": 86,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -345,35 +651,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Objectives & Key Terms Fermentation: Anaerobic\nO Design: Plan a valid respiration in yeast.\ninvestigation into the factors Rate of Reaction: How fast a\naffecting yeast fermentation product is formed over time.\n(PAG B3).\nPrecision: How closely clustered\n[J Measure: Collect and process repeated measurements are.\ndata to calculate the rate of Accuracy: How close a\nfeu measurement is to the true value.\n{J Interpret: Translate Anomalous: A result that does not\nmathematical data into fit the pattern of the rest of the\nbiological conclusions. data.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "2b636b35863449f28beffacea8a495493051750f845bb4d22bcabd8ce65fec2d",
+        "transcript": "Objectives & Key Terms Fermentation: Anaerobic\nO Design: Plan a valid respiration in yeast.\ninvestigation into the factors Rate of Reaction: How fast a\naffecting yeast fermentation product is formed over time.\n(PAG B3).\nPrecision: How closely clustered\n[J Measure: Collect and process repeated measurements are.\ndata to calculate the rate of Accuracy: How close a\nfeu measurement is to the true value.\n{J Interpret: Translate Anomalous: A result that does not\nmathematical data into fit the pattern of the rest of the\nbiological conclusions. data.",
+        "role": "objectives",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_objectives_key_terms",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the objectives",
+          "strategy": "objectives-key-terms",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Objectives & Key Terms\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: objectives-key-terms.\nShow now: The exact source title and the complete Objectives checklist or objectives column, with every objective reproduced verbatim in its original position.\nTemporarily omit: All key-term definitions in the separate definitions panel. Keep the original panel border if present, but its inside must be plain source-style background with no arrows, equations, molecules, diagrams, or invented decoration.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_objectives_key_terms",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the first key terms",
+          "strategy": "objectives-key-terms",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Objectives & Key Terms\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: objectives-key-terms.\nShow now: Everything from build 1 plus the first half of the source key-term definitions, in top-to-bottom source order and in their original panel positions.\nTemporarily omit: The remaining lower key-term definitions. Do not convert any definition into a process arrow, chemical equation, molecule, icon, or illustration unless that exact visual exists in the attached source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_objectives_key_terms",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the key terms",
+          "strategy": "objectives-key-terms",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Objectives & Key Terms\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: objectives-key-terms.\nShow now: Everything from builds 1 and 2 plus every remaining key-term definition, copied verbatim from the source in its original order and position.\nTemporarily omit: Nothing instructional. Do not add any arrow, equation, molecule, icon, or illustration that is absent from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_03.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "objectives-key-terms",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -383,17 +739,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 30,
+        "timeGuideDisplay": "25–35s",
+        "vciScore": "5.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 19050,
+          "semanticProcessingMs": 9600,
+          "wordCount": 59,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -410,36 +769,93 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
+      "text": "What are we investigating?\nAerobic Respiration Anaerobic (Fermentation)\nOxygen Present No Oxygen\nGlucose + Oxygen Glucose only\n| Products| Carbon Dioxide + Water | Ethanol + Carbon Dioxide\nTo measure the rate of fermentation, we will measure the volume\nof Carbon Dioxide (CO2) gas produced over time. The faster the\ngas is produced, the faster the rate of respiration.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "2d7d88d794623c975e6183dc212881b5b2bf88884964460db5807c1d7846786c",
+        "transcript": "What are we investigating?\nAerobic Respiration Anaerobic (Fermentation)\nOxygen Present No Oxygen\nGlucose + Oxygen Glucose only\n| Products| Carbon Dioxide + Water | Ethanol + Carbon Dioxide\nTo measure the rate of fermentation, we will measure the volume\nof Carbon Dioxide (CO2) gas produced over time. The faster the\ngas is produced, the faster the rate of respiration.",
+        "role": "instructional-content",
+        "questions": [
           {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "id": "ocr_question_1",
+            "question": "What are we investigating?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
           }
-        ]
-      }
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Aerobic Respiration Anaerobic (Fermentation)\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Aerobic Respiration Anaerobic (Fermentation)\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Aerobic Respiration Anaerobic (Fermentation)\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_04.png"
+        }
+      ]
     },
     {
       "number": 5,
@@ -448,17 +864,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 29,
+        "timeGuideDisplay": "24–34s",
+        "vciScore": "4.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 13650,
+          "semanticProcessingMs": 14000,
+          "wordCount": 43,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -475,36 +894,70 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Experimental Setup:\nMeasuring Outputs\nIF Water Bath al T Delivery Tube a\n(oan eb tl iL (transports the gas) |\nJE\nLE}\n| Se!\nee eee\nyi = a\naia\ni | =e I I\nYeast + Glucose Solution ee i\nez\nSS",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "73fcf3450ba530044a1d5c32456cef0c2bf3e7d62586dce182e500eeb7a2265f",
+        "transcript": "Experimental Setup:\nMeasuring Outputs\nIF Water Bath al T Delivery Tube a\n(oan eb tl iL (transports the gas) |\nJE\nLE}\n| Se!\nee eee\nyi = a\naia\ni | =e I I\nYeast + Glucose Solution ee i\nez\nSS",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 5: \"IF Water Bath al T Delivery Tube a\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 5: \"IF Water Bath al T Delivery Tube a\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_05.png"
+        }
+      ]
     },
     {
       "number": 6,
@@ -513,17 +966,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 44,
+        "timeGuideDisplay": "37–51s",
+        "vciScore": "5.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 25500,
+          "semanticProcessingMs": 17400,
+          "wordCount": 77,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -540,35 +996,92 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
+      "text": "Designing the Investigation\nVariable Type Our Experiment How/Why?\nChanged using the water\nIndependent Variable Temperature bath. We are testing how\nheat affects enzyme action.\nMeasured using the gas\nDependent Variable Volume of CO2 produced | syringe. This tells us the rate\nof fermentation.\n5 hed ; Kept exactly the same to\n. oncentration/volume o ensure the results are valid (a\nControl Variables glucose, mass of yeast, time | fair test) and only temperature\nis affecting the rate.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "1ba949ec42681494080844b423704f16c48ab7e4f5d56888ff2ab2c44bb50112",
+        "transcript": "Designing the Investigation\nVariable Type Our Experiment How/Why?\nChanged using the water\nIndependent Variable Temperature bath. We are testing how\nheat affects enzyme action.\nMeasured using the gas\nDependent Variable Volume of CO2 produced | syringe. This tells us the rate\nof fermentation.\n5 hed ; Kept exactly the same to\n. oncentration/volume o ensure the results are valid (a\nControl Variables glucose, mass of yeast, time | fair test) and only temperature\nis affecting the rate.",
+        "role": "instructional-content",
+        "questions": [
           {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "id": "ocr_question_1",
+            "question": "How/Why?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
           }
-        ]
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"Designing the Investigation\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"Designing the Investigation\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"Designing the Investigation\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -578,17 +1091,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 31,
+        "timeGuideDisplay": "26–36s",
+        "vciScore": "5.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 20400,
+          "semanticProcessingMs": 9200,
+          "wordCount": 64,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -605,36 +1121,86 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Step-by-Step Procedure\nStep 2:\nStep 1: Add glucose Step 3: Step 4:\nSet water bath and yeast to Start the Record the\nto target the flask. stopwatch. volume of gas\ntemperature. F in the syringe\nAllow flask to pneu cee every minute\nacclimatise. aaa the for 5 minutes.\nung and\ndelivery tube\nimmediately\nto prevent\ngas escaping. A. Safety: Take care with hot water",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c05c8143c7437c64539a4f7c367933d0a959d91d0ac5e3f71733a66b47e48795",
+        "transcript": "Step-by-Step Procedure\nStep 2:\nStep 1: Add glucose Step 3: Step 4:\nSet water bath and yeast to Start the Record the\nto target the flask. stopwatch. volume of gas\ntemperature. F in the syringe\nAllow flask to pneu cee every minute\nacclimatise. aaa the for 5 minutes.\nung and\ndelivery tube\nimmediately\nto prevent\ngas escaping. A. Safety: Take care with hot water",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "staged-objectives",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_staged_objectives",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Step-by-Step Procedure\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: The exact source title plus the complete Step 1 heading and body text (for example, 'Step 1: Know'). The only allowed visual is the compact visual cluster immediately touching or directly below Step 1.\nTemporarily omit: Every Step 2 and Step 3 heading, body, stair segment, arrow, example, label, and diagram. Replace every omitted later-step region with the untouched source background so the rest of the canvas is genuinely blank. Never keep a later diagram as decoration and never substitute a later step for Step 1.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_staged_objectives",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Step-by-Step Procedure\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: Everything from build 1 plus the complete Step 2 heading and body text (for example, 'Step 2: Identify') and only the visual cluster immediately touching or directly below Step 2.\nTemporarily omit: Every Step 3 heading, body, stair segment, arrow, conclusion, label, and diagram. Replace the entire omitted Step 3 region with the untouched source background so it is genuinely blank. Never keep a Step 3 diagram as decoration or replace Step 1 or Step 2 with Step 3.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_staged_objectives",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the learning sequence",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Step-by-Step Procedure\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: staged-objectives.\nShow now: Everything from builds 1 and 2 plus the complete final numbered step (for example, 'Step 3: Explain'), its exact body text, and its directly related visual or conclusion.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_07.png"
+        }
+      ]
     },
     {
       "number": 8,
@@ -643,17 +1209,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 42,
+        "timeGuideDisplay": "35–49s",
+        "vciScore": "6.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 26100,
+          "semanticProcessingMs": 14800,
+          "wordCount": 76,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -670,35 +1239,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "e e\nEnsuring Quality Data\nAccurate Precise Reliable/Repeatable\nAchieving the same results when\nClose to the true value. Results are clustered closely together. the experiment is repeated.\nLab application: Reading the gas Lab application: Using a gas syringe Lab application: Doing 3 repeats to\nsyringe meniscus at eye level to with a high resolution (e.g., 1 cm3 identify anomalies and calculate a\navoid parallax error. markings) rather than an overturned valid mean.\nmeasuring cylinder.\n‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "ec50248c8936885bf2b869b4cabe8321c2e5e48fe8606c1214ec8e468f5b9522",
+        "transcript": "e e\nEnsuring Quality Data\nAccurate Precise Reliable/Repeatable\nAchieving the same results when\nClose to the true value. Results are clustered closely together. the experiment is repeated.\nLab application: Reading the gas Lab application: Using a gas syringe Lab application: Doing 3 repeats to\nsyringe meniscus at eye level to with a high resolution (e.g., 1 cm3 identify anomalies and calculate a\navoid parallax error. markings) rather than an overturned valid mean.\nmeasuring cylinder.\n‘A\\ NotebookLV",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Ensuring Quality Data\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Ensuring Quality Data\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Ensuring Quality Data\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_08.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -708,17 +1327,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 28,
+        "timeGuideDisplay": "23–33s",
+        "vciScore": "3.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 9150,
+          "semanticProcessingMs": 17400,
+          "wordCount": 30,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -735,36 +1357,70 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Collecting the Data\n(°C) (cm3) (cm3) (cm3) (cm3)\n| arc | 15 | 16 | (4) | 155\nANOMALY\nMean without anomaly: (15 + 16) + 2 = 15.5 cm3",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5ea7e1de47cdd3bcf7d0f8b11258da4b28d745c60b38f5d9f37b7de2379117ac",
+        "transcript": "Collecting the Data\n(°C) (cm3) (cm3) (cm3) (cm3)\n| arc | 15 | 16 | (4) | 155\nANOMALY\nMean without anomaly: (15 + 16) + 2 = 15.5 cm3",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 9: \"Collecting the Data\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 9: \"Collecting the Data\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_09.png"
+        }
+      ]
     },
     {
       "number": 10,
@@ -773,17 +1429,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "29–41s",
+        "vciScore": "5.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 19350,
+          "semanticProcessingMs": 14800,
+          "wordCount": 61,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -800,36 +1459,86 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Calculating the Rate of Reaction\nRate = Volume of gas produced + Time taken\nWorked Example: fhe 30 cm of CO, in 5 minutes at 30°C...\nIf our yeast produced 30 cm of CO, in 5 minutes at 30°C...\nRate = 30+5\nRate = 6 cm?/min\nTs memes eee a ee ee ea et\nspeed of the reaction at different temperatures.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "e1fd91cbb6eabbd7f27973e4cf087e574197bcfc366dd78c27226f2c65ba5c9f",
+        "transcript": "Calculating the Rate of Reaction\nRate = Volume of gas produced + Time taken\nWorked Example: fhe 30 cm of CO, in 5 minutes at 30°C...\nIf our yeast produced 30 cm of CO, in 5 minutes at 30°C...\nRate = 30+5\nRate = 6 cm?/min\nTs memes eee a ee ee ea et\nspeed of the reaction at different temperatures.",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Calculating the Rate of Reaction\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Calculating the Rate of Reaction\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Calculating the Rate of Reaction\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_10.png"
+        }
+      ]
     },
     {
       "number": 11,
@@ -838,17 +1547,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 26,
+        "timeGuideDisplay": "22–30s",
+        "vciScore": "4.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 16650,
+          "semanticProcessingMs": 8000,
+          "wordCount": 53,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -865,55 +1577,108 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Visualising the Results\n10\n£\n£\n: 8 .\nSs erat Notice the shape.\n5 The relationship is\n3 6 : non-linear, which is\na 4 smooth curve of best\ney fit rather than\n© connecting the dots.\noS 2\n2\nc\nBEEN\n0\n0 10 20 30 40 50 60\nTemperature (°C)",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "13d4f1df668cea13b7d53ba40e4f38e0adc629af2dc3878fce49f7635c68a875",
+        "transcript": "Visualising the Results\n10\n£\n£\n: 8 .\nSs erat Notice the shape.\n5 The relationship is\n3 6 : non-linear, which is\na 4 smooth curve of best\ney fit rather than\n© connecting the dots.\noS 2\n2\nc\nBEEN\n0\n0 10 20 30 40 50 60\nTemperature (°C)",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"Visualising the Results\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_11_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"Visualising the Results\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_11_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"Visualising the Results\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_11.png"
+        }
+      ]
     },
     {
       "number": 12,
       "imageFileName": "slide_12.png",
       "imageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_12.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 79,
+        "timeGuideDisplay": "67–91s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 3850,
+          "readingMs": 46800,
+          "semanticProcessingMs": 28200,
+          "wordCount": 142,
+          "visualElementsCount": 10
         },
         "academicReferences": [
           {
@@ -932,34 +1697,204 @@
       },
       "serialAnimation": {
         "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Why must the delivery tube be connected immediately after adding yeast to glucose?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 13.2,
+              "y": 44,
+              "w": 74.7,
+              "h": 9.4
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Name one piece of apparatus that improves the resolution of the volume measurement.",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 13.2,
+              "y": 65.9,
+              "w": 73.5,
+              "h": 9.3
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: How is an anomalous result handled?",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 13.2,
+              "y": 82.7,
+              "w": 73.4,
+              "h": 9.2
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Check Your Understanding\nit i\n1. Q: Why must the delivery tube be connected immediately after\nadding yeast to glucose?\nA: To prevent any CO2 gas from escaping, which would make the\nvolume measurement inaccurate.\n2. Q: Name one piece of apparatus that improves the resolution of our\nvolume measurement.\nA: A gas syringe (it has finer scale markings than a beaker or large\ncylinder).\n3. Q: How is an anomalous result handled?\nA: It is identified, circled, and omitted from the calculation of the\nmean.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "040d238ff014cbd92c37e35793a29e4b8a2160a6fbae31f954b58de8022b7b92",
+        "transcript": "Check Your Understanding\nit i\n1. Q: Why must the delivery tube be connected immediately after\nadding yeast to glucose?\nA: To prevent any CO2 gas from escaping, which would make the\nvolume measurement inaccurate.\n2. Q: Name one piece of apparatus that improves the resolution of our\nvolume measurement.\nA: A gas syringe (it has finer scale markings than a beaker or large\ncylinder).\n3. Q: How is an anomalous result handled?\nA: It is identified, circled, and omitted from the calculation of the\nmean.",
+        "role": "worked-example",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why must the delivery tube be connected immediately after adding yeast to glucose?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Name one piece of apparatus that improves the resolution of our volume measurement. A: A gas syringe (it has finer scale markings than a beaker or large cylinder). 3. Q: How is an anomalous result handled?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 10,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Why must the delivery tube be connected immediately after adding yeast to glucose?",
+          "expectedAnswer": "To stop carbon dioxide escaping and making the volume measurement inaccurate.",
+          "questionBounds": {
+            "x": 10.6,
+            "y": 33.4,
+            "w": 76.5,
+            "h": 9.6
+          },
+          "bounds": {
+            "x": 10.6,
+            "y": 33.4,
+            "w": 76.5,
+            "h": 9.6
+          },
+          "answerBounds": {
+            "x": 13.2,
+            "y": 44,
+            "w": 74.7,
+            "h": 9.4
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Name one piece of apparatus that improves the resolution of the volume measurement.",
+          "expectedAnswer": "A gas syringe.",
+          "questionBounds": {
+            "x": 10.6,
+            "y": 55.6,
+            "w": 77.4,
+            "h": 9.1
+          },
+          "bounds": {
+            "x": 10.6,
+            "y": 55.6,
+            "w": 77.4,
+            "h": 9.1
+          },
+          "answerBounds": {
+            "x": 13.2,
+            "y": 65.9,
+            "w": 73.5,
+            "h": 9.3
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "How is an anomalous result handled?",
+          "expectedAnswer": "Identify or circle it and omit it from the mean.",
+          "questionBounds": {
+            "x": 10.6,
+            "y": 77.7,
+            "w": 55,
+            "h": 4.9
+          },
+          "bounds": {
+            "x": 10.6,
+            "y": 77.7,
+            "w": 55,
+            "h": 4.9
+          },
+          "answerBounds": {
+            "x": 13.2,
+            "y": 82.7,
+            "w": 73.4,
+            "h": 9.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_12_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"Check Your Understanding\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_12.png"
+        }
+      ]
     },
     {
       "number": 13,
@@ -968,17 +1903,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 43,
+        "timeGuideDisplay": "36–50s",
+        "vciScore": "5.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 25950,
+          "semanticProcessingMs": 15600,
+          "wordCount": 82,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -995,35 +1933,92 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
+      "text": "What Do the Results Mean?\n10 Optimum Temperature: The rate\n= od fermentation is at its highest.\nr= As temperature rises,\n5 increases. There are Beyond the optimum,\n5 ee high temperatures\n6 collisions between A g P\n8 enzymes and glucose. || / Pt Nes cause the enzymes\n3 = a to denature. The\n£ 4 Ct N active site changes\ney shape, and the\n2 reaction stops.\nce\nov\n4\n0\n0 10 20 30 40 50 60\nTemperature (°C)",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "30b6214d6ae8329b502d0d447e9340e4012452d30dfee84e2d9649ac5a10512d",
+        "transcript": "What Do the Results Mean?\n10 Optimum Temperature: The rate\n= od fermentation is at its highest.\nr= As temperature rises,\n5 increases. There are Beyond the optimum,\n5 ee high temperatures\n6 collisions between A g P\n8 enzymes and glucose. || / Pt Nes cause the enzymes\n3 = a to denature. The\n£ 4 Ct N active site changes\ney shape, and the\n2 reaction stops.\nce\nov\n4\n0\n0 10 20 30 40 50 60\nTemperature (°C)",
+        "role": "instructional-content",
+        "questions": [
           {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "id": "ocr_question_1",
+            "question": "What Do the Results Mean?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
           }
-        ]
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_13_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 13: \"What Do the Results Mean?\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 13: \"What Do the Results Mean?\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 13: \"What Do the Results Mean?\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_13.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -1033,17 +2028,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 40,
+        "timeGuideDisplay": "34–46s",
+        "vciScore": "6.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 26100,
+          "semanticProcessingMs": 12400,
+          "wordCount": 79,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -1060,36 +2058,93 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Lesson Summary\nDesign & Control\nValid investigations require strict control variables (e.g., glucose\nvolume) to ensure only the independent variable affects the results.\nMeasure & Process\nG Yeast fermentation produces CO2. We measure this accurately\nusing a gas syringe and repeat to spot anomalies and calculate a\nreliable mean rate.\nInterpret\nThe rate of fermentation is enzyme-controlled. It increases with\nob kinetic energy up to an optimum temperature, after which the\nenzymes denature and the rate drops to zero.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "a65581838870e7897c1dfde4ffd72603f14ed437d8535ae4d31415c5eaf5966e",
+        "transcript": "Lesson Summary\nDesign & Control\nValid investigations require strict control variables (e.g., glucose\nvolume) to ensure only the independent variable affects the results.\nMeasure & Process\nG Yeast fermentation produces CO2. We measure this accurately\nusing a gas syringe and repeat to spot anomalies and calculate a\nreliable mean rate.\nInterpret\nThe rate of fermentation is enzyme-controlled. It increases with\nob kinetic energy up to an optimum temperature, after which the\nenzymes denature and the rate drops to zero.",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_14_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 14: \"Design & Control\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_14.png"
+        },
+        {
+          "id": "gemini_slide_14_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 14: \"Design & Control\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_14.png"
+        },
+        {
+          "id": "gemini_slide_14_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 14: \"Design & Control\".\nDeck context: 10. Fermentation Practical.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Fermentation Practical. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_10_FERMENTATION_PRACTICAL/slides/slide_14.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-01T07:29:20.687Z"
+  }
 }

@@ -14,6 +14,14 @@ export async function extractPptxDeck(pptxPath, outputBaseDir) {
 
   await fs.mkdir(slidesDir, { recursive: true });
 
+  const manifestPath = path.join(targetDir, "manifest.json");
+  let previousManifest = null;
+  try {
+    previousManifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
+  } catch {
+    // This is a new conversion.
+  }
+
   const slideImageMap = new Map(); // slideNumber -> zipImagePath
   const entries = new Map();
 
@@ -50,9 +58,19 @@ export async function extractPptxDeck(pptxPath, outputBaseDir) {
     let targetImage = null;
     if (relsEntry) {
       const relsXml = await extractZipEntryToString(pptxPath, relsEntry);
-      const imgMatch = relsXml.match(/Target="\.\.\/media\/([^"]+)"/);
-      if (imgMatch) {
-        targetImage = `ppt/media/${imgMatch[1]}`;
+      const relationshipTags = relsXml.match(/<Relationship\b[^>]*>/g) || [];
+      const imageRelationship = relationshipTags.find((tag) => {
+        const type = tag.match(/\bType="([^"]+)"/)?.[1] || "";
+        const target = tag.match(/\bTarget="([^"]+)"/)?.[1] || "";
+        return (
+          type.endsWith("/image") &&
+          /^\.\.\/media\//.test(target) &&
+          /\.(?:png|jpe?g|gif|bmp|tiff?|webp|emf|wmf)$/i.test(target)
+        );
+      });
+      const imageTarget = imageRelationship?.match(/\bTarget="\.\.\/media\/([^"]+)"/)?.[1];
+      if (imageTarget) {
+        targetImage = `ppt/media/${imageTarget}`;
       }
     }
 
@@ -63,7 +81,7 @@ export async function extractPptxDeck(pptxPath, outputBaseDir) {
       
       await extractZipEntryToFile(pptxPath, entries.get(targetImage), outSlidePath);
 
-      slides.push({
+      const extractedSlide = {
         number: slideNum,
         title:
           slideNum === 2
@@ -72,21 +90,41 @@ export async function extractPptxDeck(pptxPath, outputBaseDir) {
         imageFileName: outSlideFileName,
         imageUrl: `/decks/${deckId}/slides/${outSlideFileName}`,
         sourceMediaPath: targetImage,
-        isInteractive: slideNum === 2, // Slide 2 is starter activity Q&A grid by default
-        interactiveType: slideNum === 2 ? "starter_qa_grid" : null
-      });
+        isInteractive: false,
+        interactiveType: null
+      };
+
+      const previousSlide = previousManifest?.slides?.find(
+        (candidate) =>
+          candidate.imageFileName === outSlideFileName ||
+          candidate.sourceMediaPath === targetImage ||
+          candidate.number === slideNum
+      );
+      slides.push(
+        previousSlide
+          ? {
+              ...previousSlide,
+              ...extractedSlide,
+              // Preserve authored titles; the extractor's generic title is
+              // only useful when no analysis or manual title exists.
+              title: previousSlide.title || extractedSlide.title
+            }
+          : extractedSlide
+      );
     }
   }
 
   const manifest = {
+    ...(previousManifest || {}),
     id: deckId,
-    title: fileName.replace(/^Lesson_\d+_\d*_?/, "").replace(/_/g, " "),
+    title:
+      previousManifest?.title ||
+      fileName.replace(/^Lesson_\d+_\d*_?/, "").replace(/_/g, " "),
     filename: path.basename(pptxPath),
     totalSlides: slides.length,
     slides
   };
 
-  const manifestPath = path.join(targetDir, "manifest.json");
   await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 
   console.log(`[PPTX Extractor] Successfully extracted ${slides.length} slides for ${deckId}`);

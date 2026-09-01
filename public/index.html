@@ -8,6 +8,7 @@
     content="Convert image-based PowerPoint lessons into interactive, click-to-reveal web presentations."
   >
   <title>Vibe Deck Agent · Interactive Biology Lessons</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='14' width='64' height='64' fill='%234f46e5'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='42' fill='white'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
@@ -91,7 +92,22 @@
       <section class="slide-stage" id="slideStage" aria-label="Presentation stage">
         <div class="slide-wrapper" id="slideWrapper">
           <img id="slideImage" class="slide-image" src="" alt="Current presentation slide">
-          <video id="slideVideo" class="slide-video hidden" playsinline preload="auto"></video>
+          <video
+            id="slideVideo"
+            class="slide-video hidden"
+            playsinline
+            preload="auto"
+            aria-label="Slide video"
+          ></video>
+          <button
+            id="videoPlayFallback"
+            class="video-play-fallback hidden"
+            type="button"
+            aria-label="Play slide video"
+          >
+            <span aria-hidden="true">▶</span>
+            <span>Play video</span>
+          </button>
           <div id="webEmbedLayer" class="web-embed-layer hidden" aria-label="Embedded practical">
             <iframe
               id="webEmbedFrame"
@@ -124,26 +140,37 @@
           </div>
         </div>
 
-        <div id="qaControls" class="qa-controls-bar hidden" aria-label="Answer controls">
-          <div class="serial-build-group">
-            <span class="qa-label">Reveal sequence</span>
-            <span id="serialStepBadge" class="build-step-badge">0 / 6</span>
-            <button id="prevBuildStepBtn" class="btn btn-icon-small" type="button" title="Previous reveal step">◀</button>
-            <button id="nextBuildStepBtn" class="btn btn-icon-small" type="button" title="Next reveal step">▶</button>
+        <div id="qaControls" class="qa-controls-bar hidden" aria-label="Build and answer controls">
+          <div id="buildControlsGroup" class="serial-build-group hidden">
+            <span class="qa-label">Build sequence</span>
+            <span id="serialStepBadge" class="build-step-badge">0 / 0</span>
+            <button id="prevBuildStepBtn" class="btn btn-icon-small" type="button" title="Previous build step">◀</button>
+            <button id="nextBuildStepBtn" class="btn btn-icon-small" type="button" title="Next build step">▶</button>
+          </div>
+          <div id="answerControlsGroup" class="serial-build-group answer-sequence-group hidden">
+            <span class="qa-label">Answers</span>
+            <span id="answerStepBadge" class="build-step-badge">0 / 0</span>
+            <button id="prevAnswerBtn" class="btn btn-icon-small" type="button" title="Hide the most recently revealed answer">◀</button>
+            <button id="nextAnswerBtn" class="btn btn-icon-small" type="button" title="Reveal the next answer">▶</button>
+          </div>
+          <div id="autoPlaySequenceGroup" class="sequence-autoplay-group hidden">
             <button id="autoPlayBuildsBtn" class="btn btn-outline-small" type="button">
               <span aria-hidden="true">▶</span> Auto play
             </button>
           </div>
-          <div class="divider-v" aria-hidden="true"></div>
-          <button id="editComponentBtn" class="btn btn-secondary-small" type="button">
-            <span aria-hidden="true">✎</span> Edit components
-          </button>
-          <button id="revealAllBtn" class="btn btn-secondary-small" type="button">
-            <span aria-hidden="true">◉</span> Reveal all
-          </button>
-          <button id="hideAllBtn" class="btn btn-outline-small" type="button">
-            <span aria-hidden="true">●</span> Hide all
-          </button>
+          <div id="qaControlsDivider" class="divider-v hidden" aria-hidden="true"></div>
+          <div id="answerActionsGroup" class="answer-actions-group hidden">
+            <button id="editComponentBtn" class="btn btn-secondary-small" type="button">
+              <span aria-hidden="true">✎</span> Edit components
+            </button>
+            <button id="revealAllBtn" class="btn btn-secondary-small" type="button">
+              <span aria-hidden="true">◉</span> Reveal all
+            </button>
+            <button id="hideAllBtn" class="btn btn-outline-small" type="button">
+              <span aria-hidden="true">●</span> Hide all
+            </button>
+          </div>
+          <div id="answerLiveRegion" class="sr-only" aria-live="polite"></div>
         </div>
       </section>
 
@@ -294,7 +321,7 @@
                   Revert to selected version
                 </button>
                 <button id="clearSequenceBtn" class="btn btn-outline-small" type="button">
-                  Clear reveal sequence
+                  Clear image builds
                 </button>
               </div>
             </div>

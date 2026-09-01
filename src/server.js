@@ -6,7 +6,18 @@ import { extractPptxDeck } from "./pptx-extractor.js";
 import { generateSlideInteractivity } from "./gemini-segmenter.js";
 import { editSlideComponentViaGemini } from "./gemini-editor.js";
 import { generateGeminiSlideImage } from "./gemini-image-gen.js";
+import {
+  validateGeneratedSlideImage,
+  validateVisualQaChecklist
+} from "./image-build-qa.js";
 import { triggerNotebookLMRevision } from "./notebooklm-revisor.js";
+import {
+  hasProtectedVideoMedia,
+  isVideoMedia,
+  normalizeMediaBuilds,
+  removeGeneratedImageBuildsPreservingVideo,
+  syncQaApprovedGeminiSequence
+} from "./slide-animation-planner.js";
 import {
   AGENT_PATHWAYS,
   AGENT_PATHWAY_OPTIONS,
@@ -107,7 +118,7 @@ export function buildTargetedRevisionPrompt(promptText, editTarget) {
       "Revise the supplied slide image.",
       `User edit instruction: ${instruction}`,
       "Preserve the slide dimensions and keep every element not named by the instruction unchanged.",
-      "Do not return the target area."
+      "Return the complete slide canvas, not a crop or isolated target area."
     ].join("\n");
   }
 
@@ -120,7 +131,7 @@ export function buildTargetedRevisionPrompt(promptText, editTarget) {
     `Pointer anchor: ${pointX.toFixed(1)}% from the left and ${pointY.toFixed(1)}% from the top.`,
     `User edit instruction: ${instruction}`,
     "Treat the target bounds as the only editable area. Keep every other element, position, type style, colour, background, and slide dimension unchanged.",
-    "Do not return the target area."
+    "Return the complete slide canvas, not only the selected target area."
   ].join("\n");
 }
 
@@ -130,15 +141,54 @@ function lessonSortValue(deck) {
 }
 
 async function saveManifestFile(manifestPath, manifest) {
+  const temporaryPath = `${manifestPath}.${process.pid}.${Date.now()}.tmp`;
   try {
-    await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+    await fs.writeFile(temporaryPath, `${JSON.stringify(manifest, null, 2)}\n`);
+    await fs.rename(temporaryPath, manifestPath);
   } catch (error) {
+    await fs.unlink(temporaryPath).catch(() => {});
     if (error.code === "EROFS" || error.code === "EACCES") {
       console.warn(`[Server] Read-only filesystem (${error.code}), skipped disk write for ${manifestPath}`);
     } else {
       throw error;
     }
   }
+}
+
+function replaceSlideContents(target, source) {
+  Object.keys(target).forEach((key) => delete target[key]);
+  Object.assign(target, source);
+}
+
+export function resolvePublicAssetPath(publicDir, assetUrlOrPath) {
+  const requested = String(assetUrlOrPath || "").trim();
+  if (!requested) {
+    const error = new Error("A generated image URL or path is required.");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const publicRoot = path.resolve(publicDir);
+  let resolvedPath;
+  if (path.isAbsolute(requested) && !requested.startsWith("/decks/")) {
+    resolvedPath = path.resolve(requested);
+  } else {
+    const pathname = decodeURIComponent(requested.split(/[?#]/, 1)[0]).replace(/^\/+/, "");
+    resolvedPath = path.resolve(publicRoot, pathname);
+  }
+
+  if (resolvedPath !== publicRoot && !resolvedPath.startsWith(`${publicRoot}${path.sep}`)) {
+    const error = new Error("Generated image must be stored inside the public workspace.");
+    error.statusCode = 400;
+    throw error;
+  }
+  return resolvedPath;
+}
+
+function publicAssetUrl(publicDir, assetUrlOrPath) {
+  const resolvedPath = resolvePublicAssetPath(publicDir, assetUrlOrPath);
+  const relative = path.relative(path.resolve(publicDir), resolvedPath).split(path.sep).join("/");
+  return `/${relative}`;
 }
 
 async function readManifest(decksDir, deckId) {
@@ -156,12 +206,13 @@ async function runRevision({
   componentId,
   editTarget,
   pathway,
+  buildId = null,
   isAnimationStep = true,
   dispatch = true
 }) {
   const selectedPathway = normalizeAgentPathway(pathway);
   const sNum = Number.parseInt(slideNum, 10);
-  const { manifest } = await readManifest(decksDir, deckId);
+  const { manifestPath, manifest } = await readManifest(decksDir, deckId);
   const slide = manifest.slides.find((candidate) => candidate.number === sNum);
 
   if (!slide) {
@@ -197,41 +248,231 @@ async function runRevision({
     );
   }
 
-  if (result.imageUrl) {
+  if (result.imageUrl || result.videoUrl) {
     if (isAnimationStep) {
-      slide.hasProgressiveBuilds = true;
-      if (!Array.isArray(slide.progressiveBuilds)) {
-        slide.progressiveBuilds = [
-          { version: 1, label: "Build 1: Initial View", imageUrl: slide.imageUrl }
-        ];
-      }
-      const nextVersion = slide.progressiveBuilds.length + 1;
-      const stepLabel = `Build ${nextVersion}: ${normalizedEditTarget.label || "Custom Edit"}`;
-      slide.progressiveBuilds.push({
-        version: nextVersion,
-        label: stepLabel,
-        imageUrl: result.imageUrl
-      });
+      const builds = normalizeMediaBuilds(slide);
+      const plannedCell = Array.isArray(slide.geminiImageCells)
+        ? slide.geminiImageCells.find((cell) => cell.id === buildId)
+        : null;
 
-      if (!slide.serialAnimation) {
-        slide.serialAnimation = { totalBuildSteps: 0, autoAdvanceDelayMs: 3000, serialSteps: [] };
+      if (result.imageUrl && hasProtectedVideoMedia(slide)) {
+        // A still-image request must never replace or reorder an existing
+        // Gemini video sequence. Keep the captured image outside playback.
+        slide.generatedMedia = [
+          ...(Array.isArray(slide.generatedMedia) ? slide.generatedMedia : []),
+          {
+            id: buildId || `image_build_${Date.now()}`,
+            mediaType: "image",
+            imageUrl: result.imageUrl,
+            source: "gemini-image-chat",
+            generationStatus: "generated-pending-qa",
+            qaStatus: "pending",
+            generatedAt: new Date().toISOString(),
+            excludedFromPlayback: "protected-video"
+          }
+        ];
+      } else if (plannedCell && result.imageUrl) {
+        plannedCell.status = "generated-pending-qa";
+        plannedCell.qaStatus = "pending";
+        plannedCell.outputImageUrl = result.imageUrl;
+        plannedCell.generatedAt = new Date().toISOString();
+        plannedCell.qa = {
+          status: "pending",
+          generatedAt: plannedCell.generatedAt,
+          reason: "Generated image is withheld from playback until technical and visual QA approval."
+        };
+        replaceSlideContents(slide, syncQaApprovedGeminiSequence(slide));
+      } else {
+        const nextVersion = builds.length + 1;
+        const kind = result.videoUrl ? "video" : "image";
+        const stepLabel = `Build ${nextVersion}: ${normalizedEditTarget.label || "Custom Edit"}`;
+        const generatedEntry = {
+          id: buildId || `${kind}_build_${Date.now()}`,
+          version: nextVersion,
+          kind,
+          mediaType: kind,
+          label: stepLabel,
+          imageUrl: result.imageUrl || slide.imageUrl,
+          ...(result.videoUrl
+            ? {
+                videoUrl: result.videoUrl,
+                posterUrl: result.posterUrl || slide.imageUrl,
+                protected: true,
+                source: "gemini-video"
+              }
+            : {
+                source: "gemini-image-chat",
+                generationStatus: "generated-pending-qa",
+                qaStatus: "pending"
+              })
+        };
+        if (kind === "video") {
+          builds.push(generatedEntry);
+          slide.progressiveBuilds = builds.map((build, index) => ({
+            ...build,
+            version: index + 1
+          }));
+          slide.hasProgressiveBuilds = true;
+          slide.serialAnimation = {
+            totalBuildSteps: slide.progressiveBuilds.length,
+            autoAdvanceDelayMs: slide.serialAnimation?.autoAdvanceDelayMs || 3200,
+            serialSteps: slide.progressiveBuilds.map((build, index) => ({
+              step: index + 1,
+              buildId: build.id,
+              title: build.label,
+              componentIds: [build.id],
+              targetBounds: build.targetBounds || normalizedEditTarget.bounds,
+              revealType: isVideoMedia(build) ? "play-video" : "crossfade"
+            }))
+          };
+        } else {
+          slide.geminiImageCells = [
+            ...(Array.isArray(slide.geminiImageCells) ? slide.geminiImageCells : []),
+            {
+              id: generatedEntry.id,
+              order: (slide.geminiImageCells?.length || 0) + 1,
+              kind: "image",
+              mediaType: "image",
+              source: "gemini-image-chat",
+              label: generatedEntry.label,
+              fullCanvas: true,
+              cumulative: true,
+              prompt: promptText,
+              status: "generated-pending-qa",
+              qaStatus: "pending",
+              outputImageUrl: result.imageUrl,
+              sourceImageUrl: slide.imageUrl,
+              generatedAt: new Date().toISOString(),
+              qa: {
+                status: "pending",
+                reason: "Generated image is withheld from playback until technical and visual QA approval."
+              }
+            }
+          ];
+          replaceSlideContents(slide, syncQaApprovedGeminiSequence(slide));
+        }
       }
-      slide.serialAnimation.serialSteps.push({
-        step: nextVersion,
-        title: stepLabel,
-        componentIds: [normalizedEditTarget.id],
-        targetBounds: normalizedEditTarget.bounds,
-        revealType: "fade-in"
-      });
-      slide.serialAnimation.totalBuildSteps = slide.progressiveBuilds.length;
     } else {
-      slide.imageUrl = result.imageUrl;
+      if (result.imageUrl) slide.imageUrl = result.imageUrl;
     }
-    const manifestPath = path.join(decksDir, manifest.id, "manifest.json");
     await saveManifestFile(manifestPath, manifest);
   }
 
-  return { ...result, isAnimationStep, editTarget: normalizedEditTarget };
+  return {
+    ...result,
+    isAnimationStep,
+    editTarget: normalizedEditTarget,
+    qaRequired: Boolean(result.imageUrl && isAnimationStep),
+    slide
+  };
+}
+
+export async function reviewGeneratedBuildAsset({
+  decksDir = DECKS_DIR,
+  publicDir = path.dirname(decksDir),
+  deckId,
+  slideNum,
+  buildId,
+  imageUrl = null,
+  imagePath = null,
+  approved,
+  visualChecks = null,
+  reviewer = "presentation-agent",
+  notes = ""
+}) {
+  const sNum = Number.parseInt(slideNum, 10);
+  const { manifestPath, manifest } = await readManifest(decksDir, deckId);
+  const slide = manifest.slides.find((candidate) => candidate.number === sNum);
+  if (!slide) {
+    const error = new Error(`Slide ${slideNum} not found.`);
+    error.statusCode = 404;
+    throw error;
+  }
+  if (hasProtectedVideoMedia(slide)) {
+    const error = new Error("Protected video slides cannot be replaced by a still-image QA approval.");
+    error.statusCode = 409;
+    throw error;
+  }
+
+  const cell = Array.isArray(slide.geminiImageCells)
+    ? slide.geminiImageCells.find((candidate) => candidate.id === buildId)
+    : null;
+  if (!cell) {
+    const error = new Error(`Gemini image cell ${buildId} not found.`);
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const requestedAsset = imageUrl || imagePath || cell.outputImageUrl;
+  if (!requestedAsset) {
+    const error = new Error("Generate or attach an image before recording QA.");
+    error.statusCode = 400;
+    throw error;
+  }
+  const normalizedImageUrl = publicAssetUrl(publicDir, requestedAsset);
+  const outputPath = resolvePublicAssetPath(publicDir, normalizedImageUrl);
+  const sourcePath = resolvePublicAssetPath(
+    publicDir,
+    cell.sourceImageUrl || slide.imageUrl
+  );
+  const technicalQa = await validateGeneratedSlideImage({ outputPath, sourcePath });
+  const duplicateCell = slide.geminiImageCells.find(
+    (candidate) =>
+      candidate.id !== cell.id &&
+      (candidate.outputImageUrl === normalizedImageUrl ||
+        (technicalQa.sha256 && candidate.qa?.technical?.sha256 === technicalQa.sha256))
+  );
+  technicalQa.checks.push({
+    id: "unique-build-image",
+    passed: !duplicateCell,
+    detail: duplicateCell
+      ? `Matches generated build ${duplicateCell.id}.`
+      : "Generated build is distinct from the other cells in this sequence."
+  });
+  technicalQa.passed = technicalQa.checks.every((check) => check.passed);
+  const visualQa = validateVisualQaChecklist(visualChecks);
+  const reviewedAt = new Date().toISOString();
+
+  if (approved === true && (!technicalQa.passed || !visualQa.passed)) {
+    const error = new Error(
+      "Generated image failed QA and was not added to the click sequence."
+    );
+    error.statusCode = 422;
+    error.qa = { technical: technicalQa, visual: visualQa };
+    throw error;
+  }
+
+  cell.outputImageUrl = normalizedImageUrl;
+  cell.generatedAt = cell.generatedAt || reviewedAt;
+  cell.qaStatus = approved === true ? "approved" : "rejected";
+  cell.status = approved === true ? "approved" : "generated-rejected";
+  cell.qa = {
+    status: cell.qaStatus,
+    reviewedAt,
+    reviewer: String(reviewer || "presentation-agent").slice(0, 120),
+    notes: String(notes || "").slice(0, 2_000),
+    technical: technicalQa,
+    visual: visualQa
+  };
+
+  const synchronized = syncQaApprovedGeminiSequence(slide);
+  if (synchronized.animationPlan) {
+    synchronized.animationPlan = {
+      ...synchronized.animationPlan,
+      approvedCellCount: synchronized.progressiveBuilds?.length || 0,
+      qaRequired: true
+    };
+  }
+  replaceSlideContents(slide, synchronized);
+  await saveManifestFile(manifestPath, manifest);
+
+  return {
+    success: true,
+    approved: approved === true,
+    qa: cell.qa,
+    build: slide.geminiImageCells.find((candidate) => candidate.id === buildId),
+    slide
+  };
 }
 
 export function createApp({
@@ -300,6 +541,7 @@ export function createApp({
         componentId: req.body.componentId,
         editTarget: req.body.editTarget,
         pathway: req.body.pathway,
+        buildId: req.body.buildId,
         isAnimationStep: req.body.isAnimationStep !== false,
         dispatch: req.body.dispatch !== false
       });
@@ -332,11 +574,6 @@ export function createApp({
       const restoredUrl = targetVersion?.imageUrl || imageUrl || slide.originalImageUrl || slide.imageUrl;
       if (restoredUrl) {
         slide.imageUrl = restoredUrl;
-        if (slide.hasProgressiveBuilds && Array.isArray(slide.progressiveBuilds)) {
-          slide.progressiveBuilds.forEach((b) => {
-            b.imageUrl = restoredUrl;
-          });
-        }
         await saveManifestFile(manifestPath, manifest);
       }
 
@@ -356,16 +593,9 @@ export function createApp({
         return res.status(404).json({ error: `Slide ${req.params.slideNum} not found` });
       }
 
-      slide.hasProgressiveBuilds = false;
-      delete slide.progressiveBuilds;
-      delete slide.serialAnimation;
-
-      const latestVersion = slide.history && slide.history.length > 0
-        ? slide.history[slide.history.length - 1]
-        : null;
-      if (latestVersion && latestVersion.imageUrl) {
-        slide.imageUrl = latestVersion.imageUrl;
-      }
+      const clearedSlide = removeGeneratedImageBuildsPreservingVideo(slide);
+      Object.keys(slide).forEach((key) => delete slide[key]);
+      Object.assign(slide, clearedSlide);
 
       await saveManifestFile(manifestPath, manifest);
 
@@ -394,6 +624,76 @@ export function createApp({
         res.json(result);
       } catch (error) {
         res.status(error.statusCode || 500).json({ error: error.message });
+      }
+    }
+  );
+
+  app.post(
+    "/api/decks/:deckId/slides/:slideNum/builds/:buildId/generate",
+    async (req, res) => {
+      try {
+        const { manifest } = await readManifest(decksDir, req.params.deckId);
+        const sNum = Number.parseInt(req.params.slideNum, 10);
+        const slide = manifest.slides.find((candidate) => candidate.number === sNum);
+        const cell = slide?.geminiImageCells?.find(
+          (candidate) => candidate.id === req.params.buildId
+        );
+        if (!slide) {
+          return res.status(404).json({ error: `Slide ${req.params.slideNum} not found` });
+        }
+        if (!cell || !cell.prompt) {
+          return res.status(404).json({ error: `Gemini image cell ${req.params.buildId} not found` });
+        }
+
+        const result = await runRevision({
+          decksDir,
+          deckId: manifest.id,
+          slideNum: sNum,
+          promptText: cell.prompt,
+          componentId: cell.id,
+          editTarget: {
+            type: "slide",
+            id: "slide",
+            label: cell.label
+          },
+          pathway: AGENT_PATHWAYS.GEMINI_IMAGE_CHAT,
+          buildId: cell.id,
+          isAnimationStep: true,
+          dispatch: req.body.dispatch !== false
+        });
+        res.json(result);
+      } catch (error) {
+        res.status(error.statusCode || 500).json({ error: error.message });
+      }
+    }
+  );
+
+  app.post(
+    "/api/decks/:deckId/slides/:slideNum/builds/:buildId/qa",
+    async (req, res) => {
+      try {
+        if (typeof req.body.approved !== "boolean") {
+          return res.status(400).json({ error: "approved must be true or false." });
+        }
+        const result = await reviewGeneratedBuildAsset({
+          decksDir,
+          publicDir,
+          deckId: req.params.deckId,
+          slideNum: req.params.slideNum,
+          buildId: req.params.buildId,
+          imageUrl: req.body.imageUrl,
+          imagePath: req.body.imagePath,
+          approved: req.body.approved,
+          visualChecks: req.body.visualChecks,
+          reviewer: req.body.reviewer,
+          notes: req.body.notes
+        });
+        res.json(result);
+      } catch (error) {
+        res.status(error.statusCode || 500).json({
+          error: error.message,
+          ...(error.qa ? { qa: error.qa } : {})
+        });
       }
     }
   );
@@ -472,14 +772,29 @@ export function createApp({
       }
 
       if (Array.isArray(req.body.interactiveCells)) {
-        slide.interactiveCells = req.body.interactiveCells;
+        slide.interactiveCells = req.body.interactiveCells.map((cell) => ({
+          ...cell,
+          locked: true,
+          provenance: "user-adjusted"
+        }));
       } else if (req.body.cellId && req.body.bounds && slide.interactiveCells) {
         const cell = slide.interactiveCells.find(
           (candidate) => candidate.id === req.body.cellId
         );
         if (cell) {
+          const previousBounds = cell.answerBounds;
           cell.answerBounds = { ...req.body.bounds };
-          cell.bounds = { ...req.body.bounds };
+          if (Array.isArray(cell.answerRegions) && previousBounds) {
+            const sameBounds = (left, right) =>
+              ["x", "y", "w", "h"].every(
+                (key) => Number(left?.[key]) === Number(right?.[key])
+              );
+            cell.answerRegions = cell.answerRegions.map((region) =>
+              sameBounds(region, previousBounds) ? { ...req.body.bounds } : region
+            );
+          }
+          cell.locked = true;
+          cell.provenance = "user-adjusted";
         }
       }
 
@@ -508,8 +823,8 @@ export function createApp({
             path.join(pptxPath, file),
             decksDir
           );
-          await generateSlideInteractivity(manifest.id, decksDir, { pathway });
-          manifests.push(manifest);
+          const enrichedManifest = await generateSlideInteractivity(manifest.id, decksDir, { pathway });
+          manifests.push(enrichedManifest || manifest);
         }
         return res.json({
           success: true,
@@ -520,8 +835,8 @@ export function createApp({
       }
 
       const manifest = await extractPptxDeck(pptxPath, decksDir);
-      await generateSlideInteractivity(manifest.id, decksDir, { pathway });
-      res.json({ success: true, pathway, deck: manifest });
+      const enrichedManifest = await generateSlideInteractivity(manifest.id, decksDir, { pathway });
+      res.json({ success: true, pathway, deck: enrichedManifest || manifest });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

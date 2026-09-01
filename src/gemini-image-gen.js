@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import path from "node:path";
 import { chromium } from "playwright";
 import { AGENT_PATHWAYS } from "./agent-config.js";
 
@@ -13,7 +14,7 @@ import { AGENT_PATHWAYS } from "./agent-config.js";
  */
 
 export const DEFAULT_GEMINI_IMAGE_PROMPT_TEMPLATE =
-  "Create a revised version of this slide that keeps its visual style and layout. Apply only the requested component change and leave every other slide element unchanged. Do not return the target area.";
+  "Create a revised version of this slide that keeps its visual style and layout. Apply only the requested component change and leave every other slide element unchanged. Return the complete 16:9 slide canvas, not a crop or isolated target area.";
 
 async function isVisible(locator, timeout = 1500) {
   try {
@@ -166,23 +167,38 @@ async function enterAndSendPrompt(page, promptText) {
   }
 }
 
-async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
-  if (!decksDir) return null;
+const GENERATED_IMAGE_SELECTOR = [
+  'model-response img:not([src*="avatar"]):not([src*="profile"])',
+  'message-content img:not([src*="avatar"]):not([src*="profile"])',
+  '.conversation-container img:not([src*="avatar"]):not([src*="profile"])',
+  'image-viewer img',
+  '.image-container img',
+  '.image-canvas img',
+  'generated-image img',
+  'img[src*="googleusercontent.com"]',
+  'img[src*="ggpht.com"]',
+  'img[src*="blob:"]',
+  'img[alt*="Generated" i]',
+  'figure img'
+].join(", ");
 
-  const imageSelectors = [
-    'model-response img:not([src*="avatar"]):not([src*="profile"])',
-    'message-content img:not([src*="avatar"]):not([src*="profile"])',
-    '.conversation-container img:not([src*="avatar"]):not([src*="profile"])',
-    'image-viewer img',
-    '.image-container img',
-    '.image-canvas img',
-    'generated-image img',
-    'img[src*="googleusercontent.com"]',
-    'img[src*="ggpht.com"]',
-    'img[src*="blob:"]',
-    'img[alt*="Generated" i]',
-    'figure img'
-  ].join(", ");
+async function snapshotGeneratedMedia(page) {
+  const images = page.locator(GENERATED_IMAGE_SELECTOR);
+  const videos = page.locator("model-response video, message-content video, generated-video video, video[src]");
+  return {
+    imageCount: await images.count().catch(() => 0),
+    videoCount: await videos.count().catch(() => 0)
+  };
+}
+
+async function captureGeneratedGeminiImage(
+  page,
+  deckId,
+  slideNum,
+  decksDir,
+  baseline = { imageCount: 0, videoCount: 0 }
+) {
+  if (!decksDir) return null;
 
   const startTime = Date.now();
   const maxWaitMs = 45000;
@@ -204,11 +220,22 @@ async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
   // Step 2: Poll for valid generated image in DOM
   while (Date.now() - startTime < maxWaitMs) {
     try {
-      const candidates = page.locator(imageSelectors);
+      const videos = page.locator(
+        "model-response video, message-content video, generated-video video, video[src]"
+      );
+      const videoCount = await videos.count();
+      if (videoCount > baseline.videoCount) {
+        console.warn(
+          "[Gemini Image Gen] Gemini returned a video. It was left untouched and was not substituted for the requested still-image build."
+        );
+        return { kind: "video", protected: true };
+      }
+
+      const candidates = page.locator(GENERATED_IMAGE_SELECTOR);
       const count = await candidates.count();
 
-      if (count > 0) {
-        for (let i = count - 1; i >= 0; i--) {
+      if (count > baseline.imageCount) {
+        for (let i = count - 1; i >= baseline.imageCount; i--) {
           const imgLoc = candidates.nth(i);
           if (!(await isVisible(imgLoc, 1000))) continue;
 
@@ -311,7 +338,7 @@ async function captureGeneratedGeminiImage(page, deckId, slideNum, decksDir) {
             console.log(
               `[Gemini Image Gen] Successfully captured generated image (${buffer.length} bytes) to ${relativeUrl}`
             );
-            return relativeUrl;
+            return { kind: "image", imageUrl: relativeUrl };
           }
         }
       }
@@ -340,6 +367,7 @@ export async function generateGeminiSlideImage(
   let promptSent = false;
   let notice = null;
   let capturedImageUrl = null;
+  let protectedVideoDetected = false;
 
   if (dispatch) {
     try {
@@ -354,39 +382,44 @@ export async function generateGeminiSlideImage(
           const browser = await chromium.connectOverCDP(cdpEndpoint);
           try {
             const context = browser.contexts()[0];
-            let page =
-              context?.pages().find((candidate) => candidate.url().includes("gemini.google.com")) ||
-              context?.pages()[0];
+            let page = null;
 
-            if (page) {
+            if (context) {
               cdpConnected = true;
 
-              if (!page.url().includes("gemini.google.com/images")) {
-                try {
-                  await page.goto("https://gemini.google.com/images", {
-                    waitUntil: "domcontentloaded",
-                    timeout: 8000
-                  });
-                } catch {
-                  // Ignore navigation timeouts if page is responsive
-                }
-              }
+              // Always use a new Images tab. Reusing or navigating an existing
+              // Gemini tab can interrupt a video generation that is still in
+              // progress in the user's session.
+              page = await context.newPage();
+              await page.goto("https://gemini.google.com/images", {
+                waitUntil: "domcontentloaded",
+                timeout: 12000
+              });
 
               imageAttached = await attachSlideImage(page, imagePath);
               if (!imageAttached) {
                 throw new Error("Gemini image upload control was not available.");
               }
 
+              const baseline = await snapshotGeneratedMedia(page);
               await enterAndSendPrompt(page, finalPrompt);
               promptSent = true;
 
               if (decksDir) {
-                capturedImageUrl = await captureGeneratedGeminiImage(
+                const capturedMedia = await captureGeneratedGeminiImage(
                   page,
                   deckId,
                   slideNum,
-                  decksDir
+                  decksDir,
+                  baseline
                 );
+                if (capturedMedia?.kind === "image") {
+                  capturedImageUrl = capturedMedia.imageUrl;
+                } else if (capturedMedia?.kind === "video") {
+                  protectedVideoDetected = true;
+                  notice =
+                    "Gemini returned a video; it was preserved in Gemini and was not used to replace the still-image build.";
+                }
               }
             }
           } finally {
@@ -424,10 +457,14 @@ export async function generateGeminiSlideImage(
     promptSent,
     dispatched,
     imageUrl: capturedImageUrl,
+    mediaType: capturedImageUrl ? "image" : protectedVideoDetected ? "video" : null,
+    protectedVideoDetected,
     timestamp: new Date().toISOString(),
     status: dispatched
-      ? capturedImageUrl
-        ? "Slide image generated and automatically incorporated into presentation."
+      ? protectedVideoDetected
+        ? notice
+        : capturedImageUrl
+        ? "Slide image generated and saved for QA; it is not in the click sequence yet."
         : "Slide image and revision prompt were sent to Google Gemini image chat."
       : notice || "Gemini image-chat revision is queued until a connected Gemini tab is available."
   };

@@ -11,17 +11,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 9,
-        "timeGuideDisplay": "7–11s",
-        "vciScore": "3.9",
+        "estimatedTimeSeconds": 7,
+        "timeGuideDisplay": "5–9s",
+        "vciScore": "3.4",
         "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 4000,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 1650,
+          "semanticProcessingMs": 3750,
+          "wordCount": 5,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -38,36 +41,54 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Lesson 8: Aerobic\n| respiration",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "8f9195f1ff550d1c969111be2c541db74bae27b443cde637c831e35c8c40a4bb",
+        "transcript": "Lesson 8: Aerobic\n| respiration",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"8. Aerobic Respiration\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"8. Aerobic Respiration\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_01.png"
+        }
+      ]
     },
     {
       "number": 2,
@@ -89,12 +110,16 @@
           },
           "answerBounds": {
             "x": 5.2,
-            "y": 34.5,
+            "y": 33.5,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "What scientific instrument is essential for viewing cells?",
-          "expectedAnswer": "Light microscope (or electron microscope)."
+          "question": "What is the fundamental unit of all living organisms?",
+          "expectedAnswer": "The cell.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_2",
@@ -108,12 +133,16 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 34.5,
+            "y": 33.5,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "What is the fundamental building block of all living organisms?",
-          "expectedAnswer": "The cell."
+          "question": "Which sub-cellular structure is the site of protein synthesis?",
+          "expectedAnswer": "Ribosomes.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_3",
@@ -127,12 +156,16 @@
           },
           "answerBounds": {
             "x": 5.2,
-            "y": 59.3,
+            "y": 58.3,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Are cells flat, 2-dimensional circles or 3-dimensional structures?",
-          "expectedAnswer": "3-dimensional structures."
+          "question": "What biological molecules act as biological catalysts?",
+          "expectedAnswer": "Enzymes.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_4",
@@ -146,12 +179,16 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 59.3,
+            "y": 58.3,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Write the word equation for cellular respiration.",
-          "expectedAnswer": "Glucose + Oxygen → Carbon Dioxide + Water."
+          "question": "Name the two reactants in photosynthesis.",
+          "expectedAnswer": "Carbon dioxide and water.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_5",
@@ -165,12 +202,16 @@
           },
           "answerBounds": {
             "x": 5.2,
-            "y": 84.1,
+            "y": 83.1,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Write the word equation for photosynthesis.",
-          "expectedAnswer": "Carbon Dioxide + Water → Glucose + Oxygen."
+          "question": "Is photosynthesis endothermic or exothermic?",
+          "expectedAnswer": "Endothermic.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_6",
@@ -184,25 +225,32 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 84.1,
+            "y": 83.1,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Name one type of specialised human cell you already know.",
-          "expectedAnswer": "Any valid cell (e.g., red blood cell, nerve cell, sperm cell)."
+          "question": "What term describes movement of particles from high to low concentration?",
+          "expectedAnswer": "Diffusion.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 80,
-        "timeGuideDisplay": "68–92s",
+        "estimatedTimeSeconds": 101,
+        "timeGuideDisplay": "85–117s",
         "vciScore": "10.0",
         "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 7938,
-          "readingMs": 30150,
+          "readingMs": 50550,
           "semanticProcessingMs": 42000,
-          "wordCount": 89,
+          "wordCount": 143,
           "visualElementsCount": 18
         },
         "academicReferences": [
@@ -226,89 +274,138 @@
         "serialSteps": [
           {
             "step": 1,
-            "title": "Step 1: What scientific instrument is essential for viewing cells?",
+            "title": "Reveal: What is the fundamental unit of all living organisms?",
             "componentIds": [
               "cell_1"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 2,
-            "title": "Step 2: What is the fundamental building block of all living organisms?",
+            "title": "Reveal: Which sub-cellular structure is the site of protein synthesis?",
             "componentIds": [
               "cell_2"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 3,
-            "title": "Step 3: Are cells flat, 2-dimensional circles or 3-dimensional structures?",
+            "title": "Reveal: What biological molecules act as biological catalysts?",
             "componentIds": [
               "cell_3"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 4,
-            "title": "Step 4: Write the word equation for cellular respiration.",
+            "title": "Reveal: Name the two reactants in photosynthesis.",
             "componentIds": [
               "cell_4"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 5,
-            "title": "Step 5: Write the word equation for photosynthesis.",
+            "title": "Reveal: Is photosynthesis endothermic or exothermic?",
             "componentIds": [
               "cell_5"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 6,
-            "title": "Step 6: Name one type of specialised human cell you already know.",
+            "title": "Reveal: What term describes movement of particles from high to low concentration?",
             "componentIds": [
               "cell_6"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           }
         ]
+      },
+      "text": "STARTER ACTIVITY: KNOWLEDGE RETRIEVAL (5-10\nMINUTES)\nWhat is the fundamental unit of all Which sub-cellular structure is the\nliving organisms? site of protein synthesis?\n[ Cell ] [ Ribosomes ]\nWhat biological molecules act as Name the two reactants in\nbiological catalysts? photosynthesis.\n[ Enzymes ] [ Carbon dioxide and water ]\nIs photosynthesis an endothermic or What term describes the movement of\neracheninlcnrecenion? particles from a high to low\n: concentration?\n[ Endothermic ] [ Diffusion ]",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "2929aecd150bf3f06352c0d3eaea16af52c85d1279f78f75bf2f62992b5aaa1b",
+        "transcript": "STARTER ACTIVITY: KNOWLEDGE RETRIEVAL (5-10\nMINUTES)\nWhat is the fundamental unit of all Which sub-cellular structure is the\nliving organisms? site of protein synthesis?\n[ Cell ] [ Ribosomes ]\nWhat biological molecules act as Name the two reactants in\nbiological catalysts? photosynthesis.\n[ Enzymes ] [ Carbon dioxide and water ]\nIs photosynthesis an endothermic or What term describes the movement of\neracheninlcnrecenion? particles from a high to low\n: concentration?\n[ Endothermic ] [ Diffusion ]",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "What is the fundamental unit of all Which sub-cellular structure is the living organisms?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What biological molecules act as Name the two reactants in biological catalysts?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "is. [ Enzymes ] [ Carbon dioxide and water ] Is photosynthesis an endothermic or What term describes the movement of eracheninlcnrecenion?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 6
+      },
+      "title": "Starter Activity: Knowledge Retrieval",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 10,
+        "detectionSource": "manifest-cells"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "question-reveal",
+        "reason": "The six-box starter grid is intentionally excluded from Gemini still-image builds.",
+        "protectedVideoCount": 0
       }
     },
     {
@@ -318,17 +415,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 48,
+        "timeGuideDisplay": "40–56s",
+        "vciScore": "6.2",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 27750,
+          "semanticProcessingMs": 19400,
+          "wordCount": 82,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -345,35 +445,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Misconception Buster: Breathing # Respiration\nVentilation (Breathing) Cellular Respiration\ni]\ni|\ngt &\ni]\n1\n1\n1\ni\n1\n1\nPN eS i ee cae rec\nType of process: Physical mechanical Type of process: Universal chemical\nmechanism. ' process.\nLocation: Only in the lungs Location: Inside all living cells\n(specialised organs). i (specifically the mitochondria) .\nPurpose: Gas exchange (moving oxygen 1 Purpose: Releasing trapped chemical\ninto the blood and carbon dioxide 4 energy (ATP) to power the cell.\nout).\n‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "b196726dbffe01c663b010f972701544964c74c2fd582e7f933b5353475457b3",
+        "transcript": "Misconception Buster: Breathing # Respiration\nVentilation (Breathing) Cellular Respiration\ni]\ni|\ngt &\ni]\n1\n1\n1\ni\n1\n1\nPN eS i ee cae rec\nType of process: Physical mechanical Type of process: Universal chemical\nmechanism. ' process.\nLocation: Only in the lungs Location: Inside all living cells\n(specialised organs). i (specifically the mitochondria) .\nPurpose: Gas exchange (moving oxygen 1 Purpose: Releasing trapped chemical\ninto the blood and carbon dioxide 4 energy (ATP) to power the cell.\nout).\n‘A\\ NotebookLV",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Ventilation (Breathing) Cellular Respiration\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Ventilation (Breathing) Cellular Respiration\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Ventilation (Breathing) Cellular Respiration\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_03.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -383,17 +533,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 50,
+        "timeGuideDisplay": "42–58s",
+        "vciScore": "6.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 29250,
+          "semanticProcessingMs": 19600,
+          "wordCount": 88,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -410,35 +563,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Aerobic cellular respiration is a universal chemical process, continuously\noccurring in all living cells to supply energy (ATP).\ncytoplasm\n(eats pe SS Galil, erteemo Mitochondria contain the aA\ne Gm, specific enzymes required ie \\\n>. oS Mitochondrion to catalyse cellular Ne AC\nCEES \\g ~ =-| respiration. oe <j) | 4\nue ia. ay > Sil ~ ms : ~ a\n(aks YN | es a7 a |\nLU) —, & 79. \\ F\n2 4) p\nWa Endoplasmic “SS\nRibosome Reticulum —\nGolgi Apparatus\n‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "3f6fa714ae127a2bed7ab5ef5399a08dc3c7b0a935cc7a6da9c42c4e013092cc",
+        "transcript": "Aerobic cellular respiration is a universal chemical process, continuously\noccurring in all living cells to supply energy (ATP).\ncytoplasm\n(eats pe SS Galil, erteemo Mitochondria contain the aA\ne Gm, specific enzymes required ie \\\n>. oS Mitochondrion to catalyse cellular Ne AC\nCEES \\g ~ =-| respiration. oe <j) | 4\nue ia. ay > Sil ~ ms : ~ a\n(aks YN | es a7 a |\nLU) —, & 79. \\ F\n2 4) p\nWa Endoplasmic “SS\nRibosome Reticulum —\nGolgi Apparatus\n‘A\\ NotebookLV",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Aerobic cellular respiration is a universal chemical process, continuously\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Aerobic cellular respiration is a universal chemical process, continuously\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Aerobic cellular respiration is a universal chemical process, continuously\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_04.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -448,17 +651,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 24,
+        "timeGuideDisplay": "20–28s",
+        "vciScore": "4.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 9450,
+          "semanticProcessingMs": 13200,
+          "wordCount": 30,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -475,55 +681,92 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "The Equation: The Assembly Line\nATP (Usable Energy)\nfftnenes A | Carbon\n(sugar from food) pe Case Boxe\nES. Y= @ Ley\nGlucose + Oxygen — Carbon Dioxide + Water",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "236328160490021f2ce80bbb7a30c62ae184f84544d94202744ae9c45460649a",
+        "transcript": "The Equation: The Assembly Line\nATP (Usable Energy)\nfftnenes A | Carbon\n(sugar from food) pe Case Boxe\nES. Y= @ Ley\nGlucose + Oxygen — Carbon Dioxide + Water",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 5: \"The Equation: The Assembly Line\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 5: \"The Equation: The Assembly Line\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_05.png"
+        }
+      ]
     },
     {
       "number": 6,
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_06.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 85,
+        "timeGuideDisplay": "72–98s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 6300,
+          "readingMs": 50850,
+          "semanticProcessingMs": 27800,
+          "wordCount": 156,
+          "visualElementsCount": 15
         },
         "academicReferences": [
           {
@@ -541,35 +784,276 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 5,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Write down the missing raw materials, products, and energy yield to complete the word equation.",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 4.6,
+              "y": 46.6,
+              "w": 16.5,
+              "h": 18.8
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Write down the missing raw materials, products, and energy yield to complete the word equation.",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 4.6,
+              "y": 67.4,
+              "w": 16.5,
+              "h": 18.9
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: Write down the missing raw materials, products, and energy yield to complete the word equation.",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 79,
+              "y": 46.6,
+              "w": 16.5,
+              "h": 18.8
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Write down the missing raw materials, products, and energy yield to complete the word equation.",
+            "componentIds": [
+              "question_04"
+            ],
+            "targetBounds": {
+              "x": 79,
+              "y": 67.4,
+              "w": 16.5,
+              "h": 18.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: Write down the missing raw materials, products, and energy yield to complete the word equation.",
+            "componentIds": [
+              "question_05"
+            ],
+            "targetBounds": {
+              "x": 50,
+              "y": 23.3,
+              "w": 29,
+              "h": 11.4
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Learner Activity: Label the Power Plant\nWrite down the missing raw materials,\nproducts, and energy yield to complete\nthe word equation. [ Blank Box 5 ]\n[ Blank Box 1 J = ; aye > [ Blank Box 3 ]\nH ' : GQ ®) Ale ' !\nH i - SRA |Z \\ i\npasssononessasooaony Sy SEA i, gonssonsansssnanesy,\n[ Blank Box 2 ] at ZA [ Blank Box 4 ]",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "317c6b00eddf7a0d33839081162b1beb9a0d28ad79aabc7d1511aad51c76a974",
+        "transcript": "Learner Activity: Label the Power Plant\nWrite down the missing raw materials,\nproducts, and energy yield to complete\nthe word equation. [ Blank Box 5 ]\n[ Blank Box 1 J = ; aye > [ Blank Box 3 ]\nH ' : GQ ®) Ale ' !\nH i - SRA |Z \\ i\npasssononessasooaony Sy SEA i, gonssonsansssnanesy,\n[ Blank Box 2 ] at ZA [ Blank Box 4 ]",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 5
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 5,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Write down the missing raw materials, products, and energy yield to complete the word equation.",
+          "expectedAnswer": "Glucose",
+          "questionBounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "bounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "answerBounds": {
+            "x": 4.6,
+            "y": 46.6,
+            "w": 16.5,
+            "h": 18.8
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Write down the missing raw materials, products, and energy yield to complete the word equation.",
+          "expectedAnswer": "Oxygen",
+          "questionBounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "bounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "answerBounds": {
+            "x": 4.6,
+            "y": 67.4,
+            "w": 16.5,
+            "h": 18.9
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Write down the missing raw materials, products, and energy yield to complete the word equation.",
+          "expectedAnswer": "Carbon dioxide",
+          "questionBounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "bounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "answerBounds": {
+            "x": 79,
+            "y": 46.6,
+            "w": 16.5,
+            "h": 18.8
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Write down the missing raw materials, products, and energy yield to complete the word equation.",
+          "expectedAnswer": "Water",
+          "questionBounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "bounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "answerBounds": {
+            "x": 79,
+            "y": 67.4,
+            "w": 16.5,
+            "h": 18.9
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_04",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Write down the missing raw materials, products, and energy yield to complete the word equation.",
+          "expectedAnswer": "ATP / usable energy",
+          "questionBounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "bounds": {
+            "x": 4.8,
+            "y": 17,
+            "w": 43.8,
+            "h": 11.9
+          },
+          "answerBounds": {
+            "x": 50,
+            "y": 23.3,
+            "w": 29,
+            "h": 11.4
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_05",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"Learner Activity: Label the Power Plant\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 5 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_06.png"
+        }
+      ]
     },
     {
       "number": 7,
@@ -578,17 +1062,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 31,
+        "timeGuideDisplay": "26–36s",
+        "vciScore": "5.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 17700,
+          "semanticProcessingMs": 12400,
+          "wordCount": 51,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -605,36 +1092,86 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "An Exothermic Reaction\nAerobic respiration is an exothermic reaction. The products have less trapped\nchemical energy than the reactants, so the difference is released to the\nsurroundings.\nReactants\n(Glucose + Oxygen)\na\noO\na\no\n|\n>\n2\noO\na {\nProducts\n(Carbon Dioxide + Water)\nProgress of reaction\n‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "27effbe13ff0128c3f84b00d09c4ec036d606736c66cb10ea9e6c70b0aaa0105",
+        "transcript": "An Exothermic Reaction\nAerobic respiration is an exothermic reaction. The products have less trapped\nchemical energy than the reactants, so the difference is released to the\nsurroundings.\nReactants\n(Glucose + Oxygen)\na\noO\na\no\n|\n>\n2\noO\na {\nProducts\n(Carbon Dioxide + Water)\nProgress of reaction\n‘A\\ NotebookLV",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"An Exothermic Reaction\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"An Exothermic Reaction\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"An Exothermic Reaction\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_07.png"
+        }
+      ]
     },
     {
       "number": 8,
@@ -643,17 +1180,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 31,
+        "timeGuideDisplay": "26–36s",
+        "vciScore": "5.2",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 18000,
+          "semanticProcessingMs": 11600,
+          "wordCount": 53,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -670,36 +1210,86 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "The Purpose of Energy (ATP)\ni) Muscle contraction for movement\njj and physical activity.\na\nVe SS 2 Maintaining a constant\n‘ —<——S f ae internal body temperature\n| wy (in mammals and birds).\ni; im 4\n> ave a oe\nyy\na Powering enzyme-controlled\nmetabolic reactions to build\nnew molecules.\n‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c4321716c124ccf3f2a0ece58101b68c9c7939be2d4322c33681f903e9e71ee0",
+        "transcript": "The Purpose of Energy (ATP)\ni) Muscle contraction for movement\njj and physical activity.\na\nVe SS 2 Maintaining a constant\n‘ —<——S f ae internal body temperature\n| wy (in mammals and birds).\ni; im 4\n> ave a oe\nyy\na Powering enzyme-controlled\nmetabolic reactions to build\nnew molecules.\n‘A\\ NotebookLV",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"The Purpose of Energy (ATP)\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"The Purpose of Energy (ATP)\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"The Purpose of Energy (ATP)\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_08.png"
+        }
+      ]
     },
     {
       "number": 9,
@@ -708,17 +1298,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 52,
+        "timeGuideDisplay": "44–60s",
+        "vciScore": "6.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 26400,
+          "semanticProcessingMs": 24200,
+          "wordCount": 79,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -735,35 +1328,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Powering Metabolism\nMetabolism is the sum of all chemical reactions in a cell or the body. These reactions\nare controlled by enzymes, but they require ATP from respiration to run. Synthesis\n(Building Up)\nATP. Enzymes\n(From Respiration) (Biological Catalysts)\np' g) Y: “4 DA\n(@)\n») Yy os x S\nDrive Gear ( = l\nAY\n= eG igre\n» Without the ATP drive gear, the enzyme gears Breakdown\ncannot synthesize new molecules for growth! (Dismantling)\n=a\nA) NotebookLM",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "ac27d5efa83176423e556c9611e3627b663355c568ce033af70ebf5e53e472fb",
+        "transcript": "Powering Metabolism\nMetabolism is the sum of all chemical reactions in a cell or the body. These reactions\nare controlled by enzymes, but they require ATP from respiration to run. Synthesis\n(Building Up)\nATP. Enzymes\n(From Respiration) (Biological Catalysts)\np' g) Y: “4 DA\n(@)\n») Yy os x S\nDrive Gear ( = l\nAY\n= eG igre\n» Without the ATP drive gear, the enzyme gears Breakdown\ncannot synthesize new molecules for growth! (Dismantling)\n=a\nA) NotebookLM",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"Powering Metabolism\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"Powering Metabolism\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"Powering Metabolism\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_09.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -773,17 +1416,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 27,
+        "timeGuideDisplay": "22–32s",
+        "vciScore": "4.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 11100,
+          "semanticProcessingMs": 14400,
+          "wordCount": 34,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -800,55 +1446,92 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Synthesis and Breakdown in Action\n- Carbohydrates\nmmm\noT es al (e.g., starch, glycogen)\nAmino acids Proteins\n- Camas + i) :\nFatty acids = _4 Lipids\nand glycerol me (Fats and Oils)\nRl",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5737db00edff4a7050e13f5259009d16c98126a07415293c991726de05a8044f",
+        "transcript": "Synthesis and Breakdown in Action\n- Carbohydrates\nmmm\noT es al (e.g., starch, glycogen)\nAmino acids Proteins\n- Camas + i) :\nFatty acids = _4 Lipids\nand glycerol me (Fats and Oils)\nRl",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 10: \"Synthesis and Breakdown in Action\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 10: \"Synthesis and Breakdown in Action\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_10.png"
+        }
+      ]
     },
     {
       "number": 11,
       "imageFileName": "slide_11.png",
       "imageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_11.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 68,
+        "timeGuideDisplay": "57–79s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 4788,
+          "readingMs": 37500,
+          "semanticProcessingMs": 25600,
+          "wordCount": 108,
+          "visualElementsCount": 12
         },
         "academicReferences": [
           {
@@ -866,35 +1549,259 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Is aerobic respiration endothermic or exothermic?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 50.2,
+              "y": 20,
+              "w": 45.8,
+              "h": 16
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Where in a eukaryotic cell does aerobic respiration primarily occur?",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 50.2,
+              "y": 39.1,
+              "w": 45.8,
+              "h": 16
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: What is the complete word equation for aerobic respiration?",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 50.2,
+              "y": 58.2,
+              "w": 45.8,
+              "h": 15.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: What monomers are synthesised into proteins using energy from respiration?",
+            "componentIds": [
+              "question_04"
+            ],
+            "targetBounds": {
+              "x": 50.2,
+              "y": 77.2,
+              "w": 45.8,
+              "h": 16
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Knowledge Checkpoint\nIs aerobic respiration endothermic .\nor exothermic? Exothermic\nWhere in a eukaryotic cell does aerobic .\nrespiration primarily occur? Mitochondria\nWhat is the complete word equation for ee\naerobic respiration? Glucose + Oxygen > Carbon dioxide + Water\nWhat specific monomers are synthesised : 5\n\" 7 4 nee Amino acids\ninto proteins using energy from respiration?\n‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "f6c3d449cb286e60b99102ccd5318dbdde9461cbc0848e079984e35f92df654e",
+        "transcript": "Knowledge Checkpoint\nIs aerobic respiration endothermic .\nor exothermic? Exothermic\nWhere in a eukaryotic cell does aerobic .\nrespiration primarily occur? Mitochondria\nWhat is the complete word equation for ee\naerobic respiration? Glucose + Oxygen > Carbon dioxide + Water\nWhat specific monomers are synthesised : 5\n\" 7 4 nee Amino acids\ninto proteins using energy from respiration?\n‘A\\ NotebookLV",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Is aerobic respiration endothermic . or exothermic?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Where in a eukaryotic cell does aerobic . respiration primarily occur?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "What is the complete word equation for ee aerobic respiration?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "What specific monomers are synthesised : 5 \" 7 4 nee Amino acids into proteins using energy from respiration?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 4
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 12,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Is aerobic respiration endothermic or exothermic?",
+          "expectedAnswer": "Exothermic.",
+          "questionBounds": {
+            "x": 4.1,
+            "y": 20,
+            "w": 45.8,
+            "h": 16
+          },
+          "bounds": {
+            "x": 4.1,
+            "y": 20,
+            "w": 45.8,
+            "h": 16
+          },
+          "answerBounds": {
+            "x": 50.2,
+            "y": 20,
+            "w": 45.8,
+            "h": 16
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Where in a eukaryotic cell does aerobic respiration primarily occur?",
+          "expectedAnswer": "Mitochondria.",
+          "questionBounds": {
+            "x": 4.1,
+            "y": 39.1,
+            "w": 45.8,
+            "h": 16
+          },
+          "bounds": {
+            "x": 4.1,
+            "y": 39.1,
+            "w": 45.8,
+            "h": 16
+          },
+          "answerBounds": {
+            "x": 50.2,
+            "y": 39.1,
+            "w": 45.8,
+            "h": 16
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "What is the complete word equation for aerobic respiration?",
+          "expectedAnswer": "Glucose + Oxygen → Carbon Dioxide + Water.",
+          "questionBounds": {
+            "x": 4.1,
+            "y": 58.2,
+            "w": 45.8,
+            "h": 15.9
+          },
+          "bounds": {
+            "x": 4.1,
+            "y": 58.2,
+            "w": 45.8,
+            "h": 15.9
+          },
+          "answerBounds": {
+            "x": 50.2,
+            "y": 58.2,
+            "w": 45.8,
+            "h": 15.9
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        },
+        {
+          "question": "What monomers are synthesised into proteins using energy from respiration?",
+          "expectedAnswer": "Amino acids.",
+          "questionBounds": {
+            "x": 4.1,
+            "y": 77.2,
+            "w": 45.8,
+            "h": 16
+          },
+          "bounds": {
+            "x": 4.1,
+            "y": 77.2,
+            "w": 45.8,
+            "h": 16
+          },
+          "answerBounds": {
+            "x": 50.2,
+            "y": 77.2,
+            "w": 45.8,
+            "h": 16
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_04",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Knowledge Checkpoint\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_11.png"
+        }
+      ]
     },
     {
       "number": 12,
@@ -903,17 +1810,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 55,
+        "timeGuideDisplay": "46–64s",
+        "vciScore": "6.2",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 27900,
+          "semanticProcessingMs": 25800,
+          "wordCount": 82,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -930,36 +1840,93 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Lesson Summary\n=\n| aa i> LOPy\nFase sO8 @\nFZ\nThe Process The Energy The Purpose\nAerobic respiration is a It is an exothermic reaction, ATP powers muscle\ncontinuous, universal meaning it releases trapped contraction, temperature\nchemical process occurring in chemical energy to the regulation, and metabolism\nthe mitochondria of living surroundings as heat and (the enzyme-controlled\ncells. usable ATP. synthesis and breakdown of\nr carbohydrates, proteins, and\nEquation: lipids)\nGlucose + Oxygen > 4\nCarbon dioxide + Water\n‘A NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "00cd8748c90ecfa6e0954f73b033a279aa78670c33b163e0b2e2cd1254ec1a20",
+        "transcript": "Lesson Summary\n=\n| aa i> LOPy\nFase sO8 @\nFZ\nThe Process The Energy The Purpose\nAerobic respiration is a It is an exothermic reaction, ATP powers muscle\ncontinuous, universal meaning it releases trapped contraction, temperature\nchemical process occurring in chemical energy to the regulation, and metabolism\nthe mitochondria of living surroundings as heat and (the enzyme-controlled\ncells. usable ATP. synthesis and breakdown of\nr carbohydrates, proteins, and\nEquation: lipids)\nGlucose + Oxygen > 4\nCarbon dioxide + Water\n‘A NotebookLV",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_12_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"The Process The Energy The Purpose\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"The Process The Energy The Purpose\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"The Process The Energy The Purpose\".\nDeck context: 8. Aerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Aerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_08_Aerobic_respiration/slides/slide_12.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-01T07:29:20.680Z"
+  }
 }

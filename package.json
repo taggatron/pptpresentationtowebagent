@@ -9,8 +9,9 @@
     "start": "node src/server.js",
     "convert": "node src/convert-deck.js",
     "agent:gemini": "node src/gemini-segmenter.js",
+    "analyze:current-slides": "node src/enrich-current-decks.js",
     "test": "NODE_ENV=test node --test",
-    "check": "node --check src/server.js && node --check src/gemini-image-gen.js && node --check public/js/app.js && NODE_ENV=test node --test"
+    "check": "node --check src/server.js && node --check src/gemini-image-gen.js && node --check src/image-build-qa.js && node --check src/slide-animation-planner.js && node --check src/current-slide-catalog.js && node --check src/current-question-catalog.js && node --check src/enrich-current-decks.js && node --check public/js/app.js && NODE_ENV=test node --test"
   },
   "dependencies": {
     "express": "^4.19.2",

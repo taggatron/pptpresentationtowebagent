@@ -11,17 +11,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 9,
-        "timeGuideDisplay": "7–11s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 38,
+        "timeGuideDisplay": "32–44s",
+        "vciScore": "6.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 4000,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 28350,
+          "semanticProcessingMs": 8000,
+          "wordCount": 90,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -38,35 +41,53 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "| LESSON 13: PHOTOSYNTHESIS INVESTIGATION |\n| '\n|\net\n] } ——s [\n> Ee <———— WATER LEVEL z\nf Cire} (SPECIFIED VOLUME)\n| OW o ;\n: QO y< a OXYGEN BUBBLES\n1 \\\\) \\ a4 (COUNT PER MINUTE) Ku\n1 SNWZo S Zane, LON\n| Ox WG }—— aun Tue Se “Xe :\nJ onN a (STANDARD LABORATORY APPARATUS) fra = |p; >\n| Sey, Wc LF |\n] Fog pa t Hen. 1 SA\nSCALE: 1:1 (DIAGRAMMATIC REPRESENTATION) ' j\n: * : ro ‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "004846a45e697433ce4f8ac9a5dca61db464068942f9611247eec0eaa617a9f2",
+        "transcript": "| LESSON 13: PHOTOSYNTHESIS INVESTIGATION |\n| '\n|\net\n] } ——s [\n> Ee <———— WATER LEVEL z\nf Cire} (SPECIFIED VOLUME)\n| OW o ;\n: QO y< a OXYGEN BUBBLES\n1 \\\\) \\ a4 (COUNT PER MINUTE) Ku\n1 SNWZo S Zane, LON\n| Ox WG }—— aun Tue Se “Xe :\nJ onN a (STANDARD LABORATORY APPARATUS) fra = |p; >\n| Sey, Wc LF |\n] Fog pa t Hen. 1 SA\nSCALE: 1:1 (DIAGRAMMATIC REPRESENTATION) ' j\n: * : ro ‘A\\ NotebookLV",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"13. Photosynthesis Investigation\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"13. Photosynthesis Investigation\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_01.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -75,7 +96,7 @@
       "imageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_02.png",
       "isInteractive": true,
       "interactiveType": "starter_qa_grid",
-      "gridTitle": "Starter Activity: Knowledge Retrieval",
+      "gridTitle": "Starter: Retrieval Grid",
       "interactiveCells": [
         {
           "id": "cell_1",
@@ -88,13 +109,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 2.6,
-            "y": 27.2,
-            "w": 43.7,
-            "h": 11.2
+            "x": 5.2,
+            "y": 33.5,
+            "w": 43.6,
+            "h": 10.5
           },
-          "question": "What scientific instrument is essential for viewing cells?",
-          "expectedAnswer": "Light microscope (or electron microscope)."
+          "question": "What is the word equation for photosynthesis?",
+          "expectedAnswer": "Carbon dioxide + Water → Glucose + Oxygen.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_2",
@@ -108,12 +133,16 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 27,
-            "w": 46.1,
-            "h": 11.9
+            "y": 33.5,
+            "w": 43.6,
+            "h": 10.5
           },
-          "question": "What is the fundamental building block of all living organisms?",
-          "expectedAnswer": "The cell."
+          "question": "Is photosynthesis endothermic or exothermic?",
+          "expectedAnswer": "Endothermic; it takes in light energy.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_3",
@@ -126,13 +155,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 2.8,
-            "y": 54.9,
-            "w": 45.6,
-            "h": 12.3
+            "x": 5.2,
+            "y": 58.3,
+            "w": 43.6,
+            "h": 10.5
           },
-          "question": "Are cells flat, 2-dimensional circles or 3-dimensional structures?",
-          "expectedAnswer": "3-dimensional structures."
+          "question": "What is the independent variable in an experiment?",
+          "expectedAnswer": "The variable that you change.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_4",
@@ -145,13 +178,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 50.8,
-            "y": 56.3,
-            "w": 45.6,
-            "h": 10.9
+            "x": 51.2,
+            "y": 58.3,
+            "w": 43.6,
+            "h": 10.5
           },
-          "question": "Write the word equation for cellular respiration.",
-          "expectedAnswer": "Glucose + Oxygen → Carbon Dioxide + Water."
+          "question": "What is the dependent variable in an experiment?",
+          "expectedAnswer": "The variable that you measure.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_5",
@@ -164,13 +201,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 2.8,
-            "y": 84.3,
-            "w": 45,
-            "h": 9.9
+            "x": 5.2,
+            "y": 83.1,
+            "w": 43.6,
+            "h": 10.5
           },
-          "question": "Write the word equation for photosynthesis.",
-          "expectedAnswer": "Carbon Dioxide + Water → Glucose + Oxygen."
+          "question": "Name three factors that can limit the rate of photosynthesis.",
+          "expectedAnswer": "Light intensity, temperature, and carbon dioxide concentration.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_6",
@@ -184,25 +225,32 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 84.1,
-            "w": 45.9,
-            "h": 11.1
+            "y": 83.1,
+            "w": 43.6,
+            "h": 10.5
           },
-          "question": "Name one type of specialised human cell you already know.",
-          "expectedAnswer": "Any valid cell (e.g., red blood cell, nerve cell, sperm cell)."
+          "question": "What does the resolution of a measuring instrument mean?",
+          "expectedAnswer": "The smallest change or unit that it can detect.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 80,
-        "timeGuideDisplay": "68–92s",
+        "estimatedTimeSeconds": 115,
+        "timeGuideDisplay": "97–133s",
         "vciScore": "10.0",
         "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 7938,
-          "readingMs": 30150,
+          "readingMs": 64500,
           "semanticProcessingMs": 42000,
-          "wordCount": 89,
+          "wordCount": 191,
           "visualElementsCount": 18
         },
         "academicReferences": [
@@ -226,89 +274,138 @@
         "serialSteps": [
           {
             "step": 1,
-            "title": "Step 1: What scientific instrument is essential for viewing cells?",
+            "title": "Reveal: What is the word equation for photosynthesis?",
             "componentIds": [
               "cell_1"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 2,
-            "title": "Step 2: What is the fundamental building block of all living organisms?",
+            "title": "Reveal: Is photosynthesis endothermic or exothermic?",
             "componentIds": [
               "cell_2"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 3,
-            "title": "Step 3: Are cells flat, 2-dimensional circles or 3-dimensional structures?",
+            "title": "Reveal: What is the independent variable in an experiment?",
             "componentIds": [
               "cell_3"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 4,
-            "title": "Step 4: Write the word equation for cellular respiration.",
+            "title": "Reveal: What is the dependent variable in an experiment?",
             "componentIds": [
               "cell_4"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 5,
-            "title": "Step 5: Write the word equation for photosynthesis.",
+            "title": "Reveal: Name three factors that can limit the rate of photosynthesis.",
             "componentIds": [
               "cell_5"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 6,
-            "title": "Step 6: Name one type of specialised human cell you already know.",
+            "title": "Reveal: What does the resolution of a measuring instrument mean?",
             "componentIds": [
               "cell_6"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           }
         ]
+      },
+      "text": "Starter: Retrieval Grid (5-10 minutes\nWhat is the word equation for Is photosynthesis an endothermic\nphotosynthesis? or exothermic reaction?\nCarbon dioxide + water -> Endothermic (it takes in energy\nglucose + oxygen from light).\nIn an experiment, what is the In an experiment, what is the\nindependent variable? dependent variable?\nThe variable that YOU change. The variable that YOU measure.\nName three factors that can limit |What does the ‘resolution’ of a\nthe rate of photosynthesis. measuring instrument mean?\nLight intensity, Temperature, The smallest change or unit it can\nCarbon dioxide concentration. detect (e.g., 1 mm ona ruler).",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "ed5e6c1cc00af657069152bcdd73ae49f2db2cc9bc1ef4978fc886c4eefef115",
+        "transcript": "Starter: Retrieval Grid (5-10 minutes\nWhat is the word equation for Is photosynthesis an endothermic\nphotosynthesis? or exothermic reaction?\nCarbon dioxide + water -> Endothermic (it takes in energy\nglucose + oxygen from light).\nIn an experiment, what is the In an experiment, what is the\nindependent variable? dependent variable?\nThe variable that YOU change. The variable that YOU measure.\nName three factors that can limit |What does the ‘resolution’ of a\nthe rate of photosynthesis. measuring instrument mean?\nLight intensity, Temperature, The smallest change or unit it can\nCarbon dioxide concentration. detect (e.g., 1 mm ona ruler).",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "What is the word equation for Is photosynthesis an endothermic photosynthesis?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "what is the In an experiment, what is the independent variable?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Name three factors that can limit |What does the ‘resolution’ of a the rate of photosynthesis. measuring instrument mean?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 6
+      },
+      "title": "Starter: Retrieval Grid",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 12,
+        "detectionSource": "manifest-cells"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "question-reveal",
+        "reason": "The six-box starter grid is intentionally excluded from Gemini still-image builds.",
+        "protectedVideoCount": 0
       }
     },
     {
@@ -318,17 +415,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 43,
+        "timeGuideDisplay": "36–50s",
+        "vciScore": "5.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 21600,
+          "semanticProcessingMs": 19800,
+          "wordCount": 61,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -345,54 +445,107 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Today’s Blueprint: Objectives & Terminolog\nStep 1: Design Step 2: Measure Step 3: Evaluate\n& Execute & Analyse\ny Identify anomalous\nSelect appropriate Collect reliable data results, sources of\napparatus and set up and calculate the error, and suggest\nthe Cabomba pondweed arithmetic mean and methodological\ninvestigation safely. the rate of reaction. improvements.\nKey Terminology\nAccurate, Precise,\nReliable, Resolution,\nAnomalous,\nDatalogger.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "f748800b2e1d4e41549364324aa6a60504afc781796d329181a7a3ab94c2a34e",
+        "transcript": "Today’s Blueprint: Objectives & Terminolog\nStep 1: Design Step 2: Measure Step 3: Evaluate\n& Execute & Analyse\ny Identify anomalous\nSelect appropriate Collect reliable data results, sources of\napparatus and set up and calculate the error, and suggest\nthe Cabomba pondweed arithmetic mean and methodological\ninvestigation safely. the rate of reaction. improvements.\nKey Terminology\nAccurate, Precise,\nReliable, Resolution,\nAnomalous,\nDatalogger.",
+        "role": "objectives",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_staged_objectives",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Step 1: Design Step 2: Measure Step 3: Evaluate\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: The exact source title plus the complete Step 1 heading and body text (for example, 'Step 1: Know'). The only allowed visual is the compact visual cluster immediately touching or directly below Step 1.\nTemporarily omit: Every Step 2 and Step 3 heading, body, stair segment, arrow, example, label, and diagram. Replace every omitted later-step region with the untouched source background so the rest of the canvas is genuinely blank. Never keep a later diagram as decoration and never substitute a later step for Step 1.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_staged_objectives",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Step 1: Design Step 2: Measure Step 3: Evaluate\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: Everything from build 1 plus the complete Step 2 heading and body text (for example, 'Step 2: Identify') and only the visual cluster immediately touching or directly below Step 2.\nTemporarily omit: Every Step 3 heading, body, stair segment, arrow, conclusion, label, and diagram. Replace the entire omitted Step 3 region with the untouched source background so it is genuinely blank. Never keep a Step 3 diagram as decoration or replace Step 1 or Step 2 with Step 3.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_staged_objectives",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the learning sequence",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Step 1: Design Step 2: Measure Step 3: Evaluate\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: staged-objectives.\nShow now: Everything from builds 1 and 2 plus the complete final numbered step (for example, 'Step 3: Explain'), its exact body text, and its directly related visual or conclusion.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_03.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "staged-objectives",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 4,
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_04.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 39,
+        "timeGuideDisplay": "33–45s",
+        "vciScore": "6.6",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
+          "readingMs": 27300,
+          "semanticProcessingMs": 10000,
+          "wordCount": 86,
           "visualElementsCount": 5
         },
         "academicReferences": [
@@ -410,36 +563,116 @@
           }
         ]
       },
+      "text": "The Setup: Measuring Photosynthesis\nZa 3. Heat Shield\n1. Light Source (Beaker of water)\n‘oy 4. Boiling Tube with\nSodium\nHydrogencarbonate\n2. solution\nES\nnee eeRa NES y anaemia na eae ener aN\nKey Question: Why do we use an aquatic plant like Cabomba instead of a\nterrestrial plant? (Because the oxygen produced is visible as bubbles in the water)",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "f84cfbce95bf8cf2e5e486290a60c6787eae346afc43a293b17f8e78a8d4767a",
+        "transcript": "The Setup: Measuring Photosynthesis\nZa 3. Heat Shield\n1. Light Source (Beaker of water)\n‘oy 4. Boiling Tube with\nSodium\nHydrogencarbonate\n2. solution\nES\nnee eeRa NES y anaemia na eae ener aN\nKey Question: Why do we use an aquatic plant like Cabomba instead of a\nterrestrial plant? (Because the oxygen produced is visible as bubbles in the water)",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why do we use an aquatic plant like Cabomba instead of a terrestrial plant?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Why do we use an aquatic plant such as Cabomba instead of a terrestrial plant?",
+          "expectedAnswer": "Its oxygen production is visible and countable as bubbles in water.",
+          "questionBounds": {
+            "x": 2,
+            "y": 87.2,
+            "w": 86.2,
+            "h": 10.9
+          },
+          "bounds": {
+            "x": 2,
+            "y": 87.2,
+            "w": 86.2,
+            "h": 10.9
+          },
+          "answerBounds": {
+            "x": 21.7,
+            "y": 92.6,
+            "w": 76.1,
+            "h": 5.6
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Why do we use an aquatic plant such as Cabomba instead of a terrestrial plant?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 21.7,
+              "y": 92.6,
+              "w": 76.1,
+              "h": 5.6
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered question",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"The Setup: Measuring Photosynthesis\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_04.png"
+        }
+      ]
     },
     {
       "number": 5,
@@ -448,17 +681,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 57,
+        "timeGuideDisplay": "48–66s",
+        "vciScore": "6.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 34650,
+          "semanticProcessingMs": 21200,
+          "wordCount": 104,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -475,35 +711,92 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
+      "text": "Defining the Variables\n———— == —S==\nIndependent Variable Dependent Variable Control Variables\n(Change) (Measure) (Keep the same)\n= Te : led b\nWhat: Distance of the What: Volume of oxygen Teen aes boacrer ?\nlamp from the pondweed gas produced (cm?) OR water between the lamp\n(cm). number of bubbles per and the plant (heat shield)\nminute. or using an LED bulb.\nWhy: To investigate how * Carbon Dioxide: Controlled\nchanging light intensity Why: This indicates how by using a fixed volume and\naffects the rate. fast photosynthesis is concentration of sodium\nhappenin hydrogencarbonate\nPp' g- solution.\n= Time: Measured precisely\nusing a stopwatch.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "375aaceb11aaad8c7485e8fc32ceeafdd3c668016358a9ada3154bfbd451f4ec",
+        "transcript": "Defining the Variables\n———— == —S==\nIndependent Variable Dependent Variable Control Variables\n(Change) (Measure) (Keep the same)\n= Te : led b\nWhat: Distance of the What: Volume of oxygen Teen aes boacrer ?\nlamp from the pondweed gas produced (cm?) OR water between the lamp\n(cm). number of bubbles per and the plant (heat shield)\nminute. or using an LED bulb.\nWhy: To investigate how * Carbon Dioxide: Controlled\nchanging light intensity Why: This indicates how by using a fixed volume and\naffects the rate. fast photosynthesis is concentration of sodium\nhappenin hydrogencarbonate\nPp' g- solution.\n= Time: Measured precisely\nusing a stopwatch.",
+        "role": "instructional-content",
+        "questions": [
           {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "id": "ocr_question_1",
+            "question": "What: Distance of the What: Volume of oxygen Teen aes boacrer ?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
           }
-        ]
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Defining the Variables\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Defining the Variables\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Defining the Variables\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_05.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -513,17 +806,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 58,
+        "timeGuideDisplay": "49–67s",
+        "vciScore": "7.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 40650,
+          "semanticProcessingMs": 16200,
+          "wordCount": 129,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -540,35 +836,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "'|Risk Assessment & Ethics\nSERRE ae VLEET (Ree eee\nBRRREE AVEREEEE IRR ~4) Gee\nBEREEY 4 LUREEE I nile\n[lily Y iF LJ)\n[ll l¢ NEEEE IRR) \\ (See\nPoP Rhema RE Eee lee | eee\nie Safety Considerations BME GIBB Ethical Considerations Hi\n| Hazard: Hot lamps can cause burns. | | F we . .\nControl: Use LED bulbs (which emit less heat) Safe and ethical use of living organisms:\n| or handle traditional bulbs with care; allow | | Cabomba is a living organism. It should be\n— a ‘a | handled gently, not destroyed\nHazard: Electrical equipment near water. | | oe ee cles\n_ | Control: Keep all liquids away from sockets; | | species into local waterways).\nclean up spills immediately.\n| ‘NotebookLM",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c0ef2044184512741b451e8ebfe399a770ba81d918da0ddba08f3d5fe86cba98",
+        "transcript": "'|Risk Assessment & Ethics\nSERRE ae VLEET (Ree eee\nBRRREE AVEREEEE IRR ~4) Gee\nBEREEY 4 LUREEE I nile\n[lily Y iF LJ)\n[ll l¢ NEEEE IRR) \\ (See\nPoP Rhema RE Eee lee | eee\nie Safety Considerations BME GIBB Ethical Considerations Hi\n| Hazard: Hot lamps can cause burns. | | F we . .\nControl: Use LED bulbs (which emit less heat) Safe and ethical use of living organisms:\n| or handle traditional bulbs with care; allow | | Cabomba is a living organism. It should be\n— a ‘a | handled gently, not destroyed\nHazard: Electrical equipment near water. | | oe ee cles\n_ | Control: Keep all liquids away from sockets; | | species into local waterways).\nclean up spills immediately.\n| ‘NotebookLM",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"Risk Assessment & Ethics\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"Risk Assessment & Ethics\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"Risk Assessment & Ethics\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -581,17 +927,20 @@
         "url": "https://codexvirtualchemlab.vercel.app/?pondweed-focus=1"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "3.4",
         "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 5700,
+          "semanticProcessingMs": 6000,
+          "wordCount": 19,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -608,36 +957,70 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "} i }\nha a f\n| | |\nSaat Z\nES Ea tawporr eer 19 bpm — 200m",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "944f333ea395450c3a9ffb7729f60bc153a2943e684f4a030cdab7f7d62bb2e5",
+        "transcript": "} i }\nha a f\n| | |\nSaat Z\nES Ea tawporr eer 19 bpm — 200m",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 7: \"ES Ea tawporr eer 19 bpm — 200m\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_07_web_embed.png"
+        },
+        {
+          "id": "gemini_slide_7_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 7: \"ES Ea tawporr eer 19 bpm — 200m\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_07_web_embed.png"
+        }
+      ]
     },
     {
       "number": 8,
@@ -646,17 +1029,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 44,
+        "timeGuideDisplay": "37–51s",
+        "vciScore": "6.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 30300,
+          "semanticProcessingMs": 12400,
+          "wordCount": 93,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -673,54 +1059,107 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "{Evaluating Data Collection Methods\n_—s _———s\n: Method A: Counting Bubbles } Method B: Gas Syringe\ni kee I ‘ aH\na ll J\ni | Pros: Much higher resolution; measures\n. t volume of gas (cm); less\nCons (Errors): a\n: ¢ Bubbles are different sizes; human erro! } subjective human error.\nx (miscounting if they are too fast); low Cons: Apparatus must be perfectly\ni resolution. | airtight to prevent gas leaks.\nSynthesis Note: Method B is more accurate and provides a\ntl more precise quantitative measure of the rate. a",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "f53945c0302d52fddb5aa82aa93b64355fcb2dbb7aeeb4362469737d9139ca20",
+        "transcript": "{Evaluating Data Collection Methods\n_—s _———s\n: Method A: Counting Bubbles } Method B: Gas Syringe\ni kee I ‘ aH\na ll J\ni | Pros: Much higher resolution; measures\n. t volume of gas (cm); less\nCons (Errors): a\n: ¢ Bubbles are different sizes; human erro! } subjective human error.\nx (miscounting if they are too fast); low Cons: Apparatus must be perfectly\ni resolution. | airtight to prevent gas leaks.\nSynthesis Note: Method B is more accurate and provides a\ntl more precise quantitative measure of the rate. a",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"{Evaluating Data Collection Methods\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_8_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"{Evaluating Data Collection Methods\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_8_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"{Evaluating Data Collection Methods\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_07.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 9,
       "imageFileName": "slide_08_restored.png",
       "imageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_08_restored.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 52,
+        "timeGuideDisplay": "44–60s",
+        "vciScore": "6.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
+          "readingMs": 28500,
+          "semanticProcessingMs": 21800,
+          "wordCount": 89,
           "visualElementsCount": 5
         },
         "academicReferences": [
@@ -739,35 +1178,108 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Which result is anomalous?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 76.1,
+              "y": 30.7,
+              "w": 14.3,
+              "h": 18.4
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "{Knowledge Checkpoint: Spotting Anomalies\nDl gst ae\n| | Distance of Trial 4 Trial 2 Trial 3 |\n| | lamp (cm) _ | (bubbles/min) | (bubbles/min) | (bubbles/min) | |\n[om | se | 8 [eee\nPe a\nLee [Te Te [=]\nPe\n30cm 11 10 12 }\na\n| FSS ee\nKey Concept: An anomaly is a result that does not fit the pattern\n|_| ofthe other data, Itshhould be investigated or excluded, |}",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "cfc6a23ca96f772aaf8658087da4e7a7d87b5dcd97738d82edf431f1ddae8adc",
+        "transcript": "{Knowledge Checkpoint: Spotting Anomalies\nDl gst ae\n| | Distance of Trial 4 Trial 2 Trial 3 |\n| | lamp (cm) _ | (bubbles/min) | (bubbles/min) | (bubbles/min) | |\n[om | se | 8 [eee\nPe a\nLee [Te Te [=]\nPe\n30cm 11 10 12 }\na\n| FSS ee\nKey Concept: An anomaly is a result that does not fit the pattern\n|_| ofthe other data, Itshhould be investigated or excluded, |}",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Which result is anomalous?",
+          "expectedAnswer": "Trial 3 at 10 cm: 12 bubbles per minute.",
+          "questionBounds": {
+            "x": 1.5,
+            "y": 1.7,
+            "w": 97.1,
+            "h": 10.7
+          },
+          "bounds": {
+            "x": 1.5,
+            "y": 1.7,
+            "w": 97.1,
+            "h": 10.7
+          },
+          "answerBounds": {
+            "x": 76.1,
+            "y": 30.7,
+            "w": 14.3,
+            "h": 18.4
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered question",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"{Knowledge Checkpoint: Spotting Anomalies\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_08_restored.png"
+        }
+      ]
     },
     {
       "number": 10,
@@ -776,17 +1288,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 47,
+        "timeGuideDisplay": "39–55s",
+        "vciScore": "6.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 28350,
+          "semanticProcessingMs": 17200,
+          "wordCount": 88,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -803,35 +1318,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "'|Calculating the Mean (Handling Anomalies\n_faliabily, Repeating dha tol innpfaye prpotsién, 1\ni Worked Example\n_§ Let’s calculate the mean for 10cm from our data table.\n: Trial 1 = 45, Trial 2 = 43, Trial 3 “K(anomaty,\nfj Step 1: Cross out the anomaly.\ni Step 2: Add the remaining valid trials. > 45 + 43 = 88\nStep 3: Divide by the number of valid trials. > 88 / 2 = 44 bubbles/min.\nIden Rule: NEVER include an anomalous\nE os all when calculating the mean!",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "abb18d1f1a399fd9438625feee75290ab8c6efbcef530d6e43124c938b20c2ce",
+        "transcript": "'|Calculating the Mean (Handling Anomalies\n_faliabily, Repeating dha tol innpfaye prpotsién, 1\ni Worked Example\n_§ Let’s calculate the mean for 10cm from our data table.\n: Trial 1 = 45, Trial 2 = 43, Trial 3 “K(anomaty,\nfj Step 1: Cross out the anomaly.\ni Step 2: Add the remaining valid trials. > 45 + 43 = 88\nStep 3: Divide by the number of valid trials. > 88 / 2 = 44 bubbles/min.\nIden Rule: NEVER include an anomalous\nE os all when calculating the mean!",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_staged_objectives",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Calculating the Mean (Handling Anomalies\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: The exact source title plus the complete Step 1 heading and body text (for example, 'Step 1: Know'). The only allowed visual is the compact visual cluster immediately touching or directly below Step 1.\nTemporarily omit: Every Step 2 and Step 3 heading, body, stair segment, arrow, example, label, and diagram. Replace every omitted later-step region with the untouched source background so the rest of the canvas is genuinely blank. Never keep a later diagram as decoration and never substitute a later step for Step 1.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_10_2_staged_objectives",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Calculating the Mean (Handling Anomalies\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: Everything from build 1 plus the complete Step 2 heading and body text (for example, 'Step 2: Identify') and only the visual cluster immediately touching or directly below Step 2.\nTemporarily omit: Every Step 3 heading, body, stair segment, arrow, conclusion, label, and diagram. Replace the entire omitted Step 3 region with the untouched source background so it is genuinely blank. Never keep a Step 3 diagram as decoration or replace Step 1 or Step 2 with Step 3.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_10_3_staged_objectives",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the learning sequence",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Calculating the Mean (Handling Anomalies\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: staged-objectives.\nShow now: Everything from builds 1 and 2 plus the complete final numbered step (for example, 'Step 3: Explain'), its exact body text, and its directly related visual or conclusion.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_09.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "staged-objectives",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -841,17 +1406,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 44,
+        "timeGuideDisplay": "37–51s",
+        "vciScore": "5.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 25950,
+          "semanticProcessingMs": 17200,
+          "wordCount": 80,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -868,35 +1436,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "{Calculating the Rate of Reaction\n-spectic period oftime,\n; _ Volume of gas produced (cm*)\n=\" ae\n4 Time taken (minutes)\nfoe ee -\nB Worked Example 3 Graph Hint: Expect _\n_W} Scenario: At a distance of 20cm, the plant Sa | yo onainear clinical\ni produces 4.5 cm? of oxygen in 3 minutes using 2a .\na gas syringe. =o :\nfi Calculation: Rate = 4.5 / 3 = 1.5 cm*/minute. . Distance (om) :\n[Independent] a1 notebooxm",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "8dd7e05cb5d376b2df42c2378669a0ebcfdb85a7bac94ac9fe3a5991feea41e5",
+        "transcript": "{Calculating the Rate of Reaction\n-spectic period oftime,\n; _ Volume of gas produced (cm*)\n=\" ae\n4 Time taken (minutes)\nfoe ee -\nB Worked Example 3 Graph Hint: Expect _\n_W} Scenario: At a distance of 20cm, the plant Sa | yo onainear clinical\ni produces 4.5 cm? of oxygen in 3 minutes using 2a .\na gas syringe. =o :\nfi Calculation: Rate = 4.5 / 3 = 1.5 cm*/minute. . Distance (om) :\n[Independent] a1 notebooxm",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_data_table",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal headings and first evidence group",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"B Worked Example 3 Graph Hint: Expect\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: data-table.\nShow now: The title, column or axis headings, and the first evidence group needed to understand the structure.\nTemporarily omit: Remaining rows, secondary annotations, and decorative imagery.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_11_2_data_table",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the comparison pattern",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"B Worked Example 3 Graph Hint: Expect\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: data-table.\nShow now: Everything from the earlier build plus the additional rows or marks needed to reveal the overall pattern.\nTemporarily omit: The final interpretation, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_11_3_data_table",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the data insight",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"B Worked Example 3 Graph Hint: Expect\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: data-table.\nShow now: Everything from the earlier builds plus the final interpretation, conclusion, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_10.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "data-table",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -906,17 +1524,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 52,
+        "timeGuideDisplay": "44–60s",
+        "vciScore": "6.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 30900,
+          "semanticProcessingMs": 19800,
+          "wordCount": 92,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -933,55 +1554,108 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "| | | | |\nEvaluating Sources of Error FETE\nRandom Errors (Unpredictable variations)\n: - eee a bubble, a temporary fluctuation in\n: - Solution: Take multiple readings and calculate a mean. This\n“{__ improves reliability (repeatabillity).\nf Systematic Errors (Consistent inaccuracies)\n_l) - Example: The ruler used to measure distance has a worn-away\n-]) zero mark, so all distances are measured 2mm too short. Or, a\n: leak in the gas syringe bung. s\n- Saale pepeaing oe not fix this! You must recalibrate or\nreplace the faulty apparatus. s",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "ba8c2ac833e9c7de6e72953885f31c396fa2f40d69623565d14d93d6eae4b5f6",
+        "transcript": "| | | | |\nEvaluating Sources of Error FETE\nRandom Errors (Unpredictable variations)\n: - eee a bubble, a temporary fluctuation in\n: - Solution: Take multiple readings and calculate a mean. This\n“{__ improves reliability (repeatabillity).\nf Systematic Errors (Consistent inaccuracies)\n_l) - Example: The ruler used to measure distance has a worn-away\n-]) zero mark, so all distances are measured 2mm too short. Or, a\n: leak in the gas syringe bung. s\n- Saale pepeaing oe not fix this! You must recalibrate or\nreplace the faulty apparatus. s",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_12_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"Evaluating Sources of Error FETE\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_12_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"Evaluating Sources of Error FETE\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_12_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"Evaluating Sources of Error FETE\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_11.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 13,
       "imageFileName": "slide_12.png",
       "imageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_12.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 82,
+        "timeGuideDisplay": "69–95s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 3850,
+          "readingMs": 52350,
+          "semanticProcessingMs": 26000,
+          "wordCount": 157,
+          "visualElementsCount": 10
         },
         "academicReferences": [
           {
@@ -1000,53 +1674,220 @@
       },
       "serialAnimation": {
         "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Why use a datalogger instead of a thermometer and ruler?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 52.6,
+              "y": 40.6,
+              "w": 42.4,
+              "h": 15.4
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Why use a datalogger instead of a thermometer and ruler?",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 52.6,
+              "y": 58,
+              "w": 42.4,
+              "h": 15.4
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: Why use a datalogger instead of a thermometer and ruler?",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 52.6,
+              "y": 75.7,
+              "w": 42.4,
+              "h": 15.2
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Upgrading the Experiment: Dataloggers\nZ Why use a datalogger instead\nLight Intensity Probe\nZS wre of a thermometer and ruler?\nZ Bee Temperature\n22 A | Bi Hag gicbe 1. Higher Resolution: Probes can measure\n| EES s ) temperature changes to 0.1°C and precise light\nLEZ I\\) pombe! cana\n~~ ae | intensity (Lux) rather than just distance.\n| | y 2. Eliminates Human Error: Removes the\n4 TAY subjective nature of reading a thermometer\n7 Be scale or counting bubbles.\n= 409 3. Continuous Data: Can plot a graph\ny Sa automatically in real-time, showing exactly\nwhen the rate changes.\n‘AY NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "672705ad598254f4b8c33ecbf00ccdcb855eb2109b8d53f39c38caa463901c0b",
+        "transcript": "Upgrading the Experiment: Dataloggers\nZ Why use a datalogger instead\nLight Intensity Probe\nZS wre of a thermometer and ruler?\nZ Bee Temperature\n22 A | Bi Hag gicbe 1. Higher Resolution: Probes can measure\n| EES s ) temperature changes to 0.1°C and precise light\nLEZ I\\) pombe! cana\n~~ ae | intensity (Lux) rather than just distance.\n| | y 2. Eliminates Human Error: Removes the\n4 TAY subjective nature of reading a thermometer\n7 Be scale or counting bubbles.\n= 409 3. Continuous Data: Can plot a graph\ny Sa automatically in real-time, showing exactly\nwhen the rate changes.\n‘AY NotebookLV",
+        "role": "data",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why use a datalogger instead Light Intensity Probe ZS wre of a thermometer and ruler?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 5,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Why use a datalogger instead of a thermometer and ruler?",
+          "expectedAnswer": "Higher-resolution temperature and light-intensity readings.",
+          "questionBounds": {
+            "x": 52.6,
+            "y": 26.3,
+            "w": 40.9,
+            "h": 10.4
+          },
+          "bounds": {
+            "x": 52.6,
+            "y": 26.3,
+            "w": 40.9,
+            "h": 10.4
+          },
+          "answerBounds": {
+            "x": 52.6,
+            "y": 40.6,
+            "w": 42.4,
+            "h": 15.4
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Why use a datalogger instead of a thermometer and ruler?",
+          "expectedAnswer": "It removes subjective human reading and counting error.",
+          "questionBounds": {
+            "x": 52.6,
+            "y": 26.3,
+            "w": 40.9,
+            "h": 10.4
+          },
+          "bounds": {
+            "x": 52.6,
+            "y": 26.3,
+            "w": 40.9,
+            "h": 10.4
+          },
+          "answerBounds": {
+            "x": 52.6,
+            "y": 58,
+            "w": 42.4,
+            "h": 15.4
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Why use a datalogger instead of a thermometer and ruler?",
+          "expectedAnswer": "It collects continuous real-time data and can plot changes automatically.",
+          "questionBounds": {
+            "x": 52.6,
+            "y": 26.3,
+            "w": 40.9,
+            "h": 10.4
+          },
+          "bounds": {
+            "x": 52.6,
+            "y": 26.3,
+            "w": 40.9,
+            "h": 10.4
+          },
+          "answerBounds": {
+            "x": 52.6,
+            "y": 75.7,
+            "w": 42.4,
+            "h": 15.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_13_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Light Intensity Probe\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_12.png"
+        }
+      ]
     },
     {
       "number": 14,
       "imageFileName": "slide_13.png",
       "imageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_13.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 72,
+        "timeGuideDisplay": "61–83s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 3850,
+          "readingMs": 49050,
+          "semanticProcessingMs": 19200,
+          "wordCount": 147,
+          "visualElementsCount": 10
         },
         "academicReferences": [
           {
@@ -1065,34 +1906,198 @@
       },
       "serialAnimation": {
         "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Identify three flaws in this student's experimental design.",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 52.6,
+              "y": 40.5,
+              "w": 42.4,
+              "h": 15.2
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Identify three flaws in this student's experimental design.",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 52.6,
+              "y": 58.1,
+              "w": 42.4,
+              "h": 15.2
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: Identify three flaws in this student's experimental design.",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 52.6,
+              "y": 75.7,
+              "w": 42.4,
+              "h": 15.2
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Synthesis: What went wrong?\nig fr Identify three flaws in this\n—, student’s experimental design.\n‘a <\n2 ~ @\nS fa ) / 1. Failure to control temperature: No heat\ny| Mil O shield used; the incandescent lamp will heat\n( | \\F; the water, changing a control variable.\n“5cm 2. Safety risk: Hot bulb extremely close to\n, i water/glass.\nis\n\\ 3. Biological failure: The water got too hot,\n\\ likely denaturing the plant’s enzymes,\nS> ETA stopping photosynthesis completely.\n‘AY NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "7674de48e61c58fec08ebfb72bb56579183236ee6da9e75393a17d074aefebfa",
+        "transcript": "Synthesis: What went wrong?\nig fr Identify three flaws in this\n—, student’s experimental design.\n‘a <\n2 ~ @\nS fa ) / 1. Failure to control temperature: No heat\ny| Mil O shield used; the incandescent lamp will heat\n( | \\F; the water, changing a control variable.\n“5cm 2. Safety risk: Hot bulb extremely close to\n, i water/glass.\nis\n\\ 3. Biological failure: The water got too hot,\n\\ likely denaturing the plant’s enzymes,\nS> ETA stopping photosynthesis completely.\n‘AY NotebookLV",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is: What went wrong?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 5,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Identify three flaws in this student's experimental design.",
+          "expectedAnswer": "Temperature is uncontrolled: there is no heat shield, so the incandescent lamp heats the water.",
+          "questionBounds": {
+            "x": 52.6,
+            "y": 22.3,
+            "w": 42.4,
+            "h": 15.1
+          },
+          "bounds": {
+            "x": 52.6,
+            "y": 22.3,
+            "w": 42.4,
+            "h": 15.1
+          },
+          "answerBounds": {
+            "x": 52.6,
+            "y": 40.5,
+            "w": 42.4,
+            "h": 15.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Identify three flaws in this student's experimental design.",
+          "expectedAnswer": "Safety risk: the hot bulb is extremely close to water and glass.",
+          "questionBounds": {
+            "x": 52.6,
+            "y": 22.3,
+            "w": 42.4,
+            "h": 15.1
+          },
+          "bounds": {
+            "x": 52.6,
+            "y": 22.3,
+            "w": 42.4,
+            "h": 15.1
+          },
+          "answerBounds": {
+            "x": 52.6,
+            "y": 58.1,
+            "w": 42.4,
+            "h": 15.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Identify three flaws in this student's experimental design.",
+          "expectedAnswer": "The water can overheat and denature the plant's enzymes, stopping photosynthesis.",
+          "questionBounds": {
+            "x": 52.6,
+            "y": 22.3,
+            "w": 42.4,
+            "h": 15.1
+          },
+          "bounds": {
+            "x": 52.6,
+            "y": 22.3,
+            "w": 42.4,
+            "h": 15.1
+          },
+          "answerBounds": {
+            "x": 52.6,
+            "y": 75.7,
+            "w": 42.4,
+            "h": 15.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_14_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"ig fr Identify three flaws in this\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_13.png"
+        }
+      ]
     },
     {
       "number": 15,
@@ -1101,17 +2106,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 47,
+        "timeGuideDisplay": "39–55s",
+        "vciScore": "6.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 25950,
+          "semanticProcessingMs": 19400,
+          "wordCount": 76,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -1128,36 +2136,93 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "The Investigator’s Summary\n[x] Design: We measure the rate of photosynthesis by the volume of\n02 gas produced (dependent) against light distance (independent).\n[x] Control: Temperature and CO2 must remain constant to ensure\nMami a valid test.\n| x| Measure: Gas syringes offer higher resolution and less human error\nthan bubble counting.\n| x| Analyse: Always exclude anomalous results before calculating the\narithmetic mean.\nI x| Evaluate: Repeating tests improves reliability; dataloggers\nimprove precision and resolution.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "1255aae58ea3c91a40714d8a1e7e8aab34dcecde183fe0826dfdb3fb21801323",
+        "transcript": "The Investigator’s Summary\n[x] Design: We measure the rate of photosynthesis by the volume of\n02 gas produced (dependent) against light distance (independent).\n[x] Control: Temperature and CO2 must remain constant to ensure\nMami a valid test.\n| x| Measure: Gas syringes offer higher resolution and less human error\nthan bubble counting.\n| x| Analyse: Always exclude anomalous results before calculating the\narithmetic mean.\nI x| Evaluate: Repeating tests improves reliability; dataloggers\nimprove precision and resolution.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_15_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 15: \"The Investigator’s Summary\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_14.png"
+        },
+        {
+          "id": "gemini_slide_15_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 15: \"The Investigator’s Summary\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_14.png"
+        },
+        {
+          "id": "gemini_slide_15_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 15: \"The Investigator’s Summary\".\nDeck context: 13. Photosynthesis Investigation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 13. Photosynthesis Investigation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_13_PHOTOSYNTHESIS_INVESTIGATION/slides/slide_14.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-01T07:29:20.698Z"
+  }
 }

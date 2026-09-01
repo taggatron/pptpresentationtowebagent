@@ -11,17 +11,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 11,
-        "timeGuideDisplay": "9–13s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 25,
+        "timeGuideDisplay": "21–29s",
+        "vciScore": "5.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1400,
-          "readingMs": 4838,
-          "semanticProcessingMs": 4250,
-          "wordCount": 15,
-          "visualElementsCount": 4
+          "visualScanMs": 1050,
+          "readingMs": 17550,
+          "semanticProcessingMs": 6150,
+          "wordCount": 53,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -65,7 +68,66 @@
           "label": "Original Slide Image",
           "imageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png"
         }
-      ]
+      ],
+      "text": "NEUROMUSCULAR ACTIVATION ie as = ‘TYPE FIBER RECRUITMENT\nna a \" ‘\nLACTATE THRESHOLD MONITOR aN i xa ATP-POr SYSTEM\noLyoournic Fux i TYPE I PIBER RECRUTTMENT\nSYSTEI DIAGNOSTICS & EMERGENCY PATHWAYS\n@\nATP-PorSvSTEM LS “4 “Power ourpuroisram\nyor , \\ 2 .\nsae h, aS Fa 3 “eg\n2 ‘7 ia a",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "32c4090912245d241a6757fce2a3d8a693229ec6dd5fac8014d65c5595eba8ff",
+        "transcript": "NEUROMUSCULAR ACTIVATION ie as = ‘TYPE FIBER RECRUITMENT\nna a \" ‘\nLACTATE THRESHOLD MONITOR aN i xa ATP-POr SYSTEM\noLyoournic Fux i TYPE I PIBER RECRUTTMENT\nSYSTEI DIAGNOSTICS & EMERGENCY PATHWAYS\n@\nATP-PorSvSTEM LS “4 “Power ourpuroisram\nyor , \\ 2 .\nsae h, aS Fa 3 “eg\n2 ‘7 ia a",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "video_build_1",
+            "title": "Build 1: Video Intro (Anaerobic Respiration)",
+            "componentIds": [
+              "video_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
+          },
+          {
+            "step": 2,
+            "buildId": "image_build_2",
+            "title": "Build 2: Lesson Title & Objectives",
+            "componentIds": [
+              "image_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "protected-video",
+        "reason": "Existing Gemini video media is preserved without image-plan replacement.",
+        "protectedVideoCount": 1
+      }
     },
     {
       "number": 2,
@@ -73,7 +135,7 @@
       "imageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_02.png",
       "isInteractive": true,
       "interactiveType": "starter_qa_grid",
-      "gridTitle": "Starter Activity: Knowledge Retrieval",
+      "gridTitle": "Starter retrieval",
       "interactiveCells": [
         {
           "id": "cell_1",
@@ -86,13 +148,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 4.7,
-            "y": 21.9,
+            "x": 5.2,
+            "y": 33.5,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "What scientific instrument is essential for viewing cells?",
-          "expectedAnswer": "Light microscope (or electron microscope)."
+          "question": "What is the main purpose of cellular respiration?",
+          "expectedAnswer": "To supply ATP (energy) for living processes.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_2",
@@ -105,13 +171,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 52.3,
-            "y": 21.9,
+            "x": 51.2,
+            "y": 33.5,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "What is the fundamental building block of all living organisms?",
-          "expectedAnswer": "The cell."
+          "question": "What is the main chemical reactant used as fuel in respiration?",
+          "expectedAnswer": "Glucose.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_3",
@@ -124,13 +194,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 5.1,
-            "y": 51.7,
+            "x": 5.2,
+            "y": 58.3,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Are cells flat, 2-dimensional circles or 3-dimensional structures?",
-          "expectedAnswer": "3-dimensional structures."
+          "question": "Is cellular respiration exothermic or endothermic?",
+          "expectedAnswer": "Exothermic; it releases energy.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_4",
@@ -143,13 +217,17 @@
             "h": 24.5
           },
           "answerBounds": {
-            "x": 52,
-            "y": 52.2,
+            "x": 51.2,
+            "y": 58.3,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Write the word equation for cellular respiration.",
-          "expectedAnswer": "Glucose + Oxygen → Carbon Dioxide + Water."
+          "question": "What gas is required for aerobic respiration?",
+          "expectedAnswer": "Oxygen.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_5",
@@ -163,12 +241,16 @@
           },
           "answerBounds": {
             "x": 5.2,
-            "y": 84.1,
+            "y": 83.1,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Write the word equation for photosynthesis.",
-          "expectedAnswer": "Carbon Dioxide + Water → Glucose + Oxygen."
+          "question": "Which sub-cellular structure is the main site of aerobic respiration?",
+          "expectedAnswer": "Mitochondria.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_6",
@@ -182,25 +264,32 @@
           },
           "answerBounds": {
             "x": 51.2,
-            "y": 84.1,
+            "y": 83.1,
             "w": 43.6,
-            "h": 9
+            "h": 10.5
           },
-          "question": "Name one type of specialised human cell you already know.",
-          "expectedAnswer": "Any valid cell (e.g., red blood cell, nerve cell, sperm cell)."
+          "question": "What are the two waste products of aerobic respiration?",
+          "expectedAnswer": "Carbon dioxide and water.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 80,
-        "timeGuideDisplay": "68–92s",
+        "estimatedTimeSeconds": 103,
+        "timeGuideDisplay": "87–119s",
         "vciScore": "10.0",
         "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 7938,
-          "readingMs": 30150,
+          "readingMs": 52800,
           "semanticProcessingMs": 42000,
-          "wordCount": 89,
+          "wordCount": 153,
           "visualElementsCount": 18
         },
         "academicReferences": [
@@ -224,89 +313,138 @@
         "serialSteps": [
           {
             "step": 1,
-            "title": "Step 1: What scientific instrument is essential for viewing cells?",
+            "title": "Reveal: What is the main purpose of cellular respiration?",
             "componentIds": [
               "cell_1"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 2,
-            "title": "Step 2: What is the fundamental building block of all living organisms?",
+            "title": "Reveal: What is the main chemical reactant used as fuel in respiration?",
             "componentIds": [
               "cell_2"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 34.5,
+              "y": 33.5,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 3,
-            "title": "Step 3: Are cells flat, 2-dimensional circles or 3-dimensional structures?",
+            "title": "Reveal: Is cellular respiration exothermic or endothermic?",
             "componentIds": [
               "cell_3"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 4,
-            "title": "Step 4: Write the word equation for cellular respiration.",
+            "title": "Reveal: What gas is required for aerobic respiration?",
             "componentIds": [
               "cell_4"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 59.3,
+              "y": 58.3,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 5,
-            "title": "Step 5: Write the word equation for photosynthesis.",
+            "title": "Reveal: Which sub-cellular structure is the main site of aerobic respiration?",
             "componentIds": [
               "cell_5"
             ],
             "targetBounds": {
               "x": 5.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           },
           {
             "step": 6,
-            "title": "Step 6: Name one type of specialised human cell you already know.",
+            "title": "Reveal: What are the two waste products of aerobic respiration?",
             "componentIds": [
               "cell_6"
             ],
             "targetBounds": {
               "x": 51.2,
-              "y": 84.1,
+              "y": 83.1,
               "w": 43.6,
-              "h": 9
+              "h": 10.5
             },
             "revealType": "unmask"
           }
         ]
+      },
+      "text": "o\nWhat is the main purpose of cellular What is the main chemical reactant\nrespiration? (substrate) used as fuel in respiration?\nTo supply ATP (energy) for living processes. Glucose.\nIs cellular respiration an exothermic or What specific gas is required for\nendothermic reaction? aerobic respiration to occur?\nExothermic (it releases energy to the ob\nsurroundings). Oxygen.\nWhich sub-cellular structure is the What are the two waste products of\nmain site of aerobic respiration? aerobic respiration?\nMitochondria. Carbon dioxide and water.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "bdb6af68b840031afd44e67fe88467af1c267be0d584b6f9d2f041b141c1efe7",
+        "transcript": "o\nWhat is the main purpose of cellular What is the main chemical reactant\nrespiration? (substrate) used as fuel in respiration?\nTo supply ATP (energy) for living processes. Glucose.\nIs cellular respiration an exothermic or What specific gas is required for\nendothermic reaction? aerobic respiration to occur?\nExothermic (it releases energy to the ob\nsurroundings). Oxygen.\nWhich sub-cellular structure is the What are the two waste products of\nmain site of aerobic respiration? aerobic respiration?\nMitochondria. Carbon dioxide and water.",
+        "role": "process",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "What is the main purpose of cellular What is the main chemical reactant respiration?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Is cellular respiration an exothermic or What specific gas is required for endothermic reaction?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Which sub-cellular structure is the What are the two waste products of main site of aerobic respiration?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 6
+      },
+      "title": "Starter retrieval",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 12,
+        "detectionSource": "manifest-cells"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "question-reveal",
+        "reason": "The six-box starter grid is intentionally excluded from Gemini still-image builds.",
+        "protectedVideoCount": 0
       }
     },
     {
@@ -316,17 +454,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 54,
+        "timeGuideDisplay": "45–63s",
+        "vciScore": "6.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 30150,
+          "semanticProcessingMs": 22200,
+          "wordCount": 94,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -413,7 +554,30 @@
           "label": "Original Slide Image",
           "imageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_03.png"
         }
-      ]
+      ],
+      "text": "ov 7 )\nPushing the Limits: The Emergency Backup |\n|\n02 SUPPLY =| ATP (ENERGY) DEMAND |\n| lp | ip “1 f\n| ,\nSYSTEM OVERRIDE: |\nANAEROBIC BACKUP ENGAGED |\n| |\niL I) iL =|\n| |\nAerobic respiration is highly During vigorous exercise, To prevent immediate muscle fi\nefficient, but it relies entirely muscle cells demand ATP failure, the cell switches to an\non a steady supply of oxygen faster than the heart and emergency backup system:\nfrom the lungs and blood. lungs can supply oxygen. — Anaerobic Respiration.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "bf28ec7d549b5f2524a8ce833c07ba8ba74a90e03cdcfee2bf62a11cec48ac9c",
+        "transcript": "ov 7 )\nPushing the Limits: The Emergency Backup |\n|\n02 SUPPLY =| ATP (ENERGY) DEMAND |\n| lp | ip “1 f\n| ,\nSYSTEM OVERRIDE: |\nANAEROBIC BACKUP ENGAGED |\n| |\niL I) iL =|\n| |\nAerobic respiration is highly During vigorous exercise, To prevent immediate muscle fi\nefficient, but it relies entirely muscle cells demand ATP failure, the cell switches to an\non a steady supply of oxygen faster than the heart and emergency backup system:\nfrom the lungs and blood. lungs can supply oxygen. — Anaerobic Respiration.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "protected-video",
+        "reason": "Existing Gemini video media is preserved without image-plan replacement.",
+        "protectedVideoCount": 1
+      }
     },
     {
       "number": 4,
@@ -422,17 +586,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 42,
+        "timeGuideDisplay": "35–49s",
+        "vciScore": "5.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 24000,
+          "semanticProcessingMs": 16800,
+          "wordCount": 74,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -449,55 +616,108 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Anaerobic Respiration in Animals\nrr — al epee \" ir : |\n. =F\nGLUGUSE | NO ONKGEN a cal\n| TNS a\n: mee\nThe Definition The Trade-off\nAn exothermic reaction that occurs in the\nabsence of oxygen. Because there is no It produces ATP much faster than aerobic\noxygen to fully oxidise the glucose, the respiration, but the overall relative yield of\nbreakdown is incomplete. ATP is very low per glucose molecule.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "624bf063cf02a6a9788dd022835c50bcf9ba42ce042835a7d5c123d5e7936e10",
+        "transcript": "Anaerobic Respiration in Animals\nrr — al epee \" ir : |\n. =F\nGLUGUSE | NO ONKGEN a cal\n| TNS a\n: mee\nThe Definition The Trade-off\nAn exothermic reaction that occurs in the\nabsence of oxygen. Because there is no It produces ATP much faster than aerobic\noxygen to fully oxidise the glucose, the respiration, but the overall relative yield of\nbreakdown is incomplete. ATP is very low per glucose molecule.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Anaerobic Respiration in Animals\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Anaerobic Respiration in Animals\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Anaerobic Respiration in Animals\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_04.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 5,
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_05.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 62,
+        "timeGuideDisplay": "52–72s",
+        "vciScore": "9.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 3850,
+          "readingMs": 39450,
+          "semanticProcessingMs": 18800,
+          "wordCount": 123,
+          "visualElementsCount": 10
         },
         "academicReferences": [
           {
@@ -516,34 +736,191 @@
       },
       "serialAnimation": {
         "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Identify the missing substrate and products for a muscle cell operating without oxygen.",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 3.1,
+              "y": 51.9,
+              "w": 18.5,
+              "h": 13.8
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Identify the missing substrate and products for a muscle cell operating without oxygen.",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 78.2,
+              "y": 42.6,
+              "w": 18.7,
+              "h": 14.1
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: Identify the missing substrate and products for a muscle cell operating without oxygen.",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 78.2,
+              "y": 65.1,
+              "w": 18.7,
+              "h": 13.9
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Knowledge Checkpoint: The Muscle Cell Pathway\n} =a m\ni yj A rene A-BAND. a ‘<\niis yj ew\" 7s = \" ss il\ni a = ns wees -—— Beil) . .\nie pa dee 7, Lactic Acid\nses | 2 meee 7S, ___\nay <> See <> -— Here\nMIUUUIG === aed | oo)\n° ee ee (15531 [9505] 505) Ye r -\na] TGWIATP\n— A\nMITOCHONDRIA SARCOPLASMIG.__~\nRETICULUM.\n¥ .\nSe i",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "c1708626fd59d888317e393661d3549494f75c8ea911d6017f826ee01c0bca3e",
+        "transcript": "Knowledge Checkpoint: The Muscle Cell Pathway\n} =a m\ni yj A rene A-BAND. a ‘<\niis yj ew\" 7s = \" ss il\ni a = ns wees -—— Beil) . .\nie pa dee 7, Lactic Acid\nses | 2 meee 7S, ___\nay <> See <> -— Here\nMIUUUIG === aed | oo)\n° ee ee (15531 [9505] 505) Ye r -\na] TGWIATP\n— A\nMITOCHONDRIA SARCOPLASMIG.__~\nRETICULUM.\n¥ .\nSe i",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 3
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Identify the missing substrate and products for a muscle cell operating without oxygen.",
+          "expectedAnswer": "Glucose",
+          "questionBounds": {
+            "x": 3.4,
+            "y": 18.9,
+            "w": 93.2,
+            "h": 9.1
+          },
+          "bounds": {
+            "x": 3.4,
+            "y": 18.9,
+            "w": 93.2,
+            "h": 9.1
+          },
+          "answerBounds": {
+            "x": 3.1,
+            "y": 51.9,
+            "w": 18.5,
+            "h": 13.8
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Identify the missing substrate and products for a muscle cell operating without oxygen.",
+          "expectedAnswer": "Lactic acid",
+          "questionBounds": {
+            "x": 3.4,
+            "y": 18.9,
+            "w": 93.2,
+            "h": 9.1
+          },
+          "bounds": {
+            "x": 3.4,
+            "y": 18.9,
+            "w": 93.2,
+            "h": 9.1
+          },
+          "answerBounds": {
+            "x": 78.2,
+            "y": 42.6,
+            "w": 18.7,
+            "h": 14.1
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Identify the missing substrate and products for a muscle cell operating without oxygen.",
+          "expectedAnswer": "Low ATP / energy yield",
+          "questionBounds": {
+            "x": 3.4,
+            "y": 18.9,
+            "w": 93.2,
+            "h": 9.1
+          },
+          "bounds": {
+            "x": 3.4,
+            "y": 18.9,
+            "w": 93.2,
+            "h": 9.1
+          },
+          "answerBounds": {
+            "x": 78.2,
+            "y": 65.1,
+            "w": 18.7,
+            "h": 13.9
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"Knowledge Checkpoint: The Muscle Cell Pathway\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_05.png"
+        }
+      ]
     },
     {
       "number": 6,
@@ -552,17 +929,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 56,
+        "timeGuideDisplay": "47–65s",
+        "vciScore": "6.6",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 32400,
+          "semanticProcessingMs": 21800,
+          "wordCount": 102,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -579,54 +959,107 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Di\nThe Cost of the Backup: Muscle Fatigue\n\\ ‘\n| 40mm 100% The emergency backup system\n\\| cannot run indefinitely. Lactic ;\n*.] acid is toxic to cells in high\n8 80% .”.} concentrations. paths\n= |\neS 2 | |} Aslactic acid builds up inthe |\n8 a 2 | muscle tissue, it lowers the local |\n8 La pH, preventing enzymes from\n3 4 40% 3 functioning optimally.\n3 3 |\ng é Result: Muscle fatigue, burning | |\n2 avi sensations, and eventually,\ncramps that force the organism\n0 0% to stop exercising.\nTime (Duration of Sprint) *",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "20b3e457955eb1b7a8674e53a61c9313c7765886ce03fba9e91c62a473bfa11a",
+        "transcript": "Di\nThe Cost of the Backup: Muscle Fatigue\n\\ ‘\n| 40mm 100% The emergency backup system\n\\| cannot run indefinitely. Lactic ;\n*.] acid is toxic to cells in high\n8 80% .”.} concentrations. paths\n= |\neS 2 | |} Aslactic acid builds up inthe |\n8 a 2 | muscle tissue, it lowers the local |\n8 La pH, preventing enzymes from\n3 4 40% 3 functioning optimally.\n3 3 |\ng é Result: Muscle fatigue, burning | |\n2 avi sensations, and eventually,\ncramps that force the organism\n0 0% to stop exercising.\nTime (Duration of Sprint) *",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"The Cost of the Backup: Muscle Fatigue\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"The Cost of the Backup: Muscle Fatigue\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"The Cost of the Backup: Muscle Fatigue\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 7,
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_07.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 62,
+        "timeGuideDisplay": "52–72s",
+        "vciScore": "8.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
+          "readingMs": 47100,
+          "semanticProcessingMs": 13200,
+          "wordCount": 148,
           "visualElementsCount": 5
         },
         "academicReferences": [
@@ -645,54 +1078,130 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: After exercise stops, you continue to breathe heavily. Why?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 34.5,
+              "y": 69.4,
+              "w": 62.5,
+              "h": 26.6
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "ae Economics: Repaying the Oxygen Debt\nBALANCE SHEET: OXYGEN DEBT & REPAYMENT\nPHASE 1 PHASE 2\nTHE SPRINT THE RECOVERY siravaauyee |\n7 |\nEnergy Borrowed (Deficit) Oxygen Debt Repaid\nAfter exercise stops, you continue You have accumulated an Oxygen _| | Blood flowing through the muscles |\nto breathe heavily. Why? Debt. This is the amount of extra ‘| transports the lactic acid to the\noxygen the body needs after exercise | |, liver, where it is broken down. The\nto react with the accumulated lactic ‘debt’ must be fully repaid before\n| acid and remove it from the cells. breathing returns to normal.\nA! a a — — — - _ ~ — _ &\\ NotebookLM",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "4a3b342b0bdc072f9b297cb4a7bbaa5a9dfdc01062a096f3279e9447301f08e3",
+        "transcript": "ae Economics: Repaying the Oxygen Debt\nBALANCE SHEET: OXYGEN DEBT & REPAYMENT\nPHASE 1 PHASE 2\nTHE SPRINT THE RECOVERY siravaauyee |\n7 |\nEnergy Borrowed (Deficit) Oxygen Debt Repaid\nAfter exercise stops, you continue You have accumulated an Oxygen _| | Blood flowing through the muscles |\nto breathe heavily. Why? Debt. This is the amount of extra ‘| transports the lactic acid to the\noxygen the body needs after exercise | |, liver, where it is broken down. The\nto react with the accumulated lactic ‘debt’ must be fully repaid before\n| acid and remove it from the cells. breathing returns to normal.\nA! a a — — — - _ ~ — _ &\\ NotebookLM",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "After exercise stops, you continue to breathe heavily. Why?",
+          "expectedAnswer": "Extra oxygen repays the oxygen debt; lactic acid is transported to the liver and broken down before breathing returns to normal.",
+          "questionBounds": {
+            "x": 3,
+            "y": 69.4,
+            "w": 30.9,
+            "h": 26.6
+          },
+          "bounds": {
+            "x": 3,
+            "y": 69.4,
+            "w": 30.9,
+            "h": 26.6
+          },
+          "answerBounds": {
+            "x": 34.5,
+            "y": 69.4,
+            "w": 62.5,
+            "h": 26.6
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered question",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 7: \"BALANCE SHEET: OXYGEN DEBT & REPAYMENT\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_07.png"
+        }
+      ]
     },
     {
       "number": 8,
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_08.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 63,
+        "timeGuideDisplay": "53–73s",
+        "vciScore": "9.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 3850,
+          "readingMs": 39450,
+          "semanticProcessingMs": 19600,
+          "wordCount": 122,
+          "visualElementsCount": 10
         },
         "academicReferences": [
           {
@@ -711,34 +1220,191 @@
       },
       "serialAnimation": {
         "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Anaerobic respiration produces a higher relative yield of ATP than aerobic respiration: true or false?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 55.8,
+              "y": 18.4,
+              "w": 41.1,
+              "h": 24
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Oxygen debt causes continued heavy breathing after a sprint: true or false?",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 55.8,
+              "y": 44.5,
+              "w": 41.1,
+              "h": 24.5
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: Carbon dioxide is the waste product of anaerobic respiration in animal cells: true or false?",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 55.8,
+              "y": 71.1,
+              "w": 41.1,
+              "h": 25.1
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Knowledge Checkpoint: True or False?\nAnaerobic respiration produces a higher relative 9% | » FALSE \\\nyield of ATP than aerobic respiration. & ) FALSE\nSo) See eee\nOxygen debt is the reason we continue to ft. TRUE ( | y\nbreathe heavily after a sprint. INVE | 2\nThe waste product of anaerobic respirationin ff FALSE | | % \\\nanimal cells is carbon dioxide. Fads ey",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "9267f366b6446e3bcdc3878eaf31c51150e9557219c6793f1719c0857b4c9cdb",
+        "transcript": "Knowledge Checkpoint: True or False?\nAnaerobic respiration produces a higher relative 9% | » FALSE \\\nyield of ATP than aerobic respiration. & ) FALSE\nSo) See eee\nOxygen debt is the reason we continue to ft. TRUE ( | y\nbreathe heavily after a sprint. INVE | 2\nThe waste product of anaerobic respirationin ff FALSE | | % \\\nanimal cells is carbon dioxide. Fads ey",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 3
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Anaerobic respiration produces a higher relative yield of ATP than aerobic respiration: true or false?",
+          "expectedAnswer": "False; it yields less ATP.",
+          "questionBounds": {
+            "x": 3,
+            "y": 18.4,
+            "w": 52.8,
+            "h": 24
+          },
+          "bounds": {
+            "x": 3,
+            "y": 18.4,
+            "w": 52.8,
+            "h": 24
+          },
+          "answerBounds": {
+            "x": 55.8,
+            "y": 18.4,
+            "w": 41.1,
+            "h": 24
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Oxygen debt causes continued heavy breathing after a sprint: true or false?",
+          "expectedAnswer": "True.",
+          "questionBounds": {
+            "x": 3,
+            "y": 44.5,
+            "w": 52.8,
+            "h": 24.5
+          },
+          "bounds": {
+            "x": 3,
+            "y": 44.5,
+            "w": 52.8,
+            "h": 24.5
+          },
+          "answerBounds": {
+            "x": 55.8,
+            "y": 44.5,
+            "w": 41.1,
+            "h": 24.5
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Carbon dioxide is the waste product of anaerobic respiration in animal cells: true or false?",
+          "expectedAnswer": "False; the product is lactic acid.",
+          "questionBounds": {
+            "x": 3,
+            "y": 71.1,
+            "w": 52.8,
+            "h": 25.1
+          },
+          "bounds": {
+            "x": 3,
+            "y": 71.1,
+            "w": 52.8,
+            "h": 25.1
+          },
+          "answerBounds": {
+            "x": 55.8,
+            "y": 71.1,
+            "w": 41.1,
+            "h": 25.1
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"So) See eee\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_08.png"
+        }
+      ]
     },
     {
       "number": 9,
@@ -747,17 +1413,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 51,
+        "timeGuideDisplay": "43–59s",
+        "vciScore": "6.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 27150,
+          "semanticProcessingMs": 22200,
+          "wordCount": 84,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -774,35 +1443,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Po... 3s ees + is a\n| Anaerobic Respiration in Plants & Microorganisms\nETHANOL\nTLIC ASE NO ENERGY)\nGLUCOSE 0 YGEN + (Low ATP) |\nni, ar LL. y\nPlants and fungi (like yeast) also have an Like in animals, this is an incomplete .\nanaerobic backup system, but they use a breakdown of glucose occurring without\n| different chemical pathway. This process is oxygen, resulting in a low relative yield of ATP.\n| called Fermentation.\n>. ah es =: ~ — ‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "56e6c78d10df73cc039239e1fa17f3de0de3ebb8984f132d58396b674d96fc65",
+        "transcript": "Po... 3s ees + is a\n| Anaerobic Respiration in Plants & Microorganisms\nETHANOL\nTLIC ASE NO ENERGY)\nGLUCOSE 0 YGEN + (Low ATP) |\nni, ar LL. y\nPlants and fungi (like yeast) also have an Like in animals, this is an incomplete .\nanaerobic backup system, but they use a breakdown of glucose occurring without\n| different chemical pathway. This process is oxygen, resulting in a low relative yield of ATP.\n| called Fermentation.\n>. ah es =: ~ — ‘A\\ NotebookLV",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"Anaerobic Respiration in Plants & Microorganisms\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"Anaerobic Respiration in Plants & Microorganisms\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"Anaerobic Respiration in Plants & Microorganisms\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_09.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -812,17 +1531,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 46,
+        "timeGuideDisplay": "39–53s",
+        "vciScore": "6.2",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 29250,
+          "semanticProcessingMs": 15600,
+          "wordCount": 93,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -839,55 +1561,108 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "(a a — —. ee\nThe Fermentation Industry\n— | BAKING ae BREWING |\nLe I eee See\n\\gey ee re —\n| “| Yeast is used in baking. The carbon |. =| Yeast is used to ferment sugars in |2\n‘ dioxide gas produced by barley or grapes. The ethanol |\nfermentation gets trapped in the Pane puoducide produced is the\ndough, causing the bread to rise. | alcohol found in beer and wine. The\nThe ethanol evaporates during baking. | carbon dioxide provides the fizz.\nFiat ye + ~ \\ NotebookLM",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "d23810f2c0de07f42f4ca944b7860d4146b5ab7dd5a68e986c4830916e554d6a",
+        "transcript": "(a a — —. ee\nThe Fermentation Industry\n— | BAKING ae BREWING |\nLe I eee See\n\\gey ee re —\n| “| Yeast is used in baking. The carbon |. =| Yeast is used to ferment sugars in |2\n‘ dioxide gas produced by barley or grapes. The ethanol |\nfermentation gets trapped in the Pane puoducide produced is the\ndough, causing the bread to rise. | alcohol found in beer and wine. The\nThe ethanol evaporates during baking. | carbon dioxide provides the fizz.\nFiat ye + ~ \\ NotebookLM",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"The Fermentation Industry\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"The Fermentation Industry\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"The Fermentation Industry\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_10.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 11,
       "imageFileName": "slide_11.png",
       "imageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_11.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 43,
+        "timeGuideDisplay": "36–50s",
+        "vciScore": "6.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 2548,
+          "readingMs": 22200,
+          "semanticProcessingMs": 18400,
+          "wordCount": 66,
+          "visualElementsCount": 7
         },
         "academicReferences": [
           {
@@ -904,36 +1679,151 @@
           }
         ]
       },
+      "text": "Knowledge Checkpoint: Identify the Products . Fi\noo we \\\nCs — .\n—|e roth = oe ots al he ates ws tis\nMuscle Cell Anaerobic Products: Yeast Anaerobic Products (Fermentation): | | ——\nLactic Acid insta Ethano Carbon Dioxide\ni. \" at tL a : a ca —__________. A\\NotebookiM",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "e0b418914efce0c12ca36f6f537d881bfca2fad725d84d4bd1c86f068b2ee13e",
+        "transcript": "Knowledge Checkpoint: Identify the Products . Fi\noo we \\\nCs — .\n—|e roth = oe ots al he ates ws tis\nMuscle Cell Anaerobic Products: Yeast Anaerobic Products (Fermentation): | | ——\nLactic Acid insta Ethano Carbon Dioxide\ni. \" at tL a : a ca —__________. A\\NotebookiM",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 2
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Identify the muscle-cell anaerobic product.",
+          "expectedAnswer": "Lactic acid.",
+          "questionBounds": {
+            "x": 6.6,
+            "y": 64.5,
+            "w": 38.9,
+            "h": 7.2
+          },
+          "bounds": {
+            "x": 6.6,
+            "y": 64.5,
+            "w": 38.9,
+            "h": 7.2
+          },
+          "answerBounds": {
+            "x": 6.7,
+            "y": 73,
+            "w": 38.7,
+            "h": 10.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Identify the yeast anaerobic products.",
+          "expectedAnswer": "Ethanol and carbon dioxide.",
+          "questionBounds": {
+            "x": 54.4,
+            "y": 64.5,
+            "w": 38.8,
+            "h": 7.2
+          },
+          "bounds": {
+            "x": 54.4,
+            "y": 64.5,
+            "w": 38.8,
+            "h": 7.2
+          },
+          "answerBounds": {
+            "x": 54.4,
+            "y": 73,
+            "w": 38.8,
+            "h": 10.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Identify the muscle-cell anaerobic product.",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 6.7,
+              "y": 73,
+              "w": 38.7,
+              "h": 10.2
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Identify the yeast anaerobic products.",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 54.4,
+              "y": 73,
+              "w": 38.8,
+              "h": 10.2
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Muscle Cell Anaerobic Products: Yeast Anaerobic Products (Fermentation)\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 2 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_11.png"
+        }
+      ]
     },
     {
       "number": 12,
@@ -942,17 +1832,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 26,
+        "timeGuideDisplay": "22–30s",
+        "vciScore": "4.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 10350,
+          "semanticProcessingMs": 14600,
+          "wordCount": 30,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -969,36 +1862,70 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Master Synthesis: Respiration Pathways 7\n| Feature / Aerobic Anaerobic Anaerobic\ni Condition Respiration (Animals) (Plants/Fungi)\n| Carbon Dioxide ee Ethanol +\nJ Products + Water LactiC ACIG Carbon i",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "26053ae79a72300113a4b27a488679d407635cfa39637a7f1063dc83080f61e3",
+        "transcript": "Master Synthesis: Respiration Pathways 7\n| Feature / Aerobic Anaerobic Anaerobic\ni Condition Respiration (Animals) (Plants/Fungi)\n| Carbon Dioxide ee Ethanol +\nJ Products + Water LactiC ACIG Carbon i",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_12_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 12: \"Master Synthesis: Respiration Pathways 7\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 12: \"Master Synthesis: Respiration Pathways 7\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_12.png"
+        }
+      ]
     },
     {
       "number": 13,
@@ -1007,17 +1934,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 47,
+        "timeGuideDisplay": "39–55s",
+        "vciScore": "6.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 27750,
+          "semanticProcessingMs": 18000,
+          "wordCount": 85,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -1034,36 +1964,93 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Plenary: 3-2-1 Summary om\nKey Products ~@ @ 2) =~ |\n- Lactic Acid (animals), Ethanol (plants/fungi), — |\nie Carbon Dioxide (plants/fungi/aerobic). lid si\n| a i \\. ”\nsii . fL CO, |\nos Different Pathways >. ~o\n| F Anaerobic respiration has different outputs depending |\n| \" on the organism (Lactic Acid vs. Fermentation). ——e\nidl : ‘ Biological Cost r\nee et Oxygen Debt — the extra oxygen\n= Stout required post-exercise to break down\n, accumulated, toxic lactic acid.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "299d85c6c59479111c86ad4d591c1e76098f5b42bd025045a71f0aa2435ce332",
+        "transcript": "Plenary: 3-2-1 Summary om\nKey Products ~@ @ 2) =~ |\n- Lactic Acid (animals), Ethanol (plants/fungi), — |\nie Carbon Dioxide (plants/fungi/aerobic). lid si\n| a i \\. ”\nsii . fL CO, |\nos Different Pathways >. ~o\n| F Anaerobic respiration has different outputs depending |\n| \" on the organism (Lactic Acid vs. Fermentation). ——e\nidl : ‘ Biological Cost r\nee et Oxygen Debt — the extra oxygen\n= Stout required post-exercise to break down\n, accumulated, toxic lactic acid.",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_13_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 13: \"Lactic Acid (animals), Ethanol (plants/fungi)\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 13: \"Lactic Acid (animals), Ethanol (plants/fungi)\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 13: \"Lactic Acid (animals), Ethanol (plants/fungi)\".\nDeck context: 9. Anaerobic Respiration.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 9. Anaerobic Respiration. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_13.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-01T07:29:20.683Z"
+  }
 }

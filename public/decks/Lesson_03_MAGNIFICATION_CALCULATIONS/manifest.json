@@ -11,17 +11,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 9,
-        "timeGuideDisplay": "7–11s",
-        "vciScore": "3.9",
+        "estimatedTimeSeconds": 11,
+        "timeGuideDisplay": "9–13s",
+        "vciScore": "3.7",
         "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 4000,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 5250,
+          "semanticProcessingMs": 4300,
+          "wordCount": 16,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -38,33 +41,245 @@
           }
         ]
       },
+      "text": "inn\na\nLesson 3: MAGNIFICATION\nCALCULATIONS\nOCR Combined Science A (Biology) | B1.1a | PAG B1",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "6f1d2d132185b14c536bd8de0ef17f2a4542177d1256aa830585e2c53c25c2b6",
+        "transcript": "inn\na\nLesson 3: MAGNIFICATION\nCALCULATIONS\nOCR Combined Science A (Biology) | B1.1a | PAG B1",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 1,
+        "approvedCellCount": 1,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"3. Magnification Calculations\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"3. Magnification Calculations\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01.png",
+          "generatedAt": "2026-09-01T07:01:27.453Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:01:27.453Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after native-resolution visual comparison and OCR. Full 1024x572 canvas matches the source aspect and dark navy grid/teal microscope styling; title and OCR Combined Science A (Biology) | B1.1a | PAG B1 subtitle are complete, correctly spelled, and legible. This single-cell sequence contains the complete source state. No crop, zoom, dimming, spotlight, halo, focus box, malformed layout, or missing content observed; technical signature, resolution, source distinction, and canvas checks all passed.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "659547 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+              "byteLength": 659547,
+              "sha256": "762399036ff6e727e1553ef4d78d4ca3cca104b2adc52d55548522856dede94b",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "6f1d2d132185b14c536bd8de0ef17f2a4542177d1256aa830585e2c53c25c2b6",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Complete the instructional build",
+          "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"3. Magnification Calculations\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"3. Magnification Calculations\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:01:27.453Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after native-resolution visual comparison and OCR. Full 1024x572 canvas matches the source aspect and dark navy grid/teal microscope styling; title and OCR Combined Science A (Biology) | B1.1a | PAG B1 subtitle are complete, correctly spelled, and legible. This single-cell sequence contains the complete source state. No crop, zoom, dimming, spotlight, halo, focus box, malformed layout, or missing content observed; technical signature, resolution, source distinction, and canvas checks all passed.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "659547 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01_gemini_slide_1_1_component_reveal.png",
+              "byteLength": 659547,
+              "sha256": "762399036ff6e727e1553ef4d78d4ca3cca104b2adc52d55548522856dede94b",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "6f1d2d132185b14c536bd8de0ef17f2a4542177d1256aa830585e2c53c25c2b6",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        }
+      ],
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "buildId": "gemini_slide_1_1_component_reveal",
+            "title": "Build 1: Complete the instructional build",
             "componentIds": [
-              "header"
+              "gemini_slide_1_1_component_reveal"
             ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
           }
         ]
       }
@@ -75,134 +290,161 @@
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_02.png",
       "isInteractive": true,
       "interactiveType": "starter_qa_grid",
-      "gridTitle": "Starter Activity: Knowledge Retrieval",
+      "gridTitle": "Starter retrieval",
       "interactiveCells": [
         {
           "id": "cell_1",
           "row": 0,
           "col": 0,
           "bounds": {
-            "x": 4.2,
-            "y": 20,
-            "w": 45.6,
-            "h": 24.5
+            "x": 3.6,
+            "y": 6,
+            "w": 46.4,
+            "h": 28.5
           },
           "answerBounds": {
-            "x": 5.2,
-            "y": 34.5,
-            "w": 43.6,
-            "h": 9
+            "x": 7.5,
+            "y": 22,
+            "w": 39,
+            "h": 11
           },
-          "question": "What scientific instrument is essential for viewing cells?",
-          "expectedAnswer": "Light microscope (or electron microscope)."
+          "question": "Name the microscope lens closest to the specimen.",
+          "expectedAnswer": "Objective lens.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_2",
           "row": 0,
           "col": 1,
           "bounds": {
-            "x": 50.2,
-            "y": 20,
-            "w": 45.6,
-            "h": 24.5
+            "x": 50,
+            "y": 6,
+            "w": 46.4,
+            "h": 28.5
           },
           "answerBounds": {
-            "x": 51.2,
-            "y": 34.5,
-            "w": 43.6,
-            "h": 9
+            "x": 54,
+            "y": 22,
+            "w": 39,
+            "h": 11
           },
-          "question": "What is the fundamental building block of all living organisms?",
-          "expectedAnswer": "The cell."
+          "question": "Name the lens you look directly into.",
+          "expectedAnswer": "Eyepiece lens.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_3",
           "row": 1,
           "col": 0,
           "bounds": {
-            "x": 4.2,
-            "y": 44.8,
-            "w": 45.6,
-            "h": 24.5
+            "x": 3.6,
+            "y": 34.5,
+            "w": 46.4,
+            "h": 30.5
           },
           "answerBounds": {
-            "x": 5.2,
-            "y": 59.3,
-            "w": 43.6,
-            "h": 9
+            "x": 7.5,
+            "y": 51,
+            "w": 39,
+            "h": 12
           },
-          "question": "Are cells flat, 2-dimensional circles or 3-dimensional structures?",
-          "expectedAnswer": "3-dimensional structures."
+          "question": "How many millimetres are in one centimetre?",
+          "expectedAnswer": "10 mm.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_4",
           "row": 1,
           "col": 1,
           "bounds": {
-            "x": 50.2,
-            "y": 44.8,
-            "w": 45.6,
-            "h": 24.5
+            "x": 50,
+            "y": 34.5,
+            "w": 46.4,
+            "h": 30.5
           },
           "answerBounds": {
-            "x": 51.2,
-            "y": 59.3,
-            "w": 43.6,
-            "h": 9
+            "x": 54,
+            "y": 51,
+            "w": 39,
+            "h": 12
           },
-          "question": "Write the word equation for cellular respiration.",
-          "expectedAnswer": "Glucose + Oxygen → Carbon Dioxide + Water."
+          "question": "Why do we use stains such as iodine on cells?",
+          "expectedAnswer": "To highlight colourless structures.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_5",
           "row": 2,
           "col": 0,
           "bounds": {
-            "x": 4.2,
-            "y": 69.6,
-            "w": 45.6,
-            "h": 24.5
+            "x": 3.6,
+            "y": 65,
+            "w": 46.4,
+            "h": 29
           },
           "answerBounds": {
-            "x": 5.2,
-            "y": 84.1,
-            "w": 43.6,
-            "h": 9
+            "x": 7.5,
+            "y": 81.5,
+            "w": 39,
+            "h": 11
           },
-          "question": "Write the word equation for photosynthesis.",
-          "expectedAnswer": "Carbon Dioxide + Water → Glucose + Oxygen."
+          "question": "What is the function of the cell membrane?",
+          "expectedAnswer": "It controls what enters and leaves the cell.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         },
         {
           "id": "cell_6",
           "row": 2,
           "col": 1,
           "bounds": {
-            "x": 50.2,
-            "y": 69.6,
-            "w": 45.6,
-            "h": 24.5
+            "x": 50,
+            "y": 65,
+            "w": 46.4,
+            "h": 29
           },
           "answerBounds": {
-            "x": 51.2,
-            "y": 84.1,
-            "w": 43.6,
-            "h": 9
+            "x": 54,
+            "y": 81.5,
+            "w": 39,
+            "h": 11
           },
-          "question": "Name one type of specialised human cell you already know.",
-          "expectedAnswer": "Any valid cell (e.g., red blood cell, nerve cell, sperm cell)."
+          "question": "Write 0.005 in standard form.",
+          "expectedAnswer": "5 × 10⁻³.",
+          "answerVisibleInImage": true,
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog"
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 80,
-        "timeGuideDisplay": "68–92s",
+        "estimatedTimeSeconds": 99,
+        "timeGuideDisplay": "84–114s",
         "vciScore": "10.0",
         "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 7938,
-          "readingMs": 30150,
+          "readingMs": 48450,
           "semanticProcessingMs": 42000,
-          "wordCount": 89,
+          "wordCount": 145,
           "visualElementsCount": 18
         },
         "academicReferences": [
@@ -226,89 +468,132 @@
         "serialSteps": [
           {
             "step": 1,
-            "title": "Step 1: What scientific instrument is essential for viewing cells?",
+            "title": "Reveal: Name the microscope lens closest to the specimen.",
             "componentIds": [
               "cell_1"
             ],
             "targetBounds": {
-              "x": 5.2,
-              "y": 34.5,
-              "w": 43.6,
-              "h": 9
+              "x": 7.5,
+              "y": 22,
+              "w": 39,
+              "h": 11
             },
             "revealType": "unmask"
           },
           {
             "step": 2,
-            "title": "Step 2: What is the fundamental building block of all living organisms?",
+            "title": "Reveal: Name the lens you look directly into.",
             "componentIds": [
               "cell_2"
             ],
             "targetBounds": {
-              "x": 51.2,
-              "y": 34.5,
-              "w": 43.6,
-              "h": 9
+              "x": 54,
+              "y": 22,
+              "w": 39,
+              "h": 11
             },
             "revealType": "unmask"
           },
           {
             "step": 3,
-            "title": "Step 3: Are cells flat, 2-dimensional circles or 3-dimensional structures?",
+            "title": "Reveal: How many millimetres are in one centimetre?",
             "componentIds": [
               "cell_3"
             ],
             "targetBounds": {
-              "x": 5.2,
-              "y": 59.3,
-              "w": 43.6,
-              "h": 9
+              "x": 7.5,
+              "y": 51,
+              "w": 39,
+              "h": 12
             },
             "revealType": "unmask"
           },
           {
             "step": 4,
-            "title": "Step 4: Write the word equation for cellular respiration.",
+            "title": "Reveal: Why do we use stains such as iodine on cells?",
             "componentIds": [
               "cell_4"
             ],
             "targetBounds": {
-              "x": 51.2,
-              "y": 59.3,
-              "w": 43.6,
-              "h": 9
+              "x": 54,
+              "y": 51,
+              "w": 39,
+              "h": 12
             },
             "revealType": "unmask"
           },
           {
             "step": 5,
-            "title": "Step 5: Write the word equation for photosynthesis.",
+            "title": "Reveal: What is the function of the cell membrane?",
             "componentIds": [
               "cell_5"
             ],
             "targetBounds": {
-              "x": 5.2,
-              "y": 84.1,
-              "w": 43.6,
-              "h": 9
+              "x": 7.5,
+              "y": 81.5,
+              "w": 39,
+              "h": 11
             },
             "revealType": "unmask"
           },
           {
             "step": 6,
-            "title": "Step 6: Name one type of specialised human cell you already know.",
+            "title": "Reveal: Write 0.005 in standard form.",
             "componentIds": [
               "cell_6"
             ],
             "targetBounds": {
-              "x": 51.2,
-              "y": 84.1,
-              "w": 43.6,
-              "h": 9
+              "x": 54,
+              "y": 81.5,
+              "w": 39,
+              "h": 11
             },
             "revealType": "unmask"
           }
         ]
+      },
+      "text": "“Name the microscope lens Name the lens you look |\nclosest to the specimen. directly into.\n- Objectivelens = |- Eyepiecelens =\nHow many millimetres are | Why do we use stains like\n_, inlcentimetre? = | _~—_—siodine on cells? 1\n10 mm 4 { To highlight colourless\n. structures\nWhat is the function ofthe | Challenge: Write0.005in |.\n: cell membrane? standard form. — |i\nControls what a 5x 104-3 a\n} enters/leaves fil",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "6d9a88cfe20fcb692526ad54bdb2c4634369a0ea7abcb28761bee9d4f5e256ba",
+        "transcript": "“Name the microscope lens Name the lens you look |\nclosest to the specimen. directly into.\n- Objectivelens = |- Eyepiecelens =\nHow many millimetres are | Why do we use stains like\n_, inlcentimetre? = | _~—_—siodine on cells? 1\n10 mm 4 { To highlight colourless\n. structures\nWhat is the function ofthe | Challenge: Write0.005in |.\n: cell membrane? standard form. — |i\nControls what a 5x 104-3 a\n} enters/leaves fil",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Name the microscope lens Name the lens you look | closest to the specimen. directly into. - Objectivelens = |- Eyepiecelens = How many millimetres are | Why do we use stains like _, inlcentimetre?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What is the function ofthe | Challenge: Write0.005in |. : cell membrane?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 6
+      },
+      "title": "Starter retrieval",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 10,
+        "detectionSource": "manifest-cells"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "question-reveal",
+        "reason": "The six-box starter grid is intentionally excluded from Gemini still-image builds.",
+        "protectedVideoCount": 0
       }
     },
     {
@@ -318,17 +603,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 55,
+        "timeGuideDisplay": "46–64s",
+        "vciScore": "6.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 31050,
+          "semanticProcessingMs": 22200,
+          "wordCount": 97,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -345,33 +633,649 @@
           }
         ]
       },
+      "text": "ad AW ee Foe —— ee eee aa ae aS Saas\n+ e +\nThe Mystery of Scale\nx AES\n|| eR y o\n| 4 : peer ie ft aa , Biological +-]| -\nObservation WARM Kean EL i: CalGaleMian Reality\nWe can see cells, and we can measure photos of them. But to know ‘\n| their true size, we need a mathematical toolkit. !\n| Learning Objectives: }\n; - Calculate magnification and actual size (B1.1a).\n- Convert between millimetres, micrometres, and nanometres. ; |\n* - Calculate using standard form (Higher Tier). +4)!",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
+        "transcript": "ad AW ee Foe —— ee eee aa ae aS Saas\n+ e +\nThe Mystery of Scale\nx AES\n|| eR y o\n| 4 : peer ie ft aa , Biological +-]| -\nObservation WARM Kean EL i: CalGaleMian Reality\nWe can see cells, and we can measure photos of them. But to know ‘\n| their true size, we need a mathematical toolkit. !\n| Learning Objectives: }\n; - Calculate magnification and actual size (B1.1a).\n- Convert between millimetres, micrometres, and nanometres. ; |\n* - Calculate using standard form (Higher Tier). +4)!",
+        "role": "objectives",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"The Mystery of Scale\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_1_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03.png",
+          "generatedAt": "2026-09-01T07:12:40.902Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:12:40.902Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after source/prompt comparison, OCR, and original-detail visual inspection. Full 1024x572 canvas preserves the navy technical-grid theme, cyan border/linework, title typography, and source spatial rhythm. It correctly shows only the first comparison category (Observation, microscope icon, exact label) while omitting later categories and synthesis. Title and label are crisp and correct. No crop, zoom, spotlight, dimming, halo, focus box, malformed layout, or unintended retained content. All technical checks passed; held out of playback atomically until cells 2 and 3 are also approved.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "712572 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_1_comparison.png",
+              "byteLength": 712572,
+              "sha256": "7210e22bed364c8830fcfc465430bfe9dbd89be6b56425ae7507d43f3bba3c72",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_3_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"The Mystery of Scale\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_2_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03.png",
+          "generatedAt": "2026-09-01T07:18:59.179Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:18:59.179Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 navy/cyan technical canvas retains cell 1 Observation in the same location, then adds the Measurement, Calculation, and Biological Reality pathway with exact labels/arrows and the exact explanatory sentence. The final Learning Objectives synthesis container remains omitted as requested. All content is crisp; no crop, spotlight, dimming, blur, halo, focus box, malformed layout, or duplicate image. Technical checks passed; sequence remains atomically withheld pending cell 3.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "786488 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_2_comparison.png",
+              "byteLength": 786488,
+              "sha256": "85a044cf1c3f1005e4f044b46fd708a99cbdf76a4e31403724819ea1a46eee4a",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_3_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"The Mystery of Scale\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_3_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03.png",
+          "generatedAt": "2026-09-01T07:18:59.199Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:18:59.199Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 source-style canvas preserves every cell 2 element and position, then adds the final cyan Learning Objectives container with all three source objectives: magnification/actual size (B1.1a), metric-unit conversion, and standard form (Higher Tier). Text, labels, icons, equations, and arrows are complete and legible. No crop, focus treatment, dimming, halo, malformed layout, missing prior content, or factual error; technical and unique-build checks passed.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "825749 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_3_comparison.png",
+              "byteLength": 825749,
+              "sha256": "d30bfdf05212f955462361fbc231a2ed6696caf9615a9a0486f04c6e9115d8df",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "plannedCellCount": 3,
+        "approvedCellCount": 3,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_3_1_comparison",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal the first comparison component",
+          "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_1_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"The Mystery of Scale\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:12:40.902Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after source/prompt comparison, OCR, and original-detail visual inspection. Full 1024x572 canvas preserves the navy technical-grid theme, cyan border/linework, title typography, and source spatial rhythm. It correctly shows only the first comparison category (Observation, microscope icon, exact label) while omitting later categories and synthesis. Title and label are crisp and correct. No crop, zoom, spotlight, dimming, halo, focus box, malformed layout, or unintended retained content. All technical checks passed; held out of playback atomically until cells 2 and 3 are also approved.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "712572 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_1_comparison.png",
+              "byteLength": 712572,
+              "sha256": "7210e22bed364c8830fcfc465430bfe9dbd89be6b56425ae7507d43f3bba3c72",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_3_2_comparison",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Add the second comparison component",
+          "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_2_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"The Mystery of Scale\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:18:59.179Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 navy/cyan technical canvas retains cell 1 Observation in the same location, then adds the Measurement, Calculation, and Biological Reality pathway with exact labels/arrows and the exact explanatory sentence. The final Learning Objectives synthesis container remains omitted as requested. All content is crisp; no crop, spotlight, dimming, blur, halo, focus box, malformed layout, or duplicate image. Technical checks passed; sequence remains atomically withheld pending cell 3.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "786488 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_2_comparison.png",
+              "byteLength": 786488,
+              "sha256": "85a044cf1c3f1005e4f044b46fd708a99cbdf76a4e31403724819ea1a46eee4a",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_3_3_comparison",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Add the comparison insight",
+          "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_3_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"The Mystery of Scale\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-01T07:18:59.199Z",
+            "reviewer": "qa-hardening-agent",
+            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 source-style canvas preserves every cell 2 element and position, then adds the final cyan Learning Objectives container with all three source objectives: magnification/actual size (B1.1a), metric-unit conversion, and standard form (Higher Tier). Text, labels, icons, equations, and arrows are complete and legible. No crop, focus treatment, dimming, halo, malformed layout, missing prior content, or factual error; technical and unique-build checks passed.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "825749 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1024×572; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7902; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7902; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_3_comparison.png",
+              "byteLength": 825749,
+              "sha256": "d30bfdf05212f955462361fbc231a2ed6696caf9615a9a0486f04c6e9115d8df",
+              "dimensions": {
+                "format": "png",
+                "width": 1024,
+                "height": 572
+              },
+              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
       "serialAnimation": {
         "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "buildId": "gemini_slide_3_1_comparison",
+            "title": "Build 1: Reveal the first comparison component",
             "componentIds": [
-              "header"
+              "gemini_slide_3_1_comparison"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "buildId": "gemini_slide_3_2_comparison",
+            "title": "Build 2: Add the second comparison component",
             "componentIds": [
-              "main_content"
+              "gemini_slide_3_2_comparison"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "buildId": "gemini_slide_3_3_comparison",
+            "title": "Build 3: Add the comparison insight",
             "componentIds": [
-              "footer_summary"
+              "gemini_slide_3_3_comparison"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
           }
         ]
       }
@@ -383,17 +1287,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 33,
+        "timeGuideDisplay": "28–38s",
+        "vciScore": "4.9",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 17250,
+          "semanticProcessingMs": 14000,
+          "wordCount": 55,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -410,55 +1317,108 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "+ + t +\nTool 1: The Scale Ladder\nKune yo\n~— Millimetre (mm)> x 1000\n-|+ > s1000\\_SiSS a {4\nMicrometre (tim). \\ x 1000\n| Lab Rule: When measuring a printed > Nanometre (nm) h\n= image in an exam or lab, always use +1000 NING . ME =F |||\n* ae it",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "8682c12f565d085453e96abde39900f97dbad205c9fef5a2bf53edd7e3f206b6",
+        "transcript": "+ + t +\nTool 1: The Scale Ladder\nKune yo\n~— Millimetre (mm)> x 1000\n-|+ > s1000\\_SiSS a {4\nMicrometre (tim). \\ x 1000\n| Lab Rule: When measuring a printed > Nanometre (nm) h\n= image in an exam or lab, always use +1000 NING . ME =F |||\n* ae it",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Tool 1: The Scale Ladder\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Tool 1: The Scale Ladder\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Tool 1: The Scale Ladder\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_04.png"
+        }
+      ]
     },
     {
       "number": 5,
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_05.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 33,
+        "timeGuideDisplay": "28–38s",
+        "vciScore": "7.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 4788,
+          "readingMs": 20100,
+          "semanticProcessingMs": 7600,
+          "wordCount": 65,
+          "visualElementsCount": 12
         },
         "academicReferences": [
           {
@@ -475,36 +1435,235 @@
           }
         ]
       },
+      "text": "Knowledge Checkpoint: Mini-Whiteboards Ready |\n1. Convert 2. Convert i\n5mm 5000 um|| 4500 um 4.5 mm\n|| to ym. || to mm. i:\n3. Convert 4. Convert\n0.2mm 200um/|8000nmM 8um ||.\nto um. to um. |",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "4e100a5282b53fca463440a34df6bfa3c888d56618fae9a2fccd07ea29c9b5af",
+        "transcript": "Knowledge Checkpoint: Mini-Whiteboards Ready |\n1. Convert 2. Convert i\n5mm 5000 um|| 4500 um 4.5 mm\n|| to ym. || to mm. i:\n3. Convert 4. Convert\n0.2mm 200um/|8000nmM 8um ||.\nto um. to um. |",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 4
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Convert 5 mm to µm.",
+          "expectedAnswer": "5000 µm",
+          "questionBounds": {
+            "x": 5.7,
+            "y": 22.4,
+            "w": 43.4,
+            "h": 32.4
+          },
+          "bounds": {
+            "x": 5.7,
+            "y": 22.4,
+            "w": 43.4,
+            "h": 32.4
+          },
+          "answerBounds": {
+            "x": 25.8,
+            "y": 33.7,
+            "w": 22.2,
+            "h": 10
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Convert 4500 µm to mm.",
+          "expectedAnswer": "4.5 mm",
+          "questionBounds": {
+            "x": 51.1,
+            "y": 22.4,
+            "w": 43.3,
+            "h": 32.4
+          },
+          "bounds": {
+            "x": 51.1,
+            "y": 22.4,
+            "w": 43.3,
+            "h": 32.4
+          },
+          "answerBounds": {
+            "x": 74.4,
+            "y": 33.7,
+            "w": 18.5,
+            "h": 10
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Convert 0.2 mm to µm.",
+          "expectedAnswer": "200 µm",
+          "questionBounds": {
+            "x": 5.7,
+            "y": 58.2,
+            "w": 43.4,
+            "h": 32.5
+          },
+          "bounds": {
+            "x": 5.7,
+            "y": 58.2,
+            "w": 43.4,
+            "h": 32.5
+          },
+          "answerBounds": {
+            "x": 28.6,
+            "y": 69.7,
+            "w": 19.3,
+            "h": 10
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Convert 8000 nm to µm.",
+          "expectedAnswer": "8 µm",
+          "questionBounds": {
+            "x": 51.1,
+            "y": 58.2,
+            "w": 43.3,
+            "h": 32.5
+          },
+          "bounds": {
+            "x": 51.1,
+            "y": 58.2,
+            "w": 43.3,
+            "h": 32.5
+          },
+          "answerBounds": {
+            "x": 78,
+            "y": 69.8,
+            "w": 13.7,
+            "h": 10
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_04",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Convert 5 mm to µm.",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 25.8,
+              "y": 33.7,
+              "w": 22.2,
+              "h": 10
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Convert 4500 µm to mm.",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 74.4,
+              "y": 33.7,
+              "w": 18.5,
+              "h": 10
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: Convert 0.2 mm to µm.",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 28.6,
+              "y": 69.7,
+              "w": 19.3,
+              "h": 10
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Convert 8000 nm to µm.",
+            "componentIds": [
+              "question_04"
+            ],
+            "targetBounds": {
+              "x": 78,
+              "y": 69.8,
+              "w": 13.7,
+              "h": 10
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"Knowledge Checkpoint: Mini-Whiteboards Ready\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_05.png"
+        }
+      ]
     },
     {
       "number": 6,
@@ -513,17 +1672,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 32,
+        "timeGuideDisplay": "27–37s",
+        "vciScore": "4.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 12000,
+          "semanticProcessingMs": 18600,
+          "wordCount": 38,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -540,36 +1702,70 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
-      }
+      "text": "Tool 2: The I-A-M Formula\n| | Magnification\n| = Image + Actual |\nImage \\\nna ae a Actual HW\n| = Image + Magnification\nA M Image\n(Actual Size) | (Magnification) = Actual x Magnification K",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "23e5642828a29ee12d504c582ede9b51fdb86da3c6b71bd011b70c1e13c3e77d",
+        "transcript": "Tool 2: The I-A-M Formula\n| | Magnification\n| = Image + Actual |\nImage \\\nna ae a Actual HW\n| = Image + Magnification\nA M Image\n(Actual Size) | (Magnification) = Actual x Magnification K",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 6: \"Tool 2: The I-A-M Formula\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 6: \"Tool 2: The I-A-M Formula\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_06.png"
+        }
+      ]
     },
     {
       "number": 7,
@@ -578,17 +1774,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 41,
+        "timeGuideDisplay": "34–48s",
+        "vciScore": "5.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 22050,
+          "semanticProcessingMs": 17200,
+          "wordCount": 67,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -605,35 +1804,85 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "Image vs. Actual: Spotting the Difference\n' Image Size Actual Size\n- The size of the drawing or - The real, biological size of the\nphotograph on the page. living specimen.\n_ | | - Measured directly using aruler. | - Calculated using the I-A-M |\n- Standard Unit: Millimetres (mm). Viento ee\n- Standard Unit: Micrometres (yum)\n= Ss or Nanometres (nm).\ne oe iN |",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "900e77f05cbcbf8707b96815c3b431a2fcc9a925e0e7304f6c5ac019536447a5",
+        "transcript": "Image vs. Actual: Spotting the Difference\n' Image Size Actual Size\n- The size of the drawing or - The real, biological size of the\nphotograph on the page. living specimen.\n_ | | - Measured directly using aruler. | - Calculated using the I-A-M |\n- Standard Unit: Millimetres (mm). Viento ee\n- Standard Unit: Micrometres (yum)\n= Ss or Nanometres (nm).\ne oe iN |",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Image Size Actual Size\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Image Size Actual Size\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Image Size Actual Size\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_07.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -643,17 +1892,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 43,
+        "timeGuideDisplay": "36–50s",
+        "vciScore": "6.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 27450,
+          "semanticProcessingMs": 14000,
+          "wordCount": 89,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -670,55 +1922,108 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "+ ~\nWorked Example 1: Finding Magnification\nContext: The actual size of this cheek cell is 50 um.\nStep 1: Measure the image with a ruler. —> 40 mm Z22\\\nStep 2: Units must match! Convert mm to um. g O z. aN\n~}+ L-> 40mmx1000= 40,000 ym =~ A SEAL a +14\nStep 3: Use the I-A-M triangle: M=1=A Gm 7\nt_» 40,000 + 50 x\nsee) ewe F 40 mm\nStep 4: Result = Magnification = x 800\nOe your measurements (usually 2 or 3 sig figs).",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "8672d3d47e25f7b63e00c3156a2405b46fef9faeb081db587e8983b7725df147",
+        "transcript": "+ ~\nWorked Example 1: Finding Magnification\nContext: The actual size of this cheek cell is 50 um.\nStep 1: Measure the image with a ruler. —> 40 mm Z22\\\nStep 2: Units must match! Convert mm to um. g O z. aN\n~}+ L-> 40mmx1000= 40,000 ym =~ A SEAL a +14\nStep 3: Use the I-A-M triangle: M=1=A Gm 7\nt_» 40,000 + 50 x\nsee) ewe F 40 mm\nStep 4: Result = Magnification = x 800\nOe your measurements (usually 2 or 3 sig figs).",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_staged_objectives",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: The exact source title plus the complete Step 1 heading and body text (for example, 'Step 1: Know'). The only allowed visual is the compact visual cluster immediately touching or directly below Step 1.\nTemporarily omit: Every Step 2 and Step 3 heading, body, stair segment, arrow, example, label, and diagram. Replace every omitted later-step region with the untouched source background so the rest of the canvas is genuinely blank. Never keep a later diagram as decoration and never substitute a later step for Step 1.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_staged_objectives",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: Everything from build 1 plus the complete Step 2 heading and body text (for example, 'Step 2: Identify') and only the visual cluster immediately touching or directly below Step 2.\nTemporarily omit: Every Step 3 heading, body, stair segment, arrow, conclusion, label, and diagram. Replace the entire omitted Step 3 region with the untouched source background so it is genuinely blank. Never keep a Step 3 diagram as decoration or replace Step 1 or Step 2 with Step 3.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_staged_objectives",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the learning sequence",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: staged-objectives.\nShow now: Everything from builds 1 and 2 plus the complete final numbered step (for example, 'Step 3: Explain'), its exact body text, and its directly related visual or conclusion.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_08.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "staged-objectives",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 9,
       "imageFileName": "slide_09.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_09.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 57,
+        "timeGuideDisplay": "48–66s",
+        "vciScore": "9.2",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 4788,
+          "readingMs": 31650,
+          "semanticProcessingMs": 20600,
+          "wordCount": 101,
+          "visualElementsCount": 12
         },
         "academicReferences": [
           {
@@ -736,53 +2041,262 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Which formula is needed?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 44.1,
+              "y": 38.3,
+              "w": 21,
+              "h": 10.4
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: What conversion is needed first?",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 44.1,
+              "y": 51.3,
+              "w": 42.4,
+              "h": 10.2
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: What calculation should be performed?",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 44.1,
+              "y": 64.3,
+              "w": 42.4,
+              "h": 10.2
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: What is the final actual size?",
+            "componentIds": [
+              "question_04"
+            ],
+            "targetBounds": {
+              "x": 44.1,
+              "y": 77.2,
+              "w": 42.4,
+              "h": 10.3
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Worked Example 2: Finding Actual Size\nContext: An image of a chloroplast measures 30 mm.\nThe magnification is x 10,000.\nStep 1: Formula needed? ——>\nStep 2: First conversion? ——> | [30 mm — 30,000 um]\nStep 3: The calculation? —> | [30,000 = 10,000 ]\nStep 4: Final Actual Size? ——>\nia fe = ale J ee eM : - i A - ‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "69b5d6435f1f78a4bd53faf66fc13fe5645b9482288fd3bd85a7646f33b46cb6",
+        "transcript": "Worked Example 2: Finding Actual Size\nContext: An image of a chloroplast measures 30 mm.\nThe magnification is x 10,000.\nStep 1: Formula needed? ——>\nStep 2: First conversion? ——> | [30 mm — 30,000 um]\nStep 3: The calculation? —> | [30,000 = 10,000 ]\nStep 4: Final Actual Size? ——>\nia fe = ale J ee eM : - i A - ‘A\\ NotebookLV",
+        "role": "worked-example",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is x 10,000. Step 1: Formula needed?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 4
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Which formula is needed?",
+          "expectedAnswer": "A = I ÷ M",
+          "questionBounds": {
+            "x": 7.3,
+            "y": 40.3,
+            "w": 35.5,
+            "h": 8
+          },
+          "bounds": {
+            "x": 7.3,
+            "y": 40.3,
+            "w": 35.5,
+            "h": 8
+          },
+          "answerBounds": {
+            "x": 44.1,
+            "y": 38.3,
+            "w": 21,
+            "h": 10.4
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "What conversion is needed first?",
+          "expectedAnswer": "30 mm = 30,000 µm",
+          "questionBounds": {
+            "x": 7.3,
+            "y": 53.3,
+            "w": 35.5,
+            "h": 8
+          },
+          "bounds": {
+            "x": 7.3,
+            "y": 53.3,
+            "w": 35.5,
+            "h": 8
+          },
+          "answerBounds": {
+            "x": 44.1,
+            "y": 51.3,
+            "w": 42.4,
+            "h": 10.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "What calculation should be performed?",
+          "expectedAnswer": "30,000 ÷ 10,000",
+          "questionBounds": {
+            "x": 7.3,
+            "y": 66.3,
+            "w": 35.5,
+            "h": 8
+          },
+          "bounds": {
+            "x": 7.3,
+            "y": 66.3,
+            "w": 35.5,
+            "h": 8
+          },
+          "answerBounds": {
+            "x": 44.1,
+            "y": 64.3,
+            "w": 42.4,
+            "h": 10.2
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        },
+        {
+          "question": "What is the final actual size?",
+          "expectedAnswer": "3 µm",
+          "questionBounds": {
+            "x": 7.3,
+            "y": 79.2,
+            "w": 35.5,
+            "h": 8
+          },
+          "bounds": {
+            "x": 7.3,
+            "y": 79.2,
+            "w": 35.5,
+            "h": 8
+          },
+          "answerBounds": {
+            "x": 44.1,
+            "y": 77.2,
+            "w": 42.4,
+            "h": 10.3
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_04",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Worked Example 2: Finding Actual Size\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_09.png"
+        }
+      ]
     },
     {
       "number": 10,
       "imageFileName": "slide_10.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_10.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 63,
+        "timeGuideDisplay": "53–73s",
+        "vciScore": "8.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
+          "readingMs": 44250,
+          "semanticProcessingMs": 16400,
+          "wordCount": 142,
           "visualElementsCount": 5
         },
         "academicReferences": [
@@ -801,54 +2315,144 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: A mitochondrion is 0.002 mm and its drawing is 40 mm. Find the magnification.",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 7.4,
+              "y": 52.8,
+              "w": 35.1,
+              "h": 10.3
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "+ +\nHigher Tier: Mastering Standard Form\nThe Problem with Zeros | The Standard Form Solution\nA mitochondrion has an actual size of —_;/||j_1. Convert 0.002 mm __, [2x 102mm)\n0.002 mm. A drawing of it is 40 mm. to standard form: 2am\n| Find the magnification. | | ||| 2. Setup the math: — |(4 x 10!) / (2 x 10%)}\n2 = = 3, Divide the b bers: >|4 +2 = 2)\n40 - 0.002 = 20,000 LL Ivide the base numbers:\nwa | 4. Subtract the powers: —>/1- (-3)=4] | »\nAY (Easy to make a decimal place error\nALIGN io casey | 5.Result: > [2 x 10% (whichis x20,000)) | -\n| = J, N : { : eieataak",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "4473fa387f3708ef4236aec570e92ad942369bafed6bee1617e325197c8c479a",
+        "transcript": "+ +\nHigher Tier: Mastering Standard Form\nThe Problem with Zeros | The Standard Form Solution\nA mitochondrion has an actual size of —_;/||j_1. Convert 0.002 mm __, [2x 102mm)\n0.002 mm. A drawing of it is 40 mm. to standard form: 2am\n| Find the magnification. | | ||| 2. Setup the math: — |(4 x 10!) / (2 x 10%)}\n2 = = 3, Divide the b bers: >|4 +2 = 2)\n40 - 0.002 = 20,000 LL Ivide the base numbers:\nwa | 4. Subtract the powers: —>/1- (-3)=4] | »\nAY (Easy to make a decimal place error\nALIGN io casey | 5.Result: > [2 x 10% (whichis x20,000)) | -\n| = J, N : { : eieataak",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "A mitochondrion is 0.002 mm and its drawing is 40 mm. Find the magnification.",
+          "expectedAnswer": "×20,000 = 2 × 10⁴",
+          "questionBounds": {
+            "x": 7.3,
+            "y": 30.3,
+            "w": 38.9,
+            "h": 16
+          },
+          "bounds": {
+            "x": 7.3,
+            "y": 30.3,
+            "w": 38.9,
+            "h": 16
+          },
+          "answerBounds": {
+            "x": 7.4,
+            "y": 52.8,
+            "w": 35.1,
+            "h": 10.3
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "answerRegions": [
+            {
+              "x": 7.4,
+              "y": 52.8,
+              "w": 35.1,
+              "h": 10.3
+            },
+            {
+              "x": 53.3,
+              "y": 21,
+              "w": 41.4,
+              "h": 58
+            }
+          ],
+          "id": "question_01",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered question",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"Higher Tier: Mastering Standard Form\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_10.png"
+        }
+      ]
     },
     {
       "number": 11,
       "imageFileName": "slide_11.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_11.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 73,
+        "timeGuideDisplay": "62–84s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 3850,
+          "readingMs": 48150,
+          "semanticProcessingMs": 21200,
+          "wordCount": 149,
+          "visualElementsCount": 10
         },
         "academicReferences": [
           {
@@ -867,34 +2471,191 @@
       },
       "serialAnimation": {
         "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: Calculate the magnification of the onion epidermis image.",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 80.2,
+              "y": 33.4,
+              "w": 13.5,
+              "h": 8.8
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "title": "Main Visual Content",
+            "title": "Reveal: Calculate the actual size of the plasmid.",
             "componentIds": [
-              "main_content"
+              "question_02"
             ],
-            "revealType": "fade-in"
+            "targetBounds": {
+              "x": 86,
+              "y": 57.8,
+              "w": 7.2,
+              "h": 8
+            },
+            "revealType": "answer-overlay"
           },
           {
             "step": 3,
-            "title": "Key Takeaway / Summary",
+            "title": "Reveal: Calculate the image size of the red blood cell.",
             "componentIds": [
-              "footer_summary"
+              "question_03"
             ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 76.7,
+              "y": 82,
+              "w": 16.5,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Independent Practice: Solve the Cases 77S\nQI (Foundation): You view an onion epidermis cell (PAG BI).\nYour drawing measures 60 mm. The actual cell is 150 ym long.\nCalculate the magnification. =\n/ | > | Q2 (Standard): A bacterial plasmid is viewed under an electron microscope} ~ | ©\nat x 50,000 magnification. The image size is 45 mm. Calculate the actual\nsize of the plasmid in pm.\nQ3 (Higher/Challenge): A red blood cell is drawn at a magnification of x\n4x 103. The actual size is 8 x 103 mm. Calculate the image size in mm, and\ngive your answer in standard form.\nbs Fe ee EET OT : d l ‘A\\ NotebookLV",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "d7e767106912c440ca15aa70b586640fb9ace66ec52369d3dadb4fae14e5744e",
+        "transcript": "Independent Practice: Solve the Cases 77S\nQI (Foundation): You view an onion epidermis cell (PAG BI).\nYour drawing measures 60 mm. The actual cell is 150 ym long.\nCalculate the magnification. =\n/ | > | Q2 (Standard): A bacterial plasmid is viewed under an electron microscope} ~ | ©\nat x 50,000 magnification. The image size is 45 mm. Calculate the actual\nsize of the plasmid in pm.\nQ3 (Higher/Challenge): A red blood cell is drawn at a magnification of x\n4x 103. The actual size is 8 x 103 mm. Calculate the image size in mm, and\ngive your answer in standard form.\nbs Fe ee EET OT : d l ‘A\\ NotebookLV",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 3
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "Calculate the magnification of the onion epidermis image.",
+          "expectedAnswer": "×400",
+          "questionBounds": {
+            "x": 8.5,
+            "y": 24.2,
+            "w": 70.1,
+            "h": 16.7
+          },
+          "bounds": {
+            "x": 8.5,
+            "y": 24.2,
+            "w": 70.1,
+            "h": 16.7
+          },
+          "answerBounds": {
+            "x": 80.2,
+            "y": 33.4,
+            "w": 13.5,
+            "h": 8.8
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Calculate the actual size of the plasmid.",
+          "expectedAnswer": "0.9 µm",
+          "questionBounds": {
+            "x": 8.5,
+            "y": 48.5,
+            "w": 83.3,
+            "h": 16.8
+          },
+          "bounds": {
+            "x": 8.5,
+            "y": 48.5,
+            "w": 83.3,
+            "h": 16.8
+          },
+          "answerBounds": {
+            "x": 86,
+            "y": 57.8,
+            "w": 7.2,
+            "h": 8
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_02",
+          "answerIsBaked": false
+        },
+        {
+          "question": "Calculate the image size of the red blood cell.",
+          "expectedAnswer": "32 mm = 3.2 × 10¹ mm",
+          "questionBounds": {
+            "x": 8.5,
+            "y": 72,
+            "w": 83.3,
+            "h": 17.5
+          },
+          "bounds": {
+            "x": 8.5,
+            "y": 72,
+            "w": 83.3,
+            "h": 17.5
+          },
+          "answerBounds": {
+            "x": 76.7,
+            "y": 82,
+            "w": 16.5,
+            "h": 8.5
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_03",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Independent Practice: Solve the Cases 77S\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_11.png"
+        }
+      ]
     },
     {
       "number": 12,
@@ -903,17 +2664,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 51,
+        "timeGuideDisplay": "43–59s",
+        "vciScore": "6.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 30750,
+          "semanticProcessingMs": 19000,
+          "wordCount": 100,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -930,35 +2694,92 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
+      "text": "} Solutions & Process Check ‘oy ne\nAl 60 mm-> 60,000 pm M=I+A 60,000 = 150 = x 400 he\nA2 45mm _-> 45,000 pm A=|I+M 45,000 = 50,000 = 0.9 um z\nA3. 1=AxM (8x 10°) x (4x 10%) Base: 8x 4 = 32 |\n) Powers: -3 + 3 = 0\nmnt 32 x 10° = 32 mm\nBn mA 10) Standard form = 3.2 x 10' mm\n} fy (= \\)\\ 4 C Identify where you dropped marks: Was it the unit conversion, the aaa (\n14 SZ 14 \\\\. formula rearrangement, or the final math? i",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "79f761d2486e5e56b66c9970faf5379ae3de167202a50fe36aafbfd5d53e42b5",
+        "transcript": "} Solutions & Process Check ‘oy ne\nAl 60 mm-> 60,000 pm M=I+A 60,000 = 150 = x 400 he\nA2 45mm _-> 45,000 pm A=|I+M 45,000 = 50,000 = 0.9 um z\nA3. 1=AxM (8x 10°) x (4x 10%) Base: 8x 4 = 32 |\n) Powers: -3 + 3 = 0\nmnt 32 x 10° = 32 mm\nBn mA 10) Standard form = 3.2 x 10' mm\n} fy (= \\)\\ 4 C Identify where you dropped marks: Was it the unit conversion, the aaa (\n14 SZ 14 \\\\. formula rearrangement, or the final math? i",
+        "role": "worked-example",
+        "questions": [
           {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "id": "ocr_question_1",
+            "question": "Identify where you dropped marks: Was it the unit conversion, the aaa ( 14 SZ 14 \\\\. formula rearrangement, or the final math?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
           }
-        ]
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_12_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"} Solutions & Process Check ‘oy ne\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"} Solutions & Process Check ‘oy ne\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"} Solutions & Process Check ‘oy ne\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_12.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -968,17 +2789,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 44,
+        "timeGuideDisplay": "37–51s",
+        "vciScore": "6.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 31500,
+          "semanticProcessingMs": 10800,
+          "wordCount": 99,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -995,54 +2819,107 @@
           }
         ]
       },
-      "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Title & Header",
-            "componentIds": [
-              "header"
-            ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
-          }
-        ]
+      "text": "_ Quality Check: Accurate Lab Measurements ~ ,\n- Measure across the { \\ | ~- Do not start !\nwidest point of the ac \\ UP measuring from the\ncell to find maximum \\ WA physical edge of the\ndiameter. : ; ee ar am plastic ruler;\ns A ONE EPO PSE et SPO Peet eee HEHIO, always align the\nPARSE TEE UW 7 spanERUaiE edge of the cell with\nthe ruler to avoid arcaewayessso<ays € 4 the zero (0) mark.\nparallax error: ——oewewe “\n| Mathematical precision is useless if your (\ninitial physical measurement is flawed.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c24d7d5842db64fca3709cdcf11bbb48b3f953ffb2de10f18fe8ec079529b5e6",
+        "transcript": "_ Quality Check: Accurate Lab Measurements ~ ,\n- Measure across the { \\ | ~- Do not start !\nwidest point of the ac \\ UP measuring from the\ncell to find maximum \\ WA physical edge of the\ndiameter. : ; ee ar am plastic ruler;\ns A ONE EPO PSE et SPO Peet eee HEHIO, always align the\nPARSE TEE UW 7 spanERUaiE edge of the cell with\nthe ruler to avoid arcaewayessso<ays € 4 the zero (0) mark.\nparallax error: ——oewewe “\n| Mathematical precision is useless if your (\ninitial physical measurement is flawed.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_13_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 13: \"Quality Check: Accurate Lab Measurements\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 13: \"Quality Check: Accurate Lab Measurements\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 13: \"Quality Check: Accurate Lab Measurements\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_13.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
       "number": 14,
       "imageFileName": "slide_14.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_14.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 17,
-        "timeGuideDisplay": "14–20s",
-        "vciScore": "3.9",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 52,
+        "timeGuideDisplay": "44–60s",
+        "vciScore": "7.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1750,
-          "readingMs": 3150,
-          "semanticProcessingMs": 11400,
-          "wordCount": 10,
+          "readingMs": 35100,
+          "semanticProcessingMs": 14400,
+          "wordCount": 114,
           "visualElementsCount": 5
         },
         "academicReferences": [
@@ -1061,35 +2938,122 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
-        "autoAdvanceDelayMs": 3000,
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Title & Header",
+            "title": "Reveal: The actual size is 8 µm and the magnification is ×2000. What is the image size?",
             "componentIds": [
-              "header"
+              "question_01"
             ],
-            "revealType": "highlight"
-          },
-          {
-            "step": 2,
-            "title": "Main Visual Content",
-            "componentIds": [
-              "main_content"
-            ],
-            "revealType": "fade-in"
-          },
-          {
-            "step": 3,
-            "title": "Key Takeaway / Summary",
-            "componentIds": [
-              "footer_summary"
-            ],
-            "revealType": "highlight"
+            "targetBounds": {
+              "x": 80,
+              "y": 69.8,
+              "w": 14,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
           }
         ]
-      }
+      },
+      "text": "Plenary: The Master Toolkit Aye\nm & | IAS\n00 | ) 100 es Ic S\nsd t R\nwi SY (Image Size) s\nSES =\n0 | ) 000 y ia eas SL\n~“ ym an M\nPek -s000f |) 00 fA=|>M ) M=l=A\ni o 4 v A ma (Actual ae) (Magnification)\nJ G .\\ Exit Ticket: Before you leave: A red blood cell has an actual size of 8 ume (|\n/ ¥—~ Itis drawn-with a magnification of x 2000. What is the image sizeinmm? _:\nx] “9 7 ” a ‘Ay NotebookLM",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "reviewed-current-slide-catalog",
+        "sourceHash": "eb4e379df4e10908cabcbcd53d7c41a39300d6a1de96739996d96cd14976ff19",
+        "transcript": "Plenary: The Master Toolkit Aye\nm & | IAS\n00 | ) 100 es Ic S\nsd t R\nwi SY (Image Size) s\nSES =\n0 | ) 000 y ia eas SL\n~“ ym an M\nPek -s000f |) 00 fA=|>M ) M=l=A\ni o 4 v A ma (Actual ae) (Magnification)\nJ G .\\ Exit Ticket: Before you leave: A red blood cell has an actual size of 8 ume (|\n/ ¥—~ Itis drawn-with a magnification of x 2000. What is the image sizeinmm? _:\nx] “9 7 ” a ‘Ay NotebookLM",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is drawn-with a magnification of x 2000. What is the image sizeinmm?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "interactiveCells": [
+        {
+          "question": "The actual size is 8 µm and the magnification is ×2000. What is the image size?",
+          "expectedAnswer": "16 mm",
+          "questionBounds": {
+            "x": 10.4,
+            "y": 81.4,
+            "w": 80.4,
+            "h": 12.3
+          },
+          "bounds": {
+            "x": 10.4,
+            "y": 81.4,
+            "w": 80.4,
+            "h": 12.3
+          },
+          "answerBounds": {
+            "x": 80,
+            "y": 69.8,
+            "w": 14,
+            "h": 8.5
+          },
+          "revealMode": "overlay",
+          "answerVisibleInImage": false,
+          "confidence": 1,
+          "provenance": "reviewed-current-slide-catalog",
+          "id": "question_01",
+          "answerIsBaked": false
+        }
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "reviewed-current-slide-catalog",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_14_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered question",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Plenary: The Master Toolkit Aye\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_14.png"
+        }
+      ]
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-01T07:29:20.665Z"
+  }
 }
