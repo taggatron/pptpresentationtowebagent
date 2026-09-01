@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T15:34:19.117Z",
+  "sourceHash": "5f176bd98c3e561b1cf42adac4a96692a544f29509736eca8188c12f94b587d0",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "The Variables Matrix",
+    "description": "A 3-column structured matrix table detailing the experimental variables (Independent, Dependent, and Control Variables) for investigating the effect of temperature on amylase activity.",
+    "layout": "Title situated at the top left. The main body consists of a 3-column table with dark blue headers: Independent Variable on the left, Dependent Variable in the middle, and Control Variables on the right. Each column contains structured cells detailing the specifics ('Detail', 'How', 'Why').",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "The Variables Matrix",
+        "dependencies": []
+      },
+      {
+        "id": "header_independent",
+        "role": "table_header",
+        "position": "top-left",
+        "visibleText": "Independent Variable\n(The one we change)",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "header_dependent",
+        "role": "table_header",
+        "position": "top-centre",
+        "visibleText": "Dependent Variable\n(The one we measure)",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "header_control",
+        "role": "table_header",
+        "position": "top-right",
+        "visibleText": "Control Variables\n(The ones we keep the same)",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "cell_independent_detail",
+        "role": "table_cell",
+        "position": "centre-left",
+        "visibleText": "Detail: Temperature of the environment.",
+        "dependencies": [
+          "header_independent"
+        ]
+      },
+      {
+        "id": "cell_independent_how",
+        "role": "table_cell",
+        "position": "bottom-left",
+        "visibleText": "How: Use water baths set at 20°C, 30°C, 40°C, 50°C, and 60°C.",
+        "dependencies": [
+          "cell_independent_detail"
+        ]
+      },
+      {
+        "id": "cell_dependent_detail",
+        "role": "table_cell",
+        "position": "centre",
+        "visibleText": "Detail: Time taken for starch to break down.",
+        "dependencies": [
+          "header_dependent"
+        ]
+      },
+      {
+        "id": "cell_dependent_how",
+        "role": "table_cell",
+        "position": "centre-bottom",
+        "visibleText": "How: Test with iodine every 30 seconds until the colour stays amber.",
+        "dependencies": [
+          "cell_dependent_detail"
+        ]
+      },
+      {
+        "id": "cell_control_detail",
+        "role": "table_cell",
+        "position": "centre-right",
+        "visibleText": "Detail: Volume/concentration of amylase, volume/concentration of starch, pH level.",
+        "dependencies": [
+          "header_control"
+        ]
+      },
+      {
+        "id": "cell_control_why",
+        "role": "table_cell",
+        "position": "centre-right",
+        "visibleText": "Why: To ensure independent validation; only temperature should cause a change.",
+        "dependencies": [
+          "cell_control_detail"
+        ]
+      },
+      {
+        "id": "cell_control_how",
+        "role": "table_cell",
+        "position": "bottom-right",
+        "visibleText": "How: Measure exact volumes with syringes; use a pH buffer solution.",
+        "dependencies": [
+          "cell_control_why"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "data-table",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Headers and Independent Variable",
+        "componentIds": [
+          "slide_title",
+          "header_independent",
+          "header_dependent",
+          "header_control",
+          "cell_independent_detail",
+          "cell_independent_how"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Reveal Dependent Variable",
+        "componentIds": [
+          "slide_title",
+          "header_independent",
+          "header_dependent",
+          "header_control",
+          "cell_independent_detail",
+          "cell_independent_how",
+          "cell_dependent_detail",
+          "cell_dependent_how"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Complete Matrix with Control Variables",
+        "componentIds": [
+          "slide_title",
+          "header_independent",
+          "header_dependent",
+          "header_control",
+          "cell_independent_detail",
+          "cell_independent_how",
+          "cell_dependent_detail",
+          "cell_dependent_how",
+          "cell_control_detail",
+          "cell_control_why",
+          "cell_control_how"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

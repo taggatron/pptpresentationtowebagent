@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T15:34:19.185Z",
+  "sourceHash": "9a445f8a0b55365c35a4cb41e85747349586af6b68daa4791a2452da54d66fb1",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Prokaryote Blueprint: Bacterial Cell",
+    "description": "A biology diagram slide on a light graph paper background featuring an illustrated cutaway 3D diagram of a bacterial cell with annotated callouts detailing cell membrane and wall, free genetic material, plasmids, and ribosomes.",
+    "layout": "Title and subtitle placed at the top-left. A large angled cross-sectional illustration of a bacterial cell occupies the center across the lower half. Label callouts with pointer lines appear on the bottom-left and right side of the illustration.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Prokaryote Blueprint: Bacterial Cell",
+        "dependencies": []
+      },
+      {
+        "id": "slide_subtitle",
+        "role": "subtitle",
+        "position": "top-left",
+        "visibleText": "Significantly smaller and simpler than eukaryotes. No true nucleus.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "bacterial_cell_diagram",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "label_cell_wall_membrane",
+        "role": "callout",
+        "position": "bottom-left",
+        "visibleText": "Cell Membrane\n& Cell Wall",
+        "dependencies": [
+          "bacterial_cell_diagram"
+        ]
+      },
+      {
+        "id": "label_free_genetic_material",
+        "role": "callout",
+        "position": "top-right",
+        "visibleText": "Free Genetic Material\n(Single loop of chromosomal DNA)",
+        "dependencies": [
+          "bacterial_cell_diagram"
+        ]
+      },
+      {
+        "id": "label_plasmids",
+        "role": "callout",
+        "position": "middle-right",
+        "visibleText": "Plasmids\n(Small DNA rings)",
+        "dependencies": [
+          "bacterial_cell_diagram"
+        ]
+      },
+      {
+        "id": "label_ribosomes",
+        "role": "callout",
+        "position": "bottom-right",
+        "visibleText": "Ribosomes",
+        "dependencies": [
+          "bacterial_cell_diagram"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Header and Cell Structure Diagram",
+        "componentIds": [
+          "slide_title",
+          "slide_subtitle",
+          "bacterial_cell_diagram"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Reveal All Cell Organelle Labels",
+        "componentIds": [
+          "slide_title",
+          "slide_subtitle",
+          "bacterial_cell_diagram",
+          "label_cell_wall_membrane",
+          "label_free_genetic_material",
+          "label_plasmids",
+          "label_ribosomes"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

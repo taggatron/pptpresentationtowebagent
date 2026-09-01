@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T15:34:19.164Z",
+  "sourceHash": "8672d3d47e25f7b63e00c3156a2405b46fef9faeb081db587e8983b7725df147",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Worked Example 1: Finding Magnification",
+    "description": "A worked example slide detailing the four-step calculation process to find magnification from a cheek cell diagram measured at 40 mm with an actual size of 50 µm, concluding with a quality check callout at the bottom.",
+    "layout": "The title sits at the top left, with the initial context text directly below it. The left-to-centre area displays Steps 1 through 4 in vertical sequence. On the right, a cell diagram is depicted alongside a ruler measuring 40 mm. Across the bottom centre is a boxed Quality Check callout.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Worked Example 1: Finding Magnification",
+        "dependencies": []
+      },
+      {
+        "id": "context_block",
+        "role": "definition",
+        "position": "top-left",
+        "visibleText": "Context: The actual size of this cheek cell is 50 µm.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "diagram_cell_ruler",
+        "role": "diagram",
+        "position": "centre-right",
+        "visibleText": "40 mm",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "step_1",
+        "role": "step",
+        "position": "centre-left",
+        "visibleText": "Step 1: Measure the image with a ruler. ➔ 40 mm",
+        "dependencies": [
+          "context_block",
+          "diagram_cell_ruler"
+        ]
+      },
+      {
+        "id": "step_2",
+        "role": "step",
+        "position": "centre-left",
+        "visibleText": "Step 2: Units must match! Convert mm to µm.\n↳ 40 mm x 1000 = 40,000 µm",
+        "dependencies": [
+          "step_1"
+        ]
+      },
+      {
+        "id": "step_3",
+        "role": "step",
+        "position": "mid-bottom-left",
+        "visibleText": "Step 3: Use the I-A-M triangle: M = I ÷ A\n↳ 40,000 ÷ 50",
+        "dependencies": [
+          "step_2"
+        ]
+      },
+      {
+        "id": "step_4",
+        "role": "step",
+        "position": "bottom-left",
+        "visibleText": "Step 4: Result ➔ Magnification = x 800",
+        "dependencies": [
+          "step_3"
+        ]
+      },
+      {
+        "id": "quality_check_callout",
+        "role": "callout",
+        "position": "bottom-centre",
+        "visibleText": "Quality Check: Ensure your final answer reflects the precision of your measurements (usually 2 or 3 sig figs).",
+        "dependencies": [
+          "step_4"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "worked-example",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Context, Diagram, and Measurement",
+        "componentIds": [
+          "slide_title",
+          "context_block",
+          "diagram_cell_ruler",
+          "step_1"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Unit Conversion and Formula Setup",
+        "componentIds": [
+          "slide_title",
+          "context_block",
+          "diagram_cell_ruler",
+          "step_1",
+          "step_2",
+          "step_3"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Final Result and Quality Check",
+        "componentIds": [
+          "slide_title",
+          "context_block",
+          "diagram_cell_ruler",
+          "step_1",
+          "step_2",
+          "step_3",
+          "step_4",
+          "quality_check_callout"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

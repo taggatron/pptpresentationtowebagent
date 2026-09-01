@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T15:34:19.235Z",
+  "sourceHash": "4943ffb8b5bdbbd80e2252704953d338cb7bd5826eb86789835cb274dfcc6553",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Applying the magnification equation",
+    "description": "A worked example slide on light grid background divided into two halves by a vertical line: the left side presents 'The Problem' featuring a microscopic field of view showing a cell measured with a ruler at 45 mm and labeled magnification of x1500; the right side presents 'The Step-by-Step Calculation' detailing Steps 1 through 4 and a boxed Final Answer.",
+    "layout": "Centered main title at top. A vertical divider splits the slide into two columns: left column contains the section header 'The Problem' above a circular microscope field of view diagram (with cell, ruler, bracket measuring 45 mm, and bottom label 'Magnification = x1500'); right column contains 'The Step-by-Step Calculation' header followed by four sequential numbered steps (Step 1 to Step 4) and a boxed 'Final Answer' container at the bottom right. Bottom right corner features a small NotebookLM watermark.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Applying the magnification equation",
+        "dependencies": []
+      },
+      {
+        "id": "problem_heading",
+        "role": "heading",
+        "position": "centre-left-top",
+        "visibleText": "The Problem",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "problem_diagram",
+        "role": "diagram",
+        "position": "centre-left",
+        "visibleText": "45 mm\n0 cm 1 2 3 4 5 6 7 8\nMagnification = x1500",
+        "dependencies": [
+          "problem_heading"
+        ]
+      },
+      {
+        "id": "calc_heading",
+        "role": "heading",
+        "position": "centre-right-top",
+        "visibleText": "The Step-by-Step Calculation",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "calc_step_1",
+        "role": "step",
+        "position": "centre-right-upper",
+        "visibleText": "Step 1: Identify the variables.\nImage size (I) = 45 mm.\nMagnification (M) = 1500.\nWe need to find Actual Size (A).",
+        "dependencies": [
+          "calc_heading",
+          "problem_diagram"
+        ]
+      },
+      {
+        "id": "calc_step_2",
+        "role": "step",
+        "position": "centre-right-mid-upper",
+        "visibleText": "Step 2: Rearrange the equation.\nUsing the triangle: A = I ÷ M.",
+        "dependencies": [
+          "calc_step_1"
+        ]
+      },
+      {
+        "id": "calc_step_3",
+        "role": "step",
+        "position": "centre-right-mid-lower",
+        "visibleText": "Step 3: Convert units to micrometres (µm).\n45 mm x 1000 = 45,000 µm.",
+        "dependencies": [
+          "calc_step_2"
+        ]
+      },
+      {
+        "id": "calc_step_4",
+        "role": "step",
+        "position": "centre-right-lower",
+        "visibleText": "Step 4: Calculate.\n45,000 µm ÷ 1500 = 30 µm.",
+        "dependencies": [
+          "calc_step_3"
+        ]
+      },
+      {
+        "id": "final_answer_box",
+        "role": "synthesis",
+        "position": "bottom-right",
+        "visibleText": "Final Answer: The actual cell is 30 µm wide.",
+        "dependencies": [
+          "calc_step_4"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "worked-example",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Show problem setup and variables",
+        "componentIds": [
+          "slide_title",
+          "problem_heading",
+          "problem_diagram",
+          "calc_heading",
+          "calc_step_1"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Rearrange equation and convert units",
+        "componentIds": [
+          "slide_title",
+          "problem_heading",
+          "problem_diagram",
+          "calc_heading",
+          "calc_step_1",
+          "calc_step_2",
+          "calc_step_3"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Calculate and reveal final answer",
+        "componentIds": [
+          "slide_title",
+          "problem_heading",
+          "problem_diagram",
+          "calc_heading",
+          "calc_step_1",
+          "calc_step_2",
+          "calc_step_3",
+          "calc_step_4",
+          "final_answer_box"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

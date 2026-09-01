@@ -64,6 +64,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 1,
         "approvedCellCount": 1,
         "qaRequired": true,
@@ -934,6 +936,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 3,
         "approvedCellCount": 3,
         "qaRequired": true,
@@ -1340,6 +1344,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -1458,6 +1464,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 1,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -1725,6 +1733,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -1832,7 +1842,7 @@
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Image Size Actual Size\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Image vs. Actual: Spotting the Difference\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1848,7 +1858,7 @@
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Image Size Actual Size\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Image vs. Actual: Spotting the Difference\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1864,7 +1874,7 @@
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Image Size Actual Size\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Image vs. Actual: Spotting the Difference\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1877,6 +1887,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "comparison",
+        "planningSource": "reviewed-current-animation-plan-catalog",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -1892,9 +1904,9 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 43,
-        "timeGuideDisplay": "36–50s",
-        "vciScore": "6.0",
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "38–52s",
+        "vciScore": "6.1",
         "complexityCategory": "High",
         "ragLevel": "high",
         "ragColor": "red",
@@ -1902,9 +1914,9 @@
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 27450,
-          "semanticProcessingMs": 14000,
-          "wordCount": 89,
+          "readingMs": 29100,
+          "semanticProcessingMs": 14400,
+          "wordCount": 94,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -1941,48 +1953,48 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_8_1_staged_objectives",
+          "id": "gemini_slide_8_1_worked_example",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first learning step",
-          "strategy": "staged-objectives",
+          "label": "Build 1: Context, Diagram, and Measurement",
+          "strategy": "worked-example",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: The exact source title plus the complete Step 1 heading and body text (for example, 'Step 1: Know'). The only allowed visual is the compact visual cluster immediately touching or directly below Step 1.\nTemporarily omit: Every Step 2 and Step 3 heading, body, stair segment, arrow, example, label, and diagram. Replace every omitted later-step region with the untouched source background so the rest of the canvas is genuinely blank. Never keep a later diagram as decoration and never substitute a later step for Step 1.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Worked Example 1: Finding Magnification\". Keep it verbatim in every build.\nSource-content reference: A worked example slide detailing the four-step calculation process to find magnification from a cheek cell diagram measured at 40 mm with an actual size of 50 µm, concluding with a quality check callout at the bottom. Spatial layout: The title sits at the top left, with the initial context text directly below it. The left-to-centre area displays Steps 1 through 4 in vertical sequence. On the right, a cell diagram is depicted alongside a ruler measuring 40 mm. Across the bottom centre is a boxed Quality Check callout.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
           "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_08.png"
         },
         {
-          "id": "gemini_slide_8_2_staged_objectives",
+          "id": "gemini_slide_8_2_worked_example",
           "order": 2,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Add the second learning step",
-          "strategy": "staged-objectives",
+          "label": "Build 2: Unit Conversion and Formula Setup",
+          "strategy": "worked-example",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: Everything from build 1 plus the complete Step 2 heading and body text (for example, 'Step 2: Identify') and only the visual cluster immediately touching or directly below Step 2.\nTemporarily omit: Every Step 3 heading, body, stair segment, arrow, conclusion, label, and diagram. Replace the entire omitted Step 3 region with the untouched source background so it is genuinely blank. Never keep a Step 3 diagram as decoration or replace Step 1 or Step 2 with Step 3.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Worked Example 1: Finding Magnification\". Keep it verbatim in every build.\nSource-content reference: A worked example slide detailing the four-step calculation process to find magnification from a cheek cell diagram measured at 40 mm with an actual size of 50 µm, concluding with a quality check callout at the bottom. Spatial layout: The title sits at the top left, with the initial context text directly below it. The left-to-centre area displays Steps 1 through 4 in vertical sequence. On the right, a cell diagram is depicted alongside a ruler measuring 40 mm. Across the bottom centre is a boxed Quality Check callout.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
           "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_08.png"
         },
         {
-          "id": "gemini_slide_8_3_staged_objectives",
+          "id": "gemini_slide_8_3_worked_example",
           "order": 3,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 3: Complete the learning sequence",
-          "strategy": "staged-objectives",
+          "label": "Build 3: Final Result and Quality Check",
+          "strategy": "worked-example",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: staged-objectives.\nShow now: Everything from builds 1 and 2 plus the complete final numbered step (for example, 'Step 3: Explain'), its exact body text, and its directly related visual or conclusion.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Worked Example 1: Finding Magnification\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Worked Example 1: Finding Magnification\". Keep it verbatim in every build.\nSource-content reference: A worked example slide detailing the four-step calculation process to find magnification from a cheek cell diagram measured at 40 mm with an actual size of 50 µm, concluding with a quality check callout at the bottom. Spatial layout: The title sits at the top left, with the initial context text directly below it. The left-to-centre area displays Steps 1 through 4 in vertical sequence. On the right, a cell diagram is depicted alongside a ruler measuring 40 mm. Across the bottom centre is a boxed Quality Check callout.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1994,13 +2006,149 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "staged-objectives",
+        "strategy": "worked-example",
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 8,
         "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "title": "Worked Example 1: Finding Magnification",
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-01T15:34:19.164Z",
+          "sourceHash": "8672d3d47e25f7b63e00c3156a2405b46fef9faeb081db587e8983b7725df147",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Worked Example 1: Finding Magnification",
+            "description": "A worked example slide detailing the four-step calculation process to find magnification from a cheek cell diagram measured at 40 mm with an actual size of 50 µm, concluding with a quality check callout at the bottom.",
+            "layout": "The title sits at the top left, with the initial context text directly below it. The left-to-centre area displays Steps 1 through 4 in vertical sequence. On the right, a cell diagram is depicted alongside a ruler measuring 40 mm. Across the bottom centre is a boxed Quality Check callout.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Worked Example 1: Finding Magnification",
+                "dependencies": []
+              },
+              {
+                "id": "context_block",
+                "role": "definition",
+                "position": "top-left",
+                "visibleText": "Context: The actual size of this cheek cell is 50 µm.",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "diagram_cell_ruler",
+                "role": "diagram",
+                "position": "centre-right",
+                "visibleText": "40 mm",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "step_1",
+                "role": "step",
+                "position": "centre-left",
+                "visibleText": "Step 1: Measure the image with a ruler. ➔ 40 mm",
+                "dependencies": [
+                  "context_block",
+                  "diagram_cell_ruler"
+                ]
+              },
+              {
+                "id": "step_2",
+                "role": "step",
+                "position": "centre-left",
+                "visibleText": "Step 2: Units must match! Convert mm to µm.\n↳ 40 mm x 1000 = 40,000 µm",
+                "dependencies": [
+                  "step_1"
+                ]
+              },
+              {
+                "id": "step_3",
+                "role": "step",
+                "position": "mid-bottom-left",
+                "visibleText": "Step 3: Use the I-A-M triangle: M = I ÷ A\n↳ 40,000 ÷ 50",
+                "dependencies": [
+                  "step_2"
+                ]
+              },
+              {
+                "id": "step_4",
+                "role": "step",
+                "position": "bottom-left",
+                "visibleText": "Step 4: Result ➔ Magnification = x 800",
+                "dependencies": [
+                  "step_3"
+                ]
+              },
+              {
+                "id": "quality_check_callout",
+                "role": "callout",
+                "position": "bottom-centre",
+                "visibleText": "Quality Check: Ensure your final answer reflects the precision of your measurements (usually 2 or 3 sig figs).",
+                "dependencies": [
+                  "step_4"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "worked-example",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Context, Diagram, and Measurement",
+                "componentIds": [
+                  "slide_title",
+                  "context_block",
+                  "diagram_cell_ruler",
+                  "step_1"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Unit Conversion and Formula Setup",
+                "componentIds": [
+                  "slide_title",
+                  "context_block",
+                  "diagram_cell_ruler",
+                  "step_1",
+                  "step_2",
+                  "step_3"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_3",
+                "label": "Final Result and Quality Check",
+                "componentIds": [
+                  "slide_title",
+                  "context_block",
+                  "diagram_cell_ruler",
+                  "step_1",
+                  "step_2",
+                  "step_3",
+                  "step_4",
+                  "quality_check_callout"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       }
     },
     {
@@ -2132,6 +2280,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 1,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -2357,6 +2507,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "question-base-overlay",
+        "planningSource": "reviewed-current-animation-plan-catalog",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 1,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -2540,6 +2692,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "question-base-overlay",
+        "planningSource": "reviewed-current-animation-plan-catalog",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 1,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -2649,7 +2803,7 @@
           "strategy": "question-base-overlay",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Independent Practice: Solve the Cases 77S\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Independent Practice: Solve the Cases\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -2729,7 +2883,7 @@
           "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"} Solutions & Process Check ‘oy ne\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"Solutions & Process Check\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -2745,7 +2899,7 @@
           "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"} Solutions & Process Check ‘oy ne\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"Solutions & Process Check\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -2761,7 +2915,7 @@
           "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"} Solutions & Process Check ‘oy ne\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"Solutions & Process Check\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Magnification Calculations. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -2774,6 +2928,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "process",
+        "planningSource": "reviewed-current-animation-plan-catalog",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -2892,6 +3048,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -2987,6 +3145,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "question-base-overlay",
+        "planningSource": "reviewed-current-animation-plan-catalog",
+        "analyzedComponentCount": 0,
         "plannedCellCount": 1,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -3040,7 +3200,7 @@
           "strategy": "question-base-overlay",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Plenary: The Master Toolkit Aye\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Plenary: The Master Toolkit\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -3054,6 +3214,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-01T07:29:20.665Z"
+    "updatedAt": "2026-09-01T15:34:19.165Z"
   }
 }

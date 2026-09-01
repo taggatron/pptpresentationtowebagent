@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T15:34:19.252Z",
+  "sourceHash": "a709cc42e867cc6a0ba700ceb99ee70a4ec7da51d6d50edae8b8e2f28b556fbd",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Safe and accurate focusing technique",
+    "description": "A 3-step instructional guide on microscope focusing technique featuring three horizontal cards stacked vertically, each containing an explanatory diagram on the left and instructions with bold headings on the right, including an amber warning callout in the middle step.",
+    "layout": "Title aligned to top-left over a grid background. Three vertically stacked horizontal rounded cards: top card contains Set-up instructions and diagram, middle card with bold outline contains Safety Check instructions, diagram, and an amber callout box, and bottom card contains Focusing instructions and diagram.",
+    "components": [
+      {
+        "id": "title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Safe and accurate focusing technique",
+        "dependencies": []
+      },
+      {
+        "id": "card_1_diagram",
+        "role": "diagram",
+        "position": "top-left",
+        "visibleText": "",
+        "dependencies": [
+          "title"
+        ]
+      },
+      {
+        "id": "card_1_text",
+        "role": "step_content",
+        "position": "top-right",
+        "visibleText": "Set-up\nStart with the lowest power objective lens and turn the coarse focus dial to move the stage as close to the lens as possible.",
+        "dependencies": [
+          "title",
+          "card_1_diagram"
+        ]
+      },
+      {
+        "id": "card_2_diagram",
+        "role": "diagram",
+        "position": "centre-left",
+        "visibleText": "",
+        "dependencies": [
+          "card_1_text"
+        ]
+      },
+      {
+        "id": "card_2_text",
+        "role": "step_content",
+        "position": "centre-right",
+        "visibleText": "Safety Check\nAlways look from the side of the microscope when moving the stage upwards.\nNever move the stage upwards while looking through the eyepiece—the lens can crush the slide and damage the equipment.",
+        "dependencies": [
+          "card_1_text",
+          "card_2_diagram"
+        ]
+      },
+      {
+        "id": "card_3_diagram",
+        "role": "diagram",
+        "position": "bottom-left",
+        "visibleText": "",
+        "dependencies": [
+          "card_2_text"
+        ]
+      },
+      {
+        "id": "card_3_text",
+        "role": "step_content",
+        "position": "bottom-right",
+        "visibleText": "Focusing\nLook through the eyepiece and turn the coarse focus dial to move the stage downwards until the image appears. Then, use the fine focus dial to sharpen the resolution.",
+        "dependencies": [
+          "card_2_text",
+          "card_3_diagram"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "process",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Set-up",
+        "componentIds": [
+          "title",
+          "card_1_diagram",
+          "card_1_text"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Safety Check",
+        "componentIds": [
+          "title",
+          "card_1_diagram",
+          "card_1_text",
+          "card_2_diagram",
+          "card_2_text"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Focusing",
+        "componentIds": [
+          "title",
+          "card_1_diagram",
+          "card_1_text",
+          "card_2_diagram",
+          "card_2_text",
+          "card_3_diagram",
+          "card_3_text"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

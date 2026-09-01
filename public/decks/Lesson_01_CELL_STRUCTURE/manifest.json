@@ -2280,11 +2280,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first component",
+          "label": "Build 1: Header and Cell Structure Diagram",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim in every build.\nContent orientation: Prokaryote Blueprint: Bacterial Cell. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 8: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim in every build.\nSource-content reference: A biology diagram slide on a light graph paper background featuring an illustrated cutaway 3D diagram of a bacterial cell with annotated callouts detailing cell membrane and wall, free genetic material, plasmids, and ribosomes. Spatial layout: Title and subtitle placed at the top-left. A large angled cross-sectional illustration of a bacterial cell occupies the center across the lower half. Label callouts with pointer lines appear on the bottom-left and right side of the illustration.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -2296,27 +2296,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Add the next component",
+          "label": "Build 2: Reveal All Cell Organelle Labels",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim in every build.\nContent orientation: Prokaryote Blueprint: Bacterial Cell. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_08.png"
-        },
-        {
-          "id": "gemini_slide_8_3_component_reveal",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim in every build.\nContent orientation: Prokaryote Blueprint: Bacterial Cell. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 8: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim in every build.\nSource-content reference: A biology diagram slide on a light graph paper background featuring an illustrated cutaway 3D diagram of a bacterial cell with annotated callouts detailing cell membrane and wall, free genetic material, plasmids, and ribosomes. Spatial layout: Title and subtitle placed at the top-left. A large angled cross-sectional illustration of a bacterial cell occupies the center across the lower half. Label callouts with pointer lines appear on the bottom-left and right side of the illustration.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -2329,14 +2313,122 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 7,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-01T15:34:19.185Z",
+          "sourceHash": "9a445f8a0b55365c35a4cb41e85747349586af6b68daa4791a2452da54d66fb1",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Prokaryote Blueprint: Bacterial Cell",
+            "description": "A biology diagram slide on a light graph paper background featuring an illustrated cutaway 3D diagram of a bacterial cell with annotated callouts detailing cell membrane and wall, free genetic material, plasmids, and ribosomes.",
+            "layout": "Title and subtitle placed at the top-left. A large angled cross-sectional illustration of a bacterial cell occupies the center across the lower half. Label callouts with pointer lines appear on the bottom-left and right side of the illustration.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Prokaryote Blueprint: Bacterial Cell",
+                "dependencies": []
+              },
+              {
+                "id": "slide_subtitle",
+                "role": "subtitle",
+                "position": "top-left",
+                "visibleText": "Significantly smaller and simpler than eukaryotes. No true nucleus.",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "bacterial_cell_diagram",
+                "role": "diagram",
+                "position": "centre",
+                "visibleText": "",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "label_cell_wall_membrane",
+                "role": "callout",
+                "position": "bottom-left",
+                "visibleText": "Cell Membrane\n& Cell Wall",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_free_genetic_material",
+                "role": "callout",
+                "position": "top-right",
+                "visibleText": "Free Genetic Material\n(Single loop of chromosomal DNA)",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_plasmids",
+                "role": "callout",
+                "position": "middle-right",
+                "visibleText": "Plasmids\n(Small DNA rings)",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_ribosomes",
+                "role": "callout",
+                "position": "bottom-right",
+                "visibleText": "Ribosomes",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "component-reveal",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Header and Cell Structure Diagram",
+                "componentIds": [
+                  "slide_title",
+                  "slide_subtitle",
+                  "bacterial_cell_diagram"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Reveal All Cell Organelle Labels",
+                "componentIds": [
+                  "slide_title",
+                  "slide_subtitle",
+                  "bacterial_cell_diagram",
+                  "label_cell_wall_membrane",
+                  "label_free_genetic_material",
+                  "label_plasmids",
+                  "label_ribosomes"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       }
     },
     {
@@ -3830,6 +3922,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-01T11:03:29.493Z"
+    "updatedAt": "2026-09-01T15:34:19.272Z"
   }
 }

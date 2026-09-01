@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T15:34:19.210Z",
+  "sourceHash": "5b5690049c2c333aedcde64bdc366a628cd27d283418b61eed20fbcb5e22a25a",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Summary: The Science Practitioner",
+    "description": "A summary slide featuring a prominent centered title at the top over a light graph-paper background with faint scientific watermark illustrations (light microscope, formula triangle, and electron micrograph). In the center is a large white card with a drop shadow containing four check-marked takeaway statements covering Hardware, Technique, Maths, and Evolution.",
+    "layout": "Centered title along the top. Beneath it, a central elevated white card displays four vertically stacked takeaway items, each featuring a blue checkmark icon on the left followed by bold category labels and descriptive text.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-center",
+        "visibleText": "Summary: The Science Practitioner",
+        "dependencies": []
+      },
+      {
+        "id": "item_hardware",
+        "role": "list_item",
+        "position": "center-upper",
+        "visibleText": "Hardware: We can identify the key components of a light microscope and operate it safely to avoid damaging the slide or lens.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "item_technique",
+        "role": "list_item",
+        "position": "center-middle-upper",
+        "visibleText": "Technique: We know how to prepare a slide, apply stains to reveal colourless tissues, and produce accurate scientific drawings.",
+        "dependencies": [
+          "item_hardware"
+        ]
+      },
+      {
+        "id": "item_maths",
+        "role": "list_item",
+        "position": "center-middle-lower",
+        "visibleText": "Maths: We can confidently use the equation I = A x M and convert units between millimetres and micrometres.",
+        "dependencies": [
+          "item_technique"
+        ]
+      },
+      {
+        "id": "item_evolution",
+        "role": "list_item",
+        "position": "center-lower",
+        "visibleText": "Evolution: We understand that the increased resolution of the electron microscope unlocked our modern understanding of sub-cellular structures.",
+        "dependencies": [
+          "item_maths"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Hardware and technique takeaways",
+        "componentIds": [
+          "slide_title",
+          "item_hardware",
+          "item_technique"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Full summary checklist",
+        "componentIds": [
+          "slide_title",
+          "item_hardware",
+          "item_technique",
+          "item_maths",
+          "item_evolution"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

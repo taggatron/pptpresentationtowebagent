@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-01T15:34:19.271Z",
+  "sourceHash": "543ae585cdafc995eecb9697dbff6f41818f0cc5e9b82b68685f6e688de3efba",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Organelle Functions: The Chemical Factories",
+    "description": "Educational presentation slide set on a light grid background featuring three boxed vertical panels explaining the metabolic organelle functions: Mitochondria (Eukaryotes) on the left producing ATP/Energy, Chloroplasts (Plant Cells) in the middle capturing sunlight, and Ribosomes (All Cells) on the right performing protein synthesis.",
+    "layout": "Main title running along the top header above a three-column horizontal comparison card layout spanning left to right: Mitochondria (left), Chloroplasts (center), and Ribosomes (right). Each card features a top heading, a central 3D diagram with callout graphics, and a bottom function description.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Organelle Functions: The Chemical Factories",
+        "dependencies": []
+      },
+      {
+        "id": "mitochondria_header",
+        "role": "column_header",
+        "position": "mid-left-top",
+        "visibleText": "Mitochondria (Eukaryotes)",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "mitochondria_diagram",
+        "role": "diagram",
+        "position": "mid-left",
+        "visibleText": "ATP /\nEnergy",
+        "dependencies": [
+          "mitochondria_header"
+        ]
+      },
+      {
+        "id": "mitochondria_function",
+        "role": "body_text",
+        "position": "bottom-left",
+        "visibleText": "Function: Contain enzymes for cellular respiration, releasing energy for the cell to use.",
+        "dependencies": [
+          "mitochondria_diagram"
+        ]
+      },
+      {
+        "id": "chloroplasts_header",
+        "role": "column_header",
+        "position": "mid-center-top",
+        "visibleText": "Chloroplasts (Plant Cells)",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "chloroplasts_diagram",
+        "role": "diagram",
+        "position": "center",
+        "visibleText": "",
+        "dependencies": [
+          "chloroplasts_header"
+        ]
+      },
+      {
+        "id": "chloroplasts_function",
+        "role": "body_text",
+        "position": "bottom-center",
+        "visibleText": "Function: Contain chlorophyll, which absorbs light energy to drive photosynthesis.",
+        "dependencies": [
+          "chloroplasts_diagram"
+        ]
+      },
+      {
+        "id": "ribosomes_header",
+        "role": "column_header",
+        "position": "mid-right-top",
+        "visibleText": "Ribosomes (All Cells)",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "ribosomes_diagram",
+        "role": "diagram",
+        "position": "mid-right",
+        "visibleText": "",
+        "dependencies": [
+          "ribosomes_header"
+        ]
+      },
+      {
+        "id": "ribosomes_function",
+        "role": "body_text",
+        "position": "bottom-right",
+        "visibleText": "Function: The site of protein synthesis (where new proteins are manufactured).",
+        "dependencies": [
+          "ribosomes_diagram"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "comparison",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Mitochondria",
+        "componentIds": [
+          "slide_title",
+          "mitochondria_header",
+          "mitochondria_diagram",
+          "mitochondria_function"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Chloroplasts",
+        "componentIds": [
+          "slide_title",
+          "mitochondria_header",
+          "mitochondria_diagram",
+          "mitochondria_function",
+          "chloroplasts_header",
+          "chloroplasts_diagram",
+          "chloroplasts_function"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Ribosomes",
+        "componentIds": [
+          "slide_title",
+          "mitochondria_header",
+          "mitochondria_diagram",
+          "mitochondria_function",
+          "chloroplasts_header",
+          "chloroplasts_diagram",
+          "chloroplasts_function",
+          "ribosomes_header",
+          "ribosomes_diagram",
+          "ribosomes_function"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

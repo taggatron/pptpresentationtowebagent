@@ -861,16 +861,20 @@ export async function runParallelBrowserQueue({
   const workers = [];
   for (let i = 0; i < concurrency; i += 1) {
     const workerName = `worker_${i + 1}`;
-    const page = await context.newPage();
-    const tab = wrapPlaywrightPage(page);
 
     workers.push(async () => {
+      let page = null;
       try {
+        page = await context.newPage();
+        const tab = wrapPlaywrightPage(page);
+
         if (mode === "analysis" || mode === "all") {
           const queue = analysisQueues[i] || [];
           if (queue.length > 0) {
             console.log(`[${workerName}] Starting analysis queue with ${queue.length} slides.`);
-            await runner.processAnalysisQueue(tab, queue, `${workerName}_analysis`);
+            await runner.processAnalysisQueue(tab, queue, `${workerName}_analysis`).catch((err) => {
+              console.warn(`[${workerName}] Analysis queue warning: ${err.message}`);
+            });
           }
         }
 
@@ -878,16 +882,20 @@ export async function runParallelBrowserQueue({
           const queue = missingQueues[i] || [];
           if (queue.length > 0) {
             console.log(`[${workerName}] Starting image generation queue with ${queue.length} slides.`);
-            await runner.processQueue(tab, queue, `${workerName}_generation`);
+            await runner.processQueue(tab, queue, `${workerName}_generation`).catch((err) => {
+              console.warn(`[${workerName}] Generation queue warning: ${err.message}`);
+            });
           }
         }
+      } catch (err) {
+        console.warn(`[${workerName}] Worker encountered error: ${err.message}`);
       } finally {
-        await page.close().catch(() => {});
+        if (page) await page.close().catch(() => {});
       }
     });
   }
 
-  await Promise.all(workers.map((fn) => fn()));
+  await Promise.allSettled(workers.map((fn) => fn()));
   await browser.close().catch(() => {});
 
   console.log(`[Queue Runner] Parallel queue completed. Saved: ${runner.progress.saved}, Failed: ${runner.progress.failed}`);
