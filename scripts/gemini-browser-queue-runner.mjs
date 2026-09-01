@@ -293,7 +293,7 @@ export function createGeminiBrowserQueueRunner({
     let lastError = null;
     for (let attempt = 0; attempt < 2; attempt += 1) {
       try {
-        await tab.goto(GEMINI_IMAGES_URL, { waitUntil: "domcontentloaded", timeoutMs: 25_000 });
+        await tab.goto(GEMINI_APP_URL, { waitUntil: "domcontentloaded", timeoutMs: 25_000 });
         await tab.playwright.waitForTimeout(1_000);
 
         const newChatBtn = tab.playwright
@@ -301,6 +301,28 @@ export function createGeminiBrowserQueueRunner({
           .or(tab.playwright.locator('button[aria-label*="New chat" i]'));
         if ((await newChatBtn.count().catch(() => 0)) > 0) {
           await newChatBtn.first().click().catch(() => {});
+          await tab.playwright.waitForTimeout(800);
+        }
+
+        // Open Upload and tools menu and toggle "Create image" tool mode
+        const uploadBtn = tab.playwright
+          .locator('button[aria-label*="Upload and tools" i]')
+          .or(tab.playwright.getByRole("button", { name: /Upload and tools/i }))
+          .first();
+        if ((await uploadBtn.count().catch(() => 0)) > 0) {
+          await uploadBtn.click({ timeoutMs: 5_000 }).catch(() => {});
+          await tab.playwright.waitForTimeout(500);
+
+          const createImageItem = tab.playwright
+            .locator('[role="menuitemcheckbox"]:has-text("Create image")')
+            .first();
+          if ((await createImageItem.count().catch(() => 0)) > 0) {
+            const isChecked = await createImageItem.getAttribute("aria-checked");
+            if (isChecked !== "true") {
+              await createImageItem.click({ timeoutMs: 5_000 }).catch(() => {});
+              await tab.playwright.waitForTimeout(500);
+            }
+          }
         }
 
         const promptBox = tab.playwright
@@ -342,14 +364,42 @@ export function createGeminiBrowserQueueRunner({
       ]);
       await fileChooser.setFiles([sourcePath]);
 
-      // 4. Wait for the attachment thumbnail to mount in the composer
-      const attachmentPreview = tab.playwright
-        .locator(
-          '.gem-attachment-style-img, img[src^="blob:"], [data-test-id="attachment-preview"], image-preview'
-        )
-        .first();
-      await attachmentPreview.waitFor({ state: "visible", timeoutMs: 15_000 }).catch(() => {});
-      await tab.playwright.waitForTimeout(800);
+      // 4. Robust upload completion check: wait until upload spinners clear and thumbnail is fully rendered
+      let stableReadyChecks = 0;
+      for (let index = 0; index < 60; index += 1) {
+        await tab.playwright.waitForTimeout(500);
+        const status = await tab.playwright
+          .evaluate(() => {
+            const spinners = document.querySelectorAll(
+              '[role="progressbar"], mat-progress-bar, mat-spinner, .spinner, [aria-label*="Loading" i], [aria-label*="Uploading" i]'
+            );
+            const thumbnails = Array.from(
+              document.querySelectorAll(
+                '.gem-attachment-style-img, img[src^="blob:"], [data-test-id="attachment-preview"] img, image-preview img, .preview-container img, img[alt*="Uploaded" i]'
+              )
+            );
+            const readyThumbnails = thumbnails.filter((img) => img.complete && img.naturalWidth > 0);
+            return {
+              uploading: spinners.length > 0,
+              hasReadyThumbnail: readyThumbnails.length > 0
+            };
+          })
+          .catch(() => ({ uploading: false, hasReadyThumbnail: false }));
+
+        if (!status.uploading && status.hasReadyThumbnail) {
+          stableReadyChecks += 1;
+          if (stableReadyChecks >= 3) {
+            // Stable for 1.5 continuous seconds after upload spinner disappeared
+            await tab.playwright.waitForTimeout(2_000);
+            return;
+          }
+        } else {
+          stableReadyChecks = 0;
+        }
+      }
+
+      // Final fallback buffer
+      await tab.playwright.waitForTimeout(3_000);
     });
   }
 
@@ -466,14 +516,12 @@ export function createGeminiBrowserQueueRunner({
         attempt === 0
           ? cell.prompt
           : `${cell.prompt}\nQA CORRECTION: The previous result failed the file-level build check. Regenerate this exact cumulative build as a distinct, complete 16:9 slide canvas. Follow Show now and Temporarily omit precisely; do not return the unchanged source or duplicate another build.`;
-      const promptBox = tab.playwright.getByRole("textbox", {
-        name: "Enter a prompt for Gemini"
-      });
-      const submittedPromptCount = await tab.playwright
-        .getByRole("button", { name: "Copy prompt" })
-        .count()
-        .catch(() => 0);
-      await promptBox.click().catch(() => {});
+      const promptBox = tab.playwright
+        .locator('rich-textarea div[contenteditable="true"]')
+        .or(tab.playwright.getByRole("textbox", { name: "Enter a prompt for Gemini" }))
+        .first();
+      await promptBox.focus().catch(() => {});
+      await tab.playwright.keyboard.press("End").catch(() => {});
       await tab.playwright.keyboard.insertText(prompt);
       await tab.playwright.waitForTimeout(400);
 
@@ -708,10 +756,12 @@ export function createGeminiBrowserQueueRunner({
         await prepareFreshAppChat(tab);
         await uploadSlideSource(tab, slideItem.sourcePath);
 
-        const promptBox = tab.playwright.getByRole("textbox", {
-          name: "Enter a prompt for Gemini"
-        });
-        await promptBox.click().catch(() => {});
+        const promptBox = tab.playwright
+          .locator('rich-textarea div[contenteditable="true"]')
+          .or(tab.playwright.getByRole("textbox", { name: "Enter a prompt for Gemini" }))
+          .first();
+        await promptBox.focus().catch(() => {});
+        await tab.playwright.keyboard.press("End").catch(() => {});
         await tab.playwright.keyboard.insertText(slideItem.prompt);
         await tab.playwright.waitForTimeout(400);
 
@@ -913,10 +963,15 @@ export async function runParallelBrowserQueue({
   const workers = [];
   for (let i = 0; i < concurrency; i += 1) {
     const workerName = `worker_${i + 1}`;
+    const startupDelayMs = i * 4_000; // Stagger worker startups by 4 seconds
 
     workers.push(async () => {
       let page = null;
       try {
+        if (startupDelayMs > 0) {
+          await new Promise((res) => setTimeout(res, startupDelayMs));
+        }
+
         page = await context.newPage();
         const tab = wrapPlaywrightPage(page);
 
@@ -948,7 +1003,6 @@ export async function runParallelBrowserQueue({
   }
 
   await Promise.allSettled(workers.map((fn) => fn()));
-  await browser.close().catch(() => {});
 
   console.log(`[Queue Runner] Parallel queue completed. Saved: ${runner.progress.saved}, Failed: ${runner.progress.failed}`);
   return {
