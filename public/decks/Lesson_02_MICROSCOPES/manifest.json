@@ -92,77 +92,14 @@
           "generatedAt": "2026-09-01T07:01:18.306Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:01:18.306Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Approved after original-resolution comparison with slide_01.png. Full 16:9 graph-paper canvas is intact; title, circular microscopy image, border treatment, and NotebookLM mark are all present; typography/palette/illustration styling remain consistent; the single complete-state build contains all source content with no crop beyond the source composition, no dimming/halo/focus box, and no malformed layout. Tesseract confirms the visible title exactly as Lesson 2: MICROSCOPES. Technical QA passed PNG signature, 1024x572 resolution, 16:9/source aspect, distinct-source hash, and minimum size.",
+            "reviewedAt": "2026-09-02T14:17:19.902Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "897027 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_01_gemini_slide_1_1_component_reveal.png",
-              "byteLength": 897027,
-              "sha256": "9017361327439067dcab52bcf1aadb64640b7df7ea69c89c805bc007f6deaa8d",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "0f5f31bd5fa0bc323a7eed890a599dab980d203677018c147a3a726e0a538522",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         }
@@ -181,77 +118,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:01:18.306Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Approved after original-resolution comparison with slide_01.png. Full 16:9 graph-paper canvas is intact; title, circular microscopy image, border treatment, and NotebookLM mark are all present; typography/palette/illustration styling remain consistent; the single complete-state build contains all source content with no crop beyond the source composition, no dimming/halo/focus box, and no malformed layout. Tesseract confirms the visible title exactly as Lesson 2: MICROSCOPES. Technical QA passed PNG signature, 1024x572 resolution, 16:9/source aspect, distinct-source hash, and minimum size.",
+            "reviewedAt": "2026-09-02T14:17:19.902Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "897027 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_01_gemini_slide_1_1_component_reveal.png",
-              "byteLength": 897027,
-              "sha256": "9017361327439067dcab52bcf1aadb64640b7df7ea69c89c805bc007f6deaa8d",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "0f5f31bd5fa0bc323a7eed890a599dab980d203677018c147a3a726e0a538522",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -677,77 +551,14 @@
           "generatedAt": "2026-09-01T07:12:59.690Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:59.690Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Build 1 approved after original-resolution source/sequence review. Full 16:9 graph-paper canvas, title, microscope image, and Objective lenses label/copy are clean and legible; later callouts are correctly omitted. Layout anchors match later builds, with no crop, dimming, halo, focus box, malformed connector, or invented content. Technical PNG, 1024x572, aspect, size, and distinct-source/hash checks passed; OCR confirms the title and retained objective-lens explanation.",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "536653 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_03_gemini_slide_3_1_component_reveal.png",
-              "byteLength": 536653,
-              "sha256": "28849109bee456eb46463c77faf92527ef9e5811b841f7d0642b0b7125fc98ac",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "d6d5345c58e9a5b685c511a960ef3d75be497a7fc904e1e6526374881f362822",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         },
@@ -769,77 +580,14 @@
           "generatedAt": "2026-09-01T07:12:59.695Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:59.695Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Build 2 approved after original-resolution cumulative comparison. It preserves Build 1 in the same positions and adds the Coarse focus, Fine focus, and Lamp callouts with correct definitions and clean connectors; Eyepiece and Stage remain appropriately withheld for the final state. Full canvas/style/legibility are clean with no focus treatment. Technical checks passed and OCR confirms all added labels/explanations.",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "572771 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_03_gemini_slide_3_2_component_reveal.png",
-              "byteLength": 572771,
-              "sha256": "0e778a8c00ecd006d6d62a353fb8284199c9e4580f63b039fa7186d298485d67",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "d6d5345c58e9a5b685c511a960ef3d75be497a7fc904e1e6526374881f362822",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         },
@@ -861,77 +609,14 @@
           "generatedAt": "2026-09-01T07:12:59.699Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:59.699Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Final Build 3 approved after source and prior-build comparison. It preserves every earlier element and adds Eyepiece lens and Stage, producing the complete six-callout microscope anatomy slide. All scientific wording is correct and legible; connectors are aligned; graph-paper theme and layout remain consistent; no crop, halo, dimming, or focus treatment. Technical checks passed and OCR confirms title plus all six callout bodies.",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "637607 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_03_gemini_slide_3_3_component_reveal.png",
-              "byteLength": 637607,
-              "sha256": "aecfb1a4841611a3c0f4cf5a6c06a3514574236b01b9a4081f8d9eb6bacaa716",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "d6d5345c58e9a5b685c511a960ef3d75be497a7fc904e1e6526374881f362822",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         }
@@ -965,77 +650,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:59.690Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Build 1 approved after original-resolution source/sequence review. Full 16:9 graph-paper canvas, title, microscope image, and Objective lenses label/copy are clean and legible; later callouts are correctly omitted. Layout anchors match later builds, with no crop, dimming, halo, focus box, malformed connector, or invented content. Technical PNG, 1024x572, aspect, size, and distinct-source/hash checks passed; OCR confirms the title and retained objective-lens explanation.",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "536653 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_03_gemini_slide_3_1_component_reveal.png",
-              "byteLength": 536653,
-              "sha256": "28849109bee456eb46463c77faf92527ef9e5811b841f7d0642b0b7125fc98ac",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "d6d5345c58e9a5b685c511a960ef3d75be497a7fc904e1e6526374881f362822",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -1060,77 +682,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:59.695Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Build 2 approved after original-resolution cumulative comparison. It preserves Build 1 in the same positions and adds the Coarse focus, Fine focus, and Lamp callouts with correct definitions and clean connectors; Eyepiece and Stage remain appropriately withheld for the final state. Full canvas/style/legibility are clean with no focus treatment. Technical checks passed and OCR confirms all added labels/explanations.",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "572771 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_03_gemini_slide_3_2_component_reveal.png",
-              "byteLength": 572771,
-              "sha256": "0e778a8c00ecd006d6d62a353fb8284199c9e4580f63b039fa7186d298485d67",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "d6d5345c58e9a5b685c511a960ef3d75be497a7fc904e1e6526374881f362822",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -1155,77 +714,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:59.699Z",
-            "reviewer": "pipeline-refine visual+OCR QA",
-            "notes": "Final Build 3 approved after source and prior-build comparison. It preserves every earlier element and adds Eyepiece lens and Stage, producing the complete six-callout microscope anatomy slide. All scientific wording is correct and legible; connectors are aligned; graph-paper theme and layout remain consistent; no crop, halo, dimming, or focus treatment. Technical checks passed and OCR confirms title plus all six callout bodies.",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "637607 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_02_MICROSCOPES/slides/slide_03_gemini_slide_3_3_component_reveal.png",
-              "byteLength": 637607,
-              "sha256": "aecfb1a4841611a3c0f4cf5a6c06a3514574236b01b9a4081f8d9eb6bacaa716",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "d6d5345c58e9a5b685c511a960ef3d75be497a7fc904e1e6526374881f362822",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -1353,7 +849,7 @@
         "planningSource": "gemini-multimodal-slide-analysis",
         "analyzedComponentCount": 9,
         "plannedCellCount": 1,
-        "approvedCellCount": 0,
+        "approvedCellCount": 1,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -1791,13 +1287,59 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"Identify the microscope components\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 7 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Identify the microscope components\". Keep it verbatim in every build.\nThis is the title slide for \"2. Microscopes\". Preserve every visible source title word, including the final word; never shorten the deck title.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04_gemini_slide_4_1_question_base_overlay.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "title": "Identify the microscope components"
+      "title": "Identify the microscope components",
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_4_1_question_base_overlay",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Prepare the unanswered questions",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04_gemini_slide_4_1_question_base_overlay.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"Identify the microscope components\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 7 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Identify the microscope components\". Keep it verbatim in every build.\nThis is the title slide for \"2. Microscopes\". Preserve every visible source title word, including the final word; never shorten the deck title.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:16:10.600Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        }
+      ]
     },
     {
       "number": 5,
@@ -1865,10 +1407,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 5: \"Preparing a specimon slide for observation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Preparing a specimon slide for observation\". Keep it verbatim in every build.\nSource-content reference: A 4-step horizontal process sequence illustrating how to prepare an onion cell specimen slide for microscopic observation, detailing extraction, mounting, staining, and covering. Spatial layout: The title is positioned at the top center. Below it, four circular illustrated step containers connected by horizontal directional arrows span from left to right. Beneath each circle is a step header, an explanatory text description, and supplementary cue notes under steps 1 and 4.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05_gemini_slide_5_1_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_5_2_process",
@@ -1881,13 +1435,25 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 5: \"Preparing a specimon slide for observation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Preparing a specimon slide for observation\". Keep it verbatim in every build.\nSource-content reference: A 4-step horizontal process sequence illustrating how to prepare an onion cell specimen slide for microscopic observation, detailing extraction, mounting, staining, and covering. Spatial layout: The title is positioned at the top center. Below it, four circular illustrated step containers connected by horizontal directional arrows span from left to right. Beneath each circle is a step header, an explanatory text description, and supplementary cue notes under steps 1 and 4.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05_gemini_slide_5_2_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -1896,7 +1462,7 @@
         "planningSource": "gemini-multimodal-slide-analysis",
         "analyzedComponentCount": 5,
         "plannedCellCount": 2,
-        "approvedCellCount": 0,
+        "approvedCellCount": 2,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
@@ -1990,7 +1556,109 @@
         "segmentationSource": "gemini-multimodal-slide-analysis",
         "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       },
-      "title": "Preparing a specimon slide for observation"
+      "title": "Preparing a specimon slide for observation",
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_5_1_process",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Extract & Mount Steps",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05_gemini_slide_5_1_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 5: \"Preparing a specimon slide for observation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Preparing a specimon slide for observation\". Keep it verbatim in every build.\nSource-content reference: A 4-step horizontal process sequence illustrating how to prepare an onion cell specimen slide for microscopic observation, detailing extraction, mounting, staining, and covering. Spatial layout: The title is positioned at the top center. Below it, four circular illustrated step containers connected by horizontal directional arrows span from left to right. Beneath each circle is a step header, an explanatory text description, and supplementary cue notes under steps 1 and 4.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_5_2_process",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Complete Slide Preparation Process",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05_gemini_slide_5_2_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_05.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 5: \"Preparing a specimon slide for observation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Preparing a specimon slide for observation\". Keep it verbatim in every build.\nSource-content reference: A 4-step horizontal process sequence illustrating how to prepare an onion cell specimen slide for microscopic observation, detailing extraction, mounting, staining, and covering. Spatial layout: The title is positioned at the top center. Below it, four circular illustrated step containers connected by horizontal directional arrows span from left to right. Beneath each circle is a step header, an explanatory text description, and supplementary cue notes under steps 1 and 4.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_5_1_process",
+            "title": "Build 1: Extract & Mount Steps",
+            "componentIds": [
+              "gemini_slide_5_1_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_5_2_process",
+            "title": "Build 2: Complete Slide Preparation Process",
+            "componentIds": [
+              "gemini_slide_5_2_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      }
     },
     {
       "number": 6,
@@ -2058,10 +1726,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 6: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A vertical 3-step process slide explaining microscope focusing safety and accuracy, featuring three stacked rectangular panels for Set-up, Safety Check, and Focusing, each with an illustrative line drawing on the left and instructions on the right. Spatial layout: The title sits at the top-left over a light grid background. Below it are three vertically stacked rectangular cards representing sequential steps: Set-up (top), Safety Check (middle, framed with a highlighted warning box), and Focusing (bottom). Each card pairs a left-side diagram with right-side explanatory text.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06_gemini_slide_6_1_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_6_2_process",
@@ -2074,13 +1754,25 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 6: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A vertical 3-step process slide explaining microscope focusing safety and accuracy, featuring three stacked rectangular panels for Set-up, Safety Check, and Focusing, each with an illustrative line drawing on the left and instructions on the right. Spatial layout: The title sits at the top-left over a light grid background. Below it are three vertically stacked rectangular cards representing sequential steps: Set-up (top), Safety Check (middle, framed with a highlighted warning box), and Focusing (bottom). Each card pairs a left-side diagram with right-side explanatory text.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06_gemini_slide_6_2_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -2089,7 +1781,7 @@
         "planningSource": "gemini-multimodal-slide-analysis",
         "analyzedComponentCount": 5,
         "plannedCellCount": 2,
-        "approvedCellCount": 0,
+        "approvedCellCount": 2,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
@@ -2182,7 +1874,109 @@
         "segmentationSource": "gemini-multimodal-slide-analysis",
         "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       },
-      "title": "Safe and accurate focusing technique"
+      "title": "Safe and accurate focusing technique",
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_6_1_process",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Set-up & Safety Check",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06_gemini_slide_6_1_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 6: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A vertical 3-step process slide explaining microscope focusing safety and accuracy, featuring three stacked rectangular panels for Set-up, Safety Check, and Focusing, each with an illustrative line drawing on the left and instructions on the right. Spatial layout: The title sits at the top-left over a light grid background. Below it are three vertically stacked rectangular cards representing sequential steps: Set-up (top), Safety Check (middle, framed with a highlighted warning box), and Focusing (bottom). Each card pairs a left-side diagram with right-side explanatory text.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_6_2_process",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Focusing Technique",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06_gemini_slide_6_2_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_06.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 6: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A vertical 3-step process slide explaining microscope focusing safety and accuracy, featuring three stacked rectangular panels for Set-up, Safety Check, and Focusing, each with an illustrative line drawing on the left and instructions on the right. Spatial layout: The title sits at the top-left over a light grid background. Below it are three vertically stacked rectangular cards representing sequential steps: Set-up (top), Safety Check (middle, framed with a highlighted warning box), and Focusing (bottom). Each card pairs a left-side diagram with right-side explanatory text.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_6_1_process",
+            "title": "Build 1: Set-up & Safety Check",
+            "componentIds": [
+              "gemini_slide_6_1_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_6_2_process",
+            "title": "Build 2: Focusing Technique",
+            "componentIds": [
+              "gemini_slide_6_2_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      }
     },
     {
       "number": 7,
@@ -2250,10 +2044,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Safe and accurate focusing technique\". Keep it verbatim in every build.\nSource-content reference: A 3-step instructional guide on microscope focusing technique featuring three horizontal cards stacked vertically, each containing an explanatory diagram on the left and instructions with bold headings on the right, including an amber warning callout in the middle step. Spatial layout: Title aligned to top-left over a grid background. Three vertically stacked horizontal rounded cards: top card contains Set-up instructions and diagram, middle card with bold outline contains Safety Check instructions, diagram, and an amber callout box, and bottom card contains Focusing instructions and diagram.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07_gemini_slide_7_1_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_7_2_process",
@@ -2266,10 +2072,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Safe and accurate focusing technique\". Keep it verbatim in every build.\nSource-content reference: A 3-step instructional guide on microscope focusing technique featuring three horizontal cards stacked vertically, each containing an explanatory diagram on the left and instructions with bold headings on the right, including an amber warning callout in the middle step. Spatial layout: Title aligned to top-left over a grid background. Three vertically stacked horizontal rounded cards: top card contains Set-up instructions and diagram, middle card with bold outline contains Safety Check instructions, diagram, and an amber callout box, and bottom card contains Focusing instructions and diagram.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07_gemini_slide_7_2_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_7_3_process",
@@ -2282,13 +2100,25 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Safe and accurate focusing technique\". Keep it verbatim in every build.\nSource-content reference: A 3-step instructional guide on microscope focusing technique featuring three horizontal cards stacked vertically, each containing an explanatory diagram on the left and instructions with bold headings on the right, including an amber warning callout in the middle step. Spatial layout: Title aligned to top-left over a grid background. Three vertically stacked horizontal rounded cards: top card contains Set-up instructions and diagram, middle card with bold outline contains Safety Check instructions, diagram, and an amber callout box, and bottom card contains Focusing instructions and diagram.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07_gemini_slide_7_3_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -2297,7 +2127,7 @@
         "planningSource": "gemini-multimodal-slide-analysis",
         "analyzedComponentCount": 7,
         "plannedCellCount": 3,
-        "approvedCellCount": 0,
+        "approvedCellCount": 3,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
@@ -2426,6 +2256,155 @@
         "pathway": "gemini-image-chat",
         "segmentationSource": "gemini-multimodal-slide-analysis",
         "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Set-up",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07_gemini_slide_7_1_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Safe and accurate focusing technique\". Keep it verbatim in every build.\nSource-content reference: A 3-step instructional guide on microscope focusing technique featuring three horizontal cards stacked vertically, each containing an explanatory diagram on the left and instructions with bold headings on the right, including an amber warning callout in the middle step. Spatial layout: Title aligned to top-left over a grid background. Three vertically stacked horizontal rounded cards: top card contains Set-up instructions and diagram, middle card with bold outline contains Safety Check instructions, diagram, and an amber callout box, and bottom card contains Focusing instructions and diagram.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Safety Check",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07_gemini_slide_7_2_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Safe and accurate focusing technique\". Keep it verbatim in every build.\nSource-content reference: A 3-step instructional guide on microscope focusing technique featuring three horizontal cards stacked vertically, each containing an explanatory diagram on the left and instructions with bold headings on the right, including an amber warning callout in the middle step. Spatial layout: Title aligned to top-left over a grid background. Three vertically stacked horizontal rounded cards: top card contains Set-up instructions and diagram, middle card with bold outline contains Safety Check instructions, diagram, and an amber callout box, and bottom card contains Focusing instructions and diagram.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Focusing",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07_gemini_slide_7_3_process.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_07.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Safe and accurate focusing technique\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: process.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Safe and accurate focusing technique\". Keep it verbatim in every build.\nSource-content reference: A 3-step instructional guide on microscope focusing technique featuring three horizontal cards stacked vertically, each containing an explanatory diagram on the left and instructions with bold headings on the right, including an amber warning callout in the middle step. Spatial layout: Title aligned to top-left over a grid background. Three vertically stacked horizontal rounded cards: top card contains Set-up instructions and diagram, middle card with bold outline contains Safety Check instructions, diagram, and an amber callout box, and bottom card contains Focusing instructions and diagram.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_7_1_process",
+            "title": "Build 1: Set-up",
+            "componentIds": [
+              "gemini_slide_7_1_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_7_2_process",
+            "title": "Build 2: Safety Check",
+            "componentIds": [
+              "gemini_slide_7_2_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_7_3_process",
+            "title": "Build 3: Focusing",
+            "componentIds": [
+              "gemini_slide_7_3_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -2494,10 +2473,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Translating observations into scientific drawings\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08_gemini_slide_8_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_8_2_component_reveal",
@@ -2510,10 +2501,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Translating observations into scientific drawings\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08_gemini_slide_8_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_8_3_component_reveal",
@@ -2526,13 +2529,25 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Translating observations into scientific drawings\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08_gemini_slide_8_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -2541,11 +2556,160 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 3,
-        "approvedCellCount": 0,
+        "approvedCellCount": 3,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal the first component",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08_gemini_slide_8_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Translating observations into scientific drawings\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Add the next component",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08_gemini_slide_8_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Translating observations into scientific drawings\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_8_3_component_reveal",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Complete the instructional build",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08_gemini_slide_8_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Translating observations into scientific drawings\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_8_1_component_reveal",
+            "title": "Build 1: Reveal the first component",
+            "componentIds": [
+              "gemini_slide_8_1_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_8_2_component_reveal",
+            "title": "Build 2: Add the next component",
+            "componentIds": [
+              "gemini_slide_8_2_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_8_3_component_reveal",
+            "title": "Build 3: Complete the instructional build",
+            "componentIds": [
+              "gemini_slide_8_3_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -2614,10 +2778,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"A = Actual Size\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09_gemini_slide_9_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_9_2_component_reveal",
@@ -2630,10 +2806,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"A = Actual Size\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09_gemini_slide_9_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_9_3_component_reveal",
@@ -2646,13 +2834,25 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"A = Actual Size\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09_gemini_slide_9_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -2661,11 +2861,160 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 3,
-        "approvedCellCount": 0,
+        "approvedCellCount": 3,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_9_1_component_reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal the first component",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09_gemini_slide_9_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"A = Actual Size\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Add the next component",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09_gemini_slide_9_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"A = Actual Size\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_9_3_component_reveal",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Complete the instructional build",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09_gemini_slide_9_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_09.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"A = Actual Size\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_9_1_component_reveal",
+            "title": "Build 1: Reveal the first component",
+            "componentIds": [
+              "gemini_slide_9_1_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_9_2_component_reveal",
+            "title": "Build 2: Add the next component",
+            "componentIds": [
+              "gemini_slide_9_2_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_9_3_component_reveal",
+            "title": "Build 3: Complete the instructional build",
+            "componentIds": [
+              "gemini_slide_9_3_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -2734,10 +3083,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Applying the magnification equation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Applying the magnification equation\". Keep it verbatim in every build.\nSource-content reference: A worked example slide on light grid background divided into two halves by a vertical line: the left side presents 'The Problem' featuring a microscopic field of view showing a cell measured with a ruler at 45 mm and labeled magnification of x1500; the right side presents 'The Step-by-Step Calculation' detailing Steps 1 through 4 and a boxed Final Answer. Spatial layout: Centered main title at top. A vertical divider splits the slide into two columns: left column contains the section header 'The Problem' above a circular microscope field of view diagram (with cell, ruler, bracket measuring 45 mm, and bottom label 'Magnification = x1500'); right column contains 'The Step-by-Step Calculation' header followed by four sequential numbered steps (Step 1 to Step 4) and a boxed 'Final Answer' container at the bottom right. Bottom right corner features a small NotebookLM watermark.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10_gemini_slide_10_1_worked_example.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_10_2_worked_example",
@@ -2750,10 +3111,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Applying the magnification equation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Applying the magnification equation\". Keep it verbatim in every build.\nSource-content reference: A worked example slide on light grid background divided into two halves by a vertical line: the left side presents 'The Problem' featuring a microscopic field of view showing a cell measured with a ruler at 45 mm and labeled magnification of x1500; the right side presents 'The Step-by-Step Calculation' detailing Steps 1 through 4 and a boxed Final Answer. Spatial layout: Centered main title at top. A vertical divider splits the slide into two columns: left column contains the section header 'The Problem' above a circular microscope field of view diagram (with cell, ruler, bracket measuring 45 mm, and bottom label 'Magnification = x1500'); right column contains 'The Step-by-Step Calculation' header followed by four sequential numbered steps (Step 1 to Step 4) and a boxed 'Final Answer' container at the bottom right. Bottom right corner features a small NotebookLM watermark.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10_gemini_slide_10_2_worked_example.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_10_3_worked_example",
@@ -2766,13 +3139,25 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Applying the magnification equation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Applying the magnification equation\". Keep it verbatim in every build.\nSource-content reference: A worked example slide on light grid background divided into two halves by a vertical line: the left side presents 'The Problem' featuring a microscopic field of view showing a cell measured with a ruler at 45 mm and labeled magnification of x1500; the right side presents 'The Step-by-Step Calculation' detailing Steps 1 through 4 and a boxed Final Answer. Spatial layout: Centered main title at top. A vertical divider splits the slide into two columns: left column contains the section header 'The Problem' above a circular microscope field of view diagram (with cell, ruler, bracket measuring 45 mm, and bottom label 'Magnification = x1500'); right column contains 'The Step-by-Step Calculation' header followed by four sequential numbered steps (Step 1 to Step 4) and a boxed 'Final Answer' container at the bottom right. Bottom right corner features a small NotebookLM watermark.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10_gemini_slide_10_3_worked_example.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -2781,7 +3166,7 @@
         "planningSource": "gemini-multimodal-slide-analysis",
         "analyzedComponentCount": 9,
         "plannedCellCount": 3,
-        "approvedCellCount": 0,
+        "approvedCellCount": 3,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
@@ -2932,6 +3317,155 @@
         "pathway": "gemini-image-chat",
         "segmentationSource": "gemini-multimodal-slide-analysis",
         "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_10_1_worked_example",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Show problem setup and variables",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10_gemini_slide_10_1_worked_example.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Applying the magnification equation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Applying the magnification equation\". Keep it verbatim in every build.\nSource-content reference: A worked example slide on light grid background divided into two halves by a vertical line: the left side presents 'The Problem' featuring a microscopic field of view showing a cell measured with a ruler at 45 mm and labeled magnification of x1500; the right side presents 'The Step-by-Step Calculation' detailing Steps 1 through 4 and a boxed Final Answer. Spatial layout: Centered main title at top. A vertical divider splits the slide into two columns: left column contains the section header 'The Problem' above a circular microscope field of view diagram (with cell, ruler, bracket measuring 45 mm, and bottom label 'Magnification = x1500'); right column contains 'The Step-by-Step Calculation' header followed by four sequential numbered steps (Step 1 to Step 4) and a boxed 'Final Answer' container at the bottom right. Bottom right corner features a small NotebookLM watermark.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_10_2_worked_example",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Rearrange equation and convert units",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10_gemini_slide_10_2_worked_example.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Applying the magnification equation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Applying the magnification equation\". Keep it verbatim in every build.\nSource-content reference: A worked example slide on light grid background divided into two halves by a vertical line: the left side presents 'The Problem' featuring a microscopic field of view showing a cell measured with a ruler at 45 mm and labeled magnification of x1500; the right side presents 'The Step-by-Step Calculation' detailing Steps 1 through 4 and a boxed Final Answer. Spatial layout: Centered main title at top. A vertical divider splits the slide into two columns: left column contains the section header 'The Problem' above a circular microscope field of view diagram (with cell, ruler, bracket measuring 45 mm, and bottom label 'Magnification = x1500'); right column contains 'The Step-by-Step Calculation' header followed by four sequential numbered steps (Step 1 to Step 4) and a boxed 'Final Answer' container at the bottom right. Bottom right corner features a small NotebookLM watermark.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_10_3_worked_example",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Calculate and reveal final answer",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10_gemini_slide_10_3_worked_example.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_10.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Applying the magnification equation\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: worked-example.\nShow now: Only the components explicitly identified by the Gemini slide analysis for this build.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Applying the magnification equation\". Keep it verbatim in every build.\nSource-content reference: A worked example slide on light grid background divided into two halves by a vertical line: the left side presents 'The Problem' featuring a microscopic field of view showing a cell measured with a ruler at 45 mm and labeled magnification of x1500; the right side presents 'The Step-by-Step Calculation' detailing Steps 1 through 4 and a boxed Final Answer. Spatial layout: Centered main title at top. A vertical divider splits the slide into two columns: left column contains the section header 'The Problem' above a circular microscope field of view diagram (with cell, ruler, bracket measuring 45 mm, and bottom label 'Magnification = x1500'); right column contains 'The Step-by-Step Calculation' header followed by four sequential numbered steps (Step 1 to Step 4) and a boxed 'Final Answer' container at the bottom right. Bottom right corner features a small NotebookLM watermark.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_10_1_worked_example",
+            "title": "Build 1: Show problem setup and variables",
+            "componentIds": [
+              "gemini_slide_10_1_worked_example"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_10_2_worked_example",
+            "title": "Build 2: Rearrange equation and convert units",
+            "componentIds": [
+              "gemini_slide_10_2_worked_example"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_10_3_worked_example",
+            "title": "Build 3: Calculate and reveal final answer",
+            "componentIds": [
+              "gemini_slide_10_3_worked_example"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -3031,7 +3565,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 0,
+        "approvedCellCount": 1,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -3112,10 +3646,56 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Calculate the missing variables\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 2 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11_gemini_slide_11_1_question_base_overlay.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
+        }
+      ],
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_11_1_question_base_overlay",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Prepare the unanswered questions",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11_gemini_slide_11_1_question_base_overlay.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Calculate the missing variables\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 2 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:16:10.601Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
         }
       ]
     },
@@ -3185,10 +3765,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"Blurry Image Sharp Image\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12_gemini_slide_12_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_12_2_component_reveal",
@@ -3201,10 +3793,22 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"Blurry Image Sharp Image\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12_gemini_slide_12_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         },
         {
           "id": "gemini_slide_12_3_component_reveal",
@@ -3217,13 +3821,25 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"Blurry Image Sharp Image\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12_gemini_slide_12_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -3232,11 +3848,160 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 3,
-        "approvedCellCount": 0,
+        "approvedCellCount": 3,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_12_1_component_reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal the first component",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12_gemini_slide_12_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"Blurry Image Sharp Image\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_12_2_component_reveal",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Add the next component",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12_gemini_slide_12_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"Blurry Image Sharp Image\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_12_3_component_reveal",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Complete the instructional build",
+          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12_gemini_slide_12_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_12.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"Blurry Image Sharp Image\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Microscopes. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.903Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_12_1_component_reveal",
+            "title": "Build 1: Reveal the first component",
+            "componentIds": [
+              "gemini_slide_12_1_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_12_2_component_reveal",
+            "title": "Build 2: Add the next component",
+            "componentIds": [
+              "gemini_slide_12_2_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_12_3_component_reveal",
+            "title": "Build 3: Complete the instructional build",
+            "componentIds": [
+              "gemini_slide_12_3_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -3662,6 +4427,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-02T08:54:42.505Z"
+    "updatedAt": "2026-09-02T14:16:56.358Z"
   }
 }

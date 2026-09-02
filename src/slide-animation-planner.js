@@ -795,6 +795,9 @@ export function createGeminiImageCells(slide, { maxGeneratedCells = null } = {})
 }
 
 function buildsFromGeminiCells(cells, slide) {
+  if (slide?.interactiveType === "question_reveal" || slide?.animationPlan?.questionReveal === true) {
+    return [];
+  }
   const orderedCells = [...cells].sort((a, b) => a.order - b.order);
   const allApproved =
     orderedCells.length > 0 &&

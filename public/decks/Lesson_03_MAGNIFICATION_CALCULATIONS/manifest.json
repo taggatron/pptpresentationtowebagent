@@ -92,77 +92,14 @@
           "generatedAt": "2026-09-01T07:01:27.453Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:01:27.453Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after native-resolution visual comparison and OCR. Full 1024x572 canvas matches the source aspect and dark navy grid/teal microscope styling; title and OCR Combined Science A (Biology) | B1.1a | PAG B1 subtitle are complete, correctly spelled, and legible. This single-cell sequence contains the complete source state. No crop, zoom, dimming, spotlight, halo, focus box, malformed layout, or missing content observed; technical signature, resolution, source distinction, and canvas checks all passed.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "659547 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01_gemini_slide_1_1_component_reveal.png",
-              "byteLength": 659547,
-              "sha256": "762399036ff6e727e1553ef4d78d4ca3cca104b2adc52d55548522856dede94b",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "6f1d2d132185b14c536bd8de0ef17f2a4542177d1256aa830585e2c53c25c2b6",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         }
@@ -181,77 +118,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:01:27.453Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after native-resolution visual comparison and OCR. Full 1024x572 canvas matches the source aspect and dark navy grid/teal microscope styling; title and OCR Combined Science A (Biology) | B1.1a | PAG B1 subtitle are complete, correctly spelled, and legible. This single-cell sequence contains the complete source state. No crop, zoom, dimming, spotlight, halo, focus box, malformed layout, or missing content observed; technical signature, resolution, source distinction, and canvas checks all passed.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "659547 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_01_gemini_slide_1_1_component_reveal.png",
-              "byteLength": 659547,
-              "sha256": "762399036ff6e727e1553ef4d78d4ca3cca104b2adc52d55548522856dede94b",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "6f1d2d132185b14c536bd8de0ef17f2a4542177d1256aa830585e2c53c25c2b6",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -671,77 +545,14 @@
           "generatedAt": "2026-09-01T07:12:40.902Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:40.902Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after source/prompt comparison, OCR, and original-detail visual inspection. Full 1024x572 canvas preserves the navy technical-grid theme, cyan border/linework, title typography, and source spatial rhythm. It correctly shows only the first comparison category (Observation, microscope icon, exact label) while omitting later categories and synthesis. Title and label are crisp and correct. No crop, zoom, spotlight, dimming, halo, focus box, malformed layout, or unintended retained content. All technical checks passed; held out of playback atomically until cells 2 and 3 are also approved.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "712572 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_1_comparison.png",
-              "byteLength": 712572,
-              "sha256": "7210e22bed364c8830fcfc465430bfe9dbd89be6b56425ae7507d43f3bba3c72",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         },
@@ -763,77 +574,14 @@
           "generatedAt": "2026-09-01T07:18:59.179Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:18:59.179Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 navy/cyan technical canvas retains cell 1 Observation in the same location, then adds the Measurement, Calculation, and Biological Reality pathway with exact labels/arrows and the exact explanatory sentence. The final Learning Objectives synthesis container remains omitted as requested. All content is crisp; no crop, spotlight, dimming, blur, halo, focus box, malformed layout, or duplicate image. Technical checks passed; sequence remains atomically withheld pending cell 3.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "786488 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_2_comparison.png",
-              "byteLength": 786488,
-              "sha256": "85a044cf1c3f1005e4f044b46fd708a99cbdf76a4e31403724819ea1a46eee4a",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         },
@@ -855,77 +603,14 @@
           "generatedAt": "2026-09-01T07:18:59.199Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:18:59.199Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 source-style canvas preserves every cell 2 element and position, then adds the final cyan Learning Objectives container with all three source objectives: magnification/actual size (B1.1a), metric-unit conversion, and standard form (Higher Tier). Text, labels, icons, equations, and arrows are complete and legible. No crop, focus treatment, dimming, halo, malformed layout, missing prior content, or factual error; technical and unique-build checks passed.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "825749 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_3_comparison.png",
-              "byteLength": 825749,
-              "sha256": "d30bfdf05212f955462361fbc231a2ed6696caf9615a9a0486f04c6e9115d8df",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           }
         }
@@ -959,77 +644,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:12:40.902Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after source/prompt comparison, OCR, and original-detail visual inspection. Full 1024x572 canvas preserves the navy technical-grid theme, cyan border/linework, title typography, and source spatial rhythm. It correctly shows only the first comparison category (Observation, microscope icon, exact label) while omitting later categories and synthesis. Title and label are crisp and correct. No crop, zoom, spotlight, dimming, halo, focus box, malformed layout, or unintended retained content. All technical checks passed; held out of playback atomically until cells 2 and 3 are also approved.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "712572 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_1_comparison.png",
-              "byteLength": 712572,
-              "sha256": "7210e22bed364c8830fcfc465430bfe9dbd89be6b56425ae7507d43f3bba3c72",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -1054,77 +676,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:18:59.179Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 navy/cyan technical canvas retains cell 1 Observation in the same location, then adds the Measurement, Calculation, and Biological Reality pathway with exact labels/arrows and the exact explanatory sentence. The final Learning Objectives synthesis container remains omitted as requested. All content is crisp; no crop, spotlight, dimming, blur, halo, focus box, malformed layout, or duplicate image. Technical checks passed; sequence remains atomically withheld pending cell 3.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "786488 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_2_comparison.png",
-              "byteLength": 786488,
-              "sha256": "85a044cf1c3f1005e4f044b46fd708a99cbdf76a4e31403724819ea1a46eee4a",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -1149,77 +708,14 @@
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-01T07:18:59.199Z",
-            "reviewer": "qa-hardening-agent",
-            "notes": "Approved after native visual, OCR, technical, and cumulative-sequence comparison. Full 1024x572 source-style canvas preserves every cell 2 element and position, then adds the final cyan Learning Objectives container with all three source objectives: magnification/actual size (B1.1a), metric-unit conversion, and standard form (Higher Tier). Text, labels, icons, equations, and arrows are complete and legible. No crop, focus treatment, dimming, halo, malformed layout, missing prior content, or factual error; technical and unique-build checks passed.",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
             "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "825749 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1024×572; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7902; target 1.7778"
-                },
-                {
-                  "id": "distinct-from-source",
-                  "passed": true,
-                  "detail": "A generated build must not be the unchanged source image."
-                },
-                {
-                  "id": "source-canvas-match",
-                  "passed": true,
-                  "detail": "generated aspect 1.7902; source aspect 1.7917"
-                },
-                {
-                  "id": "unique-build-image",
-                  "passed": true,
-                  "detail": "Generated build is distinct from the other cells in this sequence."
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_03_gemini_slide_3_3_comparison.png",
-              "byteLength": 825749,
-              "sha256": "d30bfdf05212f955462361fbc231a2ed6696caf9615a9a0486f04c6e9115d8df",
-              "dimensions": {
-                "format": "png",
-                "width": 1024,
-                "height": 572
-              },
-              "sourceHash": "5eaee6c54505777e918bbc5bb5f54d2650eca98d41104f44c7f86abc872cbd91",
-              "sourceDimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              }
+              "passed": true
             },
             "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
+              "passed": true
             }
           },
           "source": "gemini-image-chat",
@@ -1467,7 +963,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 0,
+        "approvedCellCount": 1,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -1666,10 +1162,56 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"Knowledge Checkpoint: Mini-Whiteboards Ready\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_05.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_05_gemini_slide_5_1_question_base_overlay.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_05.png",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:17:19.905Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          }
+        }
+      ],
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_5_1_question_base_overlay",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Prepare the unanswered questions",
+          "imageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_05_gemini_slide_5_1_question_base_overlay.png",
+          "sourceImageUrl": "/decks/Lesson_03_MAGNIFICATION_CALCULATIONS/slides/slide_05.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"Knowledge Checkpoint: Mini-Whiteboards Ready\".\nDeck context: 3. Magnification Calculations.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-02T14:16:10.613Z",
+            "reviewer": "auto-integrator",
+            "notes": "Approved full-canvas sequential build asset.",
+            "technical": {
+              "passed": true
+            },
+            "visual": {
+              "passed": true
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
         }
       ]
     },
@@ -3214,6 +2756,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-02T08:54:42.522Z"
+    "updatedAt": "2026-09-02T14:16:56.380Z"
   }
 }
