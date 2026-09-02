@@ -2805,7 +2805,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 1,
+        "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -2823,56 +2823,10 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Mini Plenary: Eat & Name the Organelles!\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Mini Plenary: Eat & Name the Organelles!\". Keep it verbatim in every build.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "approved",
-          "qaStatus": "approved",
+          "status": "planned",
+          "qaStatus": "not-started",
           "outputImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_09_gemini_slide_9_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_08b.png",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:17:19.899Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          }
-        }
-      ],
-      "progressiveBuilds": [
-        {
-          "id": "gemini_slide_9_1_question_base_overlay",
-          "version": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 1: Prepare the unanswered questions",
-          "imageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_09_gemini_slide_9_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_08b.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Mini Plenary: Eat & Name the Organelles!\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Mini Plenary: Eat & Name the Organelles!\". Keep it verbatim in every build.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:16:10.592Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "fade"
+          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_08b.png"
         }
       ]
     },
@@ -3783,7 +3737,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 1,
+        "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -4024,56 +3978,10 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Knowledge Check: Label the Eukaryotes\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 5 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "approved",
-          "qaStatus": "approved",
+          "status": "planned",
+          "qaStatus": "not-started",
           "outputImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_13_gemini_slide_13_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_12.png",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:17:19.900Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          }
-        }
-      ],
-      "progressiveBuilds": [
-        {
-          "id": "gemini_slide_13_1_question_base_overlay",
-          "version": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 1: Prepare the unanswered questions",
-          "imageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_13_gemini_slide_13_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_12.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Knowledge Check: Label the Eukaryotes\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 5 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:16:10.594Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "fade"
+          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_12.png"
         }
       ]
     },
@@ -4141,7 +4049,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 1,
+        "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -4298,56 +4206,10 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Knowledge Check: Label the Prokaryote\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "approved",
-          "qaStatus": "approved",
+          "status": "planned",
+          "qaStatus": "not-started",
           "outputImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_14_gemini_slide_14_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_13.png",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:17:19.900Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          }
-        }
-      ],
-      "progressiveBuilds": [
-        {
-          "id": "gemini_slide_14_1_question_base_overlay",
-          "version": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 1: Prepare the unanswered questions",
-          "imageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_14_gemini_slide_14_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_13.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Knowledge Check: Label the Prokaryote\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:16:10.594Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "fade"
+          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_13.png"
         }
       ]
     },
@@ -4482,7 +4344,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 1,
+        "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -4591,56 +4453,10 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Knowledge Checkpoint: Structure & Function\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "approved",
-          "qaStatus": "approved",
+          "status": "planned",
+          "qaStatus": "not-started",
           "outputImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_15_gemini_slide_15_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_14.png",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:17:19.900Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          }
-        }
-      ],
-      "progressiveBuilds": [
-        {
-          "id": "gemini_slide_15_1_question_base_overlay",
-          "version": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 1: Prepare the unanswered questions",
-          "imageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_15_gemini_slide_15_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_14.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Knowledge Checkpoint: Structure & Function\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:16:10.594Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "fade"
+          "sourceImageUrl": "/decks/Lesson_01_CELL_STRUCTURE/slides/slide_14.png"
         }
       ]
     },
@@ -4956,6 +4772,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-02T14:16:56.309Z"
+    "updatedAt": "2026-09-02T14:17:40.975Z"
   }
 }

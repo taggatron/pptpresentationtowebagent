@@ -849,7 +849,7 @@
         "planningSource": "gemini-multimodal-slide-analysis",
         "analyzedComponentCount": 9,
         "plannedCellCount": 1,
-        "approvedCellCount": 1,
+        "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -1287,59 +1287,13 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"Identify the microscope components\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 7 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Identify the microscope components\". Keep it verbatim in every build.\nThis is the title slide for \"2. Microscopes\". Preserve every visible source title word, including the final word; never shorten the deck title.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "approved",
-          "qaStatus": "approved",
+          "status": "planned",
+          "qaStatus": "not-started",
           "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04_gemini_slide_4_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04.png",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:17:19.903Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          }
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04.png"
         }
       ],
-      "title": "Identify the microscope components",
-      "progressiveBuilds": [
-        {
-          "id": "gemini_slide_4_1_question_base_overlay",
-          "version": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 1: Prepare the unanswered questions",
-          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04_gemini_slide_4_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_04.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"Identify the microscope components\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 7 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Identify the microscope components\". Keep it verbatim in every build.\nThis is the title slide for \"2. Microscopes\". Preserve every visible source title word, including the final word; never shorten the deck title.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:16:10.600Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "fade"
-        }
-      ]
+      "title": "Identify the microscope components"
     },
     {
       "number": 5,
@@ -3565,7 +3519,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 1,
+        "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -3646,56 +3600,10 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Calculate the missing variables\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 2 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "approved",
-          "qaStatus": "approved",
+          "status": "planned",
+          "qaStatus": "not-started",
           "outputImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11_gemini_slide_11_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11.png",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:17:19.903Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          }
-        }
-      ],
-      "progressiveBuilds": [
-        {
-          "id": "gemini_slide_11_1_question_base_overlay",
-          "version": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 1: Prepare the unanswered questions",
-          "imageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11_gemini_slide_11_1_question_base_overlay.png",
-          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Calculate the missing variables\".\nDeck context: 2. Microscopes.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 2 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-02T14:16:10.601Z",
-            "reviewer": "auto-integrator",
-            "notes": "Approved full-canvas sequential build asset.",
-            "technical": {
-              "passed": true
-            },
-            "visual": {
-              "passed": true
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "fade"
+          "sourceImageUrl": "/decks/Lesson_02_MICROSCOPES/slides/slide_11.png"
         }
       ]
     },
@@ -4427,6 +4335,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-02T14:16:56.358Z"
+    "updatedAt": "2026-09-02T14:17:41.021Z"
   }
 }
