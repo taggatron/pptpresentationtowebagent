@@ -19,6 +19,8 @@ const MIN_HEIGHT = 550;
 const TARGET_ASPECT = 16 / 9;
 const ASPECT_TOLERANCE = 0.08;
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export function sha256(buffer) {
   return crypto.createHash("sha256").update(buffer).digest("hex");
 }
@@ -293,15 +295,18 @@ export function createGeminiBrowserQueueRunner({
     let lastError = null;
     for (let attempt = 0; attempt < 2; attempt += 1) {
       try {
-        await tab.goto(GEMINI_APP_URL, { waitUntil: "domcontentloaded", timeoutMs: 25_000 });
-        await tab.playwright.waitForTimeout(1_000);
+        if (typeof tab.ensureReady === "function") {
+          await tab.ensureReady();
+        }
+        await tab.goto(GEMINI_APP_URL, { waitUntil: "domcontentloaded", timeout: 25_000 });
+        await sleep(1_000);
 
         const newChatBtn = tab.playwright
           .getByRole("button", { name: /New chat/i })
           .or(tab.playwright.locator('button[aria-label*="New chat" i]'));
         if ((await newChatBtn.count().catch(() => 0)) > 0) {
           await newChatBtn.first().click().catch(() => {});
-          await tab.playwright.waitForTimeout(800);
+          await sleep(800);
         }
 
         // Open Upload and tools menu and toggle "Create image" tool mode
@@ -310,8 +315,8 @@ export function createGeminiBrowserQueueRunner({
           .or(tab.playwright.getByRole("button", { name: /Upload and tools/i }))
           .first();
         if ((await uploadBtn.count().catch(() => 0)) > 0) {
-          await uploadBtn.click({ timeoutMs: 5_000 }).catch(() => {});
-          await tab.playwright.waitForTimeout(500);
+          await uploadBtn.click({ timeout: 5_000 }).catch(() => {});
+          await sleep(500);
 
           const createImageItem = tab.playwright
             .locator('[role="menuitemcheckbox"]:has-text("Create image")')
@@ -319,8 +324,8 @@ export function createGeminiBrowserQueueRunner({
           if ((await createImageItem.count().catch(() => 0)) > 0) {
             const isChecked = await createImageItem.getAttribute("aria-checked");
             if (isChecked !== "true") {
-              await createImageItem.click({ timeoutMs: 5_000 }).catch(() => {});
-              await tab.playwright.waitForTimeout(500);
+              await createImageItem.click({ timeout: 5_000 }).catch(() => {});
+              await sleep(500);
             }
           }
         }
@@ -328,7 +333,7 @@ export function createGeminiBrowserQueueRunner({
         const promptBox = tab.playwright
           .getByRole("textbox", { name: "Enter a prompt for Gemini" })
           .or(tab.playwright.locator('rich-textarea div[contenteditable="true"]'));
-        await promptBox.first().waitFor({ state: "visible", timeoutMs: 20_000 });
+        await promptBox.first().waitFor({ state: "visible", timeout: 20_000 });
         return;
       } catch (error) {
         lastError = error;
@@ -344,9 +349,9 @@ export function createGeminiBrowserQueueRunner({
         .locator('button[aria-label*="Upload and tools" i]')
         .or(tab.playwright.getByRole("button", { name: /Upload and tools/i }))
         .first();
-      await uploadBtn.waitFor({ state: "visible", timeoutMs: 15_000 });
-      await uploadBtn.click({ timeoutMs: 10_000 });
-      await tab.playwright.waitForTimeout(500);
+      await uploadBtn.waitFor({ state: "visible", timeout: 15_000 });
+      await uploadBtn.click({ timeout: 10_000 });
+      await sleep(500);
 
       // 2. Locate the "Upload files" action item
       const uploadFilesBtn = tab.playwright
@@ -355,19 +360,19 @@ export function createGeminiBrowserQueueRunner({
         )
         .or(tab.playwright.getByRole("menuitem", { name: /Upload files/i }))
         .first();
-      await uploadFilesBtn.waitFor({ state: "visible", timeoutMs: 10_000 });
+      await uploadFilesBtn.waitFor({ state: "visible", timeout: 10_000 });
 
       // 3. Trigger native filechooser and set the file
       const [fileChooser] = await Promise.all([
-        tab.playwright.waitForEvent("filechooser", { timeoutMs: 15_000 }),
-        uploadFilesBtn.click({ timeoutMs: 10_000 })
+        tab.playwright.waitForEvent("filechooser", { timeout: 15_000 }),
+        uploadFilesBtn.click({ timeout: 10_000 })
       ]);
       await fileChooser.setFiles([sourcePath]);
 
       // 4. Robust upload completion check: wait until upload spinners clear and thumbnail is fully rendered
       let stableReadyChecks = 0;
       for (let index = 0; index < 60; index += 1) {
-        await tab.playwright.waitForTimeout(500);
+        await sleep(500);
         const status = await tab.playwright
           .evaluate(() => {
             const spinners = document.querySelectorAll(
@@ -390,7 +395,7 @@ export function createGeminiBrowserQueueRunner({
           stableReadyChecks += 1;
           if (stableReadyChecks >= 3) {
             // Stable for 1.5 continuous seconds after upload spinner disappeared
-            await tab.playwright.waitForTimeout(2_000);
+            await sleep(2_000);
             return;
           }
         } else {
@@ -399,7 +404,7 @@ export function createGeminiBrowserQueueRunner({
       }
 
       // Final fallback buffer
-      await tab.playwright.waitForTimeout(3_000);
+      await sleep(3_000);
     });
   }
 
@@ -407,6 +412,9 @@ export function createGeminiBrowserQueueRunner({
     const startedAt = Date.now();
     let lastCounts = null;
     while (Date.now() - startedAt < timeoutMs) {
+      const stopButton = tab.playwright.getByRole("button", { name: /Stop/i });
+      const isGenerating = (await stopButton.count().catch(() => 0)) > 0;
+
       const imageButtons = tab.playwright.getByRole("button", {
         name: /AI generated/
       });
@@ -415,15 +423,30 @@ export function createGeminiBrowserQueueRunner({
       });
       const imageCount = await imageButtons.count().catch(() => 0);
       const copyCount = await copyButtons.count().catch(() => 0);
-      lastCounts = { imageCount, copyCount };
-      if (imageCount > baseline && copyCount > baseline) {
-        // The full-resolution clipboard payload is the authoritative readiness
-        // signal; DOM natural-size inspection is unreliable on Gemini's long
-        // sidebar layout and is validated after copying instead.
-        await tab.playwright.waitForTimeout(750);
+
+      const domImageCount = await tab.playwright
+        .evaluate(() => {
+          const imgs = Array.from(
+            document.querySelectorAll(
+              'model-response img, message-content img, generated-image img, img[src*="googleusercontent"], img[src*="blob:"], .image-container img'
+            )
+          );
+          return imgs.filter(
+            (img) =>
+              (img.naturalWidth > 200 || img.width > 200) &&
+              (img.naturalHeight > 200 || img.height > 200) &&
+              !img.src.includes("avatar") &&
+              !img.src.includes("profile")
+          ).length;
+        })
+        .catch(() => 0);
+
+      lastCounts = { imageCount, copyCount, domImageCount };
+      if ((imageCount > baseline || copyCount > baseline || domImageCount > 0) && !isGenerating) {
+        await sleep(1_000);
         return lastCounts;
       }
-      await tab.playwright.waitForTimeout(1_500);
+      await sleep(1_500);
     }
     throw new Error(
       `Timed out waiting for a generated image and Copy image control; last counts ${JSON.stringify(lastCounts)}`
@@ -437,9 +460,9 @@ export function createGeminiBrowserQueueRunner({
         await tab.clipboard.writeText(`gemini-export-${workerName}-${Date.now()}`);
         const copyBtn = tab.playwright.getByRole("button", { name: "Copy image" });
         if ((await copyBtn.count().catch(() => 0)) > 0) {
-          await copyBtn.last().click({ timeoutMs: 5_000 });
+          await copyBtn.last().click({ timeout: 5_000 });
           for (let index = 0; index < 12; index += 1) {
-            await tab.playwright.waitForTimeout(300);
+            await sleep(300);
             const clipboardItems = await tab.clipboard.read();
             const imageEntry = clipboardItems
               .flatMap((item) => item.entries || [])
@@ -523,37 +546,37 @@ export function createGeminiBrowserQueueRunner({
       await promptBox.focus().catch(() => {});
       await tab.playwright.keyboard.press("End").catch(() => {});
       await tab.playwright.keyboard.insertText(prompt);
-      await tab.playwright.waitForTimeout(400);
+      await sleep(400);
+
+      const initialPromptCount = await tab.playwright
+        .getByRole("button", { name: "Copy prompt" })
+        .count()
+        .catch(() => 0);
 
       const sendButton = tab.playwright.getByRole("button", {
         name: "Send message"
       });
       if (await sendButton.isVisible().catch(() => false)) {
-        await sendButton.click({ timeoutMs: 10_000 }).catch(() => {});
+        await sendButton.click({ timeout: 10_000 }).catch(() => {});
       } else {
         await tab.playwright.keyboard.press("Enter").catch(() => {});
       }
 
-      // Gemini occasionally accepts the click at the browser layer before its
-      // composer is ready, leaving the entire prompt visibly unsent. Confirm
-      // that the composer clears or a new submitted-prompt control appears;
-      // retry the explicit Send button once instead of waiting three minutes
-      // for an image that was never requested.
       let promptSubmitted = false;
       for (let check = 0; check < 24; check += 1) {
-        await tab.playwright.waitForTimeout(500);
+        await sleep(500);
         const composerText = await promptBox.textContent().catch(() => "");
         const promptCount = await tab.playwright
           .getByRole("button", { name: "Copy prompt" })
           .count()
-          .catch(() => submittedPromptCount);
-        if (!String(composerText || "").trim() || promptCount > submittedPromptCount) {
+          .catch(() => initialPromptCount);
+        if (!String(composerText || "").trim() || promptCount > initialPromptCount) {
           promptSubmitted = true;
           break;
         }
         if (check === 9) {
-          await sendButton.waitFor({ state: "visible", timeoutMs: 10_000 });
-          await sendButton.click({ timeoutMs: 15_000 });
+          await sendButton.waitFor({ state: "visible", timeout: 10_000 }).catch(() => {});
+          await sendButton.click({ timeout: 15_000 }).catch(() => {});
         }
       }
       if (!promptSubmitted) {
@@ -624,6 +647,9 @@ export function createGeminiBrowserQueueRunner({
 
       let processedCellCount = 0;
       try {
+        if (typeof tab.ensureReady === "function") {
+          await tab.ensureReady();
+        }
         await prepareFreshImageChat(tab);
         await uploadSlideSource(tab, slide.sourcePath);
         const slideHashes = new Set();
@@ -657,9 +683,6 @@ export function createGeminiBrowserQueueRunner({
           await flushProgress();
         }
       } catch (error) {
-        // Earlier cells on this slide may already have been saved. Count only
-        // the current and later cells so progress remains truthful and a retry
-        // queue can pick up exactly what is still missing.
         const failedCellIds = slide.cells
           .slice(processedCellCount)
           .map((cell) => cell.id);
@@ -670,7 +693,7 @@ export function createGeminiBrowserQueueRunner({
           deckId: slide.deckId,
           slideNum: slide.slideNum,
           cellIds: failedCellIds,
-          error: String(error)
+          error: String(error?.message || error)
         });
         await flushProgress();
       }
@@ -688,8 +711,11 @@ export function createGeminiBrowserQueueRunner({
     let lastError = null;
     for (let attempt = 0; attempt < 2; attempt += 1) {
       try {
-        await tab.goto(GEMINI_APP_URL, { waitUntil: "domcontentloaded", timeoutMs: 25_000 });
-        await tab.playwright.waitForTimeout(1_000);
+        if (typeof tab.ensureReady === "function") {
+          await tab.ensureReady();
+        }
+        await tab.goto(GEMINI_APP_URL, { waitUntil: "domcontentloaded", timeout: 25_000 });
+        await sleep(1_000);
 
         const newChatBtn = tab.playwright
           .getByRole("button", { name: /New chat/i })
@@ -701,7 +727,7 @@ export function createGeminiBrowserQueueRunner({
         const promptBox = tab.playwright
           .getByRole("textbox", { name: "Enter a prompt for Gemini" })
           .or(tab.playwright.locator('rich-textarea div[contenteditable="true"]'));
-        await promptBox.first().waitFor({ state: "visible", timeoutMs: 20_000 });
+        await promptBox.first().waitFor({ state: "visible", timeout: 20_000 });
         return;
       } catch (error) {
         lastError = error;
@@ -712,36 +738,37 @@ export function createGeminiBrowserQueueRunner({
 
   async function waitForResponseText(tab, timeoutMs = 90_000) {
     const startedAt = Date.now();
-    await tab.playwright.waitForTimeout(2_000);
+    await sleep(2_000);
 
     while (Date.now() - startedAt < timeoutMs) {
       const stopButton = tab.playwright.getByRole("button", { name: /Stop/i });
-      const spinner = tab.playwright.locator(
-        'mat-progress-spinner, [role="progressbar"], .loading-indicator'
-      );
-      const isGenerating =
-        (await stopButton.count().catch(() => 0)) > 0 ||
-        (await spinner.count().catch(() => 0)) > 0;
+      const isGenerating = (await stopButton.count().catch(() => 0)) > 0;
 
       // Extract all message content candidates
-      const texts = await tab.playwright
+      const candidate = await tab.playwright
         .evaluate(() => {
           const elements = Array.from(
-            document.querySelectorAll("message-content .markdown, message-content, model-response, .markdown")
+            document.querySelectorAll(
+              "message-content .markdown, message-content, model-response, .markdown, .model-response-text, [data-test-id='model-response-text'], div, p"
+            )
           );
-          return elements
-            .map((el) => (el.innerText || "").trim())
-            .filter((t) => t.length > 20);
-        })
-        .catch(() => []);
-
-      for (let i = texts.length - 1; i >= 0; i -= 1) {
-        const candidate = texts[i];
-        if (candidate.includes("schemaVersion") || (candidate.includes("{") && candidate.includes("}"))) {
-          if (!isGenerating) {
-            return candidate;
+          for (let i = elements.length - 1; i >= 0; i -= 1) {
+            const t = (elements[i].innerText || "").trim();
+            if (
+              t.includes("schemaVersion") &&
+              !t.includes("Return JSON only") &&
+              t.includes("{") &&
+              t.includes("}")
+            ) {
+              return t;
+            }
           }
-        }
+          return null;
+        })
+        .catch(() => null);
+
+      if (candidate && !isGenerating) {
+        return candidate;
       }
 
       // Check for Gemini error toast / snackbar
@@ -759,7 +786,7 @@ export function createGeminiBrowserQueueRunner({
         throw new Error("Gemini returned 'Check your internet connection and try again' error toast.");
       }
 
-      await tab.playwright.waitForTimeout(1_500);
+      await sleep(1_500);
     }
     throw new Error("Timed out waiting for Gemini text response.");
   }
@@ -778,13 +805,13 @@ export function createGeminiBrowserQueueRunner({
         await promptBox.focus().catch(() => {});
         await tab.playwright.keyboard.press("End").catch(() => {});
         await tab.playwright.keyboard.insertText(slideItem.prompt);
-        await tab.playwright.waitForTimeout(400);
+        await sleep(400);
 
         const sendButton = tab.playwright.getByRole("button", {
           name: "Send message"
         });
         if (await sendButton.isVisible().catch(() => false)) {
-          await sendButton.click({ timeoutMs: 10_000 }).catch(() => {});
+          await sendButton.click({ timeout: 10_000 }).catch(() => {});
         } else {
           await tab.playwright.keyboard.press("Enter").catch(() => {});
         }
@@ -816,7 +843,7 @@ export function createGeminiBrowserQueueRunner({
         };
       } catch (error) {
         lastError = error;
-        await tab.playwright.waitForTimeout(2_000);
+        await sleep(2_000);
       }
     }
     return {
@@ -847,19 +874,34 @@ export function createGeminiBrowserQueueRunner({
       };
       await flushProgress();
 
-      const result = await analyzeSlideAsset(tab, slideItem, workerName);
-      if (result.ok) {
-        progress.saved += 1;
-        worker.saved += 1;
-        worker.lastSaved = result;
-      } else {
+      try {
+        if (typeof tab.ensureReady === "function") {
+          await tab.ensureReady();
+        }
+        const result = await analyzeSlideAsset(tab, slideItem, workerName);
+        if (result.ok) {
+          progress.saved += 1;
+          worker.saved += 1;
+          worker.lastSaved = result;
+        } else {
+          progress.failed += 1;
+          worker.failed += 1;
+          progress.failures.push({
+            workerName,
+            deckId: slideItem.deckId,
+            slideNum: slideItem.slideNum,
+            ...result
+          });
+        }
+      } catch (err) {
         progress.failed += 1;
         worker.failed += 1;
         progress.failures.push({
           workerName,
           deckId: slideItem.deckId,
           slideNum: slideItem.slideNum,
-          ...result
+          ok: false,
+          error: String(err?.message || err)
         });
       }
       await flushProgress();
@@ -882,12 +924,89 @@ export function createGeminiBrowserQueueRunner({
   };
 }
 
+export function createTabSession(context) {
+  let page = null;
+
+  async function getPage() {
+    if (!page || page.isClosed()) {
+      page = await context.newPage();
+    }
+    return page;
+  }
+
+  return {
+    async ensureReady() {
+      return await getPage();
+    },
+    async url() {
+      const p = await getPage();
+      return p.url();
+    },
+    async goto(url, opts) {
+      const p = await getPage();
+      return await p.goto(url, opts);
+    },
+    async reload(opts) {
+      const p = await getPage();
+      return await p.reload(opts);
+    },
+    get playwright() {
+      return page;
+    },
+    async close() {
+      if (page && !page.isClosed()) {
+        await page.close().catch(() => {});
+      }
+      page = null;
+    },
+    clipboard: {
+      writeText: async (text) => {
+        const p = await getPage();
+        await p.evaluate((t) => navigator.clipboard.writeText(t), text).catch(() => {});
+      },
+      read: async () => {
+        const p = await getPage();
+        return await p
+          .evaluate(async () => {
+            try {
+              const items = await navigator.clipboard.read();
+              const results = [];
+              for (const item of items) {
+                const entries = [];
+                for (const type of item.types) {
+                  if (type === "image/png") {
+                    const blob = await item.getType(type);
+                    const reader = new FileReader();
+                    const base64 = await new Promise((resolve) => {
+                      reader.onloadend = () => resolve(reader.result.split(",")[1]);
+                      reader.readAsDataURL(blob);
+                    });
+                    entries.push({ mimeType: type, base64 });
+                  }
+                }
+                results.push({ entries });
+              }
+              return results;
+            } catch {
+              return [];
+            }
+          })
+          .catch(() => []);
+      }
+    }
+  };
+}
+
 export function wrapPlaywrightPage(page) {
   return {
+    ensureReady: async () => page,
     url: () => page.url(),
     goto: (url, opts) => page.goto(url, opts),
     reload: (opts) => page.reload(opts),
     playwright: page,
+    close: async () => {
+      if (page && !page.isClosed()) await page.close().catch(() => {});
+    },
     clipboard: {
       writeText: async (text) => {
         await page.evaluate((t) => navigator.clipboard.writeText(t), text).catch(() => {});
@@ -981,14 +1100,12 @@ export async function runParallelBrowserQueue({
     const startupDelayMs = i * 4_000; // Stagger worker startups by 4 seconds
 
     workers.push(async () => {
-      let page = null;
+      const tab = createTabSession(context);
       try {
         if (startupDelayMs > 0) {
-          await new Promise((res) => setTimeout(res, startupDelayMs));
+          await sleep(startupDelayMs);
         }
-
-        page = await context.newPage();
-        const tab = wrapPlaywrightPage(page);
+        await tab.ensureReady();
 
         if (mode === "analysis" || mode === "all") {
           const queue = analysisQueues[i] || [];
@@ -1012,7 +1129,7 @@ export async function runParallelBrowserQueue({
       } catch (err) {
         console.warn(`[${workerName}] Worker encountered error: ${err.message}`);
       } finally {
-        if (page) await page.close().catch(() => {});
+        await tab.close().catch(() => {});
       }
     });
   }
