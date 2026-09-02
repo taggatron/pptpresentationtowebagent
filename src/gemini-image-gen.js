@@ -352,6 +352,26 @@ async function captureGeneratedGeminiImage(
   return null;
 }
 
+function createMutex() {
+  let tail = Promise.resolve();
+  return async (operation) => {
+    let release;
+    const mine = new Promise((resolve) => {
+      release = resolve;
+    });
+    const before = tail;
+    tail = mine;
+    await before.catch(() => {});
+    try {
+      return await operation();
+    } finally {
+      release();
+    }
+  };
+}
+
+const withGeminiLock = createMutex();
+
 export async function generateGeminiSlideImage(
   deckId,
   slideNum,
@@ -370,76 +390,78 @@ export async function generateGeminiSlideImage(
   let protectedVideoDetected = false;
 
   if (dispatch) {
-    try {
-      const response = await fetch(`${cdpEndpoint}/json/list`).catch(() => null);
-      if (response?.ok) {
-        const tabs = await response.json();
-        const geminiTab = tabs.find(
-          (tab) => typeof tab.url === "string" && tab.url.includes("gemini.google.com")
-        );
+    await withGeminiLock(async () => {
+      try {
+        const response = await fetch(`${cdpEndpoint}/json/list`).catch(() => null);
+        if (response?.ok) {
+          const tabs = await response.json();
+          const geminiTab = tabs.find(
+            (tab) => typeof tab.url === "string" && tab.url.includes("gemini.google.com")
+          );
 
-        if (geminiTab) {
-          const browser = await chromium.connectOverCDP(cdpEndpoint);
-          try {
-            const context = browser.contexts()[0];
-            let page = null;
+          if (geminiTab) {
+            const browser = await chromium.connectOverCDP(cdpEndpoint);
+            try {
+              const context = browser.contexts()[0];
+              let page = null;
 
-            if (context) {
-              cdpConnected = true;
+              if (context) {
+                cdpConnected = true;
 
-              // Always use a new Images tab. Reusing or navigating an existing
-              // Gemini tab can interrupt a video generation that is still in
-              // progress in the user's session.
-              page = await context.newPage();
-              await page.goto("https://gemini.google.com/images", {
-                waitUntil: "domcontentloaded",
-                timeout: 12000
-              });
+                // Always use a new Images tab. Reusing or navigating an existing
+                // Gemini tab can interrupt a video generation that is still in
+                // progress in the user's session.
+                page = await context.newPage();
+                await page.goto("https://gemini.google.com/images", {
+                  waitUntil: "domcontentloaded",
+                  timeout: 12000
+                });
 
-              imageAttached = await attachSlideImage(page, imagePath);
-              if (!imageAttached) {
-                throw new Error("Gemini image upload control was not available.");
-              }
+                imageAttached = await attachSlideImage(page, imagePath);
+                if (!imageAttached) {
+                  throw new Error("Gemini image upload control was not available.");
+                }
 
-              const baseline = await snapshotGeneratedMedia(page);
-              await enterAndSendPrompt(page, finalPrompt);
-              promptSent = true;
+                const baseline = await snapshotGeneratedMedia(page);
+                await enterAndSendPrompt(page, finalPrompt);
+                promptSent = true;
 
-              if (decksDir) {
-                const capturedMedia = await captureGeneratedGeminiImage(
-                  page,
-                  deckId,
-                  slideNum,
-                  decksDir,
-                  baseline
-                );
-                if (capturedMedia?.kind === "image") {
-                  capturedImageUrl = capturedMedia.imageUrl;
-                } else if (capturedMedia?.kind === "video") {
-                  protectedVideoDetected = true;
-                  notice =
-                    "Gemini returned a video; it was preserved in Gemini and was not used to replace the still-image build.";
+                if (decksDir) {
+                  const capturedMedia = await captureGeneratedGeminiImage(
+                    page,
+                    deckId,
+                    slideNum,
+                    decksDir,
+                    baseline
+                  );
+                  if (capturedMedia?.kind === "image") {
+                    capturedImageUrl = capturedMedia.imageUrl;
+                  } else if (capturedMedia?.kind === "video") {
+                    protectedVideoDetected = true;
+                    notice =
+                      "Gemini returned a video; it was preserved in Gemini and was not used to replace the still-image build.";
+                  }
                 }
               }
-            }
-          } finally {
-            try {
-              if (typeof browser.disconnect === "function") {
-                await browser.disconnect();
+            } finally {
+              try {
+                if (typeof browser.disconnect === "function") {
+                  await browser.disconnect();
+                }
+              } catch {
+                // Keep browser active
               }
-            } catch {
-              // Keep browser active
             }
+          } else {
+            notice = "Chrome is connected, but no Gemini tab is open.";
           }
         } else {
-          notice = "Chrome is connected, but no Gemini tab is open.";
+          notice = "Gemini image chat is ready as the default pathway; open Chrome with CDP to dispatch.";
         }
-      } else {
-        notice = "Gemini image chat is ready as the default pathway; open Chrome with CDP to dispatch.";
+      } catch (error) {
+        notice = error.message;
       }
-    } catch (error) {
-      notice = error.message;
-    }
+    });
   } else {
     notice = "Dispatch was disabled for this run.";
   }

@@ -241,3 +241,38 @@ test("processSerialBuildSteps delegates to the real slide animation planner inst
   assert.equal(allIds.includes("header") && allIds.includes("footer_summary"), false);
 });
 
+test("queue runner configures 1 Gemini call at a time with concurrency 1", async () => {
+  const {
+    buildAnalysisQueues,
+    buildMissingQueues,
+    runParallelBrowserQueue,
+    createGeminiBrowserQueueRunner
+  } = await import("../scripts/gemini-browser-queue-runner.mjs");
+
+  const repoRoot = process.cwd();
+  const deckGroups = [["Lesson_01_CELL_STRUCTURE"]];
+  const analysisQueues = await buildAnalysisQueues(repoRoot, deckGroups);
+  const missingQueues = await buildMissingQueues(repoRoot, deckGroups);
+
+  assert.equal(analysisQueues.length, 1);
+  assert.equal(missingQueues.length, 1);
+
+  const runner = createGeminiBrowserQueueRunner({
+    repoRoot,
+    totalPlanned: 5
+  });
+  assert.equal(runner.progress.totalPlanned, 5);
+  assert.equal(runner.progress.saved, 0);
+  assert.equal(runner.progress.failed, 0);
+
+  // When no CDP port is active, it reports clear status without crashing
+  const result = await runParallelBrowserQueue({
+    repoRoot,
+    cdpEndpoint: "http://127.0.0.1:59999",
+    concurrency: 1
+  });
+  assert.equal(result.success, false);
+  assert.match(result.error, /Could not connect to Chrome CDP/);
+});
+
+

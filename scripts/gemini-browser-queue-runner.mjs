@@ -927,7 +927,7 @@ export function wrapPlaywrightPage(page) {
 export async function runParallelBrowserQueue({
   repoRoot = process.cwd(),
   cdpEndpoint = "http://127.0.0.1:9333",
-  concurrency = 4,
+  concurrency = 1,
   mode = "all"
 } = {}) {
   const decksRoot = path.join(repoRoot, "public", "decks");
@@ -950,7 +950,7 @@ export async function runParallelBrowserQueue({
       : analysisQueues.reduce((sum, q) => sum + q.length, 0) +
         missingQueues.reduce((sum, q) => sum + q.reduce((c, s) => c + s.cells.length, 0), 0);
 
-  console.log(`[Queue Runner] Initializing parallel queue runner with ${concurrency} workers.`);
+  console.log(`[Queue Runner] Initializing queue runner with ${concurrency} worker(s) (1 Gemini call at a time).`);
   console.log(`[Queue Runner] Mode: ${mode}, Total items planned: ${totalPlanned}`);
 
   const runner = createGeminiBrowserQueueRunner({
@@ -1019,7 +1019,7 @@ export async function runParallelBrowserQueue({
 
   await Promise.allSettled(workers.map((fn) => fn()));
 
-  console.log(`[Queue Runner] Parallel queue completed. Saved: ${runner.progress.saved}, Failed: ${runner.progress.failed}`);
+  console.log(`[Queue Runner] Queue completed. Saved: ${runner.progress.saved}, Failed: ${runner.progress.failed}`);
   return {
     success: true,
     progress: runner.progress
@@ -1028,7 +1028,7 @@ export async function runParallelBrowserQueue({
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const mode = process.argv[2] || "all";
-  const concurrency = Number(process.argv[3]) || 4;
+  const concurrency = Number(process.argv[3]) || 1;
   runParallelBrowserQueue({ mode, concurrency }).catch((error) => {
     console.error("[Queue Runner] Error:", error);
     process.exitCode = 1;
