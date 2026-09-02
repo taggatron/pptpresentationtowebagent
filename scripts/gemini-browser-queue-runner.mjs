@@ -531,10 +531,15 @@ export function createGeminiBrowserQueueRunner({
     const sourceHash = sha256(sourceBuffer);
 
     for (let attempt = 0; attempt < 2; attempt += 1) {
-      const baseline = await tab.playwright
+      const baselineCopy = await tab.playwright
+        .getByRole("button", { name: "Copy image" })
+        .count()
+        .catch(() => 0);
+      const baselineAi = await tab.playwright
         .getByRole("button", { name: /AI generated/ })
         .count()
         .catch(() => 0);
+      const baseline = Math.max(baselineCopy, baselineAi);
       const prompt =
         attempt === 0
           ? cell.prompt
@@ -924,12 +929,26 @@ export function createGeminiBrowserQueueRunner({
   };
 }
 
-export function createTabSession(context) {
+export function createTabSession(initialContext, cdpEndpoint = "http://127.0.0.1:9333") {
+  let context = initialContext;
   let page = null;
 
+  async function getContext() {
+    try {
+      if (!context || !context.browser() || !context.browser().isConnected()) {
+        const browser = await chromium.connectOverCDP(cdpEndpoint);
+        context = browser.contexts()[0];
+      }
+    } catch {
+      // Return existing context if reconnect fails
+    }
+    return context;
+  }
+
   async function getPage() {
+    const ctx = await getContext();
     if (!page || page.isClosed()) {
-      page = await context.newPage();
+      page = await ctx.newPage();
     }
     return page;
   }
@@ -1100,7 +1119,7 @@ export async function runParallelBrowserQueue({
     const startupDelayMs = i * 4_000; // Stagger worker startups by 4 seconds
 
     workers.push(async () => {
-      const tab = createTabSession(context);
+      const tab = createTabSession(context, cdpEndpoint);
       try {
         if (startupDelayMs > 0) {
           await sleep(startupDelayMs);
