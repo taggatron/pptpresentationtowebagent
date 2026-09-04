@@ -3,6 +3,10 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractPptxDeck } from "./pptx-extractor.js";
+import {
+  ingestPowerPointDeck,
+  isPowerPointAvailable
+} from "./powerpoint-slide-agent.js";
 import { generateSlideInteractivity } from "./gemini-segmenter.js";
 import { editSlideComponentViaGemini } from "./gemini-editor.js";
 import { generateGeminiSlideImage } from "./gemini-image-gen.js";
@@ -839,6 +843,44 @@ export function createApp({
       const enrichedManifest = await generateSlideInteractivity(manifest.id, decksDir, { pathway });
       res.json({ success: true, pathway, deck: enrichedManifest || manifest });
     } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.get("/api/powerpoint/status", async (req, res) => {
+    try {
+      const available = await isPowerPointAvailable();
+      res.json({
+        available,
+        platform: process.platform,
+        provider: "Microsoft PowerPoint Scripting & PDFKit Vector Engine"
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.post("/api/powerpoint/ingest", async (req, res) => {
+    try {
+      const { pptxPath, deckId, scale, forcePowerPointRender, extractAnimations } = req.body;
+      if (!pptxPath) {
+        return res.status(400).json({ error: "pptxPath is required" });
+      }
+
+      const manifest = await ingestPowerPointDeck(pptxPath, decksDir, {
+        deckId,
+        scale: Number(scale) || 2.0,
+        forcePowerPointRender: Boolean(forcePowerPointRender),
+        extractAnimations: extractAnimations !== false
+      });
+
+      res.json({
+        success: true,
+        deck: manifest,
+        message: `Successfully ingested ${manifest.totalSlides} slides with animation stages.`
+      });
+    } catch (error) {
+      console.error("[Server] PowerPoint ingestion failed:", error);
       res.status(500).json({ error: error.message });
     }
   });

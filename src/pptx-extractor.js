@@ -114,6 +114,15 @@ export async function extractPptxDeck(pptxPath, outputBaseDir) {
     }
   }
 
+  // If no embedded whole-slide images were found in the PPTX relationships,
+  // invoke the native PowerPoint-to-slide agent to render high-resolution vector slides
+  // and extract native animations.
+  if (slides.length === 0) {
+    console.log(`[PPTX Extractor] No embedded whole-slide images found in OpenXML rels for ${deckId}. Delegating to PowerPoint slide agent...`);
+    const { ingestPowerPointDeck } = await import("./powerpoint-slide-agent.js");
+    return await ingestPowerPointDeck(pptxPath, outputBaseDir);
+  }
+
   const manifest = {
     ...(previousManifest || {}),
     id: deckId,

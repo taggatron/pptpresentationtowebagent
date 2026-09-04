@@ -378,6 +378,74 @@
       </div>
     </div>
 
+    <!-- PowerPoint to Slide Agent Panel -->
+    <section class="ppt-agent-section" style="background:var(--bg-card); border:1px solid var(--border-highlight); border-radius:14px; padding:1.5rem; margin-bottom:2rem; box-shadow:0 8px 32px rgba(0,0,0,0.25);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <h2 style="font-family:'Outfit', sans-serif; font-size:1.35rem; color:#fff;">⚡ PowerPoint to Slide Agent</h2>
+            <span class="badge badge-purple" style="font-size:0.75rem; text-transform:none;">High-Res Vector & Native Animation Extraction</span>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.25rem;">
+            Converts any PowerPoint deck (<code style="color:#a5b4fc;">.pptx</code>) into high-resolution Retina slide images and extracts sequential animation builds for interactive web playback.
+          </p>
+        </div>
+        <div id="pptAgentEngineStatus" style="font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center; gap:0.4rem; background:rgba(255,255,255,0.04); padding:0.4rem 0.8rem; border-radius:6px; border:1px solid var(--border-subtle);">
+          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+          <span>Engine: Microsoft PowerPoint & Native PDFKit Ready</span>
+        </div>
+      </div>
+
+      <form id="pptIngestForm" style="display:grid; grid-template-columns:1fr auto; gap:1rem; align-items:start;" onsubmit="handlePptIngest(event)">
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          <div style="position:relative;">
+            <input
+              type="text"
+              id="pptFilePathInput"
+              placeholder="Enter absolute path to PPTX file (e.g. /Users/danieltagg/Desktop/digital_literacy_conference_deck.pptx)"
+              style="width:100%; padding:0.75rem 1rem; background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:8px; color:#fff; font-family:'Inter',sans-serif; font-size:0.875rem; outline:none; transition:border-color 0.2s;"
+              onfocus="this.style.borderColor='var(--accent-primary)'"
+              onblur="this.style.borderColor='var(--border-subtle)'"
+              required
+            />
+          </div>
+          <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; font-size:0.75rem;">
+            <span style="color:var(--text-muted);">Quick Sample Decks:</span>
+            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="setSamplePath('/Users/danieltagg/Desktop/digital_literacy_conference_deck.pptx')">Digital Literacy Deck (22 slides)</button>
+            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="setSamplePath('/Users/danieltagg/Desktop/Year_10_Science_Masterclass.pptx')">Year 10 Science Deck</button>
+            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="setSamplePath('/Users/danieltagg/Desktop/First Pass - Maximising successful first assignment submissions.pptx')">Assignment Strategy Deck</button>
+          </div>
+          <div style="display:flex; gap:1.5rem; align-items:center; margin-top:0.25rem; font-size:0.8rem; color:var(--text-muted);">
+            <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
+              <input type="checkbox" id="extractAnimationsCheck" checked style="accent-color:var(--accent-primary);" />
+              <span>Extract & synthesize sequential animations (<code style="color:#a5b4fc;">serialAnimation</code>)</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
+              <input type="checkbox" id="retinaScaleCheck" checked style="accent-color:var(--accent-primary);" />
+              <span>2.0x Retina High-Resolution Scale</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" id="pptSubmitBtn" class="btn btn-primary" style="padding:0.75rem 1.5rem; font-size:0.9rem; white-space:nowrap;">
+            <span>Run PowerPoint Agent</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="pptAgentStatusBox" style="display:none; margin-top:1rem; padding:0.85rem 1rem; border-radius:8px; font-size:0.85rem; background:rgba(0,0,0,0.5); border:1px solid var(--border-subtle);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div id="pptAgentStatusText" style="color:#a5b4fc; font-weight:500;">
+            <span class="pulse"></span> Agent running...
+          </div>
+          <a id="pptAgentPresentLink" href="#" target="_blank" class="btn btn-primary" style="display:none; padding:0.35rem 0.8rem; font-size:0.8rem;">
+            Open in Player ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
     <nav class="deck-nav" id="deckNav"></nav>
 
     <div class="slides-grid" id="slidesGrid"></div>
@@ -488,6 +556,68 @@
         `;
         grid.appendChild(card);
       });
+    }
+
+    function setSamplePath(pathStr) {
+      const input = document.getElementById("pptFilePathInput");
+      if (input) {
+        input.value = pathStr;
+        input.focus();
+      }
+    }
+
+    async function handlePptIngest(event) {
+      event.preventDefault();
+      const pathInput = document.getElementById("pptFilePathInput");
+      const extractAnim = document.getElementById("extractAnimationsCheck")?.checked !== false;
+      const retinaScale = document.getElementById("retinaScaleCheck")?.checked ? 2.0 : 1.5;
+      const statusBox = document.getElementById("pptAgentStatusBox");
+      const statusText = document.getElementById("pptAgentStatusText");
+      const presentLink = document.getElementById("pptAgentPresentLink");
+      const submitBtn = document.getElementById("pptSubmitBtn");
+
+      const pptxPath = pathInput.value.trim();
+      if (!pptxPath) return;
+
+      statusBox.style.display = "block";
+      statusBox.style.borderColor = "var(--border-highlight)";
+      statusText.innerHTML = '<span class="pulse"></span> Agent running: Rasterizing slides & extracting animations via PowerPoint engine...';
+      presentLink.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.6";
+
+      try {
+        const res = await fetch("/api/powerpoint/ingest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            pptxPath,
+            scale: retinaScale,
+            extractAnimations: extractAnim
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || "Ingestion failed");
+        }
+
+        const deck = data.deck;
+        const animSlides = (deck.slides || []).filter(s => s.hasProgressiveBuilds).length;
+        statusText.innerHTML = `<span style="color:#10b981;">✓ Successfully ingested <strong>${deck.totalSlides}</strong> slides (${animSlides} with sequential animation stages).</span>`;
+        presentLink.href = `/index.html?deck=${deck.id}`;
+        presentLink.style.display = "inline-flex";
+
+        selectedDeckId = deck.id;
+        await fetchStatus();
+      } catch (err) {
+        console.error("PPT Ingestion error:", err);
+        statusBox.style.borderColor = "var(--status-red)";
+        statusText.innerHTML = `<span style="color:var(--status-red);">✗ Error: ${err.message}</span>`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+      }
     }
 
     document.getElementById("refreshBtn").onclick = fetchStatus;
