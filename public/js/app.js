@@ -20,7 +20,11 @@ let editPointerInteraction = null;
 let slideAutoAdvanceTimer = null;
 
 const deckSelect = document.getElementById("deckSelect");
+const slideSetSelect = document.getElementById("slideSetSelect");
+const srDeckTitle = document.getElementById("srDeckTitle");
 const deckTitle = document.getElementById("deckTitle");
+let availableSlideSets = [];
+let currentSlideSetId = null;
 const slideImage = document.getElementById("slideImage");
 const slideVideo = document.getElementById("slideVideo");
 const videoPlayFallback = document.getElementById("videoPlayFallback");
@@ -1199,7 +1203,7 @@ async function init() {
   setupEventListeners();
   initWelcomeModal();
   await loadAgentPathways();
-  await fetchDecks();
+  await fetchSlideSets();
 }
 
 async function loadAgentPathways() {
@@ -1227,13 +1231,107 @@ async function loadAgentPathways() {
   updateAgentPathwayCopy();
 }
 
+async function fetchSlideSets() {
+  try {
+    const response = await fetch("/api/slide-sets");
+    if (!response.ok) throw new Error("Could not load slide sets.");
+    const data = await response.json();
+
+    if (data.slideSets?.length) {
+      availableSlideSets = data.slideSets;
+
+      if (slideSetSelect) {
+        slideSetSelect.innerHTML = "";
+        data.slideSets.forEach((set) => {
+          const option = document.createElement("option");
+          option.value = set.id;
+          option.textContent = `${set.icon ? set.icon + " " : ""}${set.title} (${set.decks?.length || 0})`;
+          slideSetSelect.appendChild(option);
+        });
+      }
+
+      // Check URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlDeck = urlParams.get("deck");
+      const urlSet = urlParams.get("set");
+      const urlSlide = parseInt(urlParams.get("slide"), 10);
+
+      let targetSet = null;
+      if (urlSet) {
+        targetSet = data.slideSets.find((s) => s.id === urlSet);
+      }
+      if (!targetSet && urlDeck) {
+        targetSet = data.slideSets.find((s) =>
+          s.decks.some((d) => d.id === urlDeck)
+        );
+      }
+      if (!targetSet) {
+        const savedSetId = localStorage.getItem("vibe_deck_current_set");
+        if (savedSetId) {
+          targetSet = data.slideSets.find((s) => s.id === savedSetId);
+        }
+      }
+      if (!targetSet) {
+        targetSet =
+          data.slideSets.find((s) => s.id === data.defaultSlideSetId) ||
+          data.slideSets[0];
+      }
+
+      currentSlideSetId = targetSet.id;
+      if (slideSetSelect) slideSetSelect.value = targetSet.id;
+
+      let targetDeckId = null;
+      if (urlDeck && targetSet.decks.some((d) => d.id === urlDeck)) {
+        targetDeckId = urlDeck;
+      } else {
+        const savedDeckId = localStorage.getItem("vibe_deck_current_deck");
+        if (savedDeckId && targetSet.decks.some((d) => d.id === savedDeckId)) {
+          targetDeckId = savedDeckId;
+        } else {
+          targetDeckId = targetSet.decks[0]?.id;
+        }
+      }
+
+      populateLessonsForSlideSet(targetSet.id, targetDeckId);
+
+      const targetSlideIdx = !isNaN(urlSlide) && urlSlide > 0 ? urlSlide - 1 : 0;
+      await loadDeck(targetDeckId || targetSet.decks[0]?.id, targetSlideIdx);
+      return;
+    }
+  } catch (error) {
+    console.warn("Could not load slide sets, falling back to /api/decks:", error);
+  }
+
+  // Fallback to fetchDecks
+  await fetchDecks();
+}
+
+function populateLessonsForSlideSet(setId, targetDeckId = null) {
+  const set = availableSlideSets.find((s) => s.id === setId);
+  if (!set || !deckSelect) return;
+
+  deckSelect.innerHTML = "";
+  set.decks.forEach((deck) => {
+    const option = document.createElement("option");
+    option.value = deck.id;
+    option.textContent = deck.title || deck.id;
+    deckSelect.appendChild(option);
+  });
+
+  if (targetDeckId && set.decks.some((d) => d.id === targetDeckId)) {
+    deckSelect.value = targetDeckId;
+  } else if (set.decks.length > 0) {
+    deckSelect.value = set.decks[0].id;
+  }
+}
+
 async function fetchDecks() {
   try {
     const response = await fetch("/api/decks");
     if (!response.ok) throw new Error("Could not load converted decks.");
     const data = await response.json();
 
-    deckSelect.innerHTML = "";
+    if (deckSelect) deckSelect.innerHTML = "";
     if (data.decks?.length) {
       data.decks.forEach((deck) => {
         const option = document.createElement("option");
@@ -1246,7 +1344,7 @@ async function fetchDecks() {
           }
         }
         option.textContent = displayTitle;
-        deckSelect.appendChild(option);
+        if (deckSelect) deckSelect.appendChild(option);
       });
 
       const trialDeck = data.decks.find((deck) => deck.id === DEFAULT_TRIAL_DECK);
@@ -1254,7 +1352,8 @@ async function fetchDecks() {
       return;
     }
 
-    deckTitle.textContent = "Converting trial deck…";
+    if (deckTitle) deckTitle.textContent = "Converting trial deck…";
+    if (srDeckTitle) srDeckTitle.textContent = "Converting trial deck…";
     const convertResponse = await fetch("/api/convert", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -1267,12 +1366,13 @@ async function fetchDecks() {
 
     if (convertResponse.ok) await fetchDecks();
   } catch (error) {
-    deckTitle.textContent = "Presentation unavailable";
+    if (deckTitle) deckTitle.textContent = "Presentation unavailable";
+    if (srDeckTitle) srDeckTitle.textContent = "Presentation unavailable";
     console.error("Error loading decks:", error);
   }
 }
 
-async function loadDeck(deckId) {
+async function loadDeck(deckId, initialSlideIndex = 0) {
   const loadSessionToken = ++deckSessionToken;
   try {
     const response = await fetch(`/api/decks/${encodeURIComponent(deckId)}`);
@@ -1288,14 +1388,38 @@ async function loadDeck(deckId) {
     currentMediaBuildStep = 0;
     if (answerLiveRegion) answerLiveRegion.textContent = "";
 
-    deckSelect.value = currentDeck.id;
-    deckTitle.textContent = currentDeck.title || deckId;
+    // Sync slide set dropdown if needed
+    if (availableSlideSets?.length) {
+      const parentSet = availableSlideSets.find((s) =>
+        s.decks?.some((d) => d.id === currentDeck.id)
+      );
+      if (parentSet && parentSet.id !== currentSlideSetId) {
+        currentSlideSetId = parentSet.id;
+        if (slideSetSelect) slideSetSelect.value = parentSet.id;
+        populateLessonsForSlideSet(parentSet.id, currentDeck.id);
+      }
+    }
+
+    if (deckSelect) deckSelect.value = currentDeck.id;
+    if (deckTitle) deckTitle.textContent = currentDeck.title || deckId;
+    if (srDeckTitle) srDeckTitle.textContent = currentDeck.title || deckId;
+    document.title = `${currentDeck.title || deckId} · Vibe Deck Agent`;
+    try {
+      localStorage.setItem("vibe_deck_current_deck", currentDeck.id);
+      if (currentSlideSetId)
+        localStorage.setItem("vibe_deck_current_set", currentSlideSetId);
+    } catch {}
+
     totalSlidesNum.textContent = currentDeck.totalSlides;
     slideCountBadge.textContent = `${currentDeck.totalSlides} slides`;
     progressBar.setAttribute("aria-valuemax", String(currentDeck.totalSlides));
 
     renderThumbnails();
-    renderSlide(0);
+    const safeSlideIndex = Math.min(
+      Math.max(0, initialSlideIndex),
+      (currentDeck.slides?.length || 1) - 1
+    );
+    renderSlide(safeSlideIndex);
   } catch (error) {
     console.error(`Error loading deck ${deckId}:`, error);
   }
@@ -2672,6 +2796,18 @@ function setupEventListeners() {
   agentPathwaySelect?.addEventListener("change", updateAgentPathwayCopy);
   tabOverviewBtn?.addEventListener("click", () => switchSidebarTab("overview"));
   tabEditorBtn?.addEventListener("click", () => switchSidebarTab("editor"));
+  slideSetSelect?.addEventListener("change", (event) => {
+    const newSetId = event.target.value;
+    if (!newSetId) return;
+    currentSlideSetId = newSetId;
+    try {
+      localStorage.setItem("vibe_deck_current_set", newSetId);
+    } catch {}
+    populateLessonsForSlideSet(newSetId);
+    if (deckSelect?.value) {
+      loadDeck(deckSelect.value);
+    }
+  });
   deckSelect?.addEventListener("change", (event) => {
     if (event.target.value) loadDeck(event.target.value);
   });

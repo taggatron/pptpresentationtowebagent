@@ -199,29 +199,66 @@ body.theme-dark .brand {
   -webkit-text-fill-color: transparent;
 }
 
-.deck-select {
+.header-selectors {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selector-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   background: var(--bg-input);
-  color: var(--text-main);
   border: var(--glass-border);
-  padding: 0.4rem 0.8rem;
   border-radius: 8px;
-  font-size: 0.875rem;
+  padding: 0.15rem 0.35rem 0.15rem 0.6rem;
+  transition: all 0.2s ease;
+}
+
+.selector-group:hover,
+.selector-group:focus-within {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+.selector-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.deck-select {
+  background: transparent;
+  color: var(--text-main);
+  border: none;
+  padding: 0.35rem 0.35rem;
+  font-size: 0.85rem;
   font-family: var(--font-family);
   cursor: pointer;
   outline: none;
   transition: all 0.2s ease;
-  width: min(290px, 26vw);
+  width: auto;
+  max-width: 220px;
 }
 
-.deck-select:hover {
-  border-color: var(--accent-primary);
-}
-
-.deck-title {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
+.slide-set-select {
   font-weight: 600;
-  color: var(--text-main);
+  max-width: 230px;
+}
+
+.deck-select option {
+  background: #121826;
+  color: #f3f4f6;
+}
+
+body.theme-light .deck-select option {
+  background: #ffffff;
+  color: #111827;
 }
 
 .mode-badge {
@@ -3183,8 +3220,17 @@ body.theme-dark .key-tag {
     gap: 0.5rem;
   }
 
-  .deck-select {
-    width: min(44vw, 250px);
+  .header-selectors {
+    gap: 0.35rem;
+  }
+
+  .selector-group {
+    padding: 0.1rem 0.25rem 0.1rem 0.45rem;
+  }
+
+  .selector-group .deck-select {
+    max-width: 140px;
+    font-size: 0.775rem;
   }
 
   .sidebar {

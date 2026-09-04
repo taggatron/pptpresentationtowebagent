@@ -22,16 +22,21 @@
           <span class="brand-icon" aria-hidden="true">✦</span>
           <span class="brand-title">Vibe Deck Agent</span>
         </div>
-        <div class="deck-selector-wrapper">
-          <label for="deckSelect" class="sr-only">Select presentation</label>
-          <select id="deckSelect" class="deck-select">
-            <option value="">Loading presentations…</option>
-          </select>
+        <div class="header-selectors" role="group" aria-label="Presentation navigation">
+          <div class="selector-group">
+            <label for="slideSetSelect" class="selector-label">Set</label>
+            <select id="slideSetSelect" class="deck-select slide-set-select" aria-label="Select slide set">
+              <option value="">Loading slide sets…</option>
+            </select>
+          </div>
+          <div class="selector-group">
+            <label for="deckSelect" class="selector-label">Lesson</label>
+            <select id="deckSelect" class="deck-select" aria-label="Select lesson">
+              <option value="">Loading lessons…</option>
+            </select>
+          </div>
         </div>
-      </div>
-
-      <div class="header-center">
-        <h1 id="deckTitle" class="deck-title">CELL STRUCTURE</h1>
+        <h1 id="srDeckTitle" class="sr-only">1. Cell Structure</h1>
       </div>
 
       <div class="header-right">

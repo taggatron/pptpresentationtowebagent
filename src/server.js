@@ -145,6 +145,171 @@ function lessonSortValue(deck) {
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
+const KNOWN_OUTPUT_DIR = "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/NotebookLMagent/output";
+
+export const KNOWN_SLIDE_SETS = [
+  {
+    id: "cell_biology",
+    title: "GCSE Biology · Cell Biology",
+    category: "Biology",
+    icon: "🧬",
+    folder: "powerpoints_cellbio_sequence_v2",
+    description: "Cell structure, microscopes, enzymes, respiration, and photosynthesis."
+  },
+  {
+    id: "digital_literacy",
+    title: "Digital Literacy Conference",
+    category: "Keynotes",
+    icon: "💻",
+    description: "Re-thinking digital literacy in the age of algorithms."
+  },
+  {
+    id: "chemistry",
+    title: "GCSE Chemistry · Fundamentals",
+    category: "Chemistry",
+    icon: "🧪",
+    folder: "powerpoints_chemistry_sequence",
+    description: "Periodic table, atomic structure, bonding, and separation techniques."
+  },
+  {
+    id: "forces_energy",
+    title: "GCSE Physics · Forces & Energy",
+    category: "Physics",
+    icon: "⚡",
+    folder: "powerpoints_forces_energy_sequence",
+    description: "Newton's laws, terminal velocity, and energy principles."
+  },
+  {
+    id: "genetics_selection",
+    title: "GCSE Biology · Genetics & Selection",
+    category: "Biology",
+    icon: "🧬",
+    folder: "powerpoints_genetics_selection_sequence",
+    description: "Cell cycle, mitosis, meiosis, and natural selection."
+  },
+  {
+    id: "reaction_rates",
+    title: "GCSE Chemistry · Reaction Rates",
+    category: "Chemistry",
+    icon: "⏱",
+    folder: "powerpoints_reaction_rates_sequence",
+    description: "Reaction rates, temperature, surface area, and catalysts."
+  },
+  {
+    id: "waves_radioactivity",
+    title: "GCSE Physics · Waves & Radioactivity",
+    category: "Physics",
+    icon: "🌊",
+    folder: "powerpoints_waves_radioactivity_sequence",
+    description: "Waves, reflection, refraction, and electromagnetic spectrum."
+  },
+  {
+    id: "ai_agentic",
+    title: "AI & Agentic Enterprise",
+    category: "Technology",
+    icon: "🤖",
+    folder: "powerpoints_ai_agentic_business",
+    description: "Agentic enterprise blueprint, ROI strategy, and autonomous AI."
+  },
+  {
+    id: "tbi_neuro",
+    title: "Neuroanatomy & Brain Injury",
+    category: "Medicine",
+    icon: "🧠",
+    folder: "powerpoints_tbi",
+    description: "Brain anatomy, spinal cord, nerve anatomy, and action potentials."
+  }
+];
+
+export function formatDisplayTitle(rawTitle) {
+  let title = String(rawTitle || "").trim();
+  title = title.replace(/_/g, " ").trim();
+  const match = title.match(/^Lesson\s*0?(\d+)[:\s-]*(.*)/i);
+  if (match) {
+    const num = parseInt(match[1], 10);
+    const rest = match[2]
+      .split(" ")
+      .filter(Boolean)
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(" ");
+    return `${num}. ${rest || "Lesson"}`;
+  }
+  return title.charAt(0).toUpperCase() + title.slice(1);
+}
+
+export function inferSlideSetId(deckId, manifest = null) {
+  if (manifest?.slideSet) return manifest.slideSet;
+  if (deckId === "digital_literacy_conference_deck") return "digital_literacy";
+  if (
+    /(?:CELL|MICROSCOPES|MAGNIFICATION|DNA|ENZYMES|Aerobic|ANAEROBIC|FERMENTATION|PHOTOSYNTHESIS)/i.test(
+      deckId
+    )
+  ) {
+    return "cell_biology";
+  }
+  if (
+    /(?:PERIODIC|HISTORY.*ATOM|ELECTRON|IONIC|COVALENT|GIANT|METALLIC|POLYMERS|CHROMATOGRAPHY|SEPARATION|ELECTROLYSIS)/i.test(
+      deckId
+    )
+  ) {
+    return "chemistry";
+  }
+  if (/(?:Forces|TERMINAL|NEWTON)/i.test(deckId)) {
+    return "forces_energy";
+  }
+  if (
+    /(?:Cell_cycle|Mitosis|Reproduction|Genetic_diagrams|Variation)/i.test(
+      deckId
+    )
+  ) {
+    return "genetics_selection";
+  }
+  if (/(?:Reaction_rates|Rate_experiments|Calculating_rates)/i.test(deckId)) {
+    return "reaction_rates";
+  }
+  if (/(?:Waves|Reflection|Refraction|Electromagnetic)/i.test(deckId)) {
+    return "waves_radioactivity";
+  }
+  if (/(?:Agentic_|Governing_|AI_Landscape|Chatbots)/i.test(deckId)) {
+    return "ai_agentic";
+  }
+  if (
+    /(?:Anatomy.*Brain|Modelling.*Brain|Spinal|Nerve|Action_Potentials)/i.test(
+      deckId
+    )
+  ) {
+    return "tbi_neuro";
+  }
+  return "other";
+}
+
+async function tryAutoExtractDeck(deckId, decksDir) {
+  const safeDeckId = assertSafeDeckId(deckId);
+  try {
+    const outputDir = KNOWN_OUTPUT_DIR;
+    const stat = await fs.stat(outputDir).catch(() => null);
+    if (!stat || !stat.isDirectory()) return null;
+
+    const dirs = await fs.readdir(outputDir);
+    for (const dirName of dirs) {
+      const subDirPath = path.join(outputDir, dirName);
+      const subStat = await fs.stat(subDirPath).catch(() => null);
+      if (!subStat || !subStat.isDirectory()) continue;
+
+      const candidatePptx = path.join(subDirPath, `${safeDeckId}.pptx`);
+      const fileStat = await fs.stat(candidatePptx).catch(() => null);
+      if (fileStat && fileStat.isFile()) {
+        console.log(`[Server] Auto-extracting deck ${safeDeckId} from ${candidatePptx}...`);
+        const manifest = await extractPptxDeck(candidatePptx, decksDir);
+        return manifest;
+      }
+    }
+  } catch (err) {
+    console.warn(`[Server] tryAutoExtractDeck failed for ${deckId}:`, err.message);
+  }
+  return null;
+}
+
 async function saveManifestFile(manifestPath, manifest) {
   const temporaryPath = `${manifestPath}.${process.pid}.${Date.now()}.tmp`;
   try {
@@ -527,11 +692,145 @@ export function createApp({
     }
   });
 
+  app.get("/api/slide-sets", async (req, res) => {
+    try {
+      try {
+        await fs.mkdir(decksDir, { recursive: true });
+      } catch (err) {
+        if (err.code !== "EROFS" && err.code !== "EEXIST") throw err;
+      }
+
+      const entries = await fs.readdir(decksDir, { withFileTypes: true });
+      const convertedMap = new Map();
+
+      for (const entry of entries) {
+        if (!entry.isDirectory()) continue;
+        try {
+          const { manifest } = await readManifest(decksDir, entry.name);
+          convertedMap.set(entry.name, manifest);
+        } catch {
+          // Ignore partial or unextracted deck directories
+        }
+      }
+
+      const slideSets = [];
+      const usedDeckIds = new Set();
+
+      for (const setCfg of KNOWN_SLIDE_SETS) {
+        const setDecks = [];
+
+        // 1. Existing converted decks in decksDir
+        for (const [dId, manifest] of convertedMap.entries()) {
+          if (inferSlideSetId(dId, manifest) === setCfg.id) {
+            setDecks.push({
+              id: manifest.id,
+              title: formatDisplayTitle(manifest.title || manifest.id),
+              totalSlides: manifest.totalSlides || manifest.slides?.length || 0,
+              isExtracted: true
+            });
+            usedDeckIds.add(dId);
+          }
+        }
+
+        // 2. Source sequence directory in KNOWN_OUTPUT_DIR for any additional decks
+        if (setCfg.folder) {
+          try {
+            const folderPath = path.join(KNOWN_OUTPUT_DIR, setCfg.folder);
+            const folderStat = await fs.stat(folderPath).catch(() => null);
+            if (folderStat && folderStat.isDirectory()) {
+              const files = await fs.readdir(folderPath);
+              for (const file of files) {
+                if (!file.endsWith(".pptx")) continue;
+                const dId = path.basename(file, ".pptx");
+                if (!usedDeckIds.has(dId) && !setDecks.some((d) => d.id === dId)) {
+                  setDecks.push({
+                    id: dId,
+                    title: formatDisplayTitle(dId),
+                    totalSlides: 0,
+                    isExtracted: false
+                  });
+                }
+              }
+            }
+          } catch {}
+        }
+
+        if (setDecks.length > 0) {
+          setDecks.sort(
+            (a, b) =>
+              lessonSortValue(a) - lessonSortValue(b) ||
+              a.title.localeCompare(b.title)
+          );
+          slideSets.push({
+            id: setCfg.id,
+            title: setCfg.title,
+            category: setCfg.category,
+            icon: setCfg.icon || "📊",
+            description: setCfg.description || "",
+            totalLessons: setDecks.length,
+            decks: setDecks
+          });
+        }
+      }
+
+      // 3. Any additional converted decks not in known sets
+      const otherDecks = [];
+      for (const [dId, manifest] of convertedMap.entries()) {
+        if (!usedDeckIds.has(dId)) {
+          otherDecks.push({
+            id: manifest.id,
+            title: formatDisplayTitle(manifest.title || manifest.id),
+            totalSlides: manifest.totalSlides || manifest.slides?.length || 0,
+            isExtracted: true
+          });
+        }
+      }
+
+      if (otherDecks.length > 0) {
+        otherDecks.sort(
+          (a, b) =>
+            lessonSortValue(a) - lessonSortValue(b) ||
+            a.title.localeCompare(b.title)
+        );
+        slideSets.push({
+          id: "other",
+          title: "Custom & Additional Presentations",
+          category: "Other",
+          icon: "📁",
+          description: "Ingested presentations and custom slide decks.",
+          totalLessons: otherDecks.length,
+          decks: otherDecks
+        });
+      }
+
+      const defaultSlideSetId =
+        slideSets.find((s) => s.id === "cell_biology")?.id ||
+        slideSets[0]?.id ||
+        null;
+      const defaultDeckId =
+        slideSets.find((s) => s.id === defaultSlideSetId)?.decks[0]?.id ||
+        slideSets[0]?.decks[0]?.id ||
+        null;
+
+      res.json({ slideSets, defaultSlideSetId, defaultDeckId });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   app.get("/api/decks/:deckId", async (req, res) => {
     try {
       const { manifest } = await readManifest(decksDir, req.params.deckId);
       res.json(manifest);
     } catch (error) {
+      try {
+        const autoExtracted = await tryAutoExtractDeck(req.params.deckId, decksDir);
+        if (autoExtracted) {
+          return res.json(autoExtracted);
+        }
+      } catch (extractErr) {
+        console.warn(`[Server] Auto-extract failed for ${req.params.deckId}:`, extractErr);
+      }
       res.status(error.statusCode || 404).json({ error: "Deck not found" });
     }
   });
