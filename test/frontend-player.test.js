@@ -341,6 +341,12 @@ test("question-answer image steps reveal and hide the matching masks on the same
 
   assert.equal(hooks.moveMediaBuildStep(slide, -1), true);
   assert.deepEqual(plain(hooks.getPlayerState(slide)), {
+    mediaStep: 2,
+    revealed: [true, false]
+  });
+
+  assert.equal(hooks.moveMediaBuildStep(slide, -1), true);
+  assert.deepEqual(plain(hooks.getPlayerState(slide)), {
     mediaStep: 1,
     revealed: [false, false]
   });
