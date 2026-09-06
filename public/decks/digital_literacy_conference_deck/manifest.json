@@ -4,10 +4,11 @@
   "filename": "digital_literacy_conference_deck.pptx",
   "totalSlides": 22,
   "agent": {
-    "provider": "PowerPoint-to-Slide Agent",
-    "generatedAt": "2026-09-04T15:04:04.696Z",
-    "nativeAnimationsExtracted": false,
-    "highResScale": 2
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-06T22:05:59.367Z"
   },
   "slides": [
     {
@@ -15,9 +16,6 @@
       "title": "Digital Natives, Our Arse",
       "imageFileName": "slide_01.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_01.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Digital Natives, Our Arse Re‑thinking Digital Literacy in the Age of Algorithms",
       "notes": "",
       "isInteractive": false,
@@ -32,7 +30,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -45,7 +43,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"Digital Natives, Our Arse\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Digital Natives, Our Arse\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"Digital Natives, Our Arse\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Digital Natives, Our Arse\". Keep it verbatim in every build.\nThis is the title slide for \"digital literacy conference deck\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: Digital Natives, Our Arse. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -97,6 +95,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Digital Natives, Our Arse\nRe-thinking Digital Literacy in the Age of Algorithms",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "18d92df3f0815565e97a83bdad17127a3d81385056083861c97ccaf279994418",
+        "transcript": "Digital Natives, Our Arse\nRe-thinking Digital Literacy in the Age of Algorithms",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 11,
+        "timeGuideDisplay": "9–13s",
+        "vciScore": "3.7",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 5250,
+          "semanticProcessingMs": 4300,
+          "wordCount": 16,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -104,9 +144,6 @@
       "title": "The Digital Native Myth",
       "imageFileName": "slide_02.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_02.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "The Digital Native Myth Students navigate apps effortlessly Educators assumed this meant digital competence But swiping ≠ understanding",
       "notes": "",
       "isInteractive": false,
@@ -121,7 +158,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -130,11 +167,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Add the comparison insight",
+          "label": "Build 1: Reveal the first comparison component",
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"The Digital Native Myth\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: The Digital Native Myth\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 2: \"The Digital Native Myth\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Digital Native Myth\". Keep it verbatim in every build.\nContent orientation: The Digital Native Myth. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_02.png"
+        },
+        {
+          "id": "gemini_slide_2_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 2: \"The Digital Native Myth\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Digital Native Myth\". Keep it verbatim in every build.\nContent orientation: The Digital Native Myth. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -149,7 +202,7 @@
         "strategy": "comparison",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -186,6 +239,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "The Digital Native Myth\ne Students navigate apps effortlessly\ne Educators assumed this meant digital competence\n¢ But swiping 4 understanding",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c3b16958b8dc4bd7c743dd4ba7511be9ab092c41cf88d8bf0c07efd40cb772d3",
+        "transcript": "The Digital Native Myth\ne Students navigate apps effortlessly\ne Educators assumed this meant digital competence\n¢ But swiping 4 understanding",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 18,
+        "timeGuideDisplay": "15–21s",
+        "vciScore": "4.2",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 8400,
+          "semanticProcessingMs": 8400,
+          "wordCount": 25,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -193,9 +288,6 @@
       "title": "Fluency vs Wisdom",
       "imageFileName": "slide_03.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_03.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Fluency vs Wisdom Digital fluency = using tools Digital wisdom = understanding consequences Education often teaches the first but ignores the second",
       "notes": "",
       "isInteractive": false,
@@ -210,7 +302,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -219,11 +311,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Add the comparison insight",
+          "label": "Build 1: Reveal the first comparison component",
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 3: \"Fluency vs Wisdom\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Fluency vs Wisdom\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 3: \"Fluency vs Wisdom\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Fluency vs Wisdom\". Keep it verbatim in every build.\nContent orientation: Fluency vs Wisdom. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 3: \"Fluency vs Wisdom\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Fluency vs Wisdom\". Keep it verbatim in every build.\nContent orientation: Fluency vs Wisdom. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -238,7 +346,7 @@
         "strategy": "comparison",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -275,6 +383,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Fluency vs Wisdom\n¢ Digital fluency = using tools\n¢ Digital wisdom = understanding consequences\ne Education often teaches the first but ignores the second",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "0204f22f89fcf923b638433b932bb07367ad81e8b091121e729099cea0bb36a8",
+        "transcript": "Fluency vs Wisdom\n¢ Digital fluency = using tools\n¢ Digital wisdom = understanding consequences\ne Education often teaches the first but ignores the second",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 28,
+        "timeGuideDisplay": "23–33s",
+        "vciScore": "3.9",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 8850,
+          "semanticProcessingMs": 18200,
+          "wordCount": 28,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -282,9 +432,6 @@
       "title": "Consumption Culture",
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_04.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Consumption Culture Young people consume vast quantities of digital content Creation and production remain rare Education should rebalance creation vs consumption",
       "notes": "",
       "isInteractive": false,
@@ -299,20 +446,36 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_4_1_component_reveal",
+          "id": "gemini_slide_4_1_comparison",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"Consumption Culture\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Consumption Culture\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 4: \"Consumption Culture\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Consumption Culture\". Keep it verbatim in every build.\nContent orientation: Consumption Culture. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 4: \"Consumption Culture\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Consumption Culture\". Keep it verbatim in every build.\nContent orientation: Consumption Culture. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -324,10 +487,10 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "comparison",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -364,6 +527,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Consumption Culture\ne Young people consume vast quantities of digital content\n¢ Creation and production remain rare\ne Education should rebalance creation vs consumption",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "316512c2f573347431743807213fd17f2e44fa9b0b510c5ce1389f8ee7760293",
+        "transcript": "Consumption Culture\ne Young people consume vast quantities of digital content\n¢ Creation and production remain rare\ne Education should rebalance creation vs consumption",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 20,
+        "timeGuideDisplay": "17–23s",
+        "vciScore": "4.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 9150,
+          "semanticProcessingMs": 9600,
+          "wordCount": 26,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -371,9 +576,6 @@
       "title": "The Prompt Engineering Fallacy",
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_05.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "The Prompt Engineering Fallacy Schools rushing to teach 'better prompts' Prompting is useful but not literacy Real literacy means understanding AI systems",
       "notes": "",
       "isInteractive": false,
@@ -388,7 +590,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -397,11 +599,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"The Prompt Engineering Fallacy\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: The Prompt Engineering Fallacy\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 5: \"The Prompt Engineering Fallacy\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Prompt Engineering Fallacy\". Keep it verbatim in every build.\nContent orientation: The Prompt Engineering Fallacy. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 5: \"The Prompt Engineering Fallacy\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Prompt Engineering Fallacy\". Keep it verbatim in every build.\nContent orientation: The Prompt Engineering Fallacy. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -416,7 +634,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -453,6 +671,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "The Prompt Engineering Fallacy\n¢ Schools rushing to teach ‘better prompts’\n¢ Prompting is useful but not literacy\n¢ Real literacy means understanding Al systems",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "f091997b931d59bc62d660cf46b12826259caf6c12da65dd2e89ca558dc470db",
+        "transcript": "The Prompt Engineering Fallacy\n¢ Schools rushing to teach ‘better prompts’\n¢ Prompting is useful but not literacy\n¢ Real literacy means understanding Al systems",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 19,
+        "timeGuideDisplay": "16–22s",
+        "vciScore": "4.2",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 9600,
+          "semanticProcessingMs": 8400,
+          "wordCount": 29,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -460,9 +720,6 @@
       "title": "Understanding AI",
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_06.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Understanding AI Bias in training data Human decisions embedded in algorithms Limitations of probabilistic systems",
       "notes": "",
       "isInteractive": false,
@@ -477,7 +734,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -486,11 +743,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"Understanding AI\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Understanding AI\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 6: \"Understanding Al\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: digital literacy conference deck. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 6: \"Understanding Al\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: digital literacy conference deck. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -505,7 +778,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -542,6 +815,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Understanding Al\ne Bias in training data\n¢ Human decisions embedded in algorithms\ne Limitations of probabilistic systems",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "3e5d9aa578cb51eb7f08b7c0aa7649407d3627b704605348d68d1a8822514c05",
+        "transcript": "Understanding Al\ne Bias in training data\n¢ Human decisions embedded in algorithms\ne Limitations of probabilistic systems",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 23,
+        "timeGuideDisplay": "19–27s",
+        "vciScore": "4.4",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 7200,
+          "semanticProcessingMs": 14200,
+          "wordCount": 20,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -549,9 +864,6 @@
       "title": "Invisible Digital Infrastructure",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_07.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Invisible Digital Infrastructure Few people understand how the internet works Data movement, servers, and protocols remain hidden Yet society depends on them",
       "notes": "",
       "isInteractive": false,
@@ -566,7 +878,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -575,11 +887,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 7: \"Invisible Digital Infrastructure\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Invisible Digital Infrastructure\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 7: \"Invisible Digital Infrastructure\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Invisible Digital Infrastructure\". Keep it verbatim in every build.\nContent orientation: Invisible Digital Infrastructure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 7: \"Invisible Digital Infrastructure\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Invisible Digital Infrastructure\". Keep it verbatim in every build.\nContent orientation: Invisible Digital Infrastructure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -594,7 +922,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -631,6 +959,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Invisible Digital Infrastructure\n¢ Few people understand how the internet works\n¢ Data movement, servers, and protocols remain hidden\ne Yet society depends on them",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "341aa5689a16927b82aea5cdcd6eae0bddb99817360c853e975994614dafe5e9",
+        "transcript": "Invisible Digital Infrastructure\n¢ Few people understand how the internet works\n¢ Data movement, servers, and protocols remain hidden\ne Yet society depends on them",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 20,
+        "timeGuideDisplay": "17–23s",
+        "vciScore": "4.4",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 9600,
+          "semanticProcessingMs": 9200,
+          "wordCount": 28,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -638,9 +1008,6 @@
       "title": "Digital Infrastructure = Civic Knowledge",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_08.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Digital Infrastructure = Civic Knowledge Who controls platforms? What happens to shared data? Why are platforms free?",
       "notes": "",
       "isInteractive": false,
@@ -652,10 +1019,10 @@
         "effects": []
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -664,11 +1031,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"Digital Infrastructure = Civic Knowledge\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Digital Infrastructure = Civic Knowledge\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 8: \"Digital Infrastructure = Civic Knowledge\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Digital Infrastructure = Civic Knowledge\". Keep it verbatim in every build.\nContent orientation: Digital Infrastructure = Civic Knowledge. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 8: \"Digital Infrastructure = Civic Knowledge\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Digital Infrastructure = Civic Knowledge\". Keep it verbatim in every build.\nContent orientation: Digital Infrastructure = Civic Knowledge. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -683,7 +1066,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -720,6 +1103,67 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Digital Infrastructure = Civic\nKnowledge\n¢ Who controls platforms?\n¢ What happens to shared data?\n¢ Why are platforms free?",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "512aa513e72559fa7d9cd78356ecde767fc5624055e8a4e29e108cde019f3a5c",
+        "transcript": "Digital Infrastructure = Civic\nKnowledge\n¢ Who controls platforms?\n¢ What happens to shared data?\n¢ Why are platforms free?",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Who controls platforms?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What happens to shared data?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Why are platforms free?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 25,
+        "timeGuideDisplay": "21–29s",
+        "vciScore": "4.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 8550,
+          "semanticProcessingMs": 14800,
+          "wordCount": 25,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -727,9 +1171,6 @@
       "title": "The Attention Economy",
       "imageFileName": "slide_09.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_09.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "The Attention Economy Platforms monetise attention Behavioural psychology optimises engagement Infinite scroll maximises time spent",
       "notes": "",
       "isInteractive": false,
@@ -744,7 +1185,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -753,11 +1194,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"The Attention Economy\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: The Attention Economy\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 9: \"The Attention Economy\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Attention Economy\". Keep it verbatim in every build.\nContent orientation: The Attention Economy. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 9: \"The Attention Economy\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Attention Economy\". Keep it verbatim in every build.\nContent orientation: The Attention Economy. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -772,7 +1229,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -809,6 +1266,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "The Attention Economy\ne Platforms monetise attention\ne Behavioural psychology optimises engagement\ne Infinite scroll maximises time spent",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "717e07ff8d7c47e908bd51f071ee450f1c6361d7bb8163854e0d3700c2f19288",
+        "transcript": "The Attention Economy\ne Platforms monetise attention\ne Behavioural psychology optimises engagement\ne Infinite scroll maximises time spent",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 25,
+        "timeGuideDisplay": "21–29s",
+        "vciScore": "4.7",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 7950,
+          "semanticProcessingMs": 15400,
+          "wordCount": 21,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -816,9 +1315,6 @@
       "title": "Attention as Currency",
       "imageFileName": "slide_10.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_10.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Attention as Currency Your focus has monetary value Algorithms optimise emotional engagement Students must protect their attention",
       "notes": "",
       "isInteractive": false,
@@ -833,7 +1329,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -842,11 +1338,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"Attention as Currency\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Attention as Currency\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 10: \"Attention as Currency\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Attention as Currency\". Keep it verbatim in every build.\nContent orientation: Attention as Currency. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 10: \"Attention as Currency\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Attention as Currency\". Keep it verbatim in every build.\nContent orientation: Attention as Currency. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -861,7 +1373,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -898,6 +1410,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Attention as Currency\ne Your focus has monetary value\n¢ Algorithms optimise emotional engagement\ne Students must protect their attention",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "4d3e3b1f2d6c478f6257db0a1eee90ddebd1b2cb73e851faa9cc2510bc0d9334",
+        "transcript": "Attention as Currency\ne Your focus has monetary value\n¢ Algorithms optimise emotional engagement\ne Students must protect their attention",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 20,
+        "timeGuideDisplay": "17–23s",
+        "vciScore": "4.7",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 8550,
+          "semanticProcessingMs": 10400,
+          "wordCount": 23,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -905,9 +1459,6 @@
       "title": "Teaching Focus",
       "imageFileName": "slide_11.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_11.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Teaching Focus Intentional technology use Recognising manipulation Designing distraction‑free workflows",
       "notes": "",
       "isInteractive": false,
@@ -922,7 +1473,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -935,7 +1486,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Teaching Focus\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Teaching Focus\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Teaching Focus\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Teaching Focus\". Keep it verbatim in every build.\nThis is the title slide for \"digital literacy conference deck\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: Teaching Focus. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -987,6 +1538,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Teaching Focus\ne Intentional technology use\n¢ Recognising manipulation\n¢ Designing distraction-free workflows",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "ab6ae26551011c34bb6cc60bfb7ba1f7aeafab3a9427bfb645b583747341994f",
+        "transcript": "Teaching Focus\ne Intentional technology use\n¢ Recognising manipulation\n¢ Designing distraction-free workflows",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 17,
+        "timeGuideDisplay": "14–20s",
+        "vciScore": "4.7",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 5850,
+          "semanticProcessingMs": 9600,
+          "wordCount": 15,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -994,9 +1587,6 @@
       "title": "The Verification Crisis",
       "imageFileName": "slide_12.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_12.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "The Verification Crisis AI makes convincing fakes trivial Images, audio, and video can be fabricated Traditional source checking becomes insufficient",
       "notes": "",
       "isInteractive": false,
@@ -1011,7 +1601,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1020,11 +1610,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"The Verification Crisis\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: The Verification Crisis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 12: \"The Verification Crisis\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Verification Crisis\". Keep it verbatim in every build.\nContent orientation: The Verification Crisis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 12: \"The Verification Crisis\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Verification Crisis\". Keep it verbatim in every build.\nContent orientation: The Verification Crisis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1039,7 +1645,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1076,6 +1682,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "The Verification Crisis\ne Al makes convincing fakes trivial\ne |Images, audio, and video can be fabricated\n¢ Traditional source checking becomes insufficient",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "f607f50fc9e82fe0fb719aed5ab9d0bcf014fe70671bded87a7df46dd7349ce0",
+        "transcript": "The Verification Crisis\ne Al makes convincing fakes trivial\ne |Images, audio, and video can be fabricated\n¢ Traditional source checking becomes insufficient",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 24,
+        "timeGuideDisplay": "20–28s",
+        "vciScore": "4.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 8850,
+          "semanticProcessingMs": 13800,
+          "wordCount": 26,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1083,9 +1731,6 @@
       "title": "New Verification Skills",
       "imageFileName": "slide_13.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_13.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "New Verification Skills Reverse image search Cross‑platform verification Understanding metadata Spotting emotional manipulation",
       "notes": "",
       "isInteractive": false,
@@ -1100,7 +1745,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1109,11 +1754,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"New Verification Skills\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: New Verification Skills\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 13: \"New Verification Skills\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"New Verification Skills\". Keep it verbatim in every build.\nContent orientation: New Verification Skills. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 13: \"New Verification Skills\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"New Verification Skills\". Keep it verbatim in every build.\nContent orientation: New Verification Skills. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1128,7 +1789,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1165,6 +1826,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "New Verification Skills\ne Reverse image search\n¢ Cross-platform verification\ne Understanding metadata\n¢ Spotting emotional manipulation",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "af636aa1408e69daadcb449614a73c725986011bc1d5e8929fe1082f7f45994b",
+        "transcript": "New Verification Skills\ne Reverse image search\n¢ Cross-platform verification\ne Understanding metadata\n¢ Spotting emotional manipulation",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 18,
+        "timeGuideDisplay": "15–21s",
+        "vciScore": "4.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 7350,
+          "semanticProcessingMs": 9600,
+          "wordCount": 20,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1172,9 +1875,6 @@
       "title": "Algorithmic Scepticism",
       "imageFileName": "slide_14.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_14.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Algorithmic Scepticism Why this content? Why now? Who benefits from me seeing it?",
       "notes": "",
       "isInteractive": false,
@@ -1186,10 +1886,10 @@
         "effects": []
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1198,11 +1898,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Algorithmic Scepticism\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Algorithmic Scepticism\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 14: \"Algorithmic Scepticism\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Algorithmic Scepticism\". Keep it verbatim in every build.\nContent orientation: Algorithmic Scepticism. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_14.png"
+        },
+        {
+          "id": "gemini_slide_14_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 14: \"Algorithmic Scepticism\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Algorithmic Scepticism\". Keep it verbatim in every build.\nContent orientation: Algorithmic Scepticism. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1217,7 +1933,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1254,6 +1970,67 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Algorithmic Scepticism\n¢ Why this content?\ne Why now?\n¢ Who benefits from me seeing it?",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "08483ae0e5b3c3a44aee12639f50d1c13912fe3f66effb93f0dff5b664e2c84b",
+        "transcript": "Algorithmic Scepticism\n¢ Why this content?\ne Why now?\n¢ Who benefits from me seeing it?",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why this content?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Why now?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Who benefits from me seeing it?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 15,
+        "timeGuideDisplay": "12–18s",
+        "vciScore": "4.0",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 6150,
+          "semanticProcessingMs": 8000,
+          "wordCount": 18,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1261,9 +2038,6 @@
       "title": "Digital Ethics",
       "imageFileName": "slide_15.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_15.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Digital Ethics Privacy Consent Ownership of data Social consequences of technology",
       "notes": "",
       "isInteractive": false,
@@ -1278,7 +2052,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1287,11 +2061,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Digital Ethics\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Digital Ethics\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 15: \"Digital Ethics\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Digital Ethics\". Keep it verbatim in every build.\nContent orientation: Digital Ethics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_15.png"
+        },
+        {
+          "id": "gemini_slide_15_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 15: \"Digital Ethics\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Digital Ethics\". Keep it verbatim in every build.\nContent orientation: Digital Ethics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1306,7 +2096,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1343,6 +2133,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Digital Ethics\n2 Ehivacy\n* Consent\n¢ Ownership of data\n¢ Social consequences of technology",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "75a9e68714e2589af48669e1b594fee59bbd08f5dff4346e9fb126e5c1aaaea0",
+        "transcript": "Digital Ethics\n2 Ehivacy\n* Consent\n¢ Ownership of data\n¢ Social consequences of technology",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 19,
+        "timeGuideDisplay": "16–22s",
+        "vciScore": "3.7",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 5550,
+          "semanticProcessingMs": 12200,
+          "wordCount": 17,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1350,9 +2182,6 @@
       "title": "Technological Agency",
       "imageFileName": "slide_16.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_16.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Technological Agency Technology is not destiny Systems are human choices Users can shape digital environments",
       "notes": "",
       "isInteractive": false,
@@ -1367,7 +2196,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1376,11 +2205,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 16: \"Technological Agency\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Technological Agency\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 16: \"Technological Agency\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Technological Agency\". Keep it verbatim in every build.\nContent orientation: Technological Agency. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_16.png"
+        },
+        {
+          "id": "gemini_slide_16_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 16: \"Technological Agency\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Technological Agency\". Keep it verbatim in every build.\nContent orientation: Technological Agency. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1395,7 +2240,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1432,6 +2277,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Technological Agency\n¢ Technology is not destiny\ne Systems are human choices\ne Users can shape digital environments",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "d25bcf3735088b9bfc5ec66197d6ebff1e3e1bbf81e1b85bf13b1839d4f12a30",
+        "transcript": "Technological Agency\n¢ Technology is not destiny\ne Systems are human choices\ne Users can shape digital environments",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 16,
+        "timeGuideDisplay": "13–19s",
+        "vciScore": "3.9",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 6600,
+          "semanticProcessingMs": 7600,
+          "wordCount": 20,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1439,9 +2326,6 @@
       "title": "Creation Over Consumption",
       "imageFileName": "slide_17.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_17.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Creation Over Consumption Podcasts Video storytelling Interactive presentations Digital portfolios",
       "notes": "",
       "isInteractive": false,
@@ -1456,7 +2340,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1465,11 +2349,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 17: \"Creation Over Consumption\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Creation Over Consumption\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 17: \"Creation Over Consumption\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Creation Over Consumption\". Keep it verbatim in every build.\nContent orientation: Creation Over Consumption. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_17.png"
+        },
+        {
+          "id": "gemini_slide_17_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 17: \"Creation Over Consumption\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Creation Over Consumption\". Keep it verbatim in every build.\nContent orientation: Creation Over Consumption. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1484,7 +2384,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1521,6 +2421,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Creation Over Consumption\n¢ Podcasts\ne Video storytelling\ne Interactive presentations\n¢ Digital portfolios",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "2655da48225c8d43c693c1b7de89d28647d06ebd5171b927f9f84d136a0f70c2",
+        "transcript": "Creation Over Consumption\n¢ Podcasts\ne Video storytelling\ne Interactive presentations\n¢ Digital portfolios",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 17,
+        "timeGuideDisplay": "14–20s",
+        "vciScore": "4.6",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 6450,
+          "semanticProcessingMs": 9600,
+          "wordCount": 17,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1528,9 +2470,6 @@
       "title": "Digital Expression",
       "imageFileName": "slide_18.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_18.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Digital Expression Publishing ideas Amplifying voice Participating in culture",
       "notes": "",
       "isInteractive": false,
@@ -1545,7 +2484,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1558,7 +2497,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 18: \"Digital Expression\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Digital Expression\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 18: \"Digital Expression\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Digital Expression\". Keep it verbatim in every build.\nThis is the title slide for \"digital literacy conference deck\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: Digital Expression. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1610,6 +2549,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Digital Expression\n¢ Publishing ideas\ne Amplifying voice\ne Participating in culture",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "9bcd4ff7320d8065dfe658d72071376013ef619b2931fada9b9d12d28f1e979e",
+        "transcript": "Digital Expression\n¢ Publishing ideas\ne Amplifying voice\ne Participating in culture",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 19,
+        "timeGuideDisplay": "16–22s",
+        "vciScore": "4.1",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 4950,
+          "semanticProcessingMs": 13000,
+          "wordCount": 14,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1617,9 +2598,6 @@
       "title": "From Colonised to Empowered",
       "imageFileName": "slide_19.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_19.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "From Colonised to Empowered Many students are shaped by opaque systems Algorithms influence perception Education must reveal the machinery",
       "notes": "",
       "isInteractive": false,
@@ -1634,7 +2612,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1643,11 +2621,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 19: \"From Colonised to Empowered\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: From Colonised to Empowered\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 19: \"From Colonised to Empowered\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"From Colonised to Empowered\". Keep it verbatim in every build.\nContent orientation: From Colonised to Empowered. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_19.png"
+        },
+        {
+          "id": "gemini_slide_19_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 19: \"From Colonised to Empowered\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"From Colonised to Empowered\". Keep it verbatim in every build.\nContent orientation: From Colonised to Empowered. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1662,7 +2656,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1699,6 +2693,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "From Colonised to Empowered\n¢ Many students are shaped by opaque systems\n¢ Algorithms influence perception\n¢ Education must reveal the machinery",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c968373c32147b43c2446698c8362315386fe7349e02c2053039f6691332e4f1",
+        "transcript": "From Colonised to Empowered\n¢ Many students are shaped by opaque systems\n¢ Algorithms influence perception\n¢ Education must reveal the machinery",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 21,
+        "timeGuideDisplay": "17–25s",
+        "vciScore": "4.6",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 9300,
+          "semanticProcessingMs": 10000,
+          "wordCount": 26,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1706,9 +2742,6 @@
       "title": "A New Goal for Education",
       "imageFileName": "slide_20.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_20.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "A New Goal for Education Critical users Thoughtful creators Informed digital citizens",
       "notes": "",
       "isInteractive": false,
@@ -1723,7 +2756,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1732,11 +2765,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 20: \"A New Goal for Education\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A New Goal for Education\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 20: \"A New Goal for Education\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"A New Goal for Education\". Keep it verbatim in every build.\nContent orientation: A New Goal for Education. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/digital_literacy_conference_deck/slides/slide_20.png"
+        },
+        {
+          "id": "gemini_slide_20_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 20: \"A New Goal for Education\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"A New Goal for Education\". Keep it verbatim in every build.\nContent orientation: A New Goal for Education. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1751,7 +2800,7 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1788,6 +2837,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "A New Goal for Education\n° Critical users\ne Thoughtful creators\n¢ Informed digital citizens",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "dbedcdedd0e1b35157edd68c69ef79f741e9323bd1e0289fcb0c76d24a7a1e4d",
+        "transcript": "A New Goal for Education\n° Critical users\ne Thoughtful creators\n¢ Informed digital citizens",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 17,
+        "timeGuideDisplay": "14–20s",
+        "vciScore": "4.3",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 7050,
+          "semanticProcessingMs": 8800,
+          "wordCount": 20,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1795,9 +2886,6 @@
       "title": "How Recommendation Algorithms Shape Reality",
       "imageFileName": "slide_21.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_21.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "How Recommendation Algorithms Shape Reality User Behaviour Algorithm Analysis Content Recommendation User Feed",
       "notes": "",
       "isInteractive": false,
@@ -1810,9 +2898,9 @@
       },
       "questionAnalysis": {
         "detected": true,
-        "confidence": "medium",
-        "questionCount": 1,
-        "detectionSource": "manifest-text"
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1825,7 +2913,7 @@
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 21: \"How Recommendation Algorithms Shape Reality\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: How Recommendation Algorithms Shape Reality\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 21: \"How Recommendation Algorithms Shape Reality\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"How Recommendation Algorithms Shape Reality\". Keep it verbatim in every build.\nThis is the title slide for \"digital literacy conference deck\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: How Recommendation Algorithms Shape Reality. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1877,6 +2965,48 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "How Recommendation Algorithms\nShape Reality",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5b324e854c6a635d2a156772e863ebdfdd12bc98f8aba8cd8d81844fbce46557",
+        "transcript": "How Recommendation Algorithms\nShape Reality",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 18,
+        "timeGuideDisplay": "15–21s",
+        "vciScore": "4.1",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 3600,
+          "semanticProcessingMs": 12600,
+          "wordCount": 10,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -1884,9 +3014,6 @@
       "title": "Information Verification Workflow",
       "imageFileName": "slide_22.png",
       "imageUrl": "/decks/digital_literacy_conference_deck/slides/slide_22.png",
-      "deckId": "digital_literacy_conference_deck",
-      "deckTitle": "digital literacy conference deck",
-      "lessonTitle": "digital literacy conference deck",
       "textContent": "Information Verification Workflow Claim Appears Check Source Cross‑Platform Search Verify Evidence Accept or Reject",
       "notes": "",
       "isInteractive": false,
@@ -1901,7 +3028,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1914,7 +3041,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 22: \"Information Verification Workflow\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Information Verification Workflow\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 22: \"Information Verification Workflow\".\nDeck context: digital literacy conference deck.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Information Verification Workflow\". Keep it verbatim in every build.\nThis is the title slide for \"digital literacy conference deck\". Preserve every visible source title word, including the final word; never shorten the deck title.\nContent orientation: Information Verification Workflow. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1950,6 +3077,48 @@
           "readingMs": 1350,
           "semanticProcessingMs": 7200,
           "wordCount": 3,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "text": "Information Verification Workflow",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "870586eb140278a920307ffb7d37efad25247c00d6762ea6c9051ef981d7040e",
+        "transcript": "Information Verification Workflow",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 12,
+        "timeGuideDisplay": "10–14s",
+        "vciScore": "5.4",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 2700,
+          "semanticProcessingMs": 8400,
+          "wordCount": 6,
           "visualElementsCount": 3
         },
         "academicReferences": [
