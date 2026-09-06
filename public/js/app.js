@@ -737,10 +737,11 @@ function updateStageControls(slide) {
     );
   }
 
+  const minStep = buildSteps.length > 0 ? 1 : 0;
   if (serialStepBadge) {
-    serialStepBadge.textContent = currentMediaBuildStep === 0
-      ? `0 / ${buildSteps.length} · Initial view`
-      : `${currentMediaBuildStep} / ${buildSteps.length} · ${currentBuild?.label || `Build ${currentMediaBuildStep}`}`;
+    serialStepBadge.textContent = buildSteps.length > 0
+      ? `${currentMediaBuildStep} / ${buildSteps.length} · ${currentBuild?.label || `Build ${currentMediaBuildStep}`}`
+      : "0 / 0";
   }
   if (answerStepBadge) {
     answerStepBadge.textContent = revealedCount === 0
@@ -748,7 +749,7 @@ function updateStageControls(slide) {
       : `${revealedCount} / ${cells.length} revealed`;
   }
 
-  if (prevBuildStepBtn) prevBuildStepBtn.disabled = currentMediaBuildStep <= 0;
+  if (prevBuildStepBtn) prevBuildStepBtn.disabled = currentMediaBuildStep <= minStep;
   if (nextBuildStepBtn) nextBuildStepBtn.disabled = currentMediaBuildStep >= buildSteps.length;
   if (prevAnswerBtn) prevAnswerBtn.disabled = revealedCount === 0;
   if (nextAnswerBtn) nextAnswerBtn.disabled = revealedCount >= cells.length;
@@ -1055,7 +1056,8 @@ function renderSlideStage(slide = currentDeck?.slides[currentSlideIndex]) {
   }
 
   const buildSteps = getStageBuildSteps(slide);
-  currentMediaBuildStep = clamp(currentMediaBuildStep, 0, buildSteps.length);
+  const minStep = buildSteps.length > 0 ? 1 : 0;
+  currentMediaBuildStep = clamp(currentMediaBuildStep, minStep, buildSteps.length);
   const currentBuild = currentBuildForSlide(slide);
   syncQuestionAnswersToCurrentBuild(slide);
 
@@ -1078,7 +1080,8 @@ function renderSlideStage(slide = currentDeck?.slides[currentSlideIndex]) {
 
 function moveMediaBuildStep(slide, direction) {
   const totalSteps = getStageBuildSteps(slide).length;
-  const nextStep = clamp(currentMediaBuildStep + direction, 0, totalSteps);
+  const minStep = totalSteps > 0 ? 1 : 0;
+  const nextStep = clamp(currentMediaBuildStep + direction, minStep, totalSteps);
   if (nextStep === currentMediaBuildStep) return false;
   currentMediaBuildStep = nextStep;
   syncQuestionAnswersToCurrentBuild(slide);
@@ -1095,8 +1098,10 @@ function advanceMediaBuildStep() {
 }
 
 function regressMediaBuildStep() {
-  if (!currentDeck || currentMediaBuildStep <= 0) return false;
+  if (!currentDeck) return false;
   const slide = currentDeck.slides[currentSlideIndex];
+  const minStep = getStageBuildSteps(slide).length > 0 ? 1 : 0;
+  if (currentMediaBuildStep <= minStep) return false;
   if (!moveMediaBuildStep(slide, -1)) return false;
   renderSlideStage(slide);
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
@@ -1511,7 +1516,10 @@ function renderSlide(index) {
   document.body.scrollLeft = 0;
 
   imageRenderToken++;
-  if (slide.imageUrl) slideImage.src = slide.imageUrl;
+  const initialImageUrl = buildSteps.length > 0
+    ? (buildSteps[0].imageUrl || slide.imageUrl)
+    : slide.imageUrl;
+  if (initialImageUrl) slideImage.src = initialImageUrl;
   slideImage.alt = slide.title || `Slide ${slide.number} of ${currentDeck.totalSlides}`;
   currentSlideNum.textContent = String(index + 1);
 
@@ -2668,7 +2676,7 @@ function setupEventListeners() {
             slide.progressiveBuilds = protectedBuilds;
             slide.hasProgressiveBuilds = protectedBuilds.length > 0;
           }
-          currentMediaBuildStep = 0;
+          currentMediaBuildStep = protectedBuilds?.length > 0 ? 1 : 0;
           renderSlideStage(slide);
         }
         agentStatus.className = "agent-status success";

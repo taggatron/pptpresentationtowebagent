@@ -341,8 +341,15 @@ test("question-answer image steps reveal and hide the matching masks on the same
 
   assert.equal(hooks.moveMediaBuildStep(slide, -1), true);
   assert.deepEqual(plain(hooks.getPlayerState(slide)), {
-    mediaStep: 2,
-    revealed: [true, false]
+    mediaStep: 1,
+    revealed: [false, false]
+  });
+
+  // Build 0 is removed for progressive builds: cannot regress below build 1
+  assert.equal(hooks.moveMediaBuildStep(slide, -1), false);
+  assert.deepEqual(plain(hooks.getPlayerState(slide)), {
+    mediaStep: 1,
+    revealed: [false, false]
   });
 
   const starterSlide = { ...slide, interactiveType: "starter_qa_grid" };
@@ -361,4 +368,30 @@ test("the player contains no focus halo, dimming, or serial-active visualization
   assert.doesNotMatch(combined, /serial-active/);
   assert.doesNotMatch(combined, /@keyframes\s+activeHalo/i);
   assert.doesNotMatch(combined, /is-loading-build/);
+  assert.doesNotMatch(combined, /·\s*Initial view/i);
+});
+
+test("Lesson 1 Cell Structure slide 3 has build 3 identical to slide 03 original and no build 0", async () => {
+  const manifestPath = path.join(ROOT_DIR, "public", "decks", "Lesson_01_CELL_STRUCTURE", "manifest.json");
+  const manifest = JSON.parse(await fs.readFile(manifestPath, "utf-8"));
+  const slide3 = manifest.slides.find((s) => s.number === 3);
+  assert.ok(slide3, "Slide 3 must exist");
+
+  const build3 = slide3.progressiveBuilds.find((b) => b.version === 3 || b.id === "gemini_slide_3_3_staged_objectives");
+  assert.ok(build3, "Build 3 must exist");
+
+  const build3File = path.join(ROOT_DIR, "public", build3.imageUrl.replace(/^\//, ""));
+  const baseSlideFile = path.join(ROOT_DIR, "public", slide3.imageUrl.replace(/^\//, ""));
+
+  const [build3Buffer, baseSlideBuffer] = await Promise.all([
+    fs.readFile(build3File),
+    fs.readFile(baseSlideFile)
+  ]);
+
+  assert.equal(build3Buffer.equals(baseSlideBuffer), true, "Build 3 image must be identical to slide_03.png (build 0)");
+
+  const steps = slide3.serialAnimation?.serialSteps || [];
+  assert.ok(steps.length >= 3);
+  assert.equal(steps.some((s) => s.step === 0), false, "There must be no step 0 in serial steps");
+  assert.equal(steps[0].step, 1, "First build step must be 1");
 });
