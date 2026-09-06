@@ -102,10 +102,18 @@ function structuredPlanningSteps(slide) {
     plan.components.map((component) => [cleanText(component?.id), component])
   );
   return plan.builds.map((build, index) => {
-    const showComponents = asArray(build?.showComponentIds)
+    const rawShowIds = build?.showComponentIds || build?.componentIds;
+    const showComponents = asArray(rawShowIds)
       .map((id) => componentsById.get(cleanText(id)))
       .filter(Boolean);
-    const omittedComponents = asArray(build?.temporarilyOmitComponentIds)
+    const omittedComponents = asArray(
+      build?.temporarilyOmitComponentIds ||
+        (Array.isArray(rawShowIds)
+          ? plan.components
+              .map((c) => cleanText(c?.id))
+              .filter((id) => !rawShowIds.map(cleanText).includes(id))
+          : [])
+    )
       .map((id) => componentsById.get(cleanText(id)))
       .filter(Boolean);
     return {
@@ -710,6 +718,9 @@ function buildGeminiImagePrompt({ slide, strategy, step, index, total, summary }
       : null,
     strategy === "staged-objectives" && index === 1 && /cell structure/i.test(deckContext)
       ? "Source-specific Step 2 guard: keep the Step 1 comparison, then add the Step 2 plant-cell, animal-cell, and bacterial-cell identification visuals. Do not show the Step 3 mitochondrion, chloroplast, nucleus, structure/function labels, or explanation block; that upper-right region must remain plain graph-paper background."
+      : null,
+    /animal cell/i.test(summary.title) || (slide?.number === 6 && /cell structure/i.test(deckContext))
+      ? "Animal cell guard: This is strictly an animal cell slide ('Eukaryote Blueprint 1: Animal Cell'). Do not show or mention plant-specific structures (never include chloroplasts, cell wall, or a permanent vacuole)."
       : null,
     declaredTitleIsVisible
       ? `The exact visible source title is: "${declaredTitle}". Keep it verbatim in every build.`

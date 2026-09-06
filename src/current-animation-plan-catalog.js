@@ -5,6 +5,29 @@ function cloneStep(step) {
 }
 
 const CURRENT_ANIMATION_PLANS = Object.freeze({
+  Lesson_01_CELL_STRUCTURE: Object.freeze({
+    "slide_06.png": Object.freeze({
+      title: "Eukaryote Blueprint 1: Animal Cell",
+      strategy: "component-reveal",
+      cellCount: 2,
+      steps: Object.freeze([
+        Object.freeze({
+          label: "Animal cell structure overview",
+          show:
+            "The exact source title 'Eukaryote Blueprint 1: Animal Cell' and the complete 3D cutaway animal cell illustration in the centre, on the light-blue graph paper grid background. Do not show any organelle labels or leader lines.",
+          suppress:
+            "All organelle callouts, leader lines, and labels (Nucleus, Cell Membrane, Mitochondria, Ribosomes, Cytoplasm). Leave the surrounding graph paper clean."
+        }),
+        Object.freeze({
+          label: "Reveal animal cell organelle labels",
+          show:
+            "Everything from build 1 plus all animal cell organelle labels and pointer lines: Nucleus and Cell Membrane on the left; Mitochondria, Ribosomes, and Cytoplasm (Base jelly holding it all) on the right.",
+          suppress:
+            "Nothing instructional; this is the complete cumulative source-slide state. Never show plant-specific structures (no chloroplasts, no cell wall, no permanent vacuole)."
+        })
+      ])
+    })
+  }),
   Lesson_03_MAGNIFICATION_CALCULATIONS: Object.freeze({
     "slide_07.png": Object.freeze({
       title: "Image vs. Actual: Spotting the Difference",
