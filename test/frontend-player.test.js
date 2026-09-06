@@ -401,3 +401,23 @@ test("Lesson 1 Cell Structure slide 3 has build 3 identical to slide 03 original
   assert.equal(steps.some((s) => s.step === 0), false, "There must be no step 0 in serial steps");
   assert.equal(steps[0].step, 1, "First build step must be 1");
 });
+
+test("Presenter and student mode toggle displays custom SVG icons instead of visible text", async () => {
+  const [indexHtml, cssSource, appSource] = await Promise.all([
+    fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8"),
+    fs.readFile(CSS_PATH, "utf-8"),
+    fs.readFile(APP_PATH, "utf-8")
+  ]);
+
+  assert.match(indexHtml, /id="modeToggleBtn"/);
+  assert.match(indexHtml, /class="[^"]*mode-icon-presenter[^"]*"/);
+  assert.match(indexHtml, /class="[^"]*mode-icon-student[^"]*"/);
+  assert.match(indexHtml, /<span id="modeText" class="sr-only">Presenter mode<\/span>/);
+
+  assert.match(cssSource, /\.mode-icon-presenter/);
+  assert.match(cssSource, /\.mode-icon-student/);
+  assert.match(cssSource, /\.mode-badge\.is-student/);
+
+  assert.match(appSource, /modeToggleBtn\?\.classList\.toggle\("is-presenter",\s*presenterMode\)/);
+  assert.match(appSource, /modeToggleBtn\?\.classList\.toggle\("is-student",\s*!presenterMode\)/);
+});

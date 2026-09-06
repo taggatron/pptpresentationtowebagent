@@ -262,25 +262,122 @@ body.theme-light .deck-select option {
 }
 
 .mode-badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
   background: rgba(79, 70, 229, 0.08);
   border: 1px solid rgba(79, 70, 229, 0.3);
-  padding: 0.25rem 0.75rem;
+  padding: 0.32rem 0.65rem;
   border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
   color: var(--accent-primary);
-  font-family: var(--font-family);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 32px;
+  line-height: 1;
 }
 
+.mode-badge:hover {
+  background: rgba(79, 70, 229, 0.14);
+  border-color: rgba(79, 70, 229, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.16);
+}
+
+.mode-badge:active {
+  transform: translateY(0);
+}
+
+.mode-badge .mode-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.mode-badge .mode-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+/* Presenter Mode Active (Default) */
+.mode-badge .mode-icon-student {
+  display: none;
+}
+
+.mode-badge .mode-icon-presenter {
+  display: block;
+}
+
+.mode-badge.is-presenter .mode-icon-presenter,
+body.presenter-mode .mode-badge:not(.is-student) .mode-icon-presenter {
+  display: block;
+}
+
+.mode-badge.is-presenter .mode-icon-student,
+body.presenter-mode .mode-badge:not(.is-student) .mode-icon-student {
+  display: none;
+}
+
+/* Student Mode Active */
+.mode-badge.is-student,
+body.student-mode .mode-badge:not(.is-presenter) {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #059669;
+}
+
+.mode-badge.is-student:hover,
+body.student-mode .mode-badge:not(.is-presenter):hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.55);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.18);
+}
+
+.mode-badge.is-student .mode-icon-presenter,
+body.student-mode .mode-badge:not(.is-presenter) .mode-icon-presenter {
+  display: none;
+}
+
+.mode-badge.is-student .mode-icon-student,
+body.student-mode .mode-badge:not(.is-presenter) .mode-icon-student {
+  display: block;
+}
+
+.mode-badge.is-student .pulse-dot,
+body.student-mode .mode-badge:not(.is-presenter) .pulse-dot {
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+/* Dark Theme Support */
 body.theme-dark .mode-badge {
   background: rgba(99, 102, 241, 0.15);
   border: 1px solid rgba(99, 102, 241, 0.4);
   color: #a5b4fc;
+}
+
+body.theme-dark .mode-badge:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
+}
+
+body.theme-dark .mode-badge.is-student,
+body.theme-dark.student-mode .mode-badge:not(.is-presenter) {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.45);
+  color: #6ee7b7;
+}
+
+body.theme-dark .mode-badge.is-student:hover,
+body.theme-dark.student-mode .mode-badge:not(.is-presenter):hover {
+  background: rgba(16, 185, 129, 0.24);
+  border-color: rgba(16, 185, 129, 0.65);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
 }
 
 /* Cognitive Processing Guide Badge & RAG Color Coding */

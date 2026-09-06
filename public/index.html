@@ -52,14 +52,29 @@
           <span class="vci-pill" id="vciPill">VCI: 8.4</span>
         </button>
         <button
-          class="mode-badge"
+          class="mode-badge is-presenter"
           id="modeToggleBtn"
           type="button"
           aria-pressed="true"
-          title="Switch between presenter and student modes"
+          title="Presenter mode (click for Student mode)"
+          aria-label="Presenter mode active. Click to switch to Student mode"
         >
           <span class="pulse-dot" aria-hidden="true"></span>
-          <span id="modeText">Presenter mode</span>
+          <span class="mode-icon-wrap" aria-hidden="true">
+            <svg class="mode-icon mode-icon-presenter" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.5 3.5h15" />
+              <path d="M16.5 3.5v9a1.5 1.5 0 0 1-1.5 1.5H5a1.5 1.5 0 0 1-1.5-1.5v-9" />
+              <path d="m6.5 9.5 2.5-2.5 2.5 2.5 2.5-2.5" />
+              <path d="M10 14v4" />
+              <path d="m7 18 3-1.5 3 1.5" />
+            </svg>
+            <svg class="mode-icon mode-icon-student" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m10 3-8 4.5 8 4.5 8-4.5-8-4.5z" />
+              <path d="M5.5 10v3.5c0 1.6 2 3 4.5 3s4.5-1.4 4.5-3V10" />
+              <path d="M18 7.5v5.5a1 1 0 0 1-1 1" />
+            </svg>
+          </span>
+          <span id="modeText" class="sr-only">Presenter mode</span>
         </button>
         <button
           id="themeToggleBtn"

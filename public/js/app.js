@@ -2466,7 +2466,23 @@ function togglePresenterMode() {
   document.body.classList.toggle("presenter-mode", presenterMode);
   document.body.classList.toggle("student-mode", !presenterMode);
   modeToggleBtn?.setAttribute("aria-pressed", String(presenterMode));
-  modeText.textContent = presenterMode ? "Presenter mode" : "Student mode";
+  modeToggleBtn?.classList.toggle("is-presenter", presenterMode);
+  modeToggleBtn?.classList.toggle("is-student", !presenterMode);
+  modeToggleBtn?.setAttribute(
+    "title",
+    presenterMode
+      ? "Presenter mode (click for Student mode)"
+      : "Student mode (click for Presenter mode)"
+  );
+  modeToggleBtn?.setAttribute(
+    "aria-label",
+    presenterMode
+      ? "Presenter mode active. Click to switch to Student mode"
+      : "Student mode active. Click to switch to Presenter mode"
+  );
+  if (modeText) {
+    modeText.textContent = presenterMode ? "Presenter mode" : "Student mode";
+  }
 
   if (!presenterMode && activeSidebarTab === "editor") {
     switchSidebarTab("overview");
