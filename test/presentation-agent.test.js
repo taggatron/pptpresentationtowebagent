@@ -1302,3 +1302,42 @@ test("atomic activation strictly prevents partial approvals from becoming playab
   assert.equal(fullySynced.progressiveBuilds.length, 3);
   assert.equal(fullySynced.serialAnimation.totalBuildSteps, 3);
 });
+
+test("Lesson 1 Cell Structure slide 6 creates an animal cell label sequence and not a plant cell sequence", async () => {
+  const manifest = await readDeckManifest("Lesson_01_CELL_STRUCTURE");
+  const slide6 = manifest.slides.find((s) => s.number === 6);
+  assert.ok(slide6, "slide 6 must exist in Lesson 1");
+
+  // Verify slide 6 title, decomposition, and builds describe an Animal Cell
+  assert.match(slide6.text, /Animal Cell/i);
+  assert.match(slide6.agentAnalysis.slideDecomposition.analysis.title, /Animal Cell/i);
+  assert.doesNotMatch(slide6.agentAnalysis.slideDecomposition.analysis.title, /Plant Cell/i);
+
+  // Components must not include plant-only organelles
+  const componentIds = slide6.agentAnalysis.slideDecomposition.analysis.components.map((c) => c.id);
+  assert.ok(componentIds.includes("animal_cell_diagram"));
+  assert.ok(componentIds.includes("label_nucleus"));
+  assert.ok(componentIds.includes("label_cell_membrane"));
+  assert.ok(componentIds.includes("label_mitochondria"));
+  assert.ok(componentIds.includes("label_ribosomes"));
+  assert.ok(componentIds.includes("label_cytoplasm"));
+  assert.ok(!componentIds.includes("label_chloroplasts"), "must not include chloroplasts in animal cell");
+  assert.ok(!componentIds.includes("label_permanent_vacuole"), "must not include permanent vacuole in animal cell");
+
+  // Builds and prompts must sequence animal cell labels
+  assert.ok(Array.isArray(slide6.geminiImageCells) && slide6.geminiImageCells.length === 2);
+  assert.match(slide6.geminiImageCells[0].label, /Animal cell/i);
+  assert.match(slide6.geminiImageCells[1].label, /Reveal animal cell organelle labels/i);
+  for (const cell of slide6.geminiImageCells) {
+    assert.match(cell.prompt, /Animal cell guard/i);
+    assert.match(cell.prompt, /Eukaryote Blueprint 1: Animal Cell/i);
+    assert.doesNotMatch(cell.prompt, /Blueprint 2: Plant Cell/i);
+  }
+
+  // Progressive builds in playback must be approved animal cell builds
+  assert.equal(slide6.hasProgressiveBuilds, true);
+  assert.equal(slide6.progressiveBuilds.length, 2);
+  assert.match(slide6.progressiveBuilds[0].label, /Animal cell/i);
+  assert.match(slide6.progressiveBuilds[1].label, /Reveal animal cell organelle labels/i);
+});
+

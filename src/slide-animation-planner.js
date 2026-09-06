@@ -795,8 +795,26 @@ export function createGeminiImageCells(slide, { maxGeneratedCells = null } = {})
       fullCanvas: true,
       cumulative: true,
       prompt: buildGeminiImagePrompt({ slide, strategy, step, index, total, summary }),
-      status: isApproved ? "approved" : outputImageUrl ? "generated-pending-qa" : "planned",
-      qaStatus: isApproved ? "approved" : outputImageUrl ? "pending" : "not-started",
+      status: isApproved
+        ? "approved"
+        : interactiveCells.length > 0
+        ? "planned"
+        : qaStatus === "not-started"
+        ? "planned"
+        : outputImageUrl
+        ? "generated-pending-qa"
+        : "planned",
+      qaStatus: isApproved
+        ? "approved"
+        : interactiveCells.length > 0
+        ? "not-started"
+        : qaStatus === "rejected"
+        ? "rejected"
+        : qaStatus === "not-started"
+        ? "not-started"
+        : outputImageUrl
+        ? "pending"
+        : "not-started",
       outputImageUrl,
       sourceImageUrl: slide?.imageUrl || null,
       ...(existingCell?.generatedAt ? { generatedAt: existingCell.generatedAt } : {}),
