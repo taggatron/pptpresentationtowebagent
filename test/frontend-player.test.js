@@ -421,3 +421,17 @@ test("Presenter and student mode toggle displays custom SVG icons instead of vis
   assert.match(appSource, /modeToggleBtn\?\.classList\.toggle\("is-presenter",\s*presenterMode\)/);
   assert.match(appSource, /modeToggleBtn\?\.classList\.toggle\("is-student",\s*!presenterMode\)/);
 });
+
+test("Cognitive load indicator pill uses custom SVG icon instead of visible processing text", async () => {
+  const [indexHtml, cssSource] = await Promise.all([
+    fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8"),
+    fs.readFile(CSS_PATH, "utf-8")
+  ]);
+
+  assert.match(indexHtml, /id="cognitiveBadge"/);
+  assert.match(indexHtml, /class="[^"]*cognitive-svg-icon[^"]*"/);
+  assert.match(indexHtml, /<span class="cognitive-label sr-only">Processing:<\/span>/);
+
+  assert.match(cssSource, /\.cognitive-svg-icon/);
+  assert.match(cssSource, /\.cognitive-badge\s*\{[^}]*white-space:\s*nowrap/);
+});
