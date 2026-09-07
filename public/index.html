@@ -28,9 +28,8 @@
           <span class="brand-title">Vibe Deck Agent</span>
         </div>
         <div class="header-selectors" role="group" aria-label="Presentation navigation">
-          <div class="selector-group">
-            <label for="slideSetBtn" class="selector-label">Set</label>
-            <button id="slideSetBtn" class="deck-select slide-set-select" type="button" aria-haspopup="dialog" aria-expanded="false" style="cursor: pointer;">
+          <div class="selector-group" style="padding-right: 0;">
+            <button id="slideSetBtn" class="deck-select slide-set-select selector-label" type="button" aria-haspopup="dialog" aria-expanded="false" style="cursor: pointer; padding: 0; outline: none; text-transform: none; font-size: 0.9rem; margin-right: 8px;">
               Sets
             </button>
           </div>
@@ -96,7 +95,7 @@
           aria-label="Visual Impairment and Accessibility accommodations"
           aria-haspopup="dialog"
         >
-          <span class="vi-badge-indicator" aria-hidden="true">VI</span>
+          <span aria-hidden="true" style="font-weight: 700; font-size: 0.9rem;">VI</span>
         </button>
         <button
           id="speechReadBtn"
