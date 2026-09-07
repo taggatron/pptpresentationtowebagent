@@ -4174,3 +4174,180 @@ body.vi-theme-cream .reading-ruler {
   color: var(--text-main);
 }
 
+/* ==========================================================================
+   Modified Large Print (MLP) Export Styling & Print Media
+   Following RNIB, JCQ, and APH Low-Vision Standards
+   ========================================================================== */
+
+.mlp-export-btn {
+  position: relative;
+}
+
+.mlp-modal-card {
+  width: 95%;
+  max-width: 620px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-xl);
+}
+
+.mlp-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1.5px solid var(--border-color);
+}
+
+.mlp-modal-header-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mlp-header-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.mlp-modal-header-title h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.mlp-modal-subtitle {
+  margin: 3px 0 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.mlp-modal-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mlp-setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mlp-group-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.mlp-select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mlp-select:focus-visible {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+}
+
+.mlp-inclusions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  background: var(--bg-card-subtle);
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-color);
+}
+
+.mlp-actions-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1.5px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.mlp-actions-row .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Standalone Print Media Defaults */
+@media print {
+  header,
+  .sidebar,
+  .modal-overlay,
+  .controls-bar,
+  .audio-dock,
+  .toast,
+  .vi-badge,
+  .presentation-controls,
+  .reading-ruler,
+  .slide-zoom-bar,
+  #viSettingsModal,
+  #mlpExportModal,
+  #welcomeModal,
+  #cognitiveModal,
+  #interactiveOverlay,
+  .edit-target-overlay {
+    display: none !important;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    font-size: 18pt !important;
+    line-height: 1.6 !important;
+  }
+
+  .app-container,
+  .main-stage,
+  .slide-container,
+  .slide-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .slide-image {
+    position: static !important;
+    width: 100% !important;
+    max-height: 75vh !important;
+    object-fit: contain !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 2px solid #000000 !important;
+  }
+}
+

@@ -109,6 +109,16 @@
           <span aria-hidden="true">🔊</span>
         </button>
         <button
+          id="mlpExportBtn"
+          class="icon-btn mlp-export-btn"
+          type="button"
+          title="Modified Large Print Export (Alt+P)"
+          aria-label="Modified Large Print Export (Alt+P)"
+          aria-haspopup="dialog"
+        >
+          <span aria-hidden="true">🖨️</span>
+        </button>
+        <button
           id="themeToggleBtn"
           class="icon-btn"
           type="button"
@@ -714,16 +724,125 @@
           </div>
         </div>
 
+        <!-- Modified Large Print (MLP) Export Section -->
+        <div class="vi-setting-section">
+          <h4 class="vi-section-title">
+            <span aria-hidden="true">🖨️</span> Modified Large Print (MLP) Export
+          </h4>
+          <p class="vi-section-desc">Generate official JCQ / RNIB modified large print worksheets and booklets (18pt, 24pt, 36pt).</p>
+          <div class="vi-controls-grid">
+            <div class="vi-control-item">
+              <button id="viLaunchMlpBtn" class="btn btn-secondary-small" type="button" style="width: 100%; justify-content: center; font-size: 0.92rem; padding: 10px 14px;">
+                <span aria-hidden="true">🖨️</span> Open Modified Large Print (MLP) Export Dialog (Alt+P)
+              </button>
+            </div>
+          </div>
+        </div>
+
         <!-- Keyboard Shortcuts Reference -->
         <div class="vi-shortcuts-box">
           <h5>Accessibility Keyboard Shortcuts</h5>
           <div class="vi-shortcuts-list">
             <span><kbd>Alt</kbd>+<kbd>A</kbd> or <kbd>Alt</kbd>+<kbd>V</kbd> Toggle Accessibility Menu</span>
+            <span><kbd>Alt</kbd>+<kbd>P</kbd> Modified Large Print (MLP) Export</span>
             <span><kbd>Alt</kbd>+<kbd>R</kbd> Read Slide Aloud (TTS)</span>
             <span><kbd>+</kbd> / <kbd>−</kbd> Zoom Slide In / Out</span>
             <span><kbd>0</kbd> Reset Slide Zoom</span>
             <span><kbd>Esc</kbd> Close Dialog / Reset Magnifier</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modified Large Print (MLP) Export Modal -->
+  <div id="mlpExportModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="mlpModalTitle">
+    <div class="modal-card mlp-modal-card">
+      <div class="modal-header mlp-modal-header">
+        <div class="mlp-modal-header-title">
+          <span class="mlp-header-icon" aria-hidden="true">🖨️</span>
+          <div>
+            <h3 id="mlpModalTitle">Modified Large Print (MLP) Export</h3>
+            <p class="mlp-modal-subtitle">Educational exam &amp; classroom format (RNIB / JCQ standards)</p>
+          </div>
+        </div>
+        <button id="closeMlpModalBtn" class="close-btn" type="button" aria-label="Close Modified Large Print Export dialog">&times;</button>
+      </div>
+
+      <div class="modal-body mlp-modal-body">
+        <!-- Scope -->
+        <div class="mlp-setting-group">
+          <label class="mlp-group-label" for="mlpScopeSelect">Export Scope</label>
+          <select id="mlpScopeSelect" class="mlp-select">
+            <option value="current">Current Slide Only (Active slide)</option>
+            <option value="all" selected>Entire Lesson Deck (Complete booklet)</option>
+          </select>
+        </div>
+
+        <!-- Typographic Size Preset -->
+        <div class="mlp-setting-group">
+          <label class="mlp-group-label" for="mlpSizeSelect">MLP Font Size (RNIB / JCQ Specifications)</label>
+          <select id="mlpSizeSelect" class="mlp-select">
+            <option value="18" selected>18pt — Standard Modified Large Print (Minimum)</option>
+            <option value="24">24pt — Large Modified Large Print</option>
+            <option value="36">36pt — Super Large Modified Large Print</option>
+          </select>
+        </div>
+
+        <!-- Contrast Palette -->
+        <div class="mlp-setting-group">
+          <label class="mlp-group-label" for="mlpThemeSelect">Contrast &amp; Paper Tone</label>
+          <select id="mlpThemeSelect" class="mlp-select">
+            <option value="black-white" selected>Black on White (Standard Crisp Print)</option>
+            <option value="black-cream">Black on Soft Cream (Anti-Glare / Reduced Photophobia)</option>
+            <option value="yellow-black">Yellow on Black (Digital Low-Vision / RNIB)</option>
+          </select>
+        </div>
+
+        <!-- Content & Mode -->
+        <div class="mlp-setting-group">
+          <label class="mlp-group-label" for="mlpModeSelect">Pedagogical Format</label>
+          <select id="mlpModeSelect" class="mlp-select">
+            <option value="worksheet">Student Worksheet (With ruled answer write-in lines)</option>
+            <option value="study-guide" selected>Teacher / Study Guide (With revealed model answers)</option>
+          </select>
+        </div>
+
+        <!-- Inclusions checkboxes -->
+        <div class="mlp-inclusions-grid">
+          <label class="toggle-control-label">
+            <input type="checkbox" id="mlpIncludeImages" checked>
+            <span class="toggle-slider-sm"></span>
+            <span>Include High-Resolution Slide Diagram</span>
+          </label>
+
+          <label class="toggle-control-label">
+            <input type="checkbox" id="mlpIncludeText" checked>
+            <span class="toggle-slider-sm"></span>
+            <span>Include Full Scientific Transcripts &amp; Notes</span>
+          </label>
+
+          <label class="toggle-control-label">
+            <input type="checkbox" id="mlpIncludeQuestions" checked>
+            <span class="toggle-slider-sm"></span>
+            <span>Include Active Recall Questions</span>
+          </label>
+
+          <label class="toggle-control-label">
+            <input type="checkbox" id="mlpIncludeCognitive">
+            <span class="toggle-slider-sm"></span>
+            <span>Include Cognitive Load Pacing Notes</span>
+          </label>
+        </div>
+
+        <!-- Export Action Buttons -->
+        <div class="mlp-actions-row">
+          <button id="mlpPrintBtn" class="btn btn-primary-bright" type="button">
+            <span aria-hidden="true">🖨️</span> Print / Save as PDF
+          </button>
+          <button id="mlpDownloadBtn" class="btn btn-outline-small" type="button">
+            <span aria-hidden="true">💾</span> Download Standalone HTML
+          </button>
         </div>
       </div>
     </div>

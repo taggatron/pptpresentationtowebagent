@@ -1571,6 +1571,630 @@ function initVisualImpairmentMode() {
   }
 }
 
+// ==========================================================================
+// Modified Large Print (MLP) Export System (RNIB / JCQ / APH Educational Specs)
+// ==========================================================================
+
+function openMlpExportModal() {
+  const modal = document.getElementById("mlpExportModal");
+  if (!modal) return;
+  modal.classList.remove("hidden");
+  const scopeSelect = document.getElementById("mlpScopeSelect");
+  scopeSelect?.focus();
+}
+
+function closeMlpExportModal() {
+  const modal = document.getElementById("mlpExportModal");
+  if (modal && !modal.classList.contains("hidden")) {
+    modal.classList.add("hidden");
+    const exportBtn = document.getElementById("mlpExportBtn");
+    exportBtn?.focus();
+  }
+}
+
+function getSlideQuestions(slide) {
+  if (Array.isArray(slide?.interactiveCells) && slide.interactiveCells.length > 0) {
+    return slide.interactiveCells;
+  }
+  if (Array.isArray(slide?.starterQuestions) && slide.starterQuestions.length > 0) {
+    return slide.starterQuestions;
+  }
+  return [];
+}
+
+function formatMlpBodyText(text) {
+  if (!text) return "";
+  const rawParagraphs = text.split(/\r?\n\r?\n/);
+  return rawParagraphs
+    .map((para) => {
+      const trimmed = para.trim();
+      if (!trimmed) return "";
+      const lines = trimmed.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      const isList = lines.length > 1 && lines.every((l) => /^[-•*]|\d+\.\s/.test(l));
+      if (isList) {
+        const items = lines
+          .map((l) => `<li>${escapeHtml(l.replace(/^[-•*]|\d+\.\s*/, ""))}</li>`)
+          .join("");
+        return `<ul class="mlp-list">${items}</ul>`;
+      }
+      return `<p class="mlp-paragraph">${escapeHtml(trimmed.replace(/\s+/g, " "))}</p>`;
+    })
+    .filter(Boolean)
+    .join("");
+}
+
+function generateMlpDocument(options = {}) {
+  if (!currentDeck || !Array.isArray(currentDeck.slides)) {
+    return `<!DOCTYPE html><html lang="en"><body><p>No presentation deck is currently loaded.</p></body></html>`;
+  }
+
+  const {
+    scope = "all",
+    fontSize = "18",
+    theme = "black-white",
+    mode = "study-guide",
+    includeImages = true,
+    includeText = true,
+    includeQuestions = true,
+    includeCognitive = false
+  } = options;
+
+  const slidesToExport = scope === "current"
+    ? [currentDeck.slides[currentSlideIndex]].filter(Boolean)
+    : currentDeck.slides;
+
+  let bg = "#ffffff";
+  let text = "#000000";
+  let border = "#000000";
+  let softBg = "#f8fafc";
+  let answerBg = "#f1f5f9";
+  let accent = "#222222";
+  let themeLabel = "Black on White";
+
+  if (theme === "black-cream") {
+    bg = "#fffdec";
+    text = "#0a0a0a";
+    border = "#1a1a1a";
+    softBg = "#f8f5df";
+    answerBg = "#f2eed0";
+    accent = "#2b2b2b";
+    themeLabel = "Black on Soft Cream (Anti-Glare)";
+  } else if (theme === "yellow-black") {
+    bg = "#000000";
+    text = "#ffff00";
+    border = "#ffff00";
+    softBg = "#141414";
+    answerBg = "#1f1f00";
+    accent = "#ffff55";
+    themeLabel = "Yellow on Black (RNIB Low-Vision)";
+  }
+
+  const sizeConfigs = {
+    "18": {
+      body: "18pt",
+      h1: "26pt",
+      h2: "22pt",
+      h3: "19pt",
+      lineHeight: "1.65",
+      letterSpacing: "0.02em",
+      label: "18pt (Standard MLP Minimum)"
+    },
+    "24": {
+      body: "24pt",
+      h1: "34pt",
+      h2: "28pt",
+      h3: "25pt",
+      lineHeight: "1.75",
+      letterSpacing: "0.025em",
+      label: "24pt (Large MLP)"
+    },
+    "36": {
+      body: "36pt",
+      h1: "44pt",
+      h2: "38pt",
+      h3: "36pt",
+      lineHeight: "1.85",
+      letterSpacing: "0.03em",
+      label: "36pt (Super Large MLP)"
+    }
+  };
+
+  const type = sizeConfigs[String(fontSize)] || sizeConfigs["18"];
+  const deckTitle = currentDeck.title || "Lesson Presentation";
+  const dateStr = new Date().toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+  const slidesHtml = slidesToExport
+    .map((slide, sIdx) => {
+      const slideNum = slide.number || (scope === "current" ? currentSlideIndex + 1 : sIdx + 1);
+      const totalNum = currentDeck.totalSlides || currentDeck.slides.length;
+      const slideTitle = slide.title || `Slide ${slideNum}`;
+
+      let imageHtml = "";
+      if (includeImages && slide.imageUrl) {
+        const origin = typeof window !== "undefined" ? window.location.origin : "";
+        const resolvedUrl = slide.imageUrl.startsWith("http")
+          ? slide.imageUrl
+          : (origin ? `${origin}${slide.imageUrl.startsWith("/") ? "" : "/"}${slide.imageUrl}` : slide.imageUrl);
+
+        imageHtml = `
+          <figure class="mlp-figure">
+            <img src="${escapeHtml(resolvedUrl)}" alt="${escapeHtml(slideTitle)}" class="mlp-img" />
+            <figcaption class="mlp-caption">Diagram ${slideNum}: ${escapeHtml(slideTitle)}</figcaption>
+          </figure>
+        `;
+      }
+
+      let textHtml = "";
+      if (includeText && slide.text) {
+        textHtml = `
+          <section class="mlp-text-block">
+            <h3>Key Concepts &amp; Lesson Notes</h3>
+            ${formatMlpBodyText(slide.text)}
+          </section>
+        `;
+      }
+
+      let questionsHtml = "";
+      if (includeQuestions) {
+        const questions = getSlideQuestions(slide);
+        if (questions.length > 0) {
+          const items = questions
+            .map((q, qIdx) => {
+              const qText = q.question || q.label || `Prompt ${qIdx + 1}`;
+              const aText = q.expectedAnswer || q.label || "";
+              let responseArea = "";
+
+              if (mode === "worksheet") {
+                responseArea = `
+                  <div class="mlp-write-lines" aria-label="Ruled lines for written response">
+                    <div class="mlp-line"></div>
+                    <div class="mlp-line"></div>
+                    <div class="mlp-line"></div>
+                  </div>
+                `;
+              } else {
+                responseArea = `
+                  <div class="mlp-model-answer">
+                    <div class="mlp-answer-heading">Model Answer / Key Fact:</div>
+                    <div class="mlp-answer-text">${escapeHtml(aText || "Refer to teacher lesson commentary")}</div>
+                  </div>
+                `;
+              }
+
+              return `
+                <div class="mlp-question-card">
+                  <div class="mlp-q-prompt">
+                    <strong>Question ${qIdx + 1}:</strong> ${escapeHtml(qText)}
+                  </div>
+                  ${responseArea}
+                </div>
+              `;
+            })
+            .join("");
+
+          questionsHtml = `
+            <section class="mlp-questions-block">
+              <h3>Active Recall &amp; Knowledge Check</h3>
+              ${items}
+            </section>
+          `;
+        }
+      }
+
+      let cognitiveHtml = "";
+      if (includeCognitive && slide.cognitiveGuide) {
+        cognitiveHtml = `
+          <div class="mlp-cognitive-box">
+            <strong>Cognitive Load Pacing:</strong>
+            Level ${escapeHtml(slide.cognitiveGuide.ragLabel || "Standard")} ·
+            ${escapeHtml(slide.cognitiveGuide.complexityCategory || "Standard Pace")}
+            ${slide.cognitiveGuide.timeGuideDisplay ? `(~${escapeHtml(slide.cognitiveGuide.timeGuideDisplay)})` : ""}
+          </div>
+        `;
+      }
+
+      return `
+        <article class="mlp-slide-section">
+          <header class="mlp-slide-heading">
+            <div class="mlp-slide-kicker">Slide ${slideNum} of ${totalNum}</div>
+            <h2 class="mlp-slide-h2">${escapeHtml(slideTitle)}</h2>
+          </header>
+          ${imageHtml}
+          ${textHtml}
+          ${questionsHtml}
+          ${cognitiveHtml}
+        </article>
+      `;
+    })
+    .join("");
+
+  const learnerBox = mode === "worksheet"
+    ? `
+      <div class="mlp-learner-box">
+        <div><strong>Learner Name:</strong> ________________________________________________</div>
+        <div><strong>Date:</strong> ________________________</div>
+      </div>
+    `
+    : "";
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escapeHtml(deckTitle)} — Modified Large Print (${type.label})</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 16mm 18mm;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+      font-size: ${type.body};
+      line-height: ${type.lineHeight};
+      letter-spacing: ${type.letterSpacing};
+      background-color: ${bg};
+      color: ${text};
+      word-spacing: 0.08em;
+      text-align: left;
+    }
+    .mlp-doc-header {
+      border-bottom: 3px solid ${border};
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .mlp-doc-title {
+      font-size: ${type.h1};
+      font-weight: 800;
+      margin: 0 0 8px 0;
+      line-height: 1.2;
+    }
+    .mlp-doc-meta {
+      font-size: 0.76em;
+      color: ${accent};
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+    .mlp-badge {
+      display: inline-block;
+      border: 2px solid ${border};
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+      background-color: ${softBg};
+    }
+    .mlp-learner-box {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border: 2px solid ${border};
+      background-color: ${softBg};
+      font-weight: 700;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .mlp-slide-section {
+      page-break-after: always;
+      break-after: page;
+      padding-top: 16px;
+      margin-bottom: 36px;
+      border-bottom: 2px dashed ${border};
+    }
+    @media print {
+      body {
+        padding: 0;
+      }
+      .mlp-slide-section {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-top: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    .mlp-slide-heading {
+      border-bottom: 2.5px solid ${border};
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+    .mlp-slide-kicker {
+      font-size: 0.72em;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      color: ${accent};
+    }
+    .mlp-slide-h2 {
+      font-size: ${type.h2};
+      margin: 4px 0 0 0;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .mlp-figure {
+      margin: 18px 0 24px 0;
+      text-align: center;
+    }
+    .mlp-img {
+      max-width: 100%;
+      max-height: 460px;
+      object-fit: contain;
+      border: 2.5px solid ${border};
+      border-radius: 4px;
+      background: #ffffff;
+      display: block;
+      margin: 0 auto;
+    }
+    .mlp-caption {
+      font-size: 0.74em;
+      margin-top: 8px;
+      font-weight: 700;
+      text-align: left;
+    }
+    .mlp-text-block {
+      margin: 20px 0;
+    }
+    .mlp-text-block h3, .mlp-questions-block h3 {
+      font-size: ${type.h3};
+      margin: 0 0 10px 0;
+      font-weight: 800;
+      text-decoration: underline;
+    }
+    .mlp-paragraph {
+      margin: 0 0 14px 0;
+    }
+    .mlp-list {
+      margin: 0 0 16px 0;
+      padding-left: 28px;
+    }
+    .mlp-list li {
+      margin-bottom: 8px;
+    }
+    .mlp-question-card {
+      margin: 18px 0;
+      padding: 16px 20px;
+      border: 2px solid ${border};
+      border-radius: 6px;
+      background-color: ${softBg};
+    }
+    .mlp-q-prompt {
+      margin: 0 0 12px 0;
+      font-weight: 700;
+    }
+    .mlp-write-lines {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 15mm;
+      padding-top: 4mm;
+      padding-bottom: 2mm;
+    }
+    .mlp-line {
+      border-bottom: 2px solid ${border};
+      width: 100%;
+    }
+    .mlp-model-answer {
+      margin-top: 12px;
+      padding: 12px 16px;
+      border: 2px solid ${border};
+      border-radius: 4px;
+      background-color: ${answerBg};
+    }
+    .mlp-answer-heading {
+      font-weight: 800;
+      margin-bottom: 6px;
+      text-decoration: underline;
+    }
+    .mlp-answer-text {
+      font-weight: 700;
+    }
+    .mlp-cognitive-box {
+      margin: 18px 0;
+      padding: 10px 14px;
+      border: 2px solid ${border};
+      border-radius: 4px;
+      font-size: 0.8em;
+      font-weight: 700;
+      background-color: ${softBg};
+    }
+    .mlp-print-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: ${softBg};
+      border: 2px solid ${border};
+      padding: 10px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+    }
+    .mlp-print-bar button {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      background: ${border};
+      color: ${bg};
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="mlp-print-bar no-print">
+    <div><strong>Modified Large Print View (${escapeHtml(type.label)})</strong></div>
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <header class="mlp-doc-header">
+    <h1 class="mlp-doc-title">${escapeHtml(deckTitle)}</h1>
+    <div class="mlp-doc-meta">
+      <span class="mlp-badge">${escapeHtml(type.label)}</span>
+      <span class="mlp-badge">${escapeHtml(themeLabel)}</span>
+      <span class="mlp-badge">${mode === "worksheet" ? "Student Worksheet" : "Teacher / Study Guide"}</span>
+      <span>Date: ${escapeHtml(dateStr)}</span>
+      <span>Standards: RNIB / JCQ / APH</span>
+    </div>
+    ${learnerBox}
+  </header>
+
+  <main>
+    ${slidesHtml}
+  </main>
+</body>
+</html>`;
+}
+
+function launchMlpPrint(options) {
+  const docHtml = generateMlpDocument(options);
+  const printIframe = document.createElement("iframe");
+  printIframe.style.position = "fixed";
+  printIframe.style.right = "0";
+  printIframe.style.bottom = "0";
+  printIframe.style.width = "0";
+  printIframe.style.height = "0";
+  printIframe.style.border = "0";
+  printIframe.id = "mlpPrintIframe";
+  document.body.appendChild(printIframe);
+
+  const frameDoc = printIframe.contentDocument || printIframe.contentWindow.document;
+  frameDoc.open();
+  frameDoc.write(docHtml);
+  frameDoc.close();
+
+  const triggerPrint = () => {
+    try {
+      printIframe.contentWindow.focus();
+      printIframe.contentWindow.print();
+    } catch (e) {
+      console.warn("Iframe print error, falling back to window popup:", e);
+      const printWin = window.open("", "_blank");
+      if (printWin) {
+        printWin.document.open();
+        printWin.document.write(docHtml);
+        printWin.document.close();
+        printWin.focus();
+        setTimeout(() => printWin.print(), 500);
+      }
+    } finally {
+      setTimeout(() => {
+        if (printIframe.parentNode) {
+          printIframe.parentNode.removeChild(printIframe);
+        }
+      }, 3000);
+    }
+  };
+
+  const imgs = frameDoc.querySelectorAll("img");
+  if (imgs.length === 0) {
+    setTimeout(triggerPrint, 300);
+  } else {
+    let loaded = 0;
+    const checkAllLoaded = () => {
+      loaded++;
+      if (loaded >= imgs.length) {
+        setTimeout(triggerPrint, 300);
+      }
+    };
+    imgs.forEach((img) => {
+      if (img.complete) {
+        checkAllLoaded();
+      } else {
+        img.addEventListener("load", checkAllLoaded);
+        img.addEventListener("error", checkAllLoaded);
+      }
+    });
+    setTimeout(triggerPrint, 2500);
+  }
+}
+
+function downloadMlpFile(options) {
+  const docHtml = generateMlpDocument(options);
+  const deckTitle = currentDeck?.title || "Lesson";
+  const slug = deckTitle.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "") || "lesson";
+  const filename = `${slug}_Modified_Large_Print_${options.fontSize || 18}pt_${options.mode || "study-guide"}.html`;
+
+  const blob = new Blob([docHtml], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function getMlpFormOptions() {
+  const scopeSelect = document.getElementById("mlpScopeSelect");
+  const sizeSelect = document.getElementById("mlpSizeSelect");
+  const themeSelect = document.getElementById("mlpThemeSelect");
+  const modeSelect = document.getElementById("mlpModeSelect");
+  const includeImagesCb = document.getElementById("mlpIncludeImages");
+  const includeTextCb = document.getElementById("mlpIncludeText");
+  const includeQuestionsCb = document.getElementById("mlpIncludeQuestions");
+  const includeCognitiveCb = document.getElementById("mlpIncludeCognitive");
+
+  return {
+    scope: scopeSelect?.value || "all",
+    fontSize: sizeSelect?.value || "18",
+    theme: themeSelect?.value || "black-white",
+    mode: modeSelect?.value || "study-guide",
+    includeImages: includeImagesCb ? includeImagesCb.checked : true,
+    includeText: includeTextCb ? includeTextCb.checked : true,
+    includeQuestions: includeQuestionsCb ? includeQuestionsCb.checked : true,
+    includeCognitive: includeCognitiveCb ? includeCognitiveCb.checked : false
+  };
+}
+
+function initMlpExport() {
+  const exportBtn = document.getElementById("mlpExportBtn");
+  const closeBtn = document.getElementById("closeMlpModalBtn");
+  const viLaunchBtn = document.getElementById("viLaunchMlpBtn");
+  const printBtn = document.getElementById("mlpPrintBtn");
+  const downloadBtn = document.getElementById("mlpDownloadBtn");
+  const modal = document.getElementById("mlpExportModal");
+
+  exportBtn?.addEventListener("click", openMlpExportModal);
+  closeBtn?.addEventListener("click", closeMlpExportModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeMlpExportModal();
+    }
+  });
+
+  viLaunchBtn?.addEventListener("click", () => {
+    closeViSettingsModal();
+    openMlpExportModal();
+  });
+
+  printBtn?.addEventListener("click", () => {
+    const options = getMlpFormOptions();
+    launchMlpPrint(options);
+  });
+
+  downloadBtn?.addEventListener("click", () => {
+    const options = getMlpFormOptions();
+    downloadMlpFile(options);
+  });
+}
+
 function initTheme() {
   const themeToggleBtn = document.getElementById("themeToggleBtn");
   const savedTheme = localStorage.getItem("vibeDeck_theme") || "light";
@@ -1608,6 +2232,7 @@ function applyTheme(theme) {
 async function init() {
   initTheme();
   initVisualImpairmentMode();
+  initMlpExport();
   setupEventListeners();
   initWelcomeModal();
   await loadAgentPathways();
@@ -3310,7 +3935,18 @@ function setupEventListeners() {
     if (typing) return;
 
     const viModal = document.getElementById("viSettingsModal");
+    const mlpModal = document.getElementById("mlpExportModal");
     const welcomeModal = document.getElementById("welcomeModal");
+
+    if (event.altKey && event.key.toLowerCase() === "p") {
+      event.preventDefault();
+      if (mlpModal && !mlpModal.classList.contains("hidden")) {
+        closeMlpExportModal();
+      } else {
+        openMlpExportModal();
+      }
+      return;
+    }
 
     if (event.altKey && (event.key.toLowerCase() === "a" || event.key.toLowerCase() === "v")) {
       event.preventDefault();
@@ -3332,7 +3968,9 @@ function setupEventListeners() {
       return;
     }
 
-    if (event.key === "Escape" && viModal && !viModal.classList.contains("hidden")) {
+    if (event.key === "Escape" && mlpModal && !mlpModal.classList.contains("hidden")) {
+      closeMlpExportModal();
+    } else if (event.key === "Escape" && viModal && !viModal.classList.contains("hidden")) {
       closeViSettingsModal();
     } else if (event.key === "Escape" && welcomeModal && !welcomeModal.classList.contains("hidden")) {
       welcomeModal.classList.add("hidden");

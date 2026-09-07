@@ -1407,4 +1407,62 @@ test("Visual Impairment Friendly Mode includes educational accommodations, skip 
   assert.match(js, /vibeDeck_vi_settings/);
 });
 
+test("educational modified large print (MLP) export follows RNIB and JCQ guidelines", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+
+  // Header & VI settings buttons
+  assert.match(html, /id="mlpExportBtn"/);
+  assert.match(html, /id="viLaunchMlpBtn"/);
+
+  // Modal dialog elements & options
+  assert.match(html, /id="mlpExportModal"/);
+  assert.match(html, /id="mlpScopeSelect"/);
+  assert.match(html, /id="mlpSizeSelect"/);
+  assert.match(html, /value="18"[^>]*>18pt/);
+  assert.match(html, /value="24"[^>]*>24pt/);
+  assert.match(html, /value="36"[^>]*>36pt/);
+  assert.match(html, /id="mlpThemeSelect"/);
+  assert.match(html, /value="black-white"/);
+  assert.match(html, /value="black-cream"/);
+  assert.match(html, /value="yellow-black"/);
+  assert.match(html, /id="mlpModeSelect"/);
+  assert.match(html, /value="worksheet"/);
+  assert.match(html, /value="study-guide"/);
+
+  // Inclusions toggles
+  assert.match(html, /id="mlpIncludeImages"/);
+  assert.match(html, /id="mlpIncludeText"/);
+  assert.match(html, /id="mlpIncludeQuestions"/);
+  assert.match(html, /id="mlpIncludeCognitive"/);
+
+  // Action buttons
+  assert.match(html, /id="mlpPrintBtn"/);
+  assert.match(html, /id="mlpDownloadBtn"/);
+
+  // Shortcut documentation
+  assert.match(html, /Alt.*P.*Modified Large Print/);
+
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+
+  // MLP styling and print rules
+  assert.match(css, /\.mlp-modal-card/);
+  assert.match(css, /\.mlp-select/);
+  assert.match(css, /\.mlp-inclusions-grid/);
+  assert.match(css, /@media print/);
+  assert.match(css, /#mlpExportModal/);
+
+  const js = await fs.readFile(path.join(ROOT_DIR, "public", "js", "app.js"), "utf-8");
+
+  // Export functions & controllers
+  assert.match(js, /initMlpExport\(\)/);
+  assert.match(js, /openMlpExportModal/);
+  assert.match(js, /closeMlpExportModal/);
+  assert.match(js, /generateMlpDocument/);
+  assert.match(js, /launchMlpPrint/);
+  assert.match(js, /downloadMlpFile/);
+  assert.match(js, /getMlpFormOptions/);
+  assert.match(js, /formatMlpBodyText/);
+  assert.match(js, /event\.altKey && event\.key\.toLowerCase\(\) === "p"/);
+});
+
 
