@@ -29,10 +29,10 @@
         </div>
         <div class="header-selectors" role="group" aria-label="Presentation navigation">
           <div class="selector-group">
-            <label for="slideSetSelect" class="selector-label">Set</label>
-            <select id="slideSetSelect" class="deck-select slide-set-select" aria-label="Select slide set">
-              <option value="">Loading slide sets…</option>
-            </select>
+            <label for="slideSetBtn" class="selector-label">Set</label>
+            <button id="slideSetBtn" class="deck-select slide-set-select" type="button" aria-haspopup="dialog" aria-expanded="false" style="cursor: pointer;">
+              Sets
+            </button>
           </div>
           <div class="selector-group">
             <label for="deckSelect" class="selector-label">Lesson</label>
@@ -835,6 +835,21 @@
           <button id="mlpDownloadBtn" class="btn btn-outline-small" type="button">
             <span aria-hidden="true">💾</span> Download Standalone HTML
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sets Modal -->
+  <div id="setsModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="setsModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="setsModalTitle">Select a Slide Set</h3>
+        <button id="closeSetsModalBtn" class="close-btn" type="button" aria-label="Close sets modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="setsCardsContainer" class="sets-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; padding-top: 10px;">
+          <!-- Set cards will be injected here -->
         </div>
       </div>
     </div>

@@ -20,7 +20,10 @@ let editPointerInteraction = null;
 let slideAutoAdvanceTimer = null;
 
 const deckSelect = document.getElementById("deckSelect");
-const slideSetSelect = document.getElementById("slideSetSelect");
+const slideSetBtn = document.getElementById("slideSetBtn");
+const setsModal = document.getElementById("setsModal");
+const closeSetsModalBtn = document.getElementById("closeSetsModalBtn");
+const setsCardsContainer = document.getElementById("setsCardsContainer");
 const srDeckTitle = document.getElementById("srDeckTitle");
 const deckTitle = document.getElementById("deckTitle");
 let availableSlideSets = [];
@@ -2247,13 +2250,31 @@ async function fetchSlideSets() {
     if (data.slideSets?.length) {
       availableSlideSets = data.slideSets;
 
-      if (slideSetSelect) {
-        slideSetSelect.innerHTML = "";
+      if (setsCardsContainer) {
+        setsCardsContainer.innerHTML = "";
         data.slideSets.forEach((set) => {
-          const option = document.createElement("option");
-          option.value = set.id;
-          option.textContent = `${set.icon ? set.icon + " " : ""}${set.title} (${set.decks?.length || 0})`;
-          slideSetSelect.appendChild(option);
+          const card = document.createElement("button");
+          card.className = "set-card";
+          card.style.cssText = "display: flex; flex-direction: column; align-items: flex-start; padding: 16px; border: 1px solid var(--glass-border, rgba(255,255,255,0.1)); border-radius: 8px; background: var(--bg-card, #fff); cursor: pointer; text-align: left; transition: all 0.2s; color: var(--text-main, #333); width: 100%;";
+          card.innerHTML = `
+            <div style="font-size: 1.8rem; margin-bottom: 12px;" aria-hidden="true">${set.icon || "📁"}</div>
+            <h4 style="margin: 0 0 6px 0; font-size: 1.1rem; font-weight: 600;">${set.title}</h4>
+            <div style="font-size: 0.9rem; opacity: 0.7;">${set.decks?.length || 0} Lessons</div>
+          `;
+          card.addEventListener("click", () => {
+            currentSlideSetId = set.id;
+            try {
+              localStorage.setItem("vibe_deck_current_set", set.id);
+            } catch {}
+            populateLessonsForSlideSet(set.id);
+            if (deckSelect?.value) {
+              loadDeck(deckSelect.value);
+            }
+            if (setsModal) setsModal.classList.add("hidden");
+          });
+          card.addEventListener("mouseover", () => card.style.borderColor = "var(--accent-primary, #66f)");
+          card.addEventListener("mouseout", () => card.style.borderColor = "var(--glass-border, rgba(255,255,255,0.1))");
+          setsCardsContainer.appendChild(card);
         });
       }
 
@@ -2285,7 +2306,6 @@ async function fetchSlideSets() {
       }
 
       currentSlideSetId = targetSet.id;
-      if (slideSetSelect) slideSetSelect.value = targetSet.id;
 
       let targetDeckId = null;
       if (urlDeck && targetSet.decks.some((d) => d.id === urlDeck)) {
@@ -2402,7 +2422,6 @@ async function loadDeck(deckId, initialSlideIndex = 0) {
       );
       if (parentSet && parentSet.id !== currentSlideSetId) {
         currentSlideSetId = parentSet.id;
-        if (slideSetSelect) slideSetSelect.value = parentSet.id;
         populateLessonsForSlideSet(parentSet.id, currentDeck.id);
       }
     }
@@ -3824,17 +3843,14 @@ function setupEventListeners() {
   agentPathwaySelect?.addEventListener("change", updateAgentPathwayCopy);
   tabOverviewBtn?.addEventListener("click", () => switchSidebarTab("overview"));
   tabEditorBtn?.addEventListener("click", () => switchSidebarTab("editor"));
-  slideSetSelect?.addEventListener("change", (event) => {
-    const newSetId = event.target.value;
-    if (!newSetId) return;
-    currentSlideSetId = newSetId;
-    try {
-      localStorage.setItem("vibe_deck_current_set", newSetId);
-    } catch {}
-    populateLessonsForSlideSet(newSetId);
-    if (deckSelect?.value) {
-      loadDeck(deckSelect.value);
-    }
+  slideSetBtn?.addEventListener("click", () => {
+    if (setsModal) setsModal.classList.remove("hidden");
+  });
+  closeSetsModalBtn?.addEventListener("click", () => {
+    if (setsModal) setsModal.classList.add("hidden");
+  });
+  setsModal?.addEventListener("click", (event) => {
+    if (event.target === setsModal) setsModal.classList.add("hidden");
   });
   deckSelect?.addEventListener("change", (event) => {
     if (event.target.value) loadDeck(event.target.value);
