@@ -1182,7 +1182,7 @@ const DEFAULT_VI_SETTINGS = {
   spacing: true,
   slideFilter: false,
   autoReadAnswer: true,
-  readingRuler: false,
+
   zoomLevel: 1.0,
 };
 
@@ -1249,11 +1249,7 @@ function applyViSettings() {
     applyTheme(savedTheme);
   }
 
-  // Reading Ruler
-  const readingRuler = document.getElementById("readingRuler");
-  if (readingRuler) {
-    readingRuler.classList.toggle("hidden", !(isEnabled && viSettings.readingRuler));
-  }
+
 
   // Header VI Toggle status
   const viToggleBtn = document.getElementById("viModeToggleBtn");
@@ -1294,8 +1290,7 @@ function syncViModalInputs() {
   const autoReadCb = document.getElementById("viAutoReadAnswerCheckbox");
   if (autoReadCb) autoReadCb.checked = Boolean(viSettings.autoReadAnswer);
 
-  const rulerCb = document.getElementById("viReadingRulerCheckbox");
-  if (rulerCb) rulerCb.checked = Boolean(viSettings.readingRuler);
+
 }
 
 function openViSettingsModal() {
@@ -1508,13 +1503,7 @@ function initVisualImpairmentMode() {
     saveViSettings();
   });
 
-  // Reading ruler toggle
-  const rulerCb = document.getElementById("viReadingRulerCheckbox");
-  rulerCb?.addEventListener("change", (e) => {
-    viSettings.readingRuler = e.target.checked;
-    saveViSettings();
-    applyViSettings();
-  });
+
 
   // Zoom buttons
   const zoomInBtn = document.getElementById("zoomInBtn");
@@ -1553,22 +1542,7 @@ function initVisualImpairmentMode() {
     });
   }
 
-  // Reading Ruler cursor & focus tracker
-  const readingRuler = document.getElementById("readingRuler");
-  if (readingRuler) {
-    window.addEventListener("mousemove", (e) => {
-      if (viSettings.enabled && viSettings.readingRuler) {
-        readingRuler.style.top = `${e.clientY}px`;
-      }
-    }, { passive: true });
 
-    document.addEventListener("focusin", (e) => {
-      if (viSettings.enabled && viSettings.readingRuler && e.target && e.target.getBoundingClientRect) {
-        const rect = e.target.getBoundingClientRect();
-        readingRuler.style.top = `${rect.top + rect.height / 2}px`;
-      }
-    }, { passive: true });
-  }
 }
 
 // ==========================================================================

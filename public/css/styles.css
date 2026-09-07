@@ -3822,33 +3822,6 @@ body.vi-mode .cognitive-badge {
   font-weight: 800 !important;
 }
 
-/* 8. Reading Tracking Ruler */
-.reading-ruler {
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 48px;
-  background: rgba(255, 255, 0, 0.16);
-  border-top: 2.5px solid #ffff00;
-  border-bottom: 2.5px solid #ffff00;
-  box-shadow: 0 0 16px rgba(255, 255, 0, 0.35);
-  pointer-events: none;
-  z-index: 9999;
-  transform: translateY(-50%);
-  transition: top 0.04s linear;
-}
-
-body.vi-theme-cyan-black .reading-ruler {
-  background: rgba(0, 255, 255, 0.16);
-  border-color: #00ffff;
-  box-shadow: 0 0 16px rgba(0, 255, 255, 0.35);
-}
-
-body.vi-theme-cream .reading-ruler {
-  background: rgba(2, 132, 199, 0.16);
-  border-color: #0284c7;
-  box-shadow: 0 0 16px rgba(2, 132, 199, 0.35);
-}
 
 /* 9. Visual Impairment Settings Modal */
 .vi-modal-card {
