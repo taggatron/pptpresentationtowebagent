@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body class="theme-light presenter-mode">
+  <nav class="skip-links" aria-label="Skip navigation">
+    <a href="#slideStage" class="skip-link">Skip to slide presentation</a>
+    <a href="#slideSetSelect" class="skip-link">Skip to lesson selection</a>
+    <a href="#viSettingsModal" id="skipToViSettingsLink" class="skip-link">Skip to accessibility settings</a>
+  </nav>
   <div id="app" class="app-container">
     <header class="app-header">
       <div class="header-left">
@@ -82,6 +87,26 @@
             </svg>
           </span>
           <span id="modeText" class="sr-only">Presenter mode</span>
+        </button>
+        <button
+          id="viModeToggleBtn"
+          class="icon-btn vi-toggle-btn"
+          type="button"
+          title="Visual Impairment & Accessibility Accommodations (Alt+A)"
+          aria-label="Visual Impairment and Accessibility accommodations"
+          aria-haspopup="dialog"
+        >
+          <span class="vi-icon-symbol" aria-hidden="true">♿</span>
+          <span class="vi-badge-indicator" aria-hidden="true">VI</span>
+        </button>
+        <button
+          id="speechReadBtn"
+          class="icon-btn speech-read-btn"
+          type="button"
+          title="Read slide aloud (Alt+R)"
+          aria-label="Read current slide aloud with text-to-speech"
+        >
+          <span aria-hidden="true">🔊</span>
         </button>
         <button
           id="themeToggleBtn"
@@ -173,6 +198,19 @@
               <span class="edit-resize-handle" aria-hidden="true"></span>
             </div>
           </div>
+        </div>
+
+        <div id="slideZoomBar" class="slide-zoom-bar" role="toolbar" aria-label="Slide magnification controls">
+          <button id="zoomOutBtn" class="btn-zoom" type="button" title="Zoom out slide (-)" aria-label="Zoom out slide canvas">
+            <span aria-hidden="true">−</span>
+          </button>
+          <span id="zoomLevelText" class="zoom-level-badge" aria-live="polite">100%</span>
+          <button id="zoomInBtn" class="btn-zoom" type="button" title="Zoom in slide (+)" aria-label="Zoom in slide canvas">
+            <span aria-hidden="true">+</span>
+          </button>
+          <button id="zoomResetBtn" class="btn-zoom btn-zoom-reset" type="button" title="Reset zoom (0)" aria-label="Reset slide zoom to 100%">
+            Reset
+          </button>
         </div>
 
         <div id="qaControls" class="qa-controls-bar hidden" aria-label="Build and answer controls">
@@ -530,6 +568,162 @@
             <span>Start Exploring Lessons</span>
             <span aria-hidden="true">→</span>
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="readingRuler" class="reading-ruler hidden" aria-hidden="true"></div>
+
+  <!-- Visual Impairment Accommodation Settings Modal -->
+  <div id="viSettingsModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="viModalTitle">
+    <div class="modal-card vi-modal-card">
+      <div class="modal-header vi-modal-header">
+        <div class="vi-modal-header-title">
+          <span class="vi-header-icon" aria-hidden="true">♿</span>
+          <div>
+            <h3 id="viModalTitle">Visual Impairment &amp; Accessibility Accommodations</h3>
+            <p class="vi-modal-subtitle">Educational guidelines for low vision, photophobia, contrast &amp; screen reading (RNIB / WCAG AAA)</p>
+          </div>
+        </div>
+        <button id="closeViModalBtn" class="close-btn" type="button" aria-label="Close visual impairment accommodations">&times;</button>
+      </div>
+
+      <div class="modal-body vi-modal-body">
+        <!-- Master VI Switch -->
+        <div class="vi-feature-row vi-master-toggle-row">
+          <div class="vi-feature-info">
+            <label for="viModeMasterCheckbox" class="vi-feature-title">Enable Visual Impairment Mode</label>
+            <p class="vi-feature-desc">Activates high-visibility outlines, dual-coded status indicators, large touch targets, and enhanced contrast.</p>
+          </div>
+          <label class="toggle-switch-wrap">
+            <input type="checkbox" id="viModeMasterCheckbox">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- High-Contrast Color Scheme -->
+        <div class="vi-setting-section">
+          <h4 class="vi-section-title">
+            <span aria-hidden="true">🎨</span> High-Contrast Educational Color Themes
+          </h4>
+          <p class="vi-section-desc">Recommended color combinations proven to maximize visual acuity and reduce photophobic glare.</p>
+          <div class="vi-theme-options-grid" role="radiogroup" aria-label="High contrast color theme">
+            <button type="button" class="vi-theme-choice active" data-vi-theme="yellow-black" role="radio" aria-checked="true">
+              <div class="vi-theme-preview preview-yellow-black" aria-hidden="true">
+                <span>Aa</span>
+              </div>
+              <div class="vi-theme-meta">
+                <strong>Yellow on Black</strong>
+                <span>RNIB standard · Glare reduction</span>
+              </div>
+            </button>
+
+            <button type="button" class="vi-theme-choice" data-vi-theme="cyan-black" role="radio" aria-checked="false">
+              <div class="vi-theme-preview preview-cyan-black" aria-hidden="true">
+                <span>Aa</span>
+              </div>
+              <div class="vi-theme-meta">
+                <strong>Cyan on Black</strong>
+                <span>High visibility · Crisp borders</span>
+              </div>
+            </button>
+
+            <button type="button" class="vi-theme-choice" data-vi-theme="cream-black" role="radio" aria-checked="false">
+              <div class="vi-theme-preview preview-cream-black" aria-hidden="true">
+                <span>Aa</span>
+              </div>
+              <div class="vi-theme-meta">
+                <strong>Black on Soft Cream</strong>
+                <span>Anti-glare light · High contrast</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Text Sizing & Educational Typography -->
+        <div class="vi-setting-section">
+          <h4 class="vi-section-title">
+            <span aria-hidden="true">🔍</span> Typography &amp; Text Scaling
+          </h4>
+          <div class="vi-controls-grid">
+            <div class="vi-control-item">
+              <label for="viTextScaleSelect" class="vi-control-label">Text Magnification</label>
+              <select id="viTextScaleSelect" class="vi-select">
+                <option value="normal">Standard (100%)</option>
+                <option value="large" selected>Large (120%)</option>
+                <option value="xlarge">Extra Large (140%)</option>
+              </select>
+            </div>
+
+            <div class="vi-control-item">
+              <label class="toggle-control-label">
+                <input type="checkbox" id="viSpacingCheckbox" checked>
+                <span class="toggle-slider-sm"></span>
+                <span>Enhanced Letter &amp; Line Spacing (Prevents crowding)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide Canvas & Diagram Accessibility -->
+        <div class="vi-setting-section">
+          <h4 class="vi-section-title">
+            <span aria-hidden="true">🖼️</span> Slide Imagery &amp; Diagram Accommodations
+          </h4>
+          <div class="vi-controls-grid">
+            <div class="vi-control-item">
+              <label class="toggle-control-label">
+                <input type="checkbox" id="viSlideFilterCheckbox">
+                <span class="toggle-slider-sm"></span>
+                <span>Anti-Glare Invert Filter (Converts bright slides to dark mode)</span>
+              </label>
+              <p class="vi-subtext">Inverts white slide background to black while preserving diagram hues, relieving photophobia.</p>
+            </div>
+
+            <div class="vi-control-item">
+              <label class="toggle-control-label">
+                <input type="checkbox" id="viReadingRulerCheckbox">
+                <span class="toggle-slider-sm"></span>
+                <span>Reading Tracking Ruler</span>
+              </label>
+              <p class="vi-subtext">Displays a high-contrast horizontal guide following mouse cursor or keyboard focus.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audio & Text-To-Speech (TTS) -->
+        <div class="vi-setting-section">
+          <h4 class="vi-section-title">
+            <span aria-hidden="true">🔊</span> Audio Narration &amp; Spoken Assist (TTS)
+          </h4>
+          <div class="vi-controls-grid">
+            <div class="vi-control-item">
+              <button id="viModalReadAloudBtn" class="btn btn-primary-bright" type="button">
+                <span aria-hidden="true">🔊</span> Read Current Slide Aloud Now
+              </button>
+            </div>
+            <div class="vi-control-item">
+              <label class="toggle-control-label">
+                <input type="checkbox" id="viAutoReadAnswerCheckbox" checked>
+                <span class="toggle-slider-sm"></span>
+                <span>Speak Revealed Answers Automatically</span>
+              </label>
+              <p class="vi-subtext">Speaks questions and answers aloud immediately when unmasked during active recall.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keyboard Shortcuts Reference -->
+        <div class="vi-shortcuts-box">
+          <h5>Accessibility Keyboard Shortcuts</h5>
+          <div class="vi-shortcuts-list">
+            <span><kbd>Alt</kbd>+<kbd>A</kbd> or <kbd>Alt</kbd>+<kbd>V</kbd> Toggle Accessibility Menu</span>
+            <span><kbd>Alt</kbd>+<kbd>R</kbd> Read Slide Aloud (TTS)</span>
+            <span><kbd>+</kbd> / <kbd>−</kbd> Zoom Slide In / Out</span>
+            <span><kbd>0</kbd> Reset Slide Zoom</span>
+            <span><kbd>Esc</kbd> Close Dialog / Reset Magnifier</span>
+          </div>
         </div>
       </div>
     </div>

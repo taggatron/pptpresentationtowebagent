@@ -1038,6 +1038,7 @@ function appendInteractiveGrid(slide) {
           ? `Answer ${index + 1} revealed${cell.expectedAnswer ? `: ${cell.expectedAnswer}` : "."}`
           : `Answer ${index + 1} hidden.`;
       }
+      announceAnswerReveal(cell, index, shouldReveal);
       renderSlideStage(slide);
       if (activeSidebarTab === "editor") renderComponentEditorPanel();
     });
@@ -1169,6 +1170,407 @@ function regressSerialBuildStep() {
   if (!hidePreviousAnswer()) regressMediaBuildStep();
 }
 
+/* ==========================================================================
+   ♿ VISUAL IMPAIRMENT (VI) & ACCESSIBILITY CONTROLLER
+   RNIB / APH / Perkins / WCAG 2.2 Level AAA Educational Accommodations
+   ========================================================================== */
+
+const DEFAULT_VI_SETTINGS = {
+  enabled: false,
+  theme: "yellow-black", // "yellow-black", "cyan-black", "cream-black"
+  fontScale: "large",    // "normal", "large", "xlarge"
+  spacing: true,
+  slideFilter: false,
+  autoReadAnswer: true,
+  readingRuler: false,
+  zoomLevel: 1.0,
+};
+
+let viSettings = { ...DEFAULT_VI_SETTINGS };
+let viPanState = { isPanning: false, startX: 0, startY: 0, panX: 0, panY: 0 };
+
+function loadViSettings() {
+  try {
+    const raw = localStorage.getItem("vibeDeck_vi_settings");
+    if (raw) {
+      viSettings = { ...DEFAULT_VI_SETTINGS, ...JSON.parse(raw) };
+    }
+  } catch (err) {
+    console.warn("Could not parse saved VI settings:", err);
+  }
+}
+
+function saveViSettings() {
+  try {
+    localStorage.setItem("vibeDeck_vi_settings", JSON.stringify(viSettings));
+  } catch (err) {
+    console.warn("Could not save VI settings:", err);
+  }
+}
+
+function applyViSettings() {
+  const isEnabled = Boolean(viSettings.enabled);
+  document.body.classList.toggle("vi-mode", isEnabled);
+
+  // Clear existing VI theme and typography classes
+  document.body.classList.remove(
+    "vi-theme-yellow-black",
+    "vi-theme-cyan-black",
+    "vi-theme-cream",
+    "vi-text-lg",
+    "vi-text-xl"
+  );
+
+  if (isEnabled) {
+    const themeClass =
+      viSettings.theme === "cyan-black"
+        ? "vi-theme-cyan-black"
+        : viSettings.theme === "cream-black"
+        ? "vi-theme-cream"
+        : "vi-theme-yellow-black";
+    document.body.classList.add(themeClass);
+
+    if (viSettings.fontScale === "large") {
+      document.body.classList.add("vi-text-lg");
+    } else if (viSettings.fontScale === "xlarge") {
+      document.body.classList.add("vi-text-xl");
+    }
+
+    document.body.classList.toggle("vi-spacing", Boolean(viSettings.spacing));
+    if (slideImage) {
+      slideImage.classList.toggle("vi-invert-filter", Boolean(viSettings.slideFilter));
+    }
+  } else {
+    document.body.classList.remove("vi-spacing");
+    if (slideImage) {
+      slideImage.classList.remove("vi-invert-filter");
+    }
+    const savedTheme = localStorage.getItem("vibeDeck_theme") || "light";
+    applyTheme(savedTheme);
+  }
+
+  // Reading Ruler
+  const readingRuler = document.getElementById("readingRuler");
+  if (readingRuler) {
+    readingRuler.classList.toggle("hidden", !(isEnabled && viSettings.readingRuler));
+  }
+
+  // Header VI Toggle status
+  const viToggleBtn = document.getElementById("viModeToggleBtn");
+  if (viToggleBtn) {
+    viToggleBtn.setAttribute("aria-pressed", String(isEnabled));
+    viToggleBtn.setAttribute(
+      "title",
+      isEnabled
+        ? "Visual Impairment Accommodations Active (Alt+A)"
+        : "Visual Impairment & Accessibility Accommodations (Alt+A)"
+    );
+  }
+
+  syncViModalInputs();
+}
+
+function syncViModalInputs() {
+  const masterCb = document.getElementById("viModeMasterCheckbox");
+  if (masterCb) masterCb.checked = Boolean(viSettings.enabled);
+
+  const themeButtons = document.querySelectorAll(".vi-theme-choice");
+  themeButtons.forEach((btn) => {
+    const theme = btn.getAttribute("data-vi-theme");
+    const isActive = theme === viSettings.theme;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-checked", String(isActive));
+  });
+
+  const fontSelect = document.getElementById("viTextScaleSelect");
+  if (fontSelect) fontSelect.value = viSettings.fontScale || "large";
+
+  const spacingCb = document.getElementById("viSpacingCheckbox");
+  if (spacingCb) spacingCb.checked = Boolean(viSettings.spacing);
+
+  const filterCb = document.getElementById("viSlideFilterCheckbox");
+  if (filterCb) filterCb.checked = Boolean(viSettings.slideFilter);
+
+  const autoReadCb = document.getElementById("viAutoReadAnswerCheckbox");
+  if (autoReadCb) autoReadCb.checked = Boolean(viSettings.autoReadAnswer);
+
+  const rulerCb = document.getElementById("viReadingRulerCheckbox");
+  if (rulerCb) rulerCb.checked = Boolean(viSettings.readingRuler);
+}
+
+function openViSettingsModal() {
+  const modal = document.getElementById("viSettingsModal");
+  if (!modal) return;
+  syncViModalInputs();
+  modal.classList.remove("hidden");
+  const masterCb = document.getElementById("viModeMasterCheckbox");
+  masterCb?.focus();
+}
+
+function closeViSettingsModal() {
+  const modal = document.getElementById("viSettingsModal");
+  if (modal && !modal.classList.contains("hidden")) {
+    modal.classList.add("hidden");
+    const viBtn = document.getElementById("viModeToggleBtn");
+    viBtn?.focus();
+  }
+}
+
+// Slide Zoom & Pan
+function setSlideZoom(level) {
+  const clamped = Math.min(2.5, Math.max(1.0, Math.round(level * 100) / 100));
+  viSettings.zoomLevel = clamped;
+  const zoomText = document.getElementById("zoomLevelText");
+  if (zoomText) zoomText.textContent = `${Math.round(clamped * 100)}%`;
+
+  if (clamped <= 1.0) {
+    viPanState.panX = 0;
+    viPanState.panY = 0;
+    slideWrapper?.classList.remove("is-zoomed", "is-panning");
+  } else {
+    slideWrapper?.classList.add("is-zoomed");
+  }
+
+  applySlideTransform();
+}
+
+function resetSlideZoom() {
+  setSlideZoom(1.0);
+}
+
+function applySlideTransform() {
+  const { zoomLevel } = viSettings;
+  const { panX, panY } = viPanState;
+  const transform = zoomLevel > 1.0
+    ? `scale(${zoomLevel}) translate(${panX / zoomLevel}px, ${panY / zoomLevel}px)`
+    : "none";
+
+  if (slideImage) slideImage.style.transform = transform;
+  if (interactiveOverlay) interactiveOverlay.style.transform = transform;
+  if (slideVideo) slideVideo.style.transform = transform;
+}
+
+// Text-to-Speech (TTS)
+function speakText(text, isInterrupt = true) {
+  if (!("speechSynthesis" in window) || !text) return;
+  if (isInterrupt && window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+  }
+
+  const cleanText = String(text).replace(/[\n\r]+/g, " ").replace(/\s{2,}/g, " ").trim();
+  if (!cleanText) return;
+
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+  utterance.rate = 0.95; // Slightly measured rate for low-vision educational clarity
+  utterance.pitch = 1.0;
+
+  const speechBtn = document.getElementById("speechReadBtn");
+  utterance.onstart = () => {
+    speechBtn?.classList.add("is-speaking");
+  };
+  utterance.onend = utterance.onerror = () => {
+    speechBtn?.classList.remove("is-speaking");
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function stopSpeech() {
+  if ("speechSynthesis" in window && window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+  }
+  const speechBtn = document.getElementById("speechReadBtn");
+  speechBtn?.classList.remove("is-speaking");
+}
+
+function readCurrentSlideAloud() {
+  if (!currentDeck || !currentDeck.slides || !currentDeck.slides[currentSlideIndex]) {
+    speakText("No slide is currently loaded.");
+    return;
+  }
+
+  const slide = currentDeck.slides[currentSlideIndex];
+  const total = currentDeck.totalSlides || currentDeck.slides.length;
+  const title = slide.title || `Slide ${slide.number}`;
+
+  let narration = `Slide ${currentSlideIndex + 1} of ${total}: ${title}. `;
+
+  if (slide.cognitiveGuide) {
+    narration += `Processing level: ${slide.cognitiveGuide.ragLabel || slide.cognitiveGuide.complexityCategory || "Standard"}. `;
+  }
+
+  if (slide.starterQuestions && slide.starterQuestions.length > 0) {
+    narration += `Active retrieval slide with ${slide.starterQuestions.length} starter questions. `;
+    slide.starterQuestions.forEach((q, idx) => {
+      narration += `Question ${idx + 1}: ${q.question || q.label || ""}. `;
+    });
+  } else if (slide.text) {
+    const cleanBody = slide.text
+      .replace(/[\n\r]+/g, ". ")
+      .replace(/[|—_]+/g, " ")
+      .slice(0, 300);
+    narration += `Content: ${cleanBody}. `;
+  }
+
+  speakText(narration);
+}
+
+function announceAnswerReveal(cell, index, revealed) {
+  if (!viSettings.enabled || !viSettings.autoReadAnswer) return;
+  const answer = cell.expectedAnswer || cell.label || "";
+  const announcement = revealed
+    ? `Answer ${index + 1} revealed: ${answer}`
+    : `Answer ${index + 1} hidden.`;
+  speakText(announcement, false);
+}
+
+function initVisualImpairmentMode() {
+  loadViSettings();
+  applyViSettings();
+
+  const viToggleBtn = document.getElementById("viModeToggleBtn");
+  viToggleBtn?.addEventListener("click", openViSettingsModal);
+
+  const speechBtn = document.getElementById("speechReadBtn");
+  speechBtn?.addEventListener("click", () => {
+    if ("speechSynthesis" in window && window.speechSynthesis.speaking) {
+      stopSpeech();
+    } else {
+      readCurrentSlideAloud();
+    }
+  });
+
+  const closeViBtn = document.getElementById("closeViModalBtn");
+  closeViBtn?.addEventListener("click", closeViSettingsModal);
+
+  const skipLink = document.getElementById("skipToViSettingsLink");
+  skipLink?.addEventListener("click", (e) => {
+    e.preventDefault();
+    openViSettingsModal();
+  });
+
+  const modalReadBtn = document.getElementById("viModalReadAloudBtn");
+  modalReadBtn?.addEventListener("click", () => {
+    readCurrentSlideAloud();
+  });
+
+  // Master Checkbox
+  const masterCb = document.getElementById("viModeMasterCheckbox");
+  masterCb?.addEventListener("change", (e) => {
+    viSettings.enabled = e.target.checked;
+    saveViSettings();
+    applyViSettings();
+  });
+
+  // Theme choices
+  const themeChoices = document.querySelectorAll(".vi-theme-choice");
+  themeChoices.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const theme = btn.getAttribute("data-vi-theme");
+      if (theme) {
+        viSettings.theme = theme;
+        if (!viSettings.enabled) viSettings.enabled = true;
+        saveViSettings();
+        applyViSettings();
+      }
+    });
+  });
+
+  // Text Scaling
+  const fontSelect = document.getElementById("viTextScaleSelect");
+  fontSelect?.addEventListener("change", (e) => {
+    viSettings.fontScale = e.target.value;
+    if (!viSettings.enabled) viSettings.enabled = true;
+    saveViSettings();
+    applyViSettings();
+  });
+
+  // Spacing
+  const spacingCb = document.getElementById("viSpacingCheckbox");
+  spacingCb?.addEventListener("change", (e) => {
+    viSettings.spacing = e.target.checked;
+    saveViSettings();
+    applyViSettings();
+  });
+
+  // Anti-glare slide filter
+  const filterCb = document.getElementById("viSlideFilterCheckbox");
+  filterCb?.addEventListener("change", (e) => {
+    viSettings.slideFilter = e.target.checked;
+    saveViSettings();
+    applyViSettings();
+  });
+
+  // Auto read answers
+  const autoReadCb = document.getElementById("viAutoReadAnswerCheckbox");
+  autoReadCb?.addEventListener("change", (e) => {
+    viSettings.autoReadAnswer = e.target.checked;
+    saveViSettings();
+  });
+
+  // Reading ruler toggle
+  const rulerCb = document.getElementById("viReadingRulerCheckbox");
+  rulerCb?.addEventListener("change", (e) => {
+    viSettings.readingRuler = e.target.checked;
+    saveViSettings();
+    applyViSettings();
+  });
+
+  // Zoom buttons
+  const zoomInBtn = document.getElementById("zoomInBtn");
+  zoomInBtn?.addEventListener("click", () => {
+    setSlideZoom(viSettings.zoomLevel + 0.25);
+  });
+
+  const zoomOutBtn = document.getElementById("zoomOutBtn");
+  zoomOutBtn?.addEventListener("click", () => {
+    setSlideZoom(viSettings.zoomLevel - 0.25);
+  });
+
+  const zoomResetBtn = document.getElementById("zoomResetBtn");
+  zoomResetBtn?.addEventListener("click", resetSlideZoom);
+
+  // Drag pan on slide
+  if (slideWrapper) {
+    slideWrapper.addEventListener("mousedown", (e) => {
+      if (viSettings.zoomLevel <= 1.0) return;
+      viPanState.isPanning = true;
+      viPanState.startX = e.clientX - viPanState.panX;
+      viPanState.startY = e.clientY - viPanState.panY;
+      slideWrapper.classList.add("is-panning");
+    });
+    window.addEventListener("mousemove", (e) => {
+      if (!viPanState.isPanning) return;
+      viPanState.panX = e.clientX - viPanState.startX;
+      viPanState.panY = e.clientY - viPanState.startY;
+      applySlideTransform();
+    });
+    window.addEventListener("mouseup", () => {
+      if (viPanState.isPanning) {
+        viPanState.isPanning = false;
+        slideWrapper.classList.remove("is-panning");
+      }
+    });
+  }
+
+  // Reading Ruler cursor & focus tracker
+  const readingRuler = document.getElementById("readingRuler");
+  if (readingRuler) {
+    window.addEventListener("mousemove", (e) => {
+      if (viSettings.enabled && viSettings.readingRuler) {
+        readingRuler.style.top = `${e.clientY}px`;
+      }
+    }, { passive: true });
+
+    document.addEventListener("focusin", (e) => {
+      if (viSettings.enabled && viSettings.readingRuler && e.target && e.target.getBoundingClientRect) {
+        const rect = e.target.getBoundingClientRect();
+        readingRuler.style.top = `${rect.top + rect.height / 2}px`;
+      }
+    }, { passive: true });
+  }
+}
+
 function initTheme() {
   const themeToggleBtn = document.getElementById("themeToggleBtn");
   const savedTheme = localStorage.getItem("vibeDeck_theme") || "light";
@@ -1205,6 +1607,7 @@ function applyTheme(theme) {
 
 async function init() {
   initTheme();
+  initVisualImpairmentMode();
   setupEventListeners();
   initWelcomeModal();
   await loadAgentPathways();
@@ -1498,6 +1901,8 @@ function renderSlide(index) {
   }
 
   stopAutoPlay();
+  stopSpeech();
+  resetSlideZoom();
   hideSlideVideo();
   hideWebEmbed();
   slideImage.classList.remove("hidden");
@@ -2904,8 +3309,32 @@ function setupEventListeners() {
       target?.isContentEditable;
     if (typing) return;
 
+    const viModal = document.getElementById("viSettingsModal");
     const welcomeModal = document.getElementById("welcomeModal");
-    if (event.key === "Escape" && welcomeModal && !welcomeModal.classList.contains("hidden")) {
+
+    if (event.altKey && (event.key.toLowerCase() === "a" || event.key.toLowerCase() === "v")) {
+      event.preventDefault();
+      if (viModal && !viModal.classList.contains("hidden")) {
+        closeViSettingsModal();
+      } else {
+        openViSettingsModal();
+      }
+      return;
+    }
+
+    if (event.altKey && event.key.toLowerCase() === "r") {
+      event.preventDefault();
+      if ("speechSynthesis" in window && window.speechSynthesis.speaking) {
+        stopSpeech();
+      } else {
+        readCurrentSlideAloud();
+      }
+      return;
+    }
+
+    if (event.key === "Escape" && viModal && !viModal.classList.contains("hidden")) {
+      closeViSettingsModal();
+    } else if (event.key === "Escape" && welcomeModal && !welcomeModal.classList.contains("hidden")) {
       welcomeModal.classList.add("hidden");
     } else if (event.key === "Escape" && !cognitiveModal?.classList.contains("hidden")) {
       closeCognitiveModal();
@@ -2933,6 +3362,21 @@ function setupEventListeners() {
     } else if (event.key === "End" && currentDeck) {
       event.preventDefault();
       renderSlide(currentDeck.slides.length - 1);
+    } else if (event.key === "+" || event.key === "=") {
+      if (!event.ctrlKey && !event.metaKey) {
+        event.preventDefault();
+        setSlideZoom(viSettings.zoomLevel + 0.25);
+      }
+    } else if (event.key === "-" || event.key === "_") {
+      if (!event.ctrlKey && !event.metaKey) {
+        event.preventDefault();
+        setSlideZoom(viSettings.zoomLevel - 0.25);
+      }
+    } else if (event.key === "0") {
+      if (!event.ctrlKey && !event.metaKey) {
+        event.preventDefault();
+        resetSlideZoom();
+      }
     } else if (event.key.toLowerCase() === "t") {
       toggleSidebar();
     } else if (event.key.toLowerCase() === "f") {

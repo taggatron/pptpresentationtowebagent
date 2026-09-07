@@ -186,6 +186,8 @@ body.is-fullscreen .nav-buttons {
   font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: -0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
   background: linear-gradient(135deg, #4f46e5, #0284c7);
   -webkit-background-clip: text;
   background-clip: text;
@@ -3407,3 +3409,768 @@ body.theme-dark .key-tag {
     animation: none !important;
   }
 }
+
+/* ==========================================================================
+   ♿ VISUAL IMPAIRMENT & EDUCATIONAL ACCESSIBILITY SUITE
+   Adhering to RNIB, APH, Perkins, WCAG 2.2 Level AAA standards
+   ========================================================================== */
+
+/* 1. Skip Links */
+.skip-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: 16px;
+  background: #000000;
+  color: #ffff00;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: underline;
+  border: 3px solid #ffff00;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  pointer-events: auto;
+  transition: top 0.15s ease-in-out;
+  z-index: 10001;
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 4px solid #00ffff !important;
+  outline-offset: 3px !important;
+}
+
+/* 2. Header Accessibility Buttons */
+.vi-toggle-btn {
+  position: relative;
+  border-color: rgba(79, 70, 229, 0.4);
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.vi-icon-symbol {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.vi-badge-indicator {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  background: #4f46e5;
+  color: #ffffff;
+  padding: 1px 4px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+
+body.vi-mode .vi-toggle-btn {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+body.vi-mode .vi-toggle-btn .vi-badge-indicator {
+  background: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.speech-read-btn {
+  border-color: rgba(2, 132, 199, 0.35);
+  background: rgba(2, 132, 199, 0.08);
+}
+
+.speech-read-btn.is-speaking {
+  animation: vi-pulse-border 1.5s infinite;
+  background: #0284c7;
+  color: #ffffff;
+}
+
+@keyframes vi-pulse-border {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* 3. High-Contrast Low-Vision Tokens */
+
+/* A. Base VI Mode */
+body.vi-mode {
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-card: none;
+}
+
+body.vi-mode *:focus-visible {
+  outline: 3.5px solid #ffff00 !important;
+  outline-offset: 3px !important;
+}
+
+/* B. RNIB Standard: Yellow on Black */
+body.vi-theme-yellow-black {
+  --bg-app: #000000;
+  --bg-stage: #050505;
+  --bg-header: #000000;
+  --bg-card: #080808;
+  --bg-card-subtle: #121212;
+  --bg-sidebar: #000000;
+  --bg-input: #000000;
+  --bg-modal: #000000;
+  --bg-modal-overlay: rgba(0, 0, 0, 0.92);
+  --bg-qa-mask: #000000;
+  --border-qa-mask: 3px dashed #ffff00;
+
+  --accent-primary: #ffff00;
+  --accent-hover: #facc15;
+  --accent-cyan: #00ffff;
+  --accent-emerald: #00ff66;
+
+  --text-main: #ffff00;
+  --text-muted: #ffffff;
+  --text-dim: #e2e8f0;
+
+  --border-color: #ffff00;
+  --border-subtle: rgba(255, 255, 0, 0.7);
+  --glass-bg: #000000;
+  --glass-border: 2px solid #ffff00;
+}
+
+body.vi-theme-yellow-black .app-header,
+body.vi-theme-yellow-black .app-footer,
+body.vi-theme-yellow-black .sidebar,
+body.vi-theme-yellow-black .btn,
+body.vi-theme-yellow-black .icon-btn,
+body.vi-theme-yellow-black .deck-select,
+body.vi-theme-yellow-black .modal-card {
+  border-color: #ffff00 !important;
+}
+
+body.vi-theme-yellow-black .btn,
+body.vi-theme-yellow-black .icon-btn {
+  color: #ffff00 !important;
+  border-width: 2px !important;
+}
+
+body.vi-theme-yellow-black .btn:hover,
+body.vi-theme-yellow-black .icon-btn:hover {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+body.vi-theme-yellow-black .btn-primary-bright {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+body.vi-theme-yellow-black .brand {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #ffff00 !important;
+  color: #ffff00 !important;
+}
+
+body.vi-theme-yellow-black .brand-icon {
+  color: #ffff00 !important;
+}
+
+/* C. Cyan on Black */
+body.vi-theme-cyan-black {
+  --bg-app: #000000;
+  --bg-stage: #030712;
+  --bg-header: #000000;
+  --bg-card: #030712;
+  --bg-card-subtle: #0f172a;
+  --bg-sidebar: #000000;
+  --bg-input: #000000;
+  --bg-modal: #000000;
+  --bg-modal-overlay: rgba(0, 0, 0, 0.92);
+
+  --accent-primary: #38bdf8;
+  --accent-hover: #0284c7;
+  --accent-cyan: #00ffff;
+  --accent-emerald: #34d399;
+
+  --text-main: #38bdf8;
+  --text-muted: #ffffff;
+  --text-dim: #94a3b8;
+
+  --border-color: #38bdf8;
+  --border-subtle: rgba(56, 189, 248, 0.6);
+  --glass-bg: #000000;
+  --glass-border: 2px solid #38bdf8;
+}
+
+body.vi-theme-cyan-black *:focus-visible {
+  outline: 3.5px solid #00ffff !important;
+  outline-offset: 3px !important;
+}
+
+body.vi-theme-cyan-black .brand {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+body.vi-theme-cyan-black .brand-icon {
+  color: #00ffff !important;
+}
+
+/* D. Black on Soft Cream */
+body.vi-theme-cream {
+  --bg-app: #fffdec;
+  --bg-stage: #fefce8;
+  --bg-header: #fffdec;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #fef9c3;
+  --bg-sidebar: #fffdec;
+  --bg-input: #ffffff;
+  --bg-modal: #fffdec;
+  --bg-modal-overlay: rgba(15, 23, 42, 0.75);
+
+  --accent-primary: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-cyan: #0891b2;
+  --accent-emerald: #059669;
+
+  --text-main: #000000;
+  --text-muted: #1e293b;
+  --text-dim: #475569;
+
+  --border-color: #000000;
+  --border-subtle: #334155;
+  --glass-bg: #fffdec;
+  --glass-border: 2px solid #000000;
+}
+
+body.vi-theme-cream *:focus-visible {
+  outline: 3.5px solid #0284c7 !important;
+  outline-offset: 3px !important;
+}
+
+body.vi-theme-cream .brand {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #000000 !important;
+  color: #000000 !important;
+}
+
+body.vi-theme-cream .brand-icon {
+  color: #0284c7 !important;
+}
+
+/* 4. Text Scaling & Low-Vision Typography */
+body.vi-text-lg {
+  font-size: 118%;
+}
+
+body.vi-text-xl {
+  font-size: 135%;
+}
+
+body.vi-spacing {
+  letter-spacing: 0.055em !important;
+  word-spacing: 0.15em !important;
+  line-height: 1.75 !important;
+}
+
+body.vi-spacing p,
+body.vi-spacing span,
+body.vi-spacing button,
+body.vi-spacing strong {
+  letter-spacing: inherit;
+  word-spacing: inherit;
+}
+
+/* 5. Slide Magnification & Zoom Bar */
+.slide-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-zoom-bar {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card);
+  padding: 4px 8px;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+.btn-zoom {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-zoom:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+
+body.vi-theme-yellow-black .btn-zoom:hover {
+  color: #000000 !important;
+}
+
+.btn-zoom-reset {
+  width: auto;
+  border-radius: 12px;
+  padding: 0 10px;
+  font-size: 0.8rem;
+}
+
+.zoom-level-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  min-width: 44px;
+  text-align: center;
+}
+
+.slide-wrapper.is-zoomed {
+  cursor: grab;
+  user-select: none;
+}
+
+.slide-wrapper.is-panning {
+  cursor: grabbing;
+}
+
+.slide-image {
+  transform-origin: center center;
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* 6. Anti-Glare Slide Inversion Filter */
+.slide-image.vi-invert-filter {
+  filter: invert(0.92) hue-rotate(180deg) contrast(1.18);
+}
+
+/* 7. Dual-Coded Cognitive Load Indicators */
+.cognitive-badge .vci-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cognitive-badge.rag-low {
+  border-style: solid !important;
+  border-width: 2px !important;
+}
+
+.cognitive-badge.rag-low::before {
+  content: "●";
+  font-size: 0.75rem;
+  margin-right: 4px;
+}
+
+.cognitive-badge.rag-medium {
+  border-style: dashed !important;
+  border-width: 2px !important;
+}
+
+.cognitive-badge.rag-medium::before {
+  content: "▲";
+  font-size: 0.75rem;
+  margin-right: 4px;
+}
+
+.cognitive-badge.rag-high {
+  border-style: double !important;
+  border-width: 3px !important;
+}
+
+.cognitive-badge.rag-high::before {
+  content: "◆";
+  font-size: 0.8rem;
+  margin-right: 4px;
+}
+
+body.vi-mode .cognitive-badge {
+  border-width: 3px !important;
+  font-weight: 800 !important;
+}
+
+/* 8. Reading Tracking Ruler */
+.reading-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: rgba(255, 255, 0, 0.16);
+  border-top: 2.5px solid #ffff00;
+  border-bottom: 2.5px solid #ffff00;
+  box-shadow: 0 0 16px rgba(255, 255, 0, 0.35);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translateY(-50%);
+  transition: top 0.04s linear;
+}
+
+body.vi-theme-cyan-black .reading-ruler {
+  background: rgba(0, 255, 255, 0.16);
+  border-color: #00ffff;
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.35);
+}
+
+body.vi-theme-cream .reading-ruler {
+  background: rgba(2, 132, 199, 0.16);
+  border-color: #0284c7;
+  box-shadow: 0 0 16px rgba(2, 132, 199, 0.35);
+}
+
+/* 9. Visual Impairment Settings Modal */
+.vi-modal-card {
+  max-width: 680px;
+  width: 95%;
+  border: 2px solid var(--border-color);
+  background: var(--bg-modal);
+  color: var(--text-main);
+}
+
+.vi-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.vi-modal-header-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.vi-header-icon {
+  font-size: 2rem;
+  color: var(--accent-primary);
+}
+
+.vi-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.vi-modal-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.vi-modal-body {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.vi-master-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card-subtle);
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+}
+
+.vi-feature-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: block;
+}
+
+.vi-feature-desc {
+  margin: 4px 0 0 0;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.toggle-switch-wrap {
+  position: relative;
+  width: 56px;
+  height: 30px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.toggle-switch-wrap input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.25s;
+  border-radius: 30px;
+  border: 2px solid var(--border-color);
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.25s;
+  border-radius: 50%;
+}
+
+.toggle-switch-wrap input:checked + .toggle-slider {
+  background-color: var(--accent-primary);
+}
+
+.toggle-switch-wrap input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+  background-color: #000000;
+}
+
+.vi-setting-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.vi-section-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vi-section-desc {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.vi-theme-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.vi-theme-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 2px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-main);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.vi-theme-choice:hover,
+.vi-theme-choice.active {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+.vi-theme-preview {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.preview-yellow-black {
+  background: #000000;
+  color: #ffff00;
+  border-color: #ffff00;
+}
+
+.preview-cyan-black {
+  background: #000000;
+  color: #00ffff;
+  border-color: #00ffff;
+}
+
+.preview-cream-black {
+  background: #fffdec;
+  color: #000000;
+  border-color: #000000;
+}
+
+.vi-theme-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.vi-theme-meta strong {
+  font-size: 0.88rem;
+}
+
+.vi-theme-meta span {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.vi-controls-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-card-subtle);
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.vi-control-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vi-control-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.vi-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.toggle-control-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.toggle-slider-sm {
+  width: 40px;
+  height: 22px;
+  background: #cbd5e1;
+  border-radius: 20px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  border: 1.5px solid var(--border-color);
+  transition: 0.2s;
+}
+
+.toggle-slider-sm:before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  left: 2px;
+  bottom: 2px;
+  transition: 0.2s;
+}
+
+.toggle-control-label input:checked + .toggle-slider-sm {
+  background: var(--accent-primary);
+}
+
+.toggle-control-label input:checked + .toggle-slider-sm:before {
+  transform: translateX(18px);
+  background: #000000;
+}
+
+.vi-subtext {
+  margin: 2px 0 0 50px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.vi-shortcuts-box {
+  background: var(--bg-card);
+  border: 2px dashed var(--border-color);
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+.vi-shortcuts-box h5 {
+  margin: 0 0 8px 0;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.vi-shortcuts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.84rem;
+}
+
+.vi-shortcuts-list kbd {
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-color);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+

@@ -1341,3 +1341,70 @@ test("Lesson 1 Cell Structure slide 6 creates an animal cell label sequence and 
   assert.match(slide6.progressiveBuilds[1].label, /Reveal animal cell organelle labels/i);
 });
 
+test("Visual Impairment Friendly Mode includes educational accommodations, skip links, and RNIB high contrast", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+
+  // Skip links for keyboard & screen reader users
+  assert.match(html, /class="skip-links"/);
+  assert.match(html, /Skip to slide presentation/);
+  assert.match(html, /Skip to lesson selection/);
+  assert.match(html, /id="skipToViSettingsLink"/);
+
+  // Header accessibility buttons
+  assert.match(html, /id="viModeToggleBtn"/);
+  assert.match(html, /id="speechReadBtn"/);
+
+  // Slide zoom bar and reading ruler
+  assert.match(html, /id="slideZoomBar"/);
+  assert.match(html, /id="zoomLevelText"/);
+  assert.match(html, /id="readingRuler"/);
+
+  // VI modal dialog with educational guidance
+  assert.match(html, /id="viSettingsModal"/);
+  assert.match(html, /id="viModeMasterCheckbox"/);
+  assert.match(html, /data-vi-theme="yellow-black"/);
+  assert.match(html, /data-vi-theme="cyan-black"/);
+  assert.match(html, /data-vi-theme="cream-black"/);
+  assert.match(html, /id="viTextScaleSelect"/);
+  assert.match(html, /id="viSpacingCheckbox"/);
+  assert.match(html, /id="viSlideFilterCheckbox"/);
+  assert.match(html, /id="viAutoReadAnswerCheckbox"/);
+  assert.match(html, /id="viReadingRulerCheckbox"/);
+  assert.match(html, /id="viModalReadAloudBtn"/);
+
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+
+  // RNIB Yellow on Black, Cyan on Black, and Soft Cream theme tokens
+  assert.match(css, /body\.vi-theme-yellow-black/);
+  assert.match(css, /body\.vi-theme-cyan-black/);
+  assert.match(css, /body\.vi-theme-cream/);
+
+  // Focus rings and low-vision typography
+  assert.match(css, /body\.vi-mode \*:focus-visible/);
+  assert.match(css, /body\.vi-text-lg/);
+  assert.match(css, /body\.vi-text-xl/);
+  assert.match(css, /body\.vi-spacing/);
+
+  // Slide magnifier & anti-glare invert filter
+  assert.match(css, /\.slide-zoom-bar/);
+  assert.match(css, /\.slide-wrapper\.is-zoomed/);
+  assert.match(css, /\.slide-image\.vi-invert-filter/);
+
+  // Dual-coded cognitive load indicators (shape + border)
+  assert.match(css, /\.cognitive-badge\.rag-low/);
+  assert.match(css, /\.cognitive-badge\.rag-medium/);
+  assert.match(css, /\.cognitive-badge\.rag-high/);
+
+  const js = await fs.readFile(path.join(ROOT_DIR, "public", "js", "app.js"), "utf-8");
+
+  // VI Controller initialization, state management, zoom, and text-to-speech
+  assert.match(js, /initVisualImpairmentMode\(\)/);
+  assert.match(js, /applyViSettings/);
+  assert.match(js, /setSlideZoom/);
+  assert.match(js, /readCurrentSlideAloud/);
+  assert.match(js, /speakText/);
+  assert.match(js, /announceAnswerReveal/);
+  assert.match(js, /vibeDeck_vi_settings/);
+});
+
+
