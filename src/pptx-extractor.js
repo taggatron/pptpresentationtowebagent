@@ -127,6 +127,7 @@ export async function extractPptxDeck(pptxPath, outputBaseDir, customDeckId = nu
     ...(previousManifest || {}),
     id: deckId,
     title:
+      options.title ||
       previousManifest?.title ||
       fileName.replace(/^Classic_/i, "").replace(/^Lesson_\d+_\d*_?/, "").replace(/_/g, " "),
     slideSet: options.slideSet || previousManifest?.slideSet,

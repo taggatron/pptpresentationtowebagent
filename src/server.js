@@ -244,20 +244,43 @@ export const KNOWN_SLIDE_SETS = [
   }
 ];
 
-export function formatDisplayTitle(rawTitle) {
+export function formatDisplayTitle(rawTitle, deckId = "") {
   let title = String(rawTitle || "").trim();
-  title = title.replace(/^Classic[_s]+/i, "");
-  title = title.replace(/_/g, " ").trim();
-  const match = title.match(/^Lesson\s*0?(\d+)[:\s-]*(.*)/i);
+  if (/^\d+\.\s+/.test(title)) return title;
+
+  let match = title.match(/^(?:Classic[\s_]+)?Lesson[\s_]*0?(\d+)[:\s_-]*(.*)/i);
+  let num = null;
+  let rest = "";
+
   if (match) {
-    const num = parseInt(match[1], 10);
-    const rest = match[2]
-      .split(" ")
-      .filter(Boolean)
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-      .join(" ");
-    return `${num}. ${rest || "Lesson"}`;
+    num = parseInt(match[1], 10);
+    rest = match[2];
+  } else if (deckId) {
+    const idMatch = String(deckId).match(/^(?:Classic[\s_]+)?Lesson[\s_]*0?(\d+)[:\s_-]*(.*)/i);
+    if (idMatch) {
+      num = parseInt(idMatch[1], 10);
+      rest = title && title !== deckId ? title : idMatch[2];
+    }
   }
+
+  if (num !== null) {
+    const formattedRest = rest
+      .replace(/^Classic[\s_]+/i, "")
+      .replace(/_/g, " ")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean)
+      .map((w) => {
+        const lower = w.toLowerCase();
+        if (["and", "on", "of"].includes(lower)) return lower;
+        return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+      })
+      .join(" ");
+    const finalRest = formattedRest ? formattedRest.charAt(0).toUpperCase() + formattedRest.slice(1) : "Lesson";
+    return `${num}. ${finalRest}`;
+  }
+
+  title = title.replace(/^Classic[\s_]+/i, "").replace(/_/g, " ").trim();
   return title.charAt(0).toUpperCase() + title.slice(1);
 }
 
@@ -328,7 +351,20 @@ async function tryAutoExtractDeck(deckId, decksDir) {
       const fileStat = await fs.stat(classicPptx).catch(() => null);
       if (fileStat && fileStat.isFile()) {
         console.log(`[Server] Auto-extracting classic deck ${safeDeckId} from ${classicPptx}...`);
-        const manifest = await extractPptxDeck(classicPptx, decksDir, safeDeckId, { slideSet: "ecology_atmosphere_classic" });
+        const manifest = await extractPptxDeck(classicPptx, decksDir, safeDeckId, {
+          slideSet: "ecology_atmosphere_classic",
+          title: formatDisplayTitle(safeDeckId, safeDeckId)
+        });
+        return manifest;
+      }
+      const fallbackPptx = path.join(outputDir, "powerpoints_ecology_atmosphere_sequence", rawFileName);
+      const fallbackStat = await fs.stat(fallbackPptx).catch(() => null);
+      if (fallbackStat && fallbackStat.isFile()) {
+        console.log(`[Server] Auto-extracting classic deck ${safeDeckId} from fallback ${fallbackPptx}...`);
+        const manifest = await extractPptxDeck(fallbackPptx, decksDir, safeDeckId, {
+          slideSet: "ecology_atmosphere_classic",
+          title: formatDisplayTitle(safeDeckId, safeDeckId)
+        });
         return manifest;
       }
     }
@@ -729,7 +765,11 @@ export function createApp({
           lessonSortValue(a) - lessonSortValue(b) ||
           String(a.title).localeCompare(String(a.title))
       );
-      res.json({ decks, defaultDeckId: decks[0]?.id || null });
+      const defaultDeckId =
+        decks.find((d) => d.id === "Lesson_01_CELL_STRUCTURE")?.id ||
+        decks[0]?.id ||
+        null;
+      res.json({ decks, defaultDeckId });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -767,7 +807,7 @@ export function createApp({
           if (inferSlideSetId(dId, manifest) === setCfg.id) {
             setDecks.push({
               id: manifest.id,
-              title: formatDisplayTitle(manifest.title || manifest.id),
+              title: formatDisplayTitle(manifest.title || manifest.id, manifest.id || dId),
               totalSlides: manifest.totalSlides || manifest.slides?.length || 0,
               isExtracted: true
             });
@@ -790,7 +830,7 @@ export function createApp({
                 if (!usedDeckIds.has(dId) && !setDecks.some((d) => d.id === dId)) {
                   setDecks.push({
                     id: dId,
-                    title: formatDisplayTitle(dId),
+                    title: formatDisplayTitle(dId, dId),
                     totalSlides: 0,
                     isExtracted: false
                   });
@@ -825,7 +865,7 @@ export function createApp({
         if (!usedDeckIds.has(dId)) {
           otherDecks.push({
             id: manifest.id,
-            title: formatDisplayTitle(manifest.title || manifest.id),
+            title: formatDisplayTitle(manifest.title || manifest.id, manifest.id || dId),
             totalSlides: manifest.totalSlides || manifest.slides?.length || 0,
             isExtracted: true
           });

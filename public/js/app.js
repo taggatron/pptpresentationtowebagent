@@ -2386,7 +2386,7 @@ async function fetchDecks() {
         option.value = deck.id;
         let displayTitle = deck.title || deck.id;
         if (!/^\d+\./.test(displayTitle)) {
-          const match = deck.id.match(/^Lesson_(\d+)_/i);
+          const match = deck.id.match(/^(?:Classic_)?Lesson_(\d+)_/i);
           if (match) {
             displayTitle = `${parseInt(match[1], 10)}. ${displayTitle}`;
           }
