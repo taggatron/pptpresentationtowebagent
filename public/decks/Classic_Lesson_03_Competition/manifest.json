@@ -1055,11 +1055,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Mission brief and timer reveal",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"3. Competition\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 3. Competition\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 12: \"EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: slide_header at top-centre with exact source wording: “EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF CONFIDENTIAL FILE – AUTHORIZED PERSONNEL ONLY.”; timer_display at top-right with exact source wording: “3:00”; mission_brief at top-left with exact source wording: “You are a Bio-Engineer. Your mission is to design a new plant species to survive in a high-salt, low-water desert flat.”\nTemporarily omit: challenge_tasks at centre-left with exact source wording: “The Challenge: 1. Name your plant. 2. Design one Structural adaptation to help it survive. 3. Design one Functional adaptation to help it survive.”; bottom_instructions at bottom-centre with exact source wording: “Work in pairs. You have 3 minutes. Be prepared to pitch your organism to the class.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A sci-fi themed timed activity slide featuring a mission brief in a cyan HUD box, a 3:00 digital countdown timer in an orange box, a 3-step challenge prompt with circuit graphics, and bottom instructions for paired work. Spatial layout: The header at top center contains the title and confidentiality label. Below, the left side holds a mission brief card above a three-item challenge list connected by circuit lines. The upper right contains a digital 3:00 timer display within an orange frame. The bottom spans an instructional banner for pair work.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Classic_Lesson_03_Competition/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Challenge tasks and pair instructions reveal",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 12: \"EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: slide_header at top-centre with exact source wording: “EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF CONFIDENTIAL FILE – AUTHORIZED PERSONNEL ONLY.”; timer_display at top-right with exact source wording: “3:00”; mission_brief at top-left with exact source wording: “You are a Bio-Engineer. Your mission is to design a new plant species to survive in a high-salt, low-water desert flat.”; challenge_tasks at centre-left with exact source wording: “The Challenge: 1. Name your plant. 2. Design one Structural adaptation to help it survive. 3. Design one Functional adaptation to help it survive.”; bottom_instructions at bottom-centre with exact source wording: “Work in pairs. You have 3 minutes. Be prepared to pitch your organism to the class.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A sci-fi themed timed activity slide featuring a mission brief in a cyan HUD box, a 3:00 digital countdown timer in an orange box, a 3-step challenge prompt with circuit graphics, and bottom instructions for paired work. Spatial layout: The header at top center contains the title and confidentiality label. Below, the left side holds a mission brief card above a three-item challenge list connected by circuit lines. The upper right contains a digital 3:00 timer display within an orange frame. The bottom spans an instructional banner for pair work.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1072,14 +1088,103 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 5,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-08T10:48:34.510Z",
+          "sourceHash": "4275214a6b1f7c7304d337da3b2010f706b6f5e200c582cd98be0825b7caff9d",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF",
+            "description": "A sci-fi themed timed activity slide featuring a mission brief in a cyan HUD box, a 3:00 digital countdown timer in an orange box, a 3-step challenge prompt with circuit graphics, and bottom instructions for paired work.",
+            "layout": "The header at top center contains the title and confidentiality label. Below, the left side holds a mission brief card above a three-item challenge list connected by circuit lines. The upper right contains a digital 3:00 timer display within an orange frame. The bottom spans an instructional banner for pair work.",
+            "components": [
+              {
+                "id": "slide_header",
+                "role": "header",
+                "position": "top-centre",
+                "visibleText": "EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF\nCONFIDENTIAL FILE – AUTHORIZED PERSONNEL ONLY.",
+                "dependencies": []
+              },
+              {
+                "id": "timer_display",
+                "role": "timer",
+                "position": "top-right",
+                "visibleText": "3:00",
+                "dependencies": [
+                  "slide_header"
+                ]
+              },
+              {
+                "id": "mission_brief",
+                "role": "prompt",
+                "position": "top-left",
+                "visibleText": "You are a Bio-Engineer. Your mission is to design a new plant species to survive in a high-salt, low-water desert flat.",
+                "dependencies": [
+                  "slide_header"
+                ]
+              },
+              {
+                "id": "challenge_tasks",
+                "role": "instruction",
+                "position": "centre-left",
+                "visibleText": "The Challenge:\n1. Name your plant.\n2. Design one Structural adaptation to help it survive.\n3. Design one Functional adaptation to help it survive.",
+                "dependencies": [
+                  "mission_brief"
+                ]
+              },
+              {
+                "id": "bottom_instructions",
+                "role": "directive",
+                "position": "bottom-centre",
+                "visibleText": "Work in pairs. You have 3 minutes. Be prepared to pitch your organism to the class.",
+                "dependencies": [
+                  "challenge_tasks",
+                  "timer_display"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "component-reveal",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Mission brief and timer reveal",
+                "componentIds": [
+                  "slide_header",
+                  "timer_display",
+                  "mission_brief"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Challenge tasks and pair instructions reveal",
+                "componentIds": [
+                  "slide_header",
+                  "timer_display",
+                  "mission_brief",
+                  "challenge_tasks",
+                  "bottom_instructions"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       }
     },
     {
@@ -1246,6 +1351,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-08T10:46:56.259Z"
+    "updatedAt": "2026-09-08T10:48:34.516Z"
   }
 }

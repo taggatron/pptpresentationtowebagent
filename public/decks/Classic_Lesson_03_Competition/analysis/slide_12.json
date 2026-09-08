@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T10:48:34.510Z",
+  "sourceHash": "4275214a6b1f7c7304d337da3b2010f706b6f5e200c582cd98be0825b7caff9d",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF",
+    "description": "A sci-fi themed timed activity slide featuring a mission brief in a cyan HUD box, a 3:00 digital countdown timer in an orange box, a 3-step challenge prompt with circuit graphics, and bottom instructions for paired work.",
+    "layout": "The header at top center contains the title and confidentiality label. Below, the left side holds a mission brief card above a three-item challenge list connected by circuit lines. The upper right contains a digital 3:00 timer display within an orange frame. The bottom spans an instructional banner for pair work.",
+    "components": [
+      {
+        "id": "slide_header",
+        "role": "header",
+        "position": "top-centre",
+        "visibleText": "EXTREME HAZARD DOSSIER: BIO-ENGINEER MISSION BRIEF\nCONFIDENTIAL FILE – AUTHORIZED PERSONNEL ONLY.",
+        "dependencies": []
+      },
+      {
+        "id": "timer_display",
+        "role": "timer",
+        "position": "top-right",
+        "visibleText": "3:00",
+        "dependencies": [
+          "slide_header"
+        ]
+      },
+      {
+        "id": "mission_brief",
+        "role": "prompt",
+        "position": "top-left",
+        "visibleText": "You are a Bio-Engineer. Your mission is to design a new plant species to survive in a high-salt, low-water desert flat.",
+        "dependencies": [
+          "slide_header"
+        ]
+      },
+      {
+        "id": "challenge_tasks",
+        "role": "instruction",
+        "position": "centre-left",
+        "visibleText": "The Challenge:\n1. Name your plant.\n2. Design one Structural adaptation to help it survive.\n3. Design one Functional adaptation to help it survive.",
+        "dependencies": [
+          "mission_brief"
+        ]
+      },
+      {
+        "id": "bottom_instructions",
+        "role": "directive",
+        "position": "bottom-centre",
+        "visibleText": "Work in pairs. You have 3 minutes. Be prepared to pitch your organism to the class.",
+        "dependencies": [
+          "challenge_tasks",
+          "timer_display"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Mission brief and timer reveal",
+        "componentIds": [
+          "slide_header",
+          "timer_display",
+          "mission_brief"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Challenge tasks and pair instructions reveal",
+        "componentIds": [
+          "slide_header",
+          "timer_display",
+          "mission_brief",
+          "challenge_tasks",
+          "bottom_instructions"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

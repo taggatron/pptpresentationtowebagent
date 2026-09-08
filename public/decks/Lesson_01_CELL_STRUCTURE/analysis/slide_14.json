@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T10:58:16.317Z",
+  "sourceHash": "ba92f736c2407ceb26eb07d953c7e035672d5219cba16af35b0c4f40aba34298",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Knowledge Check: Label the Prokaryote",
+    "description": "A knowledge check slide featuring an instructional subtitle and a central 3D cutaway illustration of a bacterium with three numbered dashed fill-in-the-blank label boxes pointing to internal structures.",
+    "layout": "Title and instruction prompt aligned to the top-left over a light grid background; central 3D cross-section diagram of a bacterium oriented diagonally; label box 1 positioned at the upper left with a pointer line to the nucleoid/DNA; label boxes 2 and 3 stacked at the lower right with pointer lines pointing to a plasmid and ribosomes.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Knowledge Check: Label the Prokaryote",
+        "dependencies": []
+      },
+      {
+        "id": "instruction_subtitle",
+        "role": "subtitle",
+        "position": "top-left below title",
+        "visibleText": "Identify the 3 highlighted structures unique to or present in this bacterial cell.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "bacterial_cell_diagram",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "",
+        "dependencies": [
+          "instruction_subtitle"
+        ]
+      },
+      {
+        "id": "label_box_1",
+        "role": "question",
+        "position": "mid-left above cell diagram",
+        "visibleText": "1",
+        "dependencies": [
+          "bacterial_cell_diagram"
+        ]
+      },
+      {
+        "id": "label_box_2",
+        "role": "question",
+        "position": "centre-right below cell midline",
+        "visibleText": "2",
+        "dependencies": [
+          "bacterial_cell_diagram"
+        ]
+      },
+      {
+        "id": "label_box_3",
+        "role": "question",
+        "position": "bottom-right",
+        "visibleText": "3",
+        "dependencies": [
+          "bacterial_cell_diagram"
+        ]
+      }
+    ],
+    "isQuestionSlide": true,
+    "recommendedStrategy": "question-base-overlay",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Unanswered Question Base",
+        "componentIds": [
+          "slide_title",
+          "instruction_subtitle",
+          "bacterial_cell_diagram",
+          "label_box_1",
+          "label_box_2",
+          "label_box_3"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}
