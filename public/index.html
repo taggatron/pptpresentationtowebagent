@@ -843,11 +843,14 @@
   <div id="setsModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="setsModalTitle">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 id="setsModalTitle">Select a Slide Set</h3>
+        <div class="modal-title-wrap">
+          <h3 id="setsModalTitle">Select a Slide Set</h3>
+          <p class="modal-subtitle">Choose a curriculum sequence or topic collection</p>
+        </div>
         <button id="closeSetsModalBtn" class="close-btn" type="button" aria-label="Close sets modal">&times;</button>
       </div>
       <div class="modal-body">
-        <div id="setsCardsContainer" class="sets-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; padding-top: 10px;">
+        <div id="setsCardsContainer" class="sets-grid">
           <!-- Set cards will be injected here -->
         </div>
       </div>

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T06:50:29.159Z",
+  "sourceHash": "a2d7743d5f379853ea4ef8a44c89a075d073ec2285a3e62d87cb80f350033406",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Checkpoint: ROI Calculation Race",
+    "description": "A high-tech sci-fi themed interactive checkpoint slide featuring a glowing digital stopwatch timer graphic on the left, a simulated software window containing a word problem on the right, instructional text, and an illuminated answer box at the bottom right.",
+    "layout": "The slide is framed by futuristic circuit board borders. The title appears in a glowing tech box at the top left. The left-center contains an oversized digital stopwatch showing '00:00'. The right half contains a window container with a word problem, followed below by an italicized game instruction, and at the bottom right an illuminated callout container showing the answer.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Checkpoint:\nROI Calculation Race",
+        "dependencies": []
+      },
+      {
+        "id": "stopwatch_graphic",
+        "role": "diagram",
+        "position": "center-left",
+        "visibleText": "00:00",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "question_box",
+        "role": "question",
+        "position": "center-right",
+        "visibleText": "If a team of 50 analysts at JPMorgan previously spent 4 hours each drafting weekly reports, and AI reduces this to 30 seconds per report, how many total human hours are saved per week?",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "instruction_text",
+        "role": "supporting_text",
+        "position": "mid-bottom-right",
+        "visibleText": "First pair to calculate the correct answer wins.",
+        "dependencies": [
+          "question_box"
+        ]
+      },
+      {
+        "id": "answer_box",
+        "role": "answer",
+        "position": "bottom-right",
+        "visibleText": "Answer: ~199 hours saved per week.",
+        "dependencies": [
+          "question_box",
+          "instruction_text"
+        ]
+      }
+    ],
+    "isQuestionSlide": true,
+    "recommendedStrategy": "question-base-overlay",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Question and Race Challenge Base",
+        "componentIds": [
+          "slide_title",
+          "stopwatch_graphic",
+          "question_box",
+          "instruction_text"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

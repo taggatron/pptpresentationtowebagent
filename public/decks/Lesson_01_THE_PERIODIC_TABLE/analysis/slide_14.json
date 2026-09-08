@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T06:32:31.650Z",
+  "sourceHash": "b5d3913b4ad9cde7e768b425c5a1ec2e0120d2dd424f49760c3c3bb1a2faaa02",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "The Power of the Blueprint",
+    "description": "A dark blueprint-themed slide with a conceptual premise on the left and a central futuristic coordinate pin over a periodic table grid connecting to three property cards: Atomic Structure above, Physical Properties below-left, and Chemical Reactivity below-right.",
+    "layout": "Two-column arrangement: left side features the title and introductory concept block; right side contains a central glowing periodic table grid with a target/coordinate pin branching upwards to Atomic Structure, bottom-left to Physical Properties, and bottom-right to Chemical Reactivity.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "The Power of the Blueprint",
+        "dependencies": []
+      },
+      {
+        "id": "concept_text",
+        "role": "body",
+        "position": "mid-left",
+        "visibleText": "Concept: The Periodic Table is a predictive tool. If you know an element's coordinate (position), you instantly know its properties.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "central_diagram_hub",
+        "role": "diagram",
+        "position": "centre-right",
+        "visibleText": "",
+        "dependencies": [
+          "concept_text"
+        ]
+      },
+      {
+        "id": "atomic_structure_card",
+        "role": "diagram",
+        "position": "top-right",
+        "visibleText": "Atomic Structure\n(shells and outer electrons)",
+        "dependencies": [
+          "central_diagram_hub"
+        ]
+      },
+      {
+        "id": "physical_properties_card",
+        "role": "diagram",
+        "position": "bottom-centre",
+        "visibleText": "Physical Properties\n(metal vs. non-metal)",
+        "dependencies": [
+          "central_diagram_hub"
+        ]
+      },
+      {
+        "id": "chemical_reactivity_card",
+        "role": "diagram",
+        "position": "bottom-right",
+        "visibleText": "Chemical Reactivity\n(group trends)",
+        "dependencies": [
+          "central_diagram_hub"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Concept & central blueprint",
+        "componentIds": [
+          "slide_title",
+          "concept_text",
+          "central_diagram_hub"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Atomic structure prediction",
+        "componentIds": [
+          "slide_title",
+          "concept_text",
+          "central_diagram_hub",
+          "atomic_structure_card"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Physical and chemical properties",
+        "componentIds": [
+          "slide_title",
+          "concept_text",
+          "central_diagram_hub",
+          "atomic_structure_card",
+          "physical_properties_card",
+          "chemical_reactivity_card"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

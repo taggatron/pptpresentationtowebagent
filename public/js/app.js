@@ -2241,6 +2241,54 @@ async function loadAgentPathways() {
   updateAgentPathwayCopy();
 }
 
+function renderSlideSetsCards() {
+  if (!setsCardsContainer || !availableSlideSets?.length) return;
+  setsCardsContainer.innerHTML = "";
+
+  availableSlideSets.forEach((set) => {
+    const card = document.createElement("button");
+    const isActive = set.id === currentSlideSetId;
+    card.type = "button";
+    card.className = `set-card${isActive ? " is-active-set" : ""}`;
+    card.setAttribute("aria-pressed", isActive ? "true" : "false");
+
+    const lessonCount = set.decks?.length || set.totalLessons || 0;
+    const categoryLabel = set.category || "Curriculum";
+
+    card.innerHTML = `
+      <div class="set-card-top">
+        <span class="set-card-icon" aria-hidden="true">${set.icon || "📁"}</span>
+        <div class="set-card-badges">
+          <span class="set-card-category">${escapeHtml(categoryLabel)}</span>
+          ${isActive ? '<span class="set-card-active-tag">Active</span>' : ""}
+        </div>
+      </div>
+      <div class="set-card-content">
+        <h4 class="set-card-title">${escapeHtml(set.title)}</h4>
+        ${set.description ? `<p class="set-card-description">${escapeHtml(set.description)}</p>` : ""}
+      </div>
+      <div class="set-card-footer">
+        <span class="set-card-count">📚 ${lessonCount} ${lessonCount === 1 ? "Lesson" : "Lessons"}</span>
+        <span class="set-card-action">Select →</span>
+      </div>
+    `;
+
+    card.addEventListener("click", () => {
+      currentSlideSetId = set.id;
+      try {
+        localStorage.setItem("vibe_deck_current_set", set.id);
+      } catch {}
+      populateLessonsForSlideSet(set.id);
+      if (deckSelect?.value) {
+        loadDeck(deckSelect.value);
+      }
+      if (setsModal) setsModal.classList.add("hidden");
+    });
+
+    setsCardsContainer.appendChild(card);
+  });
+}
+
 async function fetchSlideSets() {
   try {
     const response = await fetch("/api/slide-sets");
@@ -2249,34 +2297,7 @@ async function fetchSlideSets() {
 
     if (data.slideSets?.length) {
       availableSlideSets = data.slideSets;
-
-      if (setsCardsContainer) {
-        setsCardsContainer.innerHTML = "";
-        data.slideSets.forEach((set) => {
-          const card = document.createElement("button");
-          card.className = "set-card";
-          card.style.cssText = "display: flex; flex-direction: column; align-items: flex-start; padding: 16px; border: 1px solid var(--glass-border, rgba(255,255,255,0.1)); border-radius: 8px; background: var(--bg-card, #fff); cursor: pointer; text-align: left; transition: all 0.2s; color: var(--text-main, #333); width: 100%;";
-          card.innerHTML = `
-            <div style="font-size: 1.8rem; margin-bottom: 12px;" aria-hidden="true">${set.icon || "📁"}</div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.1rem; font-weight: 600;">${set.title}</h4>
-            <div style="font-size: 0.9rem; opacity: 0.7;">${set.decks?.length || 0} Lessons</div>
-          `;
-          card.addEventListener("click", () => {
-            currentSlideSetId = set.id;
-            try {
-              localStorage.setItem("vibe_deck_current_set", set.id);
-            } catch {}
-            populateLessonsForSlideSet(set.id);
-            if (deckSelect?.value) {
-              loadDeck(deckSelect.value);
-            }
-            if (setsModal) setsModal.classList.add("hidden");
-          });
-          card.addEventListener("mouseover", () => card.style.borderColor = "var(--accent-primary, #66f)");
-          card.addEventListener("mouseout", () => card.style.borderColor = "var(--glass-border, rgba(255,255,255,0.1))");
-          setsCardsContainer.appendChild(card);
-        });
-      }
+      renderSlideSetsCards();
 
       // Check URL query parameters
       const urlParams = new URLSearchParams(window.location.search);
@@ -3844,6 +3865,7 @@ function setupEventListeners() {
   tabOverviewBtn?.addEventListener("click", () => switchSidebarTab("overview"));
   tabEditorBtn?.addEventListener("click", () => switchSidebarTab("editor"));
   slideSetBtn?.addEventListener("click", () => {
+    renderSlideSetsCards();
     if (setsModal) setsModal.classList.remove("hidden");
   });
   closeSetsModalBtn?.addEventListener("click", () => {

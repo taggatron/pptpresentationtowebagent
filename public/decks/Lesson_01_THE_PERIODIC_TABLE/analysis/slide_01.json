@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T06:03:35.522Z",
+  "sourceHash": "d9c2c81bf0e409626116642179ba10b25cab13d543a6cb2627d8861762173bad",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Lesson 1: THE PERIODIC TABLE",
+    "description": "Dark blue title slide with blueprint-style architectural gridlines, technical measurement arrows, compass markings, and an outline schematic of the periodic table in the background. In the center, bold white text displays the lesson title and subtitle.",
+    "layout": "Centered presentation title layout set against a blueprint grid background with schematic periodic table outlines spanning horizontally across the canvas; reading order flows vertically from the lesson indicator to the main topic title, followed by the subtitle below.",
+    "components": [
+      {
+        "id": "blueprint_background_schematic",
+        "role": "diagram",
+        "position": "full-slide background",
+        "visibleText": "",
+        "dependencies": []
+      },
+      {
+        "id": "title_lesson_heading",
+        "role": "title",
+        "position": "centre",
+        "visibleText": "Lesson 1:\nTHE PERIODIC TABLE",
+        "dependencies": [
+          "blueprint_background_schematic"
+        ]
+      },
+      {
+        "id": "subtitle_mapping_text",
+        "role": "sub_heading",
+        "position": "centre, below title",
+        "visibleText": "Mapping the elements of the universe.",
+        "dependencies": [
+          "title_lesson_heading"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Full title slide",
+        "componentIds": [
+          "blueprint_background_schematic",
+          "title_lesson_heading",
+          "subtitle_mapping_text"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T06:47:40.178Z",
+  "sourceHash": "43531d23ef29e097019ec075f54fceb9e04126f7463d016f00ebe30d55939404",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Industry Deep Dive: High-Stakes Finance",
+    "description": "A high-tech digital themed presentation slide showcasing AI financial impact metrics for two major institutions: JPMorgan Chase (2B+ in annual AI-attributed benefits) and Visa ($40B+ in annual fraud prevented).",
+    "layout": "Title card in a glowing HUD container at top-left. Below, two large side-by-side glowing digital panels display corporate metrics: JPMorgan Chase on the left and Visa on the right, surrounded by futuristic circuit-board framing graphics.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Industry Deep Dive:\nHigh-Stakes Finance",
+        "dependencies": []
+      },
+      {
+        "id": "card_jpmorgan",
+        "role": "comparison_item",
+        "position": "center-left",
+        "visibleText": "JPMorgan Chase\n$2B+\nin annual AI-attributed benefits.\n• 400+ active AI use cases.\n• Investment bankers generate 5-page presentations in just 30 seconds.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "card_visa",
+        "role": "comparison_item",
+        "position": "center-right",
+        "visibleText": "Visa\n40B+\nin annual fraud prevented.\n• Powered by predictive and agentic risk scoring across hundreds of billions of transactions.",
+        "dependencies": [
+          "slide_title"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "comparison",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Show title and JPMorgan Chase case study",
+        "componentIds": [
+          "slide_title",
+          "card_jpmorgan"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Reveal Visa case study",
+        "componentIds": [
+          "slide_title",
+          "card_jpmorgan",
+          "card_visa"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

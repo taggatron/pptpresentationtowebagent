@@ -157,6 +157,14 @@ export const KNOWN_SLIDE_SETS = [
     description: "Cell structure, microscopes, enzymes, respiration, and photosynthesis."
   },
   {
+    id: "ecology_atmosphere",
+    title: "GCSE Science · Ecology & Atmosphere",
+    category: "Biology & Chemistry",
+    icon: "🌍",
+    folder: "powerpoints_ecology_atmosphere_sequence",
+    description: "Ecosystems, material cycling, biodiversity, atmospheric evolution, hydrocarbons, and recycling."
+  },
+  {
     id: "digital_literacy",
     title: "Digital Literacy Conference",
     category: "Keynotes",
@@ -246,6 +254,13 @@ export function inferSlideSetId(deckId, manifest = null) {
     )
   ) {
     return "cell_biology";
+  }
+  if (
+    /(?:Ecosystems|Abundance|Distribution|Competition|Nitrogen|Carbon_and_Water|Atmosphere|Crude_Oil|Greenhouse|Pollutants|Lifecycle|Recycling|Ecology|Atmospheric)/i.test(
+      deckId
+    )
+  ) {
+    return "ecology_atmosphere";
   }
   if (
     /(?:PERIODIC|HISTORY.*ATOM|ELECTRON|IONIC|COVALENT|GIANT|METALLIC|POLYMERS|CHROMATOGRAPHY|SEPARATION|ELECTROLYSIS)/i.test(

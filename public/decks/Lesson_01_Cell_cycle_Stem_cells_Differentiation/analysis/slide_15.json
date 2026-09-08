@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T06:02:00.601Z",
+  "sourceHash": "efd843f8abb93ad9a53723c1801d726d5e32f6fdf80b2e14b963c44706e09535",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "The Biological Blueprint: One continuous story",
+    "description": "A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout.",
+    "layout": "The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "The Biological Blueprint: One continuous story",
+        "dependencies": []
+      },
+      {
+        "id": "inner_cell_cycle_diagram",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "G1\nS\nM\nG2\nM",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "stage_start_zygote",
+        "role": "process_step",
+        "position": "top-centre",
+        "visibleText": "Start: Zygote undergoes\nthe Cell Cycle",
+        "dependencies": [
+          "inner_cell_cycle_diagram"
+        ]
+      },
+      {
+        "id": "stage_embryonic_stem_cells",
+        "role": "process_step",
+        "position": "centre-right",
+        "visibleText": "Becomes Embryonic\nStem Cells",
+        "dependencies": [
+          "stage_start_zygote"
+        ]
+      },
+      {
+        "id": "skill_tree_differentiation",
+        "role": "diagram",
+        "position": "bottom-right",
+        "visibleText": "Skill Tree\nNerve Cell\nBlood Cells\nMuscle Cells",
+        "dependencies": [
+          "stage_embryonic_stem_cells"
+        ]
+      },
+      {
+        "id": "stage_cells_differentiate",
+        "role": "process_step",
+        "position": "bottom-centre",
+        "visibleText": "Cells undergo\nDifferentiation",
+        "dependencies": [
+          "skill_tree_differentiation"
+        ]
+      },
+      {
+        "id": "stage_adult_stem_cells",
+        "role": "process_step",
+        "position": "centre-left",
+        "visibleText": "Reserve kept as\nAdult Stem Cells\nUndergo continuous\nMitosis for life-long\nrepair.",
+        "dependencies": [
+          "stage_cells_differentiate"
+        ]
+      },
+      {
+        "id": "bottom_summary_callout",
+        "role": "synthesis",
+        "position": "bottom-centre",
+        "visibleText": "From a single blueprint, the cell cycle provides the\nbuilding blocks, and differentiation assigns the jobs.",
+        "dependencies": [
+          "stage_adult_stem_cells"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "process",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Title and core cell cycle base",
+        "componentIds": [
+          "slide_title",
+          "inner_cell_cycle_diagram"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Zygote and embryonic stem cells",
+        "componentIds": [
+          "slide_title",
+          "inner_cell_cycle_diagram",
+          "stage_start_zygote",
+          "stage_embryonic_stem_cells"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Differentiation and adult stem cells",
+        "componentIds": [
+          "slide_title",
+          "inner_cell_cycle_diagram",
+          "stage_start_zygote",
+          "stage_embryonic_stem_cells",
+          "skill_tree_differentiation",
+          "stage_cells_differentiate",
+          "stage_adult_stem_cells"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_4",
+        "label": "Complete cycle with synthesis summary",
+        "componentIds": [
+          "slide_title",
+          "inner_cell_cycle_diagram",
+          "stage_start_zygote",
+          "stage_embryonic_stem_cells",
+          "skill_tree_differentiation",
+          "stage_cells_differentiate",
+          "stage_adult_stem_cells",
+          "bottom_summary_callout"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

@@ -446,16 +446,16 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_6_1_component_reveal",
+          "id": "gemini_slide_6_1_question_base_overlay",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Unanswered Biological Dial Activity",
+          "strategy": "question-base-overlay",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"Cell cycle Stem cells Differentiation\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Cell cycle Stem cells Differentiation\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"Knowledge Checkpoint: Complete the biological dial\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: slide_title at top-left with exact source wording: “Knowledge Checkpoint: Complete the biological dial”; challenge_callout at top-right with exact source wording: “Pair-and-Share Challenge: Match the process to the correct phase of the cycle in 60 seconds.”; biological_dial_diagram at centre with exact source wording: “1% 9% 90%”; placeholder_top_left at centre-left; placeholder_top_right at top-centre-right; placeholder_middle_right at centre-right; option_dna_replication at mid-left with exact source wording: “DNA Replication”; option_mitosis at centre-mid-left with exact source wording: “Mitosis”; option_cell_growth at bottom-left with exact source wording: “Cell Growth”; option_cytokinesis at mid-right with exact source wording: “Cytokinesis”; option_movement_of_chromosomes at bottom-right with exact source wording: “Movement of chromosomes”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -467,15 +467,153 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
+        "strategy": "question-base-overlay",
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 11,
         "plannedCellCount": 1,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-08T05:44:29.192Z",
+          "sourceHash": "369a8d86bb9dda76eeb00eddfed7a23ab748020ed1dc7dd30cbdf303b3e1e740",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Knowledge Checkpoint: Complete the biological dial",
+            "description": "An interactive activity slide prompting students to match biological cycle processes (DNA Replication, Mitosis, Cell Growth, Cytokinesis, Movement of chromosomes) to parts of a biological dial showing percentages (90%, 9%, 1%) and empty placeholder slots.",
+            "layout": "Title in top-left; a challenge instruction box in top-right; a central biological dial pie chart diagram with percentage labels (90%, 9%, 1%) connected via dashed lines to three empty placeholder boxes; scattered draggable-style option buttons positioned to the left (DNA Replication, Mitosis, Cell Growth) and right (Cytokinesis, Movement of chromosomes).",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Knowledge Checkpoint:\nComplete the biological dial",
+                "dependencies": []
+              },
+              {
+                "id": "challenge_callout",
+                "role": "instruction",
+                "position": "top-right",
+                "visibleText": "Pair-and-Share Challenge:\nMatch the process to the correct phase of the cycle in 60 seconds.",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "biological_dial_diagram",
+                "role": "diagram",
+                "position": "centre",
+                "visibleText": "1%\n9%\n90%",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "placeholder_top_left",
+                "role": "input_field",
+                "position": "centre-left",
+                "visibleText": "",
+                "dependencies": [
+                  "biological_dial_diagram"
+                ]
+              },
+              {
+                "id": "placeholder_top_right",
+                "role": "input_field",
+                "position": "top-centre-right",
+                "visibleText": "",
+                "dependencies": [
+                  "biological_dial_diagram"
+                ]
+              },
+              {
+                "id": "placeholder_middle_right",
+                "role": "input_field",
+                "position": "centre-right",
+                "visibleText": "",
+                "dependencies": [
+                  "biological_dial_diagram"
+                ]
+              },
+              {
+                "id": "option_dna_replication",
+                "role": "choice",
+                "position": "mid-left",
+                "visibleText": "DNA\nReplication",
+                "dependencies": [
+                  "challenge_callout"
+                ]
+              },
+              {
+                "id": "option_mitosis",
+                "role": "choice",
+                "position": "centre-mid-left",
+                "visibleText": "Mitosis",
+                "dependencies": [
+                  "challenge_callout"
+                ]
+              },
+              {
+                "id": "option_cell_growth",
+                "role": "choice",
+                "position": "bottom-left",
+                "visibleText": "Cell Growth",
+                "dependencies": [
+                  "challenge_callout"
+                ]
+              },
+              {
+                "id": "option_cytokinesis",
+                "role": "choice",
+                "position": "mid-right",
+                "visibleText": "Cytokinesis",
+                "dependencies": [
+                  "challenge_callout"
+                ]
+              },
+              {
+                "id": "option_movement_of_chromosomes",
+                "role": "choice",
+                "position": "bottom-right",
+                "visibleText": "Movement of\nchromosomes",
+                "dependencies": [
+                  "challenge_callout"
+                ]
+              }
+            ],
+            "isQuestionSlide": true,
+            "recommendedStrategy": "question-base-overlay",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Unanswered Biological Dial Activity",
+                "componentIds": [
+                  "slide_title",
+                  "challenge_callout",
+                  "biological_dial_diagram",
+                  "placeholder_top_left",
+                  "placeholder_top_right",
+                  "placeholder_middle_right",
+                  "option_dna_replication",
+                  "option_mitosis",
+                  "option_cell_growth",
+                  "option_cytokinesis",
+                  "option_movement_of_chromosomes"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       }
     },
     {
@@ -1157,16 +1295,64 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_15_1_component_reveal",
+          "id": "gemini_slide_15_1_process",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Title and core cell cycle base",
+          "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Cell cycle Stem cells Differentiation\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Cell cycle Stem cells Differentiation\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”\nTemporarily omit: stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”; skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”; bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_15.png"
+        },
+        {
+          "id": "gemini_slide_15_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Zygote and embryonic stem cells",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”\nTemporarily omit: skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”; bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_15.png"
+        },
+        {
+          "id": "gemini_slide_15_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Differentiation and adult stem cells",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”; skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”\nTemporarily omit: bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_15.png"
+        },
+        {
+          "id": "gemini_slide_15_4_process",
+          "order": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 4: Complete cycle with synthesis summary",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”; skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”; bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1178,15 +1364,157 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "strategy": "process",
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 8,
+        "plannedCellCount": 4,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-08T06:02:00.601Z",
+          "sourceHash": "efd843f8abb93ad9a53723c1801d726d5e32f6fdf80b2e14b963c44706e09535",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "The Biological Blueprint: One continuous story",
+            "description": "A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout.",
+            "layout": "The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "The Biological Blueprint: One continuous story",
+                "dependencies": []
+              },
+              {
+                "id": "inner_cell_cycle_diagram",
+                "role": "diagram",
+                "position": "centre",
+                "visibleText": "G1\nS\nM\nG2\nM",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "stage_start_zygote",
+                "role": "process_step",
+                "position": "top-centre",
+                "visibleText": "Start: Zygote undergoes\nthe Cell Cycle",
+                "dependencies": [
+                  "inner_cell_cycle_diagram"
+                ]
+              },
+              {
+                "id": "stage_embryonic_stem_cells",
+                "role": "process_step",
+                "position": "centre-right",
+                "visibleText": "Becomes Embryonic\nStem Cells",
+                "dependencies": [
+                  "stage_start_zygote"
+                ]
+              },
+              {
+                "id": "skill_tree_differentiation",
+                "role": "diagram",
+                "position": "bottom-right",
+                "visibleText": "Skill Tree\nNerve Cell\nBlood Cells\nMuscle Cells",
+                "dependencies": [
+                  "stage_embryonic_stem_cells"
+                ]
+              },
+              {
+                "id": "stage_cells_differentiate",
+                "role": "process_step",
+                "position": "bottom-centre",
+                "visibleText": "Cells undergo\nDifferentiation",
+                "dependencies": [
+                  "skill_tree_differentiation"
+                ]
+              },
+              {
+                "id": "stage_adult_stem_cells",
+                "role": "process_step",
+                "position": "centre-left",
+                "visibleText": "Reserve kept as\nAdult Stem Cells\nUndergo continuous\nMitosis for life-long\nrepair.",
+                "dependencies": [
+                  "stage_cells_differentiate"
+                ]
+              },
+              {
+                "id": "bottom_summary_callout",
+                "role": "synthesis",
+                "position": "bottom-centre",
+                "visibleText": "From a single blueprint, the cell cycle provides the\nbuilding blocks, and differentiation assigns the jobs.",
+                "dependencies": [
+                  "stage_adult_stem_cells"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "process",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Title and core cell cycle base",
+                "componentIds": [
+                  "slide_title",
+                  "inner_cell_cycle_diagram"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Zygote and embryonic stem cells",
+                "componentIds": [
+                  "slide_title",
+                  "inner_cell_cycle_diagram",
+                  "stage_start_zygote",
+                  "stage_embryonic_stem_cells"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_3",
+                "label": "Differentiation and adult stem cells",
+                "componentIds": [
+                  "slide_title",
+                  "inner_cell_cycle_diagram",
+                  "stage_start_zygote",
+                  "stage_embryonic_stem_cells",
+                  "skill_tree_differentiation",
+                  "stage_cells_differentiate",
+                  "stage_adult_stem_cells"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_4",
+                "label": "Complete cycle with synthesis summary",
+                "componentIds": [
+                  "slide_title",
+                  "inner_cell_cycle_diagram",
+                  "stage_start_zygote",
+                  "stage_embryonic_stem_cells",
+                  "skill_tree_differentiation",
+                  "stage_cells_differentiate",
+                  "stage_adult_stem_cells",
+                  "bottom_summary_callout"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       }
     }
   ],
@@ -1195,6 +1523,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-08T05:28:49.532Z"
+    "updatedAt": "2026-09-08T06:02:00.606Z"
   }
 }

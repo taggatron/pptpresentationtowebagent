@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T05:44:29.192Z",
+  "sourceHash": "369a8d86bb9dda76eeb00eddfed7a23ab748020ed1dc7dd30cbdf303b3e1e740",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Knowledge Checkpoint: Complete the biological dial",
+    "description": "An interactive activity slide prompting students to match biological cycle processes (DNA Replication, Mitosis, Cell Growth, Cytokinesis, Movement of chromosomes) to parts of a biological dial showing percentages (90%, 9%, 1%) and empty placeholder slots.",
+    "layout": "Title in top-left; a challenge instruction box in top-right; a central biological dial pie chart diagram with percentage labels (90%, 9%, 1%) connected via dashed lines to three empty placeholder boxes; scattered draggable-style option buttons positioned to the left (DNA Replication, Mitosis, Cell Growth) and right (Cytokinesis, Movement of chromosomes).",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Knowledge Checkpoint:\nComplete the biological dial",
+        "dependencies": []
+      },
+      {
+        "id": "challenge_callout",
+        "role": "instruction",
+        "position": "top-right",
+        "visibleText": "Pair-and-Share Challenge:\nMatch the process to the correct phase of the cycle in 60 seconds.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "biological_dial_diagram",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "1%\n9%\n90%",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "placeholder_top_left",
+        "role": "input_field",
+        "position": "centre-left",
+        "visibleText": "",
+        "dependencies": [
+          "biological_dial_diagram"
+        ]
+      },
+      {
+        "id": "placeholder_top_right",
+        "role": "input_field",
+        "position": "top-centre-right",
+        "visibleText": "",
+        "dependencies": [
+          "biological_dial_diagram"
+        ]
+      },
+      {
+        "id": "placeholder_middle_right",
+        "role": "input_field",
+        "position": "centre-right",
+        "visibleText": "",
+        "dependencies": [
+          "biological_dial_diagram"
+        ]
+      },
+      {
+        "id": "option_dna_replication",
+        "role": "choice",
+        "position": "mid-left",
+        "visibleText": "DNA\nReplication",
+        "dependencies": [
+          "challenge_callout"
+        ]
+      },
+      {
+        "id": "option_mitosis",
+        "role": "choice",
+        "position": "centre-mid-left",
+        "visibleText": "Mitosis",
+        "dependencies": [
+          "challenge_callout"
+        ]
+      },
+      {
+        "id": "option_cell_growth",
+        "role": "choice",
+        "position": "bottom-left",
+        "visibleText": "Cell Growth",
+        "dependencies": [
+          "challenge_callout"
+        ]
+      },
+      {
+        "id": "option_cytokinesis",
+        "role": "choice",
+        "position": "mid-right",
+        "visibleText": "Cytokinesis",
+        "dependencies": [
+          "challenge_callout"
+        ]
+      },
+      {
+        "id": "option_movement_of_chromosomes",
+        "role": "choice",
+        "position": "bottom-right",
+        "visibleText": "Movement of\nchromosomes",
+        "dependencies": [
+          "challenge_callout"
+        ]
+      }
+    ],
+    "isQuestionSlide": true,
+    "recommendedStrategy": "question-base-overlay",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Unanswered Biological Dial Activity",
+        "componentIds": [
+          "slide_title",
+          "challenge_callout",
+          "biological_dial_diagram",
+          "placeholder_top_left",
+          "placeholder_top_right",
+          "placeholder_middle_right",
+          "option_dna_replication",
+          "option_mitosis",
+          "option_cell_growth",
+          "option_cytokinesis",
+          "option_movement_of_chromosomes"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

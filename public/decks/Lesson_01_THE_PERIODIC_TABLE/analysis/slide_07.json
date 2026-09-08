@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T06:19:34.099Z",
+  "sourceHash": "b30a839624c91f07c9e59500244cd987143becb874b856fc3a2e9e5e00b81605",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "The Great Divide: Metals and Non-Metals",
+    "description": "A dark-themed slide illustrating the division of elements on the periodic table into metals and non-metals. Bullet points introduce the concept at the top, and a stylized periodic table map below highlights non-metals in orange on the right (and hydrogen on top-left) separated by a bold white stepped dividing line from the metals, which occupy the left, centre, and bottom.",
+    "layout": "The title is positioned top-left, followed directly underneath by a two-bullet explanatory text block. Below the text, taking up the majority of the slide body, is a periodic table diagram with a prominent white zigzag stair-step dividing line separating orange-highlighted non-metals on the upper right from metals labelled in cyan and dark grey/black boxes.",
+    "components": [
+      {
+        "id": "title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "The Great Divide: Metals and Non-Metals",
+        "dependencies": []
+      },
+      {
+        "id": "intro_bullets",
+        "role": "body",
+        "position": "top-left",
+        "visibleText": "• The majority of elements are metals, located on the left and centre of the map.\n• Non-metals are found in a smaller cluster on the top right.",
+        "dependencies": [
+          "title"
+        ]
+      },
+      {
+        "id": "periodic_table_diagram",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "H He B C N O F Ne Al Si P S Cl Ar Sc Ti V Cr Mn Fe Co Ni Cu Zn Ge Ge As Se Br Kr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Hf Ta W Re Os Ir Pt Au Hg Tl Po Bi Po At Rn Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og La Ce Pr Nd Pm Eu Gd Tb Dy Ho Er Tm Yb Lu Ac Th Pa U Np Pu Cm Bk Cf Es Fm Md No Lr METALS NON-METALS",
+        "dependencies": [
+          "title",
+          "intro_bullets"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Title and Overview",
+        "componentIds": [
+          "title",
+          "intro_bullets"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Periodic Table Map",
+        "componentIds": [
+          "title",
+          "intro_bullets",
+          "periodic_table_diagram"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

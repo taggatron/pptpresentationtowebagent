@@ -28,6 +28,7 @@ test("inferSlideSetId maps decks to appropriate slide set categories", () => {
   assert.equal(inferSlideSetId("Lesson_01_THE_PERIODIC_TABLE"), "chemistry");
   assert.equal(inferSlideSetId("Lesson_01_Forces_and_NEWTON_S_1st_LAW"), "forces_energy");
   assert.equal(inferSlideSetId("Lesson_01_Reaction_rates"), "reaction_rates");
+  assert.equal(inferSlideSetId("Lesson_01_Ecosystems"), "ecology_atmosphere");
   assert.equal(inferSlideSetId("custom_deck_123"), "other");
 });
 
@@ -56,6 +57,12 @@ test("Slide Sets API returns categorized slide sets and default IDs", async () =
     const digitalSet = data.slideSets.find((s) => s.id === "digital_literacy");
     assert.ok(digitalSet, "Digital literacy slide set should be present");
     assert.ok(digitalSet.decks.some((d) => d.id === "digital_literacy_conference_deck"));
+
+    // Verify ecology & atmosphere slide set is present
+    const ecoSet = data.slideSets.find((s) => s.id === "ecology_atmosphere");
+    assert.ok(ecoSet, "Ecology & atmosphere slide set should be present");
+    assert.ok(ecoSet.decks.length >= 12, "Ecology & atmosphere should contain at least 12 lessons");
+    assert.ok(ecoSet.decks.some((d) => d.id === "Lesson_01_Ecosystems"));
 
     // Verify default IDs
     assert.equal(data.defaultSlideSetId, "cell_biology");

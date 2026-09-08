@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T06:35:02.660Z",
+  "sourceHash": "a0bd42a960e3022fd6ce597c91f9e8a52da23934ecd2abc9640c09e4bbcf8e7d",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Lesson 1: The AI Landscape and Business Imperative",
+    "description": "Title slide with prominent dark blue heading text and grey subtitle on the left, paired with an isometric blueprint-style architectural drawing of a modern skyscraper featuring an integrated cyan neural network lattice on the right.",
+    "layout": "Two-column title layout: left side contains the main lesson title and subtitle stacked vertically; right side features a large isometric line-art illustration of an architectural structure with a cyan network graph and a small brand mark in the lower right corner.",
+    "components": [
+      {
+        "id": "title_text",
+        "role": "title",
+        "position": "mid-left",
+        "visibleText": "Lesson 1:\nThe AI Landscape\nand Business\nImperative",
+        "dependencies": []
+      },
+      {
+        "id": "subtitle_text",
+        "role": "subtitle",
+        "position": "bottom-left",
+        "visibleText": "From Software as a Tool\nto Software as a\nCollaborator",
+        "dependencies": [
+          "title_text"
+        ]
+      },
+      {
+        "id": "isometric_architecture_illustration",
+        "role": "diagram",
+        "position": "centre-right",
+        "visibleText": "",
+        "dependencies": []
+      },
+      {
+        "id": "brand_logo",
+        "role": "branding",
+        "position": "bottom-right",
+        "visibleText": "Gemini Notebook",
+        "dependencies": []
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Title and graphic reveal",
+        "componentIds": [
+          "title_text",
+          "isometric_architecture_illustration",
+          "brand_logo"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Complete title slide with subtitle",
+        "componentIds": [
+          "title_text",
+          "isometric_architecture_illustration",
+          "brand_logo",
+          "subtitle_text"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}
