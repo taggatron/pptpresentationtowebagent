@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T05:28:14.566Z",
+  "sourceHash": "37cc5366d0969dc66bb0b41a2e904d5569139c984e9e8fff38b18842f8bccb2b",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "MINI PLENARY: EAT & NAME THE ORGANELLES!",
+    "description": "A plenary activity slide featuring a dark background with a glowing cybernetic/neon border framing a top-centered title, an instructional prompt to examine a jelly cell model and identify sweet-represented organelles, and a large central 3D illustration of a translucent dome-shaped jelly cell model containing rainbow sprinkles and a multi-layered jawbreaker candy core on a clear dish.",
+    "layout": "Centred vertical layout with the slide title at top center, instruction text directly beneath it, and a large central 3D rendering of the jelly cell model occupying the lower two-thirds of the framed canvas.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "MINI PLENARY: EAT & NAME THE ORGANELLES!",
+        "dependencies": []
+      },
+      {
+        "id": "instruction_text",
+        "role": "prompt",
+        "position": "top-centre",
+        "visibleText": "Examine the teacher’s jelly cell model. Identify the organelles represented by the sweets!",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "jelly_model_illustration",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "",
+        "dependencies": [
+          "instruction_text"
+        ]
+      }
+    ],
+    "isQuestionSlide": true,
+    "recommendedStrategy": "question-base-overlay",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Unanswered Question Base",
+        "componentIds": [
+          "slide_title",
+          "instruction_text",
+          "jelly_model_illustration"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

@@ -700,13 +700,13 @@ function buildGeminiImagePrompt({ slide, strategy, step, index, total, summary }
       : total === 1
       ? "This is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content."
       : index > 0
-      ? "This build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour."
+      ? "This build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour."
       : "This is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.",
     partialBuild
       ? "PARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place."
       : null,
     index > 0
-      ? "PREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content."
+      ? "PREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content."
       : null,
     `Instructional build strategy: ${strategy}.`,
     `Show now: ${step.show}`,
@@ -728,10 +728,10 @@ function buildGeminiImagePrompt({ slide, strategy, step, index, total, summary }
       ? "Animal cell guard: This is strictly an animal cell slide ('Eukaryote Blueprint 1: Animal Cell'). Do not show or mention plant-specific structures (never include chloroplasts, cell wall, or a permanent vacuole)."
       : null,
     declaredTitleIsVisible
-      ? `The exact visible source title is: "${declaredTitle}". Keep it verbatim in every build.`
+      ? `The exact visible source title is: "${declaredTitle}". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.`
       : null,
     titleRole && deckContext
-      ? `This is the title slide for "${deckContext}". Preserve every visible source title word, including the final word; never shorten the deck title.`
+      ? `This is the title slide for "${deckContext}". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.`
       : null,
     step.answerReference,
     contentReference,
