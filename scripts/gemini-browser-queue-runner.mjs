@@ -1098,6 +1098,13 @@ export async function runParallelBrowserQueue({
 
   let browser;
   try {
+    const listRes = await fetch(`${cdpEndpoint}/json/list`).catch(() => null);
+    if (listRes?.ok) {
+      const tabs = await listRes.json().catch(() => []);
+      if (!Array.isArray(tabs) || tabs.length === 0) {
+        await fetch(`${cdpEndpoint}/json/new?https://gemini.google.com`, { method: "PUT" }).catch(() => {});
+      }
+    }
     browser = await chromium.connectOverCDP(cdpEndpoint);
   } catch (error) {
     console.warn(`[Queue Runner] Could not connect to CDP endpoint ${cdpEndpoint}: ${error.message}`);

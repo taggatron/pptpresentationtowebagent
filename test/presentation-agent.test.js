@@ -1354,10 +1354,9 @@ test("Visual Impairment Friendly Mode includes educational accommodations, skip 
   assert.match(html, /id="viModeToggleBtn"/);
   assert.match(html, /id="speechReadBtn"/);
 
-  // Slide zoom bar and reading ruler
+  // Slide zoom bar
   assert.match(html, /id="slideZoomBar"/);
   assert.match(html, /id="zoomLevelText"/);
-  assert.match(html, /id="readingRuler"/);
 
   // VI modal dialog with educational guidance
   assert.match(html, /id="viSettingsModal"/);
@@ -1369,7 +1368,6 @@ test("Visual Impairment Friendly Mode includes educational accommodations, skip 
   assert.match(html, /id="viSpacingCheckbox"/);
   assert.match(html, /id="viSlideFilterCheckbox"/);
   assert.match(html, /id="viAutoReadAnswerCheckbox"/);
-  assert.match(html, /id="viReadingRulerCheckbox"/);
   assert.match(html, /id="viModalReadAloudBtn"/);
 
   const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");

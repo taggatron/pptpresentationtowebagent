@@ -4,10 +4,11 @@
   "filename": "Lesson_03_MAGNIFICATION_CALCULATIONS.pptx",
   "totalSlides": 8,
   "agent": {
-    "provider": "PowerPoint-to-Slide Agent",
-    "generatedAt": "2026-09-06T22:07:15.182Z",
-    "nativeAnimationsExtracted": false,
-    "highResScale": 2
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-08T05:25:14.970Z"
   },
   "slides": [
     {
@@ -15,9 +16,6 @@
       "title": "Slide 1",
       "imageFileName": "slide_01.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_01.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": false,
@@ -97,6 +95,37 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 6,
+        "timeGuideDisplay": "5–7s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 3600,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -104,9 +133,6 @@
       "title": "Starter retrieval",
       "imageFileName": "slide_02.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_02.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": true,
@@ -391,6 +417,42 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "manifest-cells",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 74,
+        "timeGuideDisplay": "62–86s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 7938,
+          "readingMs": 23400,
+          "semanticProcessingMs": 42000,
+          "wordCount": 70,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -398,9 +460,6 @@
       "title": "Slide 3",
       "imageFileName": "slide_03.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_03.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": false,
@@ -480,6 +539,37 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 11000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -487,9 +577,6 @@
       "title": "Slide 4",
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_04.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": false,
@@ -569,6 +656,37 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -576,9 +694,6 @@
       "title": "Slide 5",
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_05.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": false,
@@ -658,6 +773,37 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -665,9 +811,6 @@
       "title": "Slide 6",
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_06.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": false,
@@ -747,6 +890,37 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 11000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -754,9 +928,6 @@
       "title": "Slide 7",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_07.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": false,
@@ -836,6 +1007,37 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       }
     },
     {
@@ -843,9 +1045,6 @@
       "title": "Slide 8",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/Lesson_03_MAGNIFICATION_ARCHITECTURE/slides/slide_08.png",
-      "deckId": "Lesson_03_MAGNIFICATION_ARCHITECTURE",
-      "deckTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
-      "lessonTitle": "Lesson 03 MAGNIFICATION CALCULATIONS",
       "textContent": "",
       "notes": "",
       "isInteractive": false,
@@ -896,6 +1095,37 @@
         "protectedVideoCount": 0
       },
       "cognitiveAnalysis": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "cognitiveGuide": {
         "estimatedTimeSeconds": 8,
         "timeGuideDisplay": "6–10s",
         "vciScore": "2.8",

@@ -692,16 +692,21 @@ function buildGeminiImagePrompt({ slide, strategy, step, index, total, summary }
     "Use the attached original slide as the sole visual and factual source.",
     "Return exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.",
     "Preserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.",
-    "Render the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.",
+    index === 0 || total === 1
+      ? "Render the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region."
+      : "Render the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.",
     questionBaseOverlay
       ? "Reconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays."
       : total === 1
       ? "This is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content."
       : index > 0
-      ? "This build is cumulative: reproduce every element shown in all earlier builds in the same position, then add only the newly requested component."
-      : "This is the first build: retain the source background and title styling, then show only the first requested instructional component.",
+      ? "This build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour."
+      : "This is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.",
     partialBuild
       ? "PARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place."
+      : null,
+    index > 0
+      ? "PREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content."
       : null,
     `Instructional build strategy: ${strategy}.`,
     `Show now: ${step.show}`,

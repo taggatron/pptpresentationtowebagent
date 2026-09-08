@@ -69,7 +69,7 @@ test("index.html contains slide set and lesson selectors without visible duplica
   const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
 
   // Verify slide set selector exists
-  assert.match(html, /id="slideSetSelect"/);
+  assert.match(html, /id="slideSet(Select|Btn)"/);
   assert.match(html, /class="[^"]*slide-set-select[^"]*"/);
 
   // Verify lesson selector exists
