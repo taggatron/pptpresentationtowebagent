@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T10:46:56.255Z",
+  "sourceHash": "69658fe38d5a6a3630b069b9b0aa86fd421c52b17fbbf1b171bfb5be1fa8260a",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "EXTREME HAZARD DOSSIER: ENVIRONMENTAL PROFILES",
+    "description": "A sci-fi/dossier-themed infographic presentation slide detailing three environmental hazard profiles: High Temperature, High Pressure, and High Salt Concentration. Each category is displayed in a vertical column featuring an image with sci-fi HUD frames, an identified subject organism, and its corresponding functional adaptation.",
+    "layout": "Header at top center with main title and confidential subtitle. Three parallel vertical card containers arranged horizontally across the slide (left: High Temperature in cyan/yellow, middle: High Pressure in orange/red, right: High Salt Concentration in magenta/yellow). Bottom status bar across the base.",
+    "components": [
+      {
+        "id": "header_section",
+        "role": "header",
+        "position": "top-centre",
+        "visibleText": "EXTREME HAZARD DOSSIER: ENVIRONMENTAL PROFILES\nCONFIDENTIAL FILE – AUTHORIZED PERSONNEL ONLY.",
+        "dependencies": []
+      },
+      {
+        "id": "footer_status_bar",
+        "role": "footer",
+        "position": "bottom-centre",
+        "visibleText": "HAZARD LEVELS: CRITICAL | STATUS: ACTIVE | FILE REF: EX-003",
+        "dependencies": []
+      },
+      {
+        "id": "col_1_temperature",
+        "role": "container",
+        "position": "left",
+        "visibleText": "HIGH TEMPERATURE\nSubject: Thermophilic bacteria.\nFunctional Adaptation:\nSpecialized enzymes that do\nnot denature at boiling points.",
+        "dependencies": [
+          "header_section"
+        ]
+      },
+      {
+        "id": "col_2_pressure",
+        "role": "container",
+        "position": "centre",
+        "visibleText": "HIGH PRESSURE\nSubject: Deep-sea microbes and\ninvertebrates.\nFunctional Adaptation:\nPressure-resistant cell\nmembranes.",
+        "dependencies": [
+          "header_section"
+        ]
+      },
+      {
+        "id": "col_3_salt",
+        "role": "container",
+        "position": "right",
+        "visibleText": "HIGH SALT CONCENTRATION\nSubject: Halobacteria.\nFunctional Adaptation: Internal\nchemistry adapted to prevent\nfatal water loss via osmosis.",
+        "dependencies": [
+          "header_section"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "comparison",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Header, Status, and High Temperature Profile",
+        "componentIds": [
+          "header_section",
+          "footer_status_bar",
+          "col_1_temperature"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Add High Pressure Profile",
+        "componentIds": [
+          "header_section",
+          "footer_status_bar",
+          "col_1_temperature",
+          "col_2_pressure"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Complete Dossier with High Salt Concentration Profile",
+        "componentIds": [
+          "header_section",
+          "footer_status_bar",
+          "col_1_temperature",
+          "col_2_pressure",
+          "col_3_salt"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}
