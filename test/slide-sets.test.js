@@ -19,6 +19,9 @@ test("formatDisplayTitle formats lesson filenames into human titles", () => {
   assert.equal(formatDisplayTitle("Lesson_02_MICROSCOPES"), "2. Microscopes");
   assert.equal(formatDisplayTitle("Lesson_11_PHOTOSYNTHESIS"), "11. Photosynthesis");
   assert.equal(formatDisplayTitle("digital_literacy_conference_deck"), "Digital literacy conference deck");
+  assert.equal(formatDisplayTitle("Classic_Lesson_01_Ecosystems"), "1. Ecosystems");
+  assert.equal(formatDisplayTitle("Ecosystems", "Classic_Lesson_01_Ecosystems"), "1. Ecosystems");
+  assert.equal(formatDisplayTitle("Classic_Lesson_08_Crude_Oil_and_Fractional_Distillation"), "8. Crude Oil and Fractional Distillation");
 });
 
 test("inferSlideSetId maps decks to appropriate slide set categories", () => {
@@ -58,11 +61,22 @@ test("Slide Sets API returns categorized slide sets and default IDs", async () =
     assert.ok(digitalSet, "Digital literacy slide set should be present");
     assert.ok(digitalSet.decks.some((d) => d.id === "digital_literacy_conference_deck"));
 
-    // Verify ecology & atmosphere classic slide set is present
+    // Verify ecology & atmosphere classic slide set is present and numbered 1-12
     const classicEcoSet = data.slideSets.find((s) => s.id === "ecology_atmosphere_classic");
     assert.ok(classicEcoSet, "Classic Ecology & atmosphere slide set should be present");
-    assert.ok(classicEcoSet.decks.length >= 3, "Classic set should contain at least 3 lessons");
-    assert.ok(classicEcoSet.decks.some((d) => d.id === "Classic_Lesson_01_Ecosystems"));
+    assert.equal(classicEcoSet.decks.length, 12, "Classic set should contain exactly 12 lessons");
+    assert.equal(classicEcoSet.decks[0].title, "1. Ecosystems");
+    assert.equal(classicEcoSet.decks[1].title, "2. Investigating Abundance and Distribution");
+    assert.equal(classicEcoSet.decks[2].title, "3. Competition");
+    assert.equal(classicEcoSet.decks[3].title, "4. Nitrogen Cycle");
+    assert.equal(classicEcoSet.decks[4].title, "5. Carbon and Water Cycle");
+    assert.equal(classicEcoSet.decks[5].title, "6. Human Impacts on Biodiversity");
+    assert.equal(classicEcoSet.decks[6].title, "7. The Atmosphere");
+    assert.equal(classicEcoSet.decks[7].title, "8. Crude Oil and Fractional Distillation");
+    assert.equal(classicEcoSet.decks[8].title, "9. Greenhouse Effect");
+    assert.equal(classicEcoSet.decks[9].title, "10. Pollutants");
+    assert.equal(classicEcoSet.decks[10].title, "11. Lifecycle Assessments");
+    assert.equal(classicEcoSet.decks[11].title, "12. Recycling");
 
     // Verify ecology & atmosphere slide set is present
     const ecoSet = data.slideSets.find((s) => s.id === "ecology_atmosphere");

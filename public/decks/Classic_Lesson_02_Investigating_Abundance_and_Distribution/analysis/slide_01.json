@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T09:47:07.149Z",
+  "sourceHash": "e483416c93d012aae182df1e7fd0d302319ba84556666868afd92d1fff729b76",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Lesson 2: Investigating Abundance and Distribution",
+    "description": "A title slide formatted like an open field journal or notebook resting on graph paper, accompanied by a botanical sketch of a daisy-like plant, a wooden pencil, and a brass pocket compass.",
+    "layout": "The title and subtitle are positioned across the upper half of the open notebook. The lower-left page features a botanical drawing of a flowering plant. A wooden pencil lies diagonally across the spine, and an antique brass compass rests on the right side of the notebook.",
+    "components": [
+      {
+        "id": "notebook_background",
+        "role": "background",
+        "position": "centre",
+        "visibleText": "",
+        "dependencies": []
+      },
+      {
+        "id": "main_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Lesson 2: Investigating Abundance and Distribution",
+        "dependencies": [
+          "notebook_background"
+        ]
+      },
+      {
+        "id": "subtitle",
+        "role": "subtitle",
+        "position": "mid-left",
+        "visibleText": "Ecological Sampling and Mathematical Modelling",
+        "dependencies": [
+          "main_title"
+        ]
+      },
+      {
+        "id": "illustration_plant",
+        "role": "illustration",
+        "position": "bottom-left",
+        "visibleText": "",
+        "dependencies": [
+          "notebook_background"
+        ]
+      },
+      {
+        "id": "pencil_prop",
+        "role": "illustration",
+        "position": "bottom-centre",
+        "visibleText": "",
+        "dependencies": [
+          "notebook_background"
+        ]
+      },
+      {
+        "id": "compass_prop",
+        "role": "illustration",
+        "position": "mid-right",
+        "visibleText": "",
+        "dependencies": [
+          "notebook_background"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Title Slide",
+        "componentIds": [
+          "notebook_background",
+          "main_title",
+          "subtitle",
+          "illustration_plant",
+          "pencil_prop",
+          "compass_prop"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

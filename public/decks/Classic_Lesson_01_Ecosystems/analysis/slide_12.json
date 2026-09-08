@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T09:37:43.915Z",
+  "sourceHash": "b40e8a9536cf2579636820d94686232827587dffdff92c4cd1af65bf91fcc298",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Disrupting the Web: When the Balance Breaks",
+    "description": "An infographic illustrating how the introduction of an invasive predator disrupts an interdependent food web across trophic levels (Apex, Secondary, Primary, and Producers), causing cascading declines and disruptions indicated by red downward trend arrows and cracked nodes, accompanied by an alert banner at the top right and a summary callout at the bottom.",
+    "layout": "The slide features a bold title along the top. In the center-left is a multi-tiered food web organized by trophic level labels ('Apex', 'Secondary', 'Primary', 'Producers'). At the top right is a prominent red exclamation callout reading 'NEW PREDATOR ARRIVES' pointing to an 'Invasive Wildcat' node, which targets the web. Spanning the bottom is a wide rounded rectangular callout box with a red border containing summary text.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Disrupting the Web: When the Balance Breaks",
+        "dependencies": []
+      },
+      {
+        "id": "food_web_diagram",
+        "role": "diagram",
+        "position": "centre-left",
+        "visibleText": "Apex\nFoxes\nSparrow hawks\nSecondary\nBlue Tits\nFrogs\nBadgers\nPrimary\nCaterpillars\nMice\nRabbits\nEarthworms\nProducers",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "invasive_predator_callout",
+        "role": "callout",
+        "position": "top-right",
+        "visibleText": "NEW PREDATOR ARRIVES\nInvasive Wildcat",
+        "dependencies": [
+          "food_web_diagram"
+        ]
+      },
+      {
+        "id": "summary_banner",
+        "role": "synthesis",
+        "position": "bottom-centre",
+        "visibleText": "Changes in a single biotic or abiotic factor ripple through the entire interdependent community.",
+        "dependencies": [
+          "food_web_diagram",
+          "invasive_predator_callout"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Base food web",
+        "componentIds": [
+          "slide_title",
+          "food_web_diagram"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Invasive predator impact",
+        "componentIds": [
+          "slide_title",
+          "food_web_diagram",
+          "invasive_predator_callout"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Full slide with synthesis principle",
+        "componentIds": [
+          "slide_title",
+          "food_web_diagram",
+          "invasive_predator_callout",
+          "summary_banner"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

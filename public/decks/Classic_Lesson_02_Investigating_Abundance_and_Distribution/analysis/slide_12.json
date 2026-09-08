@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T10:15:28.888Z",
+  "sourceHash": "fea407b0d6927ed735a765d1f278674cac6ad46a6bdb4a8b519549d96260b42b",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Scientific Shorthand (Mathematical Symbols)",
+    "description": "A slide explaining mathematical shorthand used by ecologists, featuring paper cutout illustrations of symbols (=, <, <<, >>, >, >, ~) on the left and a three-question fill-in-the-blank exercise on the right.",
+    "layout": "The title and introductory text appear at the top. Below, the slide is split into two halves: on the left is a cluster of scrap paper cutouts showing various comparison symbols; on the right is an activity titled 'Symbol Match' with instructions and three numbered fill-in-the-blank items with tick box icons.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Scientific Shorthand (Mathematical Symbols)",
+        "dependencies": []
+      },
+      {
+        "id": "intro_text",
+        "role": "body",
+        "position": "top-left, below title",
+        "visibleText": "Ecologists use specific symbols to quickly communicate relationships in their field notes.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "symbol_cutouts",
+        "role": "diagram",
+        "position": "centre-left",
+        "visibleText": "= < << >> > > ~",
+        "dependencies": [
+          "intro_text"
+        ]
+      },
+      {
+        "id": "activity_prompt",
+        "role": "subheading",
+        "position": "centre-right",
+        "visibleText": "Symbol Match: Fill in the blank with the correct symbol (<<, >>, or ~).",
+        "dependencies": [
+          "intro_text"
+        ]
+      },
+      {
+        "id": "question_item_1",
+        "role": "list_item",
+        "position": "mid-right, below prompt",
+        "visibleText": "1. Plant growth in full sun [ ] Plant [ ] growth in pitch black.",
+        "dependencies": [
+          "activity_prompt"
+        ]
+      },
+      {
+        "id": "question_item_2",
+        "role": "list_item",
+        "position": "mid-lower-right",
+        "visibleText": "2. Number of daisies in Quadrat 1 (14) [ ] Number of daisies in Quadrat 2 (15).",
+        "dependencies": [
+          "activity_prompt"
+        ]
+      },
+      {
+        "id": "question_item_3",
+        "role": "list_item",
+        "position": "bottom-right",
+        "visibleText": "3. Oxygen levels in a polluted stream [ ] Oxygen levels in a clean stream.",
+        "dependencies": [
+          "activity_prompt"
+        ]
+      }
+    ],
+    "isQuestionSlide": true,
+    "recommendedStrategy": "question-base-overlay",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Base slide with questions",
+        "componentIds": [
+          "slide_title",
+          "intro_text",
+          "symbol_cutouts",
+          "activity_prompt",
+          "question_item_1",
+          "question_item_2",
+          "question_item_3"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T10:07:03.688Z",
+  "sourceHash": "f6694cd9c25a3994dcae04ffea6618ba00bc3f7af0e182b6075fc2bec699d130",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Systematic Sampling: The Transect",
+    "description": "An instructional slide explaining transect sampling in ecological studies, featuring a title and explanatory paragraph at the top, and an illustrative diagram across the bottom depicting a measuring tape transect line running from dense woodland to open grassland with quadrats positioned at regular intervals.",
+    "layout": "The slide is laid out vertically with text occupying the upper half (centred title followed by left-aligned explanatory text block) and a panoramic illustration occupying the lower half, showing a gradient transition from forest to meadow with a horizontal tape measure and glowing square quadrat samples.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Systematic Sampling: The Transect",
+        "dependencies": []
+      },
+      {
+        "id": "transect_definition_text",
+        "role": "body_text",
+        "position": "upper-centre",
+        "visibleText": "A transect is a straight line drawn across a habitat where conditions are changing. We place quadrats at regular intervals (e.g., every 2 metres) along this line to track changes systematically.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "transect_illustration",
+        "role": "diagram",
+        "position": "bottom-centre",
+        "visibleText": "",
+        "dependencies": [
+          "transect_definition_text"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Concept Introduction",
+        "componentIds": [
+          "slide_title",
+          "transect_definition_text"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Visual Transect Diagram",
+        "componentIds": [
+          "slide_title",
+          "transect_definition_text",
+          "transect_illustration"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

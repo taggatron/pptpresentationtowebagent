@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T09:23:15.763Z",
+  "sourceHash": "47550c663746d0abbc0bda71b3a1f4dbc6d2f54768692cdeeff6dccbc36f1426",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Interdependence: The Invisible Threads of a Community",
+    "description": "Educational slide illustrating ecological interdependence through three circular nodes arranged triangularly around a glowing ring (Predation, Mutualism, Parasitism), followed by a key takeaway banner at the bottom.",
+    "layout": "The title spans across the top. Below the title, three circular graphic callouts are arranged in a triangular configuration connected by glowing orange thread graphics: Predation at top-centre, Mutualism at lower-left, and Parasitism at lower-right. A summarizing banner sits horizontally along the bottom centre.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Interdependence: The Invisible Threads of a Community",
+        "dependencies": []
+      },
+      {
+        "id": "predation_node",
+        "role": "diagram",
+        "position": "centre-top",
+        "visibleText": "Predation\nSpecies rely on others for food. If prey numbers fall, predator numbers soon follow.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "mutualism_node",
+        "role": "diagram",
+        "position": "centre-left",
+        "visibleText": "Mutualism\nBoth species benefit from the interaction.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "parasitism_node",
+        "role": "diagram",
+        "position": "centre-right",
+        "visibleText": "Parasitism\nOne species benefits at the expense of the host.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "summary_banner",
+        "role": "callout",
+        "position": "bottom-centre",
+        "visibleText": "Within a community, every species depends on other species for food, shelter, pollination, or seed dispersal.",
+        "dependencies": [
+          "predation_node",
+          "mutualism_node",
+          "parasitism_node"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Title and ecological interaction types",
+        "componentIds": [
+          "slide_title",
+          "predation_node",
+          "mutualism_node",
+          "parasitism_node"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Reveal community interdependence summary",
+        "componentIds": [
+          "slide_title",
+          "predation_node",
+          "mutualism_node",
+          "parasitism_node",
+          "summary_banner"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}
