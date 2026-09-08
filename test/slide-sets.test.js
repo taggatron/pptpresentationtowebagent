@@ -58,6 +58,12 @@ test("Slide Sets API returns categorized slide sets and default IDs", async () =
     assert.ok(digitalSet, "Digital literacy slide set should be present");
     assert.ok(digitalSet.decks.some((d) => d.id === "digital_literacy_conference_deck"));
 
+    // Verify ecology & atmosphere classic slide set is present
+    const classicEcoSet = data.slideSets.find((s) => s.id === "ecology_atmosphere_classic");
+    assert.ok(classicEcoSet, "Classic Ecology & atmosphere slide set should be present");
+    assert.ok(classicEcoSet.decks.length >= 3, "Classic set should contain at least 3 lessons");
+    assert.ok(classicEcoSet.decks.some((d) => d.id === "Classic_Lesson_01_Ecosystems"));
+
     // Verify ecology & atmosphere slide set is present
     const ecoSet = data.slideSets.find((s) => s.id === "ecology_atmosphere");
     assert.ok(ecoSet, "Ecology & atmosphere slide set should be present");

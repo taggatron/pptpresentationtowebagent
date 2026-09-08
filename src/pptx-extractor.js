@@ -6,8 +6,8 @@ import yauzl from "yauzl";
 /**
  * Extracts whole-slide images and metadata from a PPTX deck.
  */
-export async function extractPptxDeck(pptxPath, outputBaseDir) {
-  const fileName = path.basename(pptxPath, ".pptx");
+export async function extractPptxDeck(pptxPath, outputBaseDir, customDeckId = null, options = {}) {
+  const fileName = customDeckId || path.basename(pptxPath, ".pptx");
   const deckId = fileName;
   const targetDir = path.join(outputBaseDir, deckId);
   const slidesDir = path.join(targetDir, "slides");
@@ -128,7 +128,8 @@ export async function extractPptxDeck(pptxPath, outputBaseDir) {
     id: deckId,
     title:
       previousManifest?.title ||
-      fileName.replace(/^Lesson_\d+_\d*_?/, "").replace(/_/g, " "),
+      fileName.replace(/^Classic_/i, "").replace(/^Lesson_\d+_\d*_?/, "").replace(/_/g, " "),
+    slideSet: options.slideSet || previousManifest?.slideSet,
     filename: path.basename(pptxPath),
     totalSlides: slides.length,
     slides

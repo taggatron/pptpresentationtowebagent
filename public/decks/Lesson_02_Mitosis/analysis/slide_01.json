@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T08:44:15.197Z",
+  "sourceHash": "8b9db847c0a154fc748fdc6ecd1204ef9ff4f6fa1c199415d846e5f4957b414a",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Lesson 2: Mitosis",
+    "description": "Title slide for GCSE Biology featuring the lesson title, topic subtitle, a central graphic of a replicated chromosome divided vertically by a dashed line, and a preparatory instruction note at the bottom.",
+    "layout": "Centered vertical hierarchy: top-centered main title and subtitle, central chromosome graphic with vertical dashed dividing line, and bottom-centered teacher instruction line with a small branding logo at the bottom right.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Lesson 2: Mitosis",
+        "dependencies": []
+      },
+      {
+        "id": "slide_subtitle",
+        "role": "subtitle",
+        "position": "top-centre",
+        "visibleText": "GCSE Biology: Genetics, Inheritance & Selection",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "chromosome_illustration",
+        "role": "diagram",
+        "position": "centre",
+        "visibleText": "",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "bottom_instruction",
+        "role": "note",
+        "position": "bottom-centre",
+        "visibleText": "No learner activities required yet. Get your mini-whiteboards ready.",
+        "dependencies": [
+          "slide_title"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Show title and topic",
+        "componentIds": [
+          "slide_title",
+          "slide_subtitle"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Reveal chromosome visual and student instructions",
+        "componentIds": [
+          "slide_title",
+          "slide_subtitle",
+          "chromosome_illustration",
+          "bottom_instruction"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

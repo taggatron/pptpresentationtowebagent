@@ -37,7 +37,14 @@ const PUBLIC_DIR = path.join(ROOT_DIR, "public");
 const DECKS_DIR = path.join(PUBLIC_DIR, "decks");
 
 function assertSafeDeckId(deckId) {
-  if (!/^[A-Za-z0-9_.-]+$/.test(deckId)) {
+  if (
+    !deckId ||
+    typeof deckId !== "string" ||
+    deckId.includes("..") ||
+    deckId.includes("/") ||
+    deckId.includes("\\") ||
+    !/^[\w.\- ’'()]+$/u.test(deckId)
+  ) {
     const error = new Error("Invalid deck id.");
     error.statusCode = 400;
     throw error;
@@ -141,7 +148,7 @@ export function buildTargetedRevisionPrompt(promptText, editTarget) {
 }
 
 function lessonSortValue(deck) {
-  const match = deck.id?.match(/^Lesson_(\d+)/i);
+  const match = deck.id?.match(/^(?:Classic_)?Lesson_(\d+)/i);
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
@@ -155,6 +162,14 @@ export const KNOWN_SLIDE_SETS = [
     icon: "🧬",
     folder: "powerpoints_cellbio_sequence_v2",
     description: "Cell structure, microscopes, enzymes, respiration, and photosynthesis."
+  },
+  {
+    id: "ecology_atmosphere_classic",
+    title: "GCSE Science · Ecology & Atmosphere (Classic)",
+    category: "Biology & Chemistry",
+    icon: "🌱",
+    folder: "powerpoints_ecology_atmosphere_sequence_classic",
+    description: "Classic classroom sequence: 6-cell retrieval grids, interactive checks, and readable diagrams."
   },
   {
     id: "ecology_atmosphere",
@@ -231,6 +246,7 @@ export const KNOWN_SLIDE_SETS = [
 
 export function formatDisplayTitle(rawTitle) {
   let title = String(rawTitle || "").trim();
+  title = title.replace(/^Classic[_s]+/i, "");
   title = title.replace(/_/g, " ").trim();
   const match = title.match(/^Lesson\s*0?(\d+)[:\s-]*(.*)/i);
   if (match) {
@@ -247,6 +263,7 @@ export function formatDisplayTitle(rawTitle) {
 
 export function inferSlideSetId(deckId, manifest = null) {
   if (manifest?.slideSet) return manifest.slideSet;
+  if (/^Classic_/i.test(deckId) || /classic/i.test(deckId)) return "ecology_atmosphere_classic";
   if (deckId === "digital_literacy_conference_deck") return "digital_literacy";
   if (
     /(?:CELL|MICROSCOPES|MAGNIFICATION|DNA|ENZYMES|Aerobic|ANAEROBIC|FERMENTATION|PHOTOSYNTHESIS)/i.test(
@@ -304,6 +321,17 @@ async function tryAutoExtractDeck(deckId, decksDir) {
     const outputDir = KNOWN_OUTPUT_DIR;
     const stat = await fs.stat(outputDir).catch(() => null);
     if (!stat || !stat.isDirectory()) return null;
+
+    if (safeDeckId.startsWith("Classic_")) {
+      const rawFileName = `${safeDeckId.replace(/^Classic_/i, "")}.pptx`;
+      const classicPptx = path.join(outputDir, "powerpoints_ecology_atmosphere_sequence_classic", rawFileName);
+      const fileStat = await fs.stat(classicPptx).catch(() => null);
+      if (fileStat && fileStat.isFile()) {
+        console.log(`[Server] Auto-extracting classic deck ${safeDeckId} from ${classicPptx}...`);
+        const manifest = await extractPptxDeck(classicPptx, decksDir, safeDeckId, { slideSet: "ecology_atmosphere_classic" });
+        return manifest;
+      }
+    }
 
     const dirs = await fs.readdir(outputDir);
     for (const dirName of dirs) {
@@ -756,7 +784,9 @@ export function createApp({
               const files = await fs.readdir(folderPath);
               for (const file of files) {
                 if (!file.endsWith(".pptx")) continue;
-                const dId = path.basename(file, ".pptx");
+                if (setCfg.id === "ecology_atmosphere_classic" && !file.startsWith("Lesson_")) continue;
+                const baseId = path.basename(file, ".pptx");
+                const dId = setCfg.id === "ecology_atmosphere_classic" && !baseId.startsWith("Classic_") ? `Classic_${baseId}` : baseId;
                 if (!usedDeckIds.has(dId) && !setDecks.some((d) => d.id === dId)) {
                   setDecks.push({
                     id: dId,
@@ -764,6 +794,7 @@ export function createApp({
                     totalSlides: 0,
                     isExtracted: false
                   });
+                  usedDeckIds.add(dId);
                 }
               }
             }
