@@ -4831,6 +4831,172 @@ body.vi-mode .cognitive-badge {
   background-color: #000000;
 }
 
+/* Quick Action: Modified Large Print Banner in VI Modal */
+.vi-mlp-quick-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--bg-card-subtle);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vi-mlp-quick-banner:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vi-mlp-quick-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.vi-mlp-quick-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background: rgba(37, 99, 235, 0.12);
+  padding: 2px 8px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.vi-mlp-quick-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vi-mlp-quick-desc {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.vi-mlp-scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-primary);
+  color: #ffffff !important;
+  border: 1px solid var(--accent-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.vi-mlp-scroll-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.vi-mlp-scroll-btn:active {
+  transform: translateY(0);
+}
+
+.vi-mlp-btn-icon {
+  font-size: 0.95rem;
+  transition: transform 0.2s ease;
+}
+
+.vi-mlp-scroll-btn:hover .vi-mlp-btn-icon {
+  transform: translateY(2px);
+}
+
+/* VI Theme Overrides for MLP Quick Banner */
+body.vi-theme-yellow-black .vi-mlp-quick-banner {
+  background: #000000;
+  border-color: #ffff00;
+}
+body.vi-theme-yellow-black .vi-mlp-quick-badge {
+  background: #ffff00;
+  color: #000000;
+}
+body.vi-theme-yellow-black .vi-mlp-scroll-btn {
+  background: #ffff00;
+  color: #000000 !important;
+  border-color: #ffff00;
+}
+body.vi-theme-yellow-black .vi-mlp-scroll-btn:hover {
+  background: #000000;
+  color: #ffff00 !important;
+}
+
+body.vi-theme-cyan-black .vi-mlp-quick-banner {
+  background: #000000;
+  border-color: #00ffff;
+}
+body.vi-theme-cyan-black .vi-mlp-quick-badge {
+  background: #00ffff;
+  color: #000000;
+}
+body.vi-theme-cyan-black .vi-mlp-scroll-btn {
+  background: #00ffff;
+  color: #000000 !important;
+  border-color: #00ffff;
+}
+body.vi-theme-cyan-black .vi-mlp-scroll-btn:hover {
+  background: #000000;
+  color: #00ffff !important;
+}
+
+body.vi-theme-cream-black .vi-mlp-quick-banner {
+  background: #fffbf0;
+  border-color: #222222;
+}
+body.vi-theme-cream-black .vi-mlp-quick-badge {
+  background: #222222;
+  color: #fffbf0;
+}
+body.vi-theme-cream-black .vi-mlp-scroll-btn {
+  background: #222222;
+  color: #fffbf0 !important;
+  border-color: #222222;
+}
+body.vi-theme-cream-black .vi-mlp-scroll-btn:hover {
+  background: #444444;
+}
+
+/* Highlighting the target section when scrolled to */
+.vi-section-highlight {
+  animation: viSectionPulse 1.8s ease-out;
+  border-radius: 10px;
+}
+
+@keyframes viSectionPulse {
+  0% {
+    background-color: rgba(59, 130, 246, 0.25);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    background-color: rgba(59, 130, 246, 0.12);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
 .vi-setting-section {
   display: flex;
   flex-direction: column;

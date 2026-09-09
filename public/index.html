@@ -120,16 +120,6 @@
           <span aria-hidden="true">🔊</span>
         </button>
         <button
-          id="mlpExportBtn"
-          class="icon-btn mlp-export-btn"
-          type="button"
-          title="Modified Large Print Export (Alt+P)"
-          aria-label="Modified Large Print Export (Alt+P)"
-          aria-haspopup="dialog"
-        >
-          <span aria-hidden="true">🖨️</span>
-        </button>
-        <button
           id="themeToggleBtn"
           class="icon-btn"
           type="button"
@@ -653,6 +643,26 @@
           </label>
         </div>
 
+        <!-- Quick Action: Modified Large Print (MLP) -->
+        <div class="vi-mlp-quick-banner">
+          <div class="vi-mlp-quick-info">
+            <span class="vi-mlp-quick-badge">EXAM &amp; ACCESSIBILITY PACKS</span>
+            <div class="vi-mlp-quick-title">
+              <span aria-hidden="true">🖨️</span> Modified Large Print (MLP)
+            </div>
+            <p class="vi-mlp-quick-desc">RNIB &amp; JCQ compliant 18pt–36pt worksheets, questions, and revision guides</p>
+          </div>
+          <button
+            id="mlpExportBtn"
+            class="btn vi-mlp-scroll-btn"
+            type="button"
+            title="Scroll down to Modified Large Print (MLP) Export section"
+          >
+            <span class="vi-mlp-btn-label">Jump to Export</span>
+            <span class="vi-mlp-btn-icon" aria-hidden="true">↓</span>
+          </button>
+        </div>
+
         <!-- High-Contrast Color Scheme -->
         <div class="vi-setting-section">
           <h4 class="vi-section-title">
@@ -759,7 +769,7 @@
         </div>
 
         <!-- Modified Large Print (MLP) Export Section -->
-        <div class="vi-setting-section">
+        <div class="vi-setting-section" id="viMlpSection">
           <h4 class="vi-section-title">
             <span aria-hidden="true">🖨️</span> Modified Large Print (MLP) Export
           </h4>

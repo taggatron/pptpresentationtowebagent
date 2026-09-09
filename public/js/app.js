@@ -1749,8 +1749,9 @@ function closeMlpExportModal() {
   const modal = document.getElementById("mlpExportModal");
   if (modal && !modal.classList.contains("hidden")) {
     modal.classList.add("hidden");
+    const viLaunchBtn = document.getElementById("viLaunchMlpBtn");
     const exportBtn = document.getElementById("mlpExportBtn");
-    exportBtn?.focus();
+    (viLaunchBtn || exportBtn)?.focus();
   }
 }
 
@@ -2332,7 +2333,21 @@ function initMlpExport() {
   const downloadBtn = document.getElementById("mlpDownloadBtn");
   const modal = document.getElementById("mlpExportModal");
 
-  exportBtn?.addEventListener("click", openMlpExportModal);
+  exportBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    const viMlpSection = document.getElementById("viMlpSection");
+    if (viMlpSection) {
+      viMlpSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      viMlpSection.classList.add("vi-section-highlight");
+      setTimeout(() => {
+        viMlpSection.classList.remove("vi-section-highlight");
+      }, 1800);
+      const viLaunchBtn = document.getElementById("viLaunchMlpBtn");
+      viLaunchBtn?.focus({ preventScroll: true });
+    } else {
+      openMlpExportModal();
+    }
+  });
   closeBtn?.addEventListener("click", closeMlpExportModal);
 
   modal?.addEventListener("click", (e) => {
