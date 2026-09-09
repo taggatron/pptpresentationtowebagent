@@ -435,3 +435,33 @@ test("Cognitive load indicator pill uses custom SVG icon instead of visible proc
   assert.match(cssSource, /\.cognitive-svg-icon/);
   assert.match(cssSource, /\.cognitive-badge\s*\{[^}]*white-space:\s*nowrap/);
 });
+
+test("Component selector sidebar exposes feathered blur reveal option with animated blur filter", async () => {
+  const [indexHtml, cssSource, appSource] = await Promise.all([
+    fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8"),
+    fs.readFile(CSS_PATH, "utf-8"),
+    fs.readFile(APP_PATH, "utf-8")
+  ]);
+
+  // Sidebar target summary exposes reveal mode selector with feathered blur option
+  assert.match(indexHtml, /id="selectedTargetSummary"/);
+  assert.match(indexHtml, /id="targetRevealModeRow"/);
+  assert.match(indexHtml, /id="targetRevealModeSelect"/);
+  assert.match(indexHtml, /<option value="blur">Feathered blur<\/option>/);
+  assert.match(indexHtml, /id="targetToggleRevealBtn"/);
+
+  // CSS has feathered blur masked & revealed styles
+  assert.match(cssSource, /\.qa-card-overlay\.masked-blur/);
+  assert.match(cssSource, /backdrop-filter:\s*blur\(12px\)/);
+  assert.match(cssSource, /radial-gradient/);
+  assert.match(cssSource, /\.qa-card-overlay\.reveal-blur/);
+  assert.match(cssSource, /backdrop-filter:\s*blur\(0px\)/);
+  assert.match(cssSource, /\.target-reveal-mode-row/);
+
+  // App JS handles blur mode, autosave, and sync with click sequence
+  assert.match(appSource, /targetRevealModeSelect/);
+  assert.match(appSource, /normalizeRevealMode/);
+  assert.match(appSource, /masked-blur/);
+  assert.match(appSource, /reveal-\$\{revealMode\}/);
+  assert.match(appSource, /triggerAutosaveBounds/);
+});

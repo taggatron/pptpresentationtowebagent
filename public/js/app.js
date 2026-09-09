@@ -84,6 +84,9 @@ const editModeBadge = document.getElementById("editModeBadge");
 const selectedTargetSummary = document.getElementById("selectedTargetSummary");
 const selectedTargetName = document.getElementById("selectedTargetName");
 const selectedTargetMeta = document.getElementById("selectedTargetMeta");
+const targetRevealModeRow = document.getElementById("targetRevealModeRow");
+const targetRevealModeSelect = document.getElementById("targetRevealModeSelect");
+const targetToggleRevealBtn = document.getElementById("targetToggleRevealBtn");
 const clearEditTargetBtn = document.getElementById("clearEditTargetBtn");
 const tabOverviewBtn = document.getElementById("tabOverviewBtn");
 const tabEditorBtn = document.getElementById("tabEditorBtn");
@@ -255,7 +258,8 @@ function renderEditTargetSelection() {
 
 function renderSelectedTargetSummary() {
   if (!selectedTargetSummary) return;
-  const target = getSelectedEditTarget();
+  const slide = currentDeck?.slides[currentSlideIndex];
+  const target = getSelectedEditTarget(slide);
 
   selectedTargetSummary.classList.toggle("has-selection", Boolean(target));
   clearEditTargetBtn?.classList.toggle("hidden", !target);
@@ -266,11 +270,45 @@ function renderSelectedTargetSummary() {
   if (!target) {
     selectedTargetName.textContent = "Whole slide";
     selectedTargetMeta.textContent = "Click the slide to isolate a component.";
+    targetRevealModeRow?.classList.add("hidden");
     return;
   }
 
   selectedTargetName.textContent = target.label;
   selectedTargetMeta.textContent = formatTargetBounds(target.bounds);
+  targetRevealModeRow?.classList.remove("hidden");
+
+  if (targetRevealModeSelect) {
+    let currentMode = "none";
+    let isComponent = false;
+    let isRevealed = false;
+
+    if (target.type === "component" && slide) {
+      const cell = (slide.interactiveCells || []).find((c) => c.id === target.id);
+      if (cell) {
+        isComponent = true;
+        currentMode = normalizeRevealMode(cell);
+        isRevealed = isAnswerRevealed(slide, cell);
+      } else {
+        currentMode = "unmask";
+      }
+    } else if (target.type === "region") {
+      currentMode = target.revealMode || "none";
+    }
+
+    targetRevealModeSelect.value = currentMode;
+
+    if (targetToggleRevealBtn) {
+      if (isComponent) {
+        targetToggleRevealBtn.classList.remove("hidden");
+        targetToggleRevealBtn.textContent = isRevealed ? "◉ Revealed" : "● Masked";
+        targetToggleRevealBtn.classList.toggle("revealed", isRevealed);
+        targetToggleRevealBtn.title = isRevealed ? "Click to mask" : "Click to reveal";
+      } else {
+        targetToggleRevealBtn.classList.add("hidden");
+      }
+    }
+  }
 }
 
 function setSelectedEditTarget(target, { rerenderPanel = true, focusInput = false } = {}) {
@@ -3612,15 +3650,15 @@ function renderComponentEditorPanel() {
       });
     });
 
-    // Reveal-mode select listener
     const revealModeSelect = card.querySelector(".reveal-mode-select");
     if (revealModeSelect) {
       revealModeSelect.addEventListener("change", () => {
         const newMode = revealModeSelect.value;
         cell.revealMode = newMode;
-        // If the answer was already revealed, re-render to swap the reveal-* class
+        triggerAutosaveBounds(slide);
         renderSlideStage(slide);
         renderComponentEditorPanel();
+        renderSelectedTargetSummary();
       });
     }
 
@@ -3659,10 +3697,12 @@ function renderVersionHistoryOptions(slide) {
 }
 
 function triggerAutosaveBounds(slide) {
+  if (!slide || !currentDeck) return;
   if (autosaveTimer) clearTimeout(autosaveTimer);
   const storageKey = `deck_bounds_${currentDeck.id}_slide_${slide.number}`;
+  const cells = Array.isArray(slide.interactiveCells) ? slide.interactiveCells : [];
   const boundsMap = Object.fromEntries(
-    slide.interactiveCells.map((cell) => [cell.id, getAnswerRegionSet(cell).primary])
+    cells.map((cell) => [cell.id, getAnswerRegionSet(cell).primary])
   );
   localStorage.setItem(storageKey, JSON.stringify(boundsMap));
 
@@ -3673,7 +3713,7 @@ function triggerAutosaveBounds(slide) {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ interactiveCells: slide.interactiveCells })
+          body: JSON.stringify({ interactiveCells: cells })
         }
       );
       if (!response.ok) {
@@ -4133,6 +4173,90 @@ function setupEventListeners() {
   });
   clearEditTargetBtn?.addEventListener("click", () => {
     setSelectedEditTarget(null, { focusInput: true });
+  });
+  targetRevealModeSelect?.addEventListener("change", () => {
+    const slide = currentDeck?.slides[currentSlideIndex];
+    if (!slide) return;
+    const target = getSelectedEditTarget(slide);
+    if (!target) return;
+    const newMode = targetRevealModeSelect.value;
+
+    if (target.type === "component") {
+      const cell = (slide.interactiveCells || []).find((c) => c.id === target.id);
+      if (cell) {
+        if (newMode === "none") {
+          slide.interactiveCells = (slide.interactiveCells || []).filter((c) => c.id !== cell.id);
+          if (slide.interactiveCells.length === 0) {
+            slide.isInteractive = false;
+          }
+          triggerAutosaveBounds(slide);
+          setSelectedEditTarget(
+            {
+              type: "region",
+              id: `region_${slide.number}`,
+              label: `Custom region on slide ${slide.number}`,
+              bounds: { ...target.bounds },
+              point: targetPointFromBounds(target.bounds)
+            },
+            { rerenderPanel: true }
+          );
+          renderSlideStage(slide);
+          return;
+        }
+        cell.revealMode = newMode;
+        triggerAutosaveBounds(slide);
+        renderSlideStage(slide);
+        renderComponentEditorPanel();
+        renderSelectedTargetSummary();
+      }
+    } else if (target.type === "region") {
+      target.revealMode = newMode;
+      if (newMode !== "none") {
+        if (!Array.isArray(slide.interactiveCells)) {
+          slide.interactiveCells = [];
+        }
+        slide.isInteractive = true;
+        if (!slide.interactiveType) {
+          slide.interactiveType = "question_reveal";
+        }
+        const newCellId = `reveal_${slide.number}_${Date.now().toString(36)}`;
+        const labelClean = String(target.label || "")
+          .replace(/^Custom region on slide \d+/, "Custom reveal")
+          .trim() || "Custom reveal";
+        const newCell = {
+          id: newCellId,
+          question: labelClean,
+          bounds: { ...target.bounds },
+          answerBounds: { ...target.bounds },
+          revealMode: newMode,
+          confidence: 1,
+          provenance: "user-created"
+        };
+        slide.interactiveCells.push(newCell);
+        triggerAutosaveBounds(slide);
+        const newTarget = componentEditTarget(slide, newCell, slide.interactiveCells.length - 1);
+        setSelectedEditTarget(newTarget, { rerenderPanel: true });
+        renderSlideStage(slide);
+      }
+    }
+  });
+  targetToggleRevealBtn?.addEventListener("click", () => {
+    const slide = currentDeck?.slides[currentSlideIndex];
+    if (!slide) return;
+    const target = getSelectedEditTarget(slide);
+    if (!target || target.type !== "component") return;
+    const cell = (slide.interactiveCells || []).find((c) => c.id === target.id);
+    if (!cell) return;
+    const revealed = isAnswerRevealed(slide, cell);
+    if (isGeneratedQuestionAnswerSequence(slide)) {
+      const index = (slide.interactiveCells || []).indexOf(cell);
+      setQuestionAnswerRevealCount(slide, revealed ? index : index + 1);
+    } else {
+      setAnswerRevealed(slide, cell, !revealed);
+    }
+    renderSlideStage(slide);
+    renderSelectedTargetSummary();
+    renderComponentEditorPanel();
   });
   sendGeminiEditBtn?.addEventListener("click", sendRevisionInstruction);
   const revertVersionBtn = document.getElementById("revertVersionBtn");

@@ -1286,8 +1286,14 @@ export function createApp({
         slide.interactiveCells = req.body.interactiveCells.map((cell) => ({
           ...cell,
           locked: true,
-          provenance: "user-adjusted"
+          provenance: cell.provenance || "user-adjusted"
         }));
+        if (slide.interactiveCells.length > 0) {
+          slide.isInteractive = true;
+          if (!slide.interactiveType) {
+            slide.interactiveType = "question_reveal";
+          }
+        }
       } else if (req.body.cellId && req.body.bounds && slide.interactiveCells) {
         const cell = slide.interactiveCells.find(
           (candidate) => candidate.id === req.body.cellId

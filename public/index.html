@@ -334,6 +334,18 @@
                 Clear target
               </button>
               <span id="selectedTargetMeta">Click the slide to isolate a component.</span>
+              <div id="targetRevealModeRow" class="reveal-mode-row target-reveal-mode-row hidden">
+                <span class="reveal-mode-label">Reveal as</span>
+                <select id="targetRevealModeSelect" class="reveal-mode-select" aria-label="Reveal mode for selected target">
+                  <option value="none">None (Edit target only)</option>
+                  <option value="blur">Feathered blur</option>
+                  <option value="unmask">Unmask</option>
+                  <option value="overlay">Overlay text</option>
+                </select>
+                <button id="targetToggleRevealBtn" type="button" class="btn btn-outline-small target-toggle-reveal-btn hidden" title="Toggle reveal state">
+                  ● Masked
+                </button>
+              </div>
             </div>
           </div>
 
