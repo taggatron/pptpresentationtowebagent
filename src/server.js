@@ -921,6 +921,69 @@ export function createApp({
     }
   });
 
+  app.post("/api/decks/:deckId/reorder-slides", async (req, res) => {
+    try {
+      const { order, fromIndex, toIndex } = req.body;
+      const { manifestPath, manifest } = await readManifest(decksDir, req.params.deckId);
+      const originalSlides = manifest.slides || [];
+
+      let reorderedSlides = [];
+
+      if (Number.isInteger(fromIndex) && Number.isInteger(toIndex)) {
+        if (fromIndex < 0 || fromIndex >= originalSlides.length || toIndex < 0 || toIndex >= originalSlides.length) {
+          return res.status(400).json({ error: `Indices out of range: fromIndex=${fromIndex}, toIndex=${toIndex}` });
+        }
+        reorderedSlides = [...originalSlides];
+        const [moved] = reorderedSlides.splice(fromIndex, 1);
+        reorderedSlides.splice(toIndex, 0, moved);
+      } else if (Array.isArray(order) && order.length > 0) {
+        if (order.length !== originalSlides.length) {
+          return res.status(400).json({
+            error: `Order array length (${order.length}) must match slide count (${originalSlides.length}).`
+          });
+        }
+        const slideMap = new Map();
+        originalSlides.forEach((slide) => {
+          slideMap.set(Number(slide.number), slide);
+        });
+        const seen = new Set();
+        for (const num of order) {
+          const parsedNum = Number(num);
+          if (!slideMap.has(parsedNum)) {
+            return res.status(400).json({ error: `Slide number ${num} does not exist in deck.` });
+          }
+          if (seen.has(parsedNum)) {
+            return res.status(400).json({ error: `Duplicate slide number ${num} in order array.` });
+          }
+          seen.add(parsedNum);
+          reorderedSlides.push(slideMap.get(parsedNum));
+        }
+      } else {
+        return res.status(400).json({ error: "Either 'fromIndex' and 'toIndex' numbers or an 'order' array of slide numbers is required." });
+      }
+
+      reorderedSlides.forEach((slide, index) => {
+        const oldNum = slide.number;
+        const newNum = index + 1;
+        slide.number = newNum;
+        if (typeof slide.title === "string" && new RegExp(`^Slide\\s+${oldNum}$`, "i").test(slide.title.trim())) {
+          slide.title = `Slide ${newNum}`;
+        }
+      });
+
+      manifest.slides = reorderedSlides;
+      manifest.totalSlides = reorderedSlides.length;
+
+      await saveManifestFile(manifestPath, manifest);
+      res.json({ success: true, manifest });
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        return res.status(404).json({ error: "Deck not found" });
+      }
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
   app.post("/api/decks/:deckId/slides/:slideNum/revise", async (req, res) => {
     try {
       const result = await runRevision({

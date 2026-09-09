@@ -56,6 +56,9 @@ const sidebar = document.getElementById("sidebar");
 const toggleSidebarBtn = document.getElementById("toggleSidebarBtn");
 const thumbnailsGrid = document.getElementById("thumbnailsGrid");
 const slideCountBadge = document.getElementById("slideCountBadge");
+const slideOrderStatusBadge = document.getElementById("slideOrderStatusBadge");
+let draggedSlideIndex = null;
+let slideOrderSaveTimer = null;
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const revealAllBtn = document.getElementById("revealAllBtn");
 const hideAllBtn = document.getElementById("hideAllBtn");
@@ -867,8 +870,11 @@ function addVideoListener(videoEl, eventName, handler, options) {
 function hideSlideVideo() {
   if (!slideVideo) return;
   slideVideo.pause();
+  slideVideo.muted = false;
   cleanupVideoSegmentHandler(slideVideo);
   slideVideo.classList.add("hidden");
+  slideVideo.classList.remove("playback-blocked");
+  videoPlayFallback?.classList.add("hidden");
 }
 
 function showVideoBuild(slide, build) {
@@ -883,6 +889,30 @@ function showVideoBuild(slide, build) {
   slideVideo.controls = false;
   slideVideo.removeAttribute("controls");
   slideVideo.classList.remove("hidden");
+
+  // Allow clicking anywhere on the video player to toggle play / pause or unmute
+  addVideoListener(slideVideo, "click", () => {
+    if (slideVideo.muted) {
+      slideVideo.muted = false;
+    }
+    if (slideVideo.paused) {
+      slideVideo.play().catch((err) => console.warn("Click play prevented:", err));
+      slideVideo.classList.remove("playback-blocked");
+      videoPlayFallback?.classList.add("hidden");
+    } else {
+      slideVideo.pause();
+    }
+  });
+
+  addVideoListener(slideVideo, "error", () => {
+    if (token !== videoPlaybackToken) return;
+    console.error("Slide video error encountered:", slideVideo.error);
+    slideVideo.classList.add("playback-blocked");
+    if (videoPlayFallback) {
+      videoPlayFallback.innerHTML = '<span aria-hidden="true">▶</span><span>Play video</span>';
+      videoPlayFallback.classList.remove("hidden");
+    }
+  });
 
   if (slideVideo.src !== fullUrl) {
     slideVideo.src = build.videoUrl;
@@ -903,11 +933,44 @@ function showVideoBuild(slide, build) {
           slideVideo.classList.remove("playback-blocked");
           videoPlayFallback?.classList.add("hidden");
         })
-        .catch(() => {
+        .catch((err) => {
           if (token !== videoPlaybackToken) return;
-          pendingVideoReplay = attemptPlay;
-          slideVideo.classList.add("playback-blocked");
-          videoPlayFallback?.classList.remove("hidden");
+          console.warn("Unmuted autoplay restricted by browser policy; trying muted autoplay:", err);
+          // Browsers allow muted autoplay without prior user interaction.
+          slideVideo.muted = true;
+          const mutedResult = slideVideo.play();
+          if (mutedResult?.then) {
+            mutedResult
+              .then(() => {
+                if (token !== videoPlaybackToken) return;
+                // Video is playing smoothly muted. Provide unmute button.
+                pendingVideoReplay = () => {
+                  slideVideo.muted = false;
+                  slideVideo.play().catch(() => {});
+                  slideVideo.classList.remove("playback-blocked");
+                  videoPlayFallback?.classList.add("hidden");
+                };
+                slideVideo.classList.add("playback-blocked");
+                if (videoPlayFallback) {
+                  videoPlayFallback.innerHTML = '<span aria-hidden="true">🔊</span><span>Unmute audio</span>';
+                  videoPlayFallback.classList.remove("hidden");
+                }
+              })
+              .catch(() => {
+                // If even muted play was blocked, provide full play button
+                pendingVideoReplay = () => {
+                  slideVideo.muted = false;
+                  slideVideo.play().catch(() => {});
+                  slideVideo.classList.remove("playback-blocked");
+                  videoPlayFallback?.classList.add("hidden");
+                };
+                slideVideo.classList.add("playback-blocked");
+                if (videoPlayFallback) {
+                  videoPlayFallback.innerHTML = '<span aria-hidden="true">▶</span><span>Play video</span>';
+                  videoPlayFallback.classList.remove("hidden");
+                }
+              });
+          }
         });
     }
   };
@@ -2358,6 +2421,12 @@ function populateLessonsForSlideSet(setId, targetDeckId = null) {
   const set = availableSlideSets.find((s) => s.id === setId);
   if (!set || !deckSelect) return;
 
+  if (slideSetBtn) {
+    const shortTitle = set.title.includes("·") ? set.title.split("·")[1].trim() : set.title;
+    slideSetBtn.innerHTML = `${set.icon || "📁"} ${escapeHtml(shortTitle)}`;
+    slideSetBtn.setAttribute("title", `Current Slide Set: ${set.title}. Click to switch sets.`);
+  }
+
   deckSelect.innerHTML = "";
   set.decks.forEach((deck) => {
     const option = document.createElement("option");
@@ -2632,17 +2701,24 @@ function setAllAnswersRevealed(revealed) {
 }
 
 function renderThumbnails() {
+  if (!thumbnailsGrid || !currentDeck?.slides) return;
   thumbnailsGrid.innerHTML = "";
   currentDeck.slides.forEach((slide, index) => {
     const thumb = document.createElement("button");
     thumb.type = "button";
     thumb.className = `thumb-item ${index === currentSlideIndex ? "active" : ""}`;
-    thumb.setAttribute("aria-label", `Go to slide ${index + 1}`);
+    thumb.setAttribute(
+      "aria-label",
+      `Slide ${index + 1}: ${slide.title || "Slide"}. Press Enter to view, Alt+Up/Down to reorder, or drag to move.`
+    );
+    thumb.setAttribute("draggable", "true");
+    thumb.dataset.slideIndex = String(index);
 
     const image = document.createElement("img");
     image.src = slide.imageUrl;
     image.alt = "";
     image.loading = "lazy";
+    image.draggable = false;
 
     const number = document.createElement("span");
     number.className = "thumb-num";
@@ -2651,12 +2727,173 @@ function renderThumbnails() {
     const rag = getRagStatus(slide.cognitiveGuide);
     const ragDot = document.createElement("span");
     ragDot.className = `thumb-rag-dot ${rag.class}`;
-    ragDot.title = `${rag.label}: ~${slide.cognitiveGuide?.timeGuideDisplay || '20s'}`;
+    ragDot.title = `${rag.label}: ~${slide.cognitiveGuide?.timeGuideDisplay || "20s"}`;
 
-    thumb.append(image, number, ragDot);
+    const dragHandle = document.createElement("span");
+    dragHandle.className = "thumb-drag-handle";
+    dragHandle.setAttribute("aria-hidden", "true");
+    dragHandle.title = "Drag to reorder slide";
+    dragHandle.textContent = "⋮⋮";
+
+    thumb.append(image, number, ragDot, dragHandle);
     thumb.addEventListener("click", () => renderSlide(index));
+
+    // Keyboard accessibility for reordering (Alt+ArrowUp, Alt+ArrowDown)
+    thumb.addEventListener("keydown", async (e) => {
+      if ((e.altKey || e.metaKey) && e.key === "ArrowUp" && index > 0) {
+        e.preventDefault();
+        await moveSlideOrder(index, index - 1);
+        const updatedThumb = thumbnailsGrid.children[index - 1];
+        updatedThumb?.focus();
+      } else if (
+        (e.altKey || e.metaKey) &&
+        e.key === "ArrowDown" &&
+        index < currentDeck.slides.length - 1
+      ) {
+        e.preventDefault();
+        await moveSlideOrder(index, index + 1);
+        const updatedThumb = thumbnailsGrid.children[index + 1];
+        updatedThumb?.focus();
+      }
+    });
+
+    // Drag-and-drop event handlers
+    thumb.addEventListener("dragstart", (e) => {
+      draggedSlideIndex = index;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", String(index));
+      setTimeout(() => thumb.classList.add("is-dragging"), 0);
+    });
+
+    thumb.addEventListener("dragend", () => {
+      draggedSlideIndex = null;
+      thumbnailsGrid.querySelectorAll(".thumb-item").forEach((el) => {
+        el.classList.remove("is-dragging", "drop-target-above", "drop-target-below");
+      });
+    });
+
+    thumb.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      if (draggedSlideIndex === null || draggedSlideIndex === index) {
+        thumb.classList.remove("drop-target-above", "drop-target-below");
+        return;
+      }
+
+      const rect = thumb.getBoundingClientRect();
+      const midpoint = rect.top + rect.height / 2;
+      const isAbove = e.clientY < midpoint;
+
+      thumb.classList.toggle("drop-target-above", isAbove);
+      thumb.classList.toggle("drop-target-below", !isAbove);
+    });
+
+    thumb.addEventListener("dragleave", (e) => {
+      if (!thumb.contains(e.relatedTarget)) {
+        thumb.classList.remove("drop-target-above", "drop-target-below");
+      }
+    });
+
+    thumb.addEventListener("drop", async (e) => {
+      e.preventDefault();
+      thumb.classList.remove("drop-target-above", "drop-target-below");
+      const rawSource = e.dataTransfer.getData("text/plain");
+      const sourceIdx =
+        draggedSlideIndex ??
+        (rawSource !== "" ? Number.parseInt(rawSource, 10) : null);
+      if (sourceIdx === null || !Number.isInteger(sourceIdx) || sourceIdx === index) return;
+
+      const rect = thumb.getBoundingClientRect();
+      const isAbove = e.clientY < rect.top + rect.height / 2;
+      let targetIdx = index;
+      if (!isAbove && sourceIdx > index) {
+        targetIdx = index + 1;
+      } else if (isAbove && sourceIdx < index) {
+        targetIdx = index - 1;
+      }
+
+      await moveSlideOrder(sourceIdx, targetIdx);
+    });
+
     thumbnailsGrid.appendChild(thumb);
   });
+}
+
+async function moveSlideOrder(fromIndex, toIndex) {
+  if (!currentDeck?.slides || fromIndex === toIndex) return;
+  const targetIndex = clamp(toIndex, 0, currentDeck.slides.length - 1);
+  if (fromIndex === targetIndex) return;
+
+  const currentActiveSlide = currentDeck.slides[currentSlideIndex];
+  const [movedSlide] = currentDeck.slides.splice(fromIndex, 1);
+  currentDeck.slides.splice(targetIndex, 0, movedSlide);
+
+  currentDeck.slides.forEach((slide, idx) => {
+    slide.number = idx + 1;
+  });
+
+  const newActiveIndex = currentDeck.slides.indexOf(currentActiveSlide);
+  currentSlideIndex = newActiveIndex >= 0 ? newActiveIndex : 0;
+
+  renderThumbnails();
+  updateActiveThumbnail(currentSlideIndex);
+  if (currentSlideNum) currentSlideNum.textContent = String(currentSlideIndex + 1);
+  if (totalSlidesNum) totalSlidesNum.textContent = String(currentDeck.slides.length);
+  if (progressBar) {
+    const progress = ((currentSlideIndex + 1) / currentDeck.slides.length) * 100;
+    progressBar.style.width = `${progress}%`;
+    progressBar.setAttribute("aria-valuenow", String(currentSlideIndex + 1));
+  }
+  if (prevBtn) prevBtn.disabled = currentSlideIndex === 0;
+  if (nextBtn) nextBtn.disabled = currentSlideIndex === currentDeck.slides.length - 1;
+
+  if (answerLiveRegion) {
+    answerLiveRegion.textContent = `Slide moved from position ${fromIndex + 1} to position ${targetIndex + 1}.`;
+  }
+
+  await persistSlideOrder(currentDeck.id, fromIndex, targetIndex);
+}
+
+async function persistSlideOrder(deckId, fromIndex, targetIndex) {
+  if (!deckId) return;
+
+  if (slideOrderStatusBadge) {
+    slideOrderStatusBadge.className = "slide-order-status saving";
+    slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⏳</span><span>Saving…</span>';
+    slideOrderStatusBadge.classList.remove("hidden");
+  }
+
+  try {
+    const response = await fetch(`/api/decks/${encodeURIComponent(deckId)}/reorder-slides`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fromIndex, toIndex: targetIndex })
+    });
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      throw new Error(errData.error || "Failed to save slide order.");
+    }
+
+    if (slideOrderStatusBadge) {
+      slideOrderStatusBadge.className = "slide-order-status saved";
+      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">✓</span><span>Saved</span>';
+      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
+      slideOrderSaveTimer = setTimeout(() => {
+        slideOrderStatusBadge.classList.add("hidden");
+      }, 2400);
+    }
+  } catch (error) {
+    console.error("Error saving slide order:", error);
+    if (slideOrderStatusBadge) {
+      slideOrderStatusBadge.className = "slide-order-status error";
+      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⚠️</span><span>Save failed</span>';
+      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
+      slideOrderSaveTimer = setTimeout(() => {
+        slideOrderStatusBadge.classList.add("hidden");
+      }, 3500);
+    }
+  }
 }
 
 function updateActiveThumbnail(index) {
@@ -3678,7 +3915,16 @@ function setupEventListeners() {
   prevAnswerBtn?.addEventListener("click", hidePreviousAnswer);
   nextAnswerBtn?.addEventListener("click", revealNextAnswer);
   autoPlayBuildsBtn?.addEventListener("click", toggleAutoPlay);
-  videoPlayFallback?.addEventListener("click", () => pendingVideoReplay?.());
+  videoPlayFallback?.addEventListener("click", () => {
+    if (slideVideo) slideVideo.muted = false;
+    if (typeof pendingVideoReplay === "function") {
+      pendingVideoReplay();
+    } else if (slideVideo) {
+      slideVideo.play().catch((err) => console.warn("Fallback play error:", err));
+      slideVideo.classList.remove("playback-blocked");
+      videoPlayFallback.classList.add("hidden");
+    }
+  });
   editComponentBtn?.addEventListener("click", () => switchSidebarTab("editor"));
   cancelRevisionBtn?.addEventListener("click", () => {
     geminiEditInput.value = "";
