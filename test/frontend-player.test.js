@@ -465,3 +465,36 @@ test("Component selector sidebar exposes feathered blur reveal option with anima
   assert.match(appSource, /reveal-\$\{revealMode\}/);
   assert.match(appSource, /triggerAutosaveBounds/);
 });
+
+test("fullscreen mode elevates zoom control with collapsed icon and refines bottom slide navigation", async () => {
+  const [indexHtml, cssSource, appSource] = await Promise.all([
+    fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8"),
+    fs.readFile(CSS_PATH, "utf-8"),
+    fs.readFile(APP_PATH, "utf-8")
+  ]);
+
+  // Zoom control HTML contains trigger icon and wrapped controls
+  assert.match(indexHtml, /id="zoomCollapsedTrigger"/);
+  assert.match(indexHtml, /class="zoom-controls-content"/);
+  assert.match(indexHtml, /id="zoomActiveDot"/);
+
+  // CSS elevates zoom bar in fullscreen, collapses it, and expands on hover/approach
+  assert.match(cssSource, /:fullscreen \.slide-zoom-bar[^{]*\{[^}]*top:\s*8px/);
+  assert.match(cssSource, /:fullscreen \.zoom-collapsed-trigger/);
+  assert.match(cssSource, /:fullscreen \.slide-zoom-bar:hover/);
+  assert.match(cssSource, /\.is-approached/);
+
+  // CSS elevates bottom of slide area and bounds slide-wrapper
+  assert.match(cssSource, /:fullscreen \.slide-wrapper[^{]*\{[^}]*margin-bottom:\s*6px/);
+  assert.match(cssSource, /:fullscreen \.slide-stage[^{]*\{[^}]*padding:\s*0 0 8px 0/);
+
+  // CSS refines footer navigation: smaller buttons and moved down
+  assert.match(cssSource, /:fullscreen \.footer-controls[^{]*\{[^}]*padding:\s*0\.2rem/);
+  assert.match(cssSource, /:fullscreen \.btn-nav[^{]*\{[^}]*padding:\s*0\.24rem/);
+  assert.match(cssSource, /:fullscreen \.btn-nav[^{]*\{[^}]*font-size:\s*0\.76rem/);
+
+  // App JS proximity and dot indicator handling
+  assert.match(appSource, /zoomActiveDot/);
+  assert.match(appSource, /handleZoomProximity|is-approached/);
+});
+

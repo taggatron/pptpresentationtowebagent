@@ -1426,6 +1426,11 @@ function setSlideZoom(level) {
   const zoomText = document.getElementById("zoomLevelText");
   if (zoomText) zoomText.textContent = `${Math.round(clamped * 100)}%`;
 
+  const zoomActiveDot = document.getElementById("zoomActiveDot");
+  if (zoomActiveDot) {
+    zoomActiveDot.classList.toggle("hidden", clamped <= 1.0);
+  }
+
   if (clamped <= 1.0) {
     viPanState.panX = 0;
     viPanState.panY = 0;
@@ -1626,6 +1631,48 @@ function initVisualImpairmentMode() {
 
   const zoomResetBtn = document.getElementById("zoomResetBtn");
   zoomResetBtn?.addEventListener("click", resetSlideZoom);
+
+  const slideZoomBar = document.getElementById("slideZoomBar");
+  const zoomCollapsedTrigger = document.getElementById("zoomCollapsedTrigger");
+
+  zoomCollapsedTrigger?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    slideZoomBar?.classList.toggle("is-approached");
+  });
+
+  let approachLeaveTimeout = null;
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      const isFS = Boolean(
+        document.fullscreenElement ||
+        document.webkitIsFullScreen ||
+        document.body.classList.contains("is-fullscreen")
+      );
+      if (!isFS || !slideZoomBar) return;
+
+      const rect = slideZoomBar.getBoundingClientRect();
+      const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
+      const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
+      const dist = Math.hypot(dx, dy);
+
+      if (dist <= 65) {
+        if (approachLeaveTimeout) {
+          clearTimeout(approachLeaveTimeout);
+          approachLeaveTimeout = null;
+        }
+        slideZoomBar.classList.add("is-approached");
+      } else if (dist > 85 && slideZoomBar.classList.contains("is-approached")) {
+        if (!approachLeaveTimeout) {
+          approachLeaveTimeout = setTimeout(() => {
+            slideZoomBar.classList.remove("is-approached");
+            approachLeaveTimeout = null;
+          }, 180);
+        }
+      }
+    },
+    { passive: true }
+  );
 
   // Drag pan on slide
   if (slideWrapper) {

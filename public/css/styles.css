@@ -126,18 +126,20 @@ body.is-fullscreen .keyboard-hints {
 :fullscreen .app-layout,
 :-webkit-full-screen .app-layout,
 body.is-fullscreen .app-layout {
-  height: 100vh !important;
+  height: calc(100vh - 36px) !important;
   width: 100vw !important;
+  flex: 1 1 auto !important;
+  overflow: hidden !important;
 }
 
 :fullscreen .slide-stage,
 :-webkit-full-screen .slide-stage,
 body.is-fullscreen .slide-stage {
-  flex: 1 1 100% !important;
+  flex: 1 1 auto !important;
   width: 100vw !important;
-  height: 100vh !important;
+  height: 100% !important;
   max-width: none !important;
-  padding: 0 !important;
+  padding: 0 0 8px 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -148,12 +150,26 @@ body.is-fullscreen .slide-stage {
 body.is-fullscreen .slide-wrapper {
   position: relative !important;
   aspect-ratio: 16 / 9 !important;
-  width: min(100vw, calc(100vh * (16 / 9))) !important;
-  height: min(100vh, calc(100vw * (9 / 16))) !important;
+  width: min(100vw, calc((100vh - 50px) * (16 / 9))) !important;
+  height: min(calc(100vh - 50px), calc(100vw * (9 / 16))) !important;
   max-width: 100vw !important;
-  max-height: 100vh !important;
+  max-height: calc(100vh - 50px) !important;
   border-radius: 0 !important;
   margin: auto !important;
+  margin-bottom: 6px !important;
+}
+
+:fullscreen .app-footer,
+:-webkit-full-screen .app-footer,
+body.is-fullscreen .app-footer {
+  flex-shrink: 0 !important;
+  background: var(--bg-header) !important;
+}
+
+:fullscreen .progress-bar-container,
+:-webkit-full-screen .progress-bar-container,
+body.is-fullscreen .progress-bar-container {
+  height: 3px !important;
 }
 
 :fullscreen .footer-controls,
@@ -161,15 +177,163 @@ body.is-fullscreen .slide-wrapper {
 body.is-fullscreen .footer-controls {
   justify-content: center !important;
   width: 100% !important;
+  padding: 0.2rem 1.5rem 0.35rem 1.5rem !important;
+  min-height: 32px !important;
 }
 
 :fullscreen .nav-buttons,
 :-webkit-full-screen .nav-buttons,
 body.is-fullscreen .nav-buttons {
   margin: 0 auto !important;
+  margin-top: 1px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  gap: 0.65rem !important;
+}
+
+:fullscreen .btn-nav,
+:-webkit-full-screen .btn-nav,
+body.is-fullscreen .btn-nav {
+  padding: 0.24rem 0.68rem !important;
+  font-size: 0.76rem !important;
+  border-radius: 6px !important;
+  min-height: 28px !important;
+  gap: 0.35rem !important;
+}
+
+:fullscreen .slide-counter,
+:-webkit-full-screen .slide-counter,
+body.is-fullscreen .slide-counter {
+  font-size: 0.82rem !important;
+  gap: 0.25rem !important;
+}
+
+/* Fullscreen Slide Zoom Bar: pushed higher up and collapsed to an icon button */
+:fullscreen .slide-zoom-bar,
+:-webkit-full-screen .slide-zoom-bar,
+body.is-fullscreen .slide-zoom-bar {
+  top: 8px !important;
+  right: 12px !important;
+  padding: 0 !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  backdrop-filter: var(--backdrop-blur);
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
+  transition-delay: 0.22s;
+}
+
+:fullscreen .slide-zoom-bar::before,
+:-webkit-full-screen .slide-zoom-bar::before,
+body.is-fullscreen .slide-zoom-bar::before {
+  content: "";
+  position: absolute;
+  inset: -22px -22px -22px -22px;
+  border-radius: 36px;
+  pointer-events: auto;
+  z-index: -1;
+}
+
+:fullscreen .zoom-collapsed-trigger,
+:-webkit-full-screen .zoom-collapsed-trigger,
+body.is-fullscreen .zoom-collapsed-trigger {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: color 0.18s ease;
+}
+
+:fullscreen .zoom-collapsed-trigger:hover,
+:-webkit-full-screen .zoom-collapsed-trigger:hover,
+body.is-fullscreen .zoom-collapsed-trigger:hover {
+  color: var(--text-main);
+}
+
+:fullscreen .zoom-controls-content,
+:-webkit-full-screen .zoom-controls-content,
+body.is-fullscreen .zoom-controls-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translateX(6px);
+  transition: max-width 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease,
+              transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+}
+
+:fullscreen .slide-zoom-bar:hover,
+:-webkit-full-screen .slide-zoom-bar:hover,
+body.is-fullscreen .slide-zoom-bar:hover,
+:fullscreen .slide-zoom-bar.is-approached,
+:-webkit-full-screen .slide-zoom-bar.is-approached,
+body.is-fullscreen .slide-zoom-bar.is-approached,
+:fullscreen .slide-zoom-bar:focus-within,
+:-webkit-full-screen .slide-zoom-bar:focus-within,
+body.is-fullscreen .slide-zoom-bar:focus-within {
+  width: auto !important;
+  height: auto !important;
+  padding: 3px 8px 3px 6px !important;
+  border-radius: 24px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transition-delay: 0s;
+}
+
+:fullscreen .slide-zoom-bar:hover .zoom-controls-content,
+:-webkit-full-screen .slide-zoom-bar:hover .zoom-controls-content,
+body.is-fullscreen .slide-zoom-bar:hover .zoom-controls-content,
+:fullscreen .slide-zoom-bar.is-approached .zoom-controls-content,
+:-webkit-full-screen .slide-zoom-bar.is-approached .zoom-controls-content,
+body.is-fullscreen .slide-zoom-bar.is-approached .zoom-controls-content,
+:fullscreen .slide-zoom-bar:focus-within .zoom-controls-content,
+:-webkit-full-screen .slide-zoom-bar:focus-within .zoom-controls-content,
+body.is-fullscreen .slide-zoom-bar:focus-within .zoom-controls-content {
+  max-width: 260px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition-delay: 0.04s;
+}
+
+:fullscreen .slide-zoom-bar:hover .zoom-collapsed-trigger,
+:-webkit-full-screen .slide-zoom-bar:hover .zoom-collapsed-trigger,
+body.is-fullscreen .slide-zoom-bar:hover .zoom-collapsed-trigger,
+:fullscreen .slide-zoom-bar.is-approached .zoom-collapsed-trigger,
+:-webkit-full-screen .slide-zoom-bar.is-approached .zoom-collapsed-trigger,
+body.is-fullscreen .slide-zoom-bar.is-approached .zoom-collapsed-trigger,
+:fullscreen .slide-zoom-bar:focus-within .zoom-collapsed-trigger,
+:-webkit-full-screen .slide-zoom-bar:focus-within .zoom-collapsed-trigger,
+body.is-fullscreen .slide-zoom-bar:focus-within .zoom-collapsed-trigger {
+  width: 24px;
+  height: 28px;
+  opacity: 0.7;
+  cursor: default;
+  pointer-events: none;
 }
 
 .header-left, .header-right {
@@ -1648,7 +1812,7 @@ body.theme-dark .icon-btn:hover {
   align-items: center;
   justify-content: center;
   background: var(--bg-stage);
-  padding: 1rem;
+  padding: 0.85rem 1rem 1.1rem 1rem;
   position: relative;
   overflow: hidden;
   overflow-x: hidden;
@@ -1667,6 +1831,7 @@ body.theme-dark .icon-btn:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 4px;
 }
 
 .slide-image,
@@ -3551,22 +3716,22 @@ body.theme-dark .progress-bar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 1.5rem;
+  padding: 0.45rem 1.5rem 0.55rem 1.5rem;
 }
 
 .nav-buttons {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1rem;
+  gap: 0.45rem;
+  padding: 0.38rem 0.9rem;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
   font-family: var(--font-family);
   cursor: pointer;
@@ -3579,6 +3744,10 @@ body.theme-dark .progress-bar-container {
   color: var(--text-main);
   border: var(--glass-border);
   box-shadow: var(--shadow-sm);
+  padding: 0.32rem 0.82rem;
+  font-size: 0.8rem;
+  border-radius: 7px;
+  min-height: 32px;
 }
 
 body.theme-dark .btn-nav {
@@ -3634,7 +3803,7 @@ body.theme-dark .btn-outline:hover {
 .slide-counter {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.92rem;
   color: var(--text-main);
   display: flex;
   align-items: center;
@@ -4107,6 +4276,31 @@ body.vi-spacing strong {
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-md);
   backdrop-filter: var(--backdrop-blur);
+}
+
+.zoom-collapsed-trigger {
+  display: none;
+}
+
+.zoom-controls-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zoom-active-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-cyan, #06b6d4);
+  box-shadow: 0 0 6px var(--accent-cyan, #06b6d4);
+}
+
+.zoom-active-dot.hidden {
+  display: none !important;
 }
 
 .btn-zoom {
