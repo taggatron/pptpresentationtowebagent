@@ -6,14 +6,15 @@
   <title>Quick-Fire Challenge: Abiotic or Biotic?</title>
   <style>
     :root {
+      --scale: 1;
       --bg-white: #ffffff;
       --text-black: #000000;
       --zone-border: #3d5565;
       --abiotic-bg: #d8edf9;
       --biotic-bg: #d8ebd5;
       --bubble-border: #475a6a;
-      --bubble-shadow: 0 7px 16px rgba(15, 23, 42, 0.28);
-      --bubble-shadow-hover: 0 12px 24px rgba(15, 23, 42, 0.38);
+      --bubble-shadow: 0 calc(7px * var(--scale)) calc(16px * var(--scale)) rgba(15, 23, 42, 0.28);
+      --bubble-shadow-hover: 0 calc(12px * var(--scale)) calc(24px * var(--scale)) rgba(15, 23, 42, 0.38);
       --correct-border: #16a34a;
       --correct-bg: #f0fdf4;
       --wrong-border: #dc2626;
@@ -28,32 +29,45 @@
       -webkit-user-select: none;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       background-color: var(--bg-white);
       color: var(--text-black);
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       display: flex;
-      flex-direction: column;
-      padding: 6px 12px 6px 12px;
-      position: relative;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Top Bar & Title */
+    /* 16:9 Scalable Slide Canvas Container */
+    .slide-container {
+      width: var(--slide-w, 100vw);
+      height: var(--slide-h, 100vh);
+      max-width: 100vw;
+      max-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: calc(6px * var(--scale)) calc(16px * var(--scale)) calc(8px * var(--scale)) calc(16px * var(--scale));
+      box-sizing: border-box;
+      background-color: #ffffff;
+    }
+
+    /* Top Bar & Scaled Heading */
     .top-header {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
-      padding: 2px 0 4px 0;
+      gap: calc(4px * var(--scale));
+      padding: calc(2px * var(--scale)) 0 calc(4px * var(--scale)) 0;
       flex-shrink: 0;
     }
 
     .slide-title {
-      font-size: 1.55rem;
+      font-size: calc(1.8rem * var(--scale));
       font-weight: 800;
       letter-spacing: -0.02em;
       color: #000000;
@@ -61,24 +75,24 @@
       line-height: 1.15;
     }
 
-    /* Utility Controls Bar directly beneath title */
+    /* Utility Controls Bar (All icons except Check Answers) */
     .controls-strip {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: calc(8px * var(--scale));
     }
 
     .stat-pill {
       background: #f8fafc;
-      border: 1.5px solid #cbd5e1;
-      padding: 3px 8px;
+      border: calc(1.5px * var(--scale)) solid #cbd5e1;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
       border-radius: 999px;
-      font-size: 0.72rem;
+      font-size: calc(0.76rem * var(--scale));
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 3px;
+      gap: calc(3px * var(--scale));
       color: #334155;
     }
 
@@ -89,19 +103,16 @@
 
     .btn {
       font-family: inherit;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 9px;
-      border-radius: 7px;
-      border: 1.5px solid #cbd5e1;
+      border-radius: calc(8px * var(--scale));
+      border: calc(1.5px * var(--scale)) solid #cbd5e1;
       background: #ffffff;
       color: #1e293b;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
       transition: all 0.15s ease;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      box-shadow: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.06);
       white-space: nowrap;
     }
 
@@ -110,11 +121,26 @@
       border-color: #94a3b8;
     }
 
+    /* Icon-only buttons */
+    .icon-btn {
+      width: calc(32px * var(--scale));
+      height: calc(32px * var(--scale));
+      padding: 0;
+      font-size: calc(1rem * var(--scale));
+      line-height: 1;
+    }
+
+    /* Check Answers button (preserves text) */
     .btn-check {
       background: linear-gradient(135deg, #10b981, #059669);
       color: #ffffff;
       border-color: #059669;
-      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 calc(2px * var(--scale)) calc(6px * var(--scale)) rgba(16, 185, 129, 0.35);
+      font-size: calc(0.78rem * var(--scale));
+      font-weight: 800;
+      padding: calc(5px * var(--scale)) calc(14px * var(--scale));
+      height: calc(32px * var(--scale));
+      gap: calc(5px * var(--scale));
     }
 
     .btn-check:hover {
@@ -126,15 +152,18 @@
     .hint-banner {
       display: none;
       background: #f0f9ff;
-      border: 1px solid #bae6fd;
-      border-radius: 8px;
-      padding: 5px 12px;
-      font-size: 0.76rem;
+      border: calc(1px * var(--scale)) solid #bae6fd;
+      border-radius: calc(8px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(12px * var(--scale));
+      font-size: calc(0.78rem * var(--scale));
       color: #0369a1;
-      margin-bottom: 4px;
+      margin-bottom: calc(4px * var(--scale));
       align-items: center;
-      gap: 6px;
+      gap: calc(6px * var(--scale));
       animation: fadeIn 0.15s ease;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hint-banner.visible {
@@ -144,24 +173,24 @@
     /* Main Activity Canvas */
     .activity-stage {
       display: grid;
-      grid-template-columns: 175px 1fr 175px;
-      gap: 14px;
+      grid-template-columns: calc(185px * var(--scale)) 1fr calc(185px * var(--scale));
+      gap: calc(16px * var(--scale));
       flex: 1;
       min-height: 0;
       position: relative;
-      margin-bottom: 16px;
+      margin-bottom: calc(14px * var(--scale));
     }
 
     /* Left & Right Drop Zones */
     .zone-container {
-      border: 3.5px solid var(--zone-border);
-      border-radius: 18px;
+      border: calc(3.5px * var(--scale)) solid var(--zone-border);
+      border-radius: calc(18px * var(--scale));
       display: flex;
       flex-direction: column;
-      padding: 10px 8px;
+      padding: calc(10px * var(--scale)) calc(8px * var(--scale));
       position: relative;
       transition: all 0.18s ease;
-      box-shadow: 0 4px 14px rgba(61, 85, 101, 0.12);
+      box-shadow: 0 calc(4px * var(--scale)) calc(14px * var(--scale)) rgba(61, 85, 101, 0.12);
       overflow: hidden;
     }
 
@@ -172,7 +201,7 @@
     .zone-abiotic.drag-over {
       background-color: #c7e5f7;
       border-color: #0284c7;
-      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.35);
+      box-shadow: 0 0 0 calc(3px * var(--scale)) rgba(2, 132, 199, 0.35);
       transform: scale(1.01);
     }
 
@@ -183,52 +212,52 @@
     .zone-biotic.drag-over {
       background-color: #c7e5c3;
       border-color: #16a34a;
-      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.35);
+      box-shadow: 0 0 0 calc(3px * var(--scale)) rgba(22, 163, 74, 0.35);
       transform: scale(1.01);
     }
 
     .zone-title {
-      font-size: 1.35rem;
+      font-size: calc(1.4rem * var(--scale));
       font-weight: 800;
       color: #000000;
       text-align: center;
       letter-spacing: -0.01em;
-      margin-bottom: 2px;
+      margin-bottom: calc(2px * var(--scale));
       line-height: 1.1;
     }
 
     .zone-arrow-wrap {
       display: flex;
       justify-content: center;
-      margin: 2px 0 6px 0;
+      margin: calc(2px * var(--scale)) 0 calc(6px * var(--scale)) 0;
       flex-shrink: 0;
     }
 
     .zone-arrow-svg {
-      width: 48px;
-      height: 38px;
+      width: calc(52px * var(--scale));
+      height: calc(42px * var(--scale));
       display: block;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+      filter: drop-shadow(0 calc(2px * var(--scale)) calc(4px * var(--scale)) rgba(0, 0, 0, 0.15));
     }
 
     .zone-items-list {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: calc(6px * var(--scale));
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 4px 2px;
+      padding: calc(4px * var(--scale)) calc(2px * var(--scale));
       min-height: 0;
     }
 
     .zone-items-list::-webkit-scrollbar {
-      width: 4px;
+      width: calc(4px * var(--scale));
     }
 
     .zone-items-list::-webkit-scrollbar-thumb {
       background: rgba(0,0,0,0.15);
-      border-radius: 4px;
+      border-radius: calc(4px * var(--scale));
     }
 
     .zone-placeholder {
@@ -238,23 +267,23 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-size: 0.72rem;
+      font-size: calc(0.74rem * var(--scale));
       font-weight: 700;
       color: rgba(0, 0, 0, 0.35);
-      border: 2px dashed rgba(0, 0, 0, 0.18);
-      border-radius: 12px;
-      padding: 10px;
-      margin-top: 4px;
+      border: calc(2px * var(--scale)) dashed rgba(0, 0, 0, 0.18);
+      border-radius: calc(12px * var(--scale));
+      padding: calc(10px * var(--scale));
+      margin-top: calc(4px * var(--scale));
       pointer-events: none;
     }
 
     /* Cards Inside Drop Zones */
     .dropped-bubble {
       background: #ffffff;
-      border: 2.5px solid var(--bubble-border);
-      border-radius: 12px;
-      padding: 6px 8px;
-      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.12);
+      border: calc(2.5px * var(--scale)) solid var(--bubble-border);
+      border-radius: calc(12px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(8px * var(--scale));
+      box-shadow: 0 calc(3px * var(--scale)) calc(8px * var(--scale)) rgba(15, 23, 42, 0.12);
       cursor: grab;
       position: relative;
       transition: all 0.15s ease;
@@ -265,12 +294,12 @@
     }
 
     .dropped-bubble:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 12px rgba(15, 23, 42, 0.2);
+      transform: translateY(calc(-1px * var(--scale)));
+      box-shadow: 0 calc(5px * var(--scale)) calc(12px * var(--scale)) rgba(15, 23, 42, 0.2);
     }
 
     .dropped-bubble .bubble-text {
-      font-size: 0.72rem;
+      font-size: calc(0.75rem * var(--scale));
       font-weight: 700;
       line-height: 1.2;
       color: #000000;
@@ -288,11 +317,11 @@
     }
 
     .dropped-feedback {
-      font-size: 0.65rem;
+      font-size: calc(0.68rem * var(--scale));
       font-weight: 800;
-      margin-top: 3px;
-      padding: 1px 5px;
-      border-radius: 4px;
+      margin-top: calc(3px * var(--scale));
+      padding: calc(1px * var(--scale)) calc(6px * var(--scale));
+      border-radius: calc(4px * var(--scale));
     }
 
     .dropped-feedback.correct {
@@ -306,20 +335,20 @@
     }
 
     .dropped-explanation {
-      font-size: 0.64rem;
+      font-size: calc(0.66rem * var(--scale));
       color: #334155;
       line-height: 1.25;
-      margin-top: 3px;
+      margin-top: calc(3px * var(--scale));
       text-align: center;
     }
 
     .dropped-return-btn {
-      margin-top: 4px;
-      font-size: 0.62rem;
+      margin-top: calc(4px * var(--scale));
+      font-size: calc(0.72rem * var(--scale));
       font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid #cbd5e1;
+      padding: calc(1px * var(--scale)) calc(7px * var(--scale));
+      border-radius: calc(4px * var(--scale));
+      border: calc(1px * var(--scale)) solid #cbd5e1;
       background: #f8fafc;
       color: #475569;
       cursor: pointer;
@@ -330,7 +359,7 @@
       color: #0f172a;
     }
 
-    /* Center Statements Pool (Matching the exact Olympic Rings layout) */
+    /* Center Statements Pool (Matching Olympic Rings layout) */
     .pool-container {
       position: relative;
       display: flex;
@@ -341,45 +370,45 @@
 
     .pool-stage {
       position: relative;
-      width: 440px;
-      height: 310px;
+      width: calc(460px * var(--scale));
+      height: calc(330px * var(--scale));
       flex-shrink: 0;
     }
 
-    /* Spot Placeholders (Shown faintly when a card is in a zone) */
+    /* Spot Placeholders */
     .pool-spot {
       position: absolute;
-      width: 110px;
-      height: 110px;
+      width: calc(115px * var(--scale));
+      height: calc(115px * var(--scale));
       border-radius: 50%;
-      border: 2px dashed rgba(0, 0, 0, 0.15);
+      border: calc(2px * var(--scale)) dashed rgba(0, 0, 0, 0.15);
       background: rgba(248, 250, 252, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.65rem;
+      font-size: calc(0.68rem * var(--scale));
       font-weight: 700;
       color: rgba(0, 0, 0, 0.25);
       text-align: center;
-      padding: 10px;
+      padding: calc(10px * var(--scale));
       pointer-events: none;
     }
 
     /* Circular Statement Bubbles (Identical to slide_06.png) */
     .circle-bubble {
       position: absolute;
-      width: 110px;
-      height: 110px;
+      width: calc(115px * var(--scale));
+      height: calc(115px * var(--scale));
       border-radius: 50%;
       background: #ffffff;
-      border: 4px solid var(--bubble-border);
+      border: calc(4px * var(--scale)) solid var(--bubble-border);
       box-shadow: var(--bubble-shadow);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 10px 8px;
+      padding: calc(10px * var(--scale)) calc(8px * var(--scale));
       cursor: grab;
       transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
       touch-action: none;
@@ -401,7 +430,7 @@
     }
 
     .circle-bubble .bubble-text {
-      font-size: 0.75rem;
+      font-size: calc(0.78rem * var(--scale));
       font-weight: 800;
       line-height: 1.18;
       color: #000000;
@@ -412,7 +441,7 @@
     /* 1-Tap Quick Action Overlay on Circle Click */
     .circle-bubble.selected {
       border-color: #0284c7;
-      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.35), var(--bubble-shadow-hover);
+      box-shadow: 0 0 0 calc(4px * var(--scale)) rgba(2, 132, 199, 0.35), var(--bubble-shadow-hover);
       transform: scale(1.08);
       z-index: 35 !important;
     }
@@ -420,14 +449,14 @@
     .tap-actions-overlay {
       display: none;
       position: absolute;
-      top: -30px;
+      top: calc(-32px * var(--scale));
       left: 50%;
       transform: translateX(-50%);
       background: #0f172a;
-      border-radius: 20px;
-      padding: 3px 6px;
-      gap: 4px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      border-radius: calc(20px * var(--scale));
+      padding: calc(3px * var(--scale)) calc(6px * var(--scale));
+      gap: calc(4px * var(--scale));
+      box-shadow: 0 calc(4px * var(--scale)) calc(12px * var(--scale)) rgba(0,0,0,0.35);
       z-index: 40;
       white-space: nowrap;
     }
@@ -437,10 +466,10 @@
     }
 
     .tap-btn {
-      font-size: 0.64rem;
+      font-size: calc(0.7rem * var(--scale));
       font-weight: 800;
-      padding: 2px 7px;
-      border-radius: 12px;
+      padding: calc(2px * var(--scale)) calc(8px * var(--scale));
+      border-radius: calc(12px * var(--scale));
       border: none;
       cursor: pointer;
       color: #ffffff;
@@ -464,20 +493,20 @@
     /* Watermark at bottom right */
     .footer-watermark {
       position: absolute;
-      bottom: 4px;
-      right: 14px;
-      font-size: 0.68rem;
+      bottom: calc(5px * var(--scale));
+      right: calc(14px * var(--scale));
+      font-size: calc(0.7rem * var(--scale));
       color: #475569;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: calc(4px * var(--scale));
       font-weight: 600;
       pointer-events: none;
     }
 
     .watermark-icon {
-      width: 11px;
-      height: 11px;
+      width: calc(12px * var(--scale));
+      height: calc(12px * var(--scale));
     }
 
     /* Confetti Canvas */
@@ -509,36 +538,36 @@
 
     .celebration-card {
       background: #ffffff;
-      border-radius: 18px;
-      padding: 22px 28px;
-      max-width: 440px;
+      border-radius: calc(18px * var(--scale));
+      padding: calc(22px * var(--scale)) calc(28px * var(--scale));
+      max-width: calc(440px * var(--scale));
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 calc(20px * var(--scale)) calc(40px * var(--scale)) rgba(0, 0, 0, 0.25);
       animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .celebration-icon {
-      font-size: 2.5rem;
-      margin-bottom: 6px;
+      font-size: calc(2.5rem * var(--scale));
+      margin-bottom: calc(6px * var(--scale));
     }
 
     .celebration-title {
-      font-size: 1.4rem;
+      font-size: calc(1.4rem * var(--scale));
       font-weight: 800;
       color: #000000;
-      margin-bottom: 4px;
+      margin-bottom: calc(4px * var(--scale));
     }
 
     .celebration-desc {
-      font-size: 0.82rem;
+      font-size: calc(0.85rem * var(--scale));
       color: #475569;
-      margin-bottom: 16px;
+      margin-bottom: calc(16px * var(--scale));
       line-height: 1.35;
     }
 
     .celebration-actions {
       display: flex;
-      gap: 10px;
+      gap: calc(10px * var(--scale));
       justify-content: center;
     }
 
@@ -561,8 +590,8 @@
 
     .slide-modal-content {
       background: #ffffff;
-      border-radius: 14px;
-      padding: 12px;
+      border-radius: calc(14px * var(--scale));
+      padding: calc(12px * var(--scale));
       max-width: 90vw;
       max-height: 90vh;
       display: flex;
@@ -599,139 +628,160 @@
 </head>
 <body>
 
-  <!-- Top Title & Floating Utility Controls -->
-  <header class="top-header">
-    <h1 class="slide-title">Quick-Fire Challenge: Abiotic or Biotic?</h1>
+  <div class="slide-container" id="slideContainer">
+    <!-- Top Title & Floating Utility Controls -->
+    <header class="top-header">
+      <h1 class="slide-title">Quick-Fire Challenge: Abiotic or Biotic?</h1>
 
-    <div class="controls-strip">
-      <div class="stat-pill" title="Items classified">
-        <span>Sorted:</span>
-        <span class="num" id="placedCount">0</span>/8
+      <div class="controls-strip">
+        <div class="stat-pill" title="Classified items">
+          <span class="num" id="placedCount">0</span>/8
+        </div>
+        <button class="btn icon-btn" id="hintToggleBtn" type="button" title="Educational Hint" aria-label="Hint">
+          💡
+        </button>
+        <button class="btn icon-btn" id="soundToggleBtn" type="button" title="Toggle sound effects" aria-label="Toggle Sound">
+          <span id="soundIcon">🔊</span>
+        </button>
+        <button class="btn icon-btn" id="viewSlideBtn" type="button" title="Compare with original slide" aria-label="Original Slide">
+          🖼
+        </button>
+        <button class="btn icon-btn" id="resetBtn" type="button" title="Reset all statements to pool" aria-label="Reset">
+          ↺
+        </button>
+        <button class="btn btn-check" id="checkBtn" type="button" title="Check answers">
+          ✓ Check Answers
+        </button>
       </div>
-      <button class="btn" id="hintToggleBtn" type="button" title="View educational hints">
-        <span>💡</span> Hint
-      </button>
-      <button class="btn" id="soundToggleBtn" type="button" title="Toggle sound effects">
-        <span id="soundIcon">🔊</span>
-      </button>
-      <button class="btn" id="viewSlideBtn" type="button" title="Compare with original slide">
-        <span>🖼</span> Static Slide
-      </button>
-      <button class="btn" id="resetBtn" type="button" title="Reset all statements to pool">
-        <span>↺</span> Reset
-      </button>
-      <button class="btn btn-check" id="checkBtn" type="button" title="Check answers">
-        <span>✓</span> Check Answers
-      </button>
+    </header>
+
+    <!-- Educational Hint Banner -->
+    <div class="hint-banner" id="hintBanner">
+      <strong>💡 Hint:</strong>
+      <span><strong>Abiotic</strong> = non-living physical & chemical factors (rainfall, pH, temperature, sunlight). <strong>Biotic</strong> = living organisms & biological interactions (viruses, prey, predators, competition).</span>
     </div>
-  </header>
 
-  <!-- Educational Hint Banner -->
-  <div class="hint-banner" id="hintBanner">
-    <strong>💡 Hint:</strong>
-    <span><strong>Abiotic</strong> = non-living physical & chemical factors (rainfall, pH, temperature, sunlight). <strong>Biotic</strong> = living organisms & biological interactions (viruses, prey, predators, competition).</span>
-  </div>
+    <!-- Main Activity Canvas -->
+    <main class="activity-stage">
+      <!-- Abiotic Zone (Left) -->
+      <section class="zone-container zone-abiotic" id="zoneAbiotic" data-zone="abiotic" aria-label="Abiotic Zone Drop Container">
+        <h2 class="zone-title">Abiotic Zone</h2>
+        <div class="zone-arrow-wrap">
+          <svg class="zone-arrow-svg" viewBox="0 0 100 80">
+            <defs>
+              <linearGradient id="abioticArrowGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7bb5ea" />
+                <stop offset="100%" stop-color="#3174b8" />
+              </linearGradient>
+            </defs>
+            <path d="M 32 0 L 68 0 L 68 38 L 94 38 L 50 80 L 6 38 L 32 38 Z" fill="url(#abioticArrowGrad)" />
+          </svg>
+        </div>
+        <div class="zone-items-list" id="abioticItems">
+          <div class="zone-placeholder" id="abioticPlaceholder">
+            Drop abiotic factors here
+          </div>
+        </div>
+      </section>
 
-  <!-- Main Activity Canvas -->
-  <main class="activity-stage">
-    <!-- Abiotic Zone (Left) -->
-    <section class="zone-container zone-abiotic" id="zoneAbiotic" data-zone="abiotic" aria-label="Abiotic Zone Drop Container">
-      <h2 class="zone-title">Abiotic Zone</h2>
-      <div class="zone-arrow-wrap">
-        <svg class="zone-arrow-svg" viewBox="0 0 100 80">
-          <defs>
-            <linearGradient id="abioticArrowGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#7bb5ea" />
-              <stop offset="100%" stop-color="#3174b8" />
-            </linearGradient>
-          </defs>
-          <path d="M 32 0 L 68 0 L 68 38 L 94 38 L 50 80 L 6 38 L 32 38 Z" fill="url(#abioticArrowGrad)" />
-        </svg>
-      </div>
-      <div class="zone-items-list" id="abioticItems">
-        <div class="zone-placeholder" id="abioticPlaceholder">
-          Drop abiotic factors here
+      <!-- Center Pool (Interlocking 3-2-3 Olympic Rings Formation) -->
+      <section class="pool-container" id="poolContainer" aria-label="Statements Pool">
+        <div class="pool-stage" id="poolStage">
+          <!-- 8 Spot placeholders in 3-2-3 interlocking formation -->
+          <div class="pool-spot" style="left: calc(10px * var(--scale)); top: calc(10px * var(--scale));">1</div>
+          <div class="pool-spot" style="left: calc(162px * var(--scale)); top: calc(10px * var(--scale));">2</div>
+          <div class="pool-spot" style="left: calc(315px * var(--scale)); top: calc(10px * var(--scale));">3</div>
+          <div class="pool-spot" style="left: calc(86px * var(--scale)); top: calc(96px * var(--scale));">4</div>
+          <div class="pool-spot" style="left: calc(238px * var(--scale)); top: calc(96px * var(--scale));">5</div>
+          <div class="pool-spot" style="left: calc(10px * var(--scale)); top: calc(182px * var(--scale));">6</div>
+          <div class="pool-spot" style="left: calc(162px * var(--scale)); top: calc(182px * var(--scale));">7</div>
+          <div class="pool-spot" style="left: calc(315px * var(--scale)); top: calc(182px * var(--scale));">8</div>
+
+          <!-- Statement Circles injected via JS -->
+        </div>
+      </section>
+
+      <!-- Biotic Zone (Right) -->
+      <section class="zone-container zone-biotic" id="zoneBiotic" data-zone="biotic" aria-label="Biotic Zone Drop Container">
+        <h2 class="zone-title">Biotic Zone</h2>
+        <div class="zone-arrow-wrap">
+          <svg class="zone-arrow-svg" viewBox="0 0 100 80">
+            <defs>
+              <linearGradient id="bioticArrowGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#b7d8a6" />
+                <stop offset="100%" stop-color="#77a164" />
+              </linearGradient>
+            </defs>
+            <path d="M 32 0 L 68 0 L 68 38 L 94 38 L 50 80 L 6 38 L 32 38 Z" fill="url(#bioticArrowGrad)" />
+          </svg>
+        </div>
+        <div class="zone-items-list" id="bioticItems">
+          <div class="zone-placeholder" id="bioticPlaceholder">
+            Drop biotic factors here
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Watermark -->
+    <div class="footer-watermark">
+      <svg class="watermark-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+      </svg>
+      <span>Gemini Notebook</span>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Celebration Modal Banner -->
+    <div class="celebration-modal" id="celebrationModal">
+      <div class="celebration-card">
+        <div class="celebration-icon">🎉</div>
+        <h3 class="celebration-title">Outstanding Work!</h3>
+        <p class="celebration-desc">
+          All 8 ecological factors have been accurately classified into the Abiotic and Biotic categories.
+        </p>
+        <div class="celebration-actions">
+          <button class="btn btn-check" id="modalRestartBtn" type="button">Try Again (Shuffle)</button>
+          <button class="btn" id="modalDismissBtn" type="button">Review Answers</button>
         </div>
       </div>
-    </section>
-
-    <!-- Center Pool (Interlocking 3-2-3 Olympic Rings Formation) -->
-    <section class="pool-container" id="poolContainer" aria-label="Statements Pool">
-      <div class="pool-stage" id="poolStage">
-        <!-- 8 Spot placeholders in 3-2-3 interlocking formation -->
-        <div class="pool-spot" style="left: 10px; top: 10px;">1</div>
-        <div class="pool-spot" style="left: 155px; top: 10px;">2</div>
-        <div class="pool-spot" style="left: 300px; top: 10px;">3</div>
-        <div class="pool-spot" style="left: 82px; top: 92px;">4</div>
-        <div class="pool-spot" style="left: 228px; top: 92px;">5</div>
-        <div class="pool-spot" style="left: 10px; top: 175px;">6</div>
-        <div class="pool-spot" style="left: 155px; top: 175px;">7</div>
-        <div class="pool-spot" style="left: 300px; top: 175px;">8</div>
-
-        <!-- Statement Circles injected via JS -->
-      </div>
-    </section>
-
-    <!-- Biotic Zone (Right) -->
-    <section class="zone-container zone-biotic" id="zoneBiotic" data-zone="biotic" aria-label="Biotic Zone Drop Container">
-      <h2 class="zone-title">Biotic Zone</h2>
-      <div class="zone-arrow-wrap">
-        <svg class="zone-arrow-svg" viewBox="0 0 100 80">
-          <defs>
-            <linearGradient id="bioticArrowGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#b7d8a6" />
-              <stop offset="100%" stop-color="#77a164" />
-            </linearGradient>
-          </defs>
-          <path d="M 32 0 L 68 0 L 68 38 L 94 38 L 50 80 L 6 38 L 32 38 Z" fill="url(#bioticArrowGrad)" />
-        </svg>
-      </div>
-      <div class="zone-items-list" id="bioticItems">
-        <div class="zone-placeholder" id="bioticPlaceholder">
-          Drop biotic factors here
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Watermark -->
-  <div class="footer-watermark">
-    <svg class="watermark-icon" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
-    </svg>
-    <span>Gemini Notebook</span>
-  </div>
-
-  <!-- Confetti Canvas -->
-  <canvas id="confettiCanvas"></canvas>
-
-  <!-- Celebration Modal Banner -->
-  <div class="celebration-modal" id="celebrationModal">
-    <div class="celebration-card">
-      <div class="celebration-icon">🎉</div>
-      <h3 class="celebration-title">Outstanding Work!</h3>
-      <p class="celebration-desc">
-        All 8 ecological factors have been accurately classified into the Abiotic and Biotic categories.
-      </p>
-      <div class="celebration-actions">
-        <button class="btn btn-check" id="modalRestartBtn" type="button">Try Again (Shuffle)</button>
-        <button class="btn" id="modalDismissBtn" type="button">Review Answers</button>
-      </div>
     </div>
-  </div>
 
-  <!-- Slide Comparison Modal -->
-  <div class="slide-modal" id="slideModal">
-    <div class="slide-modal-content">
-      <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 8px;">
-        <strong style="font-size: 0.95rem;">Original Slide Image</strong>
-        <button class="btn" id="closeSlideModalBtn" type="button">✕ Close</button>
+    <!-- Slide Comparison Modal -->
+    <div class="slide-modal" id="slideModal">
+      <div class="slide-modal-content">
+        <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 8px;">
+          <strong style="font-size: 0.95rem;">Original Slide Image</strong>
+          <button class="btn icon-btn" id="closeSlideModalBtn" type="button" title="Close">✕</button>
+        </div>
+        <img src="/decks/Classic_Lesson_01_Ecosystems/slides/slide_06.png" alt="Original Slide 6" class="slide-modal-img">
       </div>
-      <img src="/decks/Classic_Lesson_01_Ecosystems/slides/slide_06.png" alt="Original Slide 6" class="slide-modal-img">
     </div>
   </div>
 
   <script>
+    // Responsive dynamic scaling system
+    function updateSlideScale() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      let slideW = w;
+      let slideH = w * (9 / 16);
+      if (slideH > h) {
+        slideH = h;
+        slideW = h * (16 / 9);
+      }
+      // Base design reference width is 960px (at 960x540, scale is 1.0)
+      const scale = Math.max(0.45, slideW / 960);
+      document.documentElement.style.setProperty('--scale', scale);
+      document.documentElement.style.setProperty('--slide-w', `${slideW}px`);
+      document.documentElement.style.setProperty('--slide-h', `${slideH}px`);
+    }
+    window.addEventListener('resize', updateSlideScale);
+    window.addEventListener('orientationchange', updateSlideScale);
+    updateSlideScale();
+
     // Factor dataset with original text, exact coordinates, and scientific explanations
     const FACTORS = [
       {
@@ -748,7 +798,7 @@
         text: "Heavy rainfall",
         type: "abiotic",
         explanation: "Precipitation and moisture are non-living physical climate factors.",
-        left: 155,
+        left: 162,
         top: 10,
         zIndex: 12
       },
@@ -757,7 +807,7 @@
         text: "A sudden lack of prey",
         type: "biotic",
         explanation: "Food availability involves other living organism populations.",
-        left: 300,
+        left: 315,
         top: 10,
         zIndex: 12
       },
@@ -766,8 +816,8 @@
         text: "A drop in soil pH",
         type: "abiotic",
         explanation: "Soil acidity is a chemical/physical property of the non-living soil.",
-        left: 82,
-        top: 92,
+        left: 86,
+        top: 96,
         zIndex: 8
       },
       {
@@ -775,8 +825,8 @@
         text: "A newly arrived pack of wolves",
         type: "biotic",
         explanation: "Predators are living animals that alter community feeding dynamics.",
-        left: 228,
-        top: 92,
+        left: 238,
+        top: 96,
         zIndex: 8
       },
       {
@@ -785,7 +835,7 @@
         type: "abiotic",
         explanation: "Temperature and freezing weather are physical climate conditions.",
         left: 10,
-        top: 175,
+        top: 182,
         zIndex: 14
       },
       {
@@ -793,8 +843,8 @@
         text: "Another bird species competing for the same seeds",
         type: "biotic",
         explanation: "Interspecific competition for resources is a biological interaction.",
-        left: 155,
-        top: 175,
+        left: 162,
+        top: 182,
         zIndex: 14
       },
       {
@@ -802,8 +852,8 @@
         text: "Cloud cover reducing sunlight",
         type: "abiotic",
         explanation: "Solar light intensity is a non-living physical energy source.",
-        left: 300,
-        top: 175,
+        left: 315,
+        top: 182,
         zIndex: 14
       }
     ];
@@ -929,8 +979,8 @@
       bubble.className = 'circle-bubble';
       bubble.id = factor.id;
       bubble.draggable = true;
-      bubble.style.left = factor.left + 'px';
-      bubble.style.top = factor.top + 'px';
+      bubble.style.left = `calc(${factor.left}px * var(--scale))`;
+      bubble.style.top = `calc(${factor.top}px * var(--scale))`;
       bubble.style.zIndex = factor.zIndex;
 
       if (window.state.selectedFactorId === factor.id) {
@@ -940,8 +990,8 @@
       bubble.innerHTML = `
         <div class="bubble-text">${factor.text}</div>
         <div class="tap-actions-overlay">
-          <button class="tap-btn tap-btn-abiotic" data-target="abiotic">← Abiotic</button>
-          <button class="tap-btn tap-btn-biotic" data-target="biotic">Biotic →</button>
+          <button class="tap-btn tap-btn-abiotic" data-target="abiotic" title="Move to Abiotic">←</button>
+          <button class="tap-btn tap-btn-biotic" data-target="biotic" title="Move to Biotic">→</button>
         </div>
       `;
 
@@ -1000,7 +1050,7 @@
       }
 
       innerHTML += `
-        <button class="dropped-return-btn" data-target="pool" title="Return to center pool">↺ Pool</button>
+        <button class="dropped-return-btn" data-target="pool" title="Return to pool">↺</button>
       `;
 
       item.innerHTML = innerHTML;
