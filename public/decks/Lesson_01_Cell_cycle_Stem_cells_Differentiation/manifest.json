@@ -367,16 +367,48 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_5_1_component_reveal",
+          "id": "gemini_slide_5_1_comparison",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Interphase preparation",
+          "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"Cell cycle Stem cells Differentiation\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Cell cycle Stem cells Differentiation\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Inside the cellular factory\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: slide_title at top-left with exact source wording: “Inside the cellular factory”; interphase_panel at mid-left with exact source wording: “Interphase Stockpiling materials and copying the blueprints. x2 x2 x2 x2 x2”\nTemporarily omit: mitosis_panel at mid-right with exact source wording: “Mitosis & Cytokinesis Splitting the factory exactly in two to ensure genetic continuity.”; summary_callout at bottom-centre with exact source wording: “One blueprint becomes two identical copies.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A comparative educational slide presenting cell division as a factory process. The slide contains two framed side-by-side panels: the left panel illustrates 'Interphase' with duplicated cellular machinery and DNA, and the right panel illustrates 'Mitosis & Cytokinesis' showing chromosome separation and cell division. At the bottom center, a connected callout card synthesizes the outcome. Spatial layout: The title spans the top left. Below the title are two symmetrical framed cards side-by-side: left card covers Interphase with text at top and a circular cell diagram with 'x2' duplication callouts below; right card covers Mitosis & Cytokinesis with text at top and a dividing cell diagram below. Blue circuit-like connecting lines branch from the bottom of both cards into a single callout box centered at the bottom.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Mitosis and division",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Inside the cellular factory\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: slide_title at top-left with exact source wording: “Inside the cellular factory”; interphase_panel at mid-left with exact source wording: “Interphase Stockpiling materials and copying the blueprints. x2 x2 x2 x2 x2”; mitosis_panel at mid-right with exact source wording: “Mitosis & Cytokinesis Splitting the factory exactly in two to ensure genetic continuity.”\nTemporarily omit: summary_callout at bottom-centre with exact source wording: “One blueprint becomes two identical copies.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A comparative educational slide presenting cell division as a factory process. The slide contains two framed side-by-side panels: the left panel illustrates 'Interphase' with duplicated cellular machinery and DNA, and the right panel illustrates 'Mitosis & Cytokinesis' showing chromosome separation and cell division. At the bottom center, a connected callout card synthesizes the outcome. Spatial layout: The title spans the top left. Below the title are two symmetrical framed cards side-by-side: left card covers Interphase with text at top and a circular cell diagram with 'x2' duplication callouts below; right card covers Mitosis & Cytokinesis with text at top and a dividing cell diagram below. Blue circuit-like connecting lines branch from the bottom of both cards into a single callout box centered at the bottom.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Outcome summary",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Inside the cellular factory\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: slide_title at top-left with exact source wording: “Inside the cellular factory”; interphase_panel at mid-left with exact source wording: “Interphase Stockpiling materials and copying the blueprints. x2 x2 x2 x2 x2”; mitosis_panel at mid-right with exact source wording: “Mitosis & Cytokinesis Splitting the factory exactly in two to ensure genetic continuity.”; summary_callout at bottom-centre with exact source wording: “One blueprint becomes two identical copies.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A comparative educational slide presenting cell division as a factory process. The slide contains two framed side-by-side panels: the left panel illustrates 'Interphase' with duplicated cellular machinery and DNA, and the right panel illustrates 'Mitosis & Cytokinesis' showing chromosome separation and cell division. At the bottom center, a connected callout card synthesizes the outcome. Spatial layout: The title spans the top left. Below the title are two symmetrical framed cards side-by-side: left card covers Interphase with text at top and a circular cell diagram with 'x2' duplication callouts below; right card covers Mitosis & Cytokinesis with text at top and a dividing cell diagram below. Blue circuit-like connecting lines branch from the bottom of both cards into a single callout box centered at the bottom.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -388,15 +420,104 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "strategy": "comparison",
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 4,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-08T11:12:01.428Z",
+          "sourceHash": "e4506e196fc7c1777236b53fbe481ff4f0571636ed49de8c4884b5532050b2c8",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Inside the cellular factory",
+            "description": "A comparative educational slide presenting cell division as a factory process. The slide contains two framed side-by-side panels: the left panel illustrates 'Interphase' with duplicated cellular machinery and DNA, and the right panel illustrates 'Mitosis & Cytokinesis' showing chromosome separation and cell division. At the bottom center, a connected callout card synthesizes the outcome.",
+            "layout": "The title spans the top left. Below the title are two symmetrical framed cards side-by-side: left card covers Interphase with text at top and a circular cell diagram with 'x2' duplication callouts below; right card covers Mitosis & Cytokinesis with text at top and a dividing cell diagram below. Blue circuit-like connecting lines branch from the bottom of both cards into a single callout box centered at the bottom.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Inside the cellular factory",
+                "dependencies": []
+              },
+              {
+                "id": "interphase_panel",
+                "role": "diagram",
+                "position": "mid-left",
+                "visibleText": "Interphase\nStockpiling materials and\ncopying the blueprints.\nx2\nx2\nx2\nx2\nx2",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "mitosis_panel",
+                "role": "diagram",
+                "position": "mid-right",
+                "visibleText": "Mitosis & Cytokinesis\nSplitting the factory exactly in two\nto ensure genetic continuity.",
+                "dependencies": [
+                  "slide_title",
+                  "interphase_panel"
+                ]
+              },
+              {
+                "id": "summary_callout",
+                "role": "callout",
+                "position": "bottom-centre",
+                "visibleText": "One blueprint becomes\ntwo identical copies.",
+                "dependencies": [
+                  "interphase_panel",
+                  "mitosis_panel"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "comparison",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Interphase preparation",
+                "componentIds": [
+                  "slide_title",
+                  "interphase_panel"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Mitosis and division",
+                "componentIds": [
+                  "slide_title",
+                  "interphase_panel",
+                  "mitosis_panel"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_3",
+                "label": "Outcome summary",
+                "componentIds": [
+                  "slide_title",
+                  "interphase_panel",
+                  "mitosis_panel",
+                  "summary_callout"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       }
     },
     {
@@ -1137,16 +1258,64 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_13_1_component_reveal",
+          "id": "gemini_slide_13_1_process",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Cell Fusion",
+          "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Cell cycle Stem cells Differentiation\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Cell cycle Stem cells Differentiation\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 13: \"Therapeutic Cloning: Creating a perfect biological match\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: slide_title at top-centre with exact source wording: “Therapeutic Cloning: Creating a perfect biological match”; stage_1_fusion at centre-left with exact source wording: “Patient's Cell & Donor Egg Fusion Patient's Cell + Empty Donor Egg Somatic cell nuclear transfer process.”\nTemporarily omit: arrow_1_to_2 at centre-left; stage_2_embryo at centre with exact source wording: “Cloned Embryo Embryonic development with patient's DNA.”; arrow_2_to_3 at centre-right; stage_3_stem_cells at centre-right with exact source wording: “Harvested Stem Cells Isolation of pluripotent stem cells.”; arrow_3_to_4 at centre-right; stage_4_specialised_tissue at far-right with exact source wording: “Specialised Patient Tissue Perfectly matched to the patient with zero risk of immune rejection.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A four-step horizontal process diagram illustrating therapeutic cloning, showing cell fusion, cloned embryo development, stem cell harvesting, and differentiation into specialised patient tissue. Spatial layout: The slide features a title across the top, followed by four glowing rounded rectangular cards arranged horizontally from left to right, linked by directional light-trail arrows. Each card contains a top heading, an illustrative diagram in the centre, and an explanatory caption at the bottom.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Cloned Embryo",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 13: \"Therapeutic Cloning: Creating a perfect biological match\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-centre with exact source wording: “Therapeutic Cloning: Creating a perfect biological match”; stage_1_fusion at centre-left with exact source wording: “Patient's Cell & Donor Egg Fusion Patient's Cell + Empty Donor Egg Somatic cell nuclear transfer process.”; arrow_1_to_2 at centre-left; stage_2_embryo at centre with exact source wording: “Cloned Embryo Embryonic development with patient's DNA.”\nTemporarily omit: arrow_2_to_3 at centre-right; stage_3_stem_cells at centre-right with exact source wording: “Harvested Stem Cells Isolation of pluripotent stem cells.”; arrow_3_to_4 at centre-right; stage_4_specialised_tissue at far-right with exact source wording: “Specialised Patient Tissue Perfectly matched to the patient with zero risk of immune rejection.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A four-step horizontal process diagram illustrating therapeutic cloning, showing cell fusion, cloned embryo development, stem cell harvesting, and differentiation into specialised patient tissue. Spatial layout: The slide features a title across the top, followed by four glowing rounded rectangular cards arranged horizontally from left to right, linked by directional light-trail arrows. Each card contains a top heading, an illustrative diagram in the centre, and an explanatory caption at the bottom.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Stem Cell Harvest",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 13: \"Therapeutic Cloning: Creating a perfect biological match\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-centre with exact source wording: “Therapeutic Cloning: Creating a perfect biological match”; stage_1_fusion at centre-left with exact source wording: “Patient's Cell & Donor Egg Fusion Patient's Cell + Empty Donor Egg Somatic cell nuclear transfer process.”; arrow_1_to_2 at centre-left; stage_2_embryo at centre with exact source wording: “Cloned Embryo Embryonic development with patient's DNA.”; arrow_2_to_3 at centre-right; stage_3_stem_cells at centre-right with exact source wording: “Harvested Stem Cells Isolation of pluripotent stem cells.”\nTemporarily omit: arrow_3_to_4 at centre-right; stage_4_specialised_tissue at far-right with exact source wording: “Specialised Patient Tissue Perfectly matched to the patient with zero risk of immune rejection.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A four-step horizontal process diagram illustrating therapeutic cloning, showing cell fusion, cloned embryo development, stem cell harvesting, and differentiation into specialised patient tissue. Spatial layout: The slide features a title across the top, followed by four glowing rounded rectangular cards arranged horizontally from left to right, linked by directional light-trail arrows. Each card contains a top heading, an illustrative diagram in the centre, and an explanatory caption at the bottom.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Lesson_01_Cell_cycle_Stem_cells_Differentiation/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_4_process",
+          "order": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 4: Specialised Tissue",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 13: \"Therapeutic Cloning: Creating a perfect biological match\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-centre with exact source wording: “Therapeutic Cloning: Creating a perfect biological match”; stage_1_fusion at centre-left with exact source wording: “Patient's Cell & Donor Egg Fusion Patient's Cell + Empty Donor Egg Somatic cell nuclear transfer process.”; arrow_1_to_2 at centre-left; stage_2_embryo at centre with exact source wording: “Cloned Embryo Embryonic development with patient's DNA.”; arrow_2_to_3 at centre-right; stage_3_stem_cells at centre-right with exact source wording: “Harvested Stem Cells Isolation of pluripotent stem cells.”; arrow_3_to_4 at centre-right; stage_4_specialised_tissue at far-right with exact source wording: “Specialised Patient Tissue Perfectly matched to the patient with zero risk of immune rejection.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A four-step horizontal process diagram illustrating therapeutic cloning, showing cell fusion, cloned embryo development, stem cell harvesting, and differentiation into specialised patient tissue. Spatial layout: The slide features a title across the top, followed by four glowing rounded rectangular cards arranged horizontally from left to right, linked by directional light-trail arrows. Each card contains a top heading, an illustrative diagram in the centre, and an explanatory caption at the bottom.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1158,15 +1327,156 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "strategy": "process",
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 8,
+        "plannedCellCount": 4,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-08T11:31:43.518Z",
+          "sourceHash": "cc70d3bfa7a419381953e72b08eb52303f6270e83d1e32594608504135c94280",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Therapeutic Cloning: Creating a perfect biological match",
+            "description": "A four-step horizontal process diagram illustrating therapeutic cloning, showing cell fusion, cloned embryo development, stem cell harvesting, and differentiation into specialised patient tissue.",
+            "layout": "The slide features a title across the top, followed by four glowing rounded rectangular cards arranged horizontally from left to right, linked by directional light-trail arrows. Each card contains a top heading, an illustrative diagram in the centre, and an explanatory caption at the bottom.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-centre",
+                "visibleText": "Therapeutic Cloning: Creating a perfect biological match",
+                "dependencies": []
+              },
+              {
+                "id": "stage_1_fusion",
+                "role": "process_step",
+                "position": "centre-left",
+                "visibleText": "Patient's Cell & Donor Egg Fusion\nPatient's Cell\n+\nEmpty Donor Egg\nSomatic cell nuclear transfer process.",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "arrow_1_to_2",
+                "role": "connector",
+                "position": "centre-left",
+                "visibleText": "",
+                "dependencies": [
+                  "stage_1_fusion"
+                ]
+              },
+              {
+                "id": "stage_2_embryo",
+                "role": "process_step",
+                "position": "centre",
+                "visibleText": "Cloned Embryo\nEmbryonic development with patient's DNA.",
+                "dependencies": [
+                  "arrow_1_to_2"
+                ]
+              },
+              {
+                "id": "arrow_2_to_3",
+                "role": "connector",
+                "position": "centre-right",
+                "visibleText": "",
+                "dependencies": [
+                  "stage_2_embryo"
+                ]
+              },
+              {
+                "id": "stage_3_stem_cells",
+                "role": "process_step",
+                "position": "centre-right",
+                "visibleText": "Harvested Stem Cells\nIsolation of pluripotent stem cells.",
+                "dependencies": [
+                  "arrow_2_to_3"
+                ]
+              },
+              {
+                "id": "arrow_3_to_4",
+                "role": "connector",
+                "position": "centre-right",
+                "visibleText": "",
+                "dependencies": [
+                  "stage_3_stem_cells"
+                ]
+              },
+              {
+                "id": "stage_4_specialised_tissue",
+                "role": "process_step",
+                "position": "far-right",
+                "visibleText": "Specialised Patient Tissue\nPerfectly matched to the patient with zero risk of immune rejection.",
+                "dependencies": [
+                  "arrow_3_to_4"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "process",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Cell Fusion",
+                "componentIds": [
+                  "slide_title",
+                  "stage_1_fusion"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Cloned Embryo",
+                "componentIds": [
+                  "slide_title",
+                  "stage_1_fusion",
+                  "arrow_1_to_2",
+                  "stage_2_embryo"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_3",
+                "label": "Stem Cell Harvest",
+                "componentIds": [
+                  "slide_title",
+                  "stage_1_fusion",
+                  "arrow_1_to_2",
+                  "stage_2_embryo",
+                  "arrow_2_to_3",
+                  "stage_3_stem_cells"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_4",
+                "label": "Specialised Tissue",
+                "componentIds": [
+                  "slide_title",
+                  "stage_1_fusion",
+                  "arrow_1_to_2",
+                  "stage_2_embryo",
+                  "arrow_2_to_3",
+                  "stage_3_stem_cells",
+                  "arrow_3_to_4",
+                  "stage_4_specialised_tissue"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
       }
     },
     {
@@ -1320,7 +1630,7 @@
           "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”\nTemporarily omit: skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”; bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”\nTemporarily omit: skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”; bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1336,7 +1646,7 @@
           "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”; skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”\nTemporarily omit: bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”; skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”\nTemporarily omit: bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1352,7 +1662,7 @@
           "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”; skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”; bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 15: \"The Biological Blueprint: One continuous story\".\nDeck context: Cell cycle Stem cells Differentiation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: slide_title at top-left with exact source wording: “The Biological Blueprint: One continuous story”; inner_cell_cycle_diagram at centre with exact source wording: “G1 S M G2 M”; stage_start_zygote at top-centre with exact source wording: “Start: Zygote undergoes the Cell Cycle”; stage_embryonic_stem_cells at centre-right with exact source wording: “Becomes Embryonic Stem Cells”; skill_tree_differentiation at bottom-right with exact source wording: “Skill Tree Nerve Cell Blood Cells Muscle Cells”; stage_cells_differentiate at bottom-centre with exact source wording: “Cells undergo Differentiation”; stage_adult_stem_cells at centre-left with exact source wording: “Reserve kept as Adult Stem Cells Undergo continuous Mitosis for life-long repair.”; bottom_summary_callout at bottom-centre with exact source wording: “From a single blueprint, the cell cycle provides the building blocks, and differentiation assigns the jobs.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A circular diagram illustrating the continuous cycle from a zygote through embryonic stem cells, differentiation into specialized cells, and reserve adult stem cells undergoing mitosis, centered around a cell cycle diagram with a bottom summary callout. Spatial layout: The slide features a large title at the top, a glowing circular process with arrows occupying the central and left areas surrounding an inner cell cycle diagram (G1, S, G2, M), a branching differentiation 'Skill Tree' branching out to the bottom right, and a rounded rectangular summary box along the bottom center.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1523,6 +1833,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-08T06:02:00.606Z"
+    "updatedAt": "2026-09-08T11:31:43.530Z"
   }
 }

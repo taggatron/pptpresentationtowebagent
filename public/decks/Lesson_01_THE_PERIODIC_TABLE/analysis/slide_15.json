@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T12:04:15.001Z",
+  "sourceHash": "7fc78c486c5575e0087d52d6e3a95f0bd9b9e086649c5c1bd80cb942c8615d0f",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Lesson Summary: The Periodic Table",
+    "description": "A dark, grid-patterned summary slide titled 'Lesson Summary: The Periodic Table' featuring four key takeaways arranged vertically, each paired with a cyan/white line icon on the left.",
+    "layout": "Prominent top-left header with four horizontal summary rows stacked vertically down the slide, each containing an illustrative line icon on the left and descriptive summary text on the right.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Lesson Summary: The Periodic Table",
+        "dependencies": []
+      },
+      {
+        "id": "icon_layout",
+        "role": "diagram",
+        "position": "middle-left, top row",
+        "visibleText": "",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "text_layout",
+        "role": "body",
+        "position": "centre-left, top row",
+        "visibleText": "Layout: Arranged sequentially by atomic number (number of protons).",
+        "dependencies": [
+          "icon_layout"
+        ]
+      },
+      {
+        "id": "icon_coordinates",
+        "role": "diagram",
+        "position": "middle-left, second row",
+        "visibleText": "",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "text_coordinates",
+        "role": "body",
+        "position": "centre-left, second row",
+        "visibleText": "Coordinates: Groups (vertical columns = outer electrons) and Periods (horizontal rows = total shells).",
+        "dependencies": [
+          "icon_coordinates"
+        ]
+      },
+      {
+        "id": "icon_divide",
+        "role": "diagram",
+        "position": "middle-left, third row",
+        "visibleText": "",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "text_divide",
+        "role": "body",
+        "position": "centre-left, third row",
+        "visibleText": "The Divide: Metals are on the left (lose electrons), Non-metals are on the right (gain/share electrons).",
+        "dependencies": [
+          "icon_divide"
+        ]
+      },
+      {
+        "id": "icon_trends",
+        "role": "diagram",
+        "position": "middle-left, bottom row",
+        "visibleText": "",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "text_trends",
+        "role": "body",
+        "position": "centre-left, bottom row",
+        "visibleText": "Trends: Elements in the same group share properties. Reactivity increases down Group 1, but decreases down Group 7.",
+        "dependencies": [
+          "icon_trends"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "component-reveal",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Header and Layout Principle",
+        "componentIds": [
+          "slide_title",
+          "icon_layout",
+          "text_layout"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Coordinates: Groups and Periods",
+        "componentIds": [
+          "slide_title",
+          "icon_layout",
+          "text_layout",
+          "icon_coordinates",
+          "text_coordinates"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "The Divide: Metals and Non-metals",
+        "componentIds": [
+          "slide_title",
+          "icon_layout",
+          "text_layout",
+          "icon_coordinates",
+          "text_coordinates",
+          "icon_divide",
+          "text_divide"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_4",
+        "label": "Trends Across Groups",
+        "componentIds": [
+          "slide_title",
+          "icon_layout",
+          "text_layout",
+          "icon_coordinates",
+          "text_coordinates",
+          "icon_divide",
+          "text_divide",
+          "icon_trends",
+          "text_trends"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

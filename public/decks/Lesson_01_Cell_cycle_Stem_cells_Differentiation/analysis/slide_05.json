@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T11:12:01.428Z",
+  "sourceHash": "e4506e196fc7c1777236b53fbe481ff4f0571636ed49de8c4884b5532050b2c8",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Inside the cellular factory",
+    "description": "A comparative educational slide presenting cell division as a factory process. The slide contains two framed side-by-side panels: the left panel illustrates 'Interphase' with duplicated cellular machinery and DNA, and the right panel illustrates 'Mitosis & Cytokinesis' showing chromosome separation and cell division. At the bottom center, a connected callout card synthesizes the outcome.",
+    "layout": "The title spans the top left. Below the title are two symmetrical framed cards side-by-side: left card covers Interphase with text at top and a circular cell diagram with 'x2' duplication callouts below; right card covers Mitosis & Cytokinesis with text at top and a dividing cell diagram below. Blue circuit-like connecting lines branch from the bottom of both cards into a single callout box centered at the bottom.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "Inside the cellular factory",
+        "dependencies": []
+      },
+      {
+        "id": "interphase_panel",
+        "role": "diagram",
+        "position": "mid-left",
+        "visibleText": "Interphase\nStockpiling materials and\ncopying the blueprints.\nx2\nx2\nx2\nx2\nx2",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "mitosis_panel",
+        "role": "diagram",
+        "position": "mid-right",
+        "visibleText": "Mitosis & Cytokinesis\nSplitting the factory exactly in two\nto ensure genetic continuity.",
+        "dependencies": [
+          "slide_title",
+          "interphase_panel"
+        ]
+      },
+      {
+        "id": "summary_callout",
+        "role": "callout",
+        "position": "bottom-centre",
+        "visibleText": "One blueprint becomes\ntwo identical copies.",
+        "dependencies": [
+          "interphase_panel",
+          "mitosis_panel"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "comparison",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Interphase preparation",
+        "componentIds": [
+          "slide_title",
+          "interphase_panel"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Mitosis and division",
+        "componentIds": [
+          "slide_title",
+          "interphase_panel",
+          "mitosis_panel"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Outcome summary",
+        "componentIds": [
+          "slide_title",
+          "interphase_panel",
+          "mitosis_panel",
+          "summary_callout"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

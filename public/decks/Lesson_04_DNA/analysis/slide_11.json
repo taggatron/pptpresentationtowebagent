@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T12:47:14.760Z",
+  "sourceHash": "41538201299518f926acc500d95c14e7be8068afb445020ec3d270214251cf5c",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "How the Information is Used",
+    "description": "A blueprint-styled educational slide explaining how DNA instructions are processed into proteins. At the top, a title and introductory text establish DNA as instructional code. Below, a four-stage horizontal process flowchart illustrates the journey from Gene to Ribosome, assembling Amino Acids, and forming a Protein polymer, connected by directional arrows with descriptive annotations.",
+    "layout": "The top third features the slide title followed by a two-line explanatory paragraph. The bottom two-thirds displays a linear left-to-right process with four illustrated nodes (Gene, Ribosome, Amino Acids, Protein) interconnected by three rightward-pointing arrows labeled with action text.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-left",
+        "visibleText": "How the Information is Used",
+        "dependencies": []
+      },
+      {
+        "id": "intro_text",
+        "role": "introduction",
+        "position": "upper-left",
+        "visibleText": "DNA is a code. It does not do the physical work itself;\nit provides the instructions for the cell's machinery.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "step_1_gene",
+        "role": "process_step",
+        "position": "middle-left to bottom-left",
+        "visibleText": "Gene\n(Specific section\nof DNA code)",
+        "dependencies": [
+          "intro_text"
+        ]
+      },
+      {
+        "id": "arrow_1",
+        "role": "connector",
+        "position": "middle-left-center",
+        "visibleText": "Read by\nthe cell",
+        "dependencies": [
+          "step_1_gene"
+        ]
+      },
+      {
+        "id": "step_2_ribosome",
+        "role": "process_step",
+        "position": "middle-center to bottom-center-left",
+        "visibleText": "Ribosome\n(The cell's\nmanufacturing site)",
+        "dependencies": [
+          "arrow_1"
+        ]
+      },
+      {
+        "id": "arrow_2",
+        "role": "connector",
+        "position": "middle-center-right",
+        "visibleText": "Assembles\nmonomers",
+        "dependencies": [
+          "step_2_ribosome"
+        ]
+      },
+      {
+        "id": "step_3_amino_acids",
+        "role": "process_step",
+        "position": "middle-right to bottom-center-right",
+        "visibleText": "Amino Acids\n(Monomers)",
+        "dependencies": [
+          "arrow_2"
+        ]
+      },
+      {
+        "id": "arrow_3",
+        "role": "connector",
+        "position": "middle-right",
+        "visibleText": "",
+        "dependencies": [
+          "step_3_amino_acids"
+        ]
+      },
+      {
+        "id": "step_4_protein",
+        "role": "process_step",
+        "position": "middle-far-right to bottom-right",
+        "visibleText": "Protein\n(Polymer)\nis formed.",
+        "dependencies": [
+          "arrow_3"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "process",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Concept introduction",
+        "componentIds": [
+          "slide_title",
+          "intro_text"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Gene read by ribosome",
+        "componentIds": [
+          "slide_title",
+          "intro_text",
+          "step_1_gene",
+          "arrow_1",
+          "step_2_ribosome"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Monomers assembled into protein",
+        "componentIds": [
+          "slide_title",
+          "intro_text",
+          "step_1_gene",
+          "arrow_1",
+          "step_2_ribosome",
+          "arrow_2",
+          "step_3_amino_acids",
+          "arrow_3",
+          "step_4_protein"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}

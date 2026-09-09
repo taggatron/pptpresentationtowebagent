@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "provider": "google-gemini",
+  "analyzedAt": "2026-09-08T11:31:43.518Z",
+  "sourceHash": "cc70d3bfa7a419381953e72b08eb52303f6270e83d1e32594608504135c94280",
+  "analysis": {
+    "schemaVersion": 1,
+    "title": "Therapeutic Cloning: Creating a perfect biological match",
+    "description": "A four-step horizontal process diagram illustrating therapeutic cloning, showing cell fusion, cloned embryo development, stem cell harvesting, and differentiation into specialised patient tissue.",
+    "layout": "The slide features a title across the top, followed by four glowing rounded rectangular cards arranged horizontally from left to right, linked by directional light-trail arrows. Each card contains a top heading, an illustrative diagram in the centre, and an explanatory caption at the bottom.",
+    "components": [
+      {
+        "id": "slide_title",
+        "role": "title",
+        "position": "top-centre",
+        "visibleText": "Therapeutic Cloning: Creating a perfect biological match",
+        "dependencies": []
+      },
+      {
+        "id": "stage_1_fusion",
+        "role": "process_step",
+        "position": "centre-left",
+        "visibleText": "Patient's Cell & Donor Egg Fusion\nPatient's Cell\n+\nEmpty Donor Egg\nSomatic cell nuclear transfer process.",
+        "dependencies": [
+          "slide_title"
+        ]
+      },
+      {
+        "id": "arrow_1_to_2",
+        "role": "connector",
+        "position": "centre-left",
+        "visibleText": "",
+        "dependencies": [
+          "stage_1_fusion"
+        ]
+      },
+      {
+        "id": "stage_2_embryo",
+        "role": "process_step",
+        "position": "centre",
+        "visibleText": "Cloned Embryo\nEmbryonic development with patient's DNA.",
+        "dependencies": [
+          "arrow_1_to_2"
+        ]
+      },
+      {
+        "id": "arrow_2_to_3",
+        "role": "connector",
+        "position": "centre-right",
+        "visibleText": "",
+        "dependencies": [
+          "stage_2_embryo"
+        ]
+      },
+      {
+        "id": "stage_3_stem_cells",
+        "role": "process_step",
+        "position": "centre-right",
+        "visibleText": "Harvested Stem Cells\nIsolation of pluripotent stem cells.",
+        "dependencies": [
+          "arrow_2_to_3"
+        ]
+      },
+      {
+        "id": "arrow_3_to_4",
+        "role": "connector",
+        "position": "centre-right",
+        "visibleText": "",
+        "dependencies": [
+          "stage_3_stem_cells"
+        ]
+      },
+      {
+        "id": "stage_4_specialised_tissue",
+        "role": "process_step",
+        "position": "far-right",
+        "visibleText": "Specialised Patient Tissue\nPerfectly matched to the patient with zero risk of immune rejection.",
+        "dependencies": [
+          "arrow_3_to_4"
+        ]
+      }
+    ],
+    "isQuestionSlide": false,
+    "recommendedStrategy": "process",
+    "recommendedBuilds": [
+      {
+        "id": "build_1",
+        "label": "Cell Fusion",
+        "componentIds": [
+          "slide_title",
+          "stage_1_fusion"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_2",
+        "label": "Cloned Embryo",
+        "componentIds": [
+          "slide_title",
+          "stage_1_fusion",
+          "arrow_1_to_2",
+          "stage_2_embryo"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_3",
+        "label": "Stem Cell Harvest",
+        "componentIds": [
+          "slide_title",
+          "stage_1_fusion",
+          "arrow_1_to_2",
+          "stage_2_embryo",
+          "arrow_2_to_3",
+          "stage_3_stem_cells"
+        ],
+        "cumulative": true
+      },
+      {
+        "id": "build_4",
+        "label": "Specialised Tissue",
+        "componentIds": [
+          "slide_title",
+          "stage_1_fusion",
+          "arrow_1_to_2",
+          "stage_2_embryo",
+          "arrow_2_to_3",
+          "stage_3_stem_cells",
+          "arrow_3_to_4",
+          "stage_4_specialised_tissue"
+        ],
+        "cumulative": true
+      }
+    ]
+  }
+}
