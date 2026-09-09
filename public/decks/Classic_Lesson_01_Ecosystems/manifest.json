@@ -204,182 +204,6 @@
     {
       "number": 3,
       "title": "Slide 3",
-      "imageFileName": "slide_05.png",
-      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_05.png",
-      "sourceMediaPath": "ppt/media/image5.png",
-      "isInteractive": false,
-      "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
-      },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_5_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_05.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
-    },
-    {
-      "number": 4,
-      "title": "Slide 4",
-      "imageFileName": "slide_06.png",
-      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png",
-      "sourceMediaPath": "ppt/media/image6.png",
-      "isInteractive": true,
-      "interactiveType": "web_embed",
-      "webEmbed": {
-        "url": "/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html",
-        "title": "Quick-Fire Challenge: Abiotic or Biotic?",
-        "label": "Interactive Challenge"
-      },
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
-      },
-      "originalImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_original.png",
-      "history": [
-        {
-          "id": "ver_revised_1",
-          "label": "Revised: Middle Arrows Removed",
-          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png"
-        },
-        {
-          "id": "ver_orig",
-          "label": "Original Slide Image",
-          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_original.png"
-        }
-      ],
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_6_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png",
-          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_original.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
-    },
-    {
-      "number": 5,
-      "title": "Slide 5",
       "imageFileName": "slide_03.png",
       "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_03.png",
       "sourceMediaPath": "ppt/media/image3.png",
@@ -457,8 +281,8 @@
       }
     },
     {
-      "number": 6,
-      "title": "Slide 6",
+      "number": 4,
+      "title": "Slide 4",
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_04.png",
       "sourceMediaPath": "ppt/media/image4.png",
@@ -517,6 +341,182 @@
           "qaStatus": "not-started",
           "outputImageUrl": null,
           "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_04.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
+    },
+    {
+      "number": 5,
+      "title": "Slide 5",
+      "imageFileName": "slide_05.png",
+      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_05.png",
+      "sourceMediaPath": "ppt/media/image5.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_05.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
+    },
+    {
+      "number": 6,
+      "title": "Quick-Fire Challenge: Abiotic or Biotic?",
+      "imageFileName": "slide_06.png",
+      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png",
+      "sourceMediaPath": "ppt/media/image6.png",
+      "isInteractive": true,
+      "interactiveType": "web_embed",
+      "webEmbed": {
+        "url": "/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html",
+        "title": "Quick-Fire Challenge: Abiotic or Biotic?",
+        "label": "Interactive Challenge"
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 11000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "originalImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_original.png",
+      "history": [
+        {
+          "id": "ver_revised_1",
+          "label": "Revised: Middle Arrows Removed",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png"
+        },
+        {
+          "id": "ver_orig",
+          "label": "Original Slide Image",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_original.png"
+        }
+      ],
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png",
+          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_original.png"
         }
       ],
       "hasProgressiveBuilds": false,
@@ -724,9 +724,9 @@
     {
       "number": 8,
       "title": "Slide 8",
-      "imageFileName": "slide_10.png",
-      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_10.png",
-      "sourceMediaPath": "ppt/media/image10.png",
+      "imageFileName": "slide_08.png",
+      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
+      "sourceMediaPath": "ppt/media/image8.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
@@ -768,7 +768,7 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_10_1_component_reveal",
+          "id": "gemini_slide_8_1_component_reveal",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
@@ -777,11 +777,11 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_10.png"
+          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png"
         }
       ],
       "hasProgressiveBuilds": false,
@@ -798,7 +798,8 @@
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
-      }
+      },
+      "hidden": true
     },
     {
       "number": 9,
@@ -882,6 +883,85 @@
     {
       "number": 10,
       "title": "Slide 10",
+      "imageFileName": "slide_10.png",
+      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_10.png",
+      "sourceMediaPath": "ppt/media/image10.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_10.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
+    },
+    {
+      "number": 11,
+      "title": "Slide 11",
       "imageFileName": "slide_11.png",
       "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11.png",
       "sourceMediaPath": "ppt/media/image11.png",
@@ -957,86 +1037,6 @@
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
       }
-    },
-    {
-      "number": 11,
-      "title": "Slide 11",
-      "imageFileName": "slide_08.png",
-      "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
-      "sourceMediaPath": "ppt/media/image8.png",
-      "isInteractive": false,
-      "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
-      },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_8_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      },
-      "hidden": true
     },
     {
       "number": 12,
