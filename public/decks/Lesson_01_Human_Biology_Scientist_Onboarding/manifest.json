@@ -50,38 +50,12 @@
         "questionCount": 0,
         "detectionSource": "local-ocr-fallback"
       },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_1_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"a), Department Induction & i i uy\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"1. Human Biology Scientist Onboarding\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_01.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
+        "mode": "protected-video",
+        "reason": "Existing Gemini video media is preserved without image-plan replacement.",
+        "protectedVideoCount": 1
       },
       "text": "iz. ~~) Welcome to OCR Level : ia 0a:\n. | AAQ Human Biology — 1 fi iy\na), Department Induction & i i uy\na ape Course Onboarding rae a",
       "contentAnalysis": {
@@ -90,6 +64,70 @@
         "source": "local-ocr-fallback",
         "transcript": "iz. ~~) Welcome to OCR Level : ia 0a:\n. | AAQ Human Biology — 1 fi iy\na), Department Induction & i i uy\na ape Course Onboarding rae a",
         "role": "title"
+      },
+      "videoUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/Please_animate_the_attached_im.mp4",
+      "originalImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_01.png",
+      "progressiveBuilds": [
+        {
+          "version": 1,
+          "label": "Build 1: Video Intro (Human Biology Onboarding)",
+          "videoUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/Please_animate_the_attached_im.mp4",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_01.png"
+        },
+        {
+          "version": 2,
+          "label": "Build 2: Welcome to OCR Level 3 AAQ Human Biology",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_01.png"
+        }
+      ],
+      "history": [
+        {
+          "id": "ver_video_intro",
+          "label": "Build 1: Video Intro (Human Biology Onboarding)",
+          "videoUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/Please_animate_the_attached_im.mp4",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_01.png"
+        },
+        {
+          "id": "ver_orig",
+          "label": "Original Slide Image",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_01.png"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "video_build_1",
+            "title": "Build 1: Video Intro (Human Biology Onboarding)",
+            "componentIds": [
+              "video_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
+          },
+          {
+            "step": 2,
+            "buildId": "image_build_2",
+            "title": "Build 2: Welcome to OCR Level 3 AAQ Human Biology",
+            "componentIds": [
+              "image_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {

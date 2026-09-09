@@ -61,6 +61,11 @@ const slideHiddenBadge = document.getElementById("slideHiddenBadge");
 let draggedSlideIndex = null;
 let slideOrderSaveTimer = null;
 const fullscreenBtn = document.getElementById("fullscreenBtn");
+const startSlideshowBtn = document.getElementById("startSlideshowBtn");
+const presentationDisplayBadge = document.getElementById("presentationDisplayBadge");
+let presentationWindowRef = null;
+const isPresentationWindow = new URLSearchParams(window.location.search).get("presentation") === "1";
+let slideshowChannel = null;
 const revealAllBtn = document.getElementById("revealAllBtn");
 const hideAllBtn = document.getElementById("hideAllBtn");
 const serialStepBadge = document.getElementById("serialStepBadge");
@@ -760,9 +765,11 @@ function updateStageControls(slide) {
   const hasAnswers = cells.length > 0;
   const synchronizedAnswers = isGeneratedQuestionAnswerSequence(slide);
   const revealedCount = getRevealedAnswerCount(slide);
-  const currentBuild = currentBuildForSlide(slide);
+  // In student mode, serial build steps are teacher-only and hidden, so only answer reveals can be shown.
+  // In presenter mode, either build steps or answers allow hide/reveal actions.
+  const hasComponentsToHideOrReveal = presenterMode ? (hasBuilds || hasAnswers) : hasAnswers;
 
-  qaControls?.classList.toggle("hidden", !hasBuilds && !hasAnswers);
+  qaControls?.classList.toggle("hidden", !hasComponentsToHideOrReveal);
   buildControlsGroup?.classList.toggle("hidden", !hasBuilds);
   answerControlsGroup?.classList.toggle("hidden", !hasAnswers || synchronizedAnswers);
   answerActionsGroup?.classList.toggle("hidden", !hasAnswers);
@@ -782,6 +789,7 @@ function updateStageControls(slide) {
     );
   }
 
+  const currentBuild = currentBuildForSlide(slide);
   const minStep = buildSteps.length > 0 ? 1 : 0;
   if (serialStepBadge) {
     serialStepBadge.textContent = buildSteps.length > 0
@@ -2553,8 +2561,15 @@ async function fetchDecks() {
         if (deckSelect) deckSelect.appendChild(option);
       });
 
+      const urlParams = new URLSearchParams(window.location.search);
+      const requestedDeckId = urlParams.get("deck");
+      const requestedSlideIdx = parseInt(urlParams.get("slide") || "0", 10);
+      const requestedDeck = requestedDeckId ? data.decks.find((deck) => deck.id === requestedDeckId) : null;
       const trialDeck = data.decks.find((deck) => deck.id === DEFAULT_TRIAL_DECK);
-      await loadDeck(trialDeck?.id || data.defaultDeckId || data.decks[0].id);
+      await loadDeck(
+        requestedDeck?.id || trialDeck?.id || data.defaultDeckId || data.decks[0].id,
+        Number.isFinite(requestedSlideIdx) ? requestedSlideIdx : 0
+      );
       return;
     }
 
@@ -4044,6 +4059,9 @@ function togglePresenterMode() {
     switchSidebarTab("overview");
   }
   renderEditTargetSelection();
+  if (currentDeck?.slides?.[currentSlideIndex]) {
+    updateStageControls(currentDeck.slides[currentSlideIndex]);
+  }
 }
 
 function openCognitiveModal() {
