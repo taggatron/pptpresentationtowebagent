@@ -64,7 +64,12 @@ const fullscreenBtn = document.getElementById("fullscreenBtn");
 const startSlideshowBtn = document.getElementById("startSlideshowBtn");
 const presentationDisplayBadge = document.getElementById("presentationDisplayBadge");
 let presentationWindowRef = null;
-const isPresentationWindow = new URLSearchParams(window.location.search).get("presentation") === "1";
+const isPresentationWindow =
+  typeof window !== "undefined" &&
+  window?.location?.search &&
+  typeof URLSearchParams !== "undefined"
+    ? new URLSearchParams(window.location.search).get("presentation") === "1"
+    : false;
 let slideshowChannel = null;
 const revealAllBtn = document.getElementById("revealAllBtn");
 const hideAllBtn = document.getElementById("hideAllBtn");
@@ -990,18 +995,10 @@ function showVideoBuild(slide, build) {
             mutedResult
               .then(() => {
                 if (token !== videoPlaybackToken) return;
-                // Video is playing smoothly muted. Provide unmute button.
-                pendingVideoReplay = () => {
-                  slideVideo.muted = false;
-                  slideVideo.play().catch(() => {});
-                  slideVideo.classList.remove("playback-blocked");
-                  videoPlayFallback?.classList.add("hidden");
-                };
-                slideVideo.classList.add("playback-blocked");
-                if (videoPlayFallback) {
-                  videoPlayFallback.innerHTML = '<span aria-hidden="true">🔊</span><span>Unmute audio</span>';
-                  videoPlayFallback.classList.remove("hidden");
-                }
+                // Video is playing smoothly muted. No popup in middle of video.
+                pendingVideoReplay = null;
+                slideVideo.classList.remove("playback-blocked");
+                videoPlayFallback?.classList.add("hidden");
               })
               .catch(() => {
                 // If even muted play was blocked, provide full play button
@@ -1649,6 +1646,8 @@ function initVisualImpairmentMode() {
   });
 
   let approachLeaveTimeout = null;
+  let navApproachLeaveTimeout = null;
+  const appFooter = document.querySelector(".app-footer");
   window.addEventListener(
     "mousemove",
     (e) => {
@@ -1657,7 +1656,33 @@ function initVisualImpairmentMode() {
         document.webkitIsFullScreen ||
         document.body.classList.contains("is-fullscreen")
       );
-      if (!isFS || !slideZoomBar) return;
+      if (!isFS) {
+        if (appFooter?.classList.contains("is-nav-approached")) {
+          appFooter.classList.remove("is-nav-approached");
+        }
+        return;
+      }
+
+      // Fullscreen navigation bar approach on MacBook (hidden on secondary presentation window)
+      if (!isPresentationWindow && appFooter) {
+        const distFromBottom = window.innerHeight - e.clientY;
+        if (distFromBottom <= 80) {
+          if (navApproachLeaveTimeout) {
+            clearTimeout(navApproachLeaveTimeout);
+            navApproachLeaveTimeout = null;
+          }
+          appFooter.classList.add("is-nav-approached");
+        } else if (distFromBottom > 110 && appFooter.classList.contains("is-nav-approached")) {
+          if (!navApproachLeaveTimeout) {
+            navApproachLeaveTimeout = setTimeout(() => {
+              appFooter.classList.remove("is-nav-approached");
+              navApproachLeaveTimeout = null;
+            }, 350);
+          }
+        }
+      }
+
+      if (!slideZoomBar) return;
 
       const rect = slideZoomBar.getBoundingClientRect();
       const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
@@ -2366,10 +2391,212 @@ function applyTheme(theme) {
   }
 }
 
+function initSlideshowSync() {
+  if (typeof BroadcastChannel === "function") {
+    try {
+      slideshowChannel = new BroadcastChannel("vibe_deck_slideshow");
+      slideshowChannel.onmessage = handleSlideshowSyncMessage;
+      if (isPresentationWindow) {
+        slideshowChannel.postMessage({ type: "REQUEST_STATE" });
+      }
+    } catch (e) {
+      console.warn("BroadcastChannel initialization warning:", e);
+    }
+  }
+}
+
+function broadcastSlideshowMessage(message) {
+  if (!slideshowChannel) return;
+  try {
+    slideshowChannel.postMessage(message);
+  } catch (err) {
+    console.warn("Slideshow broadcast error:", err);
+  }
+}
+
+function handleSlideshowSyncMessage(event) {
+  const data = event.data;
+  if (!data || typeof data !== "object") return;
+
+  if (isPresentationWindow) {
+    // Secondary display presentation view
+    switch (data.type) {
+      case "SYNC_STATE":
+      case "SLIDE_CHANGE":
+        if (data.deckId && (!currentDeck || currentDeck.id !== data.deckId)) {
+          loadDeck(data.deckId, Number.isFinite(data.slideIndex) ? data.slideIndex : 0).then(() => {
+            if (data.answerStates) answerStates = { ...data.answerStates };
+            if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
+            if (Number.isFinite(data.mediaBuildStep)) currentMediaBuildStep = data.mediaBuildStep;
+            renderSlideStage();
+          });
+        } else if (Number.isFinite(data.slideIndex) && data.slideIndex !== currentSlideIndex) {
+          if (data.answerStates) answerStates = { ...data.answerStates };
+          if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
+          renderSlide(data.slideIndex);
+          if (Number.isFinite(data.mediaBuildStep)) {
+            currentMediaBuildStep = data.mediaBuildStep;
+            renderSlideStage();
+          }
+        } else {
+          if (data.answerStates) answerStates = { ...data.answerStates };
+          if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
+          if (Number.isFinite(data.mediaBuildStep)) currentMediaBuildStep = data.mediaBuildStep;
+          renderSlideStage();
+        }
+        break;
+
+      case "BUILD_STEP":
+        if (Number.isFinite(data.mediaBuildStep)) {
+          currentMediaBuildStep = data.mediaBuildStep;
+          renderSlideStage();
+        }
+        break;
+
+      case "ANSWERS_UPDATE":
+        if (data.answerStates) answerStates = { ...data.answerStates };
+        if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
+        renderSlideStage();
+        break;
+
+      case "DECK_CHANGE":
+        if (data.deckId && (!currentDeck || currentDeck.id !== data.deckId)) {
+          loadDeck(data.deckId, 0);
+        }
+        break;
+    }
+  } else {
+    // MacBook presenter view
+    switch (data.type) {
+      case "REQUEST_STATE":
+        broadcastSlideshowMessage({
+          type: "SYNC_STATE",
+          deckId: currentDeck?.id,
+          slideIndex: currentSlideIndex,
+          mediaBuildStep: currentMediaBuildStep,
+          answerStates,
+          answerRevealOrder
+        });
+        break;
+
+      case "NAVIGATE":
+        if (data.direction === 1) goToNextSlide();
+        else if (data.direction === -1) goToPreviousSlide();
+        break;
+
+      case "GOTO_SLIDE":
+        if (Number.isFinite(data.slideIndex)) renderSlide(data.slideIndex);
+        break;
+
+      case "PRESENTATION_CLOSED":
+        setSlideshowButtonActive(false);
+        presentationWindowRef = null;
+        break;
+    }
+  }
+}
+
+function setSlideshowButtonActive(active) {
+  if (!startSlideshowBtn) return;
+  startSlideshowBtn.classList.toggle("is-active", active);
+  startSlideshowBtn.setAttribute(
+    "title",
+    active
+      ? "Slideshow active on connected display (Click to focus presentation window)"
+      : "Start slideshow (F5 / Presents in full screen on external display if connected)"
+  );
+  startSlideshowBtn.setAttribute("aria-pressed", String(active));
+}
+
+async function startSlideshow() {
+  if (isPresentationWindow) return;
+
+  // If a secondary presentation window is already open, focus it
+  if (presentationWindowRef && !presentationWindowRef.closed) {
+    presentationWindowRef.focus();
+    return;
+  }
+
+  let secondaryScreen = null;
+  if (typeof window.getScreenDetails === "function") {
+    try {
+      const screenDetails = await window.getScreenDetails();
+      if (screenDetails && screenDetails.screens && screenDetails.screens.length > 1) {
+        secondaryScreen =
+          screenDetails.screens.find((s) => s !== screenDetails.currentScreen) ||
+          screenDetails.screens.find((s) => !s.isPrimary) ||
+          screenDetails.screens[1];
+      }
+    } catch (err) {
+      console.warn("Screen details query skipped or denied:", err);
+    }
+  }
+
+  if (!secondaryScreen && window.screen?.isExtended) {
+    // Fallback if permission was denied or getScreenDetails is unavailable but extended display exists
+    secondaryScreen = {
+      availLeft: window.screen.availWidth,
+      availTop: 0,
+      availWidth: window.screen.availWidth,
+      availHeight: window.screen.availHeight
+    };
+  }
+
+  if (secondaryScreen) {
+    // Multi-display: Open fullscreen presentation on the secondary display while keeping MacBook in normal mode
+    const left = secondaryScreen.availLeft ?? secondaryScreen.left ?? 0;
+    const top = secondaryScreen.availTop ?? secondaryScreen.top ?? 0;
+    const width = secondaryScreen.availWidth ?? secondaryScreen.width ?? window.screen.width;
+    const height = secondaryScreen.availHeight ?? secondaryScreen.height ?? window.screen.height;
+    const features = `left=${left},top=${top},width=${width},height=${height},menubar=no,toolbar=no,location=no,status=no,resizable=yes`;
+
+    const presentationUrl = `${window.location.origin}${window.location.pathname}?presentation=1&deck=${encodeURIComponent(currentDeck?.id || "")}&slide=${currentSlideIndex}`;
+    presentationWindowRef = window.open(presentationUrl, "VibeDeckPresentationWindow", features);
+
+    if (presentationWindowRef) {
+      setSlideshowButtonActive(true);
+
+      // Attempt fullscreen on secondary screen when loaded
+      presentationWindowRef.addEventListener("load", async () => {
+        try {
+          if (presentationWindowRef.document?.documentElement?.requestFullscreen) {
+            await presentationWindowRef.document.documentElement.requestFullscreen({ screen: secondaryScreen });
+          }
+        } catch (_) {}
+      });
+
+      const closeWatcher = setInterval(() => {
+        if (!presentationWindowRef || presentationWindowRef.closed) {
+          clearInterval(closeWatcher);
+          presentationWindowRef = null;
+          setSlideshowButtonActive(false);
+        }
+      }, 1000);
+      return;
+    }
+  }
+
+  // Single-display fallback: toggle fullscreen on the current window
+  if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+}
+
 async function init() {
   initTheme();
   initVisualImpairmentMode();
   initMlpExport();
+  initSlideshowSync();
   setupEventListeners();
   initWelcomeModal();
   await loadAgentPathways();
@@ -4159,8 +4386,8 @@ function initWelcomeModal() {
     dontShowWelcomeCheckbox.checked = hidePref;
   }
 
-  // Open automatically on startup unless explicitly opted out
-  if (!hidePref && welcomeModal) {
+  // Open automatically on startup unless explicitly opted out (and not in presentation window)
+  if (!hidePref && welcomeModal && !isPresentationWindow) {
     welcomeModal.classList.remove("hidden");
   }
 
@@ -4192,7 +4419,12 @@ function goToPreviousSlide() {
       target--;
     }
   }
-  if (target >= 0) renderSlide(target);
+  if (target >= 0) {
+    renderSlide(target);
+    if (isPresentationWindow) {
+      broadcastSlideshowMessage({ type: "GOTO_SLIDE", slideIndex: target });
+    }
+  }
 }
 
 function goToNextSlide() {
@@ -4203,7 +4435,12 @@ function goToNextSlide() {
       target++;
     }
   }
-  if (target < currentDeck.slides.length) renderSlide(target);
+  if (target < currentDeck.slides.length) {
+    renderSlide(target);
+    if (isPresentationWindow) {
+      broadcastSlideshowMessage({ type: "GOTO_SLIDE", slideIndex: target });
+    }
+  }
 }
 
 function toggleSidebar() {
@@ -4529,6 +4766,9 @@ function setupEventListeners() {
   const updateFullscreenClass = () => {
     const isFS = Boolean(document.fullscreenElement || document.webkitIsFullScreen);
     document.body.classList.toggle("is-fullscreen", isFS);
+    if (!isFS) {
+      document.querySelector(".app-footer")?.classList.remove("is-nav-approached");
+    }
   };
 
   fullscreenBtn?.addEventListener("click", () => {
@@ -4546,6 +4786,8 @@ function setupEventListeners() {
       }
     }
   });
+
+  startSlideshowBtn?.addEventListener("click", startSlideshow);
 
   document.addEventListener("fullscreenchange", updateFullscreenClass);
   document.addEventListener("webkitfullscreenchange", updateFullscreenClass);
@@ -4584,6 +4826,12 @@ function setupEventListeners() {
     const viModal = document.getElementById("viSettingsModal");
     const mlpModal = document.getElementById("mlpExportModal");
     const welcomeModal = document.getElementById("welcomeModal");
+
+    if (event.key === "F5") {
+      event.preventDefault();
+      startSlideshow();
+      return;
+    }
 
     if (event.altKey && event.key.toLowerCase() === "p") {
       event.preventDefault();
@@ -4668,6 +4916,21 @@ function setupEventListeners() {
       fullscreenBtn?.click();
     }
   });
+
+  if (isPresentationWindow) {
+    document.body.classList.add("slideshow-display");
+
+    // Clicking anywhere on the presentation stage requests fullscreen
+    slideStage?.addEventListener("click", () => {
+      if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+        document.documentElement.requestFullscreen?.().catch(() => {});
+      }
+    });
+
+    window.addEventListener("beforeunload", () => {
+      broadcastSlideshowMessage({ type: "PRESENTATION_CLOSED" });
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", init);

@@ -161,24 +161,95 @@ body.is-fullscreen .slide-wrapper {
 
 :fullscreen .app-footer,
 :-webkit-full-screen .app-footer,
-body.is-fullscreen .app-footer {
+body.is-fullscreen:not(.slideshow-display) .app-footer {
   flex-shrink: 0 !important;
-  background: var(--bg-header) !important;
+  background: transparent !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  border: none !important;
+  padding: 0 !important;
+  z-index: 998 !important;
+  pointer-events: none !important;
+}
+
+/* Invisible hover proximity trigger zone at bottom of screen */
+:fullscreen .app-footer::before,
+:-webkit-full-screen .app-footer::before,
+body.is-fullscreen:not(.slideshow-display) .app-footer::before {
+  content: "";
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 70px !important;
+  pointer-events: auto !important;
+  z-index: 997 !important;
 }
 
 :fullscreen .progress-bar-container,
 :-webkit-full-screen .progress-bar-container,
 body.is-fullscreen .progress-bar-container {
-  height: 3px !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 4px !important;
+  z-index: 1000 !important;
+  background: rgba(15, 23, 42, 0.25) !important;
+  pointer-events: none !important;
+}
+
+:fullscreen .progress-bar,
+:-webkit-full-screen .progress-bar,
+body.is-fullscreen .progress-bar {
+  height: 100% !important;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.7) !important;
+  transition: width 0.3s ease !important;
 }
 
 :fullscreen .footer-controls,
 :-webkit-full-screen .footer-controls,
 body.is-fullscreen .footer-controls {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
   justify-content: center !important;
   width: 100% !important;
   padding: 0.2rem 1.5rem 0.35rem 1.5rem !important;
-  min-height: 32px !important;
+  min-height: 44px !important;
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease !important;
+}
+
+/* Reveal nav bar with animation when mouse approaches bottom or is focused */
+:fullscreen .app-footer:hover .footer-controls,
+:-webkit-full-screen .app-footer:hover .footer-controls,
+body.is-fullscreen:not(.slideshow-display) .app-footer:hover .footer-controls,
+:fullscreen .app-footer.is-nav-approached .footer-controls,
+:-webkit-full-screen .app-footer.is-nav-approached .footer-controls,
+body.is-fullscreen:not(.slideshow-display) .app-footer.is-nav-approached .footer-controls,
+:fullscreen .footer-controls:hover,
+:-webkit-full-screen .footer-controls:hover,
+body.is-fullscreen:not(.slideshow-display) .footer-controls:hover,
+:fullscreen .footer-controls:focus-within,
+:-webkit-full-screen .footer-controls:focus-within,
+body.is-fullscreen:not(.slideshow-display) .footer-controls:focus-within {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 :fullscreen .nav-buttons,
@@ -200,6 +271,18 @@ body.is-fullscreen .btn-nav {
   border-radius: 6px !important;
   min-height: 28px !important;
   gap: 0.35rem !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  transition: all 0.2s ease !important;
+}
+
+:fullscreen .btn-nav:hover,
+:-webkit-full-screen .btn-nav:hover,
+body.is-fullscreen .btn-nav:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
 }
 
 :fullscreen .slide-counter,
@@ -207,6 +290,8 @@ body.is-fullscreen .btn-nav {
 body.is-fullscreen .slide-counter {
   font-size: 0.82rem !important;
   gap: 0.25rem !important;
+  color: #f1f5f9 !important;
+  font-weight: 600 !important;
 }
 
 /* Fullscreen Slide Zoom Bar: pushed higher up and collapsed to an icon button */
@@ -350,9 +435,31 @@ body.slideshow-display .qa-controls-bar,
 body.slideshow-display .slide-zoom-bar,
 body.slideshow-display .edit-target-overlay,
 body.slideshow-display .keyboard-hints,
-body.slideshow-display .footer-nav-buttons,
-body.slideshow-display .slide-counter {
+body.slideshow-display .footer-controls,
+body.slideshow-display .nav-buttons,
+body.slideshow-display .slide-counter,
+body.slideshow-display .modal,
+body.slideshow-display .modal-backdrop,
+body.slideshow-display #welcomeModal,
+body.slideshow-display #setsModal,
+body.slideshow-display #cognitiveModal,
+body.slideshow-display #viSettingsModal,
+body.slideshow-display #mlpExportModal {
   display: none !important;
+}
+
+body.slideshow-display .app-footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  min-height: 3px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  pointer-events: none !important;
+  z-index: 999 !important;
 }
 
 body.slideshow-display .main-content {
@@ -401,61 +508,37 @@ body.slideshow-display .web-embed-layer {
   object-fit: contain !important;
 }
 
-body.slideshow-display .footer-controls {
+body.slideshow-display .footer-controls,
+body.slideshow-display .nav-buttons,
+body.slideshow-display .slide-counter {
+  display: none !important;
+}
+
+body.slideshow-display .app-footer::before {
+  display: none !important;
+}
+
+body.slideshow-display .progress-bar-container {
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 3px !important;
-  min-height: 3px !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  pointer-events: none !important;
-  z-index: 999 !important;
-}
-
-body.slideshow-display .footer-controls .progress-container {
-  height: 3px !important;
+  width: 100% !important;
+  height: 4px !important;
   background: rgba(255, 255, 255, 0.15) !important;
+  z-index: 999 !important;
+  pointer-events: none !important;
 }
 
-body.slideshow-display .footer-controls .progress-bar {
-  background: #10b981 !important;
-  box-shadow: 0 0 6px #10b981;
+body.slideshow-display .progress-bar {
+  height: 100% !important;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.7) !important;
 }
 
-/* Presentation Display Badge (Fades away) */
+/* Presentation Display Badge (Permanently hidden per design update) */
 .presentation-display-badge {
-  position: absolute;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #f8fafc;
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.4rem 0.95rem;
-  border-radius: 999px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-  z-index: 100;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.presentation-display-badge.badge-fade {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-10px);
-}
-
-.presentation-display-badge .badge-separator {
-  color: rgba(255, 255, 255, 0.4);
+  display: none !important;
 }
 
 .header-left, .header-right {
@@ -549,35 +632,32 @@ body.theme-light .deck-select option {
   color: #111827;
 }
 
-/* Start Slideshow Button */
+/* Start Slideshow Button (Icon-only green arrow) */
 .start-slideshow-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  background: rgba(16, 185, 129, 0.1);
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
   border: 1px solid rgba(16, 185, 129, 0.35);
-  padding: 0.32rem 0.75rem;
-  border-radius: 20px;
   color: #059669;
-  font-family: var(--font-family);
-  font-size: 0.82rem;
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 32px;
-  line-height: 1;
   user-select: none;
-  white-space: nowrap;
   flex-shrink: 0;
 }
 
 .start-slideshow-btn:hover {
-  background: rgba(16, 185, 129, 0.18);
-  border-color: rgba(16, 185, 129, 0.6);
+  background: rgba(16, 185, 129, 0.22);
+  border-color: rgba(16, 185, 129, 0.65);
   color: #047857;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.28);
 }
 
 .start-slideshow-btn:active {
@@ -593,8 +673,8 @@ body.theme-light .deck-select option {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
@@ -603,6 +683,7 @@ body.theme-light .deck-select option {
   height: 14px;
   fill: #10b981;
   transition: transform 0.2s ease, fill 0.2s ease;
+  margin-left: 1.5px;
 }
 
 .start-slideshow-btn:hover .slideshow-triangle-svg {
@@ -4133,14 +4214,6 @@ body.theme-dark .key-tag {
   .header-left,
   .header-right {
     gap: 0.5rem;
-  }
-
-  .start-slideshow-btn .slideshow-btn-label {
-    display: none;
-  }
-
-  .start-slideshow-btn {
-    padding: 0.32rem 0.5rem;
   }
 
   .header-selectors {
