@@ -57,6 +57,7 @@ const toggleSidebarBtn = document.getElementById("toggleSidebarBtn");
 const thumbnailsGrid = document.getElementById("thumbnailsGrid");
 const slideCountBadge = document.getElementById("slideCountBadge");
 const slideOrderStatusBadge = document.getElementById("slideOrderStatusBadge");
+const slideHiddenBadge = document.getElementById("slideHiddenBadge");
 let draggedSlideIndex = null;
 let slideOrderSaveTimer = null;
 const fullscreenBtn = document.getElementById("fullscreenBtn");
@@ -2635,6 +2636,9 @@ function renderSlide(index) {
   if (initialImageUrl) slideImage.src = initialImageUrl;
   slideImage.alt = slide.title || `Slide ${slide.number} of ${currentDeck.totalSlides}`;
   currentSlideNum.textContent = String(index + 1);
+  if (slideHiddenBadge) {
+    slideHiddenBadge.classList.toggle("hidden", !slide.hidden);
+  }
 
   const progress = ((index + 1) / currentDeck.slides.length) * 100;
   progressBar.style.width = `${progress}%`;
@@ -2706,10 +2710,10 @@ function renderThumbnails() {
   currentDeck.slides.forEach((slide, index) => {
     const thumb = document.createElement("button");
     thumb.type = "button";
-    thumb.className = `thumb-item ${index === currentSlideIndex ? "active" : ""}`;
+    thumb.className = `thumb-item ${index === currentSlideIndex ? "active" : ""} ${slide.hidden ? "is-hidden" : ""}`;
     thumb.setAttribute(
       "aria-label",
-      `Slide ${index + 1}: ${slide.title || "Slide"}. Press Enter to view, Alt+Up/Down to reorder, or drag to move.`
+      `Slide ${index + 1}: ${slide.title || "Slide"}${slide.hidden ? " (Hidden)" : ""}. Press Enter to view, Alt+Up/Down to reorder, or drag to move.`
     );
     thumb.setAttribute("draggable", "true");
     thumb.dataset.slideIndex = String(index);
@@ -2729,13 +2733,70 @@ function renderThumbnails() {
     ragDot.className = `thumb-rag-dot ${rag.class}`;
     ragDot.title = `${rag.label}: ~${slide.cognitiveGuide?.timeGuideDisplay || "20s"}`;
 
+    const actions = document.createElement("div");
+    actions.className = "thumb-actions";
+    actions.setAttribute("role", "toolbar");
+    actions.setAttribute("aria-label", "Slide actions");
+
+    // Grab handle for rearranging slides
     const dragHandle = document.createElement("span");
-    dragHandle.className = "thumb-drag-handle";
-    dragHandle.setAttribute("aria-hidden", "true");
-    dragHandle.title = "Drag to reorder slide";
+    dragHandle.className = "thumb-action-btn thumb-drag-handle";
+    dragHandle.setAttribute("role", "button");
+    dragHandle.setAttribute("tabindex", "0");
+    dragHandle.setAttribute("title", "Drag to reorder (drop above to place before)");
+    dragHandle.setAttribute("aria-label", `Drag slide ${index + 1} to reorder`);
     dragHandle.textContent = "⋮⋮";
 
-    thumb.append(image, number, ragDot, dragHandle);
+    // Hide / Unhide button (icon-only)
+    const hideBtn = document.createElement("span");
+    hideBtn.className = `thumb-action-btn thumb-hide-btn ${slide.hidden ? "is-hidden" : ""}`;
+    hideBtn.setAttribute("role", "button");
+    hideBtn.setAttribute("tabindex", "0");
+    hideBtn.setAttribute("title", slide.hidden ? "Unhide slide" : "Hide slide");
+    hideBtn.setAttribute("aria-label", slide.hidden ? `Unhide slide ${index + 1}` : `Hide slide ${index + 1}`);
+    hideBtn.textContent = slide.hidden ? "⊘" : "👁";
+    hideBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      await toggleHideSlide(index);
+    });
+    hideBtn.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.stopPropagation();
+        await toggleHideSlide(index);
+      }
+    });
+
+    // Delete button (icon-only)
+    const deleteBtn = document.createElement("span");
+    deleteBtn.className = "thumb-action-btn thumb-delete-btn";
+    deleteBtn.setAttribute("role", "button");
+    deleteBtn.setAttribute("tabindex", "0");
+    deleteBtn.setAttribute("title", "Delete slide");
+    deleteBtn.setAttribute("aria-label", `Delete slide ${index + 1}`);
+    deleteBtn.textContent = "🗑";
+    deleteBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      await deleteSlide(index);
+    });
+    deleteBtn.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.stopPropagation();
+        await deleteSlide(index);
+      }
+    });
+
+    actions.append(dragHandle, hideBtn, deleteBtn);
+    thumb.append(image, number, ragDot, actions);
+
+    if (slide.hidden) {
+      const hiddenTag = document.createElement("span");
+      hiddenTag.className = "thumb-hidden-tag";
+      hiddenTag.textContent = "⊘ Hidden";
+      thumb.appendChild(hiddenTag);
+    }
+
     thumb.addEventListener("click", () => renderSlide(index));
 
     // Keyboard accessibility for reordering (Alt+ArrowUp, Alt+ArrowDown)
@@ -2805,11 +2866,14 @@ function renderThumbnails() {
 
       const rect = thumb.getBoundingClientRect();
       const isAbove = e.clientY < rect.top + rect.height / 2;
-      let targetIdx = index;
-      if (!isAbove && sourceIdx > index) {
-        targetIdx = index + 1;
-      } else if (isAbove && sourceIdx < index) {
-        targetIdx = index - 1;
+
+      // When isAbove is true: drop BEFORE this slide (shifts this and subsequent slides forward)
+      // When isAbove is false: drop AFTER this slide
+      let targetIdx;
+      if (isAbove) {
+        targetIdx = sourceIdx > index ? index : index - 1;
+      } else {
+        targetIdx = sourceIdx < index ? index : index + 1;
       }
 
       await moveSlideOrder(sourceIdx, targetIdx);
@@ -2817,6 +2881,107 @@ function renderThumbnails() {
 
     thumbnailsGrid.appendChild(thumb);
   });
+}
+
+async function toggleHideSlide(index) {
+  if (!currentDeck?.slides || !currentDeck.slides[index]) return;
+  const slide = currentDeck.slides[index];
+  const slideNum = slide.number;
+  slide.hidden = !slide.hidden;
+
+  renderThumbnails();
+  const slideHiddenBadge = document.getElementById("slideHiddenBadge");
+  if (slideHiddenBadge && currentSlideIndex === index) {
+    slideHiddenBadge.classList.toggle("hidden", !slide.hidden);
+  }
+
+  if (slideOrderStatusBadge) {
+    slideOrderStatusBadge.className = "slide-order-status saving";
+    slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⏳</span><span>Saving…</span>';
+    slideOrderStatusBadge.classList.remove("hidden");
+  }
+
+  try {
+    const res = await fetch(`/api/decks/${encodeURIComponent(currentDeck.id)}/slides/${encodeURIComponent(slideNum)}/toggle-hide`, {
+      method: "POST"
+    });
+    if (!res.ok) throw new Error("Failed to toggle slide hide status");
+    if (slideOrderStatusBadge) {
+      slideOrderStatusBadge.className = "slide-order-status saved";
+      slideOrderStatusBadge.innerHTML = `<span aria-hidden="true">✓</span><span>${slide.hidden ? "Slide hidden" : "Slide visible"}</span>`;
+      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
+      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 2400);
+    }
+  } catch (err) {
+    console.error("Error toggling slide hide:", err);
+    if (slideOrderStatusBadge) {
+      slideOrderStatusBadge.className = "slide-order-status error";
+      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⚠️</span><span>Save failed</span>';
+      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
+      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 3500);
+    }
+  }
+}
+
+async function deleteSlide(index) {
+  if (!currentDeck?.slides || !currentDeck.slides[index]) return;
+  if (currentDeck.slides.length <= 1) {
+    alert("Cannot delete the only remaining slide in the deck.");
+    return;
+  }
+
+  const slide = currentDeck.slides[index];
+  const slideNum = slide.number;
+  if (typeof window !== "undefined" && typeof window.confirm === "function") {
+    if (!window.confirm(`Delete Slide ${slideNum}? This cannot be undone.`)) {
+      return;
+    }
+  }
+
+  currentDeck.slides.splice(index, 1);
+  currentDeck.slides.forEach((s, i) => {
+    const oldNum = s.number;
+    const newNum = i + 1;
+    s.number = newNum;
+    if (typeof s.title === "string" && new RegExp(`^Slide\\s+${oldNum}$`, "i").test(s.title.trim())) {
+      s.title = `Slide ${newNum}`;
+    }
+  });
+  currentDeck.totalSlides = currentDeck.slides.length;
+
+  if (currentSlideIndex >= currentDeck.slides.length) {
+    currentSlideIndex = currentDeck.slides.length - 1;
+  }
+
+  renderThumbnails();
+  renderSlide(currentSlideIndex);
+
+  if (slideOrderStatusBadge) {
+    slideOrderStatusBadge.className = "slide-order-status saving";
+    slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⏳</span><span>Deleting…</span>';
+    slideOrderStatusBadge.classList.remove("hidden");
+  }
+
+  try {
+    const res = await fetch(`/api/decks/${encodeURIComponent(currentDeck.id)}/slides/${encodeURIComponent(slideNum)}`, {
+      method: "DELETE"
+    });
+    if (!res.ok) throw new Error("Failed to delete slide");
+    if (slideOrderStatusBadge) {
+      slideOrderStatusBadge.className = "slide-order-status saved";
+      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">✓</span><span>Slide deleted</span>';
+      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
+      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 2400);
+    }
+  } catch (err) {
+    console.error("Error deleting slide:", err);
+    if (slideOrderStatusBadge) {
+      slideOrderStatusBadge.className = "slide-order-status error";
+      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⚠️</span><span>Delete failed</span>';
+      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
+      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 3500);
+    }
+  }
 }
 
 async function moveSlideOrder(fromIndex, toIndex) {
@@ -3892,13 +4057,25 @@ function initWelcomeModal() {
 }
 
 function goToPreviousSlide() {
-  if (currentSlideIndex > 0) renderSlide(currentSlideIndex - 1);
+  if (!currentDeck) return;
+  let target = currentSlideIndex - 1;
+  if (!presenterMode) {
+    while (target >= 0 && currentDeck.slides[target]?.hidden) {
+      target--;
+    }
+  }
+  if (target >= 0) renderSlide(target);
 }
 
 function goToNextSlide() {
-  if (currentDeck && currentSlideIndex < currentDeck.slides.length - 1) {
-    renderSlide(currentSlideIndex + 1);
+  if (!currentDeck) return;
+  let target = currentSlideIndex + 1;
+  if (!presenterMode) {
+    while (target < currentDeck.slides.length && currentDeck.slides[target]?.hidden) {
+      target++;
+    }
   }
+  if (target < currentDeck.slides.length) renderSlide(target);
 }
 
 function toggleSidebar() {

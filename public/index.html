@@ -275,8 +275,11 @@
               role="tab"
               aria-selected="false"
               aria-controls="componentEditorView"
+              title="Components"
+              aria-label="Components"
             >
-              <span aria-hidden="true">✎</span> Components
+              <span aria-hidden="true" class="tab-pencil-icon">✎</span>
+              <span class="sr-only">Components</span>
             </button>
           </div>
           <div class="sidebar-header-meta">
@@ -439,6 +442,7 @@
             <span id="currentSlideNum">1</span>
             <span class="counter-slash">/</span>
             <span id="totalSlidesNum">15</span>
+            <span id="slideHiddenBadge" class="hidden-slide-viewer-badge hidden" title="This slide is hidden from presentation playback"><span aria-hidden="true">⊘</span> Hidden</span>
           </div>
 
           <button id="nextBtn" class="btn btn-nav" type="button" title="Next slide (Right arrow or Space)">

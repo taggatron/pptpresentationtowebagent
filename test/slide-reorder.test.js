@@ -292,3 +292,16 @@ test("UI templates and scripts contain slide drag-and-drop elements and handlers
   assert.match(js, /dragover/, "app.js must listen for dragover");
   assert.match(js, /drop/, "app.js must listen for drop");
 });
+
+test("sidebar components tab button displays pencil icon only without visible text", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+  assert.match(html, /id="tabEditorBtn"/);
+  assert.match(html, /<span aria-hidden="true" class="tab-pencil-icon">✎<\/span>/);
+  assert.match(html, /<span class="sr-only">Components<\/span>/);
+  assert.doesNotMatch(html, />\s*✎\s*Components\s*</);
+
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(css, /#tabEditorBtn\s*\{/);
+  assert.match(css, /\.tab-pencil-icon\s*\{/);
+});
+

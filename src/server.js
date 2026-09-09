@@ -984,6 +984,64 @@ export function createApp({
     }
   });
 
+  app.post("/api/decks/:deckId/slides/:slideNum/toggle-hide", async (req, res) => {
+    try {
+      const { manifestPath, manifest } = await readManifest(decksDir, req.params.deckId);
+      const slideNum = Number(req.params.slideNum);
+      const slide = (manifest.slides || []).find((s) => Number(s.number) === slideNum);
+      if (!slide) {
+        return res.status(404).json({ error: `Slide number ${slideNum} not found in deck.` });
+      }
+
+      slide.hidden = !slide.hidden;
+      await saveManifestFile(manifestPath, manifest);
+      res.json({ success: true, manifest, slideNum: slide.number, hidden: slide.hidden });
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        return res.status(404).json({ error: "Deck not found" });
+      }
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.delete("/api/decks/:deckId/slides/:slideNum", async (req, res) => {
+    try {
+      const { manifestPath, manifest } = await readManifest(decksDir, req.params.deckId);
+      const slideNum = Number(req.params.slideNum);
+      const slides = manifest.slides || [];
+      const slideIndex = slides.findIndex((s) => Number(s.number) === slideNum);
+      if (slideIndex === -1) {
+        return res.status(404).json({ error: `Slide number ${slideNum} not found in deck.` });
+      }
+
+      if (slides.length <= 1) {
+        return res.status(400).json({ error: "Cannot delete the only remaining slide in the deck." });
+      }
+
+      const [deletedSlide] = slides.splice(slideIndex, 1);
+
+      slides.forEach((slide, index) => {
+        const oldNum = slide.number;
+        const newNum = index + 1;
+        slide.number = newNum;
+        if (typeof slide.title === "string" && new RegExp(`^Slide\\s+${oldNum}$`, "i").test(slide.title.trim())) {
+          slide.title = `Slide ${newNum}`;
+        }
+      });
+
+      manifest.slides = slides;
+      manifest.totalSlides = slides.length;
+
+      await saveManifestFile(manifestPath, manifest);
+      res.json({ success: true, manifest, deletedSlideNum: slideNum, totalSlides: slides.length });
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        return res.status(404).json({ error: "Deck not found" });
+      }
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
   app.post("/api/decks/:deckId/slides/:slideNum/revise", async (req, res) => {
     try {
       const result = await runRevision({

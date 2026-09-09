@@ -2155,6 +2155,17 @@ body.theme-dark .sidebar-tab.active {
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
 }
 
+#tabEditorBtn {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.85rem;
+  justify-content: center;
+}
+
+.tab-pencil-icon {
+  display: inline-block;
+  line-height: 1;
+}
+
 .component-editor-view {
   flex: 1;
   display: flex;
@@ -3136,25 +3147,63 @@ body.theme-dark .thumb-item.active {
   border-radius: 4px;
 }
 
-.thumb-drag-handle {
+.thumb-actions {
   position: absolute;
   top: 4px;
   right: 4px;
-  background: rgba(15, 23, 42, 0.75);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.65rem;
-  line-height: 1;
-  padding: 3px 4px;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 6;
+}
+
+.thumb-item:hover .thumb-actions,
+.thumb-item:focus-within .thumb-actions {
+  opacity: 1;
+}
+
+.thumb-action-btn {
+  background: rgba(15, 23, 42, 0.82);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 3px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
   user-select: none;
 }
 
-.thumb-item:hover .thumb-drag-handle,
-.thumb-item:focus-visible .thumb-drag-handle {
-  opacity: 1;
+.thumb-action-btn:hover {
+  background: rgba(15, 23, 42, 0.98);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.thumb-action-btn.thumb-drag-handle {
+  cursor: grab;
+}
+
+.thumb-action-btn.thumb-drag-handle:active {
+  cursor: grabbing;
+}
+
+.thumb-action-btn.thumb-hide-btn.is-hidden {
+  background: rgba(217, 119, 6, 0.9);
+  color: #fff;
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.thumb-action-btn.thumb-delete-btn:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #f87171;
 }
 
 .thumb-item[draggable="true"] {
@@ -3174,30 +3223,72 @@ body.theme-dark .thumb-item.active {
   cursor: grabbing;
 }
 
-.thumb-item.drop-target-above::before {
-  content: "";
+.thumb-item.is-hidden {
+  opacity: 0.5;
+  filter: grayscale(45%);
+  border-style: dashed;
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+.thumb-item.is-hidden:hover {
+  opacity: 0.82;
+  filter: grayscale(15%);
+}
+
+.thumb-hidden-tag {
   position: absolute;
-  top: -4px;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(217, 119, 6, 0.9);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.thumb-item.drop-target-above::before {
+  content: "Insert before";
+  position: absolute;
+  top: -6px;
   left: 0;
   right: 0;
   height: 4px;
   background: var(--accent-cyan, #06b6d4);
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(6, 182, 212, 0.9);
-  z-index: 10;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 1);
+  z-index: 15;
+  font-size: 0.6rem;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  line-height: 4px;
+  padding-bottom: 12px;
 }
 
 .thumb-item.drop-target-below::after {
-  content: "";
+  content: "Insert after";
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 0;
   right: 0;
   height: 4px;
   background: var(--accent-cyan, #06b6d4);
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(6, 182, 212, 0.9);
-  z-index: 10;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 1);
+  z-index: 15;
+  font-size: 0.6rem;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  line-height: 4px;
+  padding-bottom: 12px;
 }
 
 .sidebar-header-meta {
@@ -3236,6 +3327,25 @@ body.theme-dark .thumb-item.active {
 }
 
 .slide-order-status.hidden {
+  display: none !important;
+}
+
+.hidden-slide-viewer-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #d97706;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.hidden-slide-viewer-badge.hidden {
   display: none !important;
 }
 
