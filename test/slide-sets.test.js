@@ -85,11 +85,11 @@ test("Slide Sets API returns categorized slide sets and default IDs", async () =
     assert.ok(ecoSet.decks.length >= 12, "Ecology & atmosphere should contain at least 12 lessons");
     assert.ok(ecoSet.decks.some((d) => d.id === "Lesson_01_Ecosystems"));
 
-    // Verify Intro to AAQ Human Bio slide set is present
+    // Verify Intro to Human Bio slide set is present
     const aaqSet = data.slideSets.find((s) => s.id === "intro_aaq_human_bio");
-    assert.ok(aaqSet, "Intro to AAQ Human Bio slide set should be present");
+    assert.ok(aaqSet, "Intro to Human Bio slide set should be present");
     assert.ok(aaqSet.decks.some((d) => d.id === "Lesson_01_Human_Biology_Scientist_Onboarding"));
-    assert.equal(aaqSet.title, "Intro to AAQ Human Bio");
+    assert.equal(aaqSet.title, "Intro to Human Bio");
 
     // Verify default IDs
     assert.equal(data.defaultSlideSetId, "cell_biology");

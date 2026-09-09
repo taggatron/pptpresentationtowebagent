@@ -719,9 +719,9 @@
             "h": 55
           },
           "answerBounds": {
-            "x": 51.6,
-            "y": 30.9,
-            "w": 34.1,
+            "x": 52,
+            "y": 30.4,
+            "w": 43.6,
             "h": 63.7
           },
           "revealMode": "blur",
@@ -788,10 +788,86 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Individual Metamorphosis Population Evolution\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_1_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png",
+          "generatedAt": "2026-09-09T22:24:23.767Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:24:23.767Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal first comparison component (Individual Metamorphosis).",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "731376 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_1_comparison.png",
+              "byteLength": 731376,
+              "sha256": "d92cc7a6cfe3a56988c64f7d66fb507600b3d8e7e8e8ffbc55bc7a12b2c3682d",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "591843b0a46a032478dd7fc38cf3a5aa5754ab1442487348652402e23ca605ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
         },
         {
           "id": "gemini_slide_7_2_comparison",
@@ -804,10 +880,86 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Individual Metamorphosis Population Evolution\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_2_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png",
+          "generatedAt": "2026-09-09T22:24:23.780Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:24:23.780Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Add second comparison component (Population Evolution) with attenuated step 1.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1113475 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_2_comparison.png",
+              "byteLength": 1113475,
+              "sha256": "08e986d8e12020863d3a00ac7f9db3221b555064c82049e629d72ec8db72219f",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "591843b0a46a032478dd7fc38cf3a5aa5754ab1442487348652402e23ca605ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
         },
         {
           "id": "gemini_slide_7_3_comparison",
@@ -820,13 +972,89 @@
           "fullCanvas": true,
           "cumulative": true,
           "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Individual Metamorphosis Population Evolution\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png"
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_3_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png",
+          "generatedAt": "2026-09-09T22:24:23.784Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:24:23.784Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Add comparison synthesis container (Natural selection acts on populations...).",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1229245 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_3_comparison.png",
+              "byteLength": 1229245,
+              "sha256": "be717d444b86ce63541438ba8505c6fc045c41658404dad42a18de2d31bfffd3",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "591843b0a46a032478dd7fc38cf3a5aa5754ab1442487348652402e23ca605ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -835,7 +1063,7 @@
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 3,
-        "approvedCellCount": 0,
+        "approvedCellCount": 3,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
@@ -848,6 +1076,344 @@
         "source": "local-ocr-fallback",
         "transcript": "Conceptual Check: Why is pop-culture “Evolution” biologically incorrect?\nIndividual Metamorphosis Population Evolution\n| Ba eo\n‘ A o>) Adapte fapte c a\nWw Oeatiyre  OQeeattyye  Deeatrpe © sear type\n> | )\nAy ‘ = gr Generations &\nNatural Selection\nInstant Transformation ey\nSingle Sean { Ancestral Population Y\nNatural selection acts on populations over generations, not individuals mutating instantly.",
         "role": "learner-question"
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_7_1_comparison",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal the first comparison component",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_1_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Individual Metamorphosis Population Evolution\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:24:23.767Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal first comparison component (Individual Metamorphosis).",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "731376 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_1_comparison.png",
+              "byteLength": 731376,
+              "sha256": "d92cc7a6cfe3a56988c64f7d66fb507600b3d8e7e8e8ffbc55bc7a12b2c3682d",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "591843b0a46a032478dd7fc38cf3a5aa5754ab1442487348652402e23ca605ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_7_2_comparison",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Add the second comparison component",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_2_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Individual Metamorphosis Population Evolution\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:24:23.780Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Add second comparison component (Population Evolution) with attenuated step 1.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1113475 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_2_comparison.png",
+              "byteLength": 1113475,
+              "sha256": "08e986d8e12020863d3a00ac7f9db3221b555064c82049e629d72ec8db72219f",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "591843b0a46a032478dd7fc38cf3a5aa5754ab1442487348652402e23ca605ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_7_3_comparison",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Add the comparison insight",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_3_comparison.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Individual Metamorphosis Population Evolution\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:24:23.784Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Add comparison synthesis container (Natural selection acts on populations...).",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1229245 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_07_gemini_slide_7_3_comparison.png",
+              "byteLength": 1229245,
+              "sha256": "be717d444b86ce63541438ba8505c6fc045c41658404dad42a18de2d31bfffd3",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "591843b0a46a032478dd7fc38cf3a5aa5754ab1442487348652402e23ca605ba",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_7_1_comparison",
+            "title": "Build 1: Reveal the first comparison component",
+            "componentIds": [
+              "gemini_slide_7_1_comparison"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_7_2_comparison",
+            "title": "Build 2: Add the second comparison component",
+            "componentIds": [
+              "gemini_slide_7_2_comparison"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_7_3_comparison",
+            "title": "Build 3: Add the comparison insight",
+            "componentIds": [
+              "gemini_slide_7_3_comparison"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -1324,7 +1890,8 @@
         "source": "local-ocr-fallback",
         "transcript": "Clinical Dashboard\nF174: Nutrition and Metabolism\nFocus: Energy balance, metabolic\nWT pathways, and dietary components.\n5 4\n[i j Unit F171: G7 S F175: Human Reproduction\ni ; a , Focus: Reproductive systems, fertilization,\n: Health & Disease oe and embryonic development.\n(Cardiopulmonary anatomy,\ngas exchange surfaces, ~ | am Wee.\n\\\\ pathologies, immunology, . ; fs\nN epidemiology). /] \\ | GS F176: The Brain ,\no\\ ‘ D a <2 Focus: Neuroscience, brain structure,\n_ 4 function, and disorders.\n(am\n“= shes wr F177: Drug Development\nF ‘afi Focus: Pharmacokinetics,\nYou will select two specialist pathways to Be ‘5 1\ncomplete your Advanced National qualification. pharmacodynamics, and clinigaljtfals",
         "role": "instructional-content"
-      }
+      },
+      "hidden": true
     },
     {
       "number": 12,

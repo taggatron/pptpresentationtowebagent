@@ -165,7 +165,7 @@ export const KNOWN_SLIDE_SETS = [
   },
   {
     id: "intro_aaq_human_bio",
-    title: "Intro to AAQ Human Bio",
+    title: "Intro to Human Bio",
     category: "Human Biology",
     icon: "🔬",
     folder: "powerpoints_aaq_human_bio",
@@ -343,7 +343,7 @@ export function inferSlideSetId(deckId, manifest = null) {
   ) {
     return "tbi_neuro";
   }
-  if (/(?:AAQ|Human_Bio|Biomedical)/i.test(deckId)) {
+  if (/(?:AAQ|Human_Bio|Human_Biology|Biomedical)/i.test(deckId)) {
     return "intro_aaq_human_bio";
   }
   return "other";

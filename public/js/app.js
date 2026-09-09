@@ -2717,9 +2717,18 @@ async function fetchSlideSets() {
         );
       }
       if (!targetSet) {
+        const savedDeckId = localStorage.getItem("vibe_deck_current_deck");
         const savedSetId = localStorage.getItem("vibe_deck_current_set");
         if (savedSetId) {
-          targetSet = data.slideSets.find((s) => s.id === savedSetId);
+          const candidate = data.slideSets.find((s) => s.id === savedSetId);
+          if (candidate && (!savedDeckId || candidate.decks?.some((d) => d.id === savedDeckId))) {
+            targetSet = candidate;
+          }
+        }
+        if (!targetSet && savedDeckId) {
+          targetSet = data.slideSets.find((s) =>
+            s.decks?.some((d) => d.id === savedDeckId)
+          );
         }
       }
       if (!targetSet) {
