@@ -1199,21 +1199,113 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Pair-and-Share Activity Setup",
+          "label": "Build 1: Pair-and-Share Activity Setup (Untimed, No Timer)",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: The slide title (\"Pair-and-Share: The Knock-on Effect\"), timer widget, green scenario banner (\"A new pathogen (biotic factor) enters the woodland and severely reduces the population of earthworms.\"), Student A prompt (\"Focus on the predators: What will happen to the population of blackbirds that rely primarily on earthworms for food?\"), and Student B prompt (\"Focus on the soil: What will happen to the soil quality and the plants that grow there, given that earthworms recycle dead leaves?\").\nTemporarily omit: The expected answer boxes for Student A and Student B, and the bottom synthesis takeaway banner. Leave the expected answer locations as clean white card background and close the student card container with a clean bottom border.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: The slide title (\"Pair-and-Share: The Knock-on Effect\"), full green scenario banner without the timer (\"A new pathogen (biotic factor) enters the woodland and severely reduces the population of earthworms.\"), Student A question prompt (\"Focus on the predators: What will happen to the population of blackbirds that rely primarily on earthworms for food?\"), and Student B question prompt (\"Focus on the soil: What will happen to the soil quality and the plants that grow there, given that earthworms recycle dead leaves?\").\nTemporarily omit: The top-right timer widget, the expected answer boxes for Student A and Student B, and the bottom synthesis takeaway banner. Extend the green scenario banner cleanly to the right border with its natural rounded corner, and leave the expected answer locations as clean white card background.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "approved",
           "qaStatus": "approved",
           "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_1_component_reveal.png",
           "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
-          "generatedAt": "2026-09-09T22:38:27.996Z",
+          "generatedAt": "2026-09-09T22:43:46.840Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-09T22:38:27.996Z",
+            "reviewedAt": "2026-09-09T22:43:46.840Z",
             "reviewer": "Teacher_Dan",
-            "notes": "Build 1: Activity Setup (Scenario banner + Student A and B prompts, answer boxes and bottom banner omitted).",
+            "notes": "Build 1: Untimed activity setup without timer widget in top-right. Prompts visible, answers and takeaway hidden.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "716327 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_1_component_reveal.png",
+              "byteLength": 716327,
+              "sha256": "44b1c448aac1727e91c254c18970ad2719355fd9b22f2c8d9fd2dfe831b40359",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "a8ee61f14a411b07bffefe596a5e79ff99a890a00e6ca26c0a727c3753594762",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_11_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Activity Timer Starts (2:00)",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from Build 1 plus the top-right circular timer widget (\"75% 2:00\").\nTemporarily omit: Both expected answer boxes for Student A and Student B, and the bottom synthesis takeaway banner.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "approved",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
+          "generatedAt": "2026-09-09T22:43:46.845Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:43:46.845Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Activity timer widget (75% 2:00) starts in top right.",
             "technical": {
               "passed": true,
               "checks": [
@@ -1257,7 +1349,7 @@
                   "detail": "Generated build is distinct from the other cells in this sequence."
                 }
               ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_1_component_reveal.png",
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_2_component_reveal.png",
               "byteLength": 820734,
               "sha256": "fdfc6da0a61ec8de52ac38d10e6cdaa6ef8c28cd18baa669fb9a001247fb3840",
               "dimensions": {
@@ -1286,26 +1378,26 @@
           }
         },
         {
-          "id": "gemini_slide_11_2_component_reveal",
-          "order": 2,
+          "id": "gemini_slide_11_3_component_reveal",
+          "order": 3,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Reveal the synthesis takeaway",
+          "label": "Build 3: Reveal the synthesis takeaway",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from Build 1 plus the bottom dark slate-grey synthesis takeaway banner (\"Synthesis Takeaway: Removing just one species disrupts the entire community network.\").\nTemporarily omit: Both expected answer boxes for Student A and Student B remain omitted as clean white card background so students can discuss the overarching ecological rule before viewing specific answers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from earlier builds plus the bottom dark slate-grey synthesis takeaway banner (\"Synthesis Takeaway: Removing just one species disrupts the entire community network.\").\nTemporarily omit: Both expected answer boxes for Student A and Student B remain omitted so students synthesize the broader ecological rule before viewing specific answers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "approved",
           "qaStatus": "approved",
-          "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_2_component_reveal.png",
+          "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
           "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
-          "generatedAt": "2026-09-09T22:38:28.007Z",
+          "generatedAt": "2026-09-09T22:43:46.849Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-09T22:38:28.007Z",
+            "reviewedAt": "2026-09-09T22:43:46.849Z",
             "reviewer": "Teacher_Dan",
-            "notes": "Build 2: Synthesis Takeaway revealed at the bottom; expected answers remain omitted for discussion.",
+            "notes": "Build 3: Synthesis takeaway banner revealed at bottom; answers still omitted.",
             "technical": {
               "passed": true,
               "checks": [
@@ -1349,7 +1441,7 @@
                   "detail": "Generated build is distinct from the other cells in this sequence."
                 }
               ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_2_component_reveal.png",
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
               "byteLength": 975938,
               "sha256": "797a156a5e835ec42d00d023d1f0f344a455977a3082894f79a9c8e682910b7f",
               "dimensions": {
@@ -1378,26 +1470,26 @@
           }
         },
         {
-          "id": "gemini_slide_11_3_component_reveal",
-          "order": 3,
+          "id": "gemini_slide_11_4_component_reveal",
+          "order": 4,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 3: Reveal the expected model answers",
+          "label": "Build 4: Reveal the expected model answers",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from earlier builds plus both expected model answer boxes: Student A expected answer \"(Expected: Decrease due to food scarcity/competition)\" and Student B expected answer \"(Expected: Soil quality drops, plant growth stunts)\". The expected answers appear strictly last.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from earlier builds plus both expected model answer boxes: Student A expected answer \"(Expected: Decrease due to food scarcity/competition)\" and Student B expected answer \"(Expected: Soil quality drops, plant growth stunts)\". The expected answers appear strictly last.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "approved",
           "qaStatus": "approved",
-          "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
+          "outputImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_4_component_reveal.png",
           "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
-          "generatedAt": "2026-09-09T22:38:28.011Z",
+          "generatedAt": "2026-09-09T22:43:46.852Z",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-09T22:38:28.011Z",
+            "reviewedAt": "2026-09-09T22:43:46.852Z",
             "reviewer": "Teacher_Dan",
-            "notes": "Build 3: Expected answers revealed for Student A and Student B in full; expected answers appear last.",
+            "notes": "Build 4: Expected answers revealed for Student A and Student B; expected answers appear strictly last.",
             "technical": {
               "passed": true,
               "checks": [
@@ -1441,7 +1533,7 @@
                   "detail": "Generated build is distinct from the other cells in this sequence."
                 }
               ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_4_component_reveal.png",
               "byteLength": 1211535,
               "sha256": "4dcc2f597b41a4b3ad8006f95802f72ca7e14c9b6317feff5e107b10fc64b83e",
               "dimensions": {
@@ -1477,9 +1569,9 @@
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 3,
-        "plannedCellCount": 3,
-        "approvedCellCount": 3,
+        "analyzedComponentCount": 4,
+        "plannedCellCount": 4,
+        "approvedCellCount": 4,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
@@ -1492,17 +1584,17 @@
           "version": 1,
           "kind": "image",
           "mediaType": "image",
-          "label": "Build 1: Pair-and-Share Activity Setup",
+          "label": "Build 1: Pair-and-Share Activity Setup (Untimed, No Timer)",
           "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_1_component_reveal.png",
           "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: The slide title (\"Pair-and-Share: The Knock-on Effect\"), timer widget, green scenario banner (\"A new pathogen (biotic factor) enters the woodland and severely reduces the population of earthworms.\"), Student A prompt (\"Focus on the predators: What will happen to the population of blackbirds that rely primarily on earthworms for food?\"), and Student B prompt (\"Focus on the soil: What will happen to the soil quality and the plants that grow there, given that earthworms recycle dead leaves?\").\nTemporarily omit: The expected answer boxes for Student A and Student B, and the bottom synthesis takeaway banner. Leave the expected answer locations as clean white card background and close the student card container with a clean bottom border.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: The slide title (\"Pair-and-Share: The Knock-on Effect\"), full green scenario banner without the timer (\"A new pathogen (biotic factor) enters the woodland and severely reduces the population of earthworms.\"), Student A question prompt (\"Focus on the predators: What will happen to the population of blackbirds that rely primarily on earthworms for food?\"), and Student B question prompt (\"Focus on the soil: What will happen to the soil quality and the plants that grow there, given that earthworms recycle dead leaves?\").\nTemporarily omit: The top-right timer widget, the expected answer boxes for Student A and Student B, and the bottom synthesis takeaway banner. Extend the green scenario banner cleanly to the right border with its natural rounded corner, and leave the expected answer locations as clean white card background.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "generationStatus": "ready",
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-09T22:38:27.996Z",
+            "reviewedAt": "2026-09-09T22:43:46.840Z",
             "reviewer": "Teacher_Dan",
-            "notes": "Build 1: Activity Setup (Scenario banner + Student A and B prompts, answer boxes and bottom banner omitted).",
+            "notes": "Build 1: Untimed activity setup without timer widget in top-right. Prompts visible, answers and takeaway hidden.",
             "technical": {
               "passed": true,
               "checks": [
@@ -1518,7 +1610,7 @@
                 {
                   "id": "minimum-file-size",
                   "passed": true,
-                  "detail": "820734 bytes; minimum 20000"
+                  "detail": "716327 bytes; minimum 20000"
                 },
                 {
                   "id": "minimum-resolution",
@@ -1547,8 +1639,8 @@
                 }
               ],
               "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_1_component_reveal.png",
-              "byteLength": 820734,
-              "sha256": "fdfc6da0a61ec8de52ac38d10e6cdaa6ef8c28cd18baa669fb9a001247fb3840",
+              "byteLength": 716327,
+              "sha256": "44b1c448aac1727e91c254c18970ad2719355fd9b22f2c8d9fd2dfe831b40359",
               "dimensions": {
                 "format": "png",
                 "width": 1376,
@@ -1587,17 +1679,112 @@
           "version": 2,
           "kind": "image",
           "mediaType": "image",
-          "label": "Build 2: Reveal the synthesis takeaway",
+          "label": "Build 2: Activity Timer Starts (2:00)",
           "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_2_component_reveal.png",
           "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from Build 1 plus the bottom dark slate-grey synthesis takeaway banner (\"Synthesis Takeaway: Removing just one species disrupts the entire community network.\").\nTemporarily omit: Both expected answer boxes for Student A and Student B remain omitted as clean white card background so students can discuss the overarching ecological rule before viewing specific answers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from Build 1 plus the top-right circular timer widget (\"75% 2:00\").\nTemporarily omit: Both expected answer boxes for Student A and Student B, and the bottom synthesis takeaway banner.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "generationStatus": "ready",
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-09T22:38:28.007Z",
+            "reviewedAt": "2026-09-09T22:43:46.845Z",
             "reviewer": "Teacher_Dan",
-            "notes": "Build 2: Synthesis Takeaway revealed at the bottom; expected answers remain omitted for discussion.",
+            "notes": "Build 2: Activity timer widget (75% 2:00) starts in top right.",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "820734 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                },
+                {
+                  "id": "unique-build-image",
+                  "passed": true,
+                  "detail": "Generated build is distinct from the other cells in this sequence."
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_2_component_reveal.png",
+              "byteLength": 820734,
+              "sha256": "fdfc6da0a61ec8de52ac38d10e6cdaa6ef8c28cd18baa669fb9a001247fb3840",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "a8ee61f14a411b07bffefe596a5e79ff99a890a00e6ca26c0a727c3753594762",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_11_3_component_reveal",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Reveal the synthesis takeaway",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from earlier builds plus the bottom dark slate-grey synthesis takeaway banner (\"Synthesis Takeaway: Removing just one species disrupts the entire community network.\").\nTemporarily omit: Both expected answer boxes for Student A and Student B remain omitted so students synthesize the broader ecological rule before viewing specific answers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-09T22:43:46.849Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Synthesis takeaway banner revealed at bottom; answers still omitted.",
             "technical": {
               "passed": true,
               "checks": [
@@ -1641,7 +1828,7 @@
                   "detail": "Generated build is distinct from the other cells in this sequence."
                 }
               ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_2_component_reveal.png",
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
               "byteLength": 975938,
               "sha256": "797a156a5e835ec42d00d023d1f0f344a455977a3082894f79a9c8e682910b7f",
               "dimensions": {
@@ -1678,21 +1865,21 @@
           "transition": "crossfade"
         },
         {
-          "id": "gemini_slide_11_3_component_reveal",
-          "version": 3,
+          "id": "gemini_slide_11_4_component_reveal",
+          "version": 4,
           "kind": "image",
           "mediaType": "image",
-          "label": "Build 3: Reveal the expected model answers",
-          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
+          "label": "Build 4: Reveal the expected model answers",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_4_component_reveal.png",
           "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_08.png",
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from earlier builds plus both expected model answer boxes: Student A expected answer \"(Expected: Decrease due to food scarcity/competition)\" and Student B expected answer \"(Expected: Soil quality drops, plant growth stunts)\". The expected answers appear strictly last.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 11: \"Pair-and-Share: The Knock-on Effect\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nInstructional build strategy: component-reveal.\nShow now: Everything from earlier builds plus both expected model answer boxes: Student A expected answer \"(Expected: Decrease due to food scarcity/competition)\" and Student B expected answer \"(Expected: Soil quality drops, plant growth stunts)\". The expected answers appear strictly last.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "generationStatus": "ready",
           "qaStatus": "approved",
           "qa": {
             "status": "approved",
-            "reviewedAt": "2026-09-09T22:38:28.011Z",
+            "reviewedAt": "2026-09-09T22:43:46.852Z",
             "reviewer": "Teacher_Dan",
-            "notes": "Build 3: Expected answers revealed for Student A and Student B in full; expected answers appear last.",
+            "notes": "Build 4: Expected answers revealed for Student A and Student B; expected answers appear strictly last.",
             "technical": {
               "passed": true,
               "checks": [
@@ -1736,7 +1923,7 @@
                   "detail": "Generated build is distinct from the other cells in this sequence."
                 }
               ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_3_component_reveal.png",
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Classic_Lesson_01_Ecosystems/slides/slide_11_gemini_slide_11_4_component_reveal.png",
               "byteLength": 1211535,
               "sha256": "4dcc2f597b41a4b3ad8006f95802f72ca7e14c9b6317feff5e107b10fc64b83e",
               "dimensions": {
@@ -1774,13 +1961,13 @@
         }
       ],
       "serialAnimation": {
-        "totalBuildSteps": 3,
+        "totalBuildSteps": 4,
         "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
             "buildId": "gemini_slide_11_1_component_reveal",
-            "title": "Build 1: Pair-and-Share Activity Setup",
+            "title": "Build 1: Pair-and-Share Activity Setup (Untimed, No Timer)",
             "componentIds": [
               "gemini_slide_11_1_component_reveal"
             ],
@@ -1795,7 +1982,7 @@
           {
             "step": 2,
             "buildId": "gemini_slide_11_2_component_reveal",
-            "title": "Build 2: Reveal the synthesis takeaway",
+            "title": "Build 2: Activity Timer Starts (2:00)",
             "componentIds": [
               "gemini_slide_11_2_component_reveal"
             ],
@@ -1810,9 +1997,24 @@
           {
             "step": 3,
             "buildId": "gemini_slide_11_3_component_reveal",
-            "title": "Build 3: Reveal the expected model answers",
+            "title": "Build 3: Reveal the synthesis takeaway",
             "componentIds": [
               "gemini_slide_11_3_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 4,
+            "buildId": "gemini_slide_11_4_component_reveal",
+            "title": "Build 4: Reveal the expected model answers",
+            "componentIds": [
+              "gemini_slide_11_4_component_reveal"
             ],
             "targetBounds": {
               "x": 0,
@@ -2185,7 +2387,7 @@
     },
     {
       "number": 15,
-      "title": "Slide 15",
+      "title": "The Big Picture: The Ecosystem Engine",
       "imageFileName": "slide_15.png",
       "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_15.png",
       "sourceMediaPath": "ppt/media/image15.png",
@@ -2228,38 +2430,85 @@
         "questionCount": 0,
         "detectionSource": "manifest-text"
       },
-      "geminiImageCells": [
+      "videoUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/Please_take_the_attached_slide.mp4",
+      "muted": true,
+      "forceMuted": true,
+      "volume": 0,
+      "hasProgressiveBuilds": true,
+      "originalImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_15.png",
+      "progressiveBuilds": [
         {
-          "id": "gemini_slide_15_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"1. Ecosystems\".\nDeck context: 1. Ecosystems.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 1. Ecosystems\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_15.png"
+          "version": 1,
+          "label": "Build 1: The Ecosystem Engine Video Summary",
+          "videoUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/Please_take_the_attached_slide.mp4",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_15.png",
+          "muted": true,
+          "forceMuted": true,
+          "volume": 0
+        },
+        {
+          "version": 2,
+          "label": "Build 2: The Big Picture Summary",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_15.png"
         }
       ],
-      "hasProgressiveBuilds": false,
+      "history": [
+        {
+          "id": "ver_video_summary",
+          "label": "Build 1: The Ecosystem Engine Video Summary",
+          "videoUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/Please_take_the_attached_slide.mp4",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_15.png",
+          "muted": true,
+          "forceMuted": true,
+          "volume": 0
+        },
+        {
+          "id": "ver_orig",
+          "label": "Original Slide Image",
+          "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_15.png"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "video_build_1",
+            "title": "Build 1: The Ecosystem Engine Video Summary",
+            "componentIds": [
+              "video_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
+          },
+          {
+            "step": 2,
+            "buildId": "image_build_2",
+            "title": "Build 2: The Big Picture Summary",
+            "componentIds": [
+              "image_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
       "animationPlan": {
         "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
+        "mode": "protected-video",
+        "reason": "Existing video media is preserved without image-plan replacement.",
+        "protectedVideoCount": 1
       }
     }
   ],

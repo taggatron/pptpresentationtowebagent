@@ -922,7 +922,6 @@ function addVideoListener(videoEl, eventName, handler, options) {
 function hideSlideVideo() {
   if (!slideVideo) return;
   slideVideo.pause();
-  slideVideo.muted = false;
   cleanupVideoSegmentHandler(slideVideo);
   slideVideo.classList.add("hidden");
   slideVideo.classList.remove("playback-blocked");
@@ -934,6 +933,16 @@ function showVideoBuild(slide, build) {
   slideVideo.pause();
   cleanupVideoSegmentHandler(slideVideo);
 
+  const isForceMuted = Boolean(
+    build?.muted ||
+    build?.forceMuted ||
+    slide?.muted ||
+    slide?.forceMuted ||
+    build?.volume === 0 ||
+    slide?.volume === 0 ||
+    build?.videoUrl?.includes("Please_take_the_attached_slide.mp4")
+  );
+
   const token = videoPlaybackToken;
   const fullUrl = new URL(build.videoUrl, window.location.href).href;
   const posterUrl = build.posterUrl || build.imageUrl || slide.imageUrl || "";
@@ -942,9 +951,18 @@ function showVideoBuild(slide, build) {
   slideVideo.removeAttribute("controls");
   slideVideo.classList.remove("hidden");
 
+  if (isForceMuted) {
+    slideVideo.muted = true;
+    slideVideo.defaultMuted = true;
+    slideVideo.volume = 0;
+  }
+
   // Allow clicking anywhere on the video player to toggle play / pause or unmute
   addVideoListener(slideVideo, "click", () => {
-    if (slideVideo.muted) {
+    if (isForceMuted) {
+      slideVideo.muted = true;
+      slideVideo.volume = 0;
+    } else if (slideVideo.muted) {
       slideVideo.muted = false;
     }
     if (slideVideo.paused) {
@@ -953,6 +971,14 @@ function showVideoBuild(slide, build) {
       videoPlayFallback?.classList.add("hidden");
     } else {
       slideVideo.pause();
+    }
+  });
+
+  // Guard against any attempt to change volume or unmute when force muted
+  addVideoListener(slideVideo, "volumechange", () => {
+    if (isForceMuted && (!slideVideo.muted || slideVideo.volume > 0)) {
+      slideVideo.muted = true;
+      slideVideo.volume = 0;
     }
   });
 
@@ -976,25 +1002,37 @@ function showVideoBuild(slide, build) {
 
   const attemptPlay = () => {
     if (token !== videoPlaybackToken) return;
+    if (isForceMuted) {
+      slideVideo.muted = true;
+      slideVideo.volume = 0;
+    }
     const playResult = slideVideo.play();
     if (playResult?.then) {
       playResult
         .then(() => {
           if (token !== videoPlaybackToken) return;
+          if (isForceMuted) {
+            slideVideo.muted = true;
+            slideVideo.volume = 0;
+          }
           pendingVideoReplay = null;
           slideVideo.classList.remove("playback-blocked");
           videoPlayFallback?.classList.add("hidden");
         })
         .catch((err) => {
           if (token !== videoPlaybackToken) return;
-          console.warn("Unmuted autoplay restricted by browser policy; trying muted autoplay:", err);
+          console.warn("Autoplay restricted by browser policy; trying muted autoplay:", err);
           // Browsers allow muted autoplay without prior user interaction.
           slideVideo.muted = true;
+          slideVideo.volume = 0;
           const mutedResult = slideVideo.play();
           if (mutedResult?.then) {
             mutedResult
               .then(() => {
                 if (token !== videoPlaybackToken) return;
+                if (isForceMuted) {
+                  slideVideo.volume = 0;
+                }
                 // Video is playing smoothly muted. No popup in middle of video.
                 pendingVideoReplay = null;
                 slideVideo.classList.remove("playback-blocked");
@@ -1003,7 +1041,12 @@ function showVideoBuild(slide, build) {
               .catch(() => {
                 // If even muted play was blocked, provide full play button
                 pendingVideoReplay = () => {
-                  slideVideo.muted = false;
+                  if (isForceMuted) {
+                    slideVideo.muted = true;
+                    slideVideo.volume = 0;
+                  } else {
+                    slideVideo.muted = false;
+                  }
                   slideVideo.play().catch(() => {});
                   slideVideo.classList.remove("playback-blocked");
                   videoPlayFallback?.classList.add("hidden");
@@ -4482,7 +4525,26 @@ function setupEventListeners() {
   nextAnswerBtn?.addEventListener("click", revealNextAnswer);
   autoPlayBuildsBtn?.addEventListener("click", toggleAutoPlay);
   videoPlayFallback?.addEventListener("click", () => {
-    if (slideVideo) slideVideo.muted = false;
+    const activeSlide = currentDeck?.slides?.[currentSlideIndex];
+    const stageSteps = activeSlide ? getStageBuildSteps(activeSlide) : [];
+    const activeBuild = stageSteps[currentMediaBuildStep - 1];
+    const isMuted = Boolean(
+      activeBuild?.muted ||
+      activeBuild?.forceMuted ||
+      activeSlide?.muted ||
+      activeSlide?.forceMuted ||
+      activeBuild?.volume === 0 ||
+      activeSlide?.volume === 0 ||
+      activeBuild?.videoUrl?.includes("Please_take_the_attached_slide.mp4")
+    );
+    if (slideVideo) {
+      if (isMuted) {
+        slideVideo.muted = true;
+        slideVideo.volume = 0;
+      } else {
+        slideVideo.muted = false;
+      }
+    }
     if (typeof pendingVideoReplay === "function") {
       pendingVideoReplay();
     } else if (slideVideo) {
