@@ -64,6 +64,27 @@ const fullscreenBtn = document.getElementById("fullscreenBtn");
 const startSlideshowBtn = document.getElementById("startSlideshowBtn");
 const presentationDisplayBadge = document.getElementById("presentationDisplayBadge");
 let presentationWindowRef = null;
+const analyticsModalBtn = document.getElementById("analyticsModalBtn");
+const analyticsModal = document.getElementById("analyticsModal");
+const closeAnalyticsModalBtn = document.getElementById("closeAnalyticsModalBtn");
+const analyticsStatusBadge = document.getElementById("analyticsStatusBadge");
+const analyticsTotalTime = document.getElementById("analyticsTotalTime");
+const analyticsSessionCount = document.getElementById("analyticsSessionCount");
+const analyticsSlidesTracked = document.getElementById("analyticsSlidesTracked");
+const analyticsCurrentSlidePhase = document.getElementById("analyticsCurrentSlidePhase");
+const analyticsAvgPace = document.getElementById("analyticsAvgPace");
+const donutChartSvg = document.getElementById("donutChartSvg");
+const donutCenterMetric = document.getElementById("donutCenterMetric");
+const donutCenterInfo = document.getElementById("donutCenterInfo");
+const chartLegend = document.getElementById("chartLegend");
+const phaseCardsList = document.getElementById("phaseCardsList");
+const toggleSlideTableBtn = document.getElementById("toggleSlideTableBtn");
+const slideTableExpandIcon = document.getElementById("slideTableExpandIcon");
+const slideDwellTableWrap = document.getElementById("slideDwellTableWrap");
+const slideDwellTableBody = document.getElementById("slideDwellTableBody");
+const analyticsSlideCountBadge = document.getElementById("analyticsSlideCountBadge");
+const chartModeActualBtn = document.getElementById("chartModeActualBtn");
+const chartModeTargetBtn = document.getElementById("chartModeTargetBtn");
 const isPresentationWindow =
   typeof window !== "undefined" &&
   window?.location?.search &&
@@ -2566,8 +2587,517 @@ function setSlideshowButtonActive(active) {
   startSlideshowBtn.setAttribute("aria-pressed", String(active));
 }
 
+/* ==========================================================================
+   Lesson Slideshow Analytics & Pedagogical Phase Tracking Engine
+   ========================================================================== */
+
+const analyticsTracker = {
+  sessionId: null,
+  active: false,
+  deckId: null,
+  currentSlideIndex: 0,
+  currentSlideNum: 1,
+  slideEnterTime: null,
+  dwells: {}, // { [slideNumber]: totalMs }
+  heartbeatInterval: null,
+  cachedAnalysis: null,
+  hoveredPhaseKey: null
+};
+
+function formatAnalyticsDuration(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  if (minutes > 0) {
+    return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
+  }
+  return `${seconds}s`;
+}
+
+function updateAnalyticsButtonStatus(active) {
+  if (!analyticsModalBtn) return;
+  analyticsModalBtn.classList.toggle("tracking-active", active);
+  analyticsModalBtn.setAttribute(
+    "title",
+    active
+      ? "Slideshow Analytics (Recording Live - Click to view)"
+      : "Slideshow Analytics (Click to view)"
+  );
+  if (analyticsStatusBadge) {
+    analyticsStatusBadge.textContent = active ? "Recording Live" : "Idle";
+    analyticsStatusBadge.className = `analytics-status-pill ${active ? "recording" : "idle"}`;
+  }
+}
+
+async function startSlideshowTracking() {
+  if (!currentDeck?.id) return;
+
+  analyticsTracker.deckId = currentDeck.id;
+  analyticsTracker.currentSlideIndex = currentSlideIndex;
+  analyticsTracker.currentSlideNum = currentSlideIndex + 1;
+  analyticsTracker.slideEnterTime = Date.now();
+  if (!analyticsTracker.dwells) analyticsTracker.dwells = {};
+
+  try {
+    const res = await fetch("/api/analytics/session/start", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        deckId: currentDeck.id,
+        totalSlides: currentDeck.slides ? currentDeck.slides.length : 0
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      analyticsTracker.sessionId = data.session?.id || `sess_${Date.now()}`;
+    } else {
+      analyticsTracker.sessionId = `sess_${Date.now()}`;
+    }
+  } catch (err) {
+    analyticsTracker.sessionId = `sess_${Date.now()}`;
+  }
+
+  analyticsTracker.active = true;
+  updateAnalyticsButtonStatus(true);
+
+  if (analyticsTracker.heartbeatInterval) clearInterval(analyticsTracker.heartbeatInterval);
+  analyticsTracker.heartbeatInterval = setInterval(sendAnalyticsHeartbeat, 2000);
+
+  // Background fetch phase mapping
+  fetchDeckAnalyticsData(currentDeck.id).catch(() => {});
+}
+
+function recordSlideTransition(newIndex) {
+  if (!analyticsTracker.active || !analyticsTracker.slideEnterTime) return;
+  const now = Date.now();
+  const elapsed = now - analyticsTracker.slideEnterTime;
+  const prevSlideNum = analyticsTracker.currentSlideNum || (currentSlideIndex + 1);
+  analyticsTracker.dwells[prevSlideNum] = (analyticsTracker.dwells[prevSlideNum] || 0) + elapsed;
+  analyticsTracker.slideEnterTime = now;
+  analyticsTracker.currentSlideIndex = newIndex;
+  analyticsTracker.currentSlideNum = newIndex + 1;
+
+  sendSlideDwell(prevSlideNum, analyticsTracker.dwells[prevSlideNum]);
+}
+
+async function sendSlideDwell(slideNumber, dwellMs) {
+  if (!analyticsTracker.sessionId || !analyticsTracker.deckId) return;
+  let phaseKey = null;
+  if (analyticsTracker.cachedAnalysis?.slides) {
+    const s = analyticsTracker.cachedAnalysis.slides.find((item) => item.slideNumber === slideNumber);
+    if (s) phaseKey = s.phaseKey;
+  }
+  try {
+    await fetch("/api/analytics/session/heartbeat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sessionId: analyticsTracker.sessionId,
+        deckId: analyticsTracker.deckId,
+        slideIndex: slideNumber - 1,
+        slideNumber,
+        dwellMs: Math.round(dwellMs),
+        phaseKey
+      })
+    });
+  } catch (_) {}
+}
+
+async function sendAnalyticsHeartbeat() {
+  if (!analyticsTracker.active || !analyticsTracker.slideEnterTime) return;
+  const now = Date.now();
+  const currentElapsed = now - analyticsTracker.slideEnterTime;
+  const sNum = analyticsTracker.currentSlideNum || (currentSlideIndex + 1);
+  const totalDwell = (analyticsTracker.dwells[sNum] || 0) + currentElapsed;
+
+  await sendSlideDwell(sNum, totalDwell);
+
+  if (analyticsModal && !analyticsModal.classList.contains("hidden")) {
+    refreshAnalyticsModalViews(false);
+  }
+}
+
+async function fetchDeckAnalyticsData(deckId) {
+  if (!deckId) return null;
+  try {
+    const res = await fetch(`/api/analytics/deck/${encodeURIComponent(deckId)}`);
+    if (!res.ok) throw new Error("Failed to load analytics");
+    const data = await res.json();
+    analyticsTracker.cachedAnalysis = data;
+    return data;
+  } catch (err) {
+    console.warn("Could not fetch deck analytics:", err);
+    return null;
+  }
+}
+
+function describeDonutSegment(cx, cy, rOuter, rInner, startAngleDeg, endAngleDeg) {
+  if (endAngleDeg - startAngleDeg >= 359.999) {
+    endAngleDeg = startAngleDeg + 359.99;
+  }
+  const toRad = (deg) => ((deg - 90) * Math.PI) / 180;
+
+  const startOuter = {
+    x: cx + rOuter * Math.cos(toRad(startAngleDeg)),
+    y: cy + rOuter * Math.sin(toRad(startAngleDeg))
+  };
+  const endOuter = {
+    x: cx + rOuter * Math.cos(toRad(endAngleDeg)),
+    y: cy + rOuter * Math.sin(toRad(endAngleDeg))
+  };
+  const startInner = {
+    x: cx + rInner * Math.cos(toRad(startAngleDeg)),
+    y: cy + rInner * Math.sin(toRad(startAngleDeg))
+  };
+  const endInner = {
+    x: cx + rInner * Math.cos(toRad(endAngleDeg)),
+    y: cy + rInner * Math.sin(toRad(endAngleDeg))
+  };
+
+  const largeArcFlag = endAngleDeg - startAngleDeg > 180 ? 1 : 0;
+
+  return [
+    `M ${startOuter.x.toFixed(2)} ${startOuter.y.toFixed(2)}`,
+    `A ${rOuter} ${rOuter} 0 ${largeArcFlag} 1 ${endOuter.x.toFixed(2)} ${endOuter.y.toFixed(2)}`,
+    `L ${endInner.x.toFixed(2)} ${endInner.y.toFixed(2)}`,
+    `A ${rInner} ${rInner} 0 ${largeArcFlag} 0 ${startInner.x.toFixed(2)} ${startInner.y.toFixed(2)}`,
+    "Z"
+  ].join(" ");
+}
+
+function renderDonutChart(phases, isPreview = false, totalDwellMs = 0) {
+  if (!donutChartSvg) return;
+  donutChartSvg.innerHTML = "";
+
+  const cx = 180;
+  const cy = 180;
+  const rOuter = 145;
+  const rInner = 88;
+  const gapDeg = phases.length > 1 ? 2 : 0;
+
+  let currentAngle = 0;
+  phases.forEach((phase) => {
+    const pct = isPreview ? phase.targetPercentage : phase.actualPercentage;
+    const spanDeg = (pct / 100) * 360;
+    if (spanDeg <= 0) return;
+
+    const startAngle = currentAngle + gapDeg / 2;
+    const endAngle = currentAngle + spanDeg - gapDeg / 2;
+    currentAngle += spanDeg;
+
+    const pathD = describeDonutSegment(cx, cy, rOuter, rInner, startAngle, endAngle);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", pathD);
+    path.setAttribute("fill", phase.color);
+    path.setAttribute("class", "donut-slice");
+    path.dataset.phaseKey = phase.phaseKey;
+    path.dataset.phaseName = phase.name;
+    path.dataset.pct = pct;
+    path.dataset.color = phase.color;
+    path.dataset.dwell = phase.actualDwellFormatted || "0m 00s";
+    path.dataset.target = phase.targetPercentage;
+
+    path.addEventListener("mouseenter", () => handleSliceHover(phase, isPreview));
+    path.addEventListener("mouseleave", () => handleSliceLeave(isPreview, totalDwellMs));
+
+    donutChartSvg.appendChild(path);
+  });
+
+  renderChartLegend(phases, isPreview);
+}
+
+function handleSliceHover(phase, isPreview) {
+  if (!donutCenterInfo || !donutCenterMetric) return;
+  const titleEl = donutCenterInfo.querySelector(".center-title");
+  const subEl = donutCenterInfo.querySelector(".center-sub");
+  if (titleEl) titleEl.textContent = phase.name;
+  
+  if (isPreview) {
+    if (subEl) subEl.textContent = "Benchmark Target";
+    donutCenterMetric.textContent = `${phase.targetPercentage}%`;
+  } else {
+    if (subEl) subEl.textContent = `Target: ${phase.targetPercentage}%`;
+    donutCenterMetric.textContent = `${phase.actualPercentage}% · ${phase.actualDwellFormatted || "0s"}`;
+  }
+  donutCenterMetric.style.color = phase.color;
+
+  const cards = phaseCardsList?.querySelectorAll(".phase-card");
+  cards?.forEach((card) => {
+    const match = card.dataset.phaseKey === phase.phaseKey;
+    card.classList.toggle("active", match);
+  });
+}
+
+function handleSliceLeave(isPreview, totalDwellMs) {
+  if (!donutCenterInfo || !donutCenterMetric) return;
+  const titleEl = donutCenterInfo.querySelector(".center-title");
+  const subEl = donutCenterInfo.querySelector(".center-sub");
+  
+  if (isPreview) {
+    if (titleEl) titleEl.textContent = "Recommended Time";
+    if (subEl) subEl.textContent = "Allocation Across Stages";
+    donutCenterMetric.textContent = "100% Target";
+  } else {
+    if (titleEl) titleEl.textContent = "Lesson Time";
+    if (subEl) subEl.textContent = "Distribution";
+    donutCenterMetric.textContent = totalDwellMs > 0 ? formatAnalyticsDuration(totalDwellMs) : "0m 00s";
+  }
+  donutCenterMetric.style.color = "#0284c7";
+
+  const cards = phaseCardsList?.querySelectorAll(".phase-card");
+  cards?.forEach((card) => card.classList.remove("active"));
+}
+
+function renderChartLegend(phases, isPreview) {
+  if (!chartLegend) return;
+  chartLegend.innerHTML = "";
+
+  phases.forEach((phase) => {
+    const pct = isPreview ? phase.targetPercentage : phase.actualPercentage;
+    const item = document.createElement("div");
+    item.className = "legend-item";
+    item.dataset.phaseKey = phase.phaseKey;
+    item.innerHTML = `
+      <span class="legend-swatch" style="background-color: ${phase.color}"></span>
+      <span class="legend-label" title="${phase.name}">${phase.name}</span>
+      <span class="legend-pct">${pct}%</span>
+    `;
+
+    item.addEventListener("mouseenter", () => {
+      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
+      if (slice) slice.classList.add("active");
+      handleSliceHover(phase, isPreview);
+    });
+    item.addEventListener("mouseleave", () => {
+      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
+      if (slice) slice.classList.remove("active");
+      handleSliceLeave(isPreview, 0);
+    });
+
+    chartLegend.appendChild(item);
+  });
+}
+
+function renderPhaseCards(phases, totalDwellMs) {
+  if (!phaseCardsList) return;
+  phaseCardsList.innerHTML = "";
+
+  phases.forEach((phase) => {
+    const actualPct = phase.actualPercentage || 0;
+    const targetPct = phase.targetPercentage || 0;
+    const delta = phase.deltaPercentage !== undefined ? phase.deltaPercentage : (actualPct - targetPct);
+
+    let deltaClass = "balanced";
+    let deltaText = "On Target";
+    if (delta > 0.5) {
+      deltaClass = "positive";
+      deltaText = `+${delta.toFixed(1)}%`;
+    } else if (delta < -0.5) {
+      deltaClass = "negative";
+      deltaText = `${delta.toFixed(1)}%`;
+    }
+
+    const card = document.createElement("div");
+    card.className = "phase-card";
+    card.dataset.phaseKey = phase.phaseKey;
+    card.style.borderLeftColor = phase.color;
+
+    const slideChips = (phase.slideNumbers || [])
+      .map((sNum) => `<span class="phase-slide-chip" title="Slide ${sNum}">Slide ${sNum}</span>`)
+      .join(" ");
+
+    card.innerHTML = `
+      <div class="phase-card-top">
+        <span class="phase-card-title">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${phase.color}"></span>
+          ${phase.name}
+        </span>
+        <span class="phase-card-time">${phase.actualDwellFormatted || "0m 00s"}</span>
+      </div>
+      <div class="phase-card-meta">
+        <span>Actual: <strong>${actualPct}%</strong> | Target: ${targetPct}%</span>
+        <span class="phase-delta-badge ${deltaClass}">${deltaText}</span>
+      </div>
+      <div class="phase-bar-track">
+        <div class="phase-bar-fill" style="width: ${Math.min(100, actualPct)}%; background-color: ${phase.color}"></div>
+      </div>
+      <div class="phase-slides-list">
+        ${slideChips || '<span class="text-muted">No slides mapped</span>'}
+      </div>
+    `;
+
+    card.addEventListener("mouseenter", () => {
+      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
+      if (slice) slice.classList.add("active");
+    });
+    card.addEventListener("mouseleave", () => {
+      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
+      if (slice) slice.classList.remove("active");
+    });
+
+    phaseCardsList.appendChild(card);
+  });
+}
+
+function renderSlideDwellTable(slides, currentSlideNum) {
+  if (!slideDwellTableBody) return;
+  slideDwellTableBody.innerHTML = "";
+
+  slides.forEach((slide) => {
+    const isCurrent = slide.slideNumber === currentSlideNum;
+    const row = document.createElement("tr");
+    if (isCurrent) row.className = "current-active-slide";
+
+    const guidance = slide.phaseGuidance || "Class instruction & participation";
+
+    row.innerHTML = `
+      <td><strong>${slide.slideNumber}</strong></td>
+      <td title="${slide.title || 'Slide ' + slide.slideNumber}">${slide.title || 'Slide ' + slide.slideNumber}</td>
+      <td>
+        <span class="slide-phase-pill" style="background-color: ${slide.phaseColor}">
+          ${slide.phaseName}
+        </span>
+      </td>
+      <td><strong>${slide.formattedDwell || "0m 00s"}</strong></td>
+      <td>${slide.visitCount || 0}</td>
+      <td class="text-muted" style="font-size: 0.72rem;">${guidance}</td>
+    `;
+
+    slideDwellTableBody.appendChild(row);
+  });
+}
+
+async function openAnalyticsModal() {
+  if (!currentDeck?.id) return;
+  if (analyticsModal) analyticsModal.classList.remove("hidden");
+
+  await refreshAnalyticsModalViews(true);
+}
+
+function closeAnalyticsModal() {
+  if (analyticsModal) analyticsModal.classList.add("hidden");
+}
+
+async function refreshAnalyticsModalViews(fullFetch = true) {
+  let data = analyticsTracker.cachedAnalysis;
+  if (fullFetch || !data) {
+    data = await fetchDeckAnalyticsData(currentDeck?.id);
+  }
+  if (!data) return;
+
+  let activeInFlightMs = 0;
+  if (analyticsTracker.active && analyticsTracker.slideEnterTime) {
+    activeInFlightMs = Date.now() - analyticsTracker.slideEnterTime;
+  }
+
+  const currentSlide = analyticsTracker.currentSlideNum || (currentSlideIndex + 1);
+
+  let totalTrackedMs = data.totalDurationMs || 0;
+  totalTrackedMs += activeInFlightMs;
+  Object.entries(analyticsTracker.dwells || {}).forEach(([sNum, ms]) => {
+    const sMetric = data.slides?.find((s) => s.slideNumber === Number(sNum));
+    const dbMs = sMetric ? sMetric.totalDwellMs : 0;
+    if (ms > dbMs) {
+      totalTrackedMs += (ms - dbMs);
+    }
+  });
+
+  const isPreview = totalTrackedMs <= 0;
+
+  if (analyticsTotalTime) {
+    analyticsTotalTime.textContent = isPreview ? "0m 00s" : formatAnalyticsDuration(totalTrackedMs);
+  }
+  if (analyticsSessionCount) {
+    const count = (data.sessionCount || 0) + (analyticsTracker.active ? 1 : 0);
+    analyticsSessionCount.textContent = `${count} session${count === 1 ? "" : "s"} recorded`;
+  }
+  if (analyticsSlidesTracked) {
+    const totalS = data.totalSlides || currentDeck?.slides?.length || 0;
+    const visited = data.slides?.filter((s) => (s.totalDwellMs > 0 || analyticsTracker.dwells[s.slideNumber] > 0)).length || 0;
+    analyticsSlidesTracked.textContent = `${visited} / ${totalS}`;
+  }
+  if (analyticsCurrentSlidePhase) {
+    const currentSlideInfo = data.slides?.find((s) => s.slideNumber === currentSlide);
+    analyticsCurrentSlidePhase.textContent = currentSlideInfo
+      ? `Slide ${currentSlide}: ${currentSlideInfo.phaseName}`
+      : `Slide ${currentSlide}`;
+  }
+  if (analyticsAvgPace) {
+    const visited = data.slides?.filter((s) => (s.totalDwellMs > 0 || analyticsTracker.dwells[s.slideNumber] > 0)).length || 1;
+    const avgMs = visited > 0 ? Math.round(totalTrackedMs / visited) : 0;
+    analyticsAvgPace.textContent = formatAnalyticsDuration(avgMs);
+  }
+  if (analyticsSlideCountBadge) {
+    analyticsSlideCountBadge.textContent = `${data.totalSlides || currentDeck?.slides?.length || 0} slides`;
+  }
+
+  updateAnalyticsButtonStatus(analyticsTracker.active);
+
+  const computedPhases = (data.phases || []).map((p) => {
+    if (isPreview) return p;
+    let phaseDwell = p.actualDwellMs || 0;
+    (p.slideNumbers || []).forEach((sNum) => {
+      const localDwell = analyticsTracker.dwells[sNum] || 0;
+      const sMetric = data.slides?.find((s) => s.slideNumber === sNum);
+      const dbDwell = sMetric ? sMetric.totalDwellMs : 0;
+      if (localDwell > dbDwell) {
+        phaseDwell += (localDwell - dbDwell);
+      }
+      if (sNum === currentSlide && activeInFlightMs > 0) {
+        phaseDwell += activeInFlightMs;
+      }
+    });
+
+    const actualPct = totalTrackedMs > 0 ? Math.round((phaseDwell / totalTrackedMs) * 1000) / 10 : 0;
+    return {
+      ...p,
+      actualDwellMs: phaseDwell,
+      actualDwellFormatted: formatAnalyticsDuration(phaseDwell),
+      actualPercentage: actualPct,
+      deltaPercentage: Math.round((actualPct - p.targetPercentage) * 10) / 10
+    };
+  });
+
+  const isTargetView = analyticsTracker.viewMode === "target" || totalTrackedMs <= 0;
+
+  if (chartModeActualBtn && chartModeTargetBtn) {
+    chartModeActualBtn.classList.toggle("active", !isTargetView);
+    chartModeTargetBtn.classList.toggle("active", isTargetView);
+  }
+
+  const chartHeading = document.getElementById("chartHeading");
+  if (chartHeading) {
+    chartHeading.textContent = isTargetView
+      ? "Recommended Time Allocation Across Lesson Stages"
+      : "Live Time Allocation Across Lesson Stages";
+  }
+
+  renderDonutChart(computedPhases, isTargetView, totalTrackedMs);
+  handleSliceLeave(isTargetView, totalTrackedMs);
+  renderPhaseCards(computedPhases, totalTrackedMs);
+
+  const updatedSlides = (data.slides || []).map((s) => {
+    let dwell = s.totalDwellMs || 0;
+    const localDwell = analyticsTracker.dwells[s.slideNumber] || 0;
+    if (localDwell > dwell) dwell = localDwell;
+    if (s.slideNumber === currentSlide && activeInFlightMs > 0) dwell += activeInFlightMs;
+
+    return {
+      ...s,
+      totalDwellMs: dwell,
+      formattedDwell: formatAnalyticsDuration(dwell),
+      visitCount: (s.visitCount || 0) + (analyticsTracker.dwells[s.slideNumber] ? 1 : 0)
+    };
+  });
+
+  renderSlideDwellTable(updatedSlides, currentSlide);
+}
+
 async function startSlideshow() {
   if (isPresentationWindow) return;
+
+  // Initiate automatic slideshow tracking
+  startSlideshowTracking();
 
   // If a secondary presentation window is already open, focus it
   if (presentationWindowRef && !presentationWindowRef.closed) {
@@ -2903,6 +3433,16 @@ async function loadDeck(deckId, initialSlideIndex = 0) {
     currentMediaBuildStep = 0;
     if (answerLiveRegion) answerLiveRegion.textContent = "";
 
+    // Reset analytics tracker for new deck
+    analyticsTracker.cachedAnalysis = null;
+    analyticsTracker.dwells = {};
+    if (analyticsTracker.active) {
+      analyticsTracker.deckId = currentDeck.id;
+      analyticsTracker.currentSlideIndex = 0;
+      analyticsTracker.currentSlideNum = 1;
+      analyticsTracker.slideEnterTime = Date.now();
+    }
+
     // Sync slide set dropdown if needed
     if (availableSlideSets?.length) {
       const parentSet = availableSlideSets.find((s) =>
@@ -3016,6 +3556,12 @@ function renderSlide(index) {
 
   currentSlideIndex = index;
   const slide = currentDeck.slides[index];
+
+  // Slideshow tracking dwell record
+  if (analyticsTracker.active) {
+    recordSlideTransition(index);
+  }
+
   const buildSteps = getStageBuildSteps(slide);
   currentMediaBuildStep = buildSteps.length > 0 ? 1 : 0;
   restoreSavedBoundsForSlide(slide);
@@ -4844,6 +5390,24 @@ function setupEventListeners() {
   cognitiveModal?.addEventListener("click", (event) => {
     if (event.target === cognitiveModal) closeCognitiveModal();
   });
+  analyticsModalBtn?.addEventListener("click", openAnalyticsModal);
+  closeAnalyticsModalBtn?.addEventListener("click", closeAnalyticsModal);
+  analyticsModal?.addEventListener("click", (event) => {
+    if (event.target === analyticsModal) closeAnalyticsModal();
+  });
+  toggleSlideTableBtn?.addEventListener("click", () => {
+    if (!slideDwellTableWrap) return;
+    const isHidden = slideDwellTableWrap.classList.toggle("hidden");
+    slideTableExpandIcon?.classList.toggle("open", !isHidden);
+  });
+  chartModeActualBtn?.addEventListener("click", () => {
+    analyticsTracker.viewMode = "actual";
+    refreshAnalyticsModalViews(false);
+  });
+  chartModeTargetBtn?.addEventListener("click", () => {
+    analyticsTracker.viewMode = "target";
+    refreshAnalyticsModalViews(false);
+  });
   editTargetOverlay?.addEventListener("pointerdown", startEditPointerInteraction);
   editTargetOverlay?.addEventListener("pointermove", moveEditPointerInteraction);
   editTargetOverlay?.addEventListener("pointerup", finishEditPointerInteraction);
@@ -4957,6 +5521,8 @@ function setupEventListeners() {
       welcomeModal.classList.add("hidden");
     } else if (event.key === "Escape" && !cognitiveModal?.classList.contains("hidden")) {
       closeCognitiveModal();
+    } else if (event.key === "Escape" && analyticsModal && !analyticsModal.classList.contains("hidden")) {
+      closeAnalyticsModal();
     } else if (
       event.key === "Escape" &&
       activeSidebarTab === "editor" &&

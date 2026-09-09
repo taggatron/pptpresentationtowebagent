@@ -954,9 +954,15 @@
         <div class="analytics-content-split">
           <!-- Donut Chart Left -->
           <div class="analytics-chart-panel">
-            <div class="panel-header">
-              <h4>Time Allocation Across Lesson Stages</h4>
-              <span class="chart-hint">Hover segments for phase details</span>
+            <div class="panel-header chart-panel-header">
+              <div class="panel-title-group">
+                <h4 id="chartHeading">Time Allocation Across Lesson Stages</h4>
+                <span class="chart-hint">Hover segments for phase details</span>
+              </div>
+              <div class="chart-mode-toggle" role="group" aria-label="Donut chart view mode">
+                <button type="button" id="chartModeActualBtn" class="chart-mode-btn active">Live Dwells</button>
+                <button type="button" id="chartModeTargetBtn" class="chart-mode-btn">Target Plan</button>
+              </div>
             </div>
             <div class="donut-chart-container" id="donutChartContainer">
               <svg id="donutChartSvg" class="donut-chart-svg" viewBox="0 0 360 360" aria-label="Lesson time distribution donut chart">
@@ -988,7 +994,7 @@
         <!-- Per-slide timeline accordion / table -->
         <div class="analytics-slides-breakdown">
           <div class="panel-header collapsable-header" id="toggleSlideTableBtn">
-            <h4>Slide-by-Slide Dwell & Phase Log (<span id="slideCountBadge">0 slides</span>)</h4>
+            <h4>Slide-by-Slide Dwell & Phase Log (<span id="analyticsSlideCountBadge">0 slides</span>)</h4>
             <span class="expand-indicator" id="slideTableExpandIcon">▼</span>
           </div>
           <div class="slide-dwell-table-wrap" id="slideDwellTableWrap">

@@ -571,15 +571,15 @@
 
       <!-- Segmented View Mode Switcher -->
       <div class="mode-switcher" role="tablist" aria-label="Viewing layout switcher">
-        <button id="modeBtnSplit" class="mode-btn active" role="tab" aria-selected="true" title="Split Screen 50:50 (Questions Left, Mark Scheme Right)">
-          <span class="icon">🔀</span>
-          <span>Split 50:50</span>
-        </button>
-        <button id="modeBtnQuestions" class="mode-btn" role="tab" aria-selected="false" title="Questions Only Full Width">
+        <button id="modeBtnQuestions" class="mode-btn active" role="tab" aria-selected="true" title="Questions Only Full Width (Key 1)">
           <span class="icon">📄</span>
           <span>Questions Only</span>
         </button>
-        <button id="modeBtnMarkScheme" class="mode-btn" role="tab" aria-selected="false" title="Mark Scheme Only Full Width">
+        <button id="modeBtnSplit" class="mode-btn" role="tab" aria-selected="false" title="Split Screen 50:50 (Questions Left, Mark Scheme Right) (Key 2)">
+          <span class="icon">🔀</span>
+          <span>Split 50:50</span>
+        </button>
+        <button id="modeBtnMarkScheme" class="mode-btn" role="tab" aria-selected="false" title="Mark Scheme Only Full Width (Key 3)">
           <span class="icon">✅</span>
           <span>Mark Scheme Only</span>
         </button>
@@ -587,16 +587,16 @@
 
       <!-- Right Utility Controls -->
       <div class="utility-group">
-        <button id="btnToggleAnswers" class="btn-action" title="Toggle Model Answers on Question Paper">
+        <button id="btnToggleAnswers" class="btn-action" title="Toggle Model Answers on Question Paper (Key A)">
           <span class="icon">💡</span>
           <span id="btnAnswersText">Reveal Answers</span>
         </button>
 
         <div class="zoom-group">
-          <button id="btnZoomOut" class="btn-zoom" title="Zoom Out (-)">−</button>
-          <span id="zoomLabel" class="zoom-text">Fit</span>
-          <button id="btnZoomIn" class="btn-zoom" title="Zoom In (+)">+</button>
-          <button id="btnZoomReset" class="btn-zoom" title="Reset Zoom" style="font-size: calc(10px * var(--scale)); width: auto; padding: 0 calc(5px * var(--scale));">Reset</button>
+          <button id="btnZoomOut" class="btn-icon" title="Zoom Out (−)">−</button>
+          <span id="zoomLabel" class="zoom-level">100%</span>
+          <button id="btnZoomIn" class="btn-icon" title="Zoom In (+)">+</button>
+          <button id="btnZoomReset" class="btn-icon" title="Reset Zoom (0)" style="font-size: calc(11px * var(--scale)); width: auto; padding: 0 calc(6px * var(--scale));">Reset</button>
         </div>
 
         <a id="btnDownloadPdf" class="btn-action" href="/decks/Classic_Lesson_01_Ecosystems/assets/exam_pdf/ocr_ecosystems_checkpoint.pdf" target="_blank" download="ocr_ecosystems_checkpoint.pdf" title="Open or Download Original OCR PDF">
@@ -607,7 +607,7 @@
     </header>
 
     <!-- Main Viewport Arena -->
-    <main class="viewport-arena" id="viewportArena">
+    <main class="viewport-arena view-mode-questions" id="viewportArena">
       <!-- Left Pane: Question Paper (Pages 1 & 2) -->
       <section class="viewer-pane pane-left" id="paneQuestions" aria-label="Question Paper">
         <div class="pane-toolbar">
@@ -758,7 +758,7 @@
       const sheetPage2 = document.getElementById("sheetPage2");
       const sheetPage3 = document.getElementById("sheetPage3");
 
-      let currentMode = "split";
+      let currentMode = "questions";
       let currentZoom = 1.0;
       let answersVisible = false;
 
@@ -816,9 +816,13 @@
         modeBtnSplit.classList.remove("active");
         modeBtnQuestions.classList.remove("active");
         modeBtnMarkScheme.classList.remove("active");
+        modeBtnSplit.setAttribute("aria-selected", "false");
+        modeBtnQuestions.setAttribute("aria-selected", "false");
+        modeBtnMarkScheme.setAttribute("aria-selected", "false");
 
         if (mode === "split") {
           modeBtnSplit.classList.add("active");
+          modeBtnSplit.setAttribute("aria-selected", "true");
           paneQuestions.style.flex = "1 1 50%";
           paneQuestions.style.width = "50%";
           paneMarkScheme.style.flex = "1 1 50%";
@@ -826,20 +830,26 @@
           splitterDivider.style.display = "flex";
         } else if (mode === "questions") {
           modeBtnQuestions.classList.add("active");
+          modeBtnQuestions.setAttribute("aria-selected", "true");
           viewportArena.classList.add("view-mode-questions");
           splitterDivider.style.display = "none";
         } else if (mode === "markscheme") {
           modeBtnMarkScheme.classList.add("active");
+          modeBtnMarkScheme.setAttribute("aria-selected", "true");
           viewportArena.classList.add("view-mode-markscheme");
           splitterDivider.style.display = "none";
         }
 
         setTimeout(applyZoom, 50);
+        setTimeout(applyZoom, 260);
       }
 
-      modeBtnSplit.addEventListener("click", () => setMode("split"));
       modeBtnQuestions.addEventListener("click", () => setMode("questions"));
+      modeBtnSplit.addEventListener("click", () => setMode("split"));
       modeBtnMarkScheme.addEventListener("click", () => setMode("markscheme"));
+
+      // Initialize explicitly in Questions Only mode
+      setMode("questions");
 
       function setPageFilter(filter) {
         btnPageAll.classList.remove("active");

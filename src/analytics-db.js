@@ -63,9 +63,32 @@ export function getAnalyticsDb() {
 }
 
 /**
+ * Format duration in milliseconds to m s string
+ */
+export function formatDuration(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  if (minutes > 0) {
+    return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
+  }
+  return `${seconds}s`;
+}
+
+/**
  * Start a new slideshow tracking session
  */
-export function startTrackingSession({ sessionId, deckId, deckTitle = "" }) {
+export function startTrackingSession(deckIdOrOptions, totalSlides = 0, deckTitle = "") {
+  let deckId = deckIdOrOptions;
+  let sessionId = null;
+  let title = deckTitle;
+  if (typeof deckIdOrOptions === "object" && deckIdOrOptions !== null) {
+    deckId = deckIdOrOptions.deckId;
+    sessionId = deckIdOrOptions.sessionId;
+    title = deckIdOrOptions.deckTitle || "";
+    totalSlides = deckIdOrOptions.totalSlides || 0;
+  }
+
   const db = getAnalyticsDb();
   const now = new Date().toISOString();
   const id = sessionId || `session_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
@@ -78,22 +101,39 @@ export function startTrackingSession({ sessionId, deckId, deckTitle = "" }) {
     INSERT INTO sessions (id, deck_id, deck_title, start_time, total_duration_seconds, is_active, created_at)
     VALUES (?, ?, ?, ?, 0, 1, ?)
   `);
-  insertStmt.run(id, deckId, deckTitle, now, now);
+  insertStmt.run(id, deckId, title, now, now);
 
   syncJsonBackup();
-  return { id, deckId, deckTitle, startTime: now, isActive: true };
+  return { id, deckId, deckTitle: title, startTime: now, isActive: true, status: "recording" };
 }
 
 /**
  * Record or increment dwell time for a specific slide during an active session
  */
-export function recordSlideDwell({ sessionId, slideNumber, slideTitle = "", lessonPhase = "direct_instruction", deltaSeconds = 1 }) {
+export function recordSlideDwell(
+  sessionIdOrOptions,
+  deckId = null,
+  slideIndex = 0,
+  slideNumber = 1,
+  dwellMs = 0,
+  phaseKey = "direct_instruction"
+) {
+  let sessionId = sessionIdOrOptions;
+  let sNum = slideNumber;
+  let slideTitle = "";
+  let lessonPhase = phaseKey;
+  let deltaSec = dwellMs ? dwellMs / 1000 : 1;
+
+  if (typeof sessionIdOrOptions === "object" && sessionIdOrOptions !== null) {
+    sessionId = sessionIdOrOptions.sessionId;
+    sNum = sessionIdOrOptions.slideNumber || (sessionIdOrOptions.slideIndex !== undefined ? sessionIdOrOptions.slideIndex + 1 : 1);
+    slideTitle = sessionIdOrOptions.slideTitle || "";
+    lessonPhase = sessionIdOrOptions.lessonPhase || sessionIdOrOptions.phaseKey || "direct_instruction";
+    deltaSec = sessionIdOrOptions.deltaSeconds ?? (sessionIdOrOptions.dwellMs ? sessionIdOrOptions.dwellMs / 1000 : 1);
+  }
+
   const db = getAnalyticsDb();
   const now = new Date().toISOString();
-  const sNum = Number(slideNumber) || 1;
-  const delta = Number(deltaSeconds) || 0;
-
-  if (delta <= 0) return;
 
   const upsertStmt = db.prepare(`
     INSERT INTO slide_dwells (session_id, slide_number, slide_title, lesson_phase, duration_seconds, updated_at)
@@ -104,23 +144,40 @@ export function recordSlideDwell({ sessionId, slideNumber, slideTitle = "", less
       lesson_phase = excluded.lesson_phase,
       updated_at = excluded.updated_at
   `);
-  upsertStmt.run(sessionId, sNum, slideTitle, lessonPhase, delta, now);
+  upsertStmt.run(sessionId, sNum, slideTitle, lessonPhase, deltaSec, now);
 
   // Update session total duration
+  const sumQuery = db.prepare("SELECT SUM(duration_seconds) as total FROM slide_dwells WHERE session_id = ?");
+  const total = sumQuery.get(sessionId)?.total || deltaSec;
+
   const updateSessionStmt = db.prepare(`
     UPDATE sessions
-    SET total_duration_seconds = total_duration_seconds + ?
+    SET total_duration_seconds = ?
     WHERE id = ?
   `);
-  updateSessionStmt.run(delta, sessionId);
+  updateSessionStmt.run(total, sessionId);
 
   syncJsonBackup();
+  return {
+    sessionId,
+    slideNumber: sNum,
+    dwellMs: Math.round(deltaSec * 1000),
+    visitCount: 1,
+    lessonPhase
+  };
 }
 
 /**
  * Finish a tracking session and calculate phase percentages
  */
-export function finishTrackingSession({ sessionId, totalDurationSeconds = null }) {
+export function finishTrackingSession(sessionIdOrOptions, deckId = null) {
+  let sessionId = sessionIdOrOptions;
+  let totalDurationSeconds = null;
+  if (typeof sessionIdOrOptions === "object" && sessionIdOrOptions !== null) {
+    sessionId = sessionIdOrOptions.sessionId;
+    totalDurationSeconds = sessionIdOrOptions.totalDurationSeconds;
+  }
+
   const db = getAnalyticsDb();
   const now = new Date().toISOString();
 
@@ -142,7 +199,9 @@ export function finishTrackingSession({ sessionId, totalDurationSeconds = null }
     const dur = Number(row.duration_seconds) || 0;
     totalDuration += dur;
     const p = row.lesson_phase || "direct_instruction";
-    phaseTotals[p] = (phaseTotals[p] || 0) + dur;
+    if (phaseTotals[p] !== undefined) {
+      phaseTotals[p] += dur;
+    }
   });
 
   if (totalDurationSeconds && Number(totalDurationSeconds) > totalDuration) {
@@ -176,9 +235,19 @@ export function finishTrackingSession({ sessionId, totalDurationSeconds = null }
   return {
     sessionId,
     endTime: now,
+    durationMs: Math.round(totalDuration * 1000),
     totalDurationSeconds: totalDuration,
+    status: "completed",
     phaseTotals
   };
+}
+
+export function getAllSessions(deckId = null) {
+  const db = getAnalyticsDb();
+  if (deckId) {
+    return db.prepare("SELECT * FROM sessions WHERE deck_id = ? ORDER BY created_at DESC").all(deckId);
+  }
+  return db.prepare("SELECT * FROM sessions ORDER BY created_at DESC").all();
 }
 
 /**
@@ -200,14 +269,26 @@ export function getDeckAnalytics(deckId) {
   `);
   const latestSession = sessionQuery.get(deckId);
 
+  // Total sessions for this deck
+  const countQuery = db.prepare("SELECT COUNT(*) as cnt FROM sessions WHERE deck_id = ?");
+  const totalSessions = countQuery.get(deckId)?.cnt || 0;
+
+  const allSessionsQuery = db.prepare("SELECT * FROM sessions WHERE deck_id = ? ORDER BY created_at DESC LIMIT 20");
+  const allSessions = allSessionsQuery.all(deckId) || [];
+
   if (!latestSession) {
     return {
       hasData: false,
       deckId,
       session: null,
+      latestSession: null,
+      sessions: [],
+      slides: [],
       slideDwells: [],
+      phaseBreakdown: buildDefaultPhaseBreakdown(),
       phases: buildDefaultPhaseBreakdown(),
-      totalSessions: 0
+      totalSessions: 0,
+      totalDurationMs: 0
     };
   }
 
@@ -219,11 +300,6 @@ export function getDeckAnalytics(deckId) {
   `);
   const dwells = dwellsQuery.all(latestSession.id) || [];
 
-  // Total sessions for this deck
-  const countQuery = db.prepare("SELECT COUNT(*) as cnt FROM sessions WHERE deck_id = ?");
-  const totalSessions = countQuery.get(deckId)?.cnt || 1;
-
-  // Calculate phase breakdown
   let totalSeconds = Number(latestSession.total_duration_seconds) || 0;
   if (totalSeconds === 0) {
     totalSeconds = dwells.reduce((sum, d) => sum + (Number(d.duration_seconds) || 0), 0);
@@ -238,65 +314,57 @@ export function getDeckAnalytics(deckId) {
     plenary: 0
   };
 
-  const phaseSlideCounts = {
-    starter: 0,
-    direct_instruction: 0,
-    modelling: 0,
-    guided_practice: 0,
-    independent_practice: 0,
-    plenary: 0
-  };
-
   dwells.forEach((row) => {
-    const phase = row.lesson_phase || "direct_instruction";
-    const dur = Number(row.duration_seconds) || 0;
-    phaseSeconds[phase] = (phaseSeconds[phase] || 0) + dur;
-    phaseSlideCounts[phase] = (phaseSlideCounts[phase] || 0) + 1;
+    const p = row.lesson_phase || "direct_instruction";
+    if (phaseSeconds[p] !== undefined) {
+      phaseSeconds[p] += Number(row.duration_seconds) || 0;
+    }
   });
 
-  const phases = Object.entries(LESSON_PHASE_BENCHMARKS).map(([key, meta]) => {
-    const sec = phaseSeconds[key] || 0;
-    const actualPercent = totalSeconds > 0 ? Math.round((sec / totalSeconds) * 1000) / 10 : 0;
-    const targetPercent = meta.targetPercent;
-    const delta = Math.round((actualPercent - targetPercent) * 10) / 10;
-
+  const phaseBreakdown = Object.entries(LESSON_PHASE_BENCHMARKS).map(([key, meta]) => {
+    const secs = phaseSeconds[key] || 0;
+    const dwellMs = Math.round(secs * 1000);
+    const actualPercent = totalSeconds > 0 ? Math.round((secs / totalSeconds) * 1000) / 10 : 0;
     return {
+      phaseKey: key,
       key,
       label: meta.label,
       shortLabel: meta.shortLabel,
       color: meta.color,
-      bgLight: meta.bgLight,
-      borderColor: meta.borderColor,
-      textColor: meta.textColor,
-      targetPercent,
+      totalDwellMs: dwellMs,
+      formattedDwell: formatDuration(dwellMs),
       actualPercent,
-      actualSeconds: sec,
-      slideCount: phaseSlideCounts[key] || 0,
-      delta,
-      status: Math.abs(delta) <= 5 ? "on-track" : (delta > 0 ? "extended" : "under")
+      targetPercent: meta.targetPercent,
+      targetPercentage: meta.targetPercent
+    };
+  });
+
+  const slideMetrics = dwells.map((d) => {
+    const durSec = Number(d.duration_seconds) || 0;
+    const durMs = Math.round(durSec * 1000);
+    return {
+      slideNumber: d.slide_number,
+      slideTitle: d.slide_title,
+      lessonPhase: d.lesson_phase,
+      totalDwellMs: durMs,
+      durationSeconds: durSec,
+      formattedDwell: formatDuration(durMs),
+      visitCount: 1
     };
   });
 
   return {
     hasData: true,
     deckId,
-    session: {
-      id: latestSession.id,
-      deckId: latestSession.deck_id,
-      deckTitle: latestSession.deck_title,
-      startTime: latestSession.start_time,
-      endTime: latestSession.end_time,
-      totalDurationSeconds: totalSeconds,
-      isActive: Boolean(latestSession.is_active)
-    },
-    slideDwells: dwells.map((d) => ({
-      slideNumber: d.slide_number,
-      slideTitle: d.slide_title,
-      lessonPhase: d.lesson_phase,
-      durationSeconds: Number(d.duration_seconds) || 0
-    })),
-    phases,
-    totalSessions
+    totalSessions,
+    totalDurationMs: Math.round(totalSeconds * 1000),
+    latestSession,
+    session: latestSession,
+    sessions: allSessions,
+    slides: slideMetrics,
+    slideDwells: slideMetrics,
+    phaseBreakdown,
+    phases: phaseBreakdown
   };
 }
 

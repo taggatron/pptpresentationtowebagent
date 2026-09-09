@@ -13,6 +13,7 @@ export const LESSON_PHASE_BENCHMARKS = Object.freeze({
     shortLabel: "Starter / Warm-Up",
     pedagogicalTag: "Retrieval",
     targetPercent: 10,
+    targetPercentage: 10,
     color: "#3c73a8", // Reference blue
     bgLight: "#eff6ff",
     borderColor: "#93c5fd",
@@ -25,6 +26,7 @@ export const LESSON_PHASE_BENCHMARKS = Object.freeze({
     shortLabel: "Direct Instruction",
     pedagogicalTag: "Instruction",
     targetPercent: 10,
+    targetPercentage: 10,
     color: "#f28522", // Reference orange
     bgLight: "#fff7ed",
     borderColor: "#fed7aa",
@@ -37,11 +39,12 @@ export const LESSON_PHASE_BENCHMARKS = Object.freeze({
     shortLabel: "Modelling (I Do)",
     pedagogicalTag: "I Do",
     targetPercent: 10,
+    targetPercentage: 10,
     color: "#fb923c", // Warm amber/orange
     bgLight: "#fffbeb",
     borderColor: "#fde68a",
     textColor: "#b45309",
-    description: "Teacher demonstration, worked examples, thinking aloud, and diagrams."
+    description: "Teacher demonstration, worked examples, diagram deconstruction."
   },
   guided_practice: {
     key: "guided_practice",
@@ -49,11 +52,12 @@ export const LESSON_PHASE_BENCHMARKS = Object.freeze({
     shortLabel: "Guided Practice (We Do)",
     pedagogicalTag: "We Do",
     targetPercent: 25,
+    targetPercentage: 25,
     color: "#e05353", // Reference coral/red
     bgLight: "#fef2f2",
     borderColor: "#fca5a5",
-    textColor: "#991b1b",
-    description: "Scaffolded tasks, pair-and-share, quick-fire checks, collaborative practice."
+    textColor: "#b91c1c",
+    description: "Collaborative checks, pair tasks, interactive sorting, scaffolded practice."
   },
   independent_practice: {
     key: "independent_practice",
@@ -61,25 +65,38 @@ export const LESSON_PHASE_BENCHMARKS = Object.freeze({
     shortLabel: "Independent Practice (You Do)",
     pedagogicalTag: "You Do",
     targetPercent: 35,
-    color: "#65aba0", // Reference teal
+    targetPercentage: 35,
+    color: "#65aba0", // Reference teal/mint
     bgLight: "#f0fdfa",
     borderColor: "#99f6e4",
-    textColor: "#115e59",
-    description: "Individual fluency, application of concepts, exam questions, exam builder papers."
+    textColor: "#0f766e",
+    description: "Exam-style application, extended response, fluency drills without scaffolding."
   },
   plenary: {
     key: "plenary",
     label: "Review & Plenary / Exit Ticket",
-    shortLabel: "Review & Plenary",
-    pedagogicalTag: "Consolidation",
+    shortLabel: "Plenary / Review",
+    pedagogicalTag: "Exit Ticket",
     targetPercent: 10,
+    targetPercentage: 10,
     color: "#529c42", // Reference green
     bgLight: "#f0fdf4",
     borderColor: "#86efac",
-    textColor: "#166534",
-    description: "Lesson summary, self-assessment, misconceptions check, and exit tickets."
+    textColor: "#15803d",
+    description: "Consolidation, exit tickets, big picture synthesis, self-reflection."
   }
 });
+
+export const LESSON_PHASES = Object.values(LESSON_PHASE_BENCHMARKS);
+
+export const PHASE_ORDER = [
+  "starter",
+  "direct_instruction",
+  "modelling",
+  "guided_practice",
+  "independent_practice",
+  "plenary"
+];
 
 // Grouped 5-stage benchmark (merging Direct Instruction & Modelling to match 20% in diagram)
 export const GROUPED_5STAGE_BENCHMARKS = Object.freeze({
@@ -129,146 +146,190 @@ const CURATED_DECK_PHASES = {
  * @param {number} [options.totalSlides] - Total slides in deck
  * @returns {string} One of the LESSON_PHASE_BENCHMARKS keys
  */
-export function classifySlideLessonPhase(slide, { deckId = null, totalSlides = null } = {}) {
-  if (!slide) return "direct_instruction";
+export function classifySlideLessonPhase(slide, context = {}) {
+  let deckId = null;
+  let totalSlides = null;
+  if (typeof context === "string") {
+    deckId = context;
+  } else if (context && typeof context === "object") {
+    deckId = context.deckId || null;
+    totalSlides = context.totalSlides || null;
+  }
+
+  let phaseKey = null;
 
   // 1. Explicit override on slide
-  if (slide.lessonPhase && LESSON_PHASE_BENCHMARKS[slide.lessonPhase]) {
-    return slide.lessonPhase;
+  if (slide?.lessonPhase && LESSON_PHASE_BENCHMARKS[slide.lessonPhase]) {
+    phaseKey = slide.lessonPhase;
   }
 
-  const slideNum = Number(slide.number) || 1;
+  const slideNum = Number(slide?.number) || 1;
 
   // 2. Curated deck lookup
-  if (deckId && CURATED_DECK_PHASES[deckId]?.[slideNum]) {
-    return CURATED_DECK_PHASES[deckId][slideNum];
+  if (!phaseKey && deckId && CURATED_DECK_PHASES[deckId]?.[slideNum]) {
+    phaseKey = CURATED_DECK_PHASES[deckId][slideNum];
   }
 
-  // 3. Heuristic classification based on content signals
-  const title = String(slide.title || "").toLowerCase();
-  const notes = String(slide.notes || "").toLowerCase();
-  const text = `${title} ${notes}`;
+  if (!phaseKey && slide) {
+    // 3. Heuristic classification based on content signals
+    const title = String(slide.title || "").toLowerCase();
+    const notes = String(slide.notes || "").toLowerCase();
+    const text = `${title} ${notes}`;
 
-  // Starter / Retrieval signals
-  if (
-    slideNum === 2 ||
-    text.includes("starter") ||
-    text.includes("warm-up") ||
-    text.includes("retrieval") ||
-    text.includes("dead or alive") ||
-    text.includes("bell-work") ||
-    text.includes("do now") ||
-    slide.isStarterGrid === true
-  ) {
-    return "starter";
+    // Starter / Retrieval signals
+    if (
+      slideNum === 2 ||
+      text.includes("starter") ||
+      text.includes("warm-up") ||
+      text.includes("retrieval") ||
+      text.includes("dead or alive") ||
+      text.includes("bell-work") ||
+      text.includes("do now") ||
+      slide.isStarterGrid === true
+    ) {
+      phaseKey = "starter";
+    }
+    // Review / Plenary / Exit Ticket signals
+    else if (
+      text.includes("plenary") ||
+      text.includes("exit ticket") ||
+      text.includes("summary") ||
+      text.includes("big picture") ||
+      text.includes("consolidation") ||
+      text.includes("recap") ||
+      (totalSlides && slideNum >= totalSlides - 1 && (text.includes("check") || text.includes("review")))
+    ) {
+      phaseKey = "plenary";
+    }
+    // Independent Practice signals ("You Do" / Exam / Assessment)
+    else if (
+      text.includes("independent") ||
+      text.includes("you do") ||
+      text.includes("exam question") ||
+      text.includes("exam-style") ||
+      text.includes("past paper") ||
+      text.includes("ocr") ||
+      text.includes("aqa") ||
+      text.includes("edexcel") ||
+      text.includes("mark scheme") ||
+      text.includes("pdf question") ||
+      slide.customComponent === "ocr_exam_viewer" ||
+      (slide.questionAnalysis?.detected === true && slide.questionAnalysis?.questionCount > 1)
+    ) {
+      phaseKey = "independent_practice";
+    }
+    // Guided Practice signals ("We Do" / Active interaction / Collaborative)
+    else if (
+      text.includes("guided") ||
+      text.includes("we do") ||
+      text.includes("challenge") ||
+      text.includes("pair-and-share") ||
+      text.includes("checkpoint") ||
+      text.includes("drag") ||
+      text.includes("match the") ||
+      text.includes("activity") ||
+      text.includes("quick-fire") ||
+      slide.isInteractive === true ||
+      slide.interactiveType === "web_embed"
+    ) {
+      phaseKey = "guided_practice";
+    }
+    // Modelling signals ("I Do" / Diagrams / Worked examples)
+    else if (
+      text.includes("model") ||
+      text.includes("i do") ||
+      text.includes("worked example") ||
+      text.includes("diagram") ||
+      text.includes("comparison") ||
+      text.includes("hierarchy") ||
+      text.includes("food chain") ||
+      text.includes("food web") ||
+      text.includes("cycle") ||
+      text.includes("step-by-step")
+    ) {
+      phaseKey = "modelling";
+    }
+    // Objectives & First Slide Intro -> Direct Instruction
+    else if (
+      slideNum === 1 ||
+      text.includes("objective") ||
+      text.includes("introduction") ||
+      text.includes("overview") ||
+      text.includes("definition") ||
+      text.includes("concept")
+    ) {
+      phaseKey = "direct_instruction";
+    }
+    // Position-based heuristic fallback
+    else if (totalSlides) {
+      const ratio = slideNum / totalSlides;
+      if (ratio <= 0.25) phaseKey = "direct_instruction";
+      else if (ratio <= 0.50) phaseKey = "modelling";
+      else if (ratio <= 0.75) phaseKey = "guided_practice";
+      else if (ratio <= 0.90) phaseKey = "independent_practice";
+      else phaseKey = "plenary";
+    }
   }
 
-  // Review / Plenary / Exit Ticket signals
-  const isNearEnd = totalSlides && slideNum >= totalSlides - 1;
-  if (
-    text.includes("plenary") ||
-    text.includes("exit ticket") ||
-    text.includes("summary") ||
-    text.includes("big picture") ||
-    text.includes("consolidation") ||
-    text.includes("recap") ||
-    (isNearEnd && (text.includes("check") || text.includes("review")))
-  ) {
-    return "plenary";
-  }
+  if (!phaseKey) phaseKey = "direct_instruction";
 
-  // Independent Practice signals ("You Do" / Exam / Assessment)
-  if (
-    text.includes("exam") ||
-    text.includes("assessment") ||
-    text.includes("worksheet") ||
-    text.includes("you do") ||
-    text.includes("independent") ||
-    text.includes("past paper") ||
-    text.includes("mark scheme") ||
-    text.includes("question paper") ||
-    slide.questionAnalysis?.detected === true && slide.questionAnalysis?.questionCount > 1
-  ) {
-    return "independent_practice";
-  }
-
-  // Guided Practice signals ("We Do" / Active interaction / Collaborative)
-  if (
-    text.includes("guided") ||
-    text.includes("we do") ||
-    text.includes("challenge") ||
-    text.includes("pair-and-share") ||
-    text.includes("checkpoint") ||
-    text.includes("drag") ||
-    text.includes("match the") ||
-    text.includes("activity") ||
-    text.includes("quick-fire") ||
-    slide.isInteractive === true ||
-    slide.interactiveType === "web_embed"
-  ) {
-    return "guided_practice";
-  }
-
-  // Modelling signals ("I Do" / Diagrams / Worked examples)
-  if (
-    text.includes("model") ||
-    text.includes("i do") ||
-    text.includes("worked example") ||
-    text.includes("diagram") ||
-    text.includes("comparison") ||
-    text.includes("hierarchy") ||
-    text.includes("food chain") ||
-    text.includes("food web") ||
-    text.includes("cycle") ||
-    text.includes("step-by-step")
-  ) {
-    return "modelling";
-  }
-
-  // Objectives & First Slide Intro -> Direct Instruction
-  if (
-    slideNum === 1 ||
-    text.includes("objective") ||
-    text.includes("introduction") ||
-    text.includes("overview") ||
-    text.includes("definition") ||
-    text.includes("concept")
-  ) {
-    return "direct_instruction";
-  }
-
-  // Position-based heuristic fallback
-  if (totalSlides) {
-    const ratio = slideNum / totalSlides;
-    if (ratio <= 0.25) return "direct_instruction";
-    if (ratio <= 0.50) return "modelling";
-    if (ratio <= 0.75) return "guided_practice";
-    if (ratio <= 0.90) return "independent_practice";
-    return "plenary";
-  }
-
-  return "direct_instruction";
+  const meta = LESSON_PHASE_BENCHMARKS[phaseKey] || LESSON_PHASE_BENCHMARKS.direct_instruction;
+  return {
+    phaseKey,
+    key: phaseKey,
+    toString() {
+      return phaseKey;
+    },
+    ...meta
+  };
 }
 
 /**
  * Returns complete phase breakdown with pedagogical metadata for a given deck.
  * 
  * @param {Object} manifest - Manifest object
- * @returns {Array<{ slideNumber: number, title: string, phase: Object }>}
+ * @returns {{ slides: Array, phaseSummary: Array }}
  */
 export function analyzeDeckLessonPhases(manifest) {
-  if (!manifest?.slides) return [];
+  if (!manifest?.slides) return { slides: [], phaseSummary: [] };
   const totalSlides = manifest.totalSlides || manifest.slides.length;
   const deckId = manifest.id;
 
-  return manifest.slides.map((slide) => {
-    const phaseKey = classifySlideLessonPhase(slide, { deckId, totalSlides });
+  const slides = manifest.slides.map((slide) => {
+    const classified = classifySlideLessonPhase(slide, { deckId, totalSlides });
+    const phaseKey = classified.phaseKey;
     const phaseMeta = LESSON_PHASE_BENCHMARKS[phaseKey] || LESSON_PHASE_BENCHMARKS.direct_instruction;
     return {
       slideNumber: slide.number,
       title: slide.title || `Slide ${slide.number}`,
       phaseKey,
+      phaseName: phaseMeta.label,
+      shortLabel: phaseMeta.shortLabel,
+      phaseColor: phaseMeta.color,
+      phaseGuidance: phaseMeta.description,
       phaseMeta
     };
   });
+
+  const phaseSummary = PHASE_ORDER.map((phaseKey) => {
+    const meta = LESSON_PHASE_BENCHMARKS[phaseKey];
+    const matchingSlides = slides.filter((s) => s.phaseKey === phaseKey);
+    const slideNumbers = matchingSlides.map((s) => s.slideNumber);
+    return {
+      phaseKey,
+      name: meta.label,
+      shortLabel: meta.shortLabel,
+      color: meta.color,
+      description: meta.description,
+      targetPercentage: meta.targetPercentage,
+      targetPercent: meta.targetPercent,
+      slideCount: matchingSlides.length,
+      slideNumbers
+    };
+  });
+
+  return {
+    slides,
+    phaseSummary
+  };
 }
