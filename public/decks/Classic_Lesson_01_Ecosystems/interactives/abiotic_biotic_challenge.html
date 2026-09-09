@@ -4,25 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quick-Fire Challenge: Abiotic or Biotic?</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #f8fafc;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --abiotic-border: #38bdf8;
-      --abiotic-bg: #f0f9ff;
-      --abiotic-drop-bg: #e0f2fe;
-      --abiotic-dark: #0284c7;
-      --biotic-border: #4ade80;
-      --biotic-bg: #f0fdf4;
-      --biotic-drop-bg: #dcfce7;
-      --biotic-dark: #16a34a;
-      --bubble-border: #334155;
-      --bubble-bg: #ffffff;
-      --accent: #2563eb;
+      --bg-white: #ffffff;
+      --text-black: #000000;
+      --zone-border: #3d5565;
+      --abiotic-bg: #d8edf9;
+      --biotic-bg: #d8ebd5;
+      --bubble-border: #475a6a;
+      --bubble-shadow: 0 7px 16px rgba(15, 23, 42, 0.28);
+      --bubble-shadow-hover: 0 12px 24px rgba(15, 23, 42, 0.38);
       --correct-border: #16a34a;
       --correct-bg: #f0fdf4;
       --wrong-border: #dc2626;
@@ -38,466 +29,455 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-white);
+      color: var(--text-black);
       width: 100vw;
       height: 100vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 10px 14px;
+      padding: 6px 12px 6px 12px;
+      position: relative;
     }
 
-    /* Top Navigation / Controls Bar */
-    header {
+    /* Top Bar & Title */
+    .top-header {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
+      justify-content: center;
+      gap: 3px;
+      padding: 2px 0 4px 0;
       flex-shrink: 0;
-      flex-wrap: wrap;
     }
 
-    .title-group {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.1rem;
+    .slide-title {
+      font-size: 1.55rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: #0f172a;
+      color: #000000;
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    /* Utility Controls Bar directly beneath title */
+    .controls-strip {
       display: flex;
       align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    h1 .badge {
-      font-size: 0.65rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #3b82f6, #06b6d4);
-      color: #ffffff;
-      padding: 2px 6px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .instructions {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .controls-group {
-      display: flex;
-      align-items: center;
+      justify-content: center;
       gap: 5px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
     .stat-pill {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
       padding: 3px 8px;
       border-radius: 999px;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 4px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      gap: 3px;
+      color: #334155;
     }
 
     .stat-pill span.num {
-      color: var(--accent);
-      font-feature-settings: "tnum";
+      color: #0284c7;
+      font-weight: 800;
     }
 
     .btn {
       font-family: inherit;
       font-size: 0.72rem;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 7px;
+      border: 1.5px solid #cbd5e1;
       background: #ffffff;
-      color: #334155;
+      color: #1e293b;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 4px;
       transition: all 0.15s ease;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
       white-space: nowrap;
     }
 
     .btn:hover {
       background: #f1f5f9;
-      color: #0f172a;
       border-color: #94a3b8;
     }
 
     .btn-check {
       background: linear-gradient(135deg, #10b981, #059669);
       color: #ffffff;
-      border-color: transparent;
-      font-weight: 700;
-      box-shadow: 0 2px 5px rgba(16, 185, 129, 0.25);
+      border-color: #059669;
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.35);
     }
 
     .btn-check:hover {
       background: linear-gradient(135deg, #059669, #047857);
+      border-color: #047857;
     }
 
-    /* Main Activity Canvas (3 Columns) */
-    .activity-stage {
-      display: grid;
-      grid-template-columns: 240px 1fr 240px;
-      gap: 12px;
-      flex: 1;
-      min-height: 0;
-      position: relative;
-    }
-
-    /* Drop Zone Containers */
-    .drop-zone {
-      border-radius: 14px;
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      position: relative;
-      transition: all 0.18s ease;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-      border: 2px dashed transparent;
-      overflow: hidden;
-    }
-
-    /* Abiotic Zone */
-    .zone-abiotic {
-      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
-      border-color: #93c5fd;
-    }
-
-    .zone-abiotic.drag-over {
-      border-color: var(--abiotic-dark);
-      background: #dbeafe;
-      transform: scale(1.01);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
-    }
-
-    /* Biotic Zone */
-    .zone-biotic {
-      background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
-      border-color: #86efac;
-    }
-
-    .zone-biotic.drag-over {
-      border-color: var(--biotic-dark);
-      background: #bbf7d0;
-      transform: scale(1.01);
-      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.35);
-    }
-
-    .zone-header {
-      text-align: center;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      margin-bottom: 8px;
-      flex-shrink: 0;
-    }
-
-    .zone-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .zone-abiotic .zone-title { color: #0369a1; }
-    .zone-biotic .zone-title { color: #15803d; }
-
-    .zone-arrow {
-      width: 22px;
-      height: 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      margin: 3px auto 2px;
-      color: #ffffff;
-      font-size: 0.82rem;
-      font-weight: 900;
-    }
-
-    .zone-abiotic .zone-arrow {
-      background: linear-gradient(180deg, #38bdf8, #0284c7);
-      box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25);
-    }
-
-    .zone-biotic .zone-arrow {
-      background: linear-gradient(180deg, #4ade80, #16a34a);
-      box-shadow: 0 2px 4px rgba(22, 163, 74, 0.25);
-    }
-
-    .zone-desc {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      line-height: 1.2;
-    }
-
-    .zone-items-container {
-      flex: 1;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 2px;
-      min-height: 80px;
-      scrollbar-width: thin;
-    }
-
-    .zone-empty-placeholder {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-align: center;
-      border: 2px dashed rgba(148, 163, 184, 0.35);
-      border-radius: 10px;
-      padding: 12px 8px;
-      pointer-events: none;
-    }
-
-    .zone-empty-placeholder svg {
-      width: 22px;
-      height: 22px;
-      margin-bottom: 4px;
-      opacity: 0.6;
-    }
-
-    /* Central Statements Pool */
-    .pool-section {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
-      overflow: hidden;
-    }
-
-    .pool-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      flex-shrink: 0;
-    }
-
-    .pool-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #334155;
-    }
-
-    .pool-cards-grid {
-      flex: 1;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 1fr;
-      gap: 8px;
-      overflow-y: auto;
-      padding: 2px;
-      align-content: stretch;
-      scrollbar-width: thin;
-    }
-
-    /* Draggable Statement Cards / Circular Bubbles */
-    .statement-bubble {
-      background: var(--bubble-bg);
-      border: 2px solid var(--bubble-border);
-      border-radius: 16px;
-      padding: 6px 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      cursor: grab;
-      position: relative;
-      transition: all 0.16s ease;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
-      touch-action: none;
-    }
-
-    .statement-bubble:active {
-      cursor: grabbing;
-    }
-
-    .statement-bubble:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.1);
-      border-color: #0f172a;
-    }
-
-    .statement-bubble.dragging {
-      opacity: 0.4;
-      transform: scale(0.95);
-    }
-
-    .bubble-text {
-      font-size: 0.79rem;
-      font-weight: 700;
-      line-height: 1.22;
-      color: #1e293b;
-      pointer-events: none;
-    }
-
-    /* Touch / Click 1-Tap Quick Actions */
-    .bubble-actions {
-      display: none;
-      gap: 4px;
-      margin-top: 4px;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .statement-bubble.selected {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2.5px rgba(37, 99, 235, 0.35);
-      background: #eff6ff;
-    }
-
-    .statement-bubble.selected .bubble-actions {
-      display: flex;
-    }
-
-    .action-btn {
-      font-size: 0.66rem;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 2px;
-      transition: background 0.15s;
-    }
-
-    .action-abiotic { background: #bae6fd; color: #0284c7; }
-    .action-abiotic:hover { background: #7dd3fc; }
-    .action-biotic { background: #bbf7d0; color: #15803d; }
-    .action-biotic:hover { background: #86efac; }
-    .action-pool { background: #e2e8f0; color: #334155; }
-    .action-pool:hover { background: #cbd5e1; }
-
-    /* Cards Inside Drop Zones */
-    .drop-zone .statement-bubble {
-      padding: 6px 8px;
-      border-radius: 10px;
-      width: 100%;
-      border-width: 1.5px;
-    }
-
-    .drop-zone .bubble-text {
-      font-size: 0.74rem;
-    }
-
-    /* Checked / Feedback States */
-    .statement-bubble.is-correct {
-      border-color: var(--correct-border) !important;
-      background: var(--correct-bg) !important;
-    }
-
-    .statement-bubble.is-wrong {
-      border-color: var(--wrong-border) !important;
-      background: var(--wrong-bg) !important;
-      animation: shake 0.4s ease;
-    }
-
-    .feedback-chip {
-      font-size: 0.68rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      margin-top: 3px;
-      padding: 1px 5px;
-      border-radius: 4px;
-    }
-
-    .feedback-correct {
-      color: #15803d;
-      background: #dcfce7;
-    }
-
-    .feedback-wrong {
-      color: #b91c1c;
-      background: #fee2e2;
-    }
-
-    .explanation-text {
-      font-size: 0.67rem;
-      font-weight: 500;
-      color: #475569;
-      margin-top: 2px;
-      line-height: 1.18;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-4px); }
-      40%, 80% { transform: translateX(4px); }
-    }
-
-    /* Bottom Educational Footer / Hints */
-    .activity-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 6px;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-
+    /* Hint Banner */
     .hint-banner {
       display: none;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 7px;
-      padding: 6px 10px;
-      font-size: 0.75rem;
-      color: #1e40af;
-      margin-bottom: 6px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.76rem;
+      color: #0369a1;
+      margin-bottom: 4px;
+      align-items: center;
+      gap: 6px;
       animation: fadeIn 0.15s ease;
     }
 
     .hint-banner.visible {
       display: flex;
-      align-items: center;
+    }
+
+    /* Main Activity Canvas */
+    .activity-stage {
+      display: grid;
+      grid-template-columns: 175px 1fr 175px;
+      gap: 14px;
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    /* Left & Right Drop Zones */
+    .zone-container {
+      border: 3.5px solid var(--zone-border);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 8px;
+      position: relative;
+      transition: all 0.18s ease;
+      box-shadow: 0 4px 14px rgba(61, 85, 101, 0.12);
+      overflow: hidden;
+    }
+
+    .zone-abiotic {
+      background-color: var(--abiotic-bg);
+    }
+
+    .zone-abiotic.drag-over {
+      background-color: #c7e5f7;
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.35);
+      transform: scale(1.01);
+    }
+
+    .zone-biotic {
+      background-color: var(--biotic-bg);
+    }
+
+    .zone-biotic.drag-over {
+      background-color: #c7e5c3;
+      border-color: #16a34a;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.35);
+      transform: scale(1.01);
+    }
+
+    .zone-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #000000;
+      text-align: center;
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+      line-height: 1.1;
+    }
+
+    .zone-arrow-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 2px 0 6px 0;
+      flex-shrink: 0;
+    }
+
+    .zone-arrow-svg {
+      width: 48px;
+      height: 38px;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    }
+
+    .zone-items-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       gap: 6px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 4px 2px;
+      min-height: 0;
+    }
+
+    .zone-items-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .zone-items-list::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.15);
+      border-radius: 4px;
+    }
+
+    .zone-placeholder {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.35);
+      border: 2px dashed rgba(0, 0, 0, 0.18);
+      border-radius: 12px;
+      padding: 10px;
+      margin-top: 4px;
+      pointer-events: none;
+    }
+
+    /* Cards Inside Drop Zones */
+    .dropped-bubble {
+      background: #ffffff;
+      border: 2.5px solid var(--bubble-border);
+      border-radius: 12px;
+      padding: 6px 8px;
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.12);
+      cursor: grab;
+      position: relative;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .dropped-bubble:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 12px rgba(15, 23, 42, 0.2);
+    }
+
+    .dropped-bubble .bubble-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #000000;
+    }
+
+    .dropped-bubble.is-correct {
+      border-color: var(--correct-border) !important;
+      background: var(--correct-bg) !important;
+    }
+
+    .dropped-bubble.is-wrong {
+      border-color: var(--wrong-border) !important;
+      background: var(--wrong-bg) !important;
+      animation: shake 0.35s ease;
+    }
+
+    .dropped-feedback {
+      font-size: 0.65rem;
+      font-weight: 800;
+      margin-top: 3px;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    .dropped-feedback.correct {
+      color: #15803d;
+      background: #dcfce7;
+    }
+
+    .dropped-feedback.wrong {
+      color: #b91c1c;
+      background: #fee2e2;
+    }
+
+    .dropped-explanation {
+      font-size: 0.64rem;
+      color: #334155;
+      line-height: 1.25;
+      margin-top: 3px;
+      text-align: center;
+    }
+
+    .dropped-return-btn {
+      margin-top: 4px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #475569;
+      cursor: pointer;
+    }
+
+    .dropped-return-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Center Statements Pool (Matching the exact Olympic Rings layout) */
+    .pool-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .pool-stage {
+      position: relative;
+      width: 440px;
+      height: 310px;
+      flex-shrink: 0;
+    }
+
+    /* Spot Placeholders (Shown faintly when a card is in a zone) */
+    .pool-spot {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 2px dashed rgba(0, 0, 0, 0.15);
+      background: rgba(248, 250, 252, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.25);
+      text-align: center;
+      padding: 10px;
+      pointer-events: none;
+    }
+
+    /* Circular Statement Bubbles (Identical to slide_06.png) */
+    .circle-bubble {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 4px solid var(--bubble-border);
+      box-shadow: var(--bubble-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 8px;
+      cursor: grab;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease;
+      touch-action: none;
+    }
+
+    .circle-bubble:active {
+      cursor: grabbing;
+    }
+
+    .circle-bubble:hover {
+      transform: scale(1.07);
+      box-shadow: var(--bubble-shadow-hover);
+      z-index: 30 !important;
+    }
+
+    .circle-bubble.dragging {
+      opacity: 0.4;
+      transform: scale(0.95);
+    }
+
+    .circle-bubble .bubble-text {
+      font-size: 0.75rem;
+      font-weight: 800;
+      line-height: 1.18;
+      color: #000000;
+      letter-spacing: -0.01em;
+      pointer-events: none;
+    }
+
+    /* 1-Tap Quick Action Overlay on Circle Click */
+    .circle-bubble.selected {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.35), var(--bubble-shadow-hover);
+      transform: scale(1.08);
+      z-index: 35 !important;
+    }
+
+    .tap-actions-overlay {
+      display: none;
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      border-radius: 20px;
+      padding: 3px 6px;
+      gap: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      z-index: 40;
+      white-space: nowrap;
+    }
+
+    .circle-bubble.selected .tap-actions-overlay {
+      display: flex;
+    }
+
+    .tap-btn {
+      font-size: 0.64rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      color: #ffffff;
+      transition: background 0.12s;
+    }
+
+    .tap-btn-abiotic {
+      background: #0284c7;
+    }
+    .tap-btn-abiotic:hover {
+      background: #38bdf8;
+    }
+
+    .tap-btn-biotic {
+      background: #16a34a;
+    }
+    .tap-btn-biotic:hover {
+      background: #4ade80;
+    }
+
+    /* Watermark at bottom right */
+    .footer-watermark {
+      position: absolute;
+      bottom: 4px;
+      right: 14px;
+      font-size: 0.68rem;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    .watermark-icon {
+      width: 11px;
+      height: 11px;
     }
 
     /* Confetti Canvas */
@@ -510,12 +490,12 @@
       z-index: 100;
     }
 
-    /* Celebration Modal Banner */
+    /* Celebration Modal */
     .celebration-modal {
       display: none;
       position: absolute;
       inset: 0;
-      background: rgba(15, 23, 42, 0.4);
+      background: rgba(15, 23, 42, 0.45);
       backdrop-filter: blur(4px);
       z-index: 90;
       align-items: center;
@@ -530,34 +510,39 @@
     .celebration-card {
       background: #ffffff;
       border-radius: 18px;
-      padding: 20px 28px;
+      padding: 22px 28px;
       max-width: 440px;
       text-align: center;
-      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
       animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .celebration-icon {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       margin-bottom: 6px;
     }
 
     .celebration-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      color: #0f172a;
+      color: #000000;
       margin-bottom: 4px;
     }
 
     .celebration-desc {
       font-size: 0.82rem;
-      color: #64748b;
+      color: #475569;
       margin-bottom: 16px;
       line-height: 1.35;
     }
 
-    /* Slide View Modal (Teacher inspect mode) */
+    .celebration-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* Slide Comparison Modal */
     .slide-modal {
       display: none;
       position: absolute;
@@ -583,7 +568,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
     }
 
     .slide-modal-img {
@@ -602,36 +587,40 @@
       from { transform: scale(0.9); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-5px); }
+      40% { transform: translateX(5px); }
+      60% { transform: translateX(-3px); }
+      80% { transform: translateX(3px); }
+    }
   </style>
 </head>
 <body>
-  <!-- Top Navigation & Controls -->
-  <header>
-    <div class="title-group">
-      <h1>
-        Quick-Fire Challenge: Abiotic or Biotic?
-        <span class="badge">Drag & Drop</span>
-      </h1>
-      <span class="instructions">Classify each factor into its correct zone.</span>
-    </div>
-    <div class="controls-group">
-      <div class="stat-pill" title="Items placed in zones">
+
+  <!-- Top Title & Floating Utility Controls -->
+  <header class="top-header">
+    <h1 class="slide-title">Quick-Fire Challenge: Abiotic or Biotic?</h1>
+
+    <div class="controls-strip">
+      <div class="stat-pill" title="Items classified">
         <span>Sorted:</span>
         <span class="num" id="placedCount">0</span>/8
       </div>
-      <button class="btn" id="hintToggleBtn" type="button" aria-label="Toggle hint">
+      <button class="btn" id="hintToggleBtn" type="button" title="View educational hints">
         <span>💡</span> Hint
       </button>
-      <button class="btn" id="soundToggleBtn" type="button" aria-label="Toggle sound">
+      <button class="btn" id="soundToggleBtn" type="button" title="Toggle sound effects">
         <span id="soundIcon">🔊</span>
       </button>
-      <button class="btn" id="viewSlideBtn" type="button" title="Compare with static slide">
+      <button class="btn" id="viewSlideBtn" type="button" title="Compare with original slide">
         <span>🖼</span> Static Slide
       </button>
-      <button class="btn" id="resetBtn" type="button">
+      <button class="btn" id="resetBtn" type="button" title="Reset all statements to pool">
         <span>↺</span> Reset
       </button>
-      <button class="btn btn-check" id="checkBtn" type="button">
+      <button class="btn btn-check" id="checkBtn" type="button" title="Check answers">
         <span>✓</span> Check Answers
       </button>
     </div>
@@ -640,62 +629,78 @@
   <!-- Educational Hint Banner -->
   <div class="hint-banner" id="hintBanner">
     <strong>💡 Hint:</strong>
-    <span><strong>Abiotic</strong> = non-living physical/chemical factors (rain, pH, temperature, sunlight). <strong>Biotic</strong> = living components/interactions (pathogens, prey, predators, competition).</span>
+    <span><strong>Abiotic</strong> = non-living physical & chemical factors (rainfall, pH, temperature, sunlight). <strong>Biotic</strong> = living organisms & biological interactions (viruses, prey, predators, competition).</span>
   </div>
 
-  <!-- Interactive Activity Stage -->
+  <!-- Main Activity Canvas -->
   <main class="activity-stage">
     <!-- Abiotic Zone (Left) -->
-    <section class="drop-zone zone-abiotic" id="zoneAbiotic" data-zone="abiotic" aria-label="Abiotic Zone Drop Area">
-      <div class="zone-header">
-        <div class="zone-title">Abiotic Zone</div>
-        <div class="zone-arrow">↓</div>
-        <div class="zone-desc">Non-living physical & chemical factors</div>
+    <section class="zone-container zone-abiotic" id="zoneAbiotic" data-zone="abiotic" aria-label="Abiotic Zone Drop Container">
+      <h2 class="zone-title">Abiotic Zone</h2>
+      <div class="zone-arrow-wrap">
+        <svg class="zone-arrow-svg" viewBox="0 0 100 80">
+          <defs>
+            <linearGradient id="abioticArrowGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7bb5ea" />
+              <stop offset="100%" stop-color="#3174b8" />
+            </linearGradient>
+          </defs>
+          <path d="M 32 0 L 68 0 L 68 38 L 94 38 L 50 80 L 6 38 L 32 38 Z" fill="url(#abioticArrowGrad)" />
+        </svg>
       </div>
-      <div class="zone-items-container" id="abioticItems">
-        <div class="zone-empty-placeholder" id="abioticPlaceholder">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+      <div class="zone-items-list" id="abioticItems">
+        <div class="zone-placeholder" id="abioticPlaceholder">
           Drop abiotic factors here
         </div>
       </div>
     </section>
 
-    <!-- Center Statements Pool -->
-    <section class="pool-section" aria-label="Available Statements Pool">
-      <div class="pool-header">
-        <div class="pool-title">Statements to Classify</div>
-        <span style="font-size: 0.72rem; color: #64748b;">Click any card to reveal 1-tap buttons</span>
-      </div>
-      <div class="pool-cards-grid" id="poolGrid">
-        <!-- 8 statement cards generated via JS -->
+    <!-- Center Pool (Interlocking 3-2-3 Olympic Rings Formation) -->
+    <section class="pool-container" id="poolContainer" aria-label="Statements Pool">
+      <div class="pool-stage" id="poolStage">
+        <!-- 8 Spot placeholders in 3-2-3 interlocking formation -->
+        <div class="pool-spot" style="left: 10px; top: 10px;">1</div>
+        <div class="pool-spot" style="left: 155px; top: 10px;">2</div>
+        <div class="pool-spot" style="left: 300px; top: 10px;">3</div>
+        <div class="pool-spot" style="left: 82px; top: 92px;">4</div>
+        <div class="pool-spot" style="left: 228px; top: 92px;">5</div>
+        <div class="pool-spot" style="left: 10px; top: 175px;">6</div>
+        <div class="pool-spot" style="left: 155px; top: 175px;">7</div>
+        <div class="pool-spot" style="left: 300px; top: 175px;">8</div>
+
+        <!-- Statement Circles injected via JS -->
       </div>
     </section>
 
     <!-- Biotic Zone (Right) -->
-    <section class="drop-zone zone-biotic" id="zoneBiotic" data-zone="biotic" aria-label="Biotic Zone Drop Area">
-      <div class="zone-header">
-        <div class="zone-title">Biotic Zone</div>
-        <div class="zone-arrow">↓</div>
-        <div class="zone-desc">Living organisms & biological interactions</div>
+    <section class="zone-container zone-biotic" id="zoneBiotic" data-zone="biotic" aria-label="Biotic Zone Drop Container">
+      <h2 class="zone-title">Biotic Zone</h2>
+      <div class="zone-arrow-wrap">
+        <svg class="zone-arrow-svg" viewBox="0 0 100 80">
+          <defs>
+            <linearGradient id="bioticArrowGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b7d8a6" />
+              <stop offset="100%" stop-color="#77a164" />
+            </linearGradient>
+          </defs>
+          <path d="M 32 0 L 68 0 L 68 38 L 94 38 L 50 80 L 6 38 L 32 38 Z" fill="url(#bioticArrowGrad)" />
+        </svg>
       </div>
-      <div class="zone-items-container" id="bioticItems">
-        <div class="zone-empty-placeholder" id="bioticPlaceholder">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+      <div class="zone-items-list" id="bioticItems">
+        <div class="zone-placeholder" id="bioticPlaceholder">
           Drop biotic factors here
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Activity Footer -->
-  <footer class="activity-footer">
-    <span>Tip: Drag items or click for 1-tap sorting · Works on touchscreens & desktop.</span>
-    <span>Ecology & Atmosphere · Lesson 01 Ecosystems</span>
-  </footer>
+  <!-- Watermark -->
+  <div class="footer-watermark">
+    <svg class="watermark-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+    </svg>
+    <span>Gemini Notebook</span>
+  </div>
 
   <!-- Confetti Canvas -->
   <canvas id="confettiCanvas"></canvas>
@@ -704,80 +709,106 @@
   <div class="celebration-modal" id="celebrationModal">
     <div class="celebration-card">
       <div class="celebration-icon">🎉</div>
-      <h2 class="celebration-title">Outstanding Work!</h2>
-      <p class="celebration-desc">All 8 ecological factors have been accurately classified into Abiotic and Biotic categories.</p>
-      <div style="display: flex; gap: 8px; justify-content: center;">
+      <h3 class="celebration-title">Outstanding Work!</h3>
+      <p class="celebration-desc">
+        All 8 ecological factors have been accurately classified into the Abiotic and Biotic categories.
+      </p>
+      <div class="celebration-actions">
         <button class="btn btn-check" id="modalRestartBtn" type="button">Try Again (Shuffle)</button>
         <button class="btn" id="modalDismissBtn" type="button">Review Answers</button>
       </div>
     </div>
   </div>
 
-  <!-- Static Slide View Modal -->
+  <!-- Slide Comparison Modal -->
   <div class="slide-modal" id="slideModal">
     <div class="slide-modal-content">
       <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 8px;">
-        <span style="font-weight: 700; font-size: 0.9rem;">Slide 6 Image (Arrows Removed)</span>
+        <strong style="font-size: 0.95rem;">Original Slide Image</strong>
         <button class="btn" id="closeSlideModalBtn" type="button">✕ Close</button>
       </div>
-      <img src="/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png" alt="Static Slide 6" class="slide-modal-img">
+      <img src="/decks/Classic_Lesson_01_Ecosystems/slides/slide_06.png" alt="Original Slide 6" class="slide-modal-img">
     </div>
   </div>
 
   <script>
-    // Factor dataset with accurate scientific categorizations and explanations
+    // Factor dataset with original text, exact coordinates, and scientific explanations
     const FACTORS = [
       {
         id: "factor_1",
         text: "A newly introduced virus",
         type: "biotic",
-        explanation: "Biological pathogens that infect living host organisms."
+        explanation: "Biological pathogens that infect living host organisms.",
+        left: 10,
+        top: 10,
+        zIndex: 12
       },
       {
         id: "factor_2",
         text: "Heavy rainfall",
         type: "abiotic",
-        explanation: "Precipitation and moisture are non-living physical climate factors."
+        explanation: "Precipitation and moisture are non-living physical climate factors.",
+        left: 155,
+        top: 10,
+        zIndex: 12
       },
       {
         id: "factor_3",
         text: "A sudden lack of prey",
         type: "biotic",
-        explanation: "Food availability involves other living organism populations."
+        explanation: "Food availability involves other living organism populations.",
+        left: 300,
+        top: 10,
+        zIndex: 12
       },
       {
         id: "factor_4",
         text: "A drop in soil pH",
         type: "abiotic",
-        explanation: "Soil acidity is a chemical/physical property of the non-living soil."
+        explanation: "Soil acidity is a chemical/physical property of the non-living soil.",
+        left: 82,
+        top: 92,
+        zIndex: 8
       },
       {
         id: "factor_5",
         text: "A newly arrived pack of wolves",
         type: "biotic",
-        explanation: "Predators are living animals that alter community feeding dynamics."
+        explanation: "Predators are living animals that alter community feeding dynamics.",
+        left: 228,
+        top: 92,
+        zIndex: 8
       },
       {
         id: "factor_6",
         text: "An unusually cold winter",
         type: "abiotic",
-        explanation: "Temperature and freezing weather are physical climate conditions."
+        explanation: "Temperature and freezing weather are physical climate conditions.",
+        left: 10,
+        top: 175,
+        zIndex: 14
       },
       {
         id: "factor_7",
         text: "Another bird species competing for the same seeds",
         type: "biotic",
-        explanation: "Interspecific competition for resources is a biological interaction."
+        explanation: "Interspecific competition for resources is a biological interaction.",
+        left: 155,
+        top: 175,
+        zIndex: 14
       },
       {
         id: "factor_8",
         text: "Cloud cover reducing sunlight",
         type: "abiotic",
-        explanation: "Solar light intensity is a non-living physical energy source."
+        explanation: "Solar light intensity is a non-living physical energy source.",
+        left: 300,
+        top: 175,
+        zIndex: 14
       }
     ];
 
-    // Expose for external testing & interaction
+    // Expose on window for external testing & script evaluation
     window.FACTORS = FACTORS;
 
     // State management
@@ -792,16 +823,16 @@
     FACTORS.forEach(f => window.state.placements[f.id] = 'pool');
 
     // DOM References
-    const poolGrid = document.getElementById('poolGrid');
+    const poolStage = document.getElementById('poolStage');
     const abioticItems = document.getElementById('abioticItems');
     const bioticItems = document.getElementById('bioticItems');
     const abioticPlaceholder = document.getElementById('abioticPlaceholder');
     const bioticPlaceholder = document.getElementById('bioticPlaceholder');
     const placedCountEl = document.getElementById('placedCount');
-    const checkBtn = document.getElementById('checkBtn');
-    const resetBtn = document.getElementById('resetBtn');
     const hintToggleBtn = document.getElementById('hintToggleBtn');
     const hintBanner = document.getElementById('hintBanner');
+    const resetBtn = document.getElementById('resetBtn');
+    const checkBtn = document.getElementById('checkBtn');
     const soundToggleBtn = document.getElementById('soundToggleBtn');
     const soundIcon = document.getElementById('soundIcon');
     const celebrationModal = document.getElementById('celebrationModal');
@@ -827,7 +858,7 @@
         gain.connect(audioCtx.destination);
 
         if (type === 'drop') {
-          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.setValueAtTime(340, now);
           osc.frequency.exponentialRampToValueAtTime(180, now + 0.08);
           gain.gain.setValueAtTime(0.12, now);
           gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
@@ -865,96 +896,73 @@
 
     // Render cards across zones
     window.render = function() {
-      const existingPoolCards = poolGrid.querySelectorAll('.statement-bubble');
-      existingPoolCards.forEach(c => c.remove());
-
-      const existingAbioticCards = abioticItems.querySelectorAll('.statement-bubble');
-      existingAbioticCards.forEach(c => c.remove());
-
-      const existingBioticCards = bioticItems.querySelectorAll('.statement-bubble');
-      existingBioticCards.forEach(c => c.remove());
+      // Remove existing circles and dropped items
+      poolStage.querySelectorAll('.circle-bubble').forEach(c => c.remove());
+      abioticItems.querySelectorAll('.dropped-bubble').forEach(c => c.remove());
+      bioticItems.querySelectorAll('.dropped-bubble').forEach(c => c.remove());
 
       let placedCount = 0;
 
       FACTORS.forEach(factor => {
         const zone = window.state.placements[factor.id];
-        const card = createCardElement(factor, zone);
 
         if (zone === 'abiotic') {
-          abioticItems.appendChild(card);
+          abioticItems.appendChild(createDroppedElement(factor, 'abiotic'));
           placedCount++;
         } else if (zone === 'biotic') {
-          bioticItems.appendChild(card);
+          bioticItems.appendChild(createDroppedElement(factor, 'biotic'));
           placedCount++;
         } else {
-          poolGrid.appendChild(card);
+          poolStage.appendChild(createCircleElement(factor));
         }
       });
 
-      abioticPlaceholder.style.display = (window.state.placements && Object.values(window.state.placements).some(z => z === 'abiotic')) ? 'none' : 'flex';
-      bioticPlaceholder.style.display = (window.state.placements && Object.values(window.state.placements).some(z => z === 'biotic')) ? 'none' : 'flex';
+      abioticPlaceholder.style.display = (placedCount > 0 && Object.values(window.state.placements).some(z => z === 'abiotic')) ? 'none' : 'flex';
+      bioticPlaceholder.style.display = (placedCount > 0 && Object.values(window.state.placements).some(z => z === 'biotic')) ? 'none' : 'flex';
 
       placedCountEl.textContent = placedCount;
     };
 
-    // Create a card DOM element
-    function createCardElement(factor, currentZone) {
-      const card = document.createElement('div');
-      card.className = 'statement-bubble';
-      card.id = factor.id;
-      card.draggable = true;
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
+    // Create a circular bubble element in the center pool
+    function createCircleElement(factor) {
+      const bubble = document.createElement('div');
+      bubble.className = 'circle-bubble';
+      bubble.id = factor.id;
+      bubble.draggable = true;
+      bubble.style.left = factor.left + 'px';
+      bubble.style.top = factor.top + 'px';
+      bubble.style.zIndex = factor.zIndex;
 
       if (window.state.selectedFactorId === factor.id) {
-        card.classList.add('selected');
+        bubble.classList.add('selected');
       }
 
-      if (window.state.checked && currentZone !== 'pool') {
-        const isCorrect = (currentZone === factor.type);
-        card.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
-      }
-
-      let innerHTML = `<div class="bubble-text">${factor.text}</div>`;
-
-      if (window.state.checked && currentZone !== 'pool') {
-        const isCorrect = (currentZone === factor.type);
-        innerHTML += `
-          <div class="feedback-chip ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}">
-            ${isCorrect ? '✓ ' + factor.type.toUpperCase() : '✕ Belongs to ' + factor.type.toUpperCase()}
-          </div>
-          <div class="explanation-text">${factor.explanation}</div>
-        `;
-      }
-
-      innerHTML += `
-        <div class="bubble-actions">
-          ${currentZone !== 'abiotic' ? `<button class="action-btn action-abiotic" data-target="abiotic">← Abiotic</button>` : ''}
-          ${currentZone !== 'pool' ? `<button class="action-btn action-pool" data-target="pool">↺ Pool</button>` : ''}
-          ${currentZone !== 'biotic' ? `<button class="action-btn action-biotic" data-target="biotic">Biotic →</button>` : ''}
+      bubble.innerHTML = `
+        <div class="bubble-text">${factor.text}</div>
+        <div class="tap-actions-overlay">
+          <button class="tap-btn tap-btn-abiotic" data-target="abiotic">← Abiotic</button>
+          <button class="tap-btn tap-btn-biotic" data-target="biotic">Biotic →</button>
         </div>
       `;
 
-      card.innerHTML = innerHTML;
-
       // HTML5 Drag
-      card.addEventListener('dragstart', (e) => {
-        card.classList.add('dragging');
+      bubble.addEventListener('dragstart', (e) => {
+        bubble.classList.add('dragging');
         e.dataTransfer.setData('text/plain', factor.id);
         e.dataTransfer.effectAllowed = 'move';
         playAudioTone('click');
       });
 
-      card.addEventListener('dragend', () => {
-        card.classList.remove('dragging');
+      bubble.addEventListener('dragend', () => {
+        bubble.classList.remove('dragging');
       });
 
       // Click to select or use 1-tap buttons
-      card.addEventListener('click', (e) => {
-        const actionBtn = e.target.closest('.action-btn');
-        if (actionBtn) {
+      bubble.addEventListener('click', (e) => {
+        const tapBtn = e.target.closest('.tap-btn');
+        if (tapBtn) {
           e.stopPropagation();
-          const targetZone = actionBtn.getAttribute('data-target');
+          const targetZone = tapBtn.getAttribute('data-target');
           moveFactor(factor.id, targetZone);
           return;
         }
@@ -963,10 +971,59 @@
         window.render();
       });
 
-      return card;
+      return bubble;
     }
 
-    // Move factor
+    // Create a dropped element inside Abiotic or Biotic zone
+    function createDroppedElement(factor, currentZone) {
+      const item = document.createElement('div');
+      item.className = 'dropped-bubble';
+      item.id = factor.id;
+      item.draggable = true;
+
+      const isChecked = window.state.checked;
+      const isCorrect = (currentZone === factor.type);
+
+      if (isChecked) {
+        item.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+      }
+
+      let innerHTML = `<div class="bubble-text">${factor.text}</div>`;
+
+      if (isChecked) {
+        innerHTML += `
+          <div class="dropped-feedback ${isCorrect ? 'correct' : 'wrong'}">
+            ${isCorrect ? '✓ ' + factor.type.toUpperCase() : '✕ Belongs to ' + factor.type.toUpperCase()}
+          </div>
+          <div class="dropped-explanation">${factor.explanation}</div>
+        `;
+      }
+
+      innerHTML += `
+        <button class="dropped-return-btn" data-target="pool" title="Return to center pool">↺ Pool</button>
+      `;
+
+      item.innerHTML = innerHTML;
+
+      // Drag from zone
+      item.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', factor.id);
+        e.dataTransfer.effectAllowed = 'move';
+        playAudioTone('click');
+      });
+
+      item.addEventListener('click', (e) => {
+        const retBtn = e.target.closest('.dropped-return-btn');
+        if (retBtn) {
+          e.stopPropagation();
+          moveFactor(factor.id, 'pool');
+        }
+      });
+
+      return item;
+    }
+
+    // Move factor to target zone
     function moveFactor(factorId, targetZone) {
       window.state.placements[factorId] = targetZone;
       window.state.selectedFactorId = null;
@@ -1002,7 +1059,7 @@
 
     setupDropTarget(document.getElementById('zoneAbiotic'), 'abiotic');
     setupDropTarget(document.getElementById('zoneBiotic'), 'biotic');
-    setupDropTarget(document.getElementById('poolGrid'), 'pool');
+    setupDropTarget(document.getElementById('poolStage'), 'pool');
 
     // Controls Event Handlers
     resetBtn.addEventListener('click', () => {
@@ -1061,7 +1118,6 @@
 
     modalRestartBtn.addEventListener('click', () => {
       celebrationModal.classList.remove('visible');
-      FACTORS.sort(() => Math.random() - 0.5);
       FACTORS.forEach(f => window.state.placements[f.id] = 'pool');
       window.state.checked = false;
       window.render();
@@ -1073,122 +1129,96 @@
 
     // Touch Support
     let touchDraggingElement = null;
-    let touchGhost = null;
 
     document.addEventListener('pointerdown', (e) => {
-      const bubble = e.target.closest('.statement-bubble');
+      const bubble = e.target.closest('.circle-bubble, .dropped-bubble');
       if (!bubble || e.pointerType === 'mouse') return;
 
-      const actionBtn = e.target.closest('.action-btn');
-      if (actionBtn) return;
+      const tapBtn = e.target.closest('.tap-btn, .dropped-return-btn');
+      if (tapBtn) return;
 
       const factorId = bubble.id;
       touchDraggingElement = { factorId, element: bubble, startX: e.clientX, startY: e.clientY };
     });
 
-    document.addEventListener('pointermove', (e) => {
+    document.addEventListener('pointerup', (e) => {
       if (!touchDraggingElement) return;
 
-      if (!touchGhost) {
-        const dist = Math.hypot(e.clientX - touchDraggingElement.startX, e.clientY - touchDraggingElement.startY);
-        if (dist > 8) {
-          touchGhost = touchDraggingElement.element.cloneNode(true);
-          touchGhost.style.position = 'fixed';
-          touchGhost.style.pointerEvents = 'none';
-          touchGhost.style.opacity = '0.85';
-          touchGhost.style.zIndex = '9999';
-          touchGhost.style.transform = 'scale(1.05) translate(-50%, -50%)';
-          touchGhost.style.width = touchDraggingElement.element.offsetWidth + 'px';
-          document.body.appendChild(touchGhost);
-          touchDraggingElement.element.style.opacity = '0.35';
-        }
+      const abioticRect = document.getElementById('zoneAbiotic').getBoundingClientRect();
+      const bioticRect = document.getElementById('zoneBiotic').getBoundingClientRect();
+      const poolRect = document.getElementById('poolStage').getBoundingClientRect();
+
+      const x = e.clientX;
+      const y = e.clientY;
+
+      if (x >= abioticRect.left && x <= abioticRect.right && y >= abioticRect.top && y <= abioticRect.bottom) {
+        moveFactor(touchDraggingElement.factorId, 'abiotic');
+      } else if (x >= bioticRect.left && x <= bioticRect.right && y >= bioticRect.top && y <= bioticRect.bottom) {
+        moveFactor(touchDraggingElement.factorId, 'biotic');
+      } else if (x >= poolRect.left && x <= poolRect.right && y >= poolRect.top && y <= poolRect.bottom) {
+        moveFactor(touchDraggingElement.factorId, 'pool');
       }
 
-      if (touchGhost) {
-        touchGhost.style.left = e.clientX + 'px';
-        touchGhost.style.top = e.clientY + 'px';
-      }
-    });
-
-    document.addEventListener('pointerup', (e) => {
-      if (touchGhost) {
-        touchGhost.remove();
-        touchGhost = null;
-
-        if (touchDraggingElement) {
-          touchDraggingElement.element.style.opacity = '1';
-
-          const abioticRect = document.getElementById('zoneAbiotic').getBoundingClientRect();
-          const bioticRect = document.getElementById('zoneBiotic').getBoundingClientRect();
-          const poolRect = document.querySelector('.pool-section').getBoundingClientRect();
-
-          if (e.clientX >= abioticRect.left && e.clientX <= abioticRect.right && e.clientY >= abioticRect.top && e.clientY <= abioticRect.bottom) {
-            moveFactor(touchDraggingElement.factorId, 'abiotic');
-          } else if (e.clientX >= bioticRect.left && e.clientX <= bioticRect.right && e.clientY >= bioticRect.top && e.clientY <= bioticRect.bottom) {
-            moveFactor(touchDraggingElement.factorId, 'biotic');
-          } else if (e.clientX >= poolRect.left && e.clientX <= poolRect.right && e.clientY >= poolRect.top && e.clientY <= poolRect.bottom) {
-            moveFactor(touchDraggingElement.factorId, 'pool');
-          }
-        }
-      }
       touchDraggingElement = null;
     });
 
-    // Particle Confetti
+    // Confetti Engine
     function triggerConfetti() {
-      const ctx = confettiCanvas.getContext('2d');
-      confettiCanvas.width = window.innerWidth;
-      confettiCanvas.height = window.innerHeight;
+      const canvas = confettiCanvas;
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
 
       const particles = [];
-      const colors = ['#38bdf8', '#4ade80', '#fbbf24', '#f43f5e', '#a855f7', '#6366f1'];
+      const colors = ['#38bdf8', '#4ade80', '#fbbf24', '#f43f5e', '#a855f7', '#0284c7'];
 
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 70; i++) {
         particles.push({
-          x: confettiCanvas.width / 2,
-          y: confettiCanvas.height / 2,
-          w: Math.random() * 8 + 6,
-          h: Math.random() * 6 + 4,
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.7) * 12,
+          size: Math.random() * 7 + 4,
           color: colors[Math.floor(Math.random() * colors.length)],
-          vx: (Math.random() - 0.5) * 14,
-          vy: (Math.random() - 0.7) * 16,
-          rot: Math.random() * 360,
-          vRot: (Math.random() - 0.5) * 12,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10,
           opacity: 1
         });
       }
 
-      function renderFrame() {
-        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-        let active = 0;
+      let frame = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
 
         particles.forEach(p => {
           p.x += p.vx;
           p.y += p.vy;
-          p.vy += 0.35;
-          p.rot += p.vRot;
-          p.opacity -= 0.014;
+          p.vy += 0.25; // gravity
+          p.rotation += p.rotationSpeed;
+          p.opacity -= 0.012;
 
           if (p.opacity > 0) {
-            active++;
+            active = true;
             ctx.save();
             ctx.translate(p.x, p.y);
-            ctx.rotate((p.rot * Math.PI) / 180);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.globalAlpha = p.opacity;
             ctx.fillStyle = p.color;
-            ctx.globalAlpha = Math.max(0, p.opacity);
-            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
             ctx.restore();
           }
         });
 
-        if (active > 0) {
-          requestAnimationFrame(renderFrame);
+        frame++;
+        if (active && frame < 120) {
+          requestAnimationFrame(animate);
         } else {
-          ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
       }
 
-      renderFrame();
+      animate();
     }
 
     // Initial render
