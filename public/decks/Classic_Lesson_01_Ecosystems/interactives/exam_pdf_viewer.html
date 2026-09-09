@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR Gateway Biology: Ecosystems Checkpoint & Mark Scheme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --scale: 1;
+      --bg-canvas: #f8fafc;
+      --bg-header: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-light: #e0f2fe;
+      --emerald: #10b981;
+      --emerald-light: #ecfdf5;
+      --amber: #f59e0b;
+      --amber-light: #fef3c7;
+      --shadow-sm: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.06);
+      --shadow-md: 0 calc(4px * var(--scale)) calc(12px * var(--scale)) rgba(0,0,0,0.08);
+      --shadow-lg: 0 calc(8px * var(--scale)) calc(24px * var(--scale)) rgba(0,0,0,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .slide-wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #f1f5f9;
+      position: relative;
+    }
+
+    /* Top Control & Navigation Bar */
+    .top-bar {
+      height: calc(56px * var(--scale));
+      min-height: calc(56px * var(--scale));
+      background: var(--bg-header);
+      border-bottom: calc(1.5px * var(--scale)) solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 calc(18px * var(--scale));
+      box-shadow: var(--shadow-sm);
+      z-index: 50;
+      gap: calc(12px * var(--scale));
+    }
+
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: calc(10px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .badge-ocr {
+      background: #eff6ff;
+      border: calc(1px * var(--scale)) solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: calc(6px * var(--scale));
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
+    }
+
+    .slide-heading {
+      font-size: calc(15px * var(--scale));
+      font-weight: 700;
+      color: #1e293b;
+      white-space: nowrap;
+    }
+
+    .mark-pill {
+      background: var(--amber-light);
+      border: calc(1px * var(--scale)) solid #fde68a;
+      color: #b45309;
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* Center Segmented Mode Switcher */
+    .mode-switcher {
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      padding: calc(3px * var(--scale));
+      border-radius: calc(10px * var(--scale));
+      border: calc(1px * var(--scale)) solid #e2e8f0;
+      gap: calc(3px * var(--scale));
+    }
+
+    .mode-btn {
+      border: none;
+      background: transparent;
+      padding: calc(6px * var(--scale)) calc(12px * var(--scale));
+      border-radius: calc(7px * var(--scale));
+      font-size: calc(12px * var(--scale));
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .mode-btn:hover {
+      color: var(--text-main);
+    }
+
+    .mode-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.1);
+      font-weight: 700;
+    }
+
+    .mode-btn .icon {
+      font-size: calc(13px * var(--scale));
+    }
+
+    /* Right Utility Controls */
+    .utility-group {
+      display: flex;
+      align-items: center;
+      gap: calc(8px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .btn-action {
+      background: #ffffff;
+      border: calc(1.5px * var(--scale)) solid var(--border-color);
+      color: #334155;
+      padding: calc(5px * var(--scale)) calc(10px * var(--scale));
+      border-radius: calc(8px * var(--scale));
+      font-size: calc(12px * var(--scale));
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: calc(5px * var(--scale));
+      transition: all 0.15s ease;
+      font-family: inherit;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-action:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .btn-action.active {
+      background: var(--emerald-light);
+      border-color: #a7f3d0;
+      color: #047857;
+      font-weight: 700;
+    }
+
+    .zoom-group {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: calc(1.5px * var(--scale)) solid var(--border-color);
+      border-radius: calc(8px * var(--scale));
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-zoom {
+      border: none;
+      background: transparent;
+      width: calc(28px * var(--scale));
+      height: calc(28px * var(--scale));
+      font-size: calc(14px * var(--scale));
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.12s;
+    }
+
+    .btn-zoom:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .zoom-text {
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      color: #475569;
+      padding: 0 calc(6px * var(--scale));
+      min-width: calc(44px * var(--scale));
+      text-align: center;
+    }
+
+    /* Main Split Viewing Arena */
+    .viewport-arena {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      background: #cbd5e1;
+    }
+
+    /* Pane Container (Split or Full) */
+    .viewer-pane {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      transition: flex 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .viewer-pane.pane-left {
+      flex: 1 1 50%;
+      width: 50%;
+      border-right: calc(2px * var(--scale)) solid #cbd5e1;
+      background: #e2e8f0;
+    }
+
+    .viewer-pane.pane-right {
+      flex: 1 1 50%;
+      width: 50%;
+      background: #e2e8f0;
+    }
+
+    /* Pane Sub-header Toolbar */
+    .pane-toolbar {
+      height: calc(40px * var(--scale));
+      min-height: calc(40px * var(--scale));
+      background: #ffffff;
+      border-bottom: calc(1px * var(--scale)) solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 calc(14px * var(--scale));
+      box-shadow: 0 calc(1px * var(--scale)) calc(2px * var(--scale)) rgba(0,0,0,0.04);
+      z-index: 10;
+    }
+
+    .pane-title {
+      font-size: calc(12px * var(--scale));
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+      color: #334155;
+    }
+
+    .pane-title .icon {
+      font-size: calc(14px * var(--scale));
+    }
+
+    .pane-controls {
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+    }
+
+    .btn-pill-small {
+      border: calc(1px * var(--scale)) solid #cbd5e1;
+      background: #f8fafc;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: calc(6px * var(--scale));
+      font-size: calc(11px * var(--scale));
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.12s;
+      font-family: inherit;
+    }
+
+    .btn-pill-small:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .btn-pill-small.active {
+      background: #e0f2fe;
+      border-color: #7dd3fc;
+      color: #0369a1;
+      font-weight: 700;
+    }
+
+    /* Scrollable Document Canvas Area */
+    .doc-canvas-container {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: calc(20px * var(--scale));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: calc(24px * var(--scale));
+      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    /* A4 Page Card */
+    .page-sheet-card {
+      background: #ffffff;
+      border-radius: calc(6px * var(--scale));
+      box-shadow: var(--shadow-lg), 0 0 calc(2px * var(--scale)) rgba(0,0,0,0.15);
+      position: relative;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transform-origin: top center;
+      max-width: 100%;
+    }
+
+    .page-sheet-card:hover {
+      box-shadow: 0 calc(12px * var(--scale)) calc(30px * var(--scale)) rgba(0,0,0,0.18);
+    }
+
+    .page-img-wrapper {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    .page-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: calc(6px * var(--scale));
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* Interactive Answer & Mark Scheme Overlay Layers */
+    .answer-overlay-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .answer-overlay-layer.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .answer-badge {
+      position: absolute;
+      background: rgba(16, 185, 129, 0.96);
+      color: #ffffff;
+      border: calc(2px * var(--scale)) solid #047857;
+      border-radius: calc(8px * var(--scale));
+      box-shadow: 0 calc(4px * var(--scale)) calc(12px * var(--scale)) rgba(16, 185, 129, 0.4);
+      padding: calc(4px * var(--scale)) calc(10px * var(--scale));
+      font-size: calc(13px * var(--scale));
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: calc(5px * var(--scale));
+      transform: translateY(-50%);
+      animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .answer-badge .tick {
+      font-size: calc(15px * var(--scale));
+      color: #ffffff;
+    }
+
+    .answer-box-highlight {
+      position: absolute;
+      border: calc(3px * var(--scale)) solid #10b981;
+      background: rgba(16, 185, 129, 0.18);
+      border-radius: calc(6px * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(22px * var(--scale));
+      font-weight: 800;
+      color: #065f46;
+      animation: pulseGreen 1.8s infinite;
+    }
+
+    .answer-text-fill {
+      position: absolute;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 700;
+      color: #065f46;
+      font-size: calc(15px * var(--scale));
+      background: rgba(236, 253, 245, 0.92);
+      border: calc(1px * var(--scale)) solid #a7f3d0;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: calc(5px * var(--scale));
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+    }
+
+    .guidance-box {
+      position: absolute;
+      background: rgba(254, 243, 199, 0.95);
+      border: calc(1.5px * var(--scale)) solid #f59e0b;
+      color: #92400e;
+      border-radius: calc(6px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(10px * var(--scale));
+      font-size: calc(11px * var(--scale));
+      font-weight: 600;
+      line-height: 1.35;
+      box-shadow: 0 calc(3px * var(--scale)) calc(8px * var(--scale)) rgba(245, 158, 11, 0.25);
+    }
+
+    /* Interactive Mark Scheme Guidance Callout on Right Pane */
+    .examiner-callout-card {
+      position: absolute;
+      right: calc(16px * var(--scale));
+      bottom: calc(16px * var(--scale));
+      max-width: calc(340px * var(--scale));
+      background: #ffffff;
+      border: calc(2px * var(--scale)) solid #38bdf8;
+      border-radius: calc(10px * var(--scale));
+      padding: calc(12px * var(--scale)) calc(14px * var(--scale));
+      box-shadow: var(--shadow-lg);
+      font-size: calc(12px * var(--scale));
+      line-height: 1.4;
+      color: #1e293b;
+      z-index: 30;
+      animation: slideUp 0.3s ease;
+    }
+
+    .callout-title {
+      font-weight: 800;
+      color: #0284c7;
+      margin-bottom: calc(4px * var(--scale));
+      display: flex;
+      align-items: center;
+      gap: calc(5px * var(--scale));
+    }
+
+    .callout-tip {
+      color: #475569;
+      font-size: calc(11.5px * var(--scale));
+    }
+
+    .callout-close {
+      position: absolute;
+      top: calc(8px * var(--scale));
+      right: calc(8px * var(--scale));
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: calc(14px * var(--scale));
+      font-weight: 700;
+    }
+
+    .callout-close:hover {
+      color: #334155;
+    }
+
+    /* Resizer Divider Bar */
+    .splitter-divider {
+      width: calc(8px * var(--scale));
+      background: #cbd5e1;
+      cursor: col-resize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 20;
+      transition: background 0.15s;
+    }
+
+    .splitter-divider:hover,
+    .splitter-divider.active {
+      background: #94a3b8;
+    }
+
+    .splitter-handle {
+      width: calc(4px * var(--scale));
+      height: calc(36px * var(--scale));
+      background: #64748b;
+      border-radius: 999px;
+    }
+
+    /* Single pane view modes */
+    .view-mode-questions .pane-left {
+      flex: 1 1 100% !important;
+      width: 100% !important;
+      border-right: none;
+    }
+    .view-mode-questions .pane-right,
+    .view-mode-questions .splitter-divider {
+      display: none !important;
+    }
+
+    .view-mode-markscheme .pane-right {
+      flex: 1 1 100% !important;
+      width: 100% !important;
+    }
+    .view-mode-markscheme .pane-left,
+    .view-mode-markscheme .splitter-divider {
+      display: none !important;
+    }
+
+    /* Page Visibility Filtering */
+    .show-page-1 .sheet-page-2 {
+      display: none !important;
+    }
+    .show-page-2 .sheet-page-1 {
+      display: none !important;
+    }
+
+    /* Animations */
+    @keyframes pulseGreen {
+      0%, 100% { box-shadow: 0 0 0 calc(0px * var(--scale)) rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 0 calc(6px * var(--scale)) rgba(16, 185, 129, 0.4); }
+    }
+
+    @keyframes popIn {
+      0% { transform: translateY(-50%) scale(0.85); opacity: 0; }
+      100% { transform: translateY(-50%) scale(1); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      0% { transform: translateY(15px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-wrapper" id="slideWrapper">
+    <!-- Top Control Bar -->
+    <header class="top-bar">
+      <div class="title-group">
+        <span class="badge-ocr">OCR Gateway</span>
+        <h1 class="slide-heading">Ecosystems Exam Checkpoint & Mark Scheme</h1>
+        <span class="mark-pill">3 Marks Total</span>
+      </div>
+
+      <!-- Segmented View Mode Switcher -->
+      <div class="mode-switcher" role="tablist" aria-label="Viewing layout switcher">
+        <button id="modeBtnSplit" class="mode-btn active" role="tab" aria-selected="true" title="Split Screen 50:50 (Questions Left, Mark Scheme Right)">
+          <span class="icon">🔀</span>
+          <span>Split 50:50</span>
+        </button>
+        <button id="modeBtnQuestions" class="mode-btn" role="tab" aria-selected="false" title="Questions Only Full Width">
+          <span class="icon">📄</span>
+          <span>Questions Only</span>
+        </button>
+        <button id="modeBtnMarkScheme" class="mode-btn" role="tab" aria-selected="false" title="Mark Scheme Only Full Width">
+          <span class="icon">✅</span>
+          <span>Mark Scheme Only</span>
+        </button>
+      </div>
+
+      <!-- Right Utility Controls -->
+      <div class="utility-group">
+        <button id="btnToggleAnswers" class="btn-action" title="Toggle Model Answers on Question Paper">
+          <span class="icon">💡</span>
+          <span id="btnAnswersText">Reveal Answers</span>
+        </button>
+
+        <div class="zoom-group">
+          <button id="btnZoomOut" class="btn-zoom" title="Zoom Out (-)">−</button>
+          <span id="zoomLabel" class="zoom-text">Fit</span>
+          <button id="btnZoomIn" class="btn-zoom" title="Zoom In (+)">+</button>
+          <button id="btnZoomReset" class="btn-zoom" title="Reset Zoom" style="font-size: calc(10px * var(--scale)); width: auto; padding: 0 calc(5px * var(--scale));">Reset</button>
+        </div>
+
+        <a id="btnDownloadPdf" class="btn-action" href="/decks/Classic_Lesson_01_Ecosystems/assets/exam_pdf/ocr_ecosystems_checkpoint.pdf" target="_blank" download="ocr_ecosystems_checkpoint.pdf" title="Open or Download Original OCR PDF">
+          <span class="icon">📥</span>
+          <span>PDF</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Viewport Arena -->
+    <main class="viewport-arena" id="viewportArena">
+      <!-- Left Pane: Question Paper (Pages 1 & 2) -->
+      <section class="viewer-pane pane-left" id="paneQuestions" aria-label="Question Paper">
+        <div class="pane-toolbar">
+          <div class="pane-title">
+            <span class="icon">📋</span>
+            <span>Question Paper (Pages 1 & 2)</span>
+          </div>
+          <div class="pane-controls">
+            <span style="font-size: calc(11px * var(--scale)); color: #64748b; font-weight: 600;">View:</span>
+            <button id="btnPageAll" class="btn-pill-small active">All (1 & 2)</button>
+            <button id="btnPage1" class="btn-pill-small">Page 1 (Q1)</button>
+            <button id="btnPage2" class="btn-pill-small">Page 2 (Q2–3)</button>
+          </div>
+        </div>
+
+        <div class="doc-canvas-container" id="containerQuestions">
+          <!-- Page 1 Sheet -->
+          <article class="page-sheet-card sheet-page-1" id="sheetPage1">
+            <div class="page-img-wrapper">
+              <img class="page-img" src="/decks/Classic_Lesson_01_Ecosystems/assets/exam_pdf/page-1.png" alt="OCR Question Paper Page 1: Question 1 Multiple Choice" loading="eager" />
+              
+              <!-- Interactive Answer Overlay for Page 1 -->
+              <div class="answer-overlay-layer" id="answerLayerPage1">
+                <!-- Q1 Answer box highlight -->
+                <div class="answer-box-highlight" style="left: 24.3%; top: 21.3%; width: 5.4%; height: 3.7%;">
+                  <span>B</span>
+                </div>
+                <!-- Q1 Answer Badge -->
+                <div class="answer-badge" style="left: 31%; top: 23%;">
+                  <span class="tick">✓</span>
+                  <span>B: Ecosystem [1 Mark]</span>
+                </div>
+                <!-- Clarification callout -->
+                <div class="guidance-box" style="left: 24.3%; top: 26.5%; width: 55%;">
+                  <strong>Guidance:</strong> An ecosystem includes both the biotic (community of living organisms) and abiotic (physical, chemical non-living) interactions.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Page 2 Sheet -->
+          <article class="page-sheet-card sheet-page-2" id="sheetPage2">
+            <div class="page-img-wrapper">
+              <img class="page-img" src="/decks/Classic_Lesson_01_Ecosystems/assets/exam_pdf/page-2.png" alt="OCR Question Paper Page 2: Food chain Q2 and Q3" loading="eager" />
+              
+              <!-- Interactive Answer Overlay for Page 2 -->
+              <div class="answer-overlay-layer" id="answerLayerPage2">
+                <!-- Q2 (i) Primary consumer: Buffalo -->
+                <div class="answer-text-fill" style="left: 15%; top: 49.3%;">
+                  <span>Buffalo</span>
+                  <span style="color:#10b981; font-weight:800;">✓ [1]</span>
+                </div>
+
+                <!-- Q2 (ii) Abiotic component: Sun / Sunlight -->
+                <div class="answer-text-fill" style="left: 15%; top: 61.1%;">
+                  <span>Sun / (Sun)light</span>
+                  <span style="color:#10b981; font-weight:800;">✓ [1]</span>
+                </div>
+                <!-- Guidance warning for Q2 ii -->
+                <div class="guidance-box" style="left: 45%; top: 60.5%; width: 48%;">
+                  <strong>Examiner Note:</strong> IGNORE temperature/heat. Common error: Grass is biotic, not abiotic!
+                </div>
+
+                <!-- Q3 Answer -->
+                <div class="answer-text-fill" style="left: 15%; top: 73.8%; width: 78%;">
+                  <span>Microorganisms are living and soil moisture is non-living / physical</span>
+                  <span style="color:#10b981; font-weight:800; white-space:nowrap;">✓ [1]</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Center Splitter Divider -->
+      <div class="splitter-divider" id="splitterDivider" title="Drag to adjust split ratio">
+        <div class="splitter-handle"></div>
+      </div>
+
+      <!-- Right Pane: Mark Scheme (Page 3) -->
+      <section class="viewer-pane pane-right" id="paneMarkScheme" aria-label="Mark Scheme">
+        <div class="pane-toolbar">
+          <div class="pane-title">
+            <span class="icon">✅</span>
+            <span>Official Mark Scheme (Page 3 of 3)</span>
+          </div>
+          <div class="pane-controls">
+            <span class="badge-ocr" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">AO1.1 & AO2.1</span>
+            <button id="btnScrollToTop" class="btn-pill-small" title="Top of Mark Scheme">Top</button>
+          </div>
+        </div>
+
+        <div class="doc-canvas-container" id="containerMarkScheme">
+          <!-- Page 3 Sheet -->
+          <article class="page-sheet-card sheet-page-3" id="sheetPage3">
+            <div class="page-img-wrapper">
+              <img class="page-img" src="/decks/Classic_Lesson_01_Ecosystems/assets/exam_pdf/page-3.png" alt="OCR Mark Scheme Page 3" loading="eager" />
+            </div>
+          </article>
+        </div>
+
+        <!-- Examiner Guidance Float Card -->
+        <div class="examiner-callout-card" id="examinerCallout">
+          <button class="callout-close" id="btnCloseCallout" aria-label="Close guidance tip">&times;</button>
+          <div class="callout-title">
+            <span>💡</span>
+            <span>Examiner Guidance Insights</span>
+          </div>
+          <div class="callout-tip">
+            <strong>Key Trap (Q2 ii):</strong> Many candidates confuse the abiotic energy source (Sun) with producers (Grass). The sun is non-living (abiotic), whereas grass is living (biotic).
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const slideWrapper = document.getElementById("slideWrapper");
+      const viewportArena = document.getElementById("viewportArena");
+      const paneQuestions = document.getElementById("paneQuestions");
+      const paneMarkScheme = document.getElementById("paneMarkScheme");
+      const splitterDivider = document.getElementById("splitterDivider");
+
+      const modeBtnSplit = document.getElementById("modeBtnSplit");
+      const modeBtnQuestions = document.getElementById("modeBtnQuestions");
+      const modeBtnMarkScheme = document.getElementById("modeBtnMarkScheme");
+
+      const btnPageAll = document.getElementById("btnPageAll");
+      const btnPage1 = document.getElementById("btnPage1");
+      const btnPage2 = document.getElementById("btnPage2");
+
+      const btnZoomIn = document.getElementById("btnZoomIn");
+      const btnZoomOut = document.getElementById("btnZoomOut");
+      const btnZoomReset = document.getElementById("btnZoomReset");
+      const zoomLabel = document.getElementById("zoomLabel");
+
+      const btnToggleAnswers = document.getElementById("btnToggleAnswers");
+      const btnAnswersText = document.getElementById("btnAnswersText");
+      const answerLayerPage1 = document.getElementById("answerLayerPage1");
+      const answerLayerPage2 = document.getElementById("answerLayerPage2");
+      const examinerCallout = document.getElementById("examinerCallout");
+      const btnCloseCallout = document.getElementById("btnCloseCallout");
+      const btnScrollToTop = document.getElementById("btnScrollToTop");
+      const containerMarkScheme = document.getElementById("containerMarkScheme");
+
+      const sheetPage1 = document.getElementById("sheetPage1");
+      const sheetPage2 = document.getElementById("sheetPage2");
+      const sheetPage3 = document.getElementById("sheetPage3");
+
+      let currentMode = "split";
+      let currentZoom = 1.0;
+      let answersVisible = false;
+
+      function updateScale() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const scaleW = w / 1376;
+        const scaleH = h / 768;
+        const scale = Math.min(scaleW, scaleH);
+        const clampedScale = Math.max(0.65, Math.min(scale, 1.4));
+        document.documentElement.style.setProperty("--scale", clampedScale.toFixed(3));
+        applyZoom();
+      }
+
+      window.addEventListener("resize", updateScale);
+      updateScale();
+
+      function applyZoom() {
+        const baseWidthSplit = (paneQuestions.clientWidth || window.innerWidth / 2) - 48;
+        const baseWidthFull = (viewportArena.clientWidth || window.innerWidth) - 64;
+
+        const effectiveWidth = (currentMode === "split") ? baseWidthSplit : baseWidthFull;
+        const targetWidth = Math.max(340, effectiveWidth * currentZoom);
+
+        sheetPage1.style.width = targetWidth + "px";
+        sheetPage2.style.width = targetWidth + "px";
+        sheetPage3.style.width = targetWidth + "px";
+
+        zoomLabel.textContent = Math.round(currentZoom * 100) + "%";
+      }
+
+      btnZoomIn.addEventListener("click", () => {
+        if (currentZoom < 2.0) {
+          currentZoom = Math.min(2.0, currentZoom + 0.15);
+          applyZoom();
+        }
+      });
+
+      btnZoomOut.addEventListener("click", () => {
+        if (currentZoom > 0.6) {
+          currentZoom = Math.max(0.6, currentZoom - 0.15);
+          applyZoom();
+        }
+      });
+
+      btnZoomReset.addEventListener("click", () => {
+        currentZoom = 1.0;
+        applyZoom();
+      });
+
+      function setMode(mode) {
+        currentMode = mode;
+        viewportArena.classList.remove("view-mode-questions", "view-mode-markscheme");
+
+        modeBtnSplit.classList.remove("active");
+        modeBtnQuestions.classList.remove("active");
+        modeBtnMarkScheme.classList.remove("active");
+
+        if (mode === "split") {
+          modeBtnSplit.classList.add("active");
+          paneQuestions.style.flex = "1 1 50%";
+          paneQuestions.style.width = "50%";
+          paneMarkScheme.style.flex = "1 1 50%";
+          paneMarkScheme.style.width = "50%";
+          splitterDivider.style.display = "flex";
+        } else if (mode === "questions") {
+          modeBtnQuestions.classList.add("active");
+          viewportArena.classList.add("view-mode-questions");
+          splitterDivider.style.display = "none";
+        } else if (mode === "markscheme") {
+          modeBtnMarkScheme.classList.add("active");
+          viewportArena.classList.add("view-mode-markscheme");
+          splitterDivider.style.display = "none";
+        }
+
+        setTimeout(applyZoom, 50);
+      }
+
+      modeBtnSplit.addEventListener("click", () => setMode("split"));
+      modeBtnQuestions.addEventListener("click", () => setMode("questions"));
+      modeBtnMarkScheme.addEventListener("click", () => setMode("markscheme"));
+
+      function setPageFilter(filter) {
+        btnPageAll.classList.remove("active");
+        btnPage1.classList.remove("active");
+        btnPage2.classList.remove("active");
+        paneQuestions.classList.remove("show-page-1", "show-page-2");
+
+        if (filter === "all") {
+          btnPageAll.classList.add("active");
+        } else if (filter === "1") {
+          btnPage1.classList.add("active");
+          paneQuestions.classList.add("show-page-1");
+        } else if (filter === "2") {
+          btnPage2.classList.add("active");
+          paneQuestions.classList.add("show-page-2");
+        }
+      }
+
+      btnPageAll.addEventListener("click", () => setPageFilter("all"));
+      btnPage1.addEventListener("click", () => setPageFilter("1"));
+      btnPage2.addEventListener("click", () => setPageFilter("2"));
+
+      btnToggleAnswers.addEventListener("click", () => {
+        answersVisible = !answersVisible;
+        if (answersVisible) {
+          answerLayerPage1.classList.add("visible");
+          answerLayerPage2.classList.add("visible");
+          btnToggleAnswers.classList.add("active");
+          btnAnswersText.textContent = "Hide Answers";
+        } else {
+          answerLayerPage1.classList.remove("visible");
+          answerLayerPage2.classList.remove("visible");
+          btnToggleAnswers.classList.remove("active");
+          btnAnswersText.textContent = "Reveal Answers";
+        }
+      });
+
+      btnCloseCallout.addEventListener("click", () => {
+        examinerCallout.style.display = "none";
+      });
+
+      btnScrollToTop.addEventListener("click", () => {
+        containerMarkScheme.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      let isDragging = false;
+      splitterDivider.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        splitterDivider.classList.add("active");
+        document.body.style.cursor = "col-resize";
+        e.preventDefault();
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging || currentMode !== "split") return;
+        const arenaRect = viewportArena.getBoundingClientRect();
+        const pointerX = e.clientX - arenaRect.left;
+        const totalW = arenaRect.width;
+
+        const leftPct = Math.max(25, Math.min(75, (pointerX / totalW) * 100));
+        const rightPct = 100 - leftPct;
+
+        paneQuestions.style.flex = `0 0 ${leftPct}%`;
+        paneQuestions.style.width = `${leftPct}%`;
+        paneMarkScheme.style.flex = `0 0 ${rightPct}%`;
+        paneMarkScheme.style.width = `${rightPct}%`;
+
+        applyZoom();
+      });
+
+      window.addEventListener("mouseup", () => {
+        if (isDragging) {
+          isDragging = false;
+          splitterDivider.classList.remove("active");
+          document.body.style.cursor = "";
+        }
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "1") setMode("questions");
+        else if (e.key === "2") setMode("split");
+        else if (e.key === "3") setMode("markscheme");
+        else if (e.key === "+" || e.key === "=") btnZoomIn.click();
+        else if (e.key === "-") btnZoomOut.click();
+        else if (e.key === "0") btnZoomReset.click();
+        else if (e.key.toLowerCase() === "a") btnToggleAnswers.click();
+      });
+
+      setTimeout(applyZoom, 100);
+    })();
+  </script>
+</body>
+</html>

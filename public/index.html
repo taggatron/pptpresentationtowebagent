@@ -143,6 +143,13 @@
           style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;"
         >📊</a>
         <button
+          id="analyticsModalBtn"
+          class="icon-btn"
+          type="button"
+          title="Lesson Slideshow Analytics"
+          aria-label="Lesson slideshow analytics"
+        >📈</button>
+        <button
           id="aboutAppBtn"
           class="icon-btn"
           type="button"
@@ -905,6 +912,102 @@
       <div class="modal-body">
         <div id="setsCardsContainer" class="sets-grid">
           <!-- Set cards will be injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lesson Slideshow Analytics Modal -->
+  <div id="analyticsModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="analyticsModalTitle">
+    <div class="modal-card analytics-modal-card">
+      <div class="modal-header analytics-modal-header">
+        <div class="modal-title-wrap">
+          <div class="analytics-badge-row">
+            <h3 id="analyticsModalTitle">Lesson Slideshow Analytics</h3>
+            <span id="analyticsStatusBadge" class="analytics-status-pill idle">Idle</span>
+          </div>
+          <p id="analyticsModalSubtitle" class="modal-subtitle">Tracking slide dwell time and pedagogical phase allocation</p>
+        </div>
+        <button id="closeAnalyticsModalBtn" class="close-btn" type="button" aria-label="Close analytics modal">&times;</button>
+      </div>
+      <div class="modal-body analytics-modal-body">
+        <!-- Top Stats Row -->
+        <div class="analytics-kpi-grid">
+          <div class="analytics-kpi-card">
+            <span class="kpi-label">Total Lesson Time</span>
+            <span class="kpi-value" id="analyticsTotalTime">0m 00s</span>
+            <span class="kpi-sub" id="analyticsSessionCount">0 sessions recorded</span>
+          </div>
+          <div class="analytics-kpi-card">
+            <span class="kpi-label">Slides Tracked</span>
+            <span class="kpi-value" id="analyticsSlidesTracked">0 / 0</span>
+            <span class="kpi-sub" id="analyticsCurrentSlidePhase">Phase: Ready</span>
+          </div>
+          <div class="analytics-kpi-card">
+            <span class="kpi-label">Avg Pace per Slide</span>
+            <span class="kpi-value" id="analyticsAvgPace">0s</span>
+            <span class="kpi-sub">Target: ~90s – 180s</span>
+          </div>
+        </div>
+
+        <!-- Main Chart & Comparison Split View -->
+        <div class="analytics-content-split">
+          <!-- Donut Chart Left -->
+          <div class="analytics-chart-panel">
+            <div class="panel-header">
+              <h4>Time Allocation Across Lesson Stages</h4>
+              <span class="chart-hint">Hover segments for phase details</span>
+            </div>
+            <div class="donut-chart-container" id="donutChartContainer">
+              <svg id="donutChartSvg" class="donut-chart-svg" viewBox="0 0 360 360" aria-label="Lesson time distribution donut chart">
+                <!-- Slices will be rendered dynamically -->
+              </svg>
+              <div class="donut-center-info" id="donutCenterInfo">
+                <div class="center-title">Lesson Time</div>
+                <div class="center-sub">Distribution</div>
+                <div class="center-metric" id="donutCenterMetric"></div>
+              </div>
+            </div>
+            <!-- Legend under chart -->
+            <div class="chart-legend" id="chartLegend">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Phase Breakdown & Slide Mapping Right -->
+          <div class="analytics-details-panel">
+            <div class="panel-header">
+              <h4>Phase Comparison vs. Target</h4>
+            </div>
+            <div class="phase-cards-list" id="phaseCardsList">
+              <!-- Cards for Starter, Direct Instruction, Modelling, Guided Practice, Independent Practice, Plenary -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Per-slide timeline accordion / table -->
+        <div class="analytics-slides-breakdown">
+          <div class="panel-header collapsable-header" id="toggleSlideTableBtn">
+            <h4>Slide-by-Slide Dwell & Phase Log (<span id="slideCountBadge">0 slides</span>)</h4>
+            <span class="expand-indicator" id="slideTableExpandIcon">▼</span>
+          </div>
+          <div class="slide-dwell-table-wrap" id="slideDwellTableWrap">
+            <table class="slide-dwell-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Slide Title</th>
+                  <th>Pedagogical Phase</th>
+                  <th>Dwell Time</th>
+                  <th>Visits</th>
+                  <th>Target Guidance</th>
+                </tr>
+              </thead>
+              <tbody id="slideDwellTableBody">
+                <!-- Slide rows populated dynamically -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

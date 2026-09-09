@@ -29,6 +29,18 @@ import {
   DEFAULT_AGENT_PATHWAY,
   normalizeAgentPathway
 } from "./agent-config.js";
+import {
+  startTrackingSession,
+  recordSlideDwell,
+  finishTrackingSession,
+  getDeckAnalytics,
+  getAllSessions
+} from "./analytics-db.js";
+import {
+  analyzeDeckLessonPhases,
+  LESSON_PHASE_BENCHMARKS,
+  LESSON_PHASES
+} from "./lesson-phase-classifier.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1516,6 +1528,112 @@ export function createApp({
       });
     } catch (error) {
       res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.get("/api/analytics/phase-definitions", (_req, res) => {
+    res.json({
+      success: true,
+      benchmarks: LESSON_PHASE_BENCHMARKS,
+      phases: LESSON_PHASES
+    });
+  });
+
+  app.post("/api/analytics/session/start", async (req, res) => {
+    try {
+      const { deckId, totalSlides } = req.body || {};
+      const safeDeckId = assertSafeDeckId(deckId);
+      const session = startTrackingSession(safeDeckId, totalSlides || 0);
+      res.json({ success: true, session });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.post("/api/analytics/session/heartbeat", async (req, res) => {
+    try {
+      const { sessionId, deckId, slideIndex, slideNumber, dwellMs, phaseKey } = req.body || {};
+      const safeDeckId = assertSafeDeckId(deckId);
+      const record = recordSlideDwell(
+        sessionId,
+        safeDeckId,
+        slideIndex ?? 0,
+        slideNumber ?? 1,
+        dwellMs ?? 0,
+        phaseKey
+      );
+      res.json({ success: true, record });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.post("/api/analytics/session/finish", async (req, res) => {
+    try {
+      const { sessionId, deckId } = req.body || {};
+      const safeDeckId = assertSafeDeckId(deckId);
+      const summary = finishTrackingSession(sessionId, safeDeckId);
+      res.json({ success: true, summary });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.get("/api/analytics/deck/:deckId", async (req, res) => {
+    try {
+      const safeDeckId = assertSafeDeckId(req.params.deckId);
+      const { manifest } = await readManifest(DECKS_DIR, safeDeckId);
+      const phaseAnalysis = analyzeDeckLessonPhases(manifest);
+      const analytics = getDeckAnalytics(safeDeckId);
+
+      const slideMetricsMap = new Map();
+      if (analytics && Array.isArray(analytics.slides)) {
+        analytics.slides.forEach((s) => slideMetricsMap.set(s.slideNumber, s));
+      }
+
+      const enhancedSlides = phaseAnalysis.slides.map((s) => {
+        const metric = slideMetricsMap.get(s.slideNumber);
+        return {
+          ...s,
+          totalDwellMs: metric ? metric.totalDwellMs : 0,
+          formattedDwell: metric ? metric.formattedDwell : "0m 00s",
+          visitCount: metric ? metric.visitCount : 0
+        };
+      });
+
+      const totalTrackedMs = analytics.totalDurationMs || 0;
+      const phasesWithActuals = phaseAnalysis.phaseSummary.map((p) => {
+        const matchingDbPhase = analytics.phaseBreakdown.find((dbP) => dbP.phaseKey === p.phaseKey);
+        const actualDwellMs = matchingDbPhase ? matchingDbPhase.totalDwellMs : 0;
+        const actualPercentage = totalTrackedMs > 0
+          ? Math.round((actualDwellMs / totalTrackedMs) * 1000) / 10
+          : 0;
+
+        return {
+          ...p,
+          actualDwellMs,
+          actualDwellFormatted: matchingDbPhase ? matchingDbPhase.formattedDwell : "0m 00s",
+          actualPercentage,
+          targetPercentage: p.targetPercentage,
+          deltaPercentage: Math.round((actualPercentage - p.targetPercentage) * 10) / 10
+        };
+      });
+
+      res.json({
+        success: true,
+        deckId: safeDeckId,
+        deckTitle: manifest.title || safeDeckId,
+        totalSlides: manifest.slides ? manifest.slides.length : enhancedSlides.length,
+        benchmarks: LESSON_PHASE_BENCHMARKS,
+        phases: phasesWithActuals,
+        slides: enhancedSlides,
+        sessionCount: analytics.totalSessions,
+        totalDurationMs: analytics.totalDurationMs,
+        latestSession: analytics.latestSession,
+        allSessions: analytics.sessions
+      });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
     }
   });
 

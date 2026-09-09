@@ -154,6 +154,57 @@ const CURRENT_ANIMATION_PLANS = Object.freeze({
         })
       ])
     })
+  }),
+  Classic_Lesson_01_Ecosystems: Object.freeze({
+    "slide_02_objectives.png": Object.freeze({
+      title: "Lesson Objectives: Ecosystems",
+      strategy: "staged-objectives",
+      cellCount: 3,
+      steps: Object.freeze([
+        Object.freeze({
+          label: "Reveal Step 1: Know (Abiotic vs Biotic Factors)",
+          show:
+            "The exact slide title 'Lesson Objectives: Ecosystems' and Step 1 (Abiotic & Biotic Factors: Differentiate non-living physical factors from living community factors) in full vibrant colour.",
+          suppress:
+            "Step 2, Step 3, and the Key Scientific Terminology bar. Leave those regions clean."
+        }),
+        Object.freeze({
+          label: "Add Step 2: Understand (Levels of Organisation) with attenuation",
+          show:
+            "Everything from build 1, but render Step 1 as translucent and greyed out. Keep the slide title 100% fully opaque and sharp. Reveal Step 2 (Levels of Organisation: Map the ecological hierarchy from organism to ecosystem) in full vibrant colour.",
+          suppress:
+            "Step 3 and the Key Scientific Terminology bar."
+        }),
+        Object.freeze({
+          label: "Complete Objectives & Reveal Key Scientific Terminology",
+          show:
+            "Everything from builds 1 and 2, with Steps 1 and 2 rendered as translucent and greyed out. Keep the slide title 100% fully opaque and sharp. Reveal Step 3 (Interdependence & Dynamics: Predict knock-on consequences) and the complete Key Scientific Terminology bar in full vibrant colour.",
+          suppress:
+            "Nothing instructional; this is the complete cumulative source-slide state."
+        })
+      ])
+    }),
+    "slide_05.png": Object.freeze({
+      title: "The Environment is Shaped by Two Sets of Factors",
+      strategy: "comparison",
+      cellCount: 2,
+      steps: Object.freeze([
+        Object.freeze({
+          label: "Reveal the first comparison component (Abiotic Factors)",
+          show:
+            "The exact slide title 'The Environment is Shaped by Two Sets of Factors' and the entire left column (Abiotic Factors: Non-living factors that affect a community, with Light intensity, Temperature, Moisture level, and Soil pH) in full vibrant colour. Keep the central vertical divider line.",
+          suppress:
+            "The entire right column (Biotic Factors). Leave that right region as clean pale sage green background."
+        }),
+        Object.freeze({
+          label: "Add the second comparison component (Biotic Factors) with previous-step attenuation",
+          show:
+            "Everything from build 1, but render the left column (Abiotic Factors) as translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Keep the slide title 100% fully opaque, sharp, and in full original colour. Reveal the entire right column (Biotic Factors: Living factors that affect a community, with Food availability, New predators, New pathogens, and Competition) in 100% full opacity and vibrant colour.",
+          suppress:
+            "Nothing instructional; this is the complete cumulative source-slide state."
+        })
+      ])
+    })
   })
 });
 
