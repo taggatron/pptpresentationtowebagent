@@ -3638,6 +3638,12 @@ body.theme-dark .key-tag {
   pointer-events: none;
 }
 
+.skip-links:not(:focus-within) {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .skip-link {
   position: absolute;
   top: -120px;
@@ -4844,10 +4850,19 @@ body.vi-theme-black-white .set-card-action {
 
 /* Standalone Print Media Defaults */
 @media print {
+  .skip-links,
+  .skip-link,
+  #skipToViSettingsLink,
+  nav[aria-label="Skip navigation"],
   header,
+  .app-header,
+  footer,
+  .app-footer,
   .sidebar,
+  aside,
   .modal-overlay,
   .controls-bar,
+  .qa-controls-bar,
   .audio-dock,
   .toast,
   .vi-badge,
@@ -4858,9 +4873,42 @@ body.vi-theme-black-white .set-card-action {
   #mlpExportModal,
   #welcomeModal,
   #cognitiveModal,
+  #setsModal,
   #interactiveOverlay,
-  .edit-target-overlay {
+  .edit-target-overlay,
+  .keyboard-hints,
+  .nav-buttons,
+  .progress-bar-container,
+  .progress-bar,
+  .slide-counter,
+  .version-history-card,
+  .revision-actions,
+  .agent-status,
+  .video-play-fallback,
+  #viA11yAnnouncer,
+  .vi-announcer,
+  .sr-only:not(.print-visible) {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .skip-links,
+  .skip-link,
+  #skipToViSettingsLink {
+    position: absolute !important;
+    top: -99999px !important;
+    left: -99999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    pointer-events: none !important;
   }
 
   body, html {

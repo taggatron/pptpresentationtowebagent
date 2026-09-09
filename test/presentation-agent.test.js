@@ -1463,4 +1463,22 @@ test("educational modified large print (MLP) export follows RNIB and JCQ guideli
   assert.match(js, /event\.altKey && event\.key\.toLowerCase\(\) === "p"/);
 });
 
+test("print media styles suppress skip links, headers, footers, and accessibility containers", async () => {
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+
+  // Unfocused skip links clipping
+  assert.match(css, /\.skip-links:not\(:focus-within\)\s*\{[^}]*overflow:\s*hidden/);
+
+  // Print media suppression
+  const printBlockMatch = css.match(/@media print\s*\{([\s\S]*?)\n\}/);
+  assert.ok(printBlockMatch, "@media print block must exist");
+  const printCss = printBlockMatch[1];
+
+  assert.match(printCss, /\.skip-links/);
+  assert.match(printCss, /\.skip-link/);
+  assert.match(printCss, /#skipToViSettingsLink/);
+  assert.match(printCss, /display:\s*none\s*!important/);
+  assert.match(printCss, /visibility:\s*hidden\s*!important/);
+});
+
 
