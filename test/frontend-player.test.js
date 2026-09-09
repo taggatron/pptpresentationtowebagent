@@ -484,9 +484,9 @@ test("fullscreen mode elevates zoom control with collapsed icon and refines bott
   assert.match(cssSource, /:fullscreen \.slide-zoom-bar:hover/);
   assert.match(cssSource, /\.is-approached/);
 
-  // CSS elevates bottom of slide area and bounds slide-wrapper
-  assert.match(cssSource, /:fullscreen \.slide-wrapper[^{]*\{[^}]*margin-bottom:\s*6px/);
-  assert.match(cssSource, /:fullscreen \.slide-stage[^{]*\{[^}]*padding:\s*0 0 8px 0/);
+  // CSS centers slide area and bounds slide-wrapper in fullscreen
+  assert.match(cssSource, /:fullscreen \.slide-wrapper[^{]*\{[^}]*margin:\s*auto/);
+  assert.match(cssSource, /:fullscreen \.slide-stage[^{]*\{[^}]*align-items:\s*center/);
 
   // CSS refines footer navigation: smaller buttons and moved down
   assert.match(cssSource, /:fullscreen \.footer-controls[^{]*\{[^}]*padding:\s*0\.2rem/);

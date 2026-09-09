@@ -126,10 +126,12 @@ body.is-fullscreen .keyboard-hints {
 :fullscreen .app-layout,
 :-webkit-full-screen .app-layout,
 body.is-fullscreen .app-layout {
-  height: calc(100vh - 36px) !important;
+  height: 100vh !important;
   width: 100vw !important;
   flex: 1 1 auto !important;
   overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 :fullscreen .slide-stage,
@@ -137,9 +139,10 @@ body.is-fullscreen .app-layout {
 body.is-fullscreen .slide-stage {
   flex: 1 1 auto !important;
   width: 100vw !important;
-  height: 100% !important;
+  height: 100vh !important;
   max-width: none !important;
-  padding: 0 0 8px 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -150,13 +153,23 @@ body.is-fullscreen .slide-stage {
 body.is-fullscreen .slide-wrapper {
   position: relative !important;
   aspect-ratio: 16 / 9 !important;
-  width: min(100vw, calc((100vh - 50px) * (16 / 9))) !important;
-  height: min(calc(100vh - 50px), calc(100vw * (9 / 16))) !important;
+  width: min(100vw, calc(100vh * (16 / 9))) !important;
+  height: min(100vh, calc(100vw * (9 / 16))) !important;
   max-width: 100vw !important;
-  max-height: calc(100vh - 50px) !important;
+  max-height: 100vh !important;
   border-radius: 0 !important;
   margin: auto !important;
-  margin-bottom: 6px !important;
+  overflow: hidden !important;
+}
+
+:fullscreen .slide-image,
+:-webkit-full-screen .slide-image,
+body.is-fullscreen .slide-image,
+:fullscreen .slide-video,
+:-webkit-full-screen .slide-video,
+body.is-fullscreen .slide-video {
+  border-radius: 0 !important;
+  object-fit: cover !important;
 }
 
 :fullscreen .app-footer,
@@ -505,7 +518,7 @@ body.slideshow-display .slide-image,
 body.slideshow-display .slide-video,
 body.slideshow-display .web-embed-layer {
   border-radius: 0 !important;
-  object-fit: contain !important;
+  object-fit: cover !important;
 }
 
 body.slideshow-display .footer-controls,
@@ -2107,7 +2120,7 @@ body.theme-dark .icon-btn:hover {
   align-items: center;
   justify-content: center;
   background: var(--bg-stage);
-  padding: 0.85rem 1rem 1.1rem 1rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
   overflow-x: hidden;
@@ -2126,7 +2139,7 @@ body.theme-dark .icon-btn:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4px;
+  margin: auto;
 }
 
 .slide-image,
@@ -2136,7 +2149,7 @@ body.theme-dark .icon-btn:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: var(--radius-md);
   user-select: none;
 }
