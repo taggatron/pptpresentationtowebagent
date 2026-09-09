@@ -13,6 +13,7 @@ import { LESSON_PHASE_BENCHMARKS } from "./lesson-phase-classifier.js";
 const DATA_DIR = path.resolve(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "analytics.db");
 const JSON_BACKUP_FILE = path.join(DATA_DIR, "analytics_sessions.json");
+const ARCHIVE_DIR = path.join(DATA_DIR, "analytics_archive");
 
 let dbInstance = null;
 
@@ -21,6 +22,9 @@ export function getAnalyticsDb() {
 
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(ARCHIVE_DIR)) {
+    fs.mkdirSync(ARCHIVE_DIR, { recursive: true });
   }
 
   dbInstance = new DatabaseSync(DB_FILE);
@@ -411,4 +415,298 @@ function syncJsonBackup() {
     // Non-fatal backup sync
     console.warn("[Analytics DB] JSON backup sync skipped:", err.message);
   }
+}
+
+/**
+ * Archive all session data for a deck to a timestamped JSON file and wipe active records for that deck
+ */
+export function archiveAndResetDeckAnalytics(deckId) {
+  const db = getAnalyticsDb();
+  if (!fs.existsSync(ARCHIVE_DIR)) {
+    fs.mkdirSync(ARCHIVE_DIR, { recursive: true });
+  }
+
+  // 1. Gather all data for this deck
+  const sessions = db.prepare("SELECT * FROM sessions WHERE deck_id = ? ORDER BY created_at DESC").all(deckId);
+  const sessionIds = sessions.map((s) => s.id);
+
+  let dwells = [];
+  let phaseSummaries = [];
+  if (sessionIds.length > 0) {
+    const placeholders = sessionIds.map(() => "?").join(",");
+    dwells = db.prepare(`SELECT * FROM slide_dwells WHERE session_id IN (${placeholders})`).all(...sessionIds);
+    phaseSummaries = db.prepare(`SELECT * FROM phase_summaries WHERE session_id IN (${placeholders})`).all(...sessionIds);
+  }
+
+  // 2. Save archive file if there is data
+  let archiveFilename = null;
+  let archiveFilePath = null;
+  if (sessions.length > 0) {
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    archiveFilename = `archive_${deckId}_${timestamp}.json`;
+    archiveFilePath = path.join(ARCHIVE_DIR, archiveFilename);
+
+    const archivePayload = {
+      archiveType: "deck_reset",
+      deckId,
+      archivedAt: new Date().toISOString(),
+      sessionsCount: sessions.length,
+      sessions,
+      dwells,
+      phaseSummaries
+    };
+
+    fs.writeFileSync(archiveFilePath, JSON.stringify(archivePayload, null, 2), "utf8");
+  }
+
+  // 3. Clear database records for this deck
+  if (sessionIds.length > 0) {
+    const placeholders = sessionIds.map(() => "?").join(",");
+    db.prepare(`DELETE FROM phase_summaries WHERE session_id IN (${placeholders})`).run(...sessionIds);
+    db.prepare(`DELETE FROM slide_dwells WHERE session_id IN (${placeholders})`).run(...sessionIds);
+    db.prepare("DELETE FROM sessions WHERE deck_id = ?").run(deckId);
+  }
+
+  syncJsonBackup();
+
+  return {
+    success: true,
+    deckId,
+    archivedSessionsCount: sessions.length,
+    archiveFilename,
+    archiveFilePath
+  };
+}
+
+/**
+ * Delete only the most recent tracking session for a specific slide set
+ */
+export function deleteLatestSession(deckId) {
+  const db = getAnalyticsDb();
+
+  // Find latest session for this deck
+  const latest = db.prepare(`
+    SELECT * FROM sessions
+    WHERE deck_id = ?
+    ORDER BY created_at DESC
+    LIMIT 1
+  `).get(deckId);
+
+  if (!latest) {
+    return {
+      success: false,
+      message: "No session found for this deck",
+      deckId
+    };
+  }
+
+  // Delete dwells and phase summaries for this session
+  db.prepare("DELETE FROM phase_summaries WHERE session_id = ?").run(latest.id);
+  db.prepare("DELETE FROM slide_dwells WHERE session_id = ?").run(latest.id);
+  db.prepare("DELETE FROM sessions WHERE id = ?").run(latest.id);
+
+  syncJsonBackup();
+
+  // Check remaining count
+  const remainingCount = db.prepare("SELECT COUNT(*) as cnt FROM sessions WHERE deck_id = ?").get(deckId)?.cnt || 0;
+
+  return {
+    success: true,
+    deletedSessionId: latest.id,
+    deckId,
+    remainingSessionsCount: remainingCount
+  };
+}
+
+/**
+ * Calculate aggregated average analytics across ALL recorded slide decks
+ */
+export function getAllDecksAverageAnalytics() {
+  const db = getAnalyticsDb();
+
+  const sessions = db.prepare("SELECT * FROM sessions ORDER BY created_at DESC").all();
+  if (!sessions || sessions.length === 0) {
+    return {
+      hasData: false,
+      isAllDecks: true,
+      totalSessions: 0,
+      deckCount: 0,
+      totalDurationMs: 0,
+      avgPacePerSlideSeconds: 0,
+      phaseBreakdown: buildDefaultPhaseBreakdown(),
+      phases: buildDefaultPhaseBreakdown()
+    };
+  }
+
+  const distinctDecks = new Set(sessions.map((s) => s.deck_id));
+  let grandTotalSeconds = 0;
+  sessions.forEach((s) => {
+    grandTotalSeconds += Number(s.total_duration_seconds) || 0;
+  });
+
+  // Aggregate phase totals from all slide dwells
+  const allDwells = db.prepare("SELECT * FROM slide_dwells").all();
+  const phaseSeconds = {
+    starter: 0,
+    direct_instruction: 0,
+    modelling: 0,
+    guided_practice: 0,
+    independent_practice: 0,
+    plenary: 0
+  };
+
+  let totalDwellTimeRecorded = 0;
+  allDwells.forEach((d) => {
+    const sec = Number(d.duration_seconds) || 0;
+    totalDwellTimeRecorded += sec;
+    const p = d.lesson_phase || "direct_instruction";
+    if (phaseSeconds[p] !== undefined) {
+      phaseSeconds[p] += sec;
+    }
+  });
+
+  const effectiveTotalSeconds = grandTotalSeconds > 0 ? grandTotalSeconds : totalDwellTimeRecorded;
+
+  const phaseBreakdown = Object.entries(LESSON_PHASE_BENCHMARKS).map(([key, meta]) => {
+    const secs = phaseSeconds[key] || 0;
+    const dwellMs = Math.round(secs * 1000);
+    const actualPercent = effectiveTotalSeconds > 0 ? Math.round((secs / effectiveTotalSeconds) * 1000) / 10 : 0;
+    return {
+      phaseKey: key,
+      key,
+      label: meta.label,
+      shortLabel: meta.shortLabel,
+      color: meta.color,
+      bgLight: meta.bgLight,
+      borderColor: meta.borderColor,
+      textColor: meta.textColor,
+      totalDwellMs: dwellMs,
+      actualSeconds: Math.round(secs),
+      formattedDwell: formatDuration(dwellMs),
+      actualPercent,
+      actualPercentage: actualPercent,
+      targetPercent: meta.targetPercent,
+      targetPercentage: meta.targetPercent,
+      delta: Math.round((actualPercent - meta.targetPercent) * 10) / 10
+    };
+  });
+
+  // Calculate average pace across all slide dwells
+  const avgPaceSec = allDwells.length > 0 ? Math.round(totalDwellTimeRecorded / allDwells.length) : 0;
+
+  return {
+    hasData: true,
+    isAllDecks: true,
+    totalSessions: sessions.length,
+    deckCount: distinctDecks.size,
+    totalDurationMs: Math.round(effectiveTotalSeconds * 1000),
+    avgPacePerSlideSeconds: avgPaceSec,
+    totalSlidesTracked: allDwells.length,
+    phaseBreakdown,
+    phases: phaseBreakdown
+  };
+}
+
+/**
+ * Export analytics dataset for a specific deck or all slide sets
+ */
+export function exportAnalyticsData(deckId = null) {
+  const db = getAnalyticsDb();
+
+  if (deckId && deckId !== "all") {
+    const deckAnalytics = getDeckAnalytics(deckId);
+    const sessions = db.prepare("SELECT * FROM sessions WHERE deck_id = ? ORDER BY created_at DESC").all(deckId);
+    const sessionIds = sessions.map((s) => s.id);
+    let dwells = [];
+    let phaseSummaries = [];
+    if (sessionIds.length > 0) {
+      const placeholders = sessionIds.map(() => "?").join(",");
+      dwells = db.prepare(`SELECT * FROM slide_dwells WHERE session_id IN (${placeholders})`).all(...sessionIds);
+      phaseSummaries = db.prepare(`SELECT * FROM phase_summaries WHERE session_id IN (${placeholders})`).all(...sessionIds);
+    }
+
+    return {
+      exportType: "single_deck",
+      exportedAt: new Date().toISOString(),
+      deckId,
+      benchmarks: LESSON_PHASE_BENCHMARKS,
+      analyticsSummary: deckAnalytics,
+      sessions,
+      slideDwells: dwells,
+      phaseSummaries
+    };
+  }
+
+  // All decks export
+  const allSessions = db.prepare("SELECT * FROM sessions ORDER BY created_at DESC").all();
+  const allDwells = db.prepare("SELECT * FROM slide_dwells").all();
+  const allPhaseSummaries = db.prepare("SELECT * FROM phase_summaries").all();
+  const allDecksAverage = getAllDecksAverageAnalytics();
+
+  // Group stats by deck
+  const decksMap = {};
+  allSessions.forEach((s) => {
+    if (!decksMap[s.deck_id]) {
+      decksMap[s.deck_id] = {
+        deckId: s.deck_id,
+        sessionCount: 0,
+        totalDurationSeconds: 0
+      };
+    }
+    decksMap[s.deck_id].sessionCount += 1;
+    decksMap[s.deck_id].totalDurationSeconds += Number(s.total_duration_seconds) || 0;
+  });
+
+  return {
+    exportType: "all_decks",
+    exportedAt: new Date().toISOString(),
+    benchmarks: LESSON_PHASE_BENCHMARKS,
+    globalAverage: allDecksAverage,
+    decksSummary: Object.values(decksMap),
+    sessions: allSessions,
+    slideDwells: allDwells,
+    phaseSummaries: allPhaseSummaries
+  };
+}
+
+/**
+ * Export slide dwell logs as CSV formatted string
+ */
+export function exportAnalyticsCsv(deckId = null) {
+  const db = getAnalyticsDb();
+  let dwells = [];
+  if (deckId && deckId !== "all") {
+    dwells = db.prepare(`
+      SELECT s.deck_id, d.session_id, d.slide_number, d.slide_title, d.lesson_phase, d.duration_seconds, s.created_at
+      FROM slide_dwells d
+      JOIN sessions s ON s.id = d.session_id
+      WHERE s.deck_id = ?
+      ORDER BY s.created_at DESC, d.slide_number ASC
+    `).all(deckId);
+  } else {
+    dwells = db.prepare(`
+      SELECT s.deck_id, d.session_id, d.slide_number, d.slide_title, d.lesson_phase, d.duration_seconds, s.created_at
+      FROM slide_dwells d
+      JOIN sessions s ON s.id = d.session_id
+      ORDER BY s.deck_id ASC, s.created_at DESC, d.slide_number ASC
+    `).all();
+  }
+
+  const rows = [
+    ["Deck ID", "Session ID", "Slide Number", "Slide Title", "Lesson Phase", "Duration (Seconds)", "Session Date"]
+  ];
+
+  dwells.forEach((d) => {
+    rows.push([
+      `"${(d.deck_id || "").replace(/"/g, '""')}"`,
+      `"${(d.session_id || "").replace(/"/g, '""')}"`,
+      d.slide_number,
+      `"${(d.slide_title || `Slide ${d.slide_number}`).replace(/"/g, '""')}"`,
+      `"${(d.lesson_phase || "").replace(/"/g, '""')}"`,
+      Math.round(Number(d.duration_seconds) || 0),
+      `"${d.created_at || ""}"`
+    ]);
+  });
+
+  return rows.map((r) => r.join(",")).join("\n");
 }

@@ -34,7 +34,12 @@ import {
   recordSlideDwell,
   finishTrackingSession,
   getDeckAnalytics,
-  getAllSessions
+  getAllSessions,
+  archiveAndResetDeckAnalytics,
+  deleteLatestSession,
+  getAllDecksAverageAnalytics,
+  exportAnalyticsData,
+  exportAnalyticsCsv
 } from "./analytics-db.js";
 import {
   analyzeDeckLessonPhases,
@@ -1632,6 +1637,81 @@ export function createApp({
         latestSession: analytics.latestSession,
         allSessions: analytics.sessions
       });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.post("/api/analytics/deck/:deckId/reset", async (req, res) => {
+    try {
+      const safeDeckId = assertSafeDeckId(req.params.deckId);
+      const result = archiveAndResetDeckAnalytics(safeDeckId);
+      res.json({
+        success: true,
+        message: `Analytics archived and reset for deck ${safeDeckId}`,
+        ...result
+      });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.delete("/api/analytics/deck/:deckId/latest", async (req, res) => {
+    try {
+      const safeDeckId = assertSafeDeckId(req.params.deckId);
+      const result = deleteLatestSession(safeDeckId);
+      res.json({
+        success: result.success,
+        message: result.message || `Deleted most recent session for ${safeDeckId}`,
+        ...result
+      });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.get("/api/analytics/all-decks-average", async (_req, res) => {
+    try {
+      const averages = getAllDecksAverageAnalytics();
+      res.json({
+        success: true,
+        benchmarks: LESSON_PHASE_BENCHMARKS,
+        data: averages
+      });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
+  app.get("/api/analytics/export", async (req, res) => {
+    try {
+      const deckId = req.query.deckId ? String(req.query.deckId) : null;
+      const format = req.query.format ? String(req.query.format).toLowerCase() : "json";
+
+      if (deckId && deckId !== "all") {
+        assertSafeDeckId(deckId);
+      }
+
+      const timestamp = new Date().toISOString().slice(0, 10);
+
+      if (format === "csv") {
+        const csvContent = exportAnalyticsCsv(deckId);
+        const filename = deckId && deckId !== "all"
+          ? `slideshow_analytics_${deckId}_${timestamp}.csv`
+          : `slideshow_analytics_all_decks_${timestamp}.csv`;
+        res.setHeader("Content-Type", "text/csv; charset=utf-8");
+        res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+        return res.send(csvContent);
+      }
+
+      const exportData = exportAnalyticsData(deckId);
+      const filename = deckId && deckId !== "all"
+        ? `slideshow_analytics_${deckId}_${timestamp}.json`
+        : `slideshow_analytics_all_decks_${timestamp}.json`;
+
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      res.json(exportData);
     } catch (error) {
       res.status(error.statusCode || 500).json({ error: error.message });
     }

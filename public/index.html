@@ -928,9 +928,42 @@
           </div>
           <p id="analyticsModalSubtitle" class="modal-subtitle">Tracking slide dwell time and pedagogical phase allocation</p>
         </div>
-        <button id="closeAnalyticsModalBtn" class="close-btn" type="button" aria-label="Close analytics modal">&times;</button>
+
+        <div class="analytics-header-controls">
+          <!-- Scope Toggle Tabs (Current Deck vs All Decks Average) -->
+          <div class="analytics-scope-toggle" role="tablist" aria-label="Analytics scope">
+            <button type="button" id="scopeDeckBtn" class="scope-toggle-btn active" role="tab" aria-selected="true" title="View Current Slide Set Analytics">Current Deck</button>
+            <button type="button" id="scopeAllDecksBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="View Average Across All Slide Decks">All Decks Average</button>
+          </div>
+
+          <!-- Actions Group (Export, Delete Latest, Reset) -->
+          <div class="analytics-actions-group">
+            <div class="analytics-dropdown-wrap" id="analyticsExportDropdownWrap">
+              <button type="button" id="analyticsExportBtn" class="analytics-action-btn" title="Export Analytics Data" aria-haspopup="true" aria-expanded="false">
+                <span class="btn-icon">📥</span> Export <span class="caret">▾</span>
+              </button>
+              <div class="analytics-dropdown-menu hidden" id="analyticsExportMenu" role="menu">
+                <button type="button" class="dropdown-item" id="exportCurrentJsonBtn" role="menuitem">📄 Export Current Set (JSON)</button>
+                <button type="button" class="dropdown-item" id="exportAllJsonBtn" role="menuitem">🌐 Export All Sets (JSON)</button>
+                <button type="button" class="dropdown-item" id="exportCsvBtn" role="menuitem">📊 Export Dwell Logs (CSV)</button>
+              </div>
+            </div>
+
+            <button type="button" id="analyticsDeleteLatestBtn" class="analytics-action-btn btn-danger-subtle" title="Delete Most Recent Session for this Deck">
+              <span class="btn-icon">🗑️</span> Delete Latest
+            </button>
+
+            <button type="button" id="analyticsResetBtn" class="analytics-action-btn btn-warning-subtle" title="Archive & Reset Analytics for this Deck">
+              <span class="btn-icon">↺</span> Reset Set
+            </button>
+          </div>
+
+          <button id="closeAnalyticsModalBtn" class="close-btn" type="button" aria-label="Close analytics modal">&times;</button>
+        </div>
       </div>
       <div class="modal-body analytics-modal-body">
+        <!-- Notification Notice / Toast Banner -->
+        <div id="analyticsModalNotice" class="analytics-modal-notice hidden" role="status" aria-live="polite"></div>
         <!-- Top Stats Row -->
         <div class="analytics-kpi-grid">
           <div class="analytics-kpi-card">
