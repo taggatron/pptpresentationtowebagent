@@ -45,6 +45,20 @@
 
       <div class="header-right">
         <button
+          id="startSlideshowBtn"
+          class="start-slideshow-btn"
+          type="button"
+          title="Start slideshow (F5 / Presents in full screen on external display if connected)"
+          aria-label="Start slideshow"
+        >
+          <span class="slideshow-icon-wrap" aria-hidden="true">
+            <svg class="slideshow-triangle-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11.5-6.86a1 1 0 0 0 0-1.72L9.5 4.28A1 1 0 0 0 8 5.14z" />
+            </svg>
+          </span>
+          <span class="slideshow-btn-label">Slideshow</span>
+        </button>
+        <button
           class="cognitive-badge"
           id="cognitiveBadge"
           type="button"
@@ -263,6 +277,13 @@
             </button>
           </div>
           <div id="answerLiveRegion" class="sr-only" aria-live="polite"></div>
+        </div>
+        <div id="presentationDisplayBadge" class="presentation-display-badge hidden" aria-live="polite">
+          <span>Connected Display</span>
+          <span class="badge-separator">·</span>
+          <span>Click or Press F for Fullscreen</span>
+          <span class="badge-separator">·</span>
+          <span>Esc to Exit</span>
         </div>
       </section>
 

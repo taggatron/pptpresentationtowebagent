@@ -427,6 +427,98 @@ body.theme-light .deck-select option {
   color: #111827;
 }
 
+/* Start Slideshow Button */
+.start-slideshow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.32rem 0.75rem;
+  border-radius: 20px;
+  color: #059669;
+  font-family: var(--font-family);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 32px;
+  line-height: 1;
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.start-slideshow-btn:hover {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #047857;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+.start-slideshow-btn:active {
+  transform: translateY(0);
+}
+
+.start-slideshow-btn:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+.start-slideshow-btn .slideshow-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.start-slideshow-btn .slideshow-triangle-svg {
+  width: 14px;
+  height: 14px;
+  fill: #10b981;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.start-slideshow-btn:hover .slideshow-triangle-svg {
+  transform: scale(1.15);
+  fill: #059669;
+}
+
+.start-slideshow-btn.is-active {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+}
+
+.start-slideshow-btn.is-active .slideshow-triangle-svg {
+  filter: drop-shadow(0 0 4px #10b981);
+}
+
+body.theme-dark .start-slideshow-btn {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+}
+
+body.theme-dark .start-slideshow-btn:hover {
+  background: rgba(16, 185, 129, 0.28);
+  border-color: rgba(52, 211, 153, 0.7);
+  color: #6ee7b7;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+}
+
+body.theme-dark .start-slideshow-btn .slideshow-triangle-svg {
+  fill: #34d399;
+}
+
+body.theme-dark .start-slideshow-btn:hover .slideshow-triangle-svg {
+  fill: #6ee7b7;
+}
+
 .mode-badge {
   display: inline-flex;
   align-items: center;
@@ -2406,7 +2498,17 @@ body.theme-dark .qa-controls-bar {
 }
 
 .qa-controls-bar.hidden {
-  display: none;
+  display: none !important;
+}
+
+/* Hide container in student mode if there are no answer actions to reveal/hide */
+.student-mode .qa-controls-bar:not(:has(#answerActionsGroup:not(.hidden))) {
+  display: none !important;
+}
+
+/* Hide container if it contains no visible interactive child groups */
+.qa-controls-bar:not(:has(> :not(.hidden):not(.sr-only):not([style*="display: none"]))) {
+  display: none !important;
 }
 
 .qa-label {

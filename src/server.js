@@ -164,6 +164,14 @@ export const KNOWN_SLIDE_SETS = [
     description: "Cell structure, microscopes, enzymes, respiration, and photosynthesis."
   },
   {
+    id: "intro_aaq_human_bio",
+    title: "Intro to AAQ Human Bio",
+    category: "Human Biology",
+    icon: "🔬",
+    folder: "powerpoints_aaq_human_bio",
+    description: "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology · Biomedical Techniques and Induction."
+  },
+  {
     id: "ecology_atmosphere_classic",
     title: "GCSE Science · Ecology & Atmosphere (Classic)",
     category: "Biology & Chemistry",
@@ -334,6 +342,9 @@ export function inferSlideSetId(deckId, manifest = null) {
     )
   ) {
     return "tbi_neuro";
+  }
+  if (/(?:AAQ|Human_Bio|Biomedical)/i.test(deckId)) {
+    return "intro_aaq_human_bio";
   }
   return "other";
 }

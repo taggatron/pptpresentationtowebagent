@@ -32,6 +32,7 @@ test("inferSlideSetId maps decks to appropriate slide set categories", () => {
   assert.equal(inferSlideSetId("Lesson_01_Forces_and_NEWTON_S_1st_LAW"), "forces_energy");
   assert.equal(inferSlideSetId("Lesson_01_Reaction_rates"), "reaction_rates");
   assert.equal(inferSlideSetId("Lesson_01_Ecosystems"), "ecology_atmosphere");
+  assert.equal(inferSlideSetId("Lesson_01_Human_Biology_Scientist_Onboarding"), "intro_aaq_human_bio");
   assert.equal(inferSlideSetId("custom_deck_123"), "other");
 });
 
@@ -83,6 +84,12 @@ test("Slide Sets API returns categorized slide sets and default IDs", async () =
     assert.ok(ecoSet, "Ecology & atmosphere slide set should be present");
     assert.ok(ecoSet.decks.length >= 12, "Ecology & atmosphere should contain at least 12 lessons");
     assert.ok(ecoSet.decks.some((d) => d.id === "Lesson_01_Ecosystems"));
+
+    // Verify Intro to AAQ Human Bio slide set is present
+    const aaqSet = data.slideSets.find((s) => s.id === "intro_aaq_human_bio");
+    assert.ok(aaqSet, "Intro to AAQ Human Bio slide set should be present");
+    assert.ok(aaqSet.decks.some((d) => d.id === "Lesson_01_Human_Biology_Scientist_Onboarding"));
+    assert.equal(aaqSet.title, "Intro to AAQ Human Bio");
 
     // Verify default IDs
     assert.equal(data.defaultSlideSetId, "cell_biology");
