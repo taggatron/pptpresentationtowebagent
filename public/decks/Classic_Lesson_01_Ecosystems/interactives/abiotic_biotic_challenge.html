@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick-Fire Challenge: Abiotic or Biotic?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --abiotic-border: #38bdf8;
+      --abiotic-bg: #f0f9ff;
+      --abiotic-drop-bg: #e0f2fe;
+      --abiotic-dark: #0284c7;
+      --biotic-border: #4ade80;
+      --biotic-bg: #f0fdf4;
+      --biotic-drop-bg: #dcfce7;
+      --biotic-dark: #16a34a;
+      --bubble-border: #334155;
+      --bubble-bg: #ffffff;
+      --accent: #2563eb;
+      --correct-border: #16a34a;
+      --correct-bg: #f0fdf4;
+      --wrong-border: #dc2626;
+      --wrong-bg: #fef2f2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 14px;
+    }
+
+    /* Top Navigation / Controls Bar */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    h1 .badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .instructions {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .controls-group {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .stat-pill {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .stat-pill span.num {
+      color: var(--accent);
+      font-feature-settings: "tnum";
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }
+
+    .btn-check {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      border-color: transparent;
+      font-weight: 700;
+      box-shadow: 0 2px 5px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-check:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+    }
+
+    /* Main Activity Canvas (3 Columns) */
+    .activity-stage {
+      display: grid;
+      grid-template-columns: 240px 1fr 240px;
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+      position: relative;
+    }
+
+    /* Drop Zone Containers */
+    .drop-zone {
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      position: relative;
+      transition: all 0.18s ease;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      border: 2px dashed transparent;
+      overflow: hidden;
+    }
+
+    /* Abiotic Zone */
+    .zone-abiotic {
+      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-color: #93c5fd;
+    }
+
+    .zone-abiotic.drag-over {
+      border-color: var(--abiotic-dark);
+      background: #dbeafe;
+      transform: scale(1.01);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+    }
+
+    /* Biotic Zone */
+    .zone-biotic {
+      background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
+      border-color: #86efac;
+    }
+
+    .zone-biotic.drag-over {
+      border-color: var(--biotic-dark);
+      background: #bbf7d0;
+      transform: scale(1.01);
+      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.35);
+    }
+
+    .zone-header {
+      text-align: center;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+
+    .zone-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .zone-abiotic .zone-title { color: #0369a1; }
+    .zone-biotic .zone-title { color: #15803d; }
+
+    .zone-arrow {
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 3px auto 2px;
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .zone-abiotic .zone-arrow {
+      background: linear-gradient(180deg, #38bdf8, #0284c7);
+      box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25);
+    }
+
+    .zone-biotic .zone-arrow {
+      background: linear-gradient(180deg, #4ade80, #16a34a);
+      box-shadow: 0 2px 4px rgba(22, 163, 74, 0.25);
+    }
+
+    .zone-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .zone-items-container {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 2px;
+      min-height: 80px;
+      scrollbar-width: thin;
+    }
+
+    .zone-empty-placeholder {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      border: 2px dashed rgba(148, 163, 184, 0.35);
+      border-radius: 10px;
+      padding: 12px 8px;
+      pointer-events: none;
+    }
+
+    .zone-empty-placeholder svg {
+      width: 22px;
+      height: 22px;
+      margin-bottom: 4px;
+      opacity: 0.6;
+    }
+
+    /* Central Statements Pool */
+    .pool-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+      overflow: hidden;
+    }
+
+    .pool-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+
+    .pool-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .pool-cards-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 8px;
+      overflow-y: auto;
+      padding: 2px;
+      align-content: stretch;
+      scrollbar-width: thin;
+    }
+
+    /* Draggable Statement Cards / Circular Bubbles */
+    .statement-bubble {
+      background: var(--bubble-bg);
+      border: 2px solid var(--bubble-border);
+      border-radius: 16px;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: grab;
+      position: relative;
+      transition: all 0.16s ease;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+      touch-action: none;
+    }
+
+    .statement-bubble:active {
+      cursor: grabbing;
+    }
+
+    .statement-bubble:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.1);
+      border-color: #0f172a;
+    }
+
+    .statement-bubble.dragging {
+      opacity: 0.4;
+      transform: scale(0.95);
+    }
+
+    .bubble-text {
+      font-size: 0.79rem;
+      font-weight: 700;
+      line-height: 1.22;
+      color: #1e293b;
+      pointer-events: none;
+    }
+
+    /* Touch / Click 1-Tap Quick Actions */
+    .bubble-actions {
+      display: none;
+      gap: 4px;
+      margin-top: 4px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .statement-bubble.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2.5px rgba(37, 99, 235, 0.35);
+      background: #eff6ff;
+    }
+
+    .statement-bubble.selected .bubble-actions {
+      display: flex;
+    }
+
+    .action-btn {
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      transition: background 0.15s;
+    }
+
+    .action-abiotic { background: #bae6fd; color: #0284c7; }
+    .action-abiotic:hover { background: #7dd3fc; }
+    .action-biotic { background: #bbf7d0; color: #15803d; }
+    .action-biotic:hover { background: #86efac; }
+    .action-pool { background: #e2e8f0; color: #334155; }
+    .action-pool:hover { background: #cbd5e1; }
+
+    /* Cards Inside Drop Zones */
+    .drop-zone .statement-bubble {
+      padding: 6px 8px;
+      border-radius: 10px;
+      width: 100%;
+      border-width: 1.5px;
+    }
+
+    .drop-zone .bubble-text {
+      font-size: 0.74rem;
+    }
+
+    /* Checked / Feedback States */
+    .statement-bubble.is-correct {
+      border-color: var(--correct-border) !important;
+      background: var(--correct-bg) !important;
+    }
+
+    .statement-bubble.is-wrong {
+      border-color: var(--wrong-border) !important;
+      background: var(--wrong-bg) !important;
+      animation: shake 0.4s ease;
+    }
+
+    .feedback-chip {
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 3px;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    .feedback-correct {
+      color: #15803d;
+      background: #dcfce7;
+    }
+
+    .feedback-wrong {
+      color: #b91c1c;
+      background: #fee2e2;
+    }
+
+    .explanation-text {
+      font-size: 0.67rem;
+      font-weight: 500;
+      color: #475569;
+      margin-top: 2px;
+      line-height: 1.18;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-4px); }
+      40%, 80% { transform: translateX(4px); }
+    }
+
+    /* Bottom Educational Footer / Hints */
+    .activity-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .hint-banner {
+      display: none;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 7px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      color: #1e40af;
+      margin-bottom: 6px;
+      animation: fadeIn 0.15s ease;
+    }
+
+    .hint-banner.visible {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Celebration Modal Banner */
+    .celebration-modal {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .celebration-modal.visible {
+      display: flex;
+    }
+
+    .celebration-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 20px 28px;
+      max-width: 440px;
+      text-align: center;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+      animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .celebration-icon {
+      font-size: 2.4rem;
+      margin-bottom: 6px;
+    }
+
+    .celebration-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .celebration-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+
+    /* Slide View Modal (Teacher inspect mode) */
+    .slide-modal {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 95;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .slide-modal.visible {
+      display: flex;
+    }
+
+    .slide-modal-content {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .slide-modal-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleUp {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation & Controls -->
+  <header>
+    <div class="title-group">
+      <h1>
+        Quick-Fire Challenge: Abiotic or Biotic?
+        <span class="badge">Drag & Drop</span>
+      </h1>
+      <span class="instructions">Classify each factor into its correct zone.</span>
+    </div>
+    <div class="controls-group">
+      <div class="stat-pill" title="Items placed in zones">
+        <span>Sorted:</span>
+        <span class="num" id="placedCount">0</span>/8
+      </div>
+      <button class="btn" id="hintToggleBtn" type="button" aria-label="Toggle hint">
+        <span>💡</span> Hint
+      </button>
+      <button class="btn" id="soundToggleBtn" type="button" aria-label="Toggle sound">
+        <span id="soundIcon">🔊</span>
+      </button>
+      <button class="btn" id="viewSlideBtn" type="button" title="Compare with static slide">
+        <span>🖼</span> Static Slide
+      </button>
+      <button class="btn" id="resetBtn" type="button">
+        <span>↺</span> Reset
+      </button>
+      <button class="btn btn-check" id="checkBtn" type="button">
+        <span>✓</span> Check Answers
+      </button>
+    </div>
+  </header>
+
+  <!-- Educational Hint Banner -->
+  <div class="hint-banner" id="hintBanner">
+    <strong>💡 Hint:</strong>
+    <span><strong>Abiotic</strong> = non-living physical/chemical factors (rain, pH, temperature, sunlight). <strong>Biotic</strong> = living components/interactions (pathogens, prey, predators, competition).</span>
+  </div>
+
+  <!-- Interactive Activity Stage -->
+  <main class="activity-stage">
+    <!-- Abiotic Zone (Left) -->
+    <section class="drop-zone zone-abiotic" id="zoneAbiotic" data-zone="abiotic" aria-label="Abiotic Zone Drop Area">
+      <div class="zone-header">
+        <div class="zone-title">Abiotic Zone</div>
+        <div class="zone-arrow">↓</div>
+        <div class="zone-desc">Non-living physical & chemical factors</div>
+      </div>
+      <div class="zone-items-container" id="abioticItems">
+        <div class="zone-empty-placeholder" id="abioticPlaceholder">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+          Drop abiotic factors here
+        </div>
+      </div>
+    </section>
+
+    <!-- Center Statements Pool -->
+    <section class="pool-section" aria-label="Available Statements Pool">
+      <div class="pool-header">
+        <div class="pool-title">Statements to Classify</div>
+        <span style="font-size: 0.72rem; color: #64748b;">Click any card to reveal 1-tap buttons</span>
+      </div>
+      <div class="pool-cards-grid" id="poolGrid">
+        <!-- 8 statement cards generated via JS -->
+      </div>
+    </section>
+
+    <!-- Biotic Zone (Right) -->
+    <section class="drop-zone zone-biotic" id="zoneBiotic" data-zone="biotic" aria-label="Biotic Zone Drop Area">
+      <div class="zone-header">
+        <div class="zone-title">Biotic Zone</div>
+        <div class="zone-arrow">↓</div>
+        <div class="zone-desc">Living organisms & biological interactions</div>
+      </div>
+      <div class="zone-items-container" id="bioticItems">
+        <div class="zone-empty-placeholder" id="bioticPlaceholder">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+          Drop biotic factors here
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Activity Footer -->
+  <footer class="activity-footer">
+    <span>Tip: Drag items or click for 1-tap sorting · Works on touchscreens & desktop.</span>
+    <span>Ecology & Atmosphere · Lesson 01 Ecosystems</span>
+  </footer>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Celebration Modal Banner -->
+  <div class="celebration-modal" id="celebrationModal">
+    <div class="celebration-card">
+      <div class="celebration-icon">🎉</div>
+      <h2 class="celebration-title">Outstanding Work!</h2>
+      <p class="celebration-desc">All 8 ecological factors have been accurately classified into Abiotic and Biotic categories.</p>
+      <div style="display: flex; gap: 8px; justify-content: center;">
+        <button class="btn btn-check" id="modalRestartBtn" type="button">Try Again (Shuffle)</button>
+        <button class="btn" id="modalDismissBtn" type="button">Review Answers</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Static Slide View Modal -->
+  <div class="slide-modal" id="slideModal">
+    <div class="slide-modal-content">
+      <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 8px;">
+        <span style="font-weight: 700; font-size: 0.9rem;">Slide 6 Image (Arrows Removed)</span>
+        <button class="btn" id="closeSlideModalBtn" type="button">✕ Close</button>
+      </div>
+      <img src="/decks/Classic_Lesson_01_Ecosystems/slides/slide_06_revised.png" alt="Static Slide 6" class="slide-modal-img">
+    </div>
+  </div>
+
+  <script>
+    // Factor dataset with accurate scientific categorizations and explanations
+    const FACTORS = [
+      {
+        id: "factor_1",
+        text: "A newly introduced virus",
+        type: "biotic",
+        explanation: "Biological pathogens that infect living host organisms."
+      },
+      {
+        id: "factor_2",
+        text: "Heavy rainfall",
+        type: "abiotic",
+        explanation: "Precipitation and moisture are non-living physical climate factors."
+      },
+      {
+        id: "factor_3",
+        text: "A sudden lack of prey",
+        type: "biotic",
+        explanation: "Food availability involves other living organism populations."
+      },
+      {
+        id: "factor_4",
+        text: "A drop in soil pH",
+        type: "abiotic",
+        explanation: "Soil acidity is a chemical/physical property of the non-living soil."
+      },
+      {
+        id: "factor_5",
+        text: "A newly arrived pack of wolves",
+        type: "biotic",
+        explanation: "Predators are living animals that alter community feeding dynamics."
+      },
+      {
+        id: "factor_6",
+        text: "An unusually cold winter",
+        type: "abiotic",
+        explanation: "Temperature and freezing weather are physical climate conditions."
+      },
+      {
+        id: "factor_7",
+        text: "Another bird species competing for the same seeds",
+        type: "biotic",
+        explanation: "Interspecific competition for resources is a biological interaction."
+      },
+      {
+        id: "factor_8",
+        text: "Cloud cover reducing sunlight",
+        type: "abiotic",
+        explanation: "Solar light intensity is a non-living physical energy source."
+      }
+    ];
+
+    // Expose for external testing & interaction
+    window.FACTORS = FACTORS;
+
+    // State management
+    window.state = {
+      placements: {},
+      checked: false,
+      soundEnabled: true,
+      selectedFactorId: null
+    };
+
+    // Initialize state
+    FACTORS.forEach(f => window.state.placements[f.id] = 'pool');
+
+    // DOM References
+    const poolGrid = document.getElementById('poolGrid');
+    const abioticItems = document.getElementById('abioticItems');
+    const bioticItems = document.getElementById('bioticItems');
+    const abioticPlaceholder = document.getElementById('abioticPlaceholder');
+    const bioticPlaceholder = document.getElementById('bioticPlaceholder');
+    const placedCountEl = document.getElementById('placedCount');
+    const checkBtn = document.getElementById('checkBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const hintToggleBtn = document.getElementById('hintToggleBtn');
+    const hintBanner = document.getElementById('hintBanner');
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    const soundIcon = document.getElementById('soundIcon');
+    const celebrationModal = document.getElementById('celebrationModal');
+    const modalRestartBtn = document.getElementById('modalRestartBtn');
+    const modalDismissBtn = document.getElementById('modalDismissBtn');
+    const viewSlideBtn = document.getElementById('viewSlideBtn');
+    const slideModal = document.getElementById('slideModal');
+    const closeSlideModalBtn = document.getElementById('closeSlideModalBtn');
+    const confettiCanvas = document.getElementById('confettiCanvas');
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+    function playAudioTone(type) {
+      if (!window.state.soundEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'drop') {
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.exponentialRampToValueAtTime(180, now + 0.08);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'success') {
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, idx) => {
+            const chordOsc = audioCtx.createOscillator();
+            const chordGain = audioCtx.createGain();
+            chordOsc.connect(chordGain);
+            chordGain.connect(audioCtx.destination);
+            chordOsc.frequency.setValueAtTime(freq, now + idx * 0.07);
+            chordGain.gain.setValueAtTime(0.12, now + idx * 0.07);
+            chordGain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.07 + 0.22);
+            chordOsc.start(now + idx * 0.07);
+            chordOsc.stop(now + idx * 0.07 + 0.22);
+          });
+        } else if (type === 'click') {
+          osc.frequency.setValueAtTime(440, now);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'error') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(180, now);
+          gain.gain.setValueAtTime(0.1, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.18);
+          osc.start(now);
+          osc.stop(now + 0.18);
+        }
+      } catch {}
+    }
+
+    // Render cards across zones
+    window.render = function() {
+      const existingPoolCards = poolGrid.querySelectorAll('.statement-bubble');
+      existingPoolCards.forEach(c => c.remove());
+
+      const existingAbioticCards = abioticItems.querySelectorAll('.statement-bubble');
+      existingAbioticCards.forEach(c => c.remove());
+
+      const existingBioticCards = bioticItems.querySelectorAll('.statement-bubble');
+      existingBioticCards.forEach(c => c.remove());
+
+      let placedCount = 0;
+
+      FACTORS.forEach(factor => {
+        const zone = window.state.placements[factor.id];
+        const card = createCardElement(factor, zone);
+
+        if (zone === 'abiotic') {
+          abioticItems.appendChild(card);
+          placedCount++;
+        } else if (zone === 'biotic') {
+          bioticItems.appendChild(card);
+          placedCount++;
+        } else {
+          poolGrid.appendChild(card);
+        }
+      });
+
+      abioticPlaceholder.style.display = (window.state.placements && Object.values(window.state.placements).some(z => z === 'abiotic')) ? 'none' : 'flex';
+      bioticPlaceholder.style.display = (window.state.placements && Object.values(window.state.placements).some(z => z === 'biotic')) ? 'none' : 'flex';
+
+      placedCountEl.textContent = placedCount;
+    };
+
+    // Create a card DOM element
+    function createCardElement(factor, currentZone) {
+      const card = document.createElement('div');
+      card.className = 'statement-bubble';
+      card.id = factor.id;
+      card.draggable = true;
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+
+      if (window.state.selectedFactorId === factor.id) {
+        card.classList.add('selected');
+      }
+
+      if (window.state.checked && currentZone !== 'pool') {
+        const isCorrect = (currentZone === factor.type);
+        card.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+      }
+
+      let innerHTML = `<div class="bubble-text">${factor.text}</div>`;
+
+      if (window.state.checked && currentZone !== 'pool') {
+        const isCorrect = (currentZone === factor.type);
+        innerHTML += `
+          <div class="feedback-chip ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}">
+            ${isCorrect ? '✓ ' + factor.type.toUpperCase() : '✕ Belongs to ' + factor.type.toUpperCase()}
+          </div>
+          <div class="explanation-text">${factor.explanation}</div>
+        `;
+      }
+
+      innerHTML += `
+        <div class="bubble-actions">
+          ${currentZone !== 'abiotic' ? `<button class="action-btn action-abiotic" data-target="abiotic">← Abiotic</button>` : ''}
+          ${currentZone !== 'pool' ? `<button class="action-btn action-pool" data-target="pool">↺ Pool</button>` : ''}
+          ${currentZone !== 'biotic' ? `<button class="action-btn action-biotic" data-target="biotic">Biotic →</button>` : ''}
+        </div>
+      `;
+
+      card.innerHTML = innerHTML;
+
+      // HTML5 Drag
+      card.addEventListener('dragstart', (e) => {
+        card.classList.add('dragging');
+        e.dataTransfer.setData('text/plain', factor.id);
+        e.dataTransfer.effectAllowed = 'move';
+        playAudioTone('click');
+      });
+
+      card.addEventListener('dragend', () => {
+        card.classList.remove('dragging');
+      });
+
+      // Click to select or use 1-tap buttons
+      card.addEventListener('click', (e) => {
+        const actionBtn = e.target.closest('.action-btn');
+        if (actionBtn) {
+          e.stopPropagation();
+          const targetZone = actionBtn.getAttribute('data-target');
+          moveFactor(factor.id, targetZone);
+          return;
+        }
+
+        window.state.selectedFactorId = (window.state.selectedFactorId === factor.id) ? null : factor.id;
+        window.render();
+      });
+
+      return card;
+    }
+
+    // Move factor
+    function moveFactor(factorId, targetZone) {
+      window.state.placements[factorId] = targetZone;
+      window.state.selectedFactorId = null;
+      window.state.checked = false;
+      playAudioTone('drop');
+      window.render();
+    }
+    window.moveFactor = moveFactor;
+
+    // Drop targets
+    function setupDropTarget(element, zoneName) {
+      element.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        element.classList.add('drag-over');
+      });
+
+      element.addEventListener('dragleave', (e) => {
+        if (!element.contains(e.relatedTarget)) {
+          element.classList.remove('drag-over');
+        }
+      });
+
+      element.addEventListener('drop', (e) => {
+        e.preventDefault();
+        element.classList.remove('drag-over');
+        const factorId = e.dataTransfer.getData('text/plain');
+        if (factorId && window.state.placements[factorId] !== undefined) {
+          moveFactor(factorId, zoneName);
+        }
+      });
+    }
+
+    setupDropTarget(document.getElementById('zoneAbiotic'), 'abiotic');
+    setupDropTarget(document.getElementById('zoneBiotic'), 'biotic');
+    setupDropTarget(document.getElementById('poolGrid'), 'pool');
+
+    // Controls Event Handlers
+    resetBtn.addEventListener('click', () => {
+      FACTORS.forEach(f => window.state.placements[f.id] = 'pool');
+      window.state.checked = false;
+      window.state.selectedFactorId = null;
+      playAudioTone('click');
+      window.render();
+    });
+
+    hintToggleBtn.addEventListener('click', () => {
+      hintBanner.classList.toggle('visible');
+      playAudioTone('click');
+    });
+
+    soundToggleBtn.addEventListener('click', () => {
+      window.state.soundEnabled = !window.state.soundEnabled;
+      soundIcon.textContent = window.state.soundEnabled ? '🔊' : '🔇';
+    });
+
+    viewSlideBtn.addEventListener('click', () => {
+      slideModal.classList.add('visible');
+    });
+
+    closeSlideModalBtn.addEventListener('click', () => {
+      slideModal.classList.remove('visible');
+    });
+
+    checkBtn.addEventListener('click', () => {
+      window.state.checked = true;
+      window.state.selectedFactorId = null;
+
+      let correctCount = 0;
+      let totalPlaced = 0;
+
+      FACTORS.forEach(factor => {
+        const zone = window.state.placements[factor.id];
+        if (zone !== 'pool') {
+          totalPlaced++;
+          if (zone === factor.type) correctCount++;
+        }
+      });
+
+      if (correctCount === FACTORS.length) {
+        playAudioTone('success');
+        triggerConfetti();
+        celebrationModal.classList.add('visible');
+      } else if (correctCount > 0) {
+        playAudioTone('click');
+      } else {
+        playAudioTone('error');
+      }
+
+      window.render();
+    });
+
+    modalRestartBtn.addEventListener('click', () => {
+      celebrationModal.classList.remove('visible');
+      FACTORS.sort(() => Math.random() - 0.5);
+      FACTORS.forEach(f => window.state.placements[f.id] = 'pool');
+      window.state.checked = false;
+      window.render();
+    });
+
+    modalDismissBtn.addEventListener('click', () => {
+      celebrationModal.classList.remove('visible');
+    });
+
+    // Touch Support
+    let touchDraggingElement = null;
+    let touchGhost = null;
+
+    document.addEventListener('pointerdown', (e) => {
+      const bubble = e.target.closest('.statement-bubble');
+      if (!bubble || e.pointerType === 'mouse') return;
+
+      const actionBtn = e.target.closest('.action-btn');
+      if (actionBtn) return;
+
+      const factorId = bubble.id;
+      touchDraggingElement = { factorId, element: bubble, startX: e.clientX, startY: e.clientY };
+    });
+
+    document.addEventListener('pointermove', (e) => {
+      if (!touchDraggingElement) return;
+
+      if (!touchGhost) {
+        const dist = Math.hypot(e.clientX - touchDraggingElement.startX, e.clientY - touchDraggingElement.startY);
+        if (dist > 8) {
+          touchGhost = touchDraggingElement.element.cloneNode(true);
+          touchGhost.style.position = 'fixed';
+          touchGhost.style.pointerEvents = 'none';
+          touchGhost.style.opacity = '0.85';
+          touchGhost.style.zIndex = '9999';
+          touchGhost.style.transform = 'scale(1.05) translate(-50%, -50%)';
+          touchGhost.style.width = touchDraggingElement.element.offsetWidth + 'px';
+          document.body.appendChild(touchGhost);
+          touchDraggingElement.element.style.opacity = '0.35';
+        }
+      }
+
+      if (touchGhost) {
+        touchGhost.style.left = e.clientX + 'px';
+        touchGhost.style.top = e.clientY + 'px';
+      }
+    });
+
+    document.addEventListener('pointerup', (e) => {
+      if (touchGhost) {
+        touchGhost.remove();
+        touchGhost = null;
+
+        if (touchDraggingElement) {
+          touchDraggingElement.element.style.opacity = '1';
+
+          const abioticRect = document.getElementById('zoneAbiotic').getBoundingClientRect();
+          const bioticRect = document.getElementById('zoneBiotic').getBoundingClientRect();
+          const poolRect = document.querySelector('.pool-section').getBoundingClientRect();
+
+          if (e.clientX >= abioticRect.left && e.clientX <= abioticRect.right && e.clientY >= abioticRect.top && e.clientY <= abioticRect.bottom) {
+            moveFactor(touchDraggingElement.factorId, 'abiotic');
+          } else if (e.clientX >= bioticRect.left && e.clientX <= bioticRect.right && e.clientY >= bioticRect.top && e.clientY <= bioticRect.bottom) {
+            moveFactor(touchDraggingElement.factorId, 'biotic');
+          } else if (e.clientX >= poolRect.left && e.clientX <= poolRect.right && e.clientY >= poolRect.top && e.clientY <= poolRect.bottom) {
+            moveFactor(touchDraggingElement.factorId, 'pool');
+          }
+        }
+      }
+      touchDraggingElement = null;
+    });
+
+    // Particle Confetti
+    function triggerConfetti() {
+      const ctx = confettiCanvas.getContext('2d');
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#38bdf8', '#4ade80', '#fbbf24', '#f43f5e', '#a855f7', '#6366f1'];
+
+      for (let i = 0; i < 80; i++) {
+        particles.push({
+          x: confettiCanvas.width / 2,
+          y: confettiCanvas.height / 2,
+          w: Math.random() * 8 + 6,
+          h: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 14,
+          vy: (Math.random() - 0.7) * 16,
+          rot: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 12,
+          opacity: 1
+        });
+      }
+
+      function renderFrame() {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        let active = 0;
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35;
+          p.rot += p.vRot;
+          p.opacity -= 0.014;
+
+          if (p.opacity > 0) {
+            active++;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rot * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.opacity);
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          }
+        });
+
+        if (active > 0) {
+          requestAnimationFrame(renderFrame);
+        } else {
+          ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        }
+      }
+
+      renderFrame();
+    }
+
+    // Initial render
+    window.render();
+  </script>
+</body>
+</html>
