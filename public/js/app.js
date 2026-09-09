@@ -1019,6 +1019,9 @@ function renderMediaBuild(slide, build) {
 
 function normalizeRevealMode(cell) {
   const explicitMode = String(cell?.revealMode || cell?.answerRevealMode || "").toLowerCase();
+  if (explicitMode === "blur") {
+    return "blur";
+  }
   if (
     explicitMode === "overlay" ||
     cell?.overlayAnswer === true ||
@@ -1059,7 +1062,7 @@ function appendInteractiveGrid(slide) {
 
     card.type = "button";
     card.id = `qa_card_${cell.id}`;
-    card.className = `qa-card-overlay ${revealed ? `revealed reveal-${revealMode}` : "masked"}`;
+    card.className = `qa-card-overlay ${revealed ? `revealed reveal-${revealMode}` : revealMode === "blur" ? "masked masked-blur" : "masked"}`;
     card.style.left = `${bounds.x}%`;
     card.style.top = `${bounds.y}%`;
     card.style.width = `${bounds.w}%`;
@@ -3532,6 +3535,14 @@ function renderComponentEditorPanel() {
           )
           .join("")}
       </div>
+      <div class="reveal-mode-row">
+        <span class="reveal-mode-label">Reveal as</span>
+        <select class="reveal-mode-select" data-cell-id="${cell.id}" aria-label="Reveal mode for answer ${index + 1}">
+          <option value="unmask" ${revealMode === "unmask" ? "selected" : ""}>Unmask</option>
+          <option value="overlay" ${revealMode === "overlay" ? "selected" : ""}>Overlay text</option>
+          <option value="blur" ${revealMode === "blur" ? "selected" : ""}>Feathered blur</option>
+        </select>
+      </div>
     `;
 
     card.querySelector(".select-component-btn").addEventListener("click", () => {
@@ -3600,6 +3611,18 @@ function renderComponentEditorPanel() {
         card.classList.remove("active-editing");
       });
     });
+
+    // Reveal-mode select listener
+    const revealModeSelect = card.querySelector(".reveal-mode-select");
+    if (revealModeSelect) {
+      revealModeSelect.addEventListener("change", () => {
+        const newMode = revealModeSelect.value;
+        cell.revealMode = newMode;
+        // If the answer was already revealed, re-render to swap the reveal-* class
+        renderSlideStage(slide);
+        renderComponentEditorPanel();
+      });
+    }
 
     questionSection.appendChild(card);
   });
