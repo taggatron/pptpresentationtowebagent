@@ -3237,7 +3237,13 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
     if (fullFetch || !allData) {
       allData = await fetchAllDecksAverageData();
     }
-    if (!allData) return;
+    if (!allData) {
+      setAnalyticsNotice(
+        "⚠️ Unable to load cross-deck benchmark data from server.",
+        "error"
+      );
+      return;
+    }
 
     const totalTrackedMs = allData.totalDurationMs || 0;
     const isPreview = totalTrackedMs <= 0;
@@ -3297,7 +3303,13 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
   if (fullFetch || !data) {
     data = await fetchDeckAnalyticsData(currentDeck?.id);
   }
-  if (!data) return;
+  if (!data) {
+    setAnalyticsNotice(
+      "⚠️ Unable to load analytics data from server. Please ensure your local server is restarted to load the latest analytics endpoints.",
+      "error"
+    );
+    return;
+  }
 
   let activeInFlightMs = 0;
   if (analyticsTracker.active && analyticsTracker.slideEnterTime) {
