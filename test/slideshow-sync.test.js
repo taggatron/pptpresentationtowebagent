@@ -48,8 +48,12 @@ function createMockEnvironment({ isPresentation = false } = {}) {
       appendChild() {},
       addEventListener() {},
       removeEventListener() {},
-      pause() {},
-      play() { return Promise.resolve(); },
+      pause() { this.paused = true; },
+      play() { this.paused = false; return Promise.resolve(); },
+      paused: true,
+      currentTime: 0,
+      duration: 60,
+      src: "",
       innerHTML: "",
       textContent: "",
       style: {},
@@ -278,3 +282,208 @@ test("Presentation window forces student mode, requests state, and guards hidden
   });
   assert.equal(hooks.getCurrentSlide(), 1, "Presentation window must never show hidden slide; must remain on nearest visible slide");
 });
+
+test("MacBook controller window starts, stops, and replays video on extended display via VIDEO_CONTROL", async () => {
+  const source = await fs.readFile(APP_PATH, "utf-8");
+  const env = createMockEnvironment({ isPresentation: false });
+
+  const context = vm.createContext({
+    console,
+    window: env.windowMock,
+    document: env.documentMock,
+    BroadcastChannel: env.MockBroadcastChannel,
+    localStorage: env.windowMock.localStorage,
+    URLSearchParams: globalThis.URLSearchParams,
+    setTimeout: () => 0,
+    clearTimeout: () => {},
+    setInterval: () => 0,
+    clearInterval: () => {}
+  });
+
+  vm.runInContext(
+    `${source}\n;globalThis.__videoControllerHooks = {
+      playSlideVideo,
+      pauseSlideVideo,
+      toggleSlideVideoPlayback,
+      replaySlideVideo,
+      formatVideoTime,
+      updateVideoPlaybackStateUI,
+      handleSlideshowSyncMessage,
+      initSlideshowSync,
+      getBroadcastMessages: () => env.broadcastMessages,
+      setDeck: (deck) => { currentDeck = deck; },
+      setSlide: (idx) => { currentSlideIndex = idx; },
+      setBuildStep: (step) => { currentMediaBuildStep = step; },
+      getVideoElement: () => slideVideo,
+      getVideoPlayPauseBtn: () => videoPlayPauseBtn,
+      getVideoPlayPauseText: () => videoPlayPauseText,
+      getStageVideoToggleBtn: () => stageVideoToggleBtn
+    };`,
+    context,
+    { filename: APP_PATH }
+  );
+
+  const hooks = context.__videoControllerHooks;
+  hooks.initSlideshowSync();
+
+  const videoDeck = {
+    id: "deck_with_video",
+    slides: [
+      {
+        number: 1,
+        title: "Slide 1 Video",
+        progressiveBuilds: [
+          { version: 1, kind: "video", videoUrl: "/videos/intro.mp4", startTime: 0, endTime: 20 }
+        ]
+      }
+    ]
+  };
+  hooks.setDeck(videoDeck);
+  hooks.setSlide(0);
+  hooks.setBuildStep(1);
+
+  const mockVideo = hooks.getVideoElement();
+  mockVideo.src = "/videos/intro.mp4";
+  mockVideo.currentTime = 5.2;
+
+  // 1. Controller plays video -> sends VIDEO_CONTROL action: "play"
+  await hooks.playSlideVideo({ broadcast: true });
+  const playMsg = env.broadcastMessages.find((m) => m.type === "VIDEO_CONTROL" && m.action === "play");
+  assert.ok(playMsg, "Controller must broadcast VIDEO_CONTROL with action 'play'");
+  assert.equal(playMsg.slideIndex, 0);
+  assert.equal(playMsg.mediaBuildStep, 1);
+
+  // 2. Controller pauses video -> sends VIDEO_CONTROL action: "pause"
+  hooks.pauseSlideVideo({ broadcast: true });
+  const pauseMsg = env.broadcastMessages.find((m) => m.type === "VIDEO_CONTROL" && m.action === "pause");
+  assert.ok(pauseMsg, "Controller must broadcast VIDEO_CONTROL with action 'pause'");
+
+  // 3. Controller replays video -> sends VIDEO_CONTROL action: "replay"
+  hooks.replaySlideVideo({ broadcast: true });
+  const replayMsg = env.broadcastMessages.find((m) => m.type === "VIDEO_CONTROL" && m.action === "replay");
+  assert.ok(replayMsg, "Controller must broadcast VIDEO_CONTROL with action 'replay'");
+
+  // 4. Controller receives VIDEO_STATE from presentation window -> UI updates
+  hooks.handleSlideshowSyncMessage({
+    data: {
+      type: "VIDEO_STATE",
+      senderId: "ext_presentation_win",
+      isPlaying: true,
+      currentTime: 12.5,
+      duration: 45
+    }
+  });
+  const playPauseBtn = hooks.getVideoPlayPauseBtn();
+  const playPauseText = hooks.getVideoPlayPauseText();
+  assert.ok(playPauseBtn.classList.contains("is-playing"), "Button should reflect playing state");
+  assert.equal(playPauseText.textContent, "Stop video", "Button text should say Stop video when playing");
+
+  hooks.handleSlideshowSyncMessage({
+    data: {
+      type: "VIDEO_STATE",
+      senderId: "ext_presentation_win",
+      isPlaying: false,
+      currentTime: 12.5,
+      duration: 45
+    }
+  });
+  assert.equal(playPauseBtn.classList.contains("is-playing"), false, "Button should reflect paused state");
+  assert.equal(playPauseText.textContent, "Start video", "Button text should say Start video when stopped");
+});
+
+test("Presentation window on extended screen receives VIDEO_CONTROL and executes play, pause, and replay", async () => {
+  const source = await fs.readFile(APP_PATH, "utf-8");
+  const env = createMockEnvironment({ isPresentation: true });
+
+  const context = vm.createContext({
+    console,
+    window: env.windowMock,
+    document: env.documentMock,
+    BroadcastChannel: env.MockBroadcastChannel,
+    localStorage: env.windowMock.localStorage,
+    URLSearchParams: globalThis.URLSearchParams,
+    setTimeout: () => 0,
+    clearTimeout: () => {},
+    setInterval: () => 0,
+    clearInterval: () => {}
+  });
+
+  vm.runInContext(
+    `${source}\n;globalThis.__presentationVideoHooks = {
+      handleSlideshowSyncMessage,
+      handleVideoControlSyncMessage,
+      broadcastVideoStateFromPresentation,
+      initSlideshowSync,
+      getBroadcastMessages: () => env.broadcastMessages,
+      setDeck: (deck) => { currentDeck = deck; },
+      setSlide: (idx) => { currentSlideIndex = idx; },
+      setBuildStep: (step) => { currentMediaBuildStep = step; },
+      getVideoElement: () => slideVideo
+    };`,
+    context,
+    { filename: APP_PATH }
+  );
+
+  const hooks = context.__presentationVideoHooks;
+  hooks.initSlideshowSync();
+
+  const sampleDeck = {
+    id: "deck_with_video",
+    slides: [
+      {
+        number: 1,
+        title: "Slide 1 Video",
+        progressiveBuilds: [
+          { version: 1, kind: "video", videoUrl: "/videos/lesson.mp4", startTime: 0, endTime: 30 }
+        ]
+      }
+    ]
+  };
+  hooks.setDeck(sampleDeck);
+  hooks.setSlide(0);
+  hooks.setBuildStep(1);
+
+  const videoEl = hooks.getVideoElement();
+  videoEl.classList.remove("hidden");
+  videoEl.paused = true;
+
+  // 1. Receive VIDEO_CONTROL with action: "play"
+  hooks.handleSlideshowSyncMessage({
+    data: {
+      type: "VIDEO_CONTROL",
+      senderId: "macbook_controller",
+      action: "play",
+      currentTime: 8.4,
+      slideIndex: 0,
+      mediaBuildStep: 1
+    }
+  });
+  assert.equal(videoEl.paused, false, "Extended screen video must start playing on receipt of play command");
+
+  // 2. Receive VIDEO_CONTROL with action: "pause"
+  hooks.handleSlideshowSyncMessage({
+    data: {
+      type: "VIDEO_CONTROL",
+      senderId: "macbook_controller",
+      action: "pause",
+      currentTime: 10.1,
+      slideIndex: 0,
+      mediaBuildStep: 1
+    }
+  });
+  assert.equal(videoEl.paused, true, "Extended screen video must pause on receipt of pause command");
+
+  // 3. Receive VIDEO_CONTROL with action: "replay"
+  hooks.handleSlideshowSyncMessage({
+    data: {
+      type: "VIDEO_CONTROL",
+      senderId: "macbook_controller",
+      action: "replay",
+      currentTime: 0,
+      slideIndex: 0,
+      mediaBuildStep: 1
+    }
+  });
+  assert.equal(videoEl.paused, false, "Extended screen video must replay and start playing on receipt of replay command");
+});
+

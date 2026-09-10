@@ -31,6 +31,15 @@ let currentSlideSetId = null;
 const slideImage = document.getElementById("slideImage");
 const slideVideo = document.getElementById("slideVideo");
 const videoPlayFallback = document.getElementById("videoPlayFallback");
+const stageVideoToggleBtn = document.getElementById("stageVideoToggleBtn");
+const stageVideoToggleIcon = document.getElementById("stageVideoToggleIcon");
+const stageVideoToggleText = document.getElementById("stageVideoToggleText");
+const videoControlsGroup = document.getElementById("videoControlsGroup");
+const videoPlayPauseBtn = document.getElementById("videoPlayPauseBtn");
+const videoPlayPauseIcon = document.getElementById("videoPlayPauseIcon");
+const videoPlayPauseText = document.getElementById("videoPlayPauseText");
+const videoRestartBtn = document.getElementById("videoRestartBtn");
+const videoTimeBadge = document.getElementById("videoTimeBadge");
 const slideStage = document.getElementById("slideStage");
 const slideWrapper = document.getElementById("slideWrapper");
 const webEmbedLayer = document.getElementById("webEmbedLayer");
@@ -803,21 +812,32 @@ function updateStageControls(slide) {
   const hasAnswers = cells.length > 0;
   const synchronizedAnswers = isGeneratedQuestionAnswerSequence(slide);
   const revealedCount = getRevealedAnswerCount(slide);
-  // In student mode, serial build steps are teacher-only and hidden, so only answer reveals can be shown.
-  // In presenter mode, either build steps or answers allow hide/reveal actions.
-  const hasComponentsToHideOrReveal = presenterMode ? (hasBuilds || hasAnswers) : hasAnswers;
+  const currentBuild = currentBuildForSlide(slide);
+  const hasVideo = currentBuild?.kind === "video" || Boolean(slideVideo && !slideVideo.classList.contains("hidden") && slideVideo.src);
+  // In student mode, serial build steps are teacher-only and hidden, so only answer reveals or video controls can be shown.
+  // In presenter mode, build steps, answers, or video controls allow controls.
+  const hasComponentsToHideOrReveal = presenterMode ? (hasBuilds || hasAnswers || hasVideo) : (hasAnswers || hasVideo);
 
   qaControls?.classList.toggle("hidden", !hasComponentsToHideOrReveal);
+  videoControlsGroup?.classList.toggle("hidden", !hasVideo || isPresentationWindow);
+  if (stageVideoToggleBtn) {
+    stageVideoToggleBtn.classList.toggle("hidden", !hasVideo || isPresentationWindow);
+  }
   buildControlsGroup?.classList.toggle("hidden", !hasBuilds);
   answerControlsGroup?.classList.toggle("hidden", !hasAnswers || synchronizedAnswers);
   answerActionsGroup?.classList.toggle("hidden", !hasAnswers);
-  autoPlaySequenceGroup?.classList.toggle("hidden", !hasBuilds && !hasAnswers);
-  qaControlsDivider?.classList.toggle("hidden", !hasAnswers);
+  autoPlaySequenceGroup?.classList.toggle("hidden", (!hasBuilds && !hasAnswers) || hasVideo);
+  qaControlsDivider?.classList.toggle("hidden", !hasAnswers || !hasVideo);
+  if (hasVideo) {
+    updateVideoPlaybackStateUI(slideVideo ? !slideVideo.paused : false);
+  }
 
   if (qaControls) {
     qaControls.setAttribute(
       "aria-label",
-      synchronizedAnswers
+      hasVideo
+        ? "Video playback and stage controls"
+        : synchronizedAnswers
         ? "Synchronized question and answer build controls"
         : hasBuilds && hasAnswers
         ? "Build and answer controls"
@@ -826,8 +846,6 @@ function updateStageControls(slide) {
           : "Answer reveal controls"
     );
   }
-
-  const currentBuild = currentBuildForSlide(slide);
   const minStep = buildSteps.length > 0 ? 1 : 0;
   if (serialStepBadge) {
     serialStepBadge.textContent = buildSteps.length > 0
@@ -938,6 +956,274 @@ function setSlideImageSource(imageUrl) {
   }
 }
 
+function formatVideoTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
+function updateVideoTimeBadge() {
+  if (!videoTimeBadge) return;
+  if (!slideVideo || slideVideo.classList.contains("hidden")) {
+    videoTimeBadge.textContent = "0:00 / 0:00";
+    return;
+  }
+  const current = formatVideoTime(slideVideo.currentTime || 0);
+  const total = formatVideoTime(slideVideo.duration || 0);
+  videoTimeBadge.textContent = `${current} / ${total}`;
+}
+
+function updateVideoPlaybackStateUI(isPlaying) {
+  if (videoPlayPauseBtn) {
+    videoPlayPauseBtn.classList.toggle("is-playing", isPlaying);
+    if (videoPlayPauseIcon) {
+      videoPlayPauseIcon.textContent = isPlaying ? "⏸" : "▶";
+    }
+    if (videoPlayPauseText) {
+      videoPlayPauseText.textContent = isPlaying ? "Stop video" : "Start video";
+    }
+    videoPlayPauseBtn.setAttribute(
+      "title",
+      isPlaying
+        ? "Stop playing video on presentation and control screens (K or P, Space when focused)"
+        : "Start video playback on presentation and control screens (K or P, Space when focused)"
+    );
+    videoPlayPauseBtn.setAttribute("aria-label", isPlaying ? "Stop video" : "Start video");
+  }
+
+  if (stageVideoToggleBtn) {
+    stageVideoToggleBtn.classList.toggle("is-playing", isPlaying);
+    if (stageVideoToggleIcon) {
+      stageVideoToggleIcon.textContent = isPlaying ? "⏸" : "▶";
+    }
+    if (stageVideoToggleText) {
+      stageVideoToggleText.textContent = isPlaying ? "Stop video" : "Start video";
+    }
+    stageVideoToggleBtn.setAttribute(
+      "title",
+      isPlaying ? "Stop video (Click, Space, or K)" : "Start video (Click, Space, or K)"
+    );
+    stageVideoToggleBtn.setAttribute("aria-label", isPlaying ? "Stop video" : "Start video");
+  }
+
+  updateVideoTimeBadge();
+}
+
+function isCurrentSlideVideo() {
+  const slide = currentDeck?.slides?.[currentSlideIndex];
+  const build = currentBuildForSlide(slide);
+  return Boolean(
+    build?.kind === "video" ||
+    (slideVideo && !slideVideo.classList.contains("hidden") && slideVideo.src)
+  );
+}
+
+function playSlideVideo({ broadcast = true, currentTime = null } = {}) {
+  if (!slideVideo) return Promise.resolve(false);
+  const activeSlide = currentDeck?.slides?.[currentSlideIndex];
+  const build = currentBuildForSlide(activeSlide);
+  const isForceMuted = Boolean(
+    build?.muted ||
+    build?.forceMuted ||
+    activeSlide?.muted ||
+    activeSlide?.forceMuted ||
+    build?.volume === 0 ||
+    activeSlide?.volume === 0 ||
+    build?.videoUrl?.includes("Please_take_the_attached_slide.mp4")
+  );
+
+  if (isForceMuted) {
+    slideVideo.muted = true;
+    slideVideo.volume = 0;
+  } else if (slideVideo.muted) {
+    slideVideo.muted = false;
+  }
+
+  if (Number.isFinite(currentTime) && Math.abs(slideVideo.currentTime - currentTime) > 0.3) {
+    try {
+      slideVideo.currentTime = currentTime;
+    } catch (_) {}
+  }
+
+  const playPromise = slideVideo.play();
+  const handlePlaySuccess = () => {
+    slideVideo.classList.remove("playback-blocked");
+    videoPlayFallback?.classList.add("hidden");
+    updateVideoPlaybackStateUI(true);
+    if (broadcast && !isPresentationWindow) {
+      broadcastSlideshowMessage({
+        type: "VIDEO_CONTROL",
+        action: "play",
+        currentTime: slideVideo.currentTime,
+        slideIndex: currentSlideIndex,
+        mediaBuildStep: currentMediaBuildStep
+      });
+    }
+    return true;
+  };
+
+  if (playPromise && typeof playPromise.then === "function") {
+    return playPromise
+      .then(handlePlaySuccess)
+      .catch((err) => {
+        console.warn("Unmuted play rejected, trying muted fallback:", err);
+        slideVideo.muted = true;
+        slideVideo.volume = 0;
+        return slideVideo.play()
+          .then(handlePlaySuccess)
+          .catch((mutedErr) => {
+            console.warn("Playback blocked completely:", mutedErr);
+            slideVideo.classList.add("playback-blocked");
+            videoPlayFallback?.classList.remove("hidden");
+            updateVideoPlaybackStateUI(false);
+            return false;
+          });
+      });
+  }
+
+  handlePlaySuccess();
+  return Promise.resolve(true);
+}
+
+function pauseSlideVideo({ broadcast = true, currentTime = null } = {}) {
+  if (!slideVideo) return;
+  slideVideo.pause();
+  if (Number.isFinite(currentTime)) {
+    try {
+      slideVideo.currentTime = currentTime;
+    } catch (_) {}
+  }
+  updateVideoPlaybackStateUI(false);
+  if (broadcast && !isPresentationWindow) {
+    broadcastSlideshowMessage({
+      type: "VIDEO_CONTROL",
+      action: "pause",
+      currentTime: slideVideo.currentTime,
+      slideIndex: currentSlideIndex,
+      mediaBuildStep: currentMediaBuildStep
+    });
+  }
+}
+
+function toggleSlideVideoPlayback({ broadcast = true } = {}) {
+  if (!slideVideo) return;
+  if (slideVideo.paused) {
+    playSlideVideo({ broadcast });
+  } else {
+    pauseSlideVideo({ broadcast });
+  }
+}
+
+function replaySlideVideo({ broadcast = true } = {}) {
+  if (!slideVideo) return;
+  const activeSlide = currentDeck?.slides?.[currentSlideIndex];
+  const build = currentBuildForSlide(activeSlide);
+  const startTime = Math.max(0, build?.startTime || 0);
+  try {
+    slideVideo.currentTime = startTime;
+  } catch (_) {}
+  playSlideVideo({ broadcast, currentTime: startTime });
+  if (broadcast && !isPresentationWindow) {
+    broadcastSlideshowMessage({
+      type: "VIDEO_CONTROL",
+      action: "replay",
+      currentTime: startTime,
+      slideIndex: currentSlideIndex,
+      mediaBuildStep: currentMediaBuildStep
+    });
+  }
+}
+
+function broadcastVideoStateFromPresentation() {
+  if (!isPresentationWindow) return;
+  if (!slideVideo || slideVideo.classList.contains("hidden")) return;
+  broadcastSlideshowMessage({
+    type: "VIDEO_STATE",
+    isPlaying: !slideVideo.paused,
+    currentTime: slideVideo.currentTime,
+    duration: slideVideo.duration,
+    slideIndex: currentSlideIndex,
+    mediaBuildStep: currentMediaBuildStep
+  });
+}
+
+function handleVideoControlSyncMessage(data) {
+  if (!data || typeof data !== "object") return;
+
+  if (Number.isFinite(data.slideIndex) && data.slideIndex !== currentSlideIndex) {
+    if (!currentDeck?.slides?.[data.slideIndex]?.hidden) {
+      renderSlide(data.slideIndex);
+    }
+  }
+  if (Number.isFinite(data.mediaBuildStep) && data.mediaBuildStep !== currentMediaBuildStep) {
+    currentMediaBuildStep = data.mediaBuildStep;
+    renderSlideStage();
+  }
+
+  if (!slideVideo || slideVideo.classList.contains("hidden")) {
+    renderSlideStage();
+  }
+
+  if (!slideVideo) return;
+
+  const action = data.action;
+  if (action === "play") {
+    if (Number.isFinite(data.currentTime)) {
+      try {
+        if (Math.abs(slideVideo.currentTime - data.currentTime) > 0.5) {
+          slideVideo.currentTime = data.currentTime;
+        }
+      } catch (_) {}
+    }
+    slideVideo.classList.remove("playback-blocked");
+    videoPlayFallback?.classList.add("hidden");
+    const p = slideVideo.play();
+    if (p && typeof p.catch === "function") {
+      p.catch(() => {
+        slideVideo.muted = true;
+        slideVideo.volume = 0;
+        slideVideo.play().catch(() => {});
+      });
+    }
+  } else if (action === "pause") {
+    slideVideo.pause();
+    if (Number.isFinite(data.currentTime)) {
+      try {
+        slideVideo.currentTime = data.currentTime;
+      } catch (_) {}
+    }
+  } else if (action === "toggle") {
+    if (slideVideo.paused) {
+      slideVideo.play().catch(() => {
+        slideVideo.muted = true;
+        slideVideo.volume = 0;
+        slideVideo.play().catch(() => {});
+      });
+    } else {
+      slideVideo.pause();
+    }
+  } else if (action === "replay") {
+    const activeSlide = currentDeck?.slides?.[currentSlideIndex];
+    const build = currentBuildForSlide(activeSlide);
+    const startTime = Math.max(0, build?.startTime || Number(data.currentTime) || 0);
+    try {
+      slideVideo.currentTime = startTime;
+    } catch (_) {}
+    slideVideo.play().catch(() => {
+      slideVideo.muted = true;
+      slideVideo.volume = 0;
+      slideVideo.play().catch(() => {});
+    });
+  } else if (action === "seek") {
+    if (Number.isFinite(data.currentTime)) {
+      try {
+        slideVideo.currentTime = data.currentTime;
+      } catch (_) {}
+    }
+  }
+}
+
 function cleanupVideoSegmentHandler(videoEl = slideVideo) {
   videoPlaybackToken++;
   videoCleanupCallbacks.forEach((cleanup) => cleanup());
@@ -959,6 +1245,9 @@ function hideSlideVideo() {
   slideVideo.classList.add("hidden");
   slideVideo.classList.remove("playback-blocked");
   videoPlayFallback?.classList.add("hidden");
+  stageVideoToggleBtn?.classList.add("hidden");
+  videoControlsGroup?.classList.add("hidden");
+  updateVideoPlaybackStateUI(false);
 }
 
 function showVideoBuild(slide, build) {
@@ -983,6 +1272,10 @@ function showVideoBuild(slide, build) {
   slideVideo.controls = false;
   slideVideo.removeAttribute("controls");
   slideVideo.classList.remove("hidden");
+  if (!isPresentationWindow) {
+    stageVideoToggleBtn?.classList.remove("hidden");
+    videoControlsGroup?.classList.remove("hidden");
+  }
 
   if (isForceMuted) {
     slideVideo.muted = true;
@@ -990,21 +1283,27 @@ function showVideoBuild(slide, build) {
     slideVideo.volume = 0;
   }
 
-  // Allow clicking anywhere on the video player to toggle play / pause or unmute
-  addVideoListener(slideVideo, "click", () => {
-    if (isForceMuted) {
-      slideVideo.muted = true;
-      slideVideo.volume = 0;
-    } else if (slideVideo.muted) {
-      slideVideo.muted = false;
-    }
-    if (slideVideo.paused) {
-      slideVideo.play().catch((err) => console.warn("Click play prevented:", err));
-      slideVideo.classList.remove("playback-blocked");
-      videoPlayFallback?.classList.add("hidden");
-    } else {
-      slideVideo.pause();
-    }
+  // Allow clicking anywhere on the video player to toggle play / pause and sync across displays
+  addVideoListener(slideVideo, "click", (event) => {
+    event.stopPropagation();
+    toggleSlideVideoPlayback({ broadcast: true });
+  });
+
+  // Keep UI and presentation window state synchronized
+  addVideoListener(slideVideo, "play", () => {
+    updateVideoPlaybackStateUI(true);
+    if (isPresentationWindow) broadcastVideoStateFromPresentation();
+  });
+  addVideoListener(slideVideo, "pause", () => {
+    updateVideoPlaybackStateUI(false);
+    if (isPresentationWindow) broadcastVideoStateFromPresentation();
+  });
+  addVideoListener(slideVideo, "ended", () => {
+    updateVideoPlaybackStateUI(false);
+    if (isPresentationWindow) broadcastVideoStateFromPresentation();
+  });
+  addVideoListener(slideVideo, "timeupdate", () => {
+    updateVideoTimeBadge();
   });
 
   // Guard against any attempt to change volume or unmute when force muted
@@ -1023,6 +1322,7 @@ function showVideoBuild(slide, build) {
       videoPlayFallback.innerHTML = '<span aria-hidden="true">▶</span><span>Play video</span>';
       videoPlayFallback.classList.remove("hidden");
     }
+    updateVideoPlaybackStateUI(false);
   });
 
   if (slideVideo.src !== fullUrl) {
@@ -1051,6 +1351,7 @@ function showVideoBuild(slide, build) {
           pendingVideoReplay = null;
           slideVideo.classList.remove("playback-blocked");
           videoPlayFallback?.classList.add("hidden");
+          updateVideoPlaybackStateUI(true);
         })
         .catch((err) => {
           if (token !== videoPlaybackToken) return;
@@ -1066,29 +1367,21 @@ function showVideoBuild(slide, build) {
                 if (isForceMuted) {
                   slideVideo.volume = 0;
                 }
-                // Video is playing smoothly muted. No popup in middle of video.
                 pendingVideoReplay = null;
                 slideVideo.classList.remove("playback-blocked");
                 videoPlayFallback?.classList.add("hidden");
+                updateVideoPlaybackStateUI(true);
               })
               .catch(() => {
-                // If even muted play was blocked, provide full play button
                 pendingVideoReplay = () => {
-                  if (isForceMuted) {
-                    slideVideo.muted = true;
-                    slideVideo.volume = 0;
-                  } else {
-                    slideVideo.muted = false;
-                  }
-                  slideVideo.play().catch(() => {});
-                  slideVideo.classList.remove("playback-blocked");
-                  videoPlayFallback?.classList.add("hidden");
+                  playSlideVideo({ broadcast: true });
                 };
                 slideVideo.classList.add("playback-blocked");
                 if (videoPlayFallback) {
                   videoPlayFallback.innerHTML = '<span aria-hidden="true">▶</span><span>Play video</span>';
                   videoPlayFallback.classList.remove("hidden");
                 }
+                updateVideoPlaybackStateUI(false);
               });
           }
         });
@@ -1115,9 +1408,12 @@ function showVideoBuild(slide, build) {
         try {
           slideVideo.currentTime = endTime;
         } catch (error) {}
+        updateVideoPlaybackStateUI(false);
+        if (isPresentationWindow) broadcastVideoStateFromPresentation();
       };
       addVideoListener(slideVideo, "timeupdate", stopAtSegmentEnd);
     }
+    updateVideoPlaybackStateUI(!slideVideo.paused);
     attemptPlay();
   };
 
@@ -2571,6 +2867,7 @@ function broadcastSlideshowSync(type = "SYNC_STATE", extra = {}) {
   if (isPresentationWindow) return;
   if (!currentDeck) return;
 
+  const isVideo = isCurrentSlideVideo();
   broadcastSlideshowMessage({
     type,
     deckId: currentDeck.id,
@@ -2578,6 +2875,8 @@ function broadcastSlideshowSync(type = "SYNC_STATE", extra = {}) {
     mediaBuildStep: currentMediaBuildStep,
     answerStates: { ...answerStates },
     answerRevealOrder: { ...answerRevealOrder },
+    videoPlaying: isVideo && slideVideo ? !slideVideo.paused : false,
+    videoCurrentTime: isVideo && slideVideo ? slideVideo.currentTime : 0,
     ...extra
   });
 }
@@ -2592,6 +2891,11 @@ function handleSlideshowSyncMessage(event) {
     switch (data.type) {
       case "REQUEST_STATE":
         break;
+
+      case "VIDEO_CONTROL": {
+        handleVideoControlSyncMessage(data);
+        break;
+      }
 
       case "SYNC_STATE":
       case "SLIDE_CHANGE":
@@ -2623,6 +2927,25 @@ function handleSlideshowSyncMessage(event) {
             currentMediaBuildStep = data.mediaBuildStep;
           }
           renderSlideStage();
+
+          if (typeof data.videoPlaying === "boolean" && slideVideo && !slideVideo.classList.contains("hidden")) {
+            if (Number.isFinite(data.videoCurrentTime)) {
+              try {
+                slideVideo.currentTime = data.videoCurrentTime;
+              } catch (_) {}
+            }
+            if (data.videoPlaying) {
+              slideVideo.classList.remove("playback-blocked");
+              videoPlayFallback?.classList.add("hidden");
+              slideVideo.play().catch(() => {
+                slideVideo.muted = true;
+                slideVideo.volume = 0;
+                slideVideo.play().catch(() => {});
+              });
+            } else {
+              slideVideo.pause();
+            }
+          }
         };
 
         if (data.deckId && (!currentDeck || currentDeck.id !== data.deckId)) {
@@ -2689,6 +3012,18 @@ function handleSlideshowSyncMessage(event) {
       case "REQUEST_STATE":
         broadcastSlideshowSync("SYNC_STATE");
         break;
+
+      case "VIDEO_STATE": {
+        if (data && typeof data.isPlaying === "boolean") {
+          updateVideoPlaybackStateUI(data.isPlaying);
+          if (videoTimeBadge && Number.isFinite(data.currentTime)) {
+            const current = formatVideoTime(data.currentTime);
+            const total = formatVideoTime(data.duration || slideVideo?.duration || 0);
+            videoTimeBadge.textContent = `${current} / ${total}`;
+          }
+        }
+        break;
+      }
 
       case "NAVIGATE":
         if (data.direction === 1) goToNextSlide();
@@ -5538,34 +5873,11 @@ function setupEventListeners() {
   prevAnswerBtn?.addEventListener("click", hidePreviousAnswer);
   nextAnswerBtn?.addEventListener("click", revealNextAnswer);
   autoPlayBuildsBtn?.addEventListener("click", toggleAutoPlay);
+  videoPlayPauseBtn?.addEventListener("click", () => toggleSlideVideoPlayback({ broadcast: true }));
+  stageVideoToggleBtn?.addEventListener("click", () => toggleSlideVideoPlayback({ broadcast: true }));
+  videoRestartBtn?.addEventListener("click", () => replaySlideVideo({ broadcast: true }));
   videoPlayFallback?.addEventListener("click", () => {
-    const activeSlide = currentDeck?.slides?.[currentSlideIndex];
-    const stageSteps = activeSlide ? getStageBuildSteps(activeSlide) : [];
-    const activeBuild = stageSteps[currentMediaBuildStep - 1];
-    const isMuted = Boolean(
-      activeBuild?.muted ||
-      activeBuild?.forceMuted ||
-      activeSlide?.muted ||
-      activeSlide?.forceMuted ||
-      activeBuild?.volume === 0 ||
-      activeSlide?.volume === 0 ||
-      activeBuild?.videoUrl?.includes("Please_take_the_attached_slide.mp4")
-    );
-    if (slideVideo) {
-      if (isMuted) {
-        slideVideo.muted = true;
-        slideVideo.volume = 0;
-      } else {
-        slideVideo.muted = false;
-      }
-    }
-    if (typeof pendingVideoReplay === "function") {
-      pendingVideoReplay();
-    } else if (slideVideo) {
-      slideVideo.play().catch((err) => console.warn("Fallback play error:", err));
-      slideVideo.classList.remove("playback-blocked");
-      videoPlayFallback.classList.add("hidden");
-    }
+    playSlideVideo({ broadcast: true });
   });
   editComponentBtn?.addEventListener("click", () => switchSidebarTab("editor"));
   cancelRevisionBtn?.addEventListener("click", () => {
@@ -6007,6 +6319,20 @@ function setupEventListeners() {
       target instanceof HTMLSelectElement ||
       target?.isContentEditable;
     if (typing) return;
+
+    if (target instanceof HTMLButtonElement && (event.key === " " || event.key === "Enter")) {
+      return;
+    }
+
+    if (!event.altKey && !event.ctrlKey && !event.metaKey) {
+      const isKeyK = event.key.toLowerCase() === "k";
+      const isKeyP = event.key.toLowerCase() === "p";
+      if ((isKeyK || isKeyP) && isCurrentSlideVideo()) {
+        event.preventDefault();
+        toggleSlideVideoPlayback({ broadcast: true });
+        return;
+      }
+    }
 
     const viModal = document.getElementById("viSettingsModal");
     const mlpModal = document.getElementById("mlpExportModal");

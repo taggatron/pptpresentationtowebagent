@@ -457,7 +457,8 @@ body.slideshow-display #welcomeModal,
 body.slideshow-display #setsModal,
 body.slideshow-display #cognitiveModal,
 body.slideshow-display #viSettingsModal,
-body.slideshow-display #mlpExportModal {
+body.slideshow-display #mlpExportModal,
+body.slideshow-display .stage-video-toggle-btn {
   display: none !important;
 }
 
@@ -2202,6 +2203,51 @@ body.theme-dark .icon-btn:hover {
   outline-offset: 3px;
 }
 
+.stage-video-toggle-btn {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 11;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  font: 600 0.85rem/1 var(--font-family);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.92;
+}
+
+.stage-video-toggle-btn:hover,
+.stage-video-toggle-btn:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+  background: rgba(79, 70, 229, 0.92);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.35);
+  outline: 2px solid rgba(56, 189, 248, 0.65);
+  outline-offset: 2px;
+}
+
+.stage-video-toggle-btn.is-playing {
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.stage-video-toggle-btn.is-playing:hover {
+  background: rgba(225, 29, 72, 0.88);
+}
+
+.stage-video-toggle-btn.hidden {
+  display: none !important;
+}
+
 .web-embed-layer {
   position: absolute;
   inset: 0;
@@ -2717,8 +2763,8 @@ body.theme-dark .qa-controls-bar {
   display: none !important;
 }
 
-/* Hide container in student mode if there are no answer actions to reveal/hide */
-.student-mode .qa-controls-bar:not(:has(#answerActionsGroup:not(.hidden))) {
+/* Hide container in student mode if there are no answer actions to reveal/hide and no video controls */
+.student-mode .qa-controls-bar:not(:has(#answerActionsGroup:not(.hidden))):not(:has(#videoControlsGroup:not(.hidden))) {
   display: none !important;
 }
 
@@ -2731,6 +2777,46 @@ body.theme-dark .qa-controls-bar {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-main);
+}
+
+.video-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.video-controls-group.hidden {
+  display: none !important;
+}
+
+.video-play-pause-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.video-play-pause-btn.is-playing {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.video-play-pause-btn.is-playing:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.6);
+}
+
+.video-restart-btn {
+  font-size: 0.95rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.video-time-badge {
+  font-variant-numeric: tabular-nums;
+  min-width: 5.4rem;
+  text-align: center;
 }
 
 /* Sidebar Drawer */

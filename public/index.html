@@ -186,6 +186,16 @@
             <span aria-hidden="true">▶</span>
             <span>Play video</span>
           </button>
+          <button
+            id="stageVideoToggleBtn"
+            class="stage-video-toggle-btn hidden"
+            type="button"
+            aria-label="Start or stop video playback"
+            title="Start / stop video (Click, Space, or K)"
+          >
+            <span id="stageVideoToggleIcon" class="stage-video-toggle-icon" aria-hidden="true">▶</span>
+            <span id="stageVideoToggleText" class="stage-video-toggle-text">Start video</span>
+          </button>
           <div id="webEmbedLayer" class="web-embed-layer hidden" aria-label="Embedded practical">
             <iframe
               id="webEmbedFrame"
@@ -243,6 +253,29 @@
         </div>
 
         <div id="qaControls" class="qa-controls-bar hidden" aria-label="Build and answer controls">
+          <div id="videoControlsGroup" class="serial-build-group video-controls-group hidden">
+            <span class="qa-label">Video</span>
+            <button
+              id="videoPlayPauseBtn"
+              class="btn btn-secondary-small video-play-pause-btn"
+              type="button"
+              title="Start or stop video playback on presentation and control screens (K or P, Space when focused)"
+              aria-label="Start or stop video playback"
+            >
+              <span id="videoPlayPauseIcon" aria-hidden="true">▶</span>
+              <span id="videoPlayPauseText">Start video</span>
+            </button>
+            <button
+              id="videoRestartBtn"
+              class="btn btn-icon-small video-restart-btn"
+              type="button"
+              title="Restart video from beginning"
+              aria-label="Restart video from beginning"
+            >
+              <span aria-hidden="true">↺</span>
+            </button>
+            <span id="videoTimeBadge" class="build-step-badge video-time-badge" aria-label="Video playback progress">0:00 / 0:00</span>
+          </div>
           <div id="buildControlsGroup" class="serial-build-group hidden">
             <span class="qa-label">Build sequence</span>
             <span id="serialStepBadge" class="build-step-badge">0 / 0</span>
@@ -488,6 +521,8 @@
           <span class="key-tag">←</span> <span class="key-tag">→</span> slides
           <span class="hint-separator">·</span>
           <span class="key-tag">↑</span> <span class="key-tag">↓</span> reveals
+          <span class="hint-separator">·</span>
+          <span class="key-tag">K</span> video
           <span class="hint-separator">·</span>
           click an answer to reveal
         </div>
