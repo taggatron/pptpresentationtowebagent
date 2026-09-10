@@ -705,14 +705,46 @@ body.theme-light .deck-select option {
   fill: #059669;
 }
 
+.start-slideshow-btn .slideshow-stop-svg {
+  display: none;
+  width: 13px;
+  height: 13px;
+  fill: #ef4444;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
 .start-slideshow-btn.is-active {
-  background: rgba(16, 185, 129, 0.22);
-  border-color: #10b981;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.55);
+  color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+}
+
+.start-slideshow-btn.is-active:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+  color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.42);
+}
+
+.start-slideshow-btn.is-active:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
 }
 
 .start-slideshow-btn.is-active .slideshow-triangle-svg {
-  filter: drop-shadow(0 0 4px #10b981);
+  display: none;
+}
+
+.start-slideshow-btn.is-active .slideshow-stop-svg {
+  display: block;
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.5));
+}
+
+.start-slideshow-btn.is-active:hover .slideshow-stop-svg {
+  transform: scale(1.15);
+  fill: #dc2626;
 }
 
 body.theme-dark .start-slideshow-btn {
@@ -734,6 +766,28 @@ body.theme-dark .start-slideshow-btn .slideshow-triangle-svg {
 
 body.theme-dark .start-slideshow-btn:hover .slideshow-triangle-svg {
   fill: #6ee7b7;
+}
+
+body.theme-dark .start-slideshow-btn.is-active {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: rgba(248, 113, 113, 0.6);
+  color: #f87171;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.45);
+}
+
+body.theme-dark .start-slideshow-btn.is-active:hover {
+  background: rgba(239, 68, 68, 0.34);
+  border-color: #f87171;
+  color: #fca5a5;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.55);
+}
+
+body.theme-dark .start-slideshow-btn.is-active .slideshow-stop-svg {
+  fill: #f87171;
+}
+
+body.theme-dark .start-slideshow-btn.is-active:hover .slideshow-stop-svg {
+  fill: #fca5a5;
 }
 
 .mode-badge {
