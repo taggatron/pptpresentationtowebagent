@@ -3365,6 +3365,22 @@ function triggerAnalyticsExport(format = "json", scope = "current") {
 async function startSlideshow() {
   if (isPresentationWindow) return;
 
+  // Automatically switch into student mode so that hidden slides are not visible
+  if (presenterMode) {
+    togglePresenterMode();
+  }
+
+  // If currently on a hidden slide, jump to nearest visible slide
+  if (currentDeck?.slides?.[currentSlideIndex]?.hidden) {
+    let target = currentDeck.slides.findIndex((s, idx) => idx >= currentSlideIndex && !s.hidden);
+    if (target === -1) {
+      target = currentDeck.slides.findIndex((s) => !s.hidden);
+    }
+    if (target !== -1) {
+      renderSlide(target);
+    }
+  }
+
   // Initiate automatic slideshow tracking
   startSlideshowTracking();
 
@@ -3856,8 +3872,27 @@ function renderSlide(index) {
   const progress = ((index + 1) / currentDeck.slides.length) * 100;
   progressBar.style.width = `${progress}%`;
   progressBar.setAttribute("aria-valuenow", String(index + 1));
-  prevBtn.disabled = index === 0;
-  nextBtn.disabled = index === currentDeck.slides.length - 1;
+  if (!presenterMode && currentDeck?.slides) {
+    let hasPrev = false;
+    for (let i = index - 1; i >= 0; i--) {
+      if (!currentDeck.slides[i]?.hidden) {
+        hasPrev = true;
+        break;
+      }
+    }
+    let hasNext = false;
+    for (let i = index + 1; i < currentDeck.slides.length; i++) {
+      if (!currentDeck.slides[i]?.hidden) {
+        hasNext = true;
+        break;
+      }
+    }
+    prevBtn.disabled = !hasPrev;
+    nextBtn.disabled = !hasNext;
+  } else {
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === currentDeck.slides.length - 1;
+  }
 
   updateActiveThumbnail(index);
 
@@ -5169,8 +5204,19 @@ function togglePresenterMode() {
     switchSidebarTab("overview");
   }
   renderEditTargetSelection();
-  if (currentDeck?.slides?.[currentSlideIndex]) {
-    updateStageControls(currentDeck.slides[currentSlideIndex]);
+  if (currentDeck?.slides) {
+    if (!presenterMode && currentDeck.slides[currentSlideIndex]?.hidden) {
+      let target = currentDeck.slides.findIndex((s, idx) => idx >= currentSlideIndex && !s.hidden);
+      if (target === -1) {
+        target = currentDeck.slides.findIndex((s) => !s.hidden);
+      }
+      if (target !== -1) {
+        renderSlide(target);
+      }
+    } else if (currentDeck.slides[currentSlideIndex]) {
+      updateStageControls(currentDeck.slides[currentSlideIndex]);
+      renderSlide(currentSlideIndex);
+    }
   }
 }
 

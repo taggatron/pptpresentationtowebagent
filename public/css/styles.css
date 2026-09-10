@@ -3884,6 +3884,14 @@ body.theme-dark .thumb-item.active {
   border-color: rgba(148, 163, 184, 0.6);
 }
 
+body.student-mode .thumb-item.is-hidden {
+  display: none !important;
+}
+
+body.student-mode #slideHiddenBadge {
+  display: none !important;
+}
+
 .thumb-item.is-hidden:hover {
   opacity: 0.82;
   filter: grayscale(15%);

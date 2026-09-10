@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Printable Handout: Knowledge Checkpoint: Match the Level</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --scale: 1;
+      --bg-canvas: #0f172a;
+      --bg-header: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-light: #e0f2fe;
+      --emerald: #10b981;
+      --emerald-light: #ecfdf5;
+      --amber: #f59e0b;
+      --amber-light: #fef3c7;
+      --shadow-sm: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.06);
+      --shadow-md: 0 calc(4px * var(--scale)) calc(12px * var(--scale)) rgba(0,0,0,0.08);
+      --shadow-lg: 0 calc(8px * var(--scale)) calc(24px * var(--scale)) rgba(0,0,0,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0f172a;
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .slide-wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #0f172a;
+      position: relative;
+    }
+
+    /* Top Control & Navigation Bar */
+    .top-bar {
+      height: calc(56px * var(--scale));
+      min-height: calc(56px * var(--scale));
+      background: var(--bg-header);
+      border-bottom: calc(1.5px * var(--scale)) solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 calc(18px * var(--scale));
+      box-shadow: var(--shadow-sm);
+      z-index: 50;
+      gap: calc(12px * var(--scale));
+    }
+
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: calc(10px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .badge-handout {
+      background: #eff6ff;
+      border: calc(1px * var(--scale)) solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: calc(6px * var(--scale));
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
+    }
+
+    .slide-heading {
+      font-size: calc(15px * var(--scale));
+      font-weight: 700;
+      color: #1e293b;
+      white-space: nowrap;
+    }
+
+    .format-pill {
+      background: #dcfce7;
+      border: calc(1px * var(--scale)) solid #bbf7d0;
+      color: #15803d;
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* Center Segmented Mode Switcher */
+    .mode-switcher {
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      padding: calc(3px * var(--scale));
+      border-radius: calc(10px * var(--scale));
+      border: calc(1px * var(--scale)) solid #e2e8f0;
+      gap: calc(3px * var(--scale));
+    }
+
+    .mode-btn {
+      border: none;
+      background: transparent;
+      padding: calc(6px * var(--scale)) calc(12px * var(--scale));
+      border-radius: calc(7px * var(--scale));
+      font-size: calc(12px * var(--scale));
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .mode-btn:hover {
+      color: var(--text-main);
+    }
+
+    .mode-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.1);
+      font-weight: 700;
+    }
+
+    .mode-btn .icon {
+      font-size: calc(13px * var(--scale));
+    }
+
+    /* Right Action Tools */
+    .actions-group {
+      display: flex;
+      align-items: center;
+      gap: calc(8px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .btn-action {
+      background: #ffffff;
+      border: calc(1.5px * var(--scale)) solid #cbd5e1;
+      color: #334155;
+      font-size: calc(12px * var(--scale));
+      font-weight: 600;
+      padding: calc(5px * var(--scale)) calc(12px * var(--scale));
+      border-radius: calc(8px * var(--scale));
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+      text-decoration: none;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .btn-action:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      color: #0f172a;
+    }
+
+    .btn-action.btn-primary {
+      background: #0284c7;
+      border-color: #0284c7;
+      color: #ffffff;
+    }
+
+    .btn-action.btn-primary:hover {
+      background: #0369a1;
+      border-color: #0369a1;
+    }
+
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      border-radius: calc(8px * var(--scale));
+      border: calc(1px * var(--scale)) solid #e2e8f0;
+      overflow: hidden;
+    }
+
+    .zoom-btn {
+      border: none;
+      background: transparent;
+      width: calc(28px * var(--scale));
+      height: calc(28px * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #475569;
+      font-size: calc(14px * var(--scale));
+      font-weight: 700;
+      transition: background 0.15s ease;
+    }
+
+    .zoom-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .zoom-val {
+      font-size: calc(11px * var(--scale));
+      font-weight: 600;
+      color: #475569;
+      padding: 0 calc(6px * var(--scale));
+      min-width: calc(44px * var(--scale));
+      text-align: center;
+    }
+
+    /* Main Content Display Area */
+    .viewer-content {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: calc(20px * var(--scale));
+      background: #0f172a;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    /* Container for single or split view */
+    .pages-container {
+      display: flex;
+      gap: calc(24px * var(--scale));
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 100%;
+      transition: all 0.2s ease;
+      transform-origin: top center;
+    }
+
+    .page-sheet {
+      background: #ffffff;
+      border-radius: calc(10px * var(--scale));
+      box-shadow: 0 calc(8px * var(--scale)) calc(32px * var(--scale)) rgba(0,0,0,0.5);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: calc(1px * var(--scale)) solid #334155;
+      transition: all 0.2s ease;
+    }
+
+    .page-header {
+      background: #f8fafc;
+      border-bottom: calc(1px * var(--scale)) solid #e2e8f0;
+      padding: calc(8px * var(--scale)) calc(14px * var(--scale));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-tag {
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      padding: calc(2px * var(--scale)) calc(6px * var(--scale));
+      border-radius: calc(4px * var(--scale));
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-handout { background: #e0f2fe; color: #0369a1; }
+    .tag-ms { background: #fef3c7; color: #b45309; }
+
+    .page-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Full width modes */
+    .mode-handout .sheet-ms { display: none !important; }
+    .mode-handout .sheet-handout {
+      width: min(840px, 92vw);
+    }
+
+    .mode-answers .sheet-handout { display: none !important; }
+    .mode-answers .sheet-ms {
+      width: min(840px, 92vw);
+    }
+
+    .mode-split .sheet-handout,
+    .mode-split .sheet-ms {
+      width: min(580px, 46vw);
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      body, html, .slide-wrapper, .viewer-content {
+        background: #ffffff !important;
+        overflow: visible !important;
+        height: auto !important;
+      }
+      .top-bar {
+        display: none !important;
+      }
+      .pages-container {
+        display: block !important;
+        transform: none !important;
+      }
+      .page-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        page-break-after: always;
+      }
+      .page-header {
+        display: none !important;
+      }
+      .mode-handout .sheet-ms { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slide-wrapper">
+  <!-- Top Bar Controls -->
+  <header class="top-bar">
+    <div class="title-group">
+      <span class="badge-handout">📄 Printable Handout</span>
+      <h1 class="slide-heading">Knowledge Checkpoint: Match the Level</h1>
+      <span class="format-pill">Half-A4 (2 per page)</span>
+    </div>
+
+    <!-- Mode Switcher -->
+    <div class="mode-switcher" role="tablist" aria-label="View Mode">
+      <button id="btnModeHandout" class="mode-btn active" role="tab" aria-selected="true" title="View 2-up Printable Student Handout">
+        <span class="icon">📝</span>
+        <span>Student Handout</span>
+      </button>
+      <button id="btnModeAnswers" class="mode-btn" role="tab" aria-selected="false" title="View Official Teacher Answer Key & Mark Scheme">
+        <span class="icon">🔑</span>
+        <span>Answer Key</span>
+      </button>
+      <button id="btnModeSplit" class="mode-btn" role="tab" aria-selected="false" title="View Handout & Answers Side-by-Side">
+        <span class="icon">⚖️</span>
+        <span>Split (50:50)</span>
+      </button>
+    </div>
+
+    <!-- Actions Group -->
+    <div class="actions-group">
+      <!-- Zoom Controls -->
+      <div class="zoom-controls">
+        <button id="btnZoomOut" class="zoom-btn" title="Zoom Out" aria-label="Zoom Out">−</button>
+        <span id="zoomDisplay" class="zoom-val">100%</span>
+        <button id="btnZoomIn" class="zoom-btn" title="Zoom In" aria-label="Zoom In">+</button>
+        <button id="btnZoomReset" class="zoom-btn" style="font-size:10px;" title="Reset Zoom" aria-label="Reset Zoom">↺</button>
+      </div>
+
+      <!-- Print Button -->
+      <button id="btnPrint" class="btn-action" title="Print Handout Worksheet">
+        <span>🖨️</span>
+        <span>Print</span>
+      </button>
+
+      <!-- Download PDF Button -->
+      <a id="btnDownload" class="btn-action btn-primary" href="/decks/Classic_Lesson_01_Ecosystems/assets/handouts/knowledge_checkpoint_match_the_level_handout.pdf" target="_blank" download="knowledge_checkpoint_match_the_level_handout.pdf" title="Download Printable A4 PDF">
+        <span>⬇️</span>
+        <span>Download PDF</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Viewer Content Area -->
+  <main class="viewer-content mode-handout" id="viewerContent">
+    <div class="pages-container" id="pagesContainer">
+      <!-- Sheet 1: Student Handout (Page 1) -->
+      <section class="page-sheet sheet-handout" id="sheetHandout" aria-label="Student Handout (2 per A4 Page)">
+        <div class="page-header">
+          <span class="page-tag tag-handout">Student Handout · 2 Copies per A4 Sheet</span>
+          <span style="font-size:11px;color:#64748b;font-weight:600;">Page 1 of 2</span>
+        </div>
+        <img class="page-img" src="/decks/Classic_Lesson_01_Ecosystems/assets/handouts/page-1.png" alt="Knowledge Checkpoint: Match the Level printable student handout with two half-A4 copies per page" loading="eager" />
+      </section>
+
+      <!-- Sheet 2: Teacher Mark Scheme (Page 2) -->
+      <section class="page-sheet sheet-ms" id="sheetMs" aria-label="Teacher Answer Key and Mark Scheme">
+        <div class="page-header">
+          <span class="page-tag tag-ms">Teacher Answer Key &amp; Mark Scheme</span>
+          <span style="font-size:11px;color:#64748b;font-weight:600;">Page 2 of 2</span>
+        </div>
+        <img class="page-img" src="/decks/Classic_Lesson_01_Ecosystems/assets/handouts/page-2.png" alt="Knowledge Checkpoint: Match the Level official teacher answer key and OCR mark scheme" loading="eager" />
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+  (function() {
+    let currentMode = "handout"; // "handout" | "answers" | "split"
+    let currentZoom = 1.0;
+
+    const viewerContent = document.getElementById("viewerContent");
+    const pagesContainer = document.getElementById("pagesContainer");
+    const btnModeHandout = document.getElementById("btnModeHandout");
+    const btnModeAnswers = document.getElementById("btnModeAnswers");
+    const btnModeSplit = document.getElementById("btnModeSplit");
+    const btnZoomIn = document.getElementById("btnZoomIn");
+    const btnZoomOut = document.getElementById("btnZoomOut");
+    const btnZoomReset = document.getElementById("btnZoomReset");
+    const zoomDisplay = document.getElementById("zoomDisplay");
+    const btnPrint = document.getElementById("btnPrint");
+
+    function setMode(mode) {
+      currentMode = mode;
+      viewerContent.classList.remove("mode-handout", "mode-answers", "mode-split");
+      viewerContent.classList.add(`mode-${mode}`);
+
+      btnModeHandout.classList.toggle("active", mode === "handout");
+      btnModeAnswers.classList.toggle("active", mode === "answers");
+      btnModeSplit.classList.toggle("active", mode === "split");
+
+      btnModeHandout.setAttribute("aria-selected", String(mode === "handout"));
+      btnModeAnswers.setAttribute("aria-selected", String(mode === "answers"));
+      btnModeSplit.setAttribute("aria-selected", String(mode === "split"));
+
+      viewerContent.scrollTop = 0;
+    }
+
+    function setZoom(zoom) {
+      currentZoom = Math.min(Math.max(zoom, 0.6), 2.0);
+      pagesContainer.style.transform = `scale(${currentZoom})`;
+      zoomDisplay.textContent = `${Math.round(currentZoom * 100)}%`;
+    }
+
+    btnModeHandout.addEventListener("click", () => setMode("handout"));
+    btnModeAnswers.addEventListener("click", () => setMode("answers"));
+    btnModeSplit.addEventListener("click", () => setMode("split"));
+
+    btnZoomIn.addEventListener("click", () => setZoom(currentZoom + 0.15));
+    btnZoomOut.addEventListener("click", () => setZoom(currentZoom - 0.15));
+    btnZoomReset.addEventListener("click", () => setZoom(1.0));
+
+    btnPrint.addEventListener("click", () => {
+      window.print();
+    });
+
+    // Keyboard navigation
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "1") setMode("handout");
+      if (e.key === "2") setMode("answers");
+      if (e.key === "3") setMode("split");
+      if (e.key === "+" || e.key === "=") setZoom(currentZoom + 0.15);
+      if (e.key === "-" || e.key === "_") setZoom(currentZoom - 0.15);
+      if (e.key === "0") setZoom(1.0);
+    });
+
+    // Default to Handout view as requested
+    setMode("handout");
+  })();
+</script>
+</body>
+</html>
