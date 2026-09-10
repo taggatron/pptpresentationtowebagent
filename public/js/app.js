@@ -3144,6 +3144,13 @@ function handleSlideshowSyncMessage(event) {
         }
         break;
       }
+
+      case "CLOSE_PRESENTATION": {
+        try {
+          window.close();
+        } catch (_) {}
+        break;
+      }
     }
   } else {
     // MacBook presenter view
@@ -3214,10 +3221,21 @@ function setSlideshowButtonActive(active) {
   startSlideshowBtn.setAttribute(
     "title",
     active
-      ? "Slideshow active on connected display (Click to focus presentation window)"
+      ? "Stop slideshow (Closes external screen and ends analytics session)"
       : "Start slideshow (F5 / Presents in full screen on external display if connected)"
   );
+  startSlideshowBtn.setAttribute("aria-label", active ? "Stop slideshow" : "Start slideshow");
   startSlideshowBtn.setAttribute("aria-pressed", String(active));
+
+  const iconWrap = startSlideshowBtn.querySelector(".slideshow-icon-wrap");
+  if (iconWrap && !iconWrap.querySelector(".slideshow-stop-svg")) {
+    const stopSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    stopSvg.setAttribute("class", "slideshow-stop-svg");
+    stopSvg.setAttribute("viewBox", "0 0 24 24");
+    stopSvg.setAttribute("fill", "currentColor");
+    stopSvg.innerHTML = '<rect x="6" y="6" width="12" height="12" rx="2" />';
+    iconWrap.appendChild(stopSvg);
+  }
 }
 
 /* ==========================================================================
@@ -3996,8 +4014,71 @@ function triggerAnalyticsExport(format = "json", scope = "current") {
 }
 
 
+function isSlideshowActive() {
+  const hasExtWindow = Boolean(presentationWindowRef && !presentationWindowRef.closed);
+  const isFS = Boolean(document.fullscreenElement || document.webkitIsFullScreen);
+  const isButtonActive = Boolean(startSlideshowBtn?.classList.contains("is-active"));
+  const isTracking = Boolean(analyticsTracker?.active);
+  return hasExtWindow || isButtonActive || (isFS && isTracking);
+}
+
+async function stopSlideshow() {
+  if (isPresentationWindow) return;
+
+  // 1. Close secondary presentation window on extended screen if open
+  if (presentationWindowRef) {
+    try {
+      if (!presentationWindowRef.closed) {
+        presentationWindowRef.close();
+      }
+    } catch (err) {
+      console.warn("Could not close presentation window:", err);
+    }
+    presentationWindowRef = null;
+  }
+
+  // Broadcast presentation closed and close command to ensure presentation window closes
+  try {
+    broadcastSlideshowMessage({ type: "CLOSE_PRESENTATION" });
+  } catch (_) {}
+  try {
+    broadcastSlideshowMessage({ type: "PRESENTATION_CLOSED" });
+  } catch (_) {}
+
+  // 2. Stop live analytics tracking and finalize session
+  await stopSlideshowTracking({ finishSession: true });
+
+  // 3. Exit fullscreen if the main presenter window was in fullscreen
+  if (document.fullscreenElement || document.webkitIsFullScreen) {
+    try {
+      if (document.exitFullscreen) {
+        await document.exitFullscreen().catch(() => {});
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    } catch (_) {}
+  }
+
+  // 4. Reset the slideshow button to inactive green play state
+  setSlideshowButtonActive(false);
+}
+
+async function handleSlideshowToggle() {
+  if (isSlideshowActive()) {
+    await stopSlideshow();
+  } else {
+    await startSlideshow();
+  }
+}
+
 async function startSlideshow() {
   if (isPresentationWindow) return;
+
+  // If already running, stopping takes precedence
+  if (isSlideshowActive()) {
+    await stopSlideshow();
+    return;
+  }
 
   // Automatically switch into student mode so that hidden slides are not visible
   if (presenterMode) {
@@ -4018,10 +4099,9 @@ async function startSlideshow() {
   // Initiate automatic slideshow tracking
   startSlideshowTracking();
 
-  // If a secondary presentation window is already open, focus it and ensure it is in sync
+  // If a secondary presentation window is already open, stop it or focus
   if (presentationWindowRef && !presentationWindowRef.closed) {
-    presentationWindowRef.focus();
-    broadcastSlideshowSync("SYNC_STATE");
+    await stopSlideshow();
     return;
   }
 
@@ -4095,17 +4175,14 @@ async function startSlideshow() {
 
   // Single-display fallback: toggle fullscreen on the current window
   if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+    setSlideshowButtonActive(true);
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen().catch(() => {});
     } else if (document.documentElement.webkitRequestFullscreen) {
       document.documentElement.webkitRequestFullscreen();
     }
   } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen().catch(() => {});
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
+    await stopSlideshow();
   }
 }
 
@@ -6402,9 +6479,16 @@ function setupEventListeners() {
     document.body.classList.toggle("is-fullscreen", isFS);
     if (!isFS) {
       document.querySelector(".app-footer")?.classList.remove("is-nav-approached");
-      // Stop slideshow tracking when exiting fullscreen (unless external presentation window is active)
-      if (analyticsTracker.active && (!presentationWindowRef || presentationWindowRef.closed)) {
-        stopSlideshowTracking({ finishSession: true });
+      // Stop slideshow tracking and reset button when exiting fullscreen (unless external presentation window is active)
+      if (!presentationWindowRef || presentationWindowRef.closed) {
+        if (analyticsTracker.active) {
+          stopSlideshowTracking({ finishSession: true });
+        }
+        setSlideshowButtonActive(false);
+      }
+    } else {
+      if (analyticsTracker.active) {
+        setSlideshowButtonActive(true);
       }
     }
   };
@@ -6425,7 +6509,7 @@ function setupEventListeners() {
     }
   });
 
-  startSlideshowBtn?.addEventListener("click", startSlideshow);
+  startSlideshowBtn?.addEventListener("click", handleSlideshowToggle);
 
   document.addEventListener("fullscreenchange", updateFullscreenClass);
   document.addEventListener("webkitfullscreenchange", updateFullscreenClass);
@@ -6518,7 +6602,7 @@ function setupEventListeners() {
 
     if (event.key === "F5") {
       event.preventDefault();
-      startSlideshow();
+      handleSlideshowToggle();
       return;
     }
 
