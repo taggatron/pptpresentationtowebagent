@@ -662,6 +662,7 @@ export function exportAnalyticsData(deckId = null) {
     exportedAt: new Date().toISOString(),
     benchmarks: LESSON_PHASE_BENCHMARKS,
     globalAverage: allDecksAverage,
+    allDecksAverage,
     decksSummary: Object.values(decksMap),
     sessions: allSessions,
     slideDwells: allDwells,

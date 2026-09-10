@@ -983,6 +983,11 @@
           </div>
         </div>
 
+        <!-- All Decks Average Mode Notice -->
+        <div id="analyticsAllDecksNotice" class="analytics-all-decks-banner">
+          🌐 <strong>All Slide Sets Aggregate View:</strong> Showing benchmark comparisons and time distribution averaged across all recorded slide decks.
+        </div>
+
         <!-- Main Chart & Comparison Split View -->
         <div class="analytics-content-split">
           <!-- Donut Chart Left -->
@@ -1025,7 +1030,7 @@
         </div>
 
         <!-- Per-slide timeline accordion / table -->
-        <div class="analytics-slides-breakdown">
+        <div class="analytics-slides-breakdown slide-dwell-table-card">
           <div class="panel-header collapsable-header" id="toggleSlideTableBtn">
             <h4>Slide-by-Slide Dwell & Phase Log (<span id="analyticsSlideCountBadge">0 slides</span>)</h4>
             <span class="expand-indicator" id="slideTableExpandIcon">▼</span>
@@ -1052,6 +1057,6 @@
     </div>
   </div>
 
-  <script src="/js/app.js" type="module"></script>
+  <script src="/js/app.js?v=analytics3" type="module"></script>
 </body>
 </html>

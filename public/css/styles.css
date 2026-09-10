@@ -6493,3 +6493,276 @@ body.theme-dark #analyticsModalBtn.tracking-active {
   background-color: #ef4444;
   box-shadow: 0 0 6px #ef4444;
 }
+
+/* ==========================================================================
+   Analytics Header Controls & Multi-Deck Scoping
+   ========================================================================== */
+
+.analytics-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Scope Toggle: Current Deck vs All Decks Average */
+.analytics-scope-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-hover, rgba(15, 23, 42, 0.06));
+  border: 1px solid var(--border-color, rgba(15, 23, 42, 0.1));
+  border-radius: 9999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+body.theme-dark .analytics-scope-toggle {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.scope-toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted, #64748b);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+}
+
+.scope-toggle-btn:hover {
+  color: var(--text-main, #0f172a);
+}
+
+body.theme-dark .scope-toggle-btn:hover {
+  color: #f1f5f9;
+}
+
+.scope-toggle-btn.active {
+  background: #0284c7;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
+}
+
+body.theme-dark .scope-toggle-btn.active {
+  background: #0284c7;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.45);
+}
+
+/* Analytics Actions Group */
+.analytics-actions-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.analytics-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color, rgba(15, 23, 42, 0.12));
+  background: var(--bg-card, #ffffff);
+  color: var(--text-main, #334155);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+body.theme-dark .analytics-action-btn {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+}
+
+.analytics-action-btn:hover {
+  background: var(--bg-card-subtle, #f1f5f9);
+  border-color: rgba(15, 23, 42, 0.2);
+}
+
+body.theme-dark .analytics-action-btn:hover {
+  background: #334155;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.analytics-action-btn .btn-icon {
+  font-size: 0.85rem;
+}
+
+.analytics-action-btn .caret {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.analytics-action-btn.btn-danger-subtle:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+body.theme-dark .analytics-action-btn.btn-danger-subtle:hover {
+  background: rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.analytics-action-btn.btn-warning-subtle:hover {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+body.theme-dark .analytics-action-btn.btn-warning-subtle:hover {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.analytics-action-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Dropdown Menu for Export Options */
+.analytics-dropdown-wrap {
+  position: relative;
+}
+
+.analytics-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  z-index: 1200;
+  min-width: 215px;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, rgba(15, 23, 42, 0.12));
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+body.theme-dark .analytics-dropdown-menu {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.6);
+}
+
+.analytics-dropdown-menu.hidden {
+  display: none !important;
+}
+
+.analytics-dropdown-menu .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-main, #1e293b);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+body.theme-dark .analytics-dropdown-menu .dropdown-item {
+  color: #f1f5f9;
+}
+
+.analytics-dropdown-menu .dropdown-item:hover {
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284c7;
+}
+
+body.theme-dark .analytics-dropdown-menu .dropdown-item:hover {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+/* Modal Notice Banner */
+.analytics-modal-notice {
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  color: #0369a1;
+  animation: fadeInNotice 0.2s ease;
+}
+
+body.theme-dark .analytics-modal-notice {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: #7dd3fc;
+}
+
+.analytics-modal-notice.success {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #15803d;
+}
+
+body.theme-dark .analytics-modal-notice.success {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #4ade80;
+}
+
+.analytics-modal-notice.hidden {
+  display: none !important;
+}
+
+@keyframes fadeInNotice {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* All Decks Average Mode Overrides */
+.analytics-view-all-decks .slide-ref-badges,
+.analytics-view-all-decks .phase-slides-list {
+  display: none !important;
+}
+
+.analytics-view-all-decks .slide-dwell-table-card {
+  display: none !important;
+}
+
+.analytics-all-decks-banner {
+  display: none;
+  padding: 10px 14px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--text-main, #1e293b);
+}
+
+body.theme-dark .analytics-all-decks-banner {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #e2e8f0;
+}
+
+.analytics-view-all-decks .analytics-all-decks-banner {
+  display: block;
+}
+

@@ -85,6 +85,17 @@ const slideDwellTableBody = document.getElementById("slideDwellTableBody");
 const analyticsSlideCountBadge = document.getElementById("analyticsSlideCountBadge");
 const chartModeActualBtn = document.getElementById("chartModeActualBtn");
 const chartModeTargetBtn = document.getElementById("chartModeTargetBtn");
+const scopeDeckBtn = document.getElementById("scopeDeckBtn");
+const scopeAllDecksBtn = document.getElementById("scopeAllDecksBtn");
+const analyticsExportBtn = document.getElementById("analyticsExportBtn");
+const analyticsExportMenu = document.getElementById("analyticsExportMenu");
+const analyticsExportDropdownWrap = document.getElementById("analyticsExportDropdownWrap");
+const exportCurrentJsonBtn = document.getElementById("exportCurrentJsonBtn");
+const exportAllJsonBtn = document.getElementById("exportAllJsonBtn");
+const exportCsvBtn = document.getElementById("exportCsvBtn");
+const analyticsDeleteLatestBtn = document.getElementById("analyticsDeleteLatestBtn");
+const analyticsResetBtn = document.getElementById("analyticsResetBtn");
+const analyticsModalNotice = document.getElementById("analyticsModalNotice");
 const isPresentationWindow =
   typeof window !== "undefined" &&
   window?.location?.search &&
@@ -2601,7 +2612,10 @@ const analyticsTracker = {
   dwells: {}, // { [slideNumber]: totalMs }
   heartbeatInterval: null,
   cachedAnalysis: null,
-  hoveredPhaseKey: null
+  cachedAllDecksAverage: null,
+  hoveredPhaseKey: null,
+  deckScope: "current", // "current" | "all"
+  noticeTimeout: null
 };
 
 function formatAnalyticsDuration(ms) {
@@ -2627,6 +2641,17 @@ function updateAnalyticsButtonStatus(active) {
     analyticsStatusBadge.textContent = active ? "Recording Live" : "Idle";
     analyticsStatusBadge.className = `analytics-status-pill ${active ? "recording" : "idle"}`;
   }
+}
+
+function setAnalyticsNotice(msg, type = "info") {
+  if (!analyticsModalNotice) return;
+  analyticsModalNotice.textContent = msg;
+  analyticsModalNotice.className = `analytics-modal-notice ${type}`;
+  analyticsModalNotice.classList.remove("hidden");
+  clearTimeout(analyticsTracker.noticeTimeout);
+  analyticsTracker.noticeTimeout = setTimeout(() => {
+    analyticsModalNotice.classList.add("hidden");
+  }, 5000);
 }
 
 async function startSlideshowTracking() {
@@ -2665,6 +2690,45 @@ async function startSlideshowTracking() {
 
   // Background fetch phase mapping
   fetchDeckAnalyticsData(currentDeck.id).catch(() => {});
+}
+
+async function stopSlideshowTracking({ finishSession = true } = {}) {
+  if (!analyticsTracker.active) return;
+
+  if (analyticsTracker.heartbeatInterval) {
+    clearInterval(analyticsTracker.heartbeatInterval);
+    analyticsTracker.heartbeatInterval = null;
+  }
+
+  const now = Date.now();
+  if (analyticsTracker.slideEnterTime) {
+    const elapsed = now - analyticsTracker.slideEnterTime;
+    const sNum = analyticsTracker.currentSlideNum || (currentSlideIndex + 1);
+    analyticsTracker.dwells[sNum] = (analyticsTracker.dwells[sNum] || 0) + elapsed;
+    analyticsTracker.slideEnterTime = null;
+    await sendSlideDwell(sNum, analyticsTracker.dwells[sNum]);
+  }
+
+  if (finishSession && analyticsTracker.sessionId && analyticsTracker.deckId) {
+    try {
+      await fetch("/api/analytics/session/finish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId: analyticsTracker.sessionId,
+          deckId: analyticsTracker.deckId
+        })
+      });
+    } catch (_) {}
+  }
+
+  analyticsTracker.active = false;
+  updateAnalyticsButtonStatus(false);
+
+  // Invalidate cached analysis so next modal open pulls fresh DB records
+  if (analyticsTracker.deckId) {
+    fetchDeckAnalyticsData(analyticsTracker.deckId).catch(() => {});
+  }
 }
 
 function recordSlideTransition(newIndex) {
@@ -2727,6 +2791,19 @@ async function fetchDeckAnalyticsData(deckId) {
     return data;
   } catch (err) {
     console.warn("Could not fetch deck analytics:", err);
+    return null;
+  }
+}
+
+async function fetchAllDecksAverageData() {
+  try {
+    const res = await fetch("/api/analytics/all-decks-average");
+    if (!res.ok) throw new Error("Failed to load all decks average");
+    const json = await res.json();
+    analyticsTracker.cachedAllDecksAverage = json?.data || json;
+    return analyticsTracker.cachedAllDecksAverage;
+  } catch (err) {
+    console.warn("Could not fetch all decks average:", err);
     return null;
   }
 }
@@ -2878,41 +2955,52 @@ function renderChartLegend(phases, isPreview) {
   });
 }
 
-function renderPhaseCards(phases, totalDwellMs) {
+function renderPhaseCards(phases, totalDwellMs, isAllDecks = false) {
   if (!phaseCardsList) return;
   phaseCardsList.innerHTML = "";
 
   phases.forEach((phase) => {
-    const actualPct = phase.actualPercentage || 0;
-    const targetPct = phase.targetPercentage || 0;
-    const delta = phase.deltaPercentage !== undefined ? phase.deltaPercentage : (actualPct - targetPct);
+    const actualPct = phase.actualPercentage || phase.actualPercent || 0;
+    const targetPct = phase.targetPercentage || phase.targetPercent || 0;
+    const delta = phase.deltaPercentage !== undefined
+      ? phase.deltaPercentage
+      : (phase.delta !== undefined ? phase.delta : (actualPct - targetPct));
 
     let deltaClass = "balanced";
     let deltaText = "On Target";
     if (delta > 0.5) {
       deltaClass = "positive";
-      deltaText = `+${delta.toFixed(1)}%`;
+      deltaText = `+${Number(delta).toFixed(1)}%`;
     } else if (delta < -0.5) {
       deltaClass = "negative";
-      deltaText = `${delta.toFixed(1)}%`;
+      deltaText = `${Number(delta).toFixed(1)}%`;
     }
 
     const card = document.createElement("div");
     card.className = "phase-card";
-    card.dataset.phaseKey = phase.phaseKey;
+    card.dataset.phaseKey = phase.phaseKey || phase.key;
     card.style.borderLeftColor = phase.color;
 
-    const slideChips = (phase.slideNumbers || [])
-      .map((sNum) => `<span class="phase-slide-chip" title="Slide ${sNum}">Slide ${sNum}</span>`)
-      .join(" ");
+    // In All Decks Average mode, individual slide references MUST NOT appear
+    const slideListHtml = isAllDecks
+      ? ""
+      : `
+        <div class="phase-slides-list slide-ref-badges">
+          ${
+            (phase.slideNumbers || [])
+              .map((sNum) => `<span class="phase-slide-chip" title="Slide ${sNum}">Slide ${sNum}</span>`)
+              .join(" ") || '<span class="text-muted">No slides mapped</span>'
+          }
+        </div>
+      `;
 
     card.innerHTML = `
       <div class="phase-card-top">
         <span class="phase-card-title">
           <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${phase.color}"></span>
-          ${phase.name}
+          ${phase.name || phase.label}
         </span>
-        <span class="phase-card-time">${phase.actualDwellFormatted || "0m 00s"}</span>
+        <span class="phase-card-time">${phase.actualDwellFormatted || phase.formattedDwell || "0m 00s"}</span>
       </div>
       <div class="phase-card-meta">
         <span>Actual: <strong>${actualPct}%</strong> | Target: ${targetPct}%</span>
@@ -2921,17 +3009,15 @@ function renderPhaseCards(phases, totalDwellMs) {
       <div class="phase-bar-track">
         <div class="phase-bar-fill" style="width: ${Math.min(100, actualPct)}%; background-color: ${phase.color}"></div>
       </div>
-      <div class="phase-slides-list">
-        ${slideChips || '<span class="text-muted">No slides mapped</span>'}
-      </div>
+      ${slideListHtml}
     `;
 
     card.addEventListener("mouseenter", () => {
-      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
+      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey || phase.key}"]`);
       if (slice) slice.classList.add("active");
     });
     card.addEventListener("mouseleave", () => {
-      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
+      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey || phase.key}"]`);
       if (slice) slice.classList.remove("active");
     });
 
@@ -2976,9 +3062,115 @@ async function openAnalyticsModal() {
 
 function closeAnalyticsModal() {
   if (analyticsModal) analyticsModal.classList.add("hidden");
+  if (analyticsExportMenu) analyticsExportMenu.classList.add("hidden");
 }
 
 async function refreshAnalyticsModalViews(fullFetch = true) {
+  const isAllDecksScope = analyticsTracker.deckScope === "all";
+
+  // Toggle modal-card CSS class for scoping
+  const modalCard = analyticsModal?.querySelector(".analytics-modal-card");
+  if (modalCard) {
+    modalCard.classList.toggle("analytics-view-all-decks", isAllDecksScope);
+  }
+  if (analyticsModal) {
+    analyticsModal.classList.toggle("analytics-view-all-decks", isAllDecksScope);
+  }
+
+  // Update scope tab states
+  if (scopeDeckBtn && scopeAllDecksBtn) {
+    scopeDeckBtn.classList.toggle("active", !isAllDecksScope);
+    scopeDeckBtn.setAttribute("aria-selected", String(!isAllDecksScope));
+    scopeAllDecksBtn.classList.toggle("active", isAllDecksScope);
+    scopeAllDecksBtn.setAttribute("aria-selected", String(isAllDecksScope));
+  }
+
+  // Disable/enable deck-specific actions
+  if (analyticsResetBtn) {
+    analyticsResetBtn.disabled = isAllDecksScope;
+    analyticsResetBtn.title = isAllDecksScope
+      ? "Switch to Current Deck tab to reset this deck's analytics"
+      : "Archive & Reset Analytics for this Deck";
+  }
+  if (analyticsDeleteLatestBtn) {
+    analyticsDeleteLatestBtn.disabled = isAllDecksScope;
+    analyticsDeleteLatestBtn.title = isAllDecksScope
+      ? "Switch to Current Deck tab to delete latest session for this deck"
+      : "Delete Most Recent Session for this Deck";
+  }
+
+  // Subtitle update
+  const subtitle = document.getElementById("analyticsModalSubtitle");
+  if (subtitle) {
+    subtitle.textContent = isAllDecksScope
+      ? "Cross-deck pedagogical benchmark averages across all recorded slide sets"
+      : `Tracking slide dwell time and pedagogical phase allocation for "${currentDeck?.name || currentDeck?.id || 'Active Deck'}"`;
+  }
+
+  if (isAllDecksScope) {
+    // -------------------------------------------------------------
+    // ALL DECKS AVERAGE VIEW
+    // -------------------------------------------------------------
+    let allData = analyticsTracker.cachedAllDecksAverage;
+    if (fullFetch || !allData) {
+      allData = await fetchAllDecksAverageData();
+    }
+    if (!allData) return;
+
+    const totalTrackedMs = allData.totalDurationMs || 0;
+    const isPreview = totalTrackedMs <= 0;
+
+    if (analyticsTotalTime) {
+      analyticsTotalTime.textContent = isPreview ? "0m 00s" : formatAnalyticsDuration(totalTrackedMs);
+    }
+    if (analyticsSessionCount) {
+      const sessCount = allData.totalSessions || 0;
+      const deckCount = allData.deckCount || 0;
+      analyticsSessionCount.textContent = `${sessCount} session${sessCount === 1 ? "" : "s"} across ${deckCount} deck${deckCount === 1 ? "" : "s"}`;
+    }
+    if (analyticsSlidesTracked) {
+      analyticsSlidesTracked.textContent = `${allData.totalSlidesTracked || 0} slides recorded`;
+    }
+    if (analyticsCurrentSlidePhase) {
+      analyticsCurrentSlidePhase.textContent = "Global Stage Distribution";
+    }
+    if (analyticsAvgPace) {
+      const avgMs = (allData.avgPacePerSlideSeconds || 0) * 1000;
+      analyticsAvgPace.textContent = formatAnalyticsDuration(avgMs);
+    }
+
+    const isTargetView = analyticsTracker.viewMode === "target" || totalTrackedMs <= 0;
+    if (chartModeActualBtn && chartModeTargetBtn) {
+      chartModeActualBtn.classList.toggle("active", !isTargetView);
+      chartModeTargetBtn.classList.toggle("active", isTargetView);
+    }
+
+    const chartHeading = document.getElementById("chartHeading");
+    if (chartHeading) {
+      chartHeading.textContent = isTargetView
+        ? "Curriculum Target Allocation Across Stages"
+        : "Cross-Deck Average Allocation Across Stages";
+    }
+
+    const phases = (allData.phases || allData.phaseBreakdown || []).map((p) => ({
+      ...p,
+      phaseKey: p.phaseKey || p.key,
+      name: p.name || p.label,
+      targetPercentage: p.targetPercentage || p.targetPercent,
+      actualPercentage: p.actualPercentage || p.actualPercent,
+      actualDwellFormatted: p.actualDwellFormatted || p.formattedDwell || formatAnalyticsDuration(p.totalDwellMs || 0)
+    }));
+
+    renderDonutChart(phases, isTargetView, totalTrackedMs);
+    handleSliceLeave(isTargetView, totalTrackedMs);
+    // Render phase cards with isAllDecks = true (strictly no slide reference badges)
+    renderPhaseCards(phases, totalTrackedMs, true);
+    return;
+  }
+
+  // -------------------------------------------------------------
+  // CURRENT DECK VIEW
+  // -------------------------------------------------------------
   let data = analyticsTracker.cachedAnalysis;
   if (fullFetch || !data) {
     data = await fetchDeckAnalyticsData(currentDeck?.id);
@@ -3074,7 +3266,7 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
 
   renderDonutChart(computedPhases, isTargetView, totalTrackedMs);
   handleSliceLeave(isTargetView, totalTrackedMs);
-  renderPhaseCards(computedPhases, totalTrackedMs);
+  renderPhaseCards(computedPhases, totalTrackedMs, false);
 
   const updatedSlides = (data.slides || []).map((s) => {
     let dwell = s.totalDwellMs || 0;
@@ -3092,6 +3284,83 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
 
   renderSlideDwellTable(updatedSlides, currentSlide);
 }
+
+async function handleResetDeckAnalytics() {
+  if (!currentDeck?.id) return;
+  const deckTitle = currentDeck.name || currentDeck.id;
+  const confirmed = window.confirm(
+    `Are you sure you want to reset analytics for "${deckTitle}"?\n\nAll tracking sessions for this slide set will be safely archived to a JSON backup file before being cleared.`
+  );
+  if (!confirmed) return;
+
+  try {
+    const res = await fetch(`/api/analytics/deck/${encodeURIComponent(currentDeck.id)}/reset`, {
+      method: "POST"
+    });
+    const result = await res.json();
+    if (result.success) {
+      analyticsTracker.dwells = {};
+      analyticsTracker.cachedAnalysis = null;
+      analyticsTracker.cachedAllDecksAverage = null;
+      setAnalyticsNotice(
+        `✅ Analytics safely archived (${result.archiveFilename || "snapshot"}) and reset for this deck.`,
+        "success"
+      );
+      await refreshAnalyticsModalViews(true);
+    } else {
+      setAnalyticsNotice(`⚠️ ${result.error || "Failed to reset analytics."}`, "error");
+    }
+  } catch (err) {
+    setAnalyticsNotice(`⚠️ Reset error: ${err.message}`, "error");
+  }
+}
+
+async function handleDeleteLatestSession() {
+  if (!currentDeck?.id) return;
+  const deckTitle = currentDeck.name || currentDeck.id;
+  const confirmed = window.confirm(
+    `Delete the most recent tracking session for "${deckTitle}"?\n\nThis cannot be undone.`
+  );
+  if (!confirmed) return;
+
+  try {
+    const res = await fetch(`/api/analytics/deck/${encodeURIComponent(currentDeck.id)}/latest`, {
+      method: "DELETE"
+    });
+    const result = await res.json();
+    if (result.success) {
+      analyticsTracker.dwells = {};
+      analyticsTracker.cachedAnalysis = null;
+      analyticsTracker.cachedAllDecksAverage = null;
+      setAnalyticsNotice(
+        `🗑️ Latest session deleted. ${result.remainingSessionsCount} session(s) remaining for this slide set.`,
+        "success"
+      );
+      await refreshAnalyticsModalViews(true);
+    } else {
+      setAnalyticsNotice(`⚠️ ${result.message || result.error || "No session found to delete."}`, "info");
+    }
+  } catch (err) {
+    setAnalyticsNotice(`⚠️ Delete error: ${err.message}`, "error");
+  }
+}
+
+function triggerAnalyticsExport(format = "json", scope = "current") {
+  const deckId = scope === "current" && currentDeck?.id ? currentDeck.id : "all";
+  const url = `/api/analytics/export?deckId=${encodeURIComponent(deckId)}&format=${encodeURIComponent(format)}`;
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", "");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  if (analyticsExportMenu) analyticsExportMenu.classList.add("hidden");
+  setAnalyticsNotice(
+    `📥 Exporting ${scope === "current" ? "current slide set" : "all slide sets"} analytics (${format.toUpperCase()})...`,
+    "success"
+  );
+}
+
 
 async function startSlideshow() {
   if (isPresentationWindow) return;
@@ -3158,6 +3427,7 @@ async function startSlideshow() {
           clearInterval(closeWatcher);
           presentationWindowRef = null;
           setSlideshowButtonActive(false);
+          stopSlideshowTracking({ finishSession: true });
         }
       }, 1000);
       return;
@@ -5395,6 +5665,32 @@ function setupEventListeners() {
   analyticsModal?.addEventListener("click", (event) => {
     if (event.target === analyticsModal) closeAnalyticsModal();
   });
+  console.log("[Analytics] Binding scope buttons. scopeDeckBtn:", Boolean(scopeDeckBtn), "scopeAllDecksBtn:", Boolean(scopeAllDecksBtn));
+  scopeDeckBtn?.addEventListener("click", () => {
+    console.log("[Analytics] scopeDeckBtn clicked");
+    analyticsTracker.deckScope = "current";
+    refreshAnalyticsModalViews(true);
+  });
+  scopeAllDecksBtn?.addEventListener("click", () => {
+    console.log("[Analytics] scopeAllDecksBtn clicked");
+    analyticsTracker.deckScope = "all";
+    refreshAnalyticsModalViews(true);
+  });
+  analyticsResetBtn?.addEventListener("click", handleResetDeckAnalytics);
+  analyticsDeleteLatestBtn?.addEventListener("click", handleDeleteLatestSession);
+  analyticsExportBtn?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    analyticsExportMenu?.classList.toggle("hidden");
+  });
+  exportCurrentJsonBtn?.addEventListener("click", () => triggerAnalyticsExport("json", "current"));
+  exportAllJsonBtn?.addEventListener("click", () => triggerAnalyticsExport("json", "all"));
+  exportCsvBtn?.addEventListener("click", () => triggerAnalyticsExport("csv", analyticsTracker.deckScope));
+  document.addEventListener("click", (event) => {
+    if (analyticsExportDropdownWrap && !analyticsExportDropdownWrap.contains(event.target)) {
+      analyticsExportMenu?.classList.add("hidden");
+    }
+  });
+
   toggleSlideTableBtn?.addEventListener("click", () => {
     if (!slideDwellTableWrap) return;
     const isHidden = slideDwellTableWrap.classList.toggle("hidden");
@@ -5418,6 +5714,10 @@ function setupEventListeners() {
     document.body.classList.toggle("is-fullscreen", isFS);
     if (!isFS) {
       document.querySelector(".app-footer")?.classList.remove("is-nav-approached");
+      // Stop slideshow tracking when exiting fullscreen (unless external presentation window is active)
+      if (analyticsTracker.active && (!presentationWindowRef || presentationWindowRef.closed)) {
+        stopSlideshowTracking({ finishSession: true });
+      }
     }
   };
 
@@ -5441,6 +5741,43 @@ function setupEventListeners() {
 
   document.addEventListener("fullscreenchange", updateFullscreenClass);
   document.addEventListener("webkitfullscreenchange", updateFullscreenClass);
+
+  // Tab visibility: pause dwell tracking when hidden, resume when visible
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      if (analyticsTracker.active && analyticsTracker.slideEnterTime) {
+        const now = Date.now();
+        const elapsed = now - analyticsTracker.slideEnterTime;
+        const sNum = analyticsTracker.currentSlideNum || (currentSlideIndex + 1);
+        analyticsTracker.dwells[sNum] = (analyticsTracker.dwells[sNum] || 0) + elapsed;
+        sendSlideDwell(sNum, analyticsTracker.dwells[sNum]);
+        analyticsTracker.slideEnterTime = null; // paused while tab is hidden
+      }
+    } else if (document.visibilityState === "visible") {
+      if (analyticsTracker.active && !analyticsTracker.slideEnterTime) {
+        analyticsTracker.slideEnterTime = Date.now(); // resumed
+      }
+    }
+  });
+
+  // Browser / window close: flush current dwell and finalize session
+  window.addEventListener("pagehide", () => {
+    if (analyticsTracker.active) {
+      if (analyticsTracker.slideEnterTime) {
+        const now = Date.now();
+        const elapsed = now - analyticsTracker.slideEnterTime;
+        const sNum = analyticsTracker.currentSlideNum || (currentSlideIndex + 1);
+        analyticsTracker.dwells[sNum] = (analyticsTracker.dwells[sNum] || 0) + elapsed;
+      }
+      if (navigator.sendBeacon && analyticsTracker.sessionId && analyticsTracker.deckId) {
+        const payload = JSON.stringify({
+          sessionId: analyticsTracker.sessionId,
+          deckId: analyticsTracker.deckId
+        });
+        navigator.sendBeacon("/api/analytics/session/finish", new Blob([payload], { type: "application/json" }));
+      }
+    }
+  });
 
   slideStage?.addEventListener(
     "touchstart",
@@ -5585,4 +5922,10 @@ function setupEventListeners() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", init);
+if (typeof window !== "undefined" && typeof localStorage !== "undefined" && typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+}

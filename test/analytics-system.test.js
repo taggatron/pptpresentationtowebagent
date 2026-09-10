@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
 import http from "node:http";
+import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 import {
   classifySlideLessonPhase,
@@ -14,7 +15,12 @@ import {
   recordSlideDwell,
   finishTrackingSession,
   getDeckAnalytics,
-  formatDuration
+  formatDuration,
+  archiveAndResetDeckAnalytics,
+  deleteLatestSession,
+  getAllDecksAverageAnalytics,
+  exportAnalyticsData,
+  exportAnalyticsCsv
 } from "../src/analytics-db.js";
 import { createApp } from "../src/server.js";
 
@@ -201,3 +207,152 @@ test("Express Analytics Endpoints handle tracking lifecycle and deck inspection"
     server.close();
   }
 });
+
+test("archiveAndResetDeckAnalytics safely archives session data to JSON before wiping active deck data", () => {
+  const resetDeckId = "test_deck_archive_reset_" + Date.now();
+
+  // Create two sessions with dwell data
+  const s1 = startTrackingSession(resetDeckId, 10);
+  recordSlideDwell(s1.id, resetDeckId, 0, 1, 30000, "starter");
+  finishTrackingSession(s1.id, resetDeckId);
+
+  const s2 = startTrackingSession(resetDeckId, 10);
+  recordSlideDwell(s2.id, resetDeckId, 1, 2, 45000, "direct_instruction");
+  finishTrackingSession(s2.id, resetDeckId);
+
+  const beforeReset = getDeckAnalytics(resetDeckId);
+  assert.equal(beforeReset.totalSessions, 2);
+
+  // Execute reset
+  const resetResult = archiveAndResetDeckAnalytics(resetDeckId);
+  assert.equal(resetResult.success, true);
+  assert.equal(resetResult.deckId, resetDeckId);
+  assert.equal(resetResult.archivedSessionsCount, 2);
+  assert.ok(resetResult.archiveFilePath);
+  assert.ok(fs.existsSync(resetResult.archiveFilePath));
+
+  // Verify archive content
+  const archivedJson = JSON.parse(fs.readFileSync(resetResult.archiveFilePath, "utf8"));
+  assert.equal(archivedJson.archiveType, "deck_reset");
+  assert.equal(archivedJson.deckId, resetDeckId);
+  assert.equal(archivedJson.sessionsCount, 2);
+  assert.equal(archivedJson.sessions.length, 2);
+  assert.equal(archivedJson.dwells.length, 2);
+
+  // Verify active records for this deck are wiped
+  const afterReset = getDeckAnalytics(resetDeckId);
+  assert.equal(afterReset.totalSessions, 0);
+  assert.equal(afterReset.totalDurationMs, 0);
+});
+
+test("deleteLatestSession removes only the most recent tracking session for a specific deck", () => {
+  const delDeckId = "test_deck_delete_latest_" + Date.now();
+
+  // Create session 1
+  const s1 = startTrackingSession(delDeckId, 5);
+  recordSlideDwell(s1.id, delDeckId, 0, 1, 20000, "starter");
+  finishTrackingSession(s1.id, delDeckId);
+
+  // Create session 2
+  const s2 = startTrackingSession(delDeckId, 5);
+  recordSlideDwell(s2.id, delDeckId, 1, 2, 35000, "direct_instruction");
+  finishTrackingSession(s2.id, delDeckId);
+
+  const initialStats = getDeckAnalytics(delDeckId);
+  assert.equal(initialStats.totalSessions, 2);
+
+  // Delete latest session (should delete s2)
+  const delResult = deleteLatestSession(delDeckId);
+  assert.equal(delResult.success, true);
+  assert.equal(delResult.deletedSessionId, s2.id);
+  assert.equal(delResult.remainingSessionsCount, 1);
+
+  const afterStats = getDeckAnalytics(delDeckId);
+  assert.equal(afterStats.totalSessions, 1);
+  assert.equal(afterStats.latestSession.id, s1.id);
+});
+
+test("getAllDecksAverageAnalytics aggregates multi-deck benchmark metrics correctly", () => {
+  const avgData = getAllDecksAverageAnalytics();
+  assert.equal(typeof avgData.totalSessions, "number");
+  assert.equal(typeof avgData.deckCount, "number");
+  assert.equal(typeof avgData.totalDurationMs, "number");
+  assert.ok(Array.isArray(avgData.phases));
+  assert.equal(avgData.phases.length, 6);
+
+  const starterPhase = avgData.phases.find((p) => p.phaseKey === "starter" || p.key === "starter");
+  assert.ok(starterPhase);
+  assert.equal(starterPhase.targetPercent || starterPhase.targetPercentage, 10);
+});
+
+test("exportAnalyticsData and exportAnalyticsCsv generate structured JSON and CSV reports", () => {
+  // Test JSON export for single deck
+  const singleExport = exportAnalyticsData("Classic_Lesson_01_Ecosystems");
+  assert.equal(singleExport.exportType, "single_deck");
+  assert.equal(singleExport.deckId, "Classic_Lesson_01_Ecosystems");
+  assert.ok(singleExport.analyticsSummary);
+
+  // Test JSON export for all decks
+  const allExport = exportAnalyticsData(null);
+  assert.equal(allExport.exportType, "all_decks");
+  assert.ok(allExport.allDecksAverage);
+
+  // Test CSV export
+  const csv = exportAnalyticsCsv();
+  assert.ok(typeof csv === "string");
+  assert.ok(csv.startsWith("Deck ID,Session ID,Slide Number,Slide Title,Lesson Phase,Duration (Seconds),Session Date"));
+});
+
+test("Express server endpoints handle reset, delete-latest, all-decks-average, and export queries", async () => {
+  const app = createApp();
+  const server = http.createServer(app);
+
+  await new Promise((resolve) => server.listen(0, resolve));
+  const port = server.address().port;
+  const baseUrl = `http://127.0.0.1:${port}`;
+
+  try {
+    const testDeck = "test_api_ops_" + Date.now();
+
+    // 1. Start & finish session on test deck
+    const s = startTrackingSession(testDeck, 10);
+    recordSlideDwell(s.id, testDeck, 0, 1, 25000, "starter");
+    finishTrackingSession(s.id, testDeck);
+
+    // 2. GET /api/analytics/all-decks-average
+    const allAvgRes = await fetch(`${baseUrl}/api/analytics/all-decks-average`);
+    assert.equal(allAvgRes.status, 200);
+    const allAvgData = await allAvgRes.json();
+    assert.equal(allAvgData.success, true);
+    assert.ok(allAvgData.data.phases.length >= 6);
+
+    // 3. GET /api/analytics/export (JSON)
+    const exportJsonRes = await fetch(`${baseUrl}/api/analytics/export?deckId=${testDeck}&format=json`);
+    assert.equal(exportJsonRes.status, 200);
+    const exportJsonData = await exportJsonRes.json();
+    assert.equal(exportJsonData.exportType, "single_deck");
+    assert.equal(exportJsonData.deckId, testDeck);
+
+    // 4. GET /api/analytics/export (CSV)
+    const exportCsvRes = await fetch(`${baseUrl}/api/analytics/export?deckId=${testDeck}&format=csv`);
+    assert.equal(exportCsvRes.status, 200);
+    const csvContent = await exportCsvRes.text();
+    assert.ok(csvContent.includes("Deck ID,Session ID,Slide Number"));
+
+    // 5. DELETE /api/analytics/deck/:deckId/latest
+    const delRes = await fetch(`${baseUrl}/api/analytics/deck/${testDeck}/latest`, { method: "DELETE" });
+    assert.equal(delRes.status, 200);
+    const delData = await delRes.json();
+    assert.equal(delData.success, true);
+    assert.equal(delData.remainingSessionsCount, 0);
+
+    // 6. POST /api/analytics/deck/:deckId/reset
+    const resetRes = await fetch(`${baseUrl}/api/analytics/deck/${testDeck}/reset`, { method: "POST" });
+    assert.equal(resetRes.status, 200);
+    const resetData = await resetRes.json();
+    assert.equal(resetData.success, true);
+  } finally {
+    server.close();
+  }
+});
+
