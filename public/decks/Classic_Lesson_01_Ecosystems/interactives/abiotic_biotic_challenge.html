@@ -1080,6 +1080,7 @@
       window.state.checked = false;
       playAudioTone('drop');
       window.render();
+      broadcastState("move_factor");
     }
     window.moveFactor = moveFactor;
 
@@ -1118,11 +1119,13 @@
       window.state.selectedFactorId = null;
       playAudioTone('click');
       window.render();
+      broadcastState("reset");
     });
 
     hintToggleBtn.addEventListener('click', () => {
       hintBanner.classList.toggle('visible');
       playAudioTone('click');
+      broadcastState("toggle_hint");
     });
 
     soundToggleBtn.addEventListener('click', () => {
@@ -1132,10 +1135,12 @@
 
     viewSlideBtn.addEventListener('click', () => {
       slideModal.classList.add('visible');
+      broadcastState("open_slide_modal");
     });
 
     closeSlideModalBtn.addEventListener('click', () => {
       slideModal.classList.remove('visible');
+      broadcastState("close_slide_modal");
     });
 
     checkBtn.addEventListener('click', () => {
@@ -1164,6 +1169,7 @@
       }
 
       window.render();
+      broadcastState("check_answers");
     });
 
     modalRestartBtn.addEventListener('click', () => {
@@ -1171,10 +1177,12 @@
       FACTORS.forEach(f => window.state.placements[f.id] = 'pool');
       window.state.checked = false;
       window.render();
+      broadcastState("restart");
     });
 
     modalDismissBtn.addEventListener('click', () => {
       celebrationModal.classList.remove('visible');
+      broadcastState("dismiss_modal");
     });
 
     // Touch Support
@@ -1271,8 +1279,137 @@
       animate();
     }
 
+    // === MULTI-SCREEN INTERACTIVE SYNCHRONIZATION ===
+    const isPresentationMode = new URLSearchParams(window.location.search).get("presentation") === "1" ||
+      Boolean(window.parent && window.parent.isPresentationWindow);
+
+    let isApplyingRemoteState = false;
+    let syncChannel = null;
+    try {
+      syncChannel = new BroadcastChannel("vibe-deck-interactive-sync");
+    } catch (_) {}
+
+    function getInteractiveSyncState() {
+      return {
+        placements: { ...window.state.placements },
+        checked: Boolean(window.state.checked),
+        selectedFactorId: window.state.selectedFactorId,
+        hintVisible: hintBanner.classList.contains('visible'),
+        celebrationVisible: celebrationModal.classList.contains('visible'),
+        slideModalVisible: slideModal.classList.contains('visible')
+      };
+    }
+
+    function broadcastState(sourceAction = "update") {
+      if (isApplyingRemoteState) return;
+      const statePayload = getInteractiveSyncState();
+      const message = {
+        type: "INTERACTIVE_STATE_UPDATE",
+        interactiveId: "abiotic_biotic_challenge",
+        interactiveUrl: window.location.pathname,
+        action: sourceAction,
+        state: statePayload,
+        timestamp: Date.now()
+      };
+
+      if (syncChannel) {
+        try {
+          syncChannel.postMessage(message);
+        } catch (_) {}
+      }
+
+      try {
+        window.parent.postMessage(message, "*");
+      } catch (_) {}
+    }
+
+    function applyRemoteState(data) {
+      if (!data || !data.state) return;
+      isApplyingRemoteState = true;
+      try {
+        const s = data.state;
+        if (s.placements) {
+          FACTORS.forEach(f => {
+            if (s.placements[f.id] !== undefined) {
+              window.state.placements[f.id] = s.placements[f.id];
+            }
+          });
+        }
+        if (typeof s.checked === "boolean") {
+          const wasChecked = window.state.checked;
+          window.state.checked = s.checked;
+          if (!wasChecked && s.checked && s.celebrationVisible) {
+            triggerConfetti();
+            playAudioTone('success');
+          }
+        }
+        if (s.selectedFactorId !== undefined) {
+          window.state.selectedFactorId = s.selectedFactorId;
+        }
+
+        if (typeof s.hintVisible === "boolean") {
+          hintBanner.classList.toggle('visible', s.hintVisible);
+        }
+        if (typeof s.celebrationVisible === "boolean") {
+          celebrationModal.classList.toggle('visible', s.celebrationVisible);
+        }
+        if (typeof s.slideModalVisible === "boolean") {
+          slideModal.classList.toggle('visible', s.slideModalVisible);
+        }
+
+        window.render();
+      } finally {
+        isApplyingRemoteState = false;
+      }
+    }
+
+    function requestMasterState() {
+      const req = {
+        type: "REQUEST_INTERACTIVE_STATE",
+        interactiveId: "abiotic_biotic_challenge",
+        interactiveUrl: window.location.pathname
+      };
+      if (syncChannel) {
+        try { syncChannel.postMessage(req); } catch (_) {}
+      }
+      try { window.parent.postMessage(req, "*"); } catch (_) {}
+    }
+
+    // Listen on BroadcastChannel
+    if (syncChannel) {
+      syncChannel.onmessage = (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") return;
+        if (data.interactiveId === "abiotic_biotic_challenge" || !data.interactiveId) {
+          if (data.type === "INTERACTIVE_STATE_UPDATE") {
+            applyRemoteState(data);
+          } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+            broadcastState("state_reply");
+          }
+        }
+      };
+    }
+
+    // Listen on window message (from parent app.js or opener)
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      if (!data || typeof data !== "object") return;
+      if (data.type === "APPLY_INTERACTIVE_STATE" || (data.type === "INTERACTIVE_STATE_UPDATE" && (!data.interactiveId || data.interactiveId === "abiotic_biotic_challenge"))) {
+        applyRemoteState(data);
+      } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+        broadcastState("state_reply");
+      }
+    });
+
     // Initial render
     window.render();
+
+    // Initial sync connection
+    if (isPresentationMode) {
+      requestMasterState();
+    } else {
+      broadcastState("initial_load");
+    }
   </script>
 </body>
 </html>

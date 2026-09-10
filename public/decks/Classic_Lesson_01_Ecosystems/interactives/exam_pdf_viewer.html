@@ -790,10 +790,106 @@
         zoomLabel.textContent = Math.round(currentZoom * 100) + "%";
       }
 
+      // === MULTI-SCREEN INTERACTIVE SYNCHRONIZATION ===
+      const isPresentationMode = new URLSearchParams(window.location.search).get("presentation") === "1" ||
+        Boolean(window.parent && window.parent.isPresentationWindow);
+
+      let isApplyingRemoteState = false;
+      let syncChannel = null;
+      try {
+        syncChannel = new BroadcastChannel("vibe-deck-interactive-sync");
+      } catch (_) {}
+
+      let currentSplitterPct = 50;
+
+      function getInteractiveSyncState() {
+        return {
+          mode: currentMode,
+          filter: paneQuestions.classList.contains("show-page-1") ? "1" : (paneQuestions.classList.contains("show-page-2") ? "2" : "all"),
+          answersVisible: answersVisible,
+          zoom: currentZoom,
+          splitterPct: currentSplitterPct,
+          calloutVisible: examinerCallout ? examinerCallout.style.display !== "none" : true,
+          scrollMarkScheme: containerMarkScheme ? containerMarkScheme.scrollTop : 0,
+          scrollQuestions: paneQuestions ? paneQuestions.scrollTop : 0
+        };
+      }
+
+      function broadcastState(sourceAction = "update") {
+        if (isApplyingRemoteState) return;
+        const statePayload = getInteractiveSyncState();
+        const message = {
+          type: "INTERACTIVE_STATE_UPDATE",
+          interactiveId: "exam_pdf_viewer",
+          interactiveUrl: window.location.pathname,
+          action: sourceAction,
+          state: statePayload,
+          timestamp: Date.now()
+        };
+
+        if (syncChannel) {
+          try { syncChannel.postMessage(message); } catch (_) {}
+        }
+        try { window.parent.postMessage(message, "*"); } catch (_) {}
+      }
+
+      function applyRemoteState(data) {
+        if (!data || !data.state) return;
+        isApplyingRemoteState = true;
+        try {
+          const s = data.state;
+          if (s.mode && s.mode !== currentMode) {
+            setMode(s.mode, false);
+          }
+          if (s.filter) {
+            setPageFilter(s.filter, false);
+          }
+          if (typeof s.answersVisible === "boolean" && s.answersVisible !== answersVisible) {
+            setAnswersVisible(s.answersVisible, false);
+          }
+          if (typeof s.zoom === "number" && s.zoom !== currentZoom) {
+            currentZoom = s.zoom;
+            applyZoom();
+          }
+          if (typeof s.splitterPct === "number" && currentMode === "split") {
+            currentSplitterPct = s.splitterPct;
+            paneQuestions.style.flex = `0 0 ${s.splitterPct}%`;
+            paneQuestions.style.width = `${s.splitterPct}%`;
+            paneMarkScheme.style.flex = `0 0 ${100 - s.splitterPct}%`;
+            paneMarkScheme.style.width = `${100 - s.splitterPct}%`;
+            applyZoom();
+          }
+          if (typeof s.calloutVisible === "boolean" && examinerCallout) {
+            examinerCallout.style.display = s.calloutVisible ? "" : "none";
+          }
+          if (typeof s.scrollMarkScheme === "number" && containerMarkScheme) {
+            containerMarkScheme.scrollTop = s.scrollMarkScheme;
+          }
+          if (typeof s.scrollQuestions === "number" && paneQuestions) {
+            paneQuestions.scrollTop = s.scrollQuestions;
+          }
+        } finally {
+          isApplyingRemoteState = false;
+        }
+      }
+
+      function requestMasterState() {
+        const req = {
+          type: "REQUEST_INTERACTIVE_STATE",
+          interactiveId: "exam_pdf_viewer",
+          interactiveUrl: window.location.pathname
+        };
+        if (syncChannel) {
+          try { syncChannel.postMessage(req); } catch (_) {}
+        }
+        try { window.parent.postMessage(req, "*"); } catch (_) {}
+      }
+
       btnZoomIn.addEventListener("click", () => {
         if (currentZoom < 2.0) {
           currentZoom = Math.min(2.0, currentZoom + 0.15);
           applyZoom();
+          broadcastState("zoom_in");
         }
       });
 
@@ -801,15 +897,17 @@
         if (currentZoom > 0.6) {
           currentZoom = Math.max(0.6, currentZoom - 0.15);
           applyZoom();
+          broadcastState("zoom_out");
         }
       });
 
       btnZoomReset.addEventListener("click", () => {
         currentZoom = 1.0;
         applyZoom();
+        broadcastState("zoom_reset");
       });
 
-      function setMode(mode) {
+      function setMode(mode, broadcast = true) {
         currentMode = mode;
         viewportArena.classList.remove("view-mode-questions", "view-mode-markscheme");
 
@@ -823,10 +921,10 @@
         if (mode === "split") {
           modeBtnSplit.classList.add("active");
           modeBtnSplit.setAttribute("aria-selected", "true");
-          paneQuestions.style.flex = "1 1 50%";
-          paneQuestions.style.width = "50%";
-          paneMarkScheme.style.flex = "1 1 50%";
-          paneMarkScheme.style.width = "50%";
+          paneQuestions.style.flex = `0 0 ${currentSplitterPct}%`;
+          paneQuestions.style.width = `${currentSplitterPct}%`;
+          paneMarkScheme.style.flex = `0 0 ${100 - currentSplitterPct}%`;
+          paneMarkScheme.style.width = `${100 - currentSplitterPct}%`;
           splitterDivider.style.display = "flex";
         } else if (mode === "questions") {
           modeBtnQuestions.classList.add("active");
@@ -842,6 +940,7 @@
 
         setTimeout(applyZoom, 50);
         setTimeout(applyZoom, 260);
+        if (broadcast) broadcastState("set_mode");
       }
 
       modeBtnQuestions.addEventListener("click", () => setMode("questions"));
@@ -849,9 +948,9 @@
       modeBtnMarkScheme.addEventListener("click", () => setMode("markscheme"));
 
       // Initialize explicitly in Questions Only mode
-      setMode("questions");
+      setMode("questions", false);
 
-      function setPageFilter(filter) {
+      function setPageFilter(filter, broadcast = true) {
         btnPageAll.classList.remove("active");
         btnPage1.classList.remove("active");
         btnPage2.classList.remove("active");
@@ -866,14 +965,15 @@
           btnPage2.classList.add("active");
           paneQuestions.classList.add("show-page-2");
         }
+        if (broadcast) broadcastState("set_page_filter");
       }
 
       btnPageAll.addEventListener("click", () => setPageFilter("all"));
       btnPage1.addEventListener("click", () => setPageFilter("1"));
       btnPage2.addEventListener("click", () => setPageFilter("2"));
 
-      btnToggleAnswers.addEventListener("click", () => {
-        answersVisible = !answersVisible;
+      function setAnswersVisible(visible, broadcast = true) {
+        answersVisible = Boolean(visible);
         if (answersVisible) {
           answerLayerPage1.classList.add("visible");
           answerLayerPage2.classList.add("visible");
@@ -885,14 +985,21 @@
           btnToggleAnswers.classList.remove("active");
           btnAnswersText.textContent = "Reveal Answers";
         }
+        if (broadcast) broadcastState("toggle_answers");
+      }
+
+      btnToggleAnswers.addEventListener("click", () => {
+        setAnswersVisible(!answersVisible, true);
       });
 
       btnCloseCallout.addEventListener("click", () => {
         examinerCallout.style.display = "none";
+        broadcastState("close_callout");
       });
 
       btnScrollToTop.addEventListener("click", () => {
         containerMarkScheme.scrollTo({ top: 0, behavior: "smooth" });
+        broadcastState("scroll_to_top");
       });
 
       let isDragging = false;
@@ -912,6 +1019,7 @@
         const leftPct = Math.max(25, Math.min(75, (pointerX / totalW) * 100));
         const rightPct = 100 - leftPct;
 
+        currentSplitterPct = leftPct;
         paneQuestions.style.flex = `0 0 ${leftPct}%`;
         paneQuestions.style.width = `${leftPct}%`;
         paneMarkScheme.style.flex = `0 0 ${rightPct}%`;
@@ -925,6 +1033,33 @@
           isDragging = false;
           splitterDivider.classList.remove("active");
           document.body.style.cursor = "";
+          broadcastState("splitter_move");
+        }
+      });
+
+      // Listen on BroadcastChannel
+      if (syncChannel) {
+        syncChannel.onmessage = (event) => {
+          const data = event.data;
+          if (!data || typeof data !== "object") return;
+          if (data.interactiveId === "exam_pdf_viewer" || !data.interactiveId) {
+            if (data.type === "INTERACTIVE_STATE_UPDATE") {
+              applyRemoteState(data);
+            } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+              broadcastState("state_reply");
+            }
+          }
+        };
+      }
+
+      // Listen on window message (from parent app.js or opener)
+      window.addEventListener("message", (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") return;
+        if (data.type === "APPLY_INTERACTIVE_STATE" || (data.type === "INTERACTIVE_STATE_UPDATE" && (!data.interactiveId || data.interactiveId === "exam_pdf_viewer"))) {
+          applyRemoteState(data);
+        } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+          broadcastState("state_reply");
         }
       });
 
@@ -939,6 +1074,13 @@
       });
 
       setTimeout(applyZoom, 100);
+
+      // Initial sync connection
+      if (isPresentationMode) {
+        requestMasterState();
+      } else {
+        broadcastState("initial_load");
+      }
     })();
   </script>
 </body>

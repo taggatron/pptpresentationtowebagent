@@ -430,7 +430,74 @@
     const zoomDisplay = document.getElementById("zoomDisplay");
     const btnPrint = document.getElementById("btnPrint");
 
-    function setMode(mode) {
+    // === MULTI-SCREEN INTERACTIVE SYNCHRONIZATION ===
+    const isPresentationMode = new URLSearchParams(window.location.search).get("presentation") === "1" ||
+      Boolean(window.parent && window.parent.isPresentationWindow);
+
+    let isApplyingRemoteState = false;
+    let syncChannel = null;
+    try {
+      syncChannel = new BroadcastChannel("vibe-deck-interactive-sync");
+    } catch (_) {}
+
+    function getInteractiveSyncState() {
+      return {
+        mode: currentMode,
+        zoom: currentZoom,
+        scrollTop: viewerContent.scrollTop
+      };
+    }
+
+    function broadcastState(sourceAction = "update") {
+      if (isApplyingRemoteState) return;
+      const statePayload = getInteractiveSyncState();
+      const message = {
+        type: "INTERACTIVE_STATE_UPDATE",
+        interactiveId: "handout_pdf_viewer",
+        interactiveUrl: window.location.pathname,
+        action: sourceAction,
+        state: statePayload,
+        timestamp: Date.now()
+      };
+
+      if (syncChannel) {
+        try { syncChannel.postMessage(message); } catch (_) {}
+      }
+      try { window.parent.postMessage(message, "*"); } catch (_) {}
+    }
+
+    function applyRemoteState(data) {
+      if (!data || !data.state) return;
+      isApplyingRemoteState = true;
+      try {
+        const s = data.state;
+        if (s.mode && s.mode !== currentMode) {
+          setMode(s.mode, false);
+        }
+        if (typeof s.zoom === "number" && s.zoom !== currentZoom) {
+          setZoom(s.zoom, false);
+        }
+        if (typeof s.scrollTop === "number" && Math.abs(viewerContent.scrollTop - s.scrollTop) > 20) {
+          viewerContent.scrollTop = s.scrollTop;
+        }
+      } finally {
+        isApplyingRemoteState = false;
+      }
+    }
+
+    function requestMasterState() {
+      const req = {
+        type: "REQUEST_INTERACTIVE_STATE",
+        interactiveId: "handout_pdf_viewer",
+        interactiveUrl: window.location.pathname
+      };
+      if (syncChannel) {
+        try { syncChannel.postMessage(req); } catch (_) {}
+      }
+      try { window.parent.postMessage(req, "*"); } catch (_) {}
+    }
+
+    function setMode(mode, broadcast = true) {
       currentMode = mode;
       viewerContent.classList.remove("mode-handout", "mode-answers", "mode-split");
       viewerContent.classList.add(`mode-${mode}`);
@@ -444,12 +511,14 @@
       btnModeSplit.setAttribute("aria-selected", String(mode === "split"));
 
       viewerContent.scrollTop = 0;
+      if (broadcast) broadcastState("set_mode");
     }
 
-    function setZoom(zoom) {
+    function setZoom(zoom, broadcast = true) {
       currentZoom = Math.min(Math.max(zoom, 0.6), 2.0);
       pagesContainer.style.transform = `scale(${currentZoom})`;
       zoomDisplay.textContent = `${Math.round(currentZoom * 100)}%`;
+      if (broadcast) broadcastState("set_zoom");
     }
 
     btnModeHandout.addEventListener("click", () => setMode("handout"));
@@ -464,6 +533,41 @@
       window.print();
     });
 
+    let scrollTimeout = null;
+    viewerContent.addEventListener("scroll", () => {
+      if (isApplyingRemoteState) return;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        broadcastState("scroll");
+      }, 150);
+    });
+
+    // Listen on BroadcastChannel
+    if (syncChannel) {
+      syncChannel.onmessage = (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") return;
+        if (data.interactiveId === "handout_pdf_viewer" || !data.interactiveId) {
+          if (data.type === "INTERACTIVE_STATE_UPDATE") {
+            applyRemoteState(data);
+          } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+            broadcastState("state_reply");
+          }
+        }
+      };
+    }
+
+    // Listen on window message (from parent app.js or opener)
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      if (!data || typeof data !== "object") return;
+      if (data.type === "APPLY_INTERACTIVE_STATE" || (data.type === "INTERACTIVE_STATE_UPDATE" && (!data.interactiveId || data.interactiveId === "handout_pdf_viewer"))) {
+        applyRemoteState(data);
+      } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+        broadcastState("state_reply");
+      }
+    });
+
     // Keyboard navigation
     window.addEventListener("keydown", (e) => {
       if (e.key === "1") setMode("handout");
@@ -475,7 +579,14 @@
     });
 
     // Default to Handout view as requested
-    setMode("handout");
+    setMode("handout", false);
+
+    // Initial sync connection
+    if (isPresentationMode) {
+      requestMasterState();
+    } else {
+      broadcastState("initial_load");
+    }
   })();
 </script>
 </body>

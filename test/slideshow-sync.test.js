@@ -27,8 +27,18 @@ function createMockEnvironment({ isPresentation = false } = {}) {
   }
 
   function createMockElement(id = "") {
+    const postedFrameMessages = [];
     return {
       id,
+      contentWindow: {
+        postMessage(msg) {
+          postedFrameMessages.push(msg);
+        }
+      },
+      postedFrameMessages,
+      getAttribute(attr) {
+        return this[attr] || "";
+      },
       classList: {
         classes: new Set(["hidden"]),
         add(c) { this.classes.add(c); },
@@ -43,8 +53,8 @@ function createMockEnvironment({ isPresentation = false } = {}) {
         },
         contains(c) { return this.classes.has(c); }
       },
-      setAttribute() {},
-      removeAttribute() {},
+      setAttribute(k, v) { this[k] = v; },
+      removeAttribute(k) { delete this[k]; },
       appendChild() {},
       addEventListener() {},
       removeEventListener() {},
@@ -486,4 +496,165 @@ test("Presentation window on extended screen receives VIDEO_CONTROL and executes
   });
   assert.equal(videoEl.paused, false, "Extended screen video must replay and start playing on receipt of replay command");
 });
+
+test("MacBook controller window broadcasts INTERACTIVE_SYNC on interactive state updates and bundles state in SYNC_STATE", async () => {
+  const source = await fs.readFile(APP_PATH, "utf-8");
+  const env = createMockEnvironment({ isPresentation: false });
+
+  const context = vm.createContext({
+    console,
+    window: env.windowMock,
+    document: env.documentMock,
+    BroadcastChannel: env.MockBroadcastChannel,
+    localStorage: env.windowMock.localStorage,
+    URLSearchParams: globalThis.URLSearchParams,
+    setTimeout: () => 0,
+    clearTimeout: () => {},
+    setInterval: () => 0,
+    clearInterval: () => {}
+  });
+
+  vm.runInContext(
+    `${source}\n;globalThis.__interactiveHooks = {
+      handleInteractiveSyncMessage,
+      broadcastSlideshowSync,
+      initSlideshowSync,
+      setDeck: (d) => { currentDeck = d; },
+      setSlide: (idx) => { currentSlideIndex = idx; },
+      getActiveInteractiveState: () => activeInteractiveStateByUrl
+    };`,
+    context,
+    { filename: APP_PATH }
+  );
+
+  const hooks = context.__interactiveHooks;
+  hooks.initSlideshowSync();
+
+  const deckWithEmbed = {
+    id: "deck_with_embed",
+    slides: [
+      {
+        number: 1,
+        title: "Challenge",
+        interactiveType: "web_embed",
+        webEmbed: {
+          url: "/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html",
+          title: "Abiotic Biotic Challenge"
+        }
+      }
+    ]
+  };
+  hooks.setDeck(deckWithEmbed);
+  hooks.setSlide(0);
+
+  // 1. Simulate an update coming from the iframe to the controller
+  hooks.handleInteractiveSyncMessage({
+    type: "INTERACTIVE_STATE_UPDATE",
+    interactiveId: "abiotic_biotic_challenge",
+    interactiveUrl: "/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html",
+    action: "move_factor",
+    state: {
+      placements: { factor_1: "abiotic" },
+      checked: false
+    }
+  });
+
+  // Verify controller cached the state
+  const cachedState = hooks.getActiveInteractiveState()["/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html"];
+  assert.deepEqual(cachedState.placements, { factor_1: "abiotic" });
+
+  // Verify INTERACTIVE_SYNC message was broadcast to other windows
+  const syncMsg = env.broadcastMessages.find((m) => m.type === "INTERACTIVE_SYNC");
+  assert.ok(syncMsg, "Controller must broadcast INTERACTIVE_SYNC to secondary display");
+  assert.equal(syncMsg.interactiveId, "abiotic_biotic_challenge");
+  assert.deepEqual(syncMsg.state.placements, { factor_1: "abiotic" });
+
+  // 2. Verify state is bundled into SYNC_STATE broadcast
+  env.broadcastMessages.length = 0;
+  hooks.broadcastSlideshowSync("SYNC_STATE");
+  const fullSyncMsg = env.broadcastMessages.find((m) => m.type === "SYNC_STATE");
+  assert.ok(fullSyncMsg, "Controller must broadcast SYNC_STATE");
+  assert.equal(fullSyncMsg.interactiveUrl, "/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html");
+  assert.deepEqual(fullSyncMsg.interactiveState.placements, { factor_1: "abiotic" });
+});
+
+test("Presentation window on extended screen receives INTERACTIVE_SYNC and forwards state to webEmbedFrame", async () => {
+  const source = await fs.readFile(APP_PATH, "utf-8");
+  const env = createMockEnvironment({ isPresentation: true });
+
+  const context = vm.createContext({
+    console,
+    window: env.windowMock,
+    document: env.documentMock,
+    BroadcastChannel: env.MockBroadcastChannel,
+    localStorage: env.windowMock.localStorage,
+    URLSearchParams: globalThis.URLSearchParams,
+    setTimeout: () => 0,
+    clearTimeout: () => {},
+    setInterval: () => 0,
+    clearInterval: () => {}
+  });
+
+  vm.runInContext(
+    `${source}\n;globalThis.__presentationInteractiveHooks = {
+      handleSlideshowSyncMessage,
+      initSlideshowSync,
+      setDeck: (d) => { currentDeck = d; },
+      setSlide: (idx) => { currentSlideIndex = idx; },
+      getFrame: () => webEmbedFrame,
+      getActiveInteractiveState: () => activeInteractiveStateByUrl
+    };`,
+    context,
+    { filename: APP_PATH }
+  );
+
+  const hooks = context.__presentationInteractiveHooks;
+  hooks.initSlideshowSync();
+
+  const deckWithEmbed = {
+    id: "deck_with_embed",
+    slides: [
+      {
+        number: 1,
+        title: "Challenge",
+        interactiveType: "web_embed",
+        webEmbed: {
+          url: "/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html",
+          title: "Abiotic Biotic Challenge"
+        }
+      }
+    ]
+  };
+  hooks.setDeck(deckWithEmbed);
+  hooks.setSlide(0);
+
+  const frame = hooks.getFrame();
+
+  // 1. Send INTERACTIVE_SYNC message to presentation window
+  hooks.handleSlideshowSyncMessage({
+    data: {
+      type: "INTERACTIVE_SYNC",
+      senderId: "macbook_controller",
+      interactiveId: "abiotic_biotic_challenge",
+      interactiveUrl: "/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html",
+      action: "move_factor",
+      state: {
+        placements: { factor_1: "abiotic", factor_2: "biotic" },
+        checked: true
+      }
+    }
+  });
+
+  // Verify presentation window cached the state
+  const cachedState = hooks.getActiveInteractiveState()["/decks/Classic_Lesson_01_Ecosystems/interactives/abiotic_biotic_challenge.html"];
+  assert.ok(cachedState, "Presentation window must cache interactive state");
+  assert.equal(cachedState.checked, true);
+  assert.deepEqual(cachedState.placements, { factor_1: "abiotic", factor_2: "biotic" });
+
+  // Verify postMessage was forwarded into the iframe's contentWindow
+  const forwardedMsg = frame.postedFrameMessages.find((m) => m.type === "APPLY_INTERACTIVE_STATE");
+  assert.ok(forwardedMsg, "Presentation window must forward APPLY_INTERACTIVE_STATE into webEmbedFrame.contentWindow");
+  assert.deepEqual(forwardedMsg.state.placements, { factor_1: "abiotic", factor_2: "biotic" });
+});
+
 

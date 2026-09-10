@@ -6,6 +6,7 @@ let currentSlideIndex = 0;
 let currentMediaBuildStep = 0;
 let answerStates = {};
 let answerRevealOrder = {};
+let activeInteractiveStateByUrl = {};
 let autoPlayInterval = null;
 let activeSidebarTab = "overview";
 let autosaveTimer = null;
@@ -44,6 +45,21 @@ const slideStage = document.getElementById("slideStage");
 const slideWrapper = document.getElementById("slideWrapper");
 const webEmbedLayer = document.getElementById("webEmbedLayer");
 const webEmbedFrame = document.getElementById("webEmbedFrame");
+
+if (webEmbedFrame) {
+  webEmbedFrame.addEventListener("load", () => {
+    const slide = currentDeck?.slides?.[currentSlideIndex];
+    const embedUrl = slide?.webEmbed?.url;
+    if (embedUrl && activeInteractiveStateByUrl[embedUrl]) {
+      setTimeout(() => {
+        forwardInteractiveStateToFrame({
+          interactiveUrl: embedUrl,
+          state: activeInteractiveStateByUrl[embedUrl]
+        });
+      }, 80);
+    }
+  });
+}
 const interactiveOverlay = document.getElementById("interactiveOverlay");
 const editTargetOverlay = document.getElementById("editTargetOverlay");
 const editTargetBox = document.getElementById("editTargetBox");
@@ -2785,6 +2801,77 @@ function applyTheme(theme) {
   }
 }
 
+let interactiveSyncChannel = null;
+
+function forwardInteractiveStateToFrame(data) {
+  if (!webEmbedFrame || !webEmbedFrame.contentWindow || !data?.state) return;
+  try {
+    webEmbedFrame.contentWindow.postMessage({
+      type: "APPLY_INTERACTIVE_STATE",
+      interactiveId: data.interactiveId,
+      interactiveUrl: data.interactiveUrl,
+      state: data.state,
+      action: data.action
+    }, "*");
+  } catch (_) {}
+}
+
+function handleInteractiveSyncMessage(data) {
+  if (!data || typeof data !== "object") return;
+
+  if (data.type === "INTERACTIVE_STATE_UPDATE") {
+    if (data.interactiveUrl && data.state) {
+      activeInteractiveStateByUrl[data.interactiveUrl] = data.state;
+    }
+
+    if (!isPresentationWindow) {
+      // Broadcast to other windows / presentation display
+      broadcastSlideshowMessage({
+        type: "INTERACTIVE_SYNC",
+        deckId: currentDeck?.id,
+        slideIndex: currentSlideIndex,
+        interactiveUrl: data.interactiveUrl,
+        interactiveId: data.interactiveId,
+        state: data.state,
+        action: data.action,
+        timestamp: data.timestamp || Date.now()
+      });
+    } else {
+      // In presentation window, forward to iframe if needed
+      forwardInteractiveStateToFrame(data);
+    }
+  } else if (data.type === "REQUEST_INTERACTIVE_STATE") {
+    if (!isPresentationWindow) {
+      const url = data.interactiveUrl || currentDeck?.slides?.[currentSlideIndex]?.webEmbed?.url;
+      const state = url ? activeInteractiveStateByUrl[url] : null;
+      if (state) {
+        broadcastSlideshowMessage({
+          type: "INTERACTIVE_SYNC",
+          deckId: currentDeck?.id,
+          slideIndex: currentSlideIndex,
+          interactiveUrl: url,
+          interactiveId: data.interactiveId,
+          state: state,
+          action: "state_reply",
+          timestamp: Date.now()
+        });
+        if (interactiveSyncChannel) {
+          try {
+            interactiveSyncChannel.postMessage({
+              type: "INTERACTIVE_STATE_UPDATE",
+              interactiveId: data.interactiveId,
+              interactiveUrl: url,
+              action: "state_reply",
+              state: state,
+              timestamp: Date.now()
+            });
+          } catch (_) {}
+        }
+      }
+    }
+  }
+}
+
 function initSlideshowSync() {
   if (typeof BroadcastChannel === "function") {
     try {
@@ -2793,12 +2880,30 @@ function initSlideshowSync() {
     } catch (e) {
       console.warn("BroadcastChannel initialization warning:", e);
     }
+
+    try {
+      interactiveSyncChannel = new BroadcastChannel("vibe-deck-interactive-sync");
+      interactiveSyncChannel.onmessage = (event) => {
+        if (event.data && typeof event.data === "object") {
+          handleInteractiveSyncMessage(event.data);
+        }
+      };
+    } catch (e) {
+      console.warn("Interactive BroadcastChannel initialization warning:", e);
+    }
   }
 
   // Cross-window postMessage listener
   window.addEventListener("message", (event) => {
     if (event.data && typeof event.data === "object" && event.data.type) {
-      handleSlideshowSyncMessage(event);
+      if (
+        event.data.type === "INTERACTIVE_STATE_UPDATE" ||
+        event.data.type === "REQUEST_INTERACTIVE_STATE"
+      ) {
+        handleInteractiveSyncMessage(event.data);
+      } else {
+        handleSlideshowSyncMessage(event);
+      }
     }
   });
 
@@ -2868,6 +2973,10 @@ function broadcastSlideshowSync(type = "SYNC_STATE", extra = {}) {
   if (!currentDeck) return;
 
   const isVideo = isCurrentSlideVideo();
+  const currentSlide = currentDeck.slides?.[currentSlideIndex];
+  const embedUrl = currentSlide?.webEmbed?.url;
+  const interactiveState = embedUrl ? activeInteractiveStateByUrl[embedUrl] : null;
+
   broadcastSlideshowMessage({
     type,
     deckId: currentDeck.id,
@@ -2877,6 +2986,8 @@ function broadcastSlideshowSync(type = "SYNC_STATE", extra = {}) {
     answerRevealOrder: { ...answerRevealOrder },
     videoPlaying: isVideo && slideVideo ? !slideVideo.paused : false,
     videoCurrentTime: isVideo && slideVideo ? slideVideo.currentTime : 0,
+    interactiveUrl: embedUrl,
+    interactiveState: interactiveState,
     ...extra
   });
 }
@@ -2891,6 +3002,26 @@ function handleSlideshowSyncMessage(event) {
     switch (data.type) {
       case "REQUEST_STATE":
         break;
+
+      case "INTERACTIVE_SYNC": {
+        if (data.interactiveUrl && data.state) {
+          activeInteractiveStateByUrl[data.interactiveUrl] = data.state;
+        }
+        forwardInteractiveStateToFrame(data);
+        if (interactiveSyncChannel) {
+          try {
+            interactiveSyncChannel.postMessage({
+              type: "INTERACTIVE_STATE_UPDATE",
+              interactiveId: data.interactiveId,
+              interactiveUrl: data.interactiveUrl,
+              action: data.action,
+              state: data.state,
+              timestamp: data.timestamp || Date.now()
+            });
+          } catch (_) {}
+        }
+        break;
+      }
 
       case "VIDEO_CONTROL": {
         handleVideoControlSyncMessage(data);
@@ -2927,6 +3058,14 @@ function handleSlideshowSyncMessage(event) {
             currentMediaBuildStep = data.mediaBuildStep;
           }
           renderSlideStage();
+
+          if (data.interactiveUrl && data.interactiveState) {
+            activeInteractiveStateByUrl[data.interactiveUrl] = data.interactiveState;
+            forwardInteractiveStateToFrame({
+              interactiveUrl: data.interactiveUrl,
+              state: data.interactiveState
+            });
+          }
 
           if (typeof data.videoPlaying === "boolean" && slideVideo && !slideVideo.classList.contains("hidden")) {
             if (Number.isFinite(data.videoCurrentTime)) {
@@ -3012,6 +3151,32 @@ function handleSlideshowSyncMessage(event) {
       case "REQUEST_STATE":
         broadcastSlideshowSync("SYNC_STATE");
         break;
+
+      case "INTERACTIVE_SYNC": {
+        if (data.interactiveUrl && data.state) {
+          activeInteractiveStateByUrl[data.interactiveUrl] = data.state;
+          forwardInteractiveStateToFrame(data);
+        }
+        break;
+      }
+
+      case "REQUEST_INTERACTIVE_STATE": {
+        const url = data.interactiveUrl || currentDeck?.slides?.[currentSlideIndex]?.webEmbed?.url;
+        const state = url ? activeInteractiveStateByUrl[url] : null;
+        if (state) {
+          broadcastSlideshowMessage({
+            type: "INTERACTIVE_SYNC",
+            deckId: currentDeck?.id,
+            slideIndex: currentSlideIndex,
+            interactiveUrl: url,
+            interactiveId: data.interactiveId,
+            state: state,
+            action: "state_reply",
+            timestamp: Date.now()
+          });
+        }
+        break;
+      }
 
       case "VIDEO_STATE": {
         if (data && typeof data.isPlaying === "boolean") {
@@ -4191,6 +4356,7 @@ async function loadDeck(deckId, initialSlideIndex = 0) {
     currentDeck = loadedDeck;
     answerStates = {};
     answerRevealOrder = {};
+    activeInteractiveStateByUrl = {};
     editTargetsBySlide = {};
     geminiBuildRequestStates = {};
     currentSlideIndex = 0;
@@ -4280,8 +4446,20 @@ function renderWebEmbed(slide, { preserveSequenceControls = false } = {}) {
   interactiveOverlay.innerHTML = "";
   if (!preserveSequenceControls) qaControls?.classList.add("hidden");
 
-  if (webEmbedFrame.getAttribute("src") !== embed.url) {
-    webEmbedFrame.src = embed.url;
+  let targetSrc = embed.url;
+  if (isPresentationWindow) {
+    try {
+      const u = new URL(embed.url, window.location.href);
+      u.searchParams.set("presentation", "1");
+      targetSrc = u.pathname + u.search;
+    } catch (_) {
+      targetSrc += (targetSrc.includes("?") ? "&" : "?") + "presentation=1";
+    }
+  }
+
+  const currentSrc = webEmbedFrame.getAttribute ? webEmbedFrame.getAttribute("src") : webEmbedFrame.src;
+  if (currentSrc !== targetSrc) {
+    webEmbedFrame.src = targetSrc;
   }
 
   webEmbedLayer.classList.remove("hidden");
