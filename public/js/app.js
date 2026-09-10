@@ -103,6 +103,7 @@ const isPresentationWindow =
     ? new URLSearchParams(window.location.search).get("presentation") === "1"
     : false;
 let slideshowChannel = null;
+const windowClientId = "win_" + Math.random().toString(36).slice(2) + "_" + Date.now();
 const revealAllBtn = document.getElementById("revealAllBtn");
 const hideAllBtn = document.getElementById("hideAllBtn");
 const serialStepBadge = document.getElementById("serialStepBadge");
@@ -1229,6 +1230,7 @@ function appendInteractiveGrid(slide) {
       announceAnswerReveal(cell, index, shouldReveal);
       renderSlideStage(slide);
       if (activeSidebarTab === "editor") renderComponentEditorPanel();
+      if (!isPresentationWindow) broadcastSlideshowSync("ANSWERS_UPDATE");
     });
 
     interactiveOverlay.appendChild(card);
@@ -1283,6 +1285,7 @@ function advanceMediaBuildStep() {
   if (!moveMediaBuildStep(slide, 1)) return false;
   renderSlideStage(slide);
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
+  if (!isPresentationWindow) broadcastSlideshowSync("BUILD_STEP");
   return true;
 }
 
@@ -1294,6 +1297,7 @@ function regressMediaBuildStep() {
   if (!moveMediaBuildStep(slide, -1)) return false;
   renderSlideStage(slide);
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
+  if (!isPresentationWindow) broadcastSlideshowSync("BUILD_STEP");
   return true;
 }
 
@@ -1307,6 +1311,7 @@ function revealNextAnswer() {
     setQuestionAnswerRevealCount(slide, revealedCount + 1);
     renderSlideStage(slide);
     if (activeSidebarTab === "editor") renderComponentEditorPanel();
+    if (!isPresentationWindow) broadcastSlideshowSync("ANSWERS_UPDATE");
     return true;
   }
   const nextCell = cells.find((cell) => !isAnswerRevealed(slide, cell));
@@ -1314,6 +1319,7 @@ function revealNextAnswer() {
   setAnswerRevealed(slide, nextCell, true);
   renderSlideStage(slide);
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
+  if (!isPresentationWindow) broadcastSlideshowSync("ANSWERS_UPDATE");
   return true;
 }
 
@@ -1327,6 +1333,7 @@ function hidePreviousAnswer() {
     setQuestionAnswerRevealCount(slide, revealedCount - 1);
     renderSlideStage(slide);
     if (activeSidebarTab === "editor") renderComponentEditorPanel();
+    if (!isPresentationWindow) broadcastSlideshowSync("ANSWERS_UPDATE");
     return true;
   }
   const revealOrder = getAnswerRevealOrder(slide);
@@ -1336,6 +1343,7 @@ function hidePreviousAnswer() {
   setAnswerRevealed(slide, previousCell, false);
   renderSlideStage(slide);
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
+  if (!isPresentationWindow) broadcastSlideshowSync("ANSWERS_UPDATE");
   return true;
 }
 
@@ -2486,33 +2494,175 @@ function initSlideshowSync() {
     try {
       slideshowChannel = new BroadcastChannel("vibe_deck_slideshow");
       slideshowChannel.onmessage = handleSlideshowSyncMessage;
-      if (isPresentationWindow) {
-        slideshowChannel.postMessage({ type: "REQUEST_STATE" });
-      }
     } catch (e) {
       console.warn("BroadcastChannel initialization warning:", e);
     }
   }
+
+  // Cross-window postMessage listener
+  window.addEventListener("message", (event) => {
+    if (event.data && typeof event.data === "object" && event.data.type) {
+      handleSlideshowSyncMessage(event);
+    }
+  });
+
+  // LocalStorage multi-window fallback listener
+  window.addEventListener("storage", (event) => {
+    if (event.key === "vibe_deck_slideshow_sync" && event.newValue) {
+      try {
+        const parsed = JSON.parse(event.newValue);
+        if (parsed?.message && typeof parsed.message === "object") {
+          handleSlideshowSyncMessage({ data: parsed.message });
+        }
+      } catch (err) {}
+    }
+  });
+
+  if (isPresentationWindow) {
+    // Force student mode on the audience presentation display
+    presenterMode = false;
+    document.body.classList.remove("presenter-mode");
+    document.body.classList.add("student-mode");
+
+    // Request initial state from controller
+    broadcastSlideshowMessage({ type: "REQUEST_STATE" });
+  }
 }
 
 function broadcastSlideshowMessage(message) {
-  if (!slideshowChannel) return;
-  try {
-    slideshowChannel.postMessage(message);
-  } catch (err) {
-    console.warn("Slideshow broadcast error:", err);
+  if (!message || typeof message !== "object") return;
+  if (!message.senderId) message.senderId = windowClientId;
+  if (!message.timestamp) message.timestamp = Date.now();
+
+  // 1. BroadcastChannel
+  if (slideshowChannel) {
+    try {
+      slideshowChannel.postMessage(message);
+    } catch (err) {
+      console.warn("Slideshow broadcast error:", err);
+    }
   }
+
+  // 2. Direct postMessage to presentationWindowRef if opened
+  if (presentationWindowRef && !presentationWindowRef.closed) {
+    try {
+      presentationWindowRef.postMessage(message, "*");
+    } catch (err) {}
+  }
+
+  // 3. Direct postMessage to window.opener if in presentation window
+  if (isPresentationWindow && window.opener && !window.opener.closed) {
+    try {
+      window.opener.postMessage(message, "*");
+    } catch (err) {}
+  }
+
+  // 4. LocalStorage multi-window fallback
+  try {
+    localStorage.setItem("vibe_deck_slideshow_sync", JSON.stringify({
+      message,
+      t: Date.now()
+    }));
+  } catch (err) {}
+}
+
+function broadcastSlideshowSync(type = "SYNC_STATE", extra = {}) {
+  // Only controller (MacBook) broadcasts state changes to the presentation window
+  if (isPresentationWindow) return;
+  if (!currentDeck) return;
+
+  broadcastSlideshowMessage({
+    type,
+    deckId: currentDeck.id,
+    slideIndex: currentSlideIndex,
+    mediaBuildStep: currentMediaBuildStep,
+    answerStates: { ...answerStates },
+    answerRevealOrder: { ...answerRevealOrder },
+    ...extra
+  });
 }
 
 function handleSlideshowSyncMessage(event) {
   const data = event.data;
   if (!data || typeof data !== "object") return;
+  if (data.senderId === windowClientId) return; // Prevent echo to self
 
   if (isPresentationWindow) {
     // Secondary display presentation view
     switch (data.type) {
+      case "REQUEST_STATE":
+        break;
+
       case "SYNC_STATE":
       case "SLIDE_CHANGE":
+      case "GOTO_SLIDE": {
+        const applySync = () => {
+          let targetIndex = Number.isFinite(data.slideIndex) ? data.slideIndex : currentSlideIndex;
+          // Guard: Audience display should never show hidden slides
+          if (currentDeck?.slides?.[targetIndex]?.hidden) {
+            let visibleIndex = -1;
+            for (let i = targetIndex - 1; i >= 0; i--) {
+              if (!currentDeck.slides[i]?.hidden) {
+                visibleIndex = i;
+                break;
+              }
+            }
+            if (visibleIndex === -1) {
+              visibleIndex = currentDeck.slides.findIndex((s) => !s.hidden);
+            }
+            if (visibleIndex !== -1) targetIndex = visibleIndex;
+          }
+
+          if (data.answerStates) answerStates = { ...data.answerStates };
+          if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
+
+          if (targetIndex !== currentSlideIndex) {
+            renderSlide(targetIndex);
+          }
+          if (Number.isFinite(data.mediaBuildStep)) {
+            currentMediaBuildStep = data.mediaBuildStep;
+          }
+          renderSlideStage();
+        };
+
+        if (data.deckId && (!currentDeck || currentDeck.id !== data.deckId)) {
+          loadDeck(data.deckId, Number.isFinite(data.slideIndex) ? data.slideIndex : 0).then(() => {
+            applySync();
+          });
+        } else {
+          applySync();
+        }
+        break;
+      }
+
+      case "BUILD_STEP": {
+        if (Number.isFinite(data.slideIndex) && data.slideIndex !== currentSlideIndex) {
+          if (!currentDeck?.slides?.[data.slideIndex]?.hidden) {
+            renderSlide(data.slideIndex);
+          }
+        }
+        if (data.answerStates) answerStates = { ...data.answerStates };
+        if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
+        if (Number.isFinite(data.mediaBuildStep)) {
+          currentMediaBuildStep = data.mediaBuildStep;
+        }
+        renderSlideStage();
+        break;
+      }
+
+      case "ANSWERS_UPDATE": {
+        if (Number.isFinite(data.slideIndex) && data.slideIndex !== currentSlideIndex) {
+          if (!currentDeck?.slides?.[data.slideIndex]?.hidden) {
+            renderSlide(data.slideIndex);
+          }
+        }
+        if (data.answerStates) answerStates = { ...data.answerStates };
+        if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
+        renderSlideStage();
+        break;
+      }
+
+      case "DECK_CHANGE": {
         if (data.deckId && (!currentDeck || currentDeck.id !== data.deckId)) {
           loadDeck(data.deckId, Number.isFinite(data.slideIndex) ? data.slideIndex : 0).then(() => {
             if (data.answerStates) answerStates = { ...data.answerStates };
@@ -2520,53 +2670,24 @@ function handleSlideshowSyncMessage(event) {
             if (Number.isFinite(data.mediaBuildStep)) currentMediaBuildStep = data.mediaBuildStep;
             renderSlideStage();
           });
-        } else if (Number.isFinite(data.slideIndex) && data.slideIndex !== currentSlideIndex) {
-          if (data.answerStates) answerStates = { ...data.answerStates };
-          if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
-          renderSlide(data.slideIndex);
-          if (Number.isFinite(data.mediaBuildStep)) {
-            currentMediaBuildStep = data.mediaBuildStep;
-            renderSlideStage();
-          }
-        } else {
-          if (data.answerStates) answerStates = { ...data.answerStates };
-          if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
-          if (Number.isFinite(data.mediaBuildStep)) currentMediaBuildStep = data.mediaBuildStep;
-          renderSlideStage();
         }
         break;
+      }
 
-      case "BUILD_STEP":
-        if (Number.isFinite(data.mediaBuildStep)) {
-          currentMediaBuildStep = data.mediaBuildStep;
-          renderSlideStage();
+      case "AUTOPLAY": {
+        if (data.action === "start") {
+          startAutoPlay(data.intervalMs);
+        } else if (data.action === "stop") {
+          stopAutoPlay();
         }
         break;
-
-      case "ANSWERS_UPDATE":
-        if (data.answerStates) answerStates = { ...data.answerStates };
-        if (data.answerRevealOrder) answerRevealOrder = { ...data.answerRevealOrder };
-        renderSlideStage();
-        break;
-
-      case "DECK_CHANGE":
-        if (data.deckId && (!currentDeck || currentDeck.id !== data.deckId)) {
-          loadDeck(data.deckId, 0);
-        }
-        break;
+      }
     }
   } else {
     // MacBook presenter view
     switch (data.type) {
       case "REQUEST_STATE":
-        broadcastSlideshowMessage({
-          type: "SYNC_STATE",
-          deckId: currentDeck?.id,
-          slideIndex: currentSlideIndex,
-          mediaBuildStep: currentMediaBuildStep,
-          answerStates,
-          answerRevealOrder
-        });
+        broadcastSlideshowSync("SYNC_STATE");
         break;
 
       case "NAVIGATE":
@@ -2581,6 +2702,7 @@ function handleSlideshowSyncMessage(event) {
       case "PRESENTATION_CLOSED":
         setSlideshowButtonActive(false);
         presentationWindowRef = null;
+        stopSlideshowTracking({ finishSession: true });
         break;
     }
   }
@@ -3384,9 +3506,10 @@ async function startSlideshow() {
   // Initiate automatic slideshow tracking
   startSlideshowTracking();
 
-  // If a secondary presentation window is already open, focus it
+  // If a secondary presentation window is already open, focus it and ensure it is in sync
   if (presentationWindowRef && !presentationWindowRef.closed) {
     presentationWindowRef.focus();
+    broadcastSlideshowSync("SYNC_STATE");
     return;
   }
 
@@ -3429,14 +3552,22 @@ async function startSlideshow() {
     if (presentationWindowRef) {
       setSlideshowButtonActive(true);
 
-      // Attempt fullscreen on secondary screen when loaded
+      // Attempt fullscreen on secondary screen when loaded and broadcast state
       presentationWindowRef.addEventListener("load", async () => {
         try {
           if (presentationWindowRef.document?.documentElement?.requestFullscreen) {
             await presentationWindowRef.document.documentElement.requestFullscreen({ screen: secondaryScreen });
           }
         } catch (_) {}
+        broadcastSlideshowSync("SYNC_STATE");
       });
+
+      setTimeout(() => {
+        broadcastSlideshowSync("SYNC_STATE");
+      }, 400);
+      setTimeout(() => {
+        broadcastSlideshowSync("SYNC_STATE");
+      }, 1000);
 
       const closeWatcher = setInterval(() => {
         if (!presentationWindowRef || presentationWindowRef.closed) {
@@ -3759,6 +3890,9 @@ async function loadDeck(deckId, initialSlideIndex = 0) {
       Math.max(0, initialSlideIndex),
       (currentDeck.slides?.length || 1) - 1
     );
+    if (!isPresentationWindow && currentDeck) {
+      broadcastSlideshowSync("DECK_CHANGE", { deckId: currentDeck.id, slideIndex: safeSlideIndex });
+    }
     renderSlide(safeSlideIndex);
   } catch (error) {
     console.error(`Error loading deck ${deckId}:`, error);
@@ -3855,8 +3989,8 @@ function renderSlide(index) {
   const mainContentEl = document.querySelector(".main-content");
   if (mainContentEl) mainContentEl.scrollLeft = 0;
   if (slideStage) slideStage.scrollLeft = 0;
-  document.documentElement.scrollLeft = 0;
-  document.body.scrollLeft = 0;
+  if (document.documentElement) document.documentElement.scrollLeft = 0;
+  if (document.body) document.body.scrollLeft = 0;
 
   imageRenderToken++;
   const initialImageUrl = buildSteps.length > 0
@@ -3932,6 +4066,9 @@ function renderSlide(index) {
 
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
   renderSelectedTargetSummary();
+  if (!isPresentationWindow) {
+    broadcastSlideshowSync("SLIDE_CHANGE");
+  }
 }
 
 function setAllAnswersRevealed(revealed) {
@@ -3950,6 +4087,9 @@ function setAllAnswersRevealed(revealed) {
   }
   renderSlideStage(slide);
   if (activeSidebarTab === "editor") renderComponentEditorPanel();
+  if (!isPresentationWindow) {
+    broadcastSlideshowSync("ANSWERS_UPDATE");
+  }
 }
 
 function renderThumbnails() {
@@ -5954,6 +6094,9 @@ function setupEventListeners() {
 
   if (isPresentationWindow) {
     document.body.classList.add("slideshow-display");
+    document.body.classList.add("student-mode");
+    document.body.classList.remove("presenter-mode");
+    presenterMode = false;
 
     // Clicking anywhere on the presentation stage requests fullscreen
     slideStage?.addEventListener("click", () => {
