@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Organelle Matrix: Compare & Contrast — Student Handout (2 per A4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #f8fafc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #0f172a;
+      line-height: 1.35;
+    }
+
+    .a4-page {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      background: #ffffff;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .a4-page {
+        box-shadow: none;
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+        page-break-after: always;
+      }
+    }
+
+    /* Half-A4 Handout Container */
+    .half-handout {
+      height: 144.5mm;
+      padding: 7mm 11mm 6mm 11mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Cut Line Divider */
+    .cut-line-wrapper {
+      height: 8mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .cut-line-rule {
+      position: absolute;
+      left: 6mm;
+      right: 6mm;
+      height: 1px;
+      border-top: 1.5px dashed #94a3b8;
+    }
+
+    .cut-badge {
+      position: relative;
+      background: #ffffff;
+      padding: 0 10px;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cut-badge .scissors {
+      font-size: 11px;
+    }
+
+    /* Header Component */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2mm;
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .badge-pill .icon {
+      font-size: 9px;
+    }
+
+    .title-main {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .title-sub {
+      font-size: 9px;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .spec-tag {
+      font-size: 8px;
+      font-weight: 700;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 2.5px 7px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+
+    .handout-tag {
+      display: block;
+      font-size: 7.5px;
+      font-weight: 700;
+      color: #059669;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Student Meta Row */
+    .student-meta {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 4px 8px;
+      margin-bottom: 2mm;
+    }
+
+    .meta-field {
+      font-size: 8px;
+      color: #64748b;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .meta-field span.label {
+      color: #334155;
+      font-weight: 700;
+    }
+
+    .meta-line {
+      flex: 1;
+      border-bottom: 1px dotted #94a3b8;
+      height: 10px;
+    }
+
+    /* Instructions Box */
+    .task-banner {
+      background: #f0fdf4;
+      border-left: 3px solid #16a34a;
+      border-radius: 0 4px 4px 0;
+      padding: 3px 8px;
+      font-size: 8px;
+      color: #166534;
+      font-weight: 500;
+      margin-bottom: 2.5mm;
+      line-height: 1.25;
+    }
+
+    .task-banner strong {
+      color: #14532d;
+      font-weight: 700;
+    }
+
+    /* Matrix Table */
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1.5px solid #cbd5e1;
+      margin-bottom: 2.5mm;
+    }
+
+    .matrix-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 4px 6px;
+      text-align: center;
+      border-bottom: 1.5px solid #cbd5e1;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .matrix-table th:first-child {
+      text-align: left;
+      width: 31%;
+      padding-left: 8px;
+    }
+
+    .matrix-table th:nth-child(2) { width: 23%; }
+    .matrix-table th:nth-child(3) { width: 23%; }
+    .matrix-table th:nth-child(4) { width: 23%; border-right: none; }
+
+    .matrix-table th small {
+      display: block;
+      font-weight: 600;
+      font-size: 7.5px;
+      color: #64748b;
+    }
+
+    .matrix-table td {
+      padding: 3.5px 6px;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+
+    .matrix-table td:last-child {
+      border-right: none;
+    }
+
+    .matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .matrix-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    .organelle-name {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 8.5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .organelle-sub {
+      font-size: 7px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .check-box-cell {
+      text-align: center;
+    }
+
+    .check-slot {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border: 1.5px solid #94a3b8;
+      border-radius: 3px;
+      background: #ffffff;
+      vertical-align: middle;
+    }
+
+    /* Quick Extension Challenge */
+    .bottom-row {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 8px;
+      align-items: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      padding: 4px 8px;
+    }
+
+    .extension-box {
+      font-size: 7.8px;
+      color: #334155;
+      line-height: 1.3;
+    }
+
+    .extension-box strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .extension-lines {
+      display: inline-flex;
+      gap: 6px;
+      margin-left: 3px;
+    }
+
+    .ext-line {
+      display: inline-block;
+      border-bottom: 1px dotted #64748b;
+      width: 65px;
+      height: 10px;
+    }
+
+    .assessment-box {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      font-size: 7.5px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .assessment-box span.dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border: 1px solid #94a3b8;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
+
+    /* ============================================================
+       PAGE 2: TEACHER ANSWER KEY & MARK SCHEME
+       ============================================================ */
+    .page-2-container {
+      padding: 9mm 12mm 8mm 12mm;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ms-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 3mm;
+      margin-bottom: 3.5mm;
+    }
+
+    .ms-badge {
+      background: #fef3c7;
+      border: 1px solid #fde047;
+      color: #b45309;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .ms-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    .ms-sub {
+      font-size: 9.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .ms-meta-right {
+      text-align: right;
+    }
+
+    .ms-total-badge {
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 3px;
+    }
+
+    /* Answers Table */
+    .ans-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 4mm;
+    }
+
+    .ans-table th {
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 700;
+      padding: 6px 8px;
+      text-align: center;
+      border-right: 1px solid #334155;
+    }
+
+    .ans-table th:first-child {
+      text-align: left;
+      padding-left: 10px;
+      width: 25%;
+    }
+    .ans-table th:nth-child(2) { width: 17%; }
+    .ans-table th:nth-child(3) { width: 17%; }
+    .ans-table th:nth-child(4) { width: 17%; }
+    .ans-table th:nth-child(5) { width: 24%; border-right: none; }
+
+    .ans-table th small {
+      display: block;
+      font-weight: 400;
+      font-size: 7.5px;
+      color: #94a3b8;
+    }
+
+    .ans-table td {
+      padding: 4.5px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+
+    .ans-table td:last-child {
+      border-right: none;
+    }
+
+    .ans-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    .cell-val {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-weight: 700;
+      font-size: 9.5px;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+
+    .cell-val.tick {
+      color: #15803d;
+      background: #dcfce7;
+    }
+
+    .cell-val.cross {
+      color: #b91c1c;
+      background: #fee2e2;
+    }
+
+    .cell-rationale {
+      font-size: 7.8px;
+      color: #475569;
+      line-height: 1.25;
+    }
+
+    /* Misconceptions Box */
+    .misconceptions-card {
+      background: #fffbeb;
+      border: 1.5px solid #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: 6px;
+      padding: 7px 10px;
+      margin-bottom: 3.5mm;
+    }
+
+    .misconceptions-card h4 {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #92400e;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .misconceptions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .misconception-item {
+      font-size: 8px;
+      color: #78350f;
+      line-height: 1.3;
+    }
+
+    .misconception-item strong {
+      color: #92400e;
+    }
+
+    .guidance-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 8px;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    .guidance-box strong {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       PAGE 1: STUDENT HANDOUT (2 IDENTICAL COPIES PER A4 SHEET)
+       ======================================================== -->
+  <div class="a4-page" id="page1">
+
+    <!-- HANDOUT COPY 1 (TOP HALF) -->
+    <section class="half-handout" aria-label="Student Handout Copy 1">
+      <div>
+        <div class="header-row">
+          <div class="header-left">
+            <span class="badge-pill"><span class="icon">🔬</span> GCSE Biology · Cell Biology</span>
+            <h1 class="title-main">The Organelle Matrix: Compare &amp; Contrast</h1>
+            <p class="title-sub">Distinguishing Sub-Cellular Structures Across Living Kingdoms</p>
+          </div>
+          <div class="header-right">
+            <span class="spec-tag">Topic 1.1 Cell Types</span>
+            <span class="handout-tag">Half-A4 Handout</span>
+          </div>
+        </div>
+
+        <div class="student-meta">
+          <div class="meta-field"><span class="label">Name:</span><span class="meta-line"></span></div>
+          <div class="meta-field"><span class="label">Date:</span><span class="meta-line"></span></div>
+          <div class="meta-field"><span class="label">Class:</span><span class="meta-line"></span></div>
+          <div class="meta-field"><span class="label">Score:</span><span class="meta-line" style="flex:0 0 24px;"></span> / 21</div>
+        </div>
+
+        <div class="task-banner">
+          <strong>Task:</strong> Complete the matrix below by writing a tick (<span style="color:#15803d;font-weight:700;">✔</span>) if the sub-cellular structure is present, or a cross (<span style="color:#b91c1c;font-weight:700;">✖</span>) if it is absent in each cell type. (1 mark per box)
+        </div>
+
+        <table class="matrix-table" aria-label="Organelle Matrix Worksheet Table">
+          <thead>
+            <tr>
+              <th>Sub-Cellular Structure</th>
+              <th>Animal<small>(Eukaryote)</small></th>
+              <th>Plant<small>(Eukaryote)</small></th>
+              <th>Bacteria<small>(Prokaryote)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="organelle-name">Nucleus</div>
+                <div class="organelle-sub">Contains genetic material &amp; chromosomes</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Cell Membrane</div>
+                <div class="organelle-sub">Controls substance movement into/out of cell</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Mitochondria</div>
+                <div class="organelle-sub">Site of aerobic respiration (releases ATP)</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Ribosomes</div>
+                <div class="organelle-sub">Site of protein synthesis</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Chloroplasts</div>
+                <div class="organelle-sub">Contains chlorophyll for photosynthesis</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Cell Wall</div>
+                <div class="organelle-sub">Provides structural support &amp; strength</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Plasmids</div>
+                <div class="organelle-sub">Small circular rings of extra DNA</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bottom-row">
+        <div class="extension-box">
+          <strong>Extension Challenge (+2):</strong> Name TWO structures found in <em>ALL THREE</em> cell types:
+          <div class="extension-lines">
+            1. <span class="ext-line"></span>
+            2. <span class="ext-line"></span>
+          </div>
+        </div>
+        <div class="assessment-box">
+          <span>Self-Check:</span>
+          <span><span class="dot"></span>Review</span>
+          <span><span class="dot"></span>Got It</span>
+          <span><span class="dot"></span>Can Teach</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUT LINE (CENTER DIVIDER) -->
+    <div class="cut-line-wrapper">
+      <div class="cut-line-rule"></div>
+      <div class="cut-badge">
+        <span class="scissors">✂</span> CUT ALONG LINE (2 IDENTICAL HANDOUTS PER A4 PAGE) <span class="scissors">✂</span>
+      </div>
+    </div>
+
+    <!-- HANDOUT COPY 2 (BOTTOM HALF - IDENTICAL) -->
+    <section class="half-handout" aria-label="Student Handout Copy 2">
+      <div>
+        <div class="header-row">
+          <div class="header-left">
+            <span class="badge-pill"><span class="icon">🔬</span> GCSE Biology · Cell Biology</span>
+            <h2 class="title-main">The Organelle Matrix: Compare &amp; Contrast</h2>
+            <p class="title-sub">Distinguishing Sub-Cellular Structures Across Living Kingdoms</p>
+          </div>
+          <div class="header-right">
+            <span class="spec-tag">Topic 1.1 Cell Types</span>
+            <span class="handout-tag">Half-A4 Handout</span>
+          </div>
+        </div>
+
+        <div class="student-meta">
+          <div class="meta-field"><span class="label">Name:</span><span class="meta-line"></span></div>
+          <div class="meta-field"><span class="label">Date:</span><span class="meta-line"></span></div>
+          <div class="meta-field"><span class="label">Class:</span><span class="meta-line"></span></div>
+          <div class="meta-field"><span class="label">Score:</span><span class="meta-line" style="flex:0 0 24px;"></span> / 21</div>
+        </div>
+
+        <div class="task-banner">
+          <strong>Task:</strong> Complete the matrix below by writing a tick (<span style="color:#15803d;font-weight:700;">✔</span>) if the sub-cellular structure is present, or a cross (<span style="color:#b91c1c;font-weight:700;">✖</span>) if it is absent in each cell type. (1 mark per box)
+        </div>
+
+        <table class="matrix-table" aria-label="Organelle Matrix Worksheet Table">
+          <thead>
+            <tr>
+              <th>Sub-Cellular Structure</th>
+              <th>Animal<small>(Eukaryote)</small></th>
+              <th>Plant<small>(Eukaryote)</small></th>
+              <th>Bacteria<small>(Prokaryote)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="organelle-name">Nucleus</div>
+                <div class="organelle-sub">Contains genetic material &amp; chromosomes</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Cell Membrane</div>
+                <div class="organelle-sub">Controls substance movement into/out of cell</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Mitochondria</div>
+                <div class="organelle-sub">Site of aerobic respiration (releases ATP)</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Ribosomes</div>
+                <div class="organelle-sub">Site of protein synthesis</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Chloroplasts</div>
+                <div class="organelle-sub">Contains chlorophyll for photosynthesis</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Cell Wall</div>
+                <div class="organelle-sub">Provides structural support &amp; strength</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="organelle-name">Plasmids</div>
+                <div class="organelle-sub">Small circular rings of extra DNA</div>
+              </td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+              <td class="check-box-cell"><span class="check-slot"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bottom-row">
+        <div class="extension-box">
+          <strong>Extension Challenge (+2):</strong> Name TWO structures found in <em>ALL THREE</em> cell types:
+          <div class="extension-lines">
+            1. <span class="ext-line"></span>
+            2. <span class="ext-line"></span>
+          </div>
+        </div>
+        <div class="assessment-box">
+          <span>Self-Check:</span>
+          <span><span class="dot"></span>Review</span>
+          <span><span class="dot"></span>Got It</span>
+          <span><span class="dot"></span>Can Teach</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================================
+       PAGE 2: TEACHER ANSWER KEY & MARK SCHEME
+       ======================================================== -->
+  <div class="a4-page" id="page2">
+    <div class="page-2-container">
+      <div>
+        <div class="ms-header-row">
+          <div>
+            <span class="ms-badge">Teacher Mark Scheme</span>
+            <h2 class="ms-title">The Organelle Matrix — Official Answer Key</h2>
+            <p class="ms-sub">GCSE Combined Science / GCSE Biology (Cell Biology Specification Standard)</p>
+          </div>
+          <div class="ms-meta-right">
+            <span class="ms-total-badge">Total Marks: 21 + 2</span>
+            <div style="font-size:8px;color:#64748b;font-weight:600;">1 mark per table box</div>
+          </div>
+        </div>
+
+        <table class="ans-table" aria-label="Official Teacher Answer Key Table">
+          <thead>
+            <tr>
+              <th>Sub-Cellular Structure</th>
+              <th>Animal<small>(Eukaryote)</small></th>
+              <th>Plant<small>(Eukaryote)</small></th>
+              <th>Bacteria<small>(Prokaryote)</small></th>
+              <th>Examiner Guidance &amp; Biological Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Nucleus</strong></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val cross">✖ Absent</span></td>
+              <td class="cell-rationale">Bacteria have <strong>no nucleus</strong>; single circular DNA loop floats free in cytoplasm.</td>
+            </tr>
+            <tr>
+              <td><strong>Cell Membrane</strong></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td class="cell-rationale">Found in <strong>all living cells</strong> to regulate molecular transport in/out.</td>
+            </tr>
+            <tr>
+              <td><strong>Mitochondria</strong></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val cross">✖ Absent</span></td>
+              <td class="cell-rationale">Bacteria lack membrane-bound organelles; respiration occurs across the cell membrane.</td>
+            </tr>
+            <tr>
+              <td><strong>Ribosomes</strong></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td class="cell-rationale">Found in <strong>all living cells</strong> for translation &amp; protein synthesis (70S in prokaryotes, 80S in eukaryotes).</td>
+            </tr>
+            <tr>
+              <td><strong>Chloroplasts</strong></td>
+              <td><span class="cell-val cross">✖ Absent</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val cross">✖ Absent</span></td>
+              <td class="cell-rationale">Found in photosynthetic green plant cells. (Note: underground plant cells like root hair cells lack them).</td>
+            </tr>
+            <tr>
+              <td><strong>Cell Wall</strong></td>
+              <td><span class="cell-val cross">✖ Absent</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td class="cell-rationale">Plant cell walls are made of <strong>cellulose</strong>; bacterial walls of <strong>peptidoglycan</strong>. Animal cells NEVER have a cell wall.</td>
+            </tr>
+            <tr>
+              <td><strong>Plasmids</strong></td>
+              <td><span class="cell-val cross">✖ Absent</span></td>
+              <td><span class="cell-val cross">✖ Absent</span></td>
+              <td><span class="cell-val tick">✔ Present</span></td>
+              <td class="cell-rationale">Small circular rings of accessory DNA characteristic of bacteria; often carry antibiotic resistance genes.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Extension Question Answers -->
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid #16a34a;border-radius:6px;padding:6px 10px;font-size:8.5px;color:#14532d;margin-bottom:3.5mm;">
+          <strong>Extension Challenge Answer Key (+2 Marks):</strong> Structures present in ALL three cell types:<br>
+          Any TWO of: <strong>Cell Membrane</strong> (1 mark), <strong>Ribosomes</strong> (1 mark), or <strong>Cytoplasm</strong> (1 mark).
+        </div>
+
+        <!-- Misconceptions Box -->
+        <div class="misconceptions-card">
+          <h4><span>⚠️</span> Critical GCSE Examiner Distinctions &amp; Misconceptions:</h4>
+          <div class="misconceptions-grid">
+            <div class="misconception-item">
+              <strong>1. Bacterial DNA vs Nucleus:</strong> A common student error is claiming bacteria have a nucleus. Emphasize that prokaryote means "before nucleus". Their chromosome is a loose circular strand plus plasmids.
+            </div>
+            <div class="misconception-item">
+              <strong>2. "Do all plant cells have chloroplasts?":</strong> Remind students that root hair cells and onion bulb cells do NOT have chloroplasts because they are underground and receive no sunlight.
+            </div>
+            <div class="misconception-item">
+              <strong>3. Cell Wall Chemistry:</strong> Plant walls = cellulose (strengthens against turgor pressure). Bacterial walls = peptidoglycan. Animal cells never have cell walls.
+            </div>
+            <div class="misconception-item">
+              <strong>4. Respiration in Bacteria:</strong> Even without mitochondria, bacteria still carry out respiration using electron transport enzymes on their plasma membrane.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guidance-box">
+        <strong>Pedagogical Progression &amp; Differentiation:</strong>
+        This matrix functions as an essential diagnostic retrieval check midway through Cell Biology. 
+        <em>Target score for mastery: 18/21+.</em> Students achieving &lt;14 should revisit eukaryotic vs prokaryotic distinctions before advancing to microscopy calculations.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
