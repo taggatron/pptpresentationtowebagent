@@ -1468,15 +1468,86 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first component",
+          "label": "Build 1: Reveal Year 12 Theory (Unit F170: Fundamentals of Human Biology)",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png"
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nShow now: Slide title and Container 1: Year 12 Theory (Unit F170: Fundamentals of Human Biology - Exam 22% of grade).\nTemporarily omit: Container 2 (Year 12 Applied), Container 3 (Year 13 Theory), Container 4 (Year 13 Applied), and bottom summary banner.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "generatedAt": "2026-09-10T10:11:41.542Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Year 12 Theory (Unit F170: Fundamentals of Human Biology)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "857294 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_1_component_reveal.png",
+              "byteLength": 857294,
+              "sha256": "6ddd003defcc704b810702f7249c8df6364b767141f7ba8c0be60f845b082813",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
         },
         {
           "id": "gemini_slide_8_2_component_reveal",
@@ -1484,15 +1555,86 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Add the next component",
+          "label": "Build 2: Reveal Year 12 Applied (Units F172: Genetics & F173: Biomedical Techniques)",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png"
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: keep the slide title fully opaque and sharp. Render previously animated Container 1 (Year 12 Theory) as translucent and greyed out. Then render newly requested Container 2: Year 12 Applied (Unit F172: Genetics & Unit F173: Biomedical Techniques - NEAs 14% each) fully opaque, sharp, and in full vibrant colour.\nTemporarily omit: Container 3 (Year 13 Theory), Container 4 (Year 13 Applied), and bottom summary banner.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "generatedAt": "2026-09-10T10:11:41.542Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Year 12 Applied (Units F172: Genetics & F173: Biomedical Techniques)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1017756 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_2_component_reveal.png",
+              "byteLength": 1017756,
+              "sha256": "5803eeaf10173f94e4090fdc582167d6546b639fe97e31db94035a58c41d3103",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
         },
         {
           "id": "gemini_slide_8_3_component_reveal",
@@ -1500,18 +1642,176 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 3: Complete the instructional build",
+          "label": "Build 3: Reveal Year 13 Theory (Unit F171: Health and Disease)",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Human Biology Scientist Onboarding. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png"
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: keep the slide title fully opaque and sharp. Render previously animated Container 1 (Year 12 Theory) and Container 2 (Year 12 Applied) as translucent and greyed out. Then render newly requested Container 3: Year 13 Theory (Unit F171: Health and Disease - Exam 22%) fully opaque, sharp, and in full vibrant colour.\nTemporarily omit: Container 4 (Year 13 Applied) and bottom summary banner.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "generatedAt": "2026-09-10T10:11:41.542Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Year 13 Theory (Unit F171: Health and Disease)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1250040 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_3_component_reveal.png",
+              "byteLength": 1250040,
+              "sha256": "3a2a2a158ad4d520cd1781047892fd9a2bf1c695a6f4c6ac31dc7eee909f3bf9",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_8_4_component_reveal",
+          "order": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 4: Reveal Year 13 Applied (Specializations) & Synthesis Architecture",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: keep the slide title fully opaque and sharp. Render previously animated Containers 1, 2, and 3 as translucent and greyed out. Then render newly requested Container 4: Year 13 Applied (Two optional specializations - NEAs 14% each), the central circuit junction, and the bottom summary banner (\"Bridging the gap between biological theory and biomedical application.\") fully opaque, sharp, and in full vibrant colour.\nTemporarily omit: Nothing instructional.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_4_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "generatedAt": "2026-09-10T10:11:41.542Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 4: Reveal Year 13 Applied (Specializations) & Synthesis Architecture",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1526744 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_4_component_reveal.png",
+              "byteLength": 1526744,
+              "sha256": "327cf7b0832d27cfa4e050ff0c8c0189b1dd0d53748b7de888346d65ee175f3e",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
         }
       ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
@@ -1519,8 +1819,8 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
+        "plannedCellCount": 4,
+        "approvedCellCount": 4,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
@@ -1533,6 +1833,434 @@
         "source": "local-ocr-fallback",
         "transcript": "Ye\n\nThe Blueprint: OCR AAQ Course Architecture — ,\n\nYear 12 Theory Year 12 Applied\nUnit F170: Fundamentals Unit F172: Genetics & te,\n\nof Human Biology : Unit F173: Biomedical Techniques\n\n(Exam - 22% of grade) (NEAs - 14% each)\n: La\nYear 13 Theory | | Year 13 Applied\nUnit F171: Health and Disease Two optional specializations\nU7. (Exam - 22%) ) (NEAs - 14% each)\np/p:\n~~ Bridging the gap between biological theory and biomedical application.",
         "role": "instructional-content"
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal Year 12 Theory (Unit F170: Fundamentals of Human Biology)",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_1_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nShow now: Slide title and Container 1: Year 12 Theory (Unit F170: Fundamentals of Human Biology - Exam 22% of grade).\nTemporarily omit: Container 2 (Year 12 Applied), Container 3 (Year 13 Theory), Container 4 (Year 13 Applied), and bottom summary banner.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Year 12 Theory (Unit F170: Fundamentals of Human Biology)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "857294 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_1_component_reveal.png",
+              "byteLength": 857294,
+              "sha256": "6ddd003defcc704b810702f7249c8df6364b767141f7ba8c0be60f845b082813",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Reveal Year 12 Applied (Units F172: Genetics & F173: Biomedical Techniques)",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_2_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: keep the slide title fully opaque and sharp. Render previously animated Container 1 (Year 12 Theory) as translucent and greyed out. Then render newly requested Container 2: Year 12 Applied (Unit F172: Genetics & Unit F173: Biomedical Techniques - NEAs 14% each) fully opaque, sharp, and in full vibrant colour.\nTemporarily omit: Container 3 (Year 13 Theory), Container 4 (Year 13 Applied), and bottom summary banner.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Year 12 Applied (Units F172: Genetics & F173: Biomedical Techniques)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1017756 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_2_component_reveal.png",
+              "byteLength": 1017756,
+              "sha256": "5803eeaf10173f94e4090fdc582167d6546b639fe97e31db94035a58c41d3103",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_8_3_component_reveal",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Reveal Year 13 Theory (Unit F171: Health and Disease)",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_3_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: keep the slide title fully opaque and sharp. Render previously animated Container 1 (Year 12 Theory) and Container 2 (Year 12 Applied) as translucent and greyed out. Then render newly requested Container 3: Year 13 Theory (Unit F171: Health and Disease - Exam 22%) fully opaque, sharp, and in full vibrant colour.\nTemporarily omit: Container 4 (Year 13 Applied) and bottom summary banner.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Year 13 Theory (Unit F171: Health and Disease)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1250040 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_3_component_reveal.png",
+              "byteLength": 1250040,
+              "sha256": "3a2a2a158ad4d520cd1781047892fd9a2bf1c695a6f4c6ac31dc7eee909f3bf9",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_8_4_component_reveal",
+          "version": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 4: Reveal Year 13 Applied (Specializations) & Synthesis Architecture",
+          "imageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_4_component_reveal.png",
+          "sourceImageUrl": "/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 8: \"The Blueprint: OCR AAQ Course Architecture\".\nDeck context: 1. Human Biology Scientist Onboarding.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: keep the slide title fully opaque and sharp. Render previously animated Containers 1, 2, and 3 as translucent and greyed out. Then render newly requested Container 4: Year 13 Applied (Two optional specializations - NEAs 14% each), the central circuit junction, and the bottom summary banner (\"Bridging the gap between biological theory and biomedical application.\") fully opaque, sharp, and in full vibrant colour.\nTemporarily omit: Nothing instructional.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-10T10:11:41.542Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 4: Reveal Year 13 Applied (Specializations) & Synthesis Architecture",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1526744 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/Lesson_01_Human_Biology_Scientist_Onboarding/slides/slide_08_gemini_slide_8_4_component_reveal.png",
+              "byteLength": 1526744,
+              "sha256": "327cf7b0832d27cfa4e050ff0c8c0189b1dd0d53748b7de888346d65ee175f3e",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "baf08fc960e0d5ccbce306b6ee8cfdc9ba7145332c72059edb40cca2ccb17eb4",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_8_1_component_reveal",
+            "title": "Build 1: Reveal Year 12 Theory (Unit F170: Fundamentals of Human Biology)",
+            "componentIds": [
+              "gemini_slide_8_1_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_8_2_component_reveal",
+            "title": "Build 2: Reveal Year 12 Applied (Units F172: Genetics & F173: Biomedical Techniques)",
+            "componentIds": [
+              "gemini_slide_8_2_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_8_3_component_reveal",
+            "title": "Build 3: Reveal Year 13 Theory (Unit F171: Health and Disease)",
+            "componentIds": [
+              "gemini_slide_8_3_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 4,
+            "buildId": "gemini_slide_8_4_component_reveal",
+            "title": "Build 4: Reveal Year 13 Applied (Specializations) & Synthesis Architecture",
+            "componentIds": [
+              "gemini_slide_8_4_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
