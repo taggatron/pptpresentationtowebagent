@@ -121,6 +121,28 @@ test("Analytics DB manages sessions, slide dwell recording, and aggregation", ()
   assert.equal(starterPhase.totalDwellMs, 60000);
 });
 
+test("Successive slide heartbeats update to maximum elapsed duration without quadratic accumulation", () => {
+  const testDeck = `test_heartbeat_${Date.now()}`;
+  const session = startTrackingSession(testDeck, 5);
+
+  // Simulate 3 successive heartbeats 2s apart sending cumulative dwell: 2000, 4000, 6000ms
+  recordSlideDwell(session.id, testDeck, 0, 1, 2000, "starter");
+  recordSlideDwell(session.id, testDeck, 0, 1, 4000, "starter");
+  const finalBeat = recordSlideDwell(session.id, testDeck, 0, 1, 6000, "starter");
+
+  assert.equal(finalBeat.dwellMs, 6000);
+
+  const summary = finishTrackingSession(session.id, testDeck);
+  // Total session duration must be 6 seconds, NOT 2 + 4 + 6 = 12 seconds
+  assert.equal(summary.totalDurationSeconds, 6);
+
+  const deckData = getDeckAnalytics(testDeck);
+  const slide1 = deckData.slides.find((s) => s.slideNumber === 1);
+  assert.ok(slide1);
+  assert.equal(slide1.durationSeconds, 6);
+  assert.equal(slide1.totalDwellMs, 6000);
+});
+
 test("formatDuration formats milliseconds correctly", () => {
   assert.equal(formatDuration(0), "0s");
   assert.equal(formatDuration(45000), "45s");

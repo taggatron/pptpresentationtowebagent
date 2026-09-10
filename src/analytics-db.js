@@ -143,8 +143,8 @@ export function recordSlideDwell(
     INSERT INTO slide_dwells (session_id, slide_number, slide_title, lesson_phase, duration_seconds, updated_at)
     VALUES (?, ?, ?, ?, ?, ?)
     ON CONFLICT(session_id, slide_number) DO UPDATE SET
-      duration_seconds = duration_seconds + excluded.duration_seconds,
-      slide_title = excluded.slide_title,
+      duration_seconds = MAX(duration_seconds, excluded.duration_seconds),
+      slide_title = CASE WHEN excluded.slide_title != '' THEN excluded.slide_title ELSE slide_title END,
       lesson_phase = excluded.lesson_phase,
       updated_at = excluded.updated_at
   `);
