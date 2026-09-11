@@ -130,10 +130,11 @@
     .slide-content {
       flex: 1;
       display: grid;
-      grid-template-columns: 1.18fr 1fr;
-      gap: 2.2vw;
-      align-items: stretch;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 2.5vw;
+      align-items: center;
       min-height: 0;
+      padding: 0.5vh 0;
     }
 
     /* Left: Video Player Column */
@@ -142,20 +143,21 @@
       flex-direction: column;
       justify-content: center;
       min-height: 0;
+      gap: 10px;
     }
 
     .video-card {
       position: relative;
-      background: #000;
-      border-radius: 16px;
+      background: #0b130e;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 16px 36px rgba(15, 35, 20, 0.16), 0 2px 6px rgba(0,0,0,0.06);
       aspect-ratio: 16 / 9;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 3px solid #ffffff;
+      border: 3.5px solid #2d6a4f;
     }
 
     .video-element {
@@ -185,12 +187,12 @@
     }
 
     .play-circle-btn {
-      width: 68px;
-      height: 68px;
+      width: 76px;
+      height: 76px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-      border: 2px solid #ffffff;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
+      border: 2.5px solid #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -204,8 +206,8 @@
     }
 
     .play-circle-btn svg {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       margin-left: 4px;
       fill: currentColor;
     }
@@ -216,11 +218,11 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.7) 65%, transparent 100%);
-      padding: 24px 14px 10px 14px;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.72) 65%, transparent 100%);
+      padding: 26px 16px 12px 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       z-index: 6;
       transition: opacity 0.3s ease;
     }
@@ -232,7 +234,7 @@
 
     .progress-container {
       width: 100%;
-      height: 7px;
+      height: 8px;
       background: rgba(255, 255, 255, 0.28);
       border-radius: 4px;
       cursor: pointer;
@@ -253,13 +255,13 @@
       align-items: center;
       justify-content: space-between;
       color: #ffffff;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .controls-left, .controls-right {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .ctrl-btn {
@@ -267,50 +269,49 @@
       border: none;
       color: #ffffff;
       cursor: pointer;
-      padding: 5px 8px;
+      padding: 6px 10px;
       border-radius: 6px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-family: inherit;
       font-weight: 600;
       transition: background 0.15s, transform 0.1s;
     }
 
     .ctrl-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.22);
     }
 
     .ctrl-btn svg {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       fill: currentColor;
     }
 
     .time-display {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.02em;
-      color: rgba(255, 255, 255, 0.9);
-      min-width: 75px;
+      color: rgba(255, 255, 255, 0.92);
+      min-width: 80px;
     }
 
     .speed-badge {
-      background: rgba(255, 255, 255, 0.18);
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.78rem;
       font-weight: 700;
     }
 
     /* Teacher Video Tip underneath */
     .video-under-tip {
-      margin-top: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: #4b5563;
       padding: 0 4px;
     }
@@ -318,16 +319,16 @@
     .key-hint {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
     }
 
     .kbd-chip {
       background: #e5e7eb;
-      border: 1px solid #d1d5db;
-      padding: 1px 6px;
+      border: 1px solid #cbd5e1;
+      padding: 2px 7px;
       border-radius: 4px;
       font-family: monospace;
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       font-weight: 700;
       color: #374151;
     }
@@ -336,55 +337,52 @@
     .discussion-column {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      gap: 1.2vh;
+      justify-content: center;
+      gap: 1.4vh;
       min-height: 0;
-      overflow-y: auto;
-      padding-right: 4px;
     }
 
     .task-banner {
       background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
       color: #ffffff;
-      padding: 12px 16px;
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
+      padding: 14px 18px;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(27, 67, 50, 0.22);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .task-icon {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       line-height: 1;
     }
 
     .task-text h3 {
       font-family: 'Outfit', sans-serif;
-      font-size: 0.98rem;
+      font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
 
     .task-text p {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-top: 2px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.92);
+      margin-top: 3px;
     }
 
     /* Checkpoint Reveal Cards */
     .reveal-cards-container {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      flex: 1;
+      gap: 10px;
     }
 
     .reveal-card {
       background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 10px;
-      padding: 9px 13px;
+      border: 1.8px solid var(--card-border);
+      border-radius: 12px;
+      padding: 12px 16px;
       cursor: pointer;
       transition: all 0.2s ease;
       box-shadow: var(--shadow-sm);
@@ -393,8 +391,8 @@
 
     .reveal-card:hover {
       border-color: #2d6a4f;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
     }
 
     .card-header {
@@ -406,41 +404,41 @@
     .card-title-wrap {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .card-num {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: #e2e8f0;
       color: #1e293b;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 800;
     }
 
     .card-title {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: #111827;
     }
 
     .card-toggle-icon {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: #64748b;
       transition: transform 0.2s ease;
     }
 
     .card-body {
-      margin-top: 6px;
-      font-size: 0.81rem;
-      line-height: 1.4;
-      color: #1e3a2b;
-      padding-top: 6px;
-      border-top: 1px dashed rgba(45, 106, 79, 0.2);
+      margin-top: 8px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: #1b4332;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(45, 106, 79, 0.25);
       display: none;
     }
 
@@ -464,45 +462,42 @@
       color: #10b981;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-3px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     /* Actions row */
     .discussion-actions {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 2px;
-      padding-top: 4px;
+      margin-top: 6px;
     }
 
     .btn-reveal-all {
       background: #1b4332;
       color: #ffffff;
       border: none;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.8rem;
+      padding: 8px 18px;
+      border-radius: 9px;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.15s, transform 0.1s;
+      box-shadow: 0 4px 10px rgba(27, 67, 50, 0.2);
     }
 
     .btn-reveal-all:hover {
       background: #2d6a4f;
+      transform: translateY(-1px);
     }
 
     .btn-reset-cards {
       background: transparent;
-      border: 1px solid #cbd5e1;
+      border: 1.5px solid #cbd5e1;
       color: #64748b;
-      padding: 5px 12px;
-      border-radius: 8px;
-      font-size: 0.78rem;
+      padding: 7px 15px;
+      border-radius: 9px;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
+      transition: background 0.15s;
     }
 
     .btn-reset-cards:hover {
@@ -510,14 +505,42 @@
       color: #334155;
     }
 
-    /* Slide Navigation Hint */
-    .nav-prompt-pill {
-      font-size: 0.75rem;
-      color: #475569;
-      font-weight: 600;
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1vh;
+      border-top: 1px solid rgba(45, 106, 79, 0.15);
+      margin-top: 0.5vh;
+    }
+
+    .slide-footer-left {
+      font-size: 0.78rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .slide-footer-right {
       display: flex;
       align-items: center;
       gap: 6px;
+      font-size: 0.76rem;
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    .footer-logo-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      background: #2d6a4f;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
     }
   </style>
 </head>
@@ -547,7 +570,7 @@
             id="fieldworkVideo"
             class="video-element"
             src="/decks/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/Please_create_a_comedic_video.mp4"
-            poster="/decks/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/video_poster_frame_1.5s.png"
+            poster="/decks/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/video_poster.png"
             playsinline
             preload="auto"
           ></video>
@@ -673,8 +696,18 @@
           <button type="button" class="btn-reveal-all" id="revealAllBtn">Reveal All Insights</button>
           <button type="button" class="btn-reset-cards" id="resetCardsBtn">Reset Checkpoints</button>
         </div>
-      </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="slide-footer">
+      <div class="slide-footer-left">
+        Lesson 2: Investigating Abundance and Distribution &nbsp;•&nbsp; Ecological Sampling Methods
+      </div>
+      <div class="slide-footer-right">
+        <span class="footer-logo-icon">✦</span>
+        <span>Gemini Notebook</span>
+      </div>
+    </footer>
   </div>
 
   <script>
