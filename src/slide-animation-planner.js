@@ -735,6 +735,7 @@ function buildGeminiImagePrompt({ slide, strategy, step, index, total, summary }
       : null,
     step.answerReference,
     contentReference,
+    "Ensure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.",
     "Keep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.",
     "Do not invent facts, redesign the deck, add watermarks, or modify any separate video asset."
   ]
