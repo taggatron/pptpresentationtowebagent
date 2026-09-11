@@ -68,28 +68,22 @@ test("Lesson Phase Classifier maps Classic_Lesson_01_Ecosystems slides accuratel
   assert.equal(slide4.phaseKey, "modelling");
 
   const slide5 = classifySlideLessonPhase(
-    { number: 5, title: "We Are All Made of Cells" },
+    { number: 5, title: "Interactive Challenge" },
     "Classic_Lesson_01_Ecosystems"
   );
-  assert.equal(slide5.phaseKey, "direct_instruction");
+  assert.equal(slide5.phaseKey, "guided_practice");
 
-  const slide6 = classifySlideLessonPhase(
-    { number: 6, title: "Interactive Challenge" },
+  const slide8 = classifySlideLessonPhase(
+    { number: 8, title: "OCR Exam Questions & Mark Scheme" },
     "Classic_Lesson_01_Ecosystems"
   );
-  assert.equal(slide6.phaseKey, "guided_practice");
+  assert.equal(slide8.phaseKey, "independent_practice");
 
-  const slide9 = classifySlideLessonPhase(
-    { number: 9, title: "OCR Exam Questions & Mark Scheme" },
+  const slide17 = classifySlideLessonPhase(
+    { number: 17, title: "Exit Ticket & Summary" },
     "Classic_Lesson_01_Ecosystems"
   );
-  assert.equal(slide9.phaseKey, "independent_practice");
-
-  const slide18 = classifySlideLessonPhase(
-    { number: 18, title: "Exit Ticket & Summary" },
-    "Classic_Lesson_01_Ecosystems"
-  );
-  assert.equal(slide18.phaseKey, "plenary");
+  assert.equal(slide17.phaseKey, "plenary");
 });
 
 test("Analytics DB manages sessions, slide dwell recording, and aggregation", () => {
