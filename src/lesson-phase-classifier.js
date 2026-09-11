@@ -116,19 +116,20 @@ const CURATED_DECK_PHASES = {
     2: "starter",               // Slide 2: Starter: Dead or Alive
     3: "direct_instruction",    // Slide 3: Lesson Objectives: Ecosystems
     4: "modelling",             // Slide 4: Two Sets of Factors (Comparison)
-    5: "guided_practice",       // Slide 5: Quick-Fire Challenge (Interactive)
-    6: "modelling",             // Slide 6: Levels of Organisation
-    7: "guided_practice",       // Slide 7: Knowledge Checkpoint: Match the Level
-    8: "independent_practice",  // Slide 8: OCR Exam Checkpoint & Mark Scheme (PDF viewer)
-    9: "direct_instruction",    // Slide 9: Ecological Interactions
-    10: "modelling",            // Slide 10: Food Chains (Primary Consumers)
-    11: "modelling",            // Slide 11: Food Webs & Energy Flows
-    12: "guided_practice",      // Slide 12: Pair-and-Share: The Knock-on Effect
-    13: "guided_practice",      // Slide 13: Invasive Species Scenarios
-    14: "independent_practice", // Slide 14: Dynamic Equilibrium Graph
-    15: "independent_practice", // Slide 15: Predator-Prey Exam Question
-    16: "plenary",              // Slide 16: Summary Plenary
-    17: "plenary"               // Slide 17: The Big Picture: The Ecosystem Engine
+    5: "direct_instruction",    // Slide 5: We Are All Made of Cells
+    6: "guided_practice",       // Slide 6: Quick-Fire Challenge (Interactive)
+    7: "modelling",             // Slide 7: Levels of Organisation
+    8: "guided_practice",       // Slide 8: Knowledge Checkpoint: Match the Level
+    9: "independent_practice",  // Slide 9: OCR Exam Checkpoint & Mark Scheme (PDF viewer)
+    10: "direct_instruction",   // Slide 10: Ecological Interactions
+    11: "modelling",            // Slide 11: Food Chains (Primary Consumers)
+    12: "modelling",            // Slide 12: Food Webs & Energy Flows
+    13: "guided_practice",      // Slide 13: Pair-and-Share: The Knock-on Effect
+    14: "guided_practice",      // Slide 14: Invasive Species Scenarios
+    15: "independent_practice", // Slide 15: Dynamic Equilibrium Graph
+    16: "independent_practice", // Slide 16: Predator-Prey Exam Question
+    17: "plenary",              // Slide 17: Summary Plenary
+    18: "plenary"               // Slide 18: The Big Picture: The Ecosystem Engine
   }
 };
 
