@@ -9,7 +9,7 @@ import fs from "fs";
 import path from "path";
 import { DatabaseSync } from "node:sqlite";
 import { LESSON_PHASE_BENCHMARKS } from "./lesson-phase-classifier.js";
-import { getCurrentLessonSlot, LESSON_SCHEDULE } from "./lesson-schedule.js";
+import { getWeekTimetable, getCurrentLessonSlot, LESSON_SCHEDULE } from "./lesson-schedule.js";
 
 const DATA_DIR = path.resolve(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "analytics.db");
@@ -775,8 +775,21 @@ export function exportAnalyticsCsv(deckId = null) {
  */
 export function getLessonAnalytics(lessonId, weekId = null) {
   const db = getAnalyticsDb();
-  const slot = LESSON_SCHEDULE.find((s) => s.id === lessonId);
-  const matchingDeckId = slot?.matchingDeckId || null;
+  const baseSlot = LESSON_SCHEDULE.find((s) => s.id === lessonId);
+  let slot = baseSlot;
+  if (weekId) {
+    try {
+      const timetable = getWeekTimetable(weekId);
+      for (const p of timetable.periods) {
+        const found = p.daySlots.find((s) => s.id === lessonId && !s.isFree);
+        if (found) {
+          slot = found;
+          break;
+        }
+      }
+    } catch {}
+  }
+  const matchingDeckId = slot?.matchingDeckId || baseSlot?.matchingDeckId || null;
 
   // 1. Fetch sessions matching lesson_id
   let sessions = [];

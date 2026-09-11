@@ -3561,13 +3561,16 @@ async function renderTimetableCalendar(weekId = "year11-week-4") {
     const data = await res.json();
     analyticsTracker.cachedTimetable = data;
 
+    analyticsTracker.selectedWeekId = weekId;
+
     // Populate week select dropdown if needed
     if (timetableWeekSelect && data.allWeeks) {
       timetableWeekSelect.innerHTML = data.allWeeks.map((w) => `
         <option value="${w.id}" ${w.id === weekId ? "selected" : ""}>
-          ${w.label} (${w.dateRange})
+          ${w.displayLabel || `${w.label} (${w.dateRange})`}
         </option>
       `).join("");
+      timetableWeekSelect.value = weekId;
     }
 
     const currentSlot = getCurrentLessonSlot();
@@ -3605,7 +3608,7 @@ async function renderTimetableCalendar(weekId = "year11-week-4") {
         if (slot.isFree) {
           html += `
             <div class="planner-free-cell">
-              <span>FREE</span>
+              <span>${slot.label || "FREE"}</span>
             </div>
           `;
         } else {
@@ -3662,6 +3665,35 @@ async function renderTimetableCalendar(weekId = "year11-week-4") {
       });
     });
 
+    // If a lesson is currently selected, update filter bar with this week's lesson details
+    if (analyticsTracker.selectedLessonId) {
+      let activeSlot = null;
+      if (data.periods) {
+        for (const p of data.periods) {
+          const found = p.daySlots.find((s) => s.id === analyticsTracker.selectedLessonId && !s.isFree);
+          if (found) {
+            activeSlot = found;
+            break;
+          }
+        }
+      }
+      if (activeSlot && activeLessonFilterBar) {
+        activeLessonFilterBar.classList.remove("hidden");
+        if (activeFilterGroupBadge) activeFilterGroupBadge.textContent = activeSlot.group;
+        if (activeFilterTopicText) activeFilterTopicText.textContent = activeSlot.topic;
+        if (activeFilterSlotTag) activeFilterSlotTag.textContent = `${activeSlot.day} ${activeSlot.periodLabel} (${activeSlot.startTime}–${activeSlot.endTime})`;
+        if (loadFilteredDeckBtn && activeSlot.matchingDeckId) {
+          loadFilteredDeckBtn.classList.remove("hidden");
+          loadFilteredDeckBtn.onclick = () => {
+            loadDeck(activeSlot.matchingDeckId);
+            closeAnalyticsModal();
+          };
+        } else if (loadFilteredDeckBtn) {
+          loadFilteredDeckBtn.classList.add("hidden");
+        }
+      }
+    }
+
   } catch (err) {
     console.error("Error rendering timetable:", err);
     planningTable.innerHTML = `<div class="timetable-error">⚠️ Could not load timetable schedule.</div>`;
@@ -3678,7 +3710,20 @@ async function selectTimetableLesson(slotId) {
     cell.classList.toggle("is-selected", cell.dataset.slotId === slotId);
   });
 
-  const slot = LESSON_SCHEDULE.find((s) => s.id === slotId);
+  let slot = null;
+  if (analyticsTracker.cachedTimetable?.periods) {
+    for (const period of analyticsTracker.cachedTimetable.periods) {
+      const found = period.daySlots.find((s) => s.id === slotId && !s.isFree);
+      if (found) {
+        slot = found;
+        break;
+      }
+    }
+  }
+  if (!slot) {
+    slot = LESSON_SCHEDULE.find((s) => s.id === slotId);
+  }
+
   if (slot && activeLessonFilterBar) {
     activeLessonFilterBar.classList.remove("hidden");
     if (activeFilterGroupBadge) activeFilterGroupBadge.textContent = slot.group;

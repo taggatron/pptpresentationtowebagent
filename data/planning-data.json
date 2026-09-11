@@ -1,0 +1,261 @@
+{
+  "sourceWorkbook": "0_Requisition sheet 2526 (1).xlsx",
+  "sourceSheet": "Planning - This Week",
+  "academicYear": "2026–27",
+  "owner": "Dan T",
+  "days": [
+    {
+      "id": "mon",
+      "label": "Monday",
+      "short": "M"
+    },
+    {
+      "id": "tue",
+      "label": "Tuesday",
+      "short": "T"
+    },
+    {
+      "id": "wed",
+      "label": "Wednesday",
+      "short": "W"
+    },
+    {
+      "id": "thu",
+      "label": "Thursday",
+      "short": "T"
+    },
+    {
+      "id": "fri",
+      "label": "Friday",
+      "short": "F"
+    }
+  ],
+  "periods": [
+    {
+      "id": "p1",
+      "number": 1,
+      "time": "09:15–10:30"
+    },
+    {
+      "id": "p2",
+      "number": 2,
+      "time": "10:45–12:00"
+    },
+    {
+      "id": "p3",
+      "number": 3,
+      "time": "12:45–14:00"
+    },
+    {
+      "id": "p4",
+      "number": 4,
+      "time": "14:15–15:30"
+    }
+  ],
+  "breaks": {
+    "p1": {
+      "label": "Break",
+      "time": "10:30–10:45"
+    },
+    "p2": {
+      "label": "Lunch",
+      "time": "12:00–12:45"
+    }
+  },
+  "sessions": [
+    {
+      "id": "tue-p2",
+      "day": "tue",
+      "period": "p2",
+      "className": "Broadsands",
+      "course": "SDHS Yr11 GCSE Combined Science",
+      "roomNo": "2.095",
+      "roomName": "Lab 7",
+      "location": "Lab 7 (2.095)",
+      "colour": "broadsands",
+      "teacher": "Dan",
+      "sharedWith": "Greg",
+      "group": "Broadsands",
+      "linkedProgramme": "year11",
+      "linkedLessonIndex": 1
+    },
+    {
+      "id": "tue-p3",
+      "day": "tue",
+      "period": "p3",
+      "className": "A Level",
+      "course": "AAQ National Human Biology Cert L3",
+      "roomNo": "3.096",
+      "roomName": "Lab 1",
+      "location": "Lab 1 (3.096)",
+      "colour": "alevel",
+      "teacher": "Dan",
+      "sharedWith": "Matt",
+      "group": "AAQ Cert",
+      "linkedProgramme": "aaq",
+      "linkedLessonIndex": 0
+    },
+    {
+      "id": "tue-p4",
+      "day": "tue",
+      "period": "p4",
+      "className": "A Level",
+      "course": "AAQ National Human Biology Cert L3",
+      "roomNo": "3.096",
+      "roomName": "Lab 1",
+      "location": "Lab 1 (3.096)",
+      "colour": "alevel",
+      "teacher": "Dan",
+      "sharedWith": "Matt",
+      "group": "AAQ Cert",
+      "linkedProgramme": "aaq",
+      "linkedLessonIndex": 1
+    },
+    {
+      "id": "wed-p2",
+      "day": "wed",
+      "period": "p2",
+      "className": "Goodrington",
+      "course": "SDHS Yr11 GCSE Combined Science",
+      "roomNo": "2.095",
+      "roomName": "Lab 7",
+      "location": "Lab 7 (2.095)",
+      "colour": "goodrington",
+      "teacher": "Dan",
+      "sharedWith": "Greg",
+      "group": "Goodrington",
+      "linkedProgramme": "year11",
+      "linkedLessonIndex": 1
+    },
+    {
+      "id": "thu-p1",
+      "day": "thu",
+      "period": "p1",
+      "className": "Goodrington",
+      "course": "SDHS Yr11 GCSE Combined Science",
+      "roomNo": "2.095",
+      "roomName": "Lab 7",
+      "location": "Lab 7 (2.095)",
+      "colour": "goodrington",
+      "teacher": "Dan",
+      "sharedWith": "Greg",
+      "group": "Goodrington",
+      "linkedProgramme": "year11",
+      "linkedLessonIndex": 2
+    },
+    {
+      "id": "fri-p1",
+      "day": "fri",
+      "period": "p1",
+      "className": "Science Rip",
+      "course": "SDHS Yr10 GCSE Combined Science",
+      "roomNo": "2.095",
+      "roomName": "Lab 7",
+      "location": "Lab 7 (2.095)",
+      "colour": "science-rip",
+      "teacher": "Dan",
+      "sharedWith": "Aimee",
+      "group": "Year 10",
+      "linkedProgramme": "year10",
+      "linkedLessonIndex": 2
+    },
+    {
+      "id": "fri-p4",
+      "day": "fri",
+      "period": "p4",
+      "className": "Goodrington",
+      "course": "SDHS Yr11 GCSE Combined Science",
+      "roomNo": "2.095",
+      "roomName": "Lab 7",
+      "location": "Lab 7 (2.095)",
+      "colour": "goodrington",
+      "teacher": "Dan",
+      "sharedWith": "Greg",
+      "group": "Goodrington",
+      "linkedProgramme": "year11",
+      "linkedLessonIndex": 3
+    }
+  ],
+  "sharedLessons": [
+    {
+      "id": "shared-mon-p2",
+      "day": "mon",
+      "period": "p2",
+      "className": "Broadsands",
+      "teacher": "Greg",
+      "colour": "broadsands",
+      "group": "Broadsands",
+      "periodLabel": "Mon P2"
+    },
+    {
+      "id": "shared-tue-p3",
+      "day": "tue",
+      "period": "p3",
+      "className": "Science Rip",
+      "teacher": "Aimee",
+      "colour": "science-rip",
+      "group": "Year 10",
+      "periodLabel": "Tue P3"
+    },
+    {
+      "id": "shared-tue-p4",
+      "day": "tue",
+      "period": "p4",
+      "className": "Goodrington",
+      "teacher": "Greg",
+      "colour": "goodrington",
+      "group": "Goodrington",
+      "periodLabel": "Tue P4"
+    },
+    {
+      "id": "shared-thu-p3",
+      "day": "thu",
+      "period": "p3",
+      "className": "Science Rip",
+      "teacher": "Aimee",
+      "colour": "science-rip",
+      "group": "Year 10",
+      "periodLabel": "Thu P3"
+    },
+    {
+      "id": "shared-thu-p4",
+      "day": "thu",
+      "period": "p4",
+      "className": "Broadsands",
+      "teacher": "Greg",
+      "colour": "broadsands",
+      "group": "Broadsands",
+      "periodLabel": "Thu P4"
+    },
+    {
+      "id": "shared-fri-p3-broadsands",
+      "day": "fri",
+      "period": "p3",
+      "className": "Broadsands",
+      "teacher": "Greg",
+      "colour": "broadsands",
+      "group": "Broadsands",
+      "periodLabel": "Fri P3"
+    },
+    {
+      "id": "shared-fri-p3-alevel",
+      "day": "fri",
+      "period": "p3",
+      "className": "A Level",
+      "teacher": "Matt",
+      "colour": "alevel",
+      "group": "AAQ Cert",
+      "periodLabel": "Fri P3"
+    },
+    {
+      "id": "shared-fri-p4-alevel",
+      "day": "fri",
+      "period": "p4",
+      "className": "A Level",
+      "teacher": "Matt",
+      "colour": "alevel",
+      "group": "AAQ Cert",
+      "periodLabel": "Fri P4"
+    }
+  ]
+}
