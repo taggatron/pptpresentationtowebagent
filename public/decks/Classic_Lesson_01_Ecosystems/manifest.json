@@ -127,8 +127,8 @@
       "imageFileName": "slide_02.png",
       "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_02.png",
       "sourceMediaPath": "ppt/media/image2.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
         "estimatedTimeSeconds": 15,
         "timeGuideDisplay": "10–20s",
@@ -214,19 +214,20 @@
       },
       "interactiveCells": [
         {
-          "id": "reveal_2_mtul7jdb",
-          "question": "Custom reveal",
+          "id": "reveal_2_alive",
+          "question": "Find 1 item that: is alive",
+          "expectedAnswer": "Grass / Trees",
           "bounds": {
             "x": 6.7,
             "y": 38,
-            "w": 12.2,
+            "w": 38,
             "h": 15.4
           },
           "answerBounds": {
-            "x": 8.3,
-            "y": 39,
-            "w": 8.7,
-            "h": 14.1
+            "x": 6.7,
+            "y": 38,
+            "w": 38,
+            "h": 15.4
           },
           "revealMode": "blur",
           "confidence": 1,
@@ -234,19 +235,20 @@
           "locked": true
         },
         {
-          "id": "reveal_2_mtul873d",
-          "question": "Custom reveal",
+          "id": "reveal_2_used_to_be_alive",
+          "question": "Find 1 item that: used to be alive",
+          "expectedAnswer": "Wooden park bench / Fallen leaves",
           "bounds": {
-            "x": 9.7,
-            "y": 58,
-            "w": 6.7,
-            "h": 13.5
+            "x": 6.7,
+            "y": 57,
+            "w": 38,
+            "h": 15.4
           },
           "answerBounds": {
-            "x": 9.7,
-            "y": 58,
-            "w": 6.7,
-            "h": 13.5
+            "x": 6.7,
+            "y": 57,
+            "w": 38,
+            "h": 15.4
           },
           "revealMode": "blur",
           "confidence": 1,
@@ -254,19 +256,20 @@
           "locked": true
         },
         {
-          "id": "reveal_2_mtul8jlz",
-          "question": "Custom reveal",
+          "id": "reveal_2_never_alive",
+          "question": "Find 1 item that: never has been alive",
+          "expectedAnswer": "Metal goalposts / Gravel path / Stones",
           "bounds": {
-            "x": 9.2,
-            "y": 77.3,
-            "w": 7.6,
-            "h": 12.3
+            "x": 6.7,
+            "y": 75.5,
+            "w": 38,
+            "h": 15.4
           },
           "answerBounds": {
-            "x": 9.2,
-            "y": 77.3,
-            "w": 7.6,
-            "h": 12.3
+            "x": 6.7,
+            "y": 75.5,
+            "w": 38,
+            "h": 15.4
           },
           "revealMode": "blur",
           "confidence": 1,
@@ -1611,8 +1614,8 @@
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/Classic_Lesson_01_Ecosystems/slides/slide_04.png",
       "sourceMediaPath": "ppt/media/image4.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
         "estimatedTimeSeconds": 8,
         "timeGuideDisplay": "6–10s",
@@ -1682,7 +1685,93 @@
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
-      }
+      },
+      "interactiveCells": [
+        {
+          "id": "reveal_7_ecosystem",
+          "question": "All the frogs, lily pads, insects, and the pond water they live in.",
+          "expectedAnswer": "Ecosystem",
+          "bounds": {
+            "x": 58.1,
+            "y": 49.5,
+            "w": 14.5,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 58.1,
+            "y": 49.5,
+            "w": 14.5,
+            "h": 6.5
+          },
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true
+        },
+        {
+          "id": "reveal_7_population",
+          "question": "Every single European badger currently living in a specific woodland.",
+          "expectedAnswer": "Population",
+          "bounds": {
+            "x": 82.5,
+            "y": 51.4,
+            "w": 14.5,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 82.5,
+            "y": 51.4,
+            "w": 14.5,
+            "h": 6.5
+          },
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true
+        },
+        {
+          "id": "reveal_7_individual",
+          "question": "One specific red fox.",
+          "expectedAnswer": "Individual",
+          "bounds": {
+            "x": 59.2,
+            "y": 82.7,
+            "w": 13.5,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 59.2,
+            "y": 82.7,
+            "w": 13.5,
+            "h": 6.5
+          },
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true
+        },
+        {
+          "id": "reveal_7_community",
+          "question": "The badgers, foxes, earthworms, and oak trees living in the woodland.",
+          "expectedAnswer": "Community",
+          "bounds": {
+            "x": 82.1,
+            "y": 84.6,
+            "w": 14.5,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 82.1,
+            "y": 84.6,
+            "w": 14.5,
+            "h": 6.5
+          },
+          "revealMode": "unmask",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true
+        }
+      ]
     },
     {
       "number": 8,
