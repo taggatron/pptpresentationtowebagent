@@ -968,9 +968,10 @@
         </div>
 
         <div class="analytics-header-controls">
-          <!-- Scope Toggle Tabs (Current Deck vs All Decks Average) -->
+          <!-- Scope Toggle Tabs (Current Deck vs Timetable Lessons vs All Decks Average) -->
           <div class="analytics-scope-toggle" role="tablist" aria-label="Analytics scope">
             <button type="button" id="scopeDeckBtn" class="scope-toggle-btn active" role="tab" aria-selected="true" title="View Current Slide Set Analytics">Current Deck</button>
+            <button type="button" id="scopeTimetableBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="Select Lesson from Teaching Timetable Calendar">📅 Lesson Timetable</button>
             <button type="button" id="scopeAllDecksBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="View Average Across All Slide Decks">All Decks Average</button>
           </div>
 
@@ -1002,6 +1003,56 @@
       <div class="modal-body analytics-modal-body">
         <!-- Notification Notice / Toast Banner -->
         <div id="analyticsModalNotice" class="analytics-modal-notice hidden" role="status" aria-live="polite"></div>
+
+        <!-- Timetable Lesson Selection Section -->
+        <div id="analyticsTimetableSection" class="analytics-timetable-card hidden">
+          <div class="timetable-card-header">
+            <div class="timetable-title-group">
+              <span class="timetable-title-icon">📅</span>
+              <div>
+                <h4 class="timetable-title">Teaching Timetable &amp; Lesson Analytics</h4>
+                <p class="timetable-subtitle">Select a scheduled lesson to view its dwell time and phase breakdown by week</p>
+              </div>
+            </div>
+            <div class="timetable-nav-controls">
+              <button type="button" id="prevTimetableWeekBtn" class="timetable-nav-btn" title="Previous Week" aria-label="Previous Week">&larr; Prev</button>
+              <div class="timetable-week-select-wrap">
+                <select id="timetableWeekSelect" class="timetable-week-select" aria-label="Select Timetable Week">
+                  <option value="year11-week-1">Week 1 (24–28 Aug 2026)</option>
+                  <option value="year11-week-2">Week 2 (31 Aug–4 Sept 2026)</option>
+                  <option value="year11-week-3">Week 3 (7–11 Sept 2026)</option>
+                  <option value="year11-week-4" selected>Week 4 (14–18 Sept 2026)</option>
+                  <option value="year11-week-5">Week 5 (21–25 Sept 2026)</option>
+                  <option value="year11-week-6">Week 6 (28 Sept–2 Oct 2026)</option>
+                </select>
+              </div>
+              <button type="button" id="nextTimetableWeekBtn" class="timetable-nav-btn" title="Next Week" aria-label="Next Week">Next &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Active Filter & Status Indicator -->
+          <div id="activeLessonFilterBar" class="active-lesson-filter-bar hidden">
+            <div class="filter-bar-content">
+              <span class="filter-indicator-dot"></span>
+              <span class="filter-label">Filtered Lesson:</span>
+              <strong id="activeFilterGroupBadge" class="filter-group-badge">Broadsands</strong>
+              <span id="activeFilterTopicText" class="filter-topic-text">NITROGEN CYCLE</span>
+              <span id="activeFilterSlotTag" class="filter-slot-tag">Tuesday Period 2 (10:45–12:00)</span>
+            </div>
+            <div class="filter-bar-actions">
+              <button type="button" id="loadFilteredDeckBtn" class="filter-action-btn secondary hidden" title="Open slide deck for this lesson">📖 Open Slides</button>
+              <button type="button" id="clearLessonFilterBtn" class="filter-action-btn" title="Clear lesson filter and return to default view">&times; Clear Selection</button>
+            </div>
+          </div>
+
+          <!-- Little Timetable Calendar Grid -->
+          <div class="planning-table-scroll">
+            <div class="planning-table" id="planningTable">
+              <!-- Dynamically populated from timetable data -->
+            </div>
+          </div>
+        </div>
+
         <!-- Top Stats Row -->
         <div class="analytics-kpi-grid">
           <div class="analytics-kpi-card">
@@ -1095,6 +1146,6 @@
     </div>
   </div>
 
-  <script src="/js/app.js?v=analytics3" type="module"></script>
+  <script src="/js/app.js?v=analytics4" type="module"></script>
 </body>
 </html>

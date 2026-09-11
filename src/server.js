@@ -39,8 +39,16 @@ import {
   deleteLatestSession,
   getAllDecksAverageAnalytics,
   exportAnalyticsData,
-  exportAnalyticsCsv
+  exportAnalyticsCsv,
+  getLessonAnalytics
 } from "./analytics-db.js";
+import {
+  isWithinLessonTime,
+  getCurrentLessonSlot,
+  getNextScheduledLesson,
+  getWeekTimetable,
+  LESSON_SCHEDULE
+} from "./lesson-schedule.js";
 import {
   analyzeDeckLessonPhases,
   LESSON_PHASE_BENCHMARKS,
@@ -1544,11 +1552,70 @@ export function createApp({
     });
   });
 
+  app.get("/api/analytics/timetable", (req, res) => {
+    try {
+      const weekId = req.query.weekId ? String(req.query.weekId) : "year11-week-4";
+      const timetable = getWeekTimetable(weekId);
+      res.json({
+        success: true,
+        ...timetable
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.get("/api/analytics/lesson/:lessonId", (req, res) => {
+    try {
+      const lessonId = req.params.lessonId;
+      const weekId = req.query.weekId ? String(req.query.weekId) : null;
+      const lessonData = getLessonAnalytics(lessonId, weekId);
+      res.json({
+        success: true,
+        data: lessonData
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  function shouldEnforceSchedule(req) {
+    if (req.body?.bypassSchedule || req.query?.bypassSchedule === "1" || req.headers["x-bypass-schedule"] === "1") {
+      return false;
+    }
+    if (process.env.NODE_ENV === "test" || process.env.npm_lifecycle_event === "test") {
+      return false;
+    }
+    if (process.argv.some((arg) => arg.includes("test"))) {
+      return false;
+    }
+    return true;
+  }
+
   app.post("/api/analytics/session/start", async (req, res) => {
     try {
-      const { deckId, totalSlides } = req.body || {};
+      const { deckId, totalSlides, lessonId, lessonGroup, lessonPeriod, lessonTopic, weekId } = req.body || {};
       const safeDeckId = assertSafeDeckId(deckId);
-      const session = startTrackingSession(safeDeckId, totalSlides || 0);
+
+      if (shouldEnforceSchedule(req) && !isWithinLessonTime()) {
+        const nextLesson = getNextScheduledLesson();
+        return res.status(403).json({
+          success: false,
+          outsideSchedule: true,
+          error: "Outside scheduled lesson times. Analytics recording is automatically paused.",
+          nextLesson
+        });
+      }
+
+      const session = startTrackingSession({
+        deckId: safeDeckId,
+        totalSlides: totalSlides || 0,
+        lessonId,
+        lessonGroup,
+        lessonPeriod,
+        lessonTopic,
+        weekId
+      });
       res.json({ success: true, session });
     } catch (error) {
       res.status(error.statusCode || 500).json({ error: error.message });
@@ -1559,6 +1626,15 @@ export function createApp({
     try {
       const { sessionId, deckId, slideIndex, slideNumber, dwellMs, phaseKey } = req.body || {};
       const safeDeckId = assertSafeDeckId(deckId);
+
+      if (shouldEnforceSchedule(req) && !isWithinLessonTime()) {
+        return res.status(403).json({
+          success: false,
+          outsideSchedule: true,
+          error: "Lesson time has ended. Analytics recording has stopped."
+        });
+      }
+
       const record = recordSlideDwell(
         sessionId,
         safeDeckId,

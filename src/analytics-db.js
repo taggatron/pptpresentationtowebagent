@@ -9,6 +9,7 @@ import fs from "fs";
 import path from "path";
 import { DatabaseSync } from "node:sqlite";
 import { LESSON_PHASE_BENCHMARKS } from "./lesson-phase-classifier.js";
+import { getCurrentLessonSlot, LESSON_SCHEDULE } from "./lesson-schedule.js";
 
 const DATA_DIR = path.resolve(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "analytics.db");
@@ -28,6 +29,10 @@ export function getAnalyticsDb() {
   }
 
   dbInstance = new DatabaseSync(DB_FILE);
+  try {
+    dbInstance.exec("PRAGMA journal_mode = WAL;");
+    dbInstance.exec("PRAGMA busy_timeout = 5000;");
+  } catch {}
 
   // Initialize schema
   dbInstance.exec(`
@@ -63,6 +68,22 @@ export function getAnalyticsDb() {
     );
   `);
 
+  // Migrate schema for timetable metadata if missing
+  const sessionColumns = [
+    "lesson_id TEXT",
+    "lesson_group TEXT",
+    "lesson_period TEXT",
+    "lesson_topic TEXT",
+    "week_id TEXT"
+  ];
+  for (const col of sessionColumns) {
+    try {
+      dbInstance.exec(`ALTER TABLE sessions ADD COLUMN ${col}`);
+    } catch (_) {
+      // Column already exists
+    }
+  }
+
   return dbInstance;
 }
 
@@ -86,11 +107,33 @@ export function startTrackingSession(deckIdOrOptions, totalSlides = 0, deckTitle
   let deckId = deckIdOrOptions;
   let sessionId = null;
   let title = deckTitle;
+  let lessonId = null;
+  let lessonGroup = null;
+  let lessonPeriod = null;
+  let lessonTopic = null;
+  let weekId = null;
+
   if (typeof deckIdOrOptions === "object" && deckIdOrOptions !== null) {
     deckId = deckIdOrOptions.deckId;
     sessionId = deckIdOrOptions.sessionId;
     title = deckIdOrOptions.deckTitle || "";
     totalSlides = deckIdOrOptions.totalSlides || 0;
+    lessonId = deckIdOrOptions.lessonId || null;
+    lessonGroup = deckIdOrOptions.lessonGroup || null;
+    lessonPeriod = deckIdOrOptions.lessonPeriod || null;
+    lessonTopic = deckIdOrOptions.lessonTopic || null;
+    weekId = deckIdOrOptions.weekId || null;
+  }
+
+  // If lesson metadata is not explicitly provided, auto-detect from active timetable slot
+  if (!lessonId) {
+    const currentSlot = getCurrentLessonSlot();
+    if (currentSlot) {
+      lessonId = currentSlot.id;
+      lessonGroup = currentSlot.group;
+      lessonPeriod = currentSlot.periodLabel;
+      lessonTopic = currentSlot.topic;
+    }
   }
 
   const db = getAnalyticsDb();
@@ -102,13 +145,28 @@ export function startTrackingSession(deckIdOrOptions, totalSlides = 0, deckTitle
   deactivateStmt.run(deckId);
 
   const insertStmt = db.prepare(`
-    INSERT INTO sessions (id, deck_id, deck_title, start_time, total_duration_seconds, is_active, created_at)
-    VALUES (?, ?, ?, ?, 0, 1, ?)
+    INSERT INTO sessions (
+      id, deck_id, deck_title, start_time, total_duration_seconds, is_active, created_at,
+      lesson_id, lesson_group, lesson_period, lesson_topic, week_id
+    )
+    VALUES (?, ?, ?, ?, 0, 1, ?, ?, ?, ?, ?, ?)
   `);
-  insertStmt.run(id, deckId, title, now, now);
+  insertStmt.run(id, deckId, title, now, now, lessonId, lessonGroup, lessonPeriod, lessonTopic, weekId);
 
   syncJsonBackup();
-  return { id, deckId, deckTitle: title, startTime: now, isActive: true, status: "recording" };
+  return {
+    id,
+    deckId,
+    deckTitle: title,
+    startTime: now,
+    isActive: true,
+    status: "recording",
+    lessonId,
+    lessonGroup,
+    lessonPeriod,
+    lessonTopic,
+    weekId
+  };
 }
 
 /**
@@ -711,3 +769,183 @@ export function exportAnalyticsCsv(deckId = null) {
 
   return rows.map((r) => r.join(",")).join("\n");
 }
+
+/**
+ * Retrieve analytics scoped to a specific timetable lesson slot and optional week
+ */
+export function getLessonAnalytics(lessonId, weekId = null) {
+  const db = getAnalyticsDb();
+  const slot = LESSON_SCHEDULE.find((s) => s.id === lessonId);
+  const matchingDeckId = slot?.matchingDeckId || null;
+
+  // 1. Fetch sessions matching lesson_id
+  let sessions = [];
+  if (weekId) {
+    sessions = db.prepare(`
+      SELECT * FROM sessions
+      WHERE lesson_id = ? AND (week_id = ? OR week_id IS NULL)
+      ORDER BY created_at DESC
+    `).all(lessonId, weekId) || [];
+  } else {
+    sessions = db.prepare(`
+      SELECT * FROM sessions
+      WHERE lesson_id = ?
+      ORDER BY created_at DESC
+    `).all(lessonId) || [];
+  }
+
+  let isFallbackToDeck = false;
+  if (sessions.length === 0 && matchingDeckId) {
+    sessions = db.prepare("SELECT * FROM sessions WHERE deck_id = ? ORDER BY created_at DESC LIMIT 20").all(matchingDeckId) || [];
+    isFallbackToDeck = sessions.length > 0;
+  }
+
+  if (sessions.length === 0) {
+    return {
+      hasData: false,
+      isLessonScope: true,
+      lessonId,
+      slot,
+      deckId: matchingDeckId,
+      deckTitle: slot ? `${slot.group} · ${slot.topic}` : "Scheduled Lesson",
+      session: null,
+      latestSession: null,
+      sessions: [],
+      slides: [],
+      slideDwells: [],
+      phaseBreakdown: buildDefaultPhaseBreakdown(),
+      phases: buildDefaultPhaseBreakdown(),
+      totalSessions: 0,
+      totalDurationMs: 0,
+      isFallbackToDeck: false
+    };
+  }
+
+  const latestSession = sessions[0];
+  const sessionIds = sessions.map((s) => s.id);
+  const placeholders = sessionIds.map(() => "?").join(",");
+
+  const dwellsQuery = db.prepare(`
+    SELECT * FROM slide_dwells
+    WHERE session_id IN (${placeholders})
+    ORDER BY slide_number ASC
+  `);
+  const dwells = dwellsQuery.all(...sessionIds) || [];
+
+  // Group dwells by slide_number
+  const slideMap = new Map();
+  const phaseSeconds = {
+    starter: 0,
+    direct_instruction: 0,
+    modelling: 0,
+    guided_practice: 0,
+    independent_practice: 0,
+    plenary: 0
+  };
+
+  let totalDurationSeconds = 0;
+  sessions.forEach((s) => {
+    totalDurationSeconds += Number(s.total_duration_seconds) || 0;
+  });
+
+  dwells.forEach((d) => {
+    const sNum = d.slide_number;
+    const dur = Number(d.duration_seconds) || 0;
+    const p = d.lesson_phase || "direct_instruction";
+
+    if (phaseSeconds[p] !== undefined) {
+      phaseSeconds[p] += dur;
+    }
+
+    if (!slideMap.has(sNum)) {
+      slideMap.set(sNum, {
+        slideNumber: sNum,
+        slideTitle: d.slide_title || `Slide ${sNum}`,
+        lessonPhase: p,
+        totalDurationSeconds: 0,
+        visitCount: 0
+      });
+    }
+
+    const item = slideMap.get(sNum);
+    item.totalDurationSeconds += dur;
+    item.visitCount += 1;
+    if (d.slide_title && (!item.slideTitle || item.slideTitle.startsWith("Slide "))) {
+      item.slideTitle = d.slide_title;
+    }
+  });
+
+  if (totalDurationSeconds === 0) {
+    totalDurationSeconds = Array.from(slideMap.values()).reduce((sum, s) => sum + s.totalDurationSeconds, 0);
+  }
+
+  const totalDwellMs = Math.round(totalDurationSeconds * 1000);
+
+  const phaseBreakdown = Object.entries(LESSON_PHASE_BENCHMARKS).map(([key, meta]) => {
+    const secs = phaseSeconds[key] || 0;
+    const dwellMs = Math.round(secs * 1000);
+    const actualPercent = totalDurationSeconds > 0
+      ? Math.round((secs / totalDurationSeconds) * 1000) / 10
+      : 0;
+
+    return {
+      phaseKey: key,
+      key,
+      name: meta.label,
+      label: meta.label,
+      shortLabel: meta.shortLabel,
+      color: meta.color,
+      totalDwellMs: dwellMs,
+      actualDwellFormatted: formatDuration(dwellMs),
+      formattedDwell: formatDuration(dwellMs),
+      actualPercent,
+      actualPercentage: actualPercent,
+      targetPercent: meta.targetPercent,
+      targetPercentage: meta.targetPercent,
+      deltaPercentage: Math.round((actualPercent - meta.targetPercent) * 10) / 10
+    };
+  });
+
+  const slides = Array.from(slideMap.values())
+    .sort((a, b) => a.slideNumber - b.slideNumber)
+    .map((s) => {
+      const durMs = Math.round(s.totalDurationSeconds * 1000);
+      return {
+        slideNumber: s.slideNumber,
+        slideTitle: s.slideTitle,
+        title: s.slideTitle,
+        lessonPhase: s.lessonPhase,
+        phaseKey: s.lessonPhase,
+        phaseName: LESSON_PHASE_BENCHMARKS[s.lessonPhase]?.label || s.lessonPhase,
+        phaseColor: LESSON_PHASE_BENCHMARKS[s.lessonPhase]?.color || "#3b82f6",
+        totalDwellMs: durMs,
+        durationSeconds: s.totalDurationSeconds,
+        formattedDwell: formatDuration(durMs),
+        visitCount: s.visitCount
+      };
+    });
+
+  return {
+    hasData: true,
+    isLessonScope: true,
+    lessonId,
+    lessonSlot: slot,
+    lessonGroup: slot?.group || (sessions[0]?.lesson_group || "Scheduled Lesson"),
+    lessonTopic: slot?.topic || (sessions[0]?.lesson_topic || ""),
+    lessonPeriod: slot?.periodLabel || (sessions[0]?.lesson_period || ""),
+    lessonRoom: slot?.room || "Lab 7 (2.095)",
+    deckId: matchingDeckId || sessions[0]?.deck_id,
+    deckTitle: slot ? `${slot.group} · ${slot.topic}` : (sessions[0]?.deck_title || "Lesson Analytics"),
+    totalSessions: sessions.length,
+    totalDurationMs: totalDwellMs,
+    latestSession,
+    session: latestSession,
+    sessions,
+    slides,
+    slideDwells: slides,
+    phaseBreakdown,
+    phases: phaseBreakdown,
+    isFallbackToDeck
+  };
+}
+

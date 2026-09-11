@@ -111,7 +111,19 @@ const analyticsSlideCountBadge = document.getElementById("analyticsSlideCountBad
 const chartModeActualBtn = document.getElementById("chartModeActualBtn");
 const chartModeTargetBtn = document.getElementById("chartModeTargetBtn");
 const scopeDeckBtn = document.getElementById("scopeDeckBtn");
+const scopeTimetableBtn = document.getElementById("scopeTimetableBtn");
 const scopeAllDecksBtn = document.getElementById("scopeAllDecksBtn");
+const analyticsTimetableSection = document.getElementById("analyticsTimetableSection");
+const timetableWeekSelect = document.getElementById("timetableWeekSelect");
+const prevTimetableWeekBtn = document.getElementById("prevTimetableWeekBtn");
+const nextTimetableWeekBtn = document.getElementById("nextTimetableWeekBtn");
+const planningTable = document.getElementById("planningTable");
+const activeLessonFilterBar = document.getElementById("activeLessonFilterBar");
+const activeFilterGroupBadge = document.getElementById("activeFilterGroupBadge");
+const activeFilterTopicText = document.getElementById("activeFilterTopicText");
+const activeFilterSlotTag = document.getElementById("activeFilterSlotTag");
+const loadFilteredDeckBtn = document.getElementById("loadFilteredDeckBtn");
+const clearLessonFilterBtn = document.getElementById("clearLessonFilterBtn");
 const analyticsExportBtn = document.getElementById("analyticsExportBtn");
 const analyticsExportMenu = document.getElementById("analyticsExportMenu");
 const analyticsExportDropdownWrap = document.getElementById("analyticsExportDropdownWrap");
@@ -3242,6 +3254,25 @@ function setSlideshowButtonActive(active) {
    Lesson Slideshow Analytics & Pedagogical Phase Tracking Engine
    ========================================================================== */
 
+const LESSON_SCHEDULE = [
+  { id: "tue-p2", day: "Tuesday", dayOfWeek: 2, period: 2, periodLabel: "Period 2", startTime: "10:45", endTime: "12:00", startMinutes: 645, endMinutes: 720, group: "Broadsands", room: "Lab 7 (2.095)", topic: "NITROGEN CYCLE", matchingDeckId: "Classic_Lesson_04_Nitrogen_Cycle" },
+  { id: "tue-p3", day: "Tuesday", dayOfWeek: 2, period: 3, periodLabel: "Period 3", startTime: "12:45", endTime: "14:00", startMinutes: 765, endMinutes: 840, group: "A Level", room: "Lab 1 (3.096)", topic: "Lesson 1: Welcome to Human Biology: What do you already know?", matchingDeckId: "Lesson_01_Human_Biology_Scientist_Onboarding" },
+  { id: "tue-p4", day: "Tuesday", dayOfWeek: 2, period: 4, periodLabel: "Period 4", startTime: "14:15", endTime: "15:30", startMinutes: 855, endMinutes: 930, group: "A Level", room: "Lab 1 (3.096)", topic: "Lesson 2: Working like a Human Biologist", matchingDeckId: "Lesson_01_Human_Biology_Scientist_Onboarding" },
+  { id: "wed-p2", day: "Wednesday", dayOfWeek: 3, period: 2, periodLabel: "Period 2", startTime: "10:45", endTime: "12:00", startMinutes: 645, endMinutes: 720, group: "Goodrington", room: "Lab 7 (2.095)", topic: "NITROGEN CYCLE", matchingDeckId: "Classic_Lesson_04_Nitrogen_Cycle" },
+  { id: "thu-p1", day: "Thursday", dayOfWeek: 4, period: 1, periodLabel: "Period 1", startTime: "09:15", endTime: "10:30", startMinutes: 555, endMinutes: 630, group: "Goodrington", room: "Lab 7 (2.095)", topic: "CARBON AND WATER CYCLE", matchingDeckId: "Classic_Lesson_05_Carbon_and_Water_Cycle" },
+  { id: "fri-p1", day: "Friday", dayOfWeek: 5, period: 1, periodLabel: "Period 1", startTime: "09:15", endTime: "10:30", startMinutes: 555, endMinutes: 630, group: "Science Rip", room: "Lab 7 (2.095)", topic: "DNA", matchingDeckId: "Lesson_04_DNA" },
+  { id: "fri-p4", day: "Friday", dayOfWeek: 5, period: 4, periodLabel: "Period 4", startTime: "14:15", endTime: "15:30", startMinutes: 855, endMinutes: 930, group: "Goodrington", room: "Lab 7 (2.095)", topic: "HUMAN IMPACTS ON BIODIVERSITY", matchingDeckId: "Classic_Lesson_06_Human_Impacts_on_Biodiversity" }
+];
+
+function getCurrentLessonSlot(date = new Date()) {
+  const d = date instanceof Date ? date : new Date(date);
+  const day = d.getDay();
+  const currentMinutes = d.getHours() * 60 + d.getMinutes();
+  return LESSON_SCHEDULE.find((slot) => {
+    return slot.dayOfWeek === day && currentMinutes >= slot.startMinutes && currentMinutes < slot.endMinutes;
+  }) || null;
+}
+
 const analyticsTracker = {
   sessionId: null,
   active: false,
@@ -3253,8 +3284,12 @@ const analyticsTracker = {
   heartbeatInterval: null,
   cachedAnalysis: null,
   cachedAllDecksAverage: null,
+  cachedLessonAnalysis: null,
+  cachedTimetable: null,
   hoveredPhaseKey: null,
-  deckScope: "current", // "current" | "all"
+  deckScope: "current", // "current" | "timetable" | "all"
+  selectedLessonId: null,
+  selectedWeekId: "year11-week-4",
   noticeTimeout: null
 };
 
@@ -3278,8 +3313,20 @@ function updateAnalyticsButtonStatus(active) {
       : "Slideshow Analytics (Click to view)"
   );
   if (analyticsStatusBadge) {
-    analyticsStatusBadge.textContent = active ? "Recording Live" : "Idle";
-    analyticsStatusBadge.className = `analytics-status-pill ${active ? "recording" : "idle"}`;
+    const currentSlot = getCurrentLessonSlot();
+    if (active && currentSlot) {
+      analyticsStatusBadge.textContent = `Recording · ${currentSlot.group}`;
+      analyticsStatusBadge.className = "analytics-status-pill recording";
+    } else if (active) {
+      analyticsStatusBadge.textContent = "Recording Live";
+      analyticsStatusBadge.className = "analytics-status-pill recording";
+    } else if (!currentSlot) {
+      analyticsStatusBadge.textContent = "Outside Lesson Times";
+      analyticsStatusBadge.className = "analytics-status-pill idle";
+    } else {
+      analyticsStatusBadge.textContent = "Idle";
+      analyticsStatusBadge.className = "analytics-status-pill idle";
+    }
   }
 }
 
@@ -3291,11 +3338,24 @@ function setAnalyticsNotice(msg, type = "info") {
   clearTimeout(analyticsTracker.noticeTimeout);
   analyticsTracker.noticeTimeout = setTimeout(() => {
     analyticsModalNotice.classList.add("hidden");
-  }, 5000);
+  }, 6000);
 }
 
 async function startSlideshowTracking() {
   if (!currentDeck?.id) return;
+
+  // Strict Lesson Schedule Check: Automatically prevent recording outside scheduled teaching periods
+  const currentSlot = getCurrentLessonSlot();
+  if (!currentSlot) {
+    analyticsTracker.active = false;
+    updateAnalyticsButtonStatus(false);
+    if (analyticsStatusBadge) {
+      analyticsStatusBadge.textContent = "Outside Lesson Times";
+      analyticsStatusBadge.className = "analytics-status-pill idle";
+    }
+    setAnalyticsNotice("ℹ️ Analytics recording standby: You are currently outside your scheduled teaching timetable hours.", "info");
+    return;
+  }
 
   analyticsTracker.deckId = currentDeck.id;
   analyticsTracker.currentSlideIndex = currentSlideIndex;
@@ -3309,13 +3369,25 @@ async function startSlideshowTracking() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         deckId: currentDeck.id,
-        totalSlides: currentDeck.slides ? currentDeck.slides.length : 0
+        totalSlides: currentDeck.slides ? currentDeck.slides.length : 0,
+        lessonId: currentSlot.id,
+        lessonGroup: currentSlot.group,
+        lessonPeriod: currentSlot.periodLabel,
+        lessonTopic: currentSlot.topic,
+        weekId: analyticsTracker.selectedWeekId || "year11-week-4"
       })
     });
     if (res.ok) {
       const data = await res.json();
       analyticsTracker.sessionId = data.session?.id || `sess_${Date.now()}`;
     } else {
+      const errData = await res.json().catch(() => ({}));
+      if (errData.outsideSchedule) {
+        analyticsTracker.active = false;
+        updateAnalyticsButtonStatus(false);
+        setAnalyticsNotice(errData.error || "Outside scheduled lesson times.", "info");
+        return;
+      }
       analyticsTracker.sessionId = `sess_${Date.now()}`;
     }
   } catch (err) {
@@ -3324,6 +3396,10 @@ async function startSlideshowTracking() {
 
   analyticsTracker.active = true;
   updateAnalyticsButtonStatus(true);
+  if (analyticsStatusBadge) {
+    analyticsStatusBadge.textContent = `Recording · ${currentSlot.group}`;
+    analyticsStatusBadge.className = "analytics-status-pill recording";
+  }
 
   if (analyticsTracker.heartbeatInterval) clearInterval(analyticsTracker.heartbeatInterval);
   analyticsTracker.heartbeatInterval = setInterval(sendAnalyticsHeartbeat, 2000);
@@ -3409,6 +3485,19 @@ async function sendSlideDwell(slideNumber, dwellMs) {
 
 async function sendAnalyticsHeartbeat() {
   if (!analyticsTracker.active || !analyticsTracker.slideEnterTime) return;
+
+  // Auto-stop if lesson time has concluded
+  const currentSlot = getCurrentLessonSlot();
+  if (!currentSlot) {
+    await stopSlideshowTracking({ finishSession: true });
+    setAnalyticsNotice("⏱️ Lesson period ended. Slideshow analytics automatically stopped recording.", "info");
+    if (analyticsStatusBadge) {
+      analyticsStatusBadge.textContent = "Lesson Ended";
+      analyticsStatusBadge.className = "analytics-status-pill idle";
+    }
+    return;
+  }
+
   const now = Date.now();
   const currentElapsed = now - analyticsTracker.slideEnterTime;
   const sNum = analyticsTracker.currentSlideNum || (currentSlideIndex + 1);
@@ -3445,6 +3534,192 @@ async function fetchAllDecksAverageData() {
   } catch (err) {
     console.warn("Could not fetch all decks average:", err);
     return null;
+  }
+}
+
+async function fetchLessonAnalyticsData(lessonId, weekId = null) {
+  if (!lessonId) return null;
+  try {
+    const url = `/api/analytics/lesson/${encodeURIComponent(lessonId)}${weekId ? `?weekId=${encodeURIComponent(weekId)}` : ""}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to load lesson analytics");
+    const json = await res.json();
+    analyticsTracker.cachedLessonAnalysis = json?.data || json;
+    return analyticsTracker.cachedLessonAnalysis;
+  } catch (err) {
+    console.warn("Could not fetch lesson analytics:", err);
+    return null;
+  }
+}
+
+async function renderTimetableCalendar(weekId = "year11-week-4") {
+  if (!planningTable) return;
+
+  try {
+    const res = await fetch(`/api/analytics/timetable?weekId=${encodeURIComponent(weekId)}`);
+    if (!res.ok) throw new Error("Failed to load timetable");
+    const data = await res.json();
+    analyticsTracker.cachedTimetable = data;
+
+    // Populate week select dropdown if needed
+    if (timetableWeekSelect && data.allWeeks) {
+      timetableWeekSelect.innerHTML = data.allWeeks.map((w) => `
+        <option value="${w.id}" ${w.id === weekId ? "selected" : ""}>
+          ${w.label} (${w.dateRange})
+        </option>
+      `).join("");
+    }
+
+    const currentSlot = getCurrentLessonSlot();
+
+    let html = `
+      <div class="planner-header-row">
+        <div>Time</div>
+        <div>Period</div>
+        <div>Type</div>
+        ${data.days.map((d) => `
+          <div class="planner-day-heading">
+            <strong>${d.name}</strong>
+            <span>${d.dateFormatted}</span>
+          </div>
+        `).join("")}
+      </div>
+    `;
+
+    data.periods.forEach((period) => {
+      html += `
+        <div class="planner-period-row">
+          <div class="planner-time-cell" aria-label="${period.timeSpan}">
+            <span class="planner-time-start">${period.startTime}</span>
+            <span class="planner-time-separator" aria-hidden="true">–</span>
+            <span class="planner-time-end">${period.endTime}</span>
+          </div>
+          <div class="planner-number-cell">${period.period}</div>
+          <div class="planner-type-cell">
+            <strong>Class / Room</strong>
+            <span>Title / Topic</span>
+          </div>
+      `;
+
+      period.daySlots.forEach((slot) => {
+        if (slot.isFree) {
+          html += `
+            <div class="planner-free-cell">
+              <span>FREE</span>
+            </div>
+          `;
+        } else {
+          const isSelected = analyticsTracker.selectedLessonId === slot.id;
+          const isLive = currentSlot && currentSlot.id === slot.id;
+          const groupClass = `planner-${(slot.group || "").toLowerCase().replace(/\s+/g, "-")}`;
+
+          html += `
+            <div class="planner-session-cell ${groupClass} ${isSelected ? "is-selected" : ""} ${isLive ? "is-live-now" : ""}"
+                 data-slot-id="${slot.id}"
+                 data-group="${slot.group}"
+                 data-topic="${slot.topic}"
+                 data-room="${slot.room}"
+                 data-deck-id="${slot.matchingDeckId || ""}"
+                 role="button"
+                 tabindex="0"
+                 title="Click to view analytics for ${slot.group} - ${slot.topic}">
+              <div class="planner-class-row">
+                <div class="planner-class-info">
+                  <div class="planner-class-name">
+                    <strong>${slot.group}</strong>
+                    ${isLive ? '<span class="live-pulse-badge" title="Live Lesson Now">● LIVE</span>' : ''}
+                  </div>
+                  <div class="planner-badges-row">
+                    <span class="planner-room-tag">${slot.room}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="planner-topic-field">
+                <div class="planner-topic-display">${slot.topic}</div>
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      html += `</div>`;
+    });
+
+    planningTable.innerHTML = html;
+
+    // Attach click listeners to session cells
+    planningTable.querySelectorAll(".planner-session-cell").forEach((cell) => {
+      cell.addEventListener("click", () => {
+        const slotId = cell.dataset.slotId;
+        selectTimetableLesson(slotId);
+      });
+      cell.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const slotId = cell.dataset.slotId;
+          selectTimetableLesson(slotId);
+        }
+      });
+    });
+
+  } catch (err) {
+    console.error("Error rendering timetable:", err);
+    planningTable.innerHTML = `<div class="timetable-error">⚠️ Could not load timetable schedule.</div>`;
+  }
+}
+
+async function selectTimetableLesson(slotId) {
+  if (!slotId) return;
+  analyticsTracker.selectedLessonId = slotId;
+  analyticsTracker.deckScope = "timetable";
+
+  // Update selection indicator on table cells
+  planningTable?.querySelectorAll(".planner-session-cell").forEach((cell) => {
+    cell.classList.toggle("is-selected", cell.dataset.slotId === slotId);
+  });
+
+  const slot = LESSON_SCHEDULE.find((s) => s.id === slotId);
+  if (slot && activeLessonFilterBar) {
+    activeLessonFilterBar.classList.remove("hidden");
+    if (activeFilterGroupBadge) activeFilterGroupBadge.textContent = slot.group;
+    if (activeFilterTopicText) activeFilterTopicText.textContent = slot.topic;
+    if (activeFilterSlotTag) activeFilterSlotTag.textContent = `${slot.day} ${slot.periodLabel} (${slot.startTime}–${slot.endTime})`;
+
+    if (loadFilteredDeckBtn && slot.matchingDeckId) {
+      loadFilteredDeckBtn.classList.remove("hidden");
+      loadFilteredDeckBtn.onclick = () => {
+        loadDeck(slot.matchingDeckId);
+        closeAnalyticsModal();
+      };
+    } else if (loadFilteredDeckBtn) {
+      loadFilteredDeckBtn.classList.add("hidden");
+    }
+  }
+
+  await refreshAnalyticsModalViews(true);
+}
+
+function clearTimetableLessonSelection() {
+  analyticsTracker.selectedLessonId = null;
+  planningTable?.querySelectorAll(".planner-session-cell").forEach((cell) => {
+    cell.classList.remove("is-selected");
+  });
+  if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
+  if (loadFilteredDeckBtn) loadFilteredDeckBtn.classList.add("hidden");
+  refreshAnalyticsModalViews(true);
+}
+
+function navigateTimetableWeek(direction) {
+  if (!timetableWeekSelect) return;
+  const newIndex = timetableWeekSelect.selectedIndex + direction;
+  if (newIndex >= 0 && newIndex < timetableWeekSelect.options.length) {
+    timetableWeekSelect.selectedIndex = newIndex;
+    const weekId = timetableWeekSelect.value;
+    analyticsTracker.selectedWeekId = weekId;
+    renderTimetableCalendar(weekId);
+    if (analyticsTracker.selectedLessonId) {
+      refreshAnalyticsModalViews(true);
+    }
   }
 }
 
@@ -3707,44 +3982,144 @@ function closeAnalyticsModal() {
 
 async function refreshAnalyticsModalViews(fullFetch = true) {
   const isAllDecksScope = analyticsTracker.deckScope === "all";
+  const isTimetableScope = analyticsTracker.deckScope === "timetable";
+  const isCurrentDeckScope = !isAllDecksScope && !isTimetableScope;
 
   // Toggle modal-card CSS class for scoping
   const modalCard = analyticsModal?.querySelector(".analytics-modal-card");
   if (modalCard) {
     modalCard.classList.toggle("analytics-view-all-decks", isAllDecksScope);
+    modalCard.classList.toggle("analytics-view-timetable", isTimetableScope);
   }
   if (analyticsModal) {
     analyticsModal.classList.toggle("analytics-view-all-decks", isAllDecksScope);
+    analyticsModal.classList.toggle("analytics-view-timetable", isTimetableScope);
   }
 
   // Update scope tab states
-  if (scopeDeckBtn && scopeAllDecksBtn) {
-    scopeDeckBtn.classList.toggle("active", !isAllDecksScope);
-    scopeDeckBtn.setAttribute("aria-selected", String(!isAllDecksScope));
+  if (scopeDeckBtn) {
+    scopeDeckBtn.classList.toggle("active", isCurrentDeckScope);
+    scopeDeckBtn.setAttribute("aria-selected", String(isCurrentDeckScope));
+  }
+  if (scopeTimetableBtn) {
+    scopeTimetableBtn.classList.toggle("active", isTimetableScope);
+    scopeTimetableBtn.setAttribute("aria-selected", String(isTimetableScope));
+  }
+  if (scopeAllDecksBtn) {
     scopeAllDecksBtn.classList.toggle("active", isAllDecksScope);
     scopeAllDecksBtn.setAttribute("aria-selected", String(isAllDecksScope));
   }
 
+  // Toggle timetable section visibility
+  if (analyticsTimetableSection) {
+    analyticsTimetableSection.classList.toggle("hidden", !isTimetableScope);
+  }
+
   // Disable/enable deck-specific actions
   if (analyticsResetBtn) {
-    analyticsResetBtn.disabled = isAllDecksScope;
-    analyticsResetBtn.title = isAllDecksScope
-      ? "Switch to Current Deck tab to reset this deck's analytics"
-      : "Archive & Reset Analytics for this Deck";
+    analyticsResetBtn.disabled = !isCurrentDeckScope;
+    analyticsResetBtn.title = isCurrentDeckScope
+      ? "Archive & Reset Analytics for this Deck"
+      : "Switch to Current Deck tab to reset this deck's analytics";
   }
   if (analyticsDeleteLatestBtn) {
-    analyticsDeleteLatestBtn.disabled = isAllDecksScope;
-    analyticsDeleteLatestBtn.title = isAllDecksScope
-      ? "Switch to Current Deck tab to delete latest session for this deck"
-      : "Delete Most Recent Session for this Deck";
+    analyticsDeleteLatestBtn.disabled = !isCurrentDeckScope;
+    analyticsDeleteLatestBtn.title = isCurrentDeckScope
+      ? "Delete Most Recent Session for this Deck"
+      : "Switch to Current Deck tab to delete latest session for this deck";
   }
 
   // Subtitle update
   const subtitle = document.getElementById("analyticsModalSubtitle");
   if (subtitle) {
-    subtitle.textContent = isAllDecksScope
-      ? "Cross-deck pedagogical benchmark averages across all recorded slide sets"
-      : `Tracking slide dwell time and pedagogical phase allocation for "${currentDeck?.name || currentDeck?.id || 'Active Deck'}"`;
+    if (isAllDecksScope) {
+      subtitle.textContent = "Cross-deck pedagogical benchmark averages across all recorded slide sets";
+    } else if (isTimetableScope) {
+      subtitle.textContent = analyticsTracker.selectedLessonId
+        ? "Viewing teaching analytics for selected timetable lesson"
+        : "Teaching Timetable: select a lesson below to view its analytics by week";
+    } else {
+      subtitle.textContent = `Tracking slide dwell time and pedagogical phase allocation for "${currentDeck?.name || currentDeck?.id || 'Active Deck'}"`;
+    }
+  }
+
+  if (isTimetableScope) {
+    // -------------------------------------------------------------
+    // TIMETABLE LESSON VIEW
+    // -------------------------------------------------------------
+    if (!analyticsTracker.cachedTimetable || fullFetch) {
+      await renderTimetableCalendar(analyticsTracker.selectedWeekId || "year11-week-4");
+    }
+
+    if (!analyticsTracker.selectedLessonId) {
+      const currentSlot = getCurrentLessonSlot();
+      if (currentSlot) {
+        await selectTimetableLesson(currentSlot.id);
+        return;
+      }
+    }
+
+    if (analyticsTracker.selectedLessonId) {
+      let lessonData = analyticsTracker.cachedLessonAnalysis;
+      if (fullFetch || !lessonData || lessonData.lessonId !== analyticsTracker.selectedLessonId) {
+        lessonData = await fetchLessonAnalyticsData(analyticsTracker.selectedLessonId, analyticsTracker.selectedWeekId);
+      }
+
+      if (lessonData) {
+        const totalTrackedMs = lessonData.totalDurationMs || 0;
+        const isPreview = totalTrackedMs <= 0;
+
+        if (analyticsTotalTime) {
+          analyticsTotalTime.textContent = isPreview ? "0m 00s" : formatAnalyticsDuration(totalTrackedMs);
+        }
+        if (analyticsSessionCount) {
+          const sessCount = lessonData.totalSessions || 0;
+          analyticsSessionCount.textContent = `${sessCount} session${sessCount === 1 ? "" : "s"} recorded`;
+        }
+        if (analyticsSlidesTracked) {
+          analyticsSlidesTracked.textContent = `${lessonData.slides?.length || 0} slides tracked`;
+        }
+        if (analyticsCurrentSlidePhase) {
+          analyticsCurrentSlidePhase.textContent = `${lessonData.lessonGroup || 'Lesson'} · ${lessonData.lessonPeriod || ''}`;
+        }
+        if (analyticsAvgPace) {
+          const visited = lessonData.slides?.length || 1;
+          const avgMs = visited > 0 ? Math.round(totalTrackedMs / visited) : 0;
+          analyticsAvgPace.textContent = formatAnalyticsDuration(avgMs);
+        }
+        if (analyticsSlideCountBadge) {
+          analyticsSlideCountBadge.textContent = `${lessonData.slides?.length || 0} slides`;
+        }
+
+        const isTargetView = analyticsTracker.viewMode === "target" || totalTrackedMs <= 0;
+        if (chartModeActualBtn && chartModeTargetBtn) {
+          chartModeActualBtn.classList.toggle("active", !isTargetView);
+          chartModeTargetBtn.classList.toggle("active", isTargetView);
+        }
+
+        const chartHeading = document.getElementById("chartHeading");
+        if (chartHeading) {
+          chartHeading.textContent = isTargetView
+            ? `Curriculum Target Plan: ${lessonData.lessonTopic || lessonData.lessonGroup}`
+            : `Live Time Allocation: ${lessonData.lessonTopic || lessonData.lessonGroup}`;
+        }
+
+        const phases = (lessonData.phases || lessonData.phaseBreakdown || []).map((p) => ({
+          ...p,
+          phaseKey: p.phaseKey || p.key,
+          name: p.name || p.label,
+          targetPercentage: p.targetPercentage || p.targetPercent,
+          actualPercentage: p.actualPercentage || p.actualPercent,
+          actualDwellFormatted: p.actualDwellFormatted || p.formattedDwell || formatAnalyticsDuration(p.totalDwellMs || 0)
+        }));
+
+        renderDonutChart(phases, isTargetView, totalTrackedMs);
+        handleSliceLeave(isTargetView, totalTrackedMs);
+        renderPhaseCards(phases, totalTrackedMs, false);
+        renderSlideDwellTable(lessonData.slides || [], 0);
+        return;
+      }
+    }
   }
 
   if (isAllDecksScope) {
@@ -6434,13 +6809,36 @@ function setupEventListeners() {
   scopeDeckBtn?.addEventListener("click", () => {
     console.log("[Analytics] scopeDeckBtn clicked");
     analyticsTracker.deckScope = "current";
+    analyticsTracker.selectedLessonId = null;
+    if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
+    refreshAnalyticsModalViews(true);
+  });
+  scopeTimetableBtn?.addEventListener("click", () => {
+    console.log("[Analytics] scopeTimetableBtn clicked");
+    analyticsTracker.deckScope = "timetable";
     refreshAnalyticsModalViews(true);
   });
   scopeAllDecksBtn?.addEventListener("click", () => {
     console.log("[Analytics] scopeAllDecksBtn clicked");
     analyticsTracker.deckScope = "all";
+    analyticsTracker.selectedLessonId = null;
+    if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
     refreshAnalyticsModalViews(true);
   });
+  timetableWeekSelect?.addEventListener("change", (e) => {
+    analyticsTracker.selectedWeekId = e.target.value;
+    renderTimetableCalendar(e.target.value);
+    if (analyticsTracker.selectedLessonId) {
+      refreshAnalyticsModalViews(true);
+    }
+  });
+  prevTimetableWeekBtn?.addEventListener("click", () => {
+    navigateTimetableWeek(-1);
+  });
+  nextTimetableWeekBtn?.addEventListener("click", () => {
+    navigateTimetableWeek(1);
+  });
+  clearLessonFilterBtn?.addEventListener("click", clearTimetableLessonSelection);
   analyticsResetBtn?.addEventListener("click", handleResetDeckAnalytics);
   analyticsDeleteLatestBtn?.addEventListener("click", handleDeleteLatestSession);
   analyticsExportBtn?.addEventListener("click", (event) => {
