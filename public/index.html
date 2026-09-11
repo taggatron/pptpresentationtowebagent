@@ -975,6 +975,11 @@
             <button type="button" id="scopeAllDecksBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="View Average Across All Slide Decks">All Decks Average</button>
           </div>
 
+          <!-- Reopen Timetable Button in Nav Bar -->
+          <button type="button" id="reopenTimetableNavBtn" class="timetable-nav-reopen-btn hidden" title="Reopen Teaching Timetable Calendar">
+            <span class="btn-icon">📅</span> Reopen Timetable
+          </button>
+
           <!-- Actions Group (Export, Delete Latest, Reset) -->
           <div class="analytics-actions-group">
             <div class="analytics-dropdown-wrap" id="analyticsExportDropdownWrap">
@@ -1037,20 +1042,6 @@
               <!-- Dynamically populated from timetable data -->
             </div>
           </div>
-        </div>
-
-        <!-- Collapsed Bar shown when timetable component is closed in Timetable mode -->
-        <div id="timetableCollapsedBar" class="timetable-collapsed-bar hidden">
-          <div class="timetable-collapsed-info">
-            <span class="timetable-title-icon">📅</span>
-            <div>
-              <strong class="timetable-collapsed-title">Teaching Timetable Calendar</strong>
-              <span class="timetable-collapsed-sub">Timetable is minimized. Click reopen to view the calendar and pick a lesson.</span>
-            </div>
-          </div>
-          <button type="button" id="reopenTimetableBtn" class="timetable-reopen-btn" title="Reopen Teaching Timetable">
-            <span>📅</span> Reopen Timetable
-          </button>
         </div>
 
         <!-- Active Filter & Status Indicator -->
@@ -1161,6 +1152,6 @@
     </div>
   </div>
 
-  <script src="/js/app.js?v=analytics6" type="module"></script>
+  <script src="/js/app.js?v=analytics7" type="module"></script>
 </body>
 </html>

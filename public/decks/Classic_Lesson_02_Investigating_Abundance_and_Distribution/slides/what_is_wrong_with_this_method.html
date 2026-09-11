@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is wrong with this method? · Lesson 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #fbf8ee;
+      --grid-line: rgba(120, 140, 110, 0.16);
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --primary-green: #1b4332;
+      --accent-green: #2d6a4f;
+      --accent-amber: #b45309;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(30, 58, 40, 0.18);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.10);
+      --shadow-lg: 0 20px 45px rgba(15, 35, 20, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        linear-gradient(var(--grid-line) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, var(--grid-line) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      color: var(--text-main);
+      user-select: none;
+    }
+
+    .slide-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 2.2vw 3.2vw 2vw 3.2vw;
+      position: relative;
+    }
+
+    /* Top left decorative notebook margin */
+    .slide-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 1.4vw;
+      bottom: 0;
+      width: 2px;
+      background: rgba(220, 38, 38, 0.22);
+      pointer-events: none;
+    }
+
+    /* Slide Header */
+    .slide-header {
+      margin-bottom: 1.4vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid rgba(45, 106, 79, 0.22);
+      padding-bottom: 1vh;
+    }
+
+    .header-titles {
+      max-width: 78%;
+    }
+
+    .category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #e8f5e9;
+      color: #1b4332;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      border: 1px solid rgba(45, 106, 79, 0.28);
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.4rem, 2.4vw, 2.3rem);
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-subtitle {
+      font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .header-branding {
+      text-align: right;
+      font-size: 0.75rem;
+      color: #6b7280;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-branding svg {
+      width: 18px;
+      height: 18px;
+      fill: #2d6a4f;
+    }
+
+    /* Main Content Layout */
+    .slide-content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.18fr 1fr;
+      gap: 2.2vw;
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    /* Left: Video Player Column */
+    .player-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .video-card {
+      position: relative;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.1);
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #ffffff;
+    }
+
+    .video-element {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Big Play/Pause Center Overlay Button */
+    .center-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.28);
+      cursor: pointer;
+      transition: opacity 0.25s ease, background-color 0.25s ease;
+      z-index: 5;
+    }
+
+    .center-play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .play-circle-btn {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      border: 2px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1b4332;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s;
+    }
+
+    .play-circle-btn:hover {
+      transform: scale(1.12);
+      background: #ffffff;
+    }
+
+    .play-circle-btn svg {
+      width: 32px;
+      height: 32px;
+      margin-left: 4px;
+      fill: currentColor;
+    }
+
+    /* Video Control Bar */
+    .video-control-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.7) 65%, transparent 100%);
+      padding: 24px 14px 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 6;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-card:hover .video-control-bar,
+    .video-control-bar:focus-within {
+      opacity: 1;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.28);
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: #10b981;
+      border-radius: 4px;
+      width: 0%;
+      position: relative;
+      transition: width 0.08s linear;
+    }
+
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      font-size: 0.85rem;
+    }
+
+    .controls-left, .controls-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ctrl-btn {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 5px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-family: inherit;
+      font-weight: 600;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .ctrl-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .time-display {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.9);
+      min-width: 75px;
+    }
+
+    .speed-badge {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* Teacher Video Tip underneath */
+    .video-under-tip {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #4b5563;
+      padding: 0 4px;
+    }
+
+    .key-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .kbd-chip {
+      background: #e5e7eb;
+      border: 1px solid #d1d5db;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    /* Right: Question & Critical Thinking Column */
+    .discussion-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1.2vh;
+      min-height: 0;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .task-banner {
+      background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+      color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .task-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .task-text h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .task-text p {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 2px;
+    }
+
+    /* Checkpoint Reveal Cards */
+    .reveal-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .reveal-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 10px;
+      padding: 9px 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .reveal-card:hover {
+      border-color: #2d6a4f;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .card-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .card-toggle-icon {
+      font-size: 0.75rem;
+      color: #64748b;
+      transition: transform 0.2s ease;
+    }
+
+    .card-body {
+      margin-top: 6px;
+      font-size: 0.81rem;
+      line-height: 1.4;
+      color: #1e3a2b;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(45, 106, 79, 0.2);
+      display: none;
+    }
+
+    .reveal-card.revealed {
+      background: #f0fdf4;
+      border-color: #10b981;
+    }
+
+    .reveal-card.revealed .card-num {
+      background: #10b981;
+      color: #ffffff;
+    }
+
+    .reveal-card.revealed .card-body {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .reveal-card.revealed .card-toggle-icon {
+      transform: rotate(180deg);
+      color: #10b981;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Actions row */
+    .discussion-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2px;
+      padding-top: 4px;
+    }
+
+    .btn-reveal-all {
+      background: #1b4332;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-reveal-all:hover {
+      background: #2d6a4f;
+    }
+
+    .btn-reset-cards {
+      background: transparent;
+      border: 1px solid #cbd5e1;
+      color: #64748b;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-reset-cards:hover {
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    /* Slide Navigation Hint */
+    .nav-prompt-pill {
+      font-size: 0.75rem;
+      color: #475569;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <!-- Header -->
+    <header class="slide-header">
+      <div class="header-titles">
+        <span class="category-badge">Fieldwork Investigation · Observation Task</span>
+        <h1 class="slide-title">What is wrong with this method?</h1>
+        <p class="slide-subtitle">Observe the ecologist's sampling procedure in the meadow.</p>
+      </div>
+      <div class="header-branding">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        </svg>
+        <span>Ecology Fieldwork</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="slide-content">
+      <!-- Left Column: Embedded Video Player -->
+      <section class="player-column" aria-label="Fieldwork Video Player">
+        <div class="video-card" id="videoCard">
+          <video
+            id="fieldworkVideo"
+            class="video-element"
+            src="/decks/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/Please_create_a_comedic_video.mp4"
+            poster="/decks/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/video_poster_frame_1.5s.png"
+            playsinline
+            preload="auto"
+          ></video>
+
+          <!-- Large Center Play/Pause Overlay -->
+          <div class="center-play-overlay" id="centerPlayOverlay" title="Click to play or pause video">
+            <button type="button" class="play-circle-btn" id="overlayPlayBtn" aria-label="Play video">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Bottom Custom Controls -->
+          <div class="video-control-bar" id="controlBar">
+            <div class="progress-container" id="progressContainer" title="Seek timeline">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <div class="controls-row">
+              <div class="controls-left">
+                <button type="button" class="ctrl-btn" id="playToggleBtn" aria-label="Play video">
+                  <span id="playIcon">▶</span>
+                </button>
+                <button type="button" class="ctrl-btn" id="restartBtn" title="Restart from 0:00" aria-label="Restart video">
+                  <span>↺</span>
+                </button>
+                <span class="time-display" id="timeDisplay">0:00 / 0:10</span>
+              </div>
+              <div class="controls-right">
+                <button type="button" class="ctrl-btn speed-badge" id="speedToggleBtn" title="Toggle 0.5x Slow-Motion review" aria-label="Playback speed">
+                  <span id="speedText">1.0x</span>
+                </button>
+                <button type="button" class="ctrl-btn" id="muteToggleBtn" title="Mute / Unmute" aria-label="Toggle mute">
+                  <span id="muteIcon">🔊</span>
+                </button>
+                <button type="button" class="ctrl-btn" id="fullscreenToggleBtn" title="Fullscreen video" aria-label="Toggle video fullscreen">
+                  <span>⛶</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-under-tip">
+          <span class="key-hint">
+            <kbd class="kbd-chip">Space</kbd> Play/Pause &nbsp;•&nbsp;
+            <kbd class="kbd-chip">R</kbd> Restart &nbsp;•&nbsp;
+            <kbd class="kbd-chip">S</kbd> Slow-mo
+          </span>
+          <span class="nav-prompt-pill">Next: Scientific Random Sampling ➔</span>
+        </div>
+      </section>
+
+      <!-- Right Column: Discussion & Checkpoint Prompts -->
+      <section class="discussion-column" aria-label="Discussion and Checkpoint Tasks">
+        <div class="task-banner">
+          <div class="task-icon">⚠️</div>
+          <div class="task-text">
+            <h3>Think & Discuss with your partner</h3>
+            <p>Why does "throwing a quadrat" violate sound scientific methodology?</p>
+          </div>
+        </div>
+
+        <div class="reveal-cards-container" id="revealCardsContainer">
+          <!-- Card 1 -->
+          <article class="reveal-card" data-card-id="bias" tabindex="0" role="button" aria-expanded="false">
+            <div class="card-header">
+              <div class="card-title-wrap">
+                <span class="card-num">1</span>
+                <h4 class="card-title">Subconscious Human Bias</h4>
+              </div>
+              <span class="card-toggle-icon">▼</span>
+            </div>
+            <div class="card-body">
+              <strong>Human choice ruins data:</strong> Even unconsciously, students throw quadrats towards colorful patches with flowers, or steer away from stinging nettles, dense mud, or uneven ground.
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="reveal-card" data-card-id="probability" tabindex="0" role="button" aria-expanded="false">
+            <div class="card-header">
+              <div class="card-title-wrap">
+                <span class="card-num">2</span>
+                <h4 class="card-title">Unequal Sampling Probability</h4>
+              </div>
+              <span class="card-toggle-icon">▼</span>
+            </div>
+            <div class="card-body">
+              <strong>Not truly random:</strong> Quadrats can only land within the researcher's physical throwing distance. Distant parts of the habitat have a 0% probability of being sampled.
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="reveal-card" data-card-id="safety" tabindex="0" role="button" aria-expanded="false">
+            <div class="card-header">
+              <div class="card-title-wrap">
+                <span class="card-num">3</span>
+                <h4 class="card-title">Physical Hazard & Habitat Damage</h4>
+              </div>
+              <span class="card-toggle-icon">▼</span>
+            </div>
+            <div class="card-body">
+              <strong>Safety risk:</strong> Metal quadrats are heavy and hazardous when hurled in a working field. Landing with force also crushes delicate flora and displaces ground-dwelling invertebrates.
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="reveal-card" data-card-id="solution" tabindex="0" role="button" aria-expanded="false">
+            <div class="card-header">
+              <div class="card-title-wrap">
+                <span class="card-num">4</span>
+                <h4 class="card-title">The Scientific Solution (Next Slide)</h4>
+              </div>
+              <span class="card-toggle-icon">▼</span>
+            </div>
+            <div class="card-body">
+              <strong>Coordinate Grid:</strong> Lay out perpendicular tape measures to form an (X, Y) coordinate system. Generate coordinates with a random number table/calculator to eliminate all human bias!
+            </div>
+          </article>
+        </div>
+
+        <div class="discussion-actions">
+          <button type="button" class="btn-reveal-all" id="revealAllBtn">Reveal All Insights</button>
+          <button type="button" class="btn-reset-cards" id="resetCardsBtn">Reset Checkpoints</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      const video = document.getElementById("fieldworkVideo");
+      const videoCard = document.getElementById("videoCard");
+      const centerPlayOverlay = document.getElementById("centerPlayOverlay");
+      const playToggleBtn = document.getElementById("playToggleBtn");
+      const playIcon = document.getElementById("playIcon");
+      const restartBtn = document.getElementById("restartBtn");
+      const timeDisplay = document.getElementById("timeDisplay");
+      const progressContainer = document.getElementById("progressContainer");
+      const progressBarFill = document.getElementById("progressBarFill");
+      const speedToggleBtn = document.getElementById("speedToggleBtn");
+      const speedText = document.getElementById("speedText");
+      const muteToggleBtn = document.getElementById("muteToggleBtn");
+      const muteIcon = document.getElementById("muteIcon");
+      const fullscreenToggleBtn = document.getElementById("fullscreenToggleBtn");
+      const revealCards = document.querySelectorAll(".reveal-card");
+      const revealAllBtn = document.getElementById("revealAllBtn");
+      const resetCardsBtn = document.getElementById("resetCardsBtn");
+
+      // Format time mm:ss
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60) || 0;
+        const s = Math.floor(seconds % 60) || 0;
+        return `${m}:${s < 10 ? "0" : ""}${s}`;
+      }
+
+      function updateUIPlayback(isPlaying) {
+        playIcon.textContent = isPlaying ? "⏸" : "▶";
+        centerPlayOverlay.classList.toggle("hidden", isPlaying);
+        broadcastState({ isPlaying, currentTime: video.currentTime });
+      }
+
+      function togglePlay() {
+        if (video.paused) {
+          video.play().catch(err => console.warn("Play error:", err));
+        } else {
+          video.pause();
+        }
+      }
+
+      // Event listeners for Video
+      centerPlayOverlay.addEventListener("click", togglePlay);
+      video.addEventListener("click", togglePlay);
+      playToggleBtn.addEventListener("click", togglePlay);
+
+      video.addEventListener("play", () => updateUIPlayback(true));
+      video.addEventListener("pause", () => updateUIPlayback(false));
+      video.addEventListener("ended", () => {
+        updateUIPlayback(false);
+        centerPlayOverlay.classList.remove("hidden");
+      });
+
+      video.addEventListener("timeupdate", () => {
+        const cur = video.currentTime || 0;
+        const dur = video.duration || 10;
+        timeDisplay.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+        const pct = (cur / dur) * 100;
+        progressBarFill.style.width = `${pct}%`;
+      });
+
+      // Seeking
+      progressContainer.addEventListener("click", (e) => {
+        const rect = progressContainer.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const pct = Math.max(0, Math.min(1, clickX / rect.width));
+        const dur = video.duration || 10;
+        video.currentTime = pct * dur;
+        broadcastState({ isPlaying: !video.paused, currentTime: video.currentTime });
+      });
+
+      // Restart
+      restartBtn.addEventListener("click", () => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+
+      // Slow-mo toggle
+      const speeds = [1.0, 0.5];
+      let speedIdx = 0;
+      speedToggleBtn.addEventListener("click", () => {
+        speedIdx = (speedIdx + 1) % speeds.length;
+        const newSpeed = speeds[speedIdx];
+        video.playbackRate = newSpeed;
+        speedText.textContent = `${newSpeed.toFixed(1)}x`;
+      });
+
+      // Mute toggle
+      muteToggleBtn.addEventListener("click", () => {
+        video.muted = !video.muted;
+        muteIcon.textContent = video.muted ? "🔇" : "🔊";
+      });
+
+      // Fullscreen toggle for video card
+      fullscreenToggleBtn.addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          videoCard.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      });
+
+      // Checkpoint Cards Reveal logic
+      revealCards.forEach(card => {
+        const toggle = () => {
+          const isRevealed = card.classList.toggle("revealed");
+          card.setAttribute("aria-expanded", String(isRevealed));
+          broadcastCardsState();
+        };
+        card.addEventListener("click", toggle);
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+
+      revealAllBtn.addEventListener("click", () => {
+        revealCards.forEach(c => {
+          c.classList.add("revealed");
+          c.setAttribute("aria-expanded", "true");
+        });
+        broadcastCardsState();
+      });
+
+      resetCardsBtn.addEventListener("click", () => {
+        revealCards.forEach(c => {
+          c.classList.remove("revealed");
+          c.setAttribute("aria-expanded", "false");
+        });
+        broadcastCardsState();
+      });
+
+      // Keyboard shortcuts inside iframe
+      window.addEventListener("keydown", (e) => {
+        // Slide navigation forwarding to parent presentation
+        if (e.key === "ArrowRight" || e.key === "PageDown") {
+          e.preventDefault();
+          window.parent.postMessage({ type: "NAVIGATE", direction: 1 }, "*");
+        } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          e.preventDefault();
+          window.parent.postMessage({ type: "NAVIGATE", direction: -1 }, "*");
+        } else if (e.key === " " && e.target !== progressContainer) {
+          e.preventDefault();
+          togglePlay();
+        } else if (e.key === "r" || e.key === "R") {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        } else if (e.key === "s" || e.key === "S") {
+          speedToggleBtn.click();
+        }
+      });
+
+      // State broadcasting to presentation window / parent
+      function broadcastState(state) {
+        try {
+          window.parent.postMessage({
+            type: "INTERACTIVE_STATE_UPDATE",
+            interactiveUrl: window.location.pathname,
+            action: "VIDEO_SYNC",
+            state
+          }, "*");
+        } catch (_) {}
+      }
+
+      function broadcastCardsState() {
+        const revealed = Array.from(revealCards).map(c => c.classList.contains("revealed"));
+        try {
+          window.parent.postMessage({
+            type: "INTERACTIVE_STATE_UPDATE",
+            interactiveUrl: window.location.pathname,
+            action: "CARDS_SYNC",
+            state: { revealed }
+          }, "*");
+        } catch (_) {}
+      }
+
+      // Listen for incoming messages from parent / secondary display
+      window.addEventListener("message", (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") return;
+
+        if (data.type === "RESTORE_INTERACTIVE_STATE" || data.type === "INTERACTIVE_STATE_UPDATE") {
+          if (data.action === "VIDEO_SYNC" && data.state) {
+            if (Math.abs(video.currentTime - data.state.currentTime) > 0.5) {
+              video.currentTime = data.state.currentTime;
+            }
+            if (data.state.isPlaying && video.paused) {
+              video.play().catch(() => {});
+            } else if (!data.state.isPlaying && !video.paused) {
+              video.pause();
+            }
+          } else if (data.action === "CARDS_SYNC" && Array.isArray(data.state?.revealed)) {
+            data.state.revealed.forEach((isRev, idx) => {
+              if (revealCards[idx]) {
+                revealCards[idx].classList.toggle("revealed", Boolean(isRev));
+                revealCards[idx].setAttribute("aria-expanded", String(Boolean(isRev)));
+              }
+            });
+          }
+        }
+      });
+
+      // Notify parent that interactive embed is ready
+      try {
+        window.parent.postMessage({ type: "INTERACTIVE_READY", url: window.location.pathname }, "*");
+      } catch (_) {}
+    })();
+  </script>
+</body>
+</html>

@@ -129,8 +129,7 @@ const scopeDeckBtn = document.getElementById("scopeDeckBtn");
 const scopeTimetableBtn = document.getElementById("scopeTimetableBtn");
 const scopeAllDecksBtn = document.getElementById("scopeAllDecksBtn");
 const analyticsTimetableSection = document.getElementById("analyticsTimetableSection");
-const timetableCollapsedBar = document.getElementById("timetableCollapsedBar");
-const reopenTimetableBtn = document.getElementById("reopenTimetableBtn");
+const reopenTimetableNavBtn = document.getElementById("reopenTimetableNavBtn");
 const closeTimetableComponentBtn = document.getElementById("closeTimetableComponentBtn");
 const timetableWeekSelect = document.getElementById("timetableWeekSelect");
 const prevTimetableWeekBtn = document.getElementById("prevTimetableWeekBtn");
@@ -4088,13 +4087,29 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
   // Strictly show timetable ONLY when timetable scope is selected
   if (isTimetableScope) {
     const isComponentOpen = analyticsTracker.timetableComponentOpen !== false;
-    if (analyticsTimetableSection) analyticsTimetableSection.classList.toggle("hidden", !isComponentOpen);
-    if (timetableCollapsedBar) timetableCollapsedBar.classList.toggle("hidden", isComponentOpen);
-    if (activeLessonFilterBar) activeLessonFilterBar.classList.toggle("hidden", !analyticsTracker.selectedLessonId);
+    if (analyticsTimetableSection) {
+      analyticsTimetableSection.classList.toggle("hidden", !isComponentOpen);
+      analyticsTimetableSection.style.display = isComponentOpen ? "" : "none";
+    }
+    if (reopenTimetableNavBtn) {
+      reopenTimetableNavBtn.classList.toggle("hidden", isComponentOpen);
+      reopenTimetableNavBtn.style.display = isComponentOpen ? "none" : "inline-flex";
+    }
+    if (activeLessonFilterBar) {
+      activeLessonFilterBar.classList.toggle("hidden", !analyticsTracker.selectedLessonId);
+    }
   } else {
-    if (analyticsTimetableSection) analyticsTimetableSection.classList.add("hidden");
-    if (timetableCollapsedBar) timetableCollapsedBar.classList.add("hidden");
-    if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
+    if (analyticsTimetableSection) {
+      analyticsTimetableSection.classList.add("hidden");
+      analyticsTimetableSection.style.display = "none";
+    }
+    if (reopenTimetableNavBtn) {
+      reopenTimetableNavBtn.classList.add("hidden");
+      reopenTimetableNavBtn.style.display = "none";
+    }
+    if (activeLessonFilterBar) {
+      activeLessonFilterBar.classList.add("hidden");
+    }
   }
 
   // Disable/enable deck-specific actions
@@ -6910,7 +6925,7 @@ function setupEventListeners() {
     analyticsTracker.timetableComponentOpen = false;
     refreshAnalyticsModalViews(false);
   });
-  reopenTimetableBtn?.addEventListener("click", () => {
+  reopenTimetableNavBtn?.addEventListener("click", () => {
     analyticsTracker.timetableComponentOpen = true;
     refreshAnalyticsModalViews(false);
   });
