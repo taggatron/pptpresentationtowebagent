@@ -173,3 +173,55 @@ test("GET /api/analytics/timetable and GET /api/analytics/lesson/:lessonId endpo
     server.close();
   }
 });
+
+test("getWeekTimetable dynamically changes lesson content, topics, and decks when the week changes", () => {
+  // Week 3 (7–11 Sept 2026)
+  const week3 = getWeekTimetable("year11-week-3");
+  assert.equal(week3.week.id, "year11-week-3");
+  assert.equal(week3.days[0].dateFormatted, "7 Sept");
+
+  const w3ThuP1 = week3.periods[0].daySlots.find((s) => s.id === "thu-p1");
+  assert.equal(w3ThuP1.isFree, false);
+  assert.equal(w3ThuP1.topic, "ECOSYSTEMS");
+  assert.equal(w3ThuP1.matchingDeckId, "Classic_Lesson_01_Ecosystems");
+
+  const w3FriP1 = week3.periods[0].daySlots.find((s) => s.id === "fri-p1");
+  assert.equal(w3FriP1.isFree, false);
+  assert.equal(w3FriP1.topic, "CELL STRUCTURE");
+  assert.equal(w3FriP1.matchingDeckId, "Lesson_01_CELL_STRUCTURE");
+
+  const w3TueP2 = week3.periods[1].daySlots.find((s) => s.id === "tue-p2");
+  assert.equal(w3TueP2.isFree, true); // Y11 starts Thursday in Week 3
+
+  // Week 4 (14–18 Sept 2026)
+  const week4 = getWeekTimetable("year11-week-4");
+  assert.equal(week4.week.id, "year11-week-4");
+  assert.equal(week4.days[0].dateFormatted, "14 Sept");
+
+  const w4TueP2 = week4.periods[1].daySlots.find((s) => s.id === "tue-p2");
+  assert.equal(w4TueP2.isFree, false);
+  assert.equal(w4TueP2.topic, "NITROGEN CYCLE");
+  assert.equal(w4TueP2.matchingDeckId, "Classic_Lesson_04_Nitrogen_Cycle");
+
+  const w4ThuP1 = week4.periods[0].daySlots.find((s) => s.id === "thu-p1");
+  assert.equal(w4ThuP1.topic, "CARBON AND WATER CYCLE");
+  assert.equal(w4ThuP1.matchingDeckId, "Classic_Lesson_05_Carbon_and_Water_Cycle");
+
+  const w4FriP1 = week4.periods[0].daySlots.find((s) => s.id === "fri-p1");
+  assert.equal(w4FriP1.topic, "DNA");
+  assert.equal(w4FriP1.matchingDeckId, "Lesson_04_DNA");
+
+  // Week 5 (21–25 Sept 2026)
+  const week5 = getWeekTimetable("year11-week-5");
+  assert.equal(week5.week.id, "year11-week-5");
+  assert.equal(week5.days[0].dateFormatted, "21 Sept");
+
+  const w5TueP2 = week5.periods[1].daySlots.find((s) => s.id === "tue-p2");
+  assert.equal(w5TueP2.isFree, false);
+  assert.equal(w5TueP2.topic, "CRUDE OIL AND FRACTIONAL DISTILLATION");
+  assert.equal(w5TueP2.matchingDeckId, "Classic_Lesson_08_Crude_Oil_and_Fractional_Distillation");
+
+  const w5ThuP1 = week5.periods[0].daySlots.find((s) => s.id === "thu-p1");
+  assert.equal(w5ThuP1.topic, "GREENHOUSE EFFECT");
+  assert.equal(w5ThuP1.matchingDeckId, "Classic_Lesson_09_Greenhouse_Effect");
+});

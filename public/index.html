@@ -1027,21 +1027,7 @@
                 </select>
               </div>
               <button type="button" id="nextTimetableWeekBtn" class="timetable-nav-btn" title="Next Week" aria-label="Next Week">Next &rarr;</button>
-            </div>
-          </div>
-
-          <!-- Active Filter & Status Indicator -->
-          <div id="activeLessonFilterBar" class="active-lesson-filter-bar hidden">
-            <div class="filter-bar-content">
-              <span class="filter-indicator-dot"></span>
-              <span class="filter-label">Filtered Lesson:</span>
-              <strong id="activeFilterGroupBadge" class="filter-group-badge">Broadsands</strong>
-              <span id="activeFilterTopicText" class="filter-topic-text">NITROGEN CYCLE</span>
-              <span id="activeFilterSlotTag" class="filter-slot-tag">Tuesday Period 2 (10:45–12:00)</span>
-            </div>
-            <div class="filter-bar-actions">
-              <button type="button" id="loadFilteredDeckBtn" class="filter-action-btn secondary hidden" title="Open slide deck for this lesson">📖 Open Slides</button>
-              <button type="button" id="clearLessonFilterBtn" class="filter-action-btn" title="Clear lesson filter and return to default view">&times; Clear Selection</button>
+              <button type="button" id="closeTimetableComponentBtn" class="timetable-close-btn" title="Close Timetable (Minimize)" aria-label="Close Timetable">✕ Close Table</button>
             </div>
           </div>
 
@@ -1050,6 +1036,35 @@
             <div class="planning-table" id="planningTable">
               <!-- Dynamically populated from timetable data -->
             </div>
+          </div>
+        </div>
+
+        <!-- Collapsed Bar shown when timetable component is closed in Timetable mode -->
+        <div id="timetableCollapsedBar" class="timetable-collapsed-bar hidden">
+          <div class="timetable-collapsed-info">
+            <span class="timetable-title-icon">📅</span>
+            <div>
+              <strong class="timetable-collapsed-title">Teaching Timetable Calendar</strong>
+              <span class="timetable-collapsed-sub">Timetable is minimized. Click reopen to view the calendar and pick a lesson.</span>
+            </div>
+          </div>
+          <button type="button" id="reopenTimetableBtn" class="timetable-reopen-btn" title="Reopen Teaching Timetable">
+            <span>📅</span> Reopen Timetable
+          </button>
+        </div>
+
+        <!-- Active Filter & Status Indicator -->
+        <div id="activeLessonFilterBar" class="active-lesson-filter-bar hidden">
+          <div class="filter-bar-content">
+            <span class="filter-indicator-dot"></span>
+            <span class="filter-label">Filtered Lesson:</span>
+            <strong id="activeFilterGroupBadge" class="filter-group-badge">Broadsands</strong>
+            <span id="activeFilterTopicText" class="filter-topic-text">NITROGEN CYCLE</span>
+            <span id="activeFilterSlotTag" class="filter-slot-tag">Tuesday Period 2 (10:45–12:00)</span>
+          </div>
+          <div class="filter-bar-actions">
+            <button type="button" id="loadFilteredDeckBtn" class="filter-action-btn secondary hidden" title="Open slide deck for this lesson">📖 Open Slides</button>
+            <button type="button" id="clearLessonFilterBtn" class="filter-action-btn" title="Clear lesson filter and return to default view">&times; Clear Selection</button>
           </div>
         </div>
 
@@ -1146,6 +1161,6 @@
     </div>
   </div>
 
-  <script src="/js/app.js?v=analytics5" type="module"></script>
+  <script src="/js/app.js?v=analytics6" type="module"></script>
 </body>
 </html>

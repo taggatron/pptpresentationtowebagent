@@ -50,6 +50,21 @@ if (webEmbedFrame) {
   webEmbedFrame.addEventListener("load", () => {
     const slide = currentDeck?.slides?.[currentSlideIndex];
     const embedUrl = slide?.webEmbed?.url;
+    if (embedUrl) {
+      if (embedUrl.includes("quadrat") || embedUrl.includes("sampling")) {
+        setTimeout(() => {
+          try {
+            webEmbedFrame.contentWindow.postMessage({
+              type: "cvl:open-investigation",
+              action: "open-investigation",
+              investigation: "quadrats",
+              practical: "quadrats",
+              focusMode: true
+            }, "*");
+          } catch (_) {}
+        }, 150);
+      }
+    }
     if (embedUrl && activeInteractiveStateByUrl[embedUrl]) {
       setTimeout(() => {
         forwardInteractiveStateToFrame({
@@ -114,6 +129,9 @@ const scopeDeckBtn = document.getElementById("scopeDeckBtn");
 const scopeTimetableBtn = document.getElementById("scopeTimetableBtn");
 const scopeAllDecksBtn = document.getElementById("scopeAllDecksBtn");
 const analyticsTimetableSection = document.getElementById("analyticsTimetableSection");
+const timetableCollapsedBar = document.getElementById("timetableCollapsedBar");
+const reopenTimetableBtn = document.getElementById("reopenTimetableBtn");
+const closeTimetableComponentBtn = document.getElementById("closeTimetableComponentBtn");
 const timetableWeekSelect = document.getElementById("timetableWeekSelect");
 const prevTimetableWeekBtn = document.getElementById("prevTimetableWeekBtn");
 const nextTimetableWeekBtn = document.getElementById("nextTimetableWeekBtn");
@@ -3288,6 +3306,7 @@ const analyticsTracker = {
   cachedTimetable: null,
   hoveredPhaseKey: null,
   deckScope: "current", // "current" | "timetable" | "all"
+  timetableComponentOpen: true,
   selectedLessonId: null,
   selectedWeekId: "year11-week-4",
   noticeTimeout: null
@@ -4017,6 +4036,11 @@ async function openAnalyticsModal() {
   if (!currentDeck?.id) return;
   if (analyticsModal) analyticsModal.classList.remove("hidden");
 
+  // Only show timetable if explicitly on timetable tab; default to current deck on fresh modal open
+  if (analyticsTracker.deckScope !== "timetable") {
+    analyticsTracker.deckScope = "current";
+  }
+
   await refreshAnalyticsModalViews(true);
 }
 
@@ -4049,15 +4073,26 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
   if (scopeTimetableBtn) {
     scopeTimetableBtn.classList.toggle("active", isTimetableScope);
     scopeTimetableBtn.setAttribute("aria-selected", String(isTimetableScope));
+    scopeTimetableBtn.setAttribute("aria-expanded", String(isTimetableScope && analyticsTracker.timetableComponentOpen !== false));
+    scopeTimetableBtn.title = isTimetableScope
+      ? (analyticsTracker.timetableComponentOpen !== false ? "Lesson Timetable (Open - Click to minimize)" : "Lesson Timetable (Minimized - Click to reopen)")
+      : "Select Lesson from Teaching Timetable Calendar";
   }
   if (scopeAllDecksBtn) {
     scopeAllDecksBtn.classList.toggle("active", isAllDecksScope);
     scopeAllDecksBtn.setAttribute("aria-selected", String(isAllDecksScope));
   }
 
-  // Toggle timetable section visibility
-  if (analyticsTimetableSection) {
-    analyticsTimetableSection.classList.toggle("hidden", !isTimetableScope);
+  // Strictly show timetable ONLY when timetable scope is selected
+  if (isTimetableScope) {
+    const isComponentOpen = analyticsTracker.timetableComponentOpen !== false;
+    if (analyticsTimetableSection) analyticsTimetableSection.classList.toggle("hidden", !isComponentOpen);
+    if (timetableCollapsedBar) timetableCollapsedBar.classList.toggle("hidden", isComponentOpen);
+    if (activeLessonFilterBar) activeLessonFilterBar.classList.toggle("hidden", !analyticsTracker.selectedLessonId);
+  } else {
+    if (analyticsTimetableSection) analyticsTimetableSection.classList.add("hidden");
+    if (timetableCollapsedBar) timetableCollapsedBar.classList.add("hidden");
+    if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
   }
 
   // Disable/enable deck-specific actions
@@ -6860,8 +6895,22 @@ function setupEventListeners() {
   });
   scopeTimetableBtn?.addEventListener("click", () => {
     console.log("[Analytics] scopeTimetableBtn clicked");
-    analyticsTracker.deckScope = "timetable";
+    if (analyticsTracker.deckScope === "timetable") {
+      // Toggle open / closed state of the timetable component when already selected
+      analyticsTracker.timetableComponentOpen = !analyticsTracker.timetableComponentOpen;
+    } else {
+      analyticsTracker.deckScope = "timetable";
+      analyticsTracker.timetableComponentOpen = true;
+    }
     refreshAnalyticsModalViews(true);
+  });
+  closeTimetableComponentBtn?.addEventListener("click", () => {
+    analyticsTracker.timetableComponentOpen = false;
+    refreshAnalyticsModalViews(false);
+  });
+  reopenTimetableBtn?.addEventListener("click", () => {
+    analyticsTracker.timetableComponentOpen = true;
+    refreshAnalyticsModalViews(false);
   });
   scopeAllDecksBtn?.addEventListener("click", () => {
     console.log("[Analytics] scopeAllDecksBtn clicked");

@@ -7020,6 +7020,102 @@ body.theme-dark .timetable-week-select {
   color: #f8fafc;
 }
 
+.timetable-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.timetable-close-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.45);
+}
+
+body.theme-dark .timetable-close-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}
+
+/* Collapsed Timetable Bar */
+.timetable-collapsed-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: rgba(99, 102, 241, 0.06);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  animation: fadeInNotice 0.2s ease;
+}
+
+body.theme-dark .timetable-collapsed-bar {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.32);
+}
+
+.timetable-collapsed-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timetable-collapsed-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main, #0f172a);
+  display: block;
+}
+
+body.theme-dark .timetable-collapsed-title {
+  color: #f8fafc;
+}
+
+.timetable-collapsed-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted, #64748b);
+  display: block;
+  margin-top: 2px;
+}
+
+body.theme-dark .timetable-collapsed-sub {
+  color: #94a3b8;
+}
+
+.timetable-reopen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #6366f1;
+  background: #6366f1;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+}
+
+.timetable-reopen-btn:hover {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  transform: translateY(-1px);
+}
+
 /* Active Filter Bar */
 .active-lesson-filter-bar {
   display: flex;
