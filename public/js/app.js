@@ -1515,6 +1515,8 @@ function appendInteractiveGrid(slide) {
         secondaryMask.style.top = `${secondaryBounds.y}%`;
         secondaryMask.style.width = `${secondaryBounds.w}%`;
         secondaryMask.style.height = `${secondaryBounds.h}%`;
+        secondaryMask.style.cursor = "pointer";
+        secondaryMask.addEventListener("click", () => card.click());
         interactiveOverlay.appendChild(secondaryMask);
       });
     }

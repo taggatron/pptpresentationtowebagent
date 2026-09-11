@@ -2519,8 +2519,26 @@ body.theme-dark .edit-target-box-label {
 }
 
 .qa-card-overlay.qa-secondary-region {
-  pointer-events: none;
-  cursor: default;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.qa-card-overlay[style*="height: 2."],
+.qa-card-overlay[style*="height: 3."],
+.qa-card-overlay[style*="height: 4."] {
+  padding: 0 4px;
+}
+.qa-card-overlay[style*="height: 2."] .qa-card-content,
+.qa-card-overlay[style*="height: 3."] .qa-card-content,
+.qa-card-overlay[style*="height: 4."] .qa-card-content {
+  padding: 0;
+  gap: 0;
+}
+.qa-card-overlay[style*="height: 2."] .qa-prompt-badge,
+.qa-card-overlay[style*="height: 3."] .qa-prompt-badge,
+.qa-card-overlay[style*="height: 4."] .qa-prompt-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
 }
 
 /* Answer Masked/Covered State */

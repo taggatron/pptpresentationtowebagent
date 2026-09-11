@@ -356,6 +356,40 @@ const CURRENT_QUESTION_REVEALS = {
         ["The water can overheat and denature the plant's enzymes, stopping photosynthesis.", { x: 52.6, y: 75.7, w: 42.4, h: 15.2 }]
       ]
     )
+  },
+  Classic_Lesson_02_Investigating_Abundance_and_Distribution: {
+    "slide_16.png": [
+      groupedRevealCell(
+        "Which sampling method?",
+        "Systematic / Transect line down the riverbank.",
+        { x: 7.0, y: 67.2, w: 17.5, h: 3.1 },
+        [
+          { x: 24.7, y: 67.2, w: 17.7, h: 3.1 },
+          { x: 8.3, y: 70.3, w: 34.1, h: 3.1 }
+        ],
+        "unmask"
+      ),
+      groupedRevealCell(
+        "What equipment?",
+        "Quadrats, tape measure, random number generator not needed here.",
+        { x: 7.0, y: 74.2, w: 12.7, h: 2.9 },
+        [
+          { x: 19.9, y: 74.2, w: 22.5, h: 2.9 },
+          { x: 8.3, y: 77.1, w: 34.1, h: 3.0 }
+        ],
+        "unmask"
+      ),
+      groupedRevealCell(
+        "What abiotic factor must you measure alongside the shrimp?",
+        "Chemical concentration / pH / pollution levels.",
+        { x: 7.0, y: 81.0, w: 35.5, h: 5.4 },
+        [
+          { x: 13.5, y: 83.8, w: 28.9, h: 3.0 },
+          { x: 8.3, y: 86.6, w: 34.1, h: 4.1 }
+        ],
+        "unmask"
+      )
+    ]
   }
 };
 
