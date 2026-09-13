@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Nitrogen Cycle: Fixation, Feeding & Recycling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --emerald: #059669;
+      --amber: #d97706;
+      --bg-gradient: radial-gradient(circle at 50% 12%, #f0f7ff 0%, #e2effe 55%, #d6e8fa 100%);
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --card-border: rgba(255, 255, 255, 0.85);
+      --shadow-lg: 0 20px 40px -8px rgba(15, 23, 42, 0.22), 0 10px 18px -6px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-gradient);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .slide-wrapper {
+      width: 100%;
+      max-width: 1376px;
+      height: 100%;
+      max-height: 768px;
+      padding: 20px 44px 16px 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding-top: 2px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e0f2fe;
+      color: #0284c7;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 14px;
+      border-radius: 9999px;
+      border: 1px solid #bae6fd;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .badge-icon {
+      font-size: 12px;
+    }
+
+    h1.title-question {
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.2;
+    }
+
+    /* Video Player Container */
+    .video-card {
+      position: relative;
+      width: min(920px, 92vw);
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--card-border);
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    video.main-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Big Center Play Button Overlay */
+    .center-play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.28);
+      cursor: pointer;
+      transition: opacity 0.25s ease, backdrop-filter 0.25s ease;
+      z-index: 10;
+    }
+
+    .center-play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .play-circle-btn {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: rgba(2, 132, 199, 0.92);
+      border: 3px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .play-circle-btn:hover {
+      transform: scale(1.1);
+      background: #0284c7;
+    }
+
+    .play-circle-btn svg {
+      width: 34px;
+      height: 34px;
+      fill: #ffffff;
+      margin-left: 4px;
+    }
+
+    /* Video Control Bar */
+    .video-control-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 18px 12px 18px;
+      background: linear-gradient(to top, rgba(2, 6, 23, 0.94) 0%, rgba(2, 6, 23, 0.72) 65%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 20;
+    }
+
+    .video-card:hover .video-control-bar,
+    .video-card.paused .video-control-bar {
+      opacity: 1;
+    }
+
+    /* Scrubber Timeline */
+    .progress-container {
+      position: relative;
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: height 0.15s ease;
+    }
+
+    .progress-container:hover {
+      height: 9px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #0284c7);
+      border-radius: 4px;
+      position: relative;
+      transition: width 0.05s linear;
+    }
+
+    .progress-bar-fill::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%) scale(0);
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+      transition: transform 0.15s ease;
+    }
+
+    .progress-container:hover .progress-bar-fill::after {
+      transform: translateY(-50%) scale(1);
+    }
+
+    /* Milestone points on timeline */
+    .timeline-marker {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.65);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Control Elements Row */
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      font-size: 13px;
+    }
+
+    .controls-left, .controls-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ctrl-btn {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    .ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.06);
+    }
+
+    .ctrl-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .time-display {
+      font-variant-numeric: tabular-nums;
+      font-size: 12px;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+
+    /* Stage Bookmark Chips Row */
+    .stages-bar {
+      width: min(920px, 92vw);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .stage-chip {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 5px rgba(15, 23, 42, 0.05);
+    }
+
+    .stage-chip:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      border-color: #0284c7;
+      color: #0284c7;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.15);
+    }
+
+    .stage-chip.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .stage-chip.active .chip-time {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .chip-icon {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .chip-label {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+
+    .chip-time {
+      font-size: 11px;
+      color: #64748b;
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+
+    /* Footer Bar */
+    .footer-bar {
+      width: 100%;
+      max-width: 920px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 6px;
+      margin-top: 2px;
+    }
+
+    .guide-tip {
+      font-size: 11.5px;
+      color: #64748b;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .key-badge {
+      display: inline-block;
+      padding: 1px 5px;
+      background: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 10.5px;
+      color: #334155;
+    }
+
+    .watermark {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .watermark svg {
+      width: 14px;
+      height: 14px;
+      fill: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <span class="badge"><span class="badge-icon">🌿</span> GCSE Biology Animation</span>
+      <h1 class="title-question">The Nitrogen Cycle: Fixation, Feeding & Recycling</h1>
+    </header>
+
+    <!-- Video Card -->
+    <div class="video-card paused" id="videoCard">
+      <video
+        id="nitrogenVideo"
+        class="main-video"
+        src="/decks/Classic_Lesson_04_Nitrogen_Cycle/slides/nitrogen_cycle_animation.mp4"
+        poster="/decks/Classic_Lesson_04_Nitrogen_Cycle/slides/video_poster.png"
+        playsinline
+        preload="auto"
+      ></video>
+
+      <!-- Center Play Overlay Button -->
+      <div class="center-play-overlay" id="centerPlayOverlay" title="Click to play video">
+        <button type="button" class="play-circle-btn" id="overlayPlayBtn" aria-label="Play video">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Video Control Bar -->
+      <div class="video-control-bar" id="controlBar">
+        <!-- Scrubber -->
+        <div class="progress-container" id="progressContainer" title="Seek timeline">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+          <!-- Milestone markers (at 0%, 40%, 72%, 88%) -->
+          <div class="timeline-marker" style="left: 40%;" title="2. Assimilation (0:20)"></div>
+          <div class="timeline-marker" style="left: 72%;" title="3. Excretion (0:36)"></div>
+          <div class="timeline-marker" style="left: 88%;" title="4. Nitrification (0:44)"></div>
+        </div>
+
+        <!-- Buttons Row -->
+        <div class="controls-row">
+          <div class="controls-left">
+            <button type="button" class="ctrl-btn" id="playToggleBtn" aria-label="Play video" title="Play/Pause (Space)">
+              <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <button type="button" class="ctrl-btn" id="restartBtn" title="Restart from beginning" aria-label="Restart">
+              <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+            </button>
+            <span class="time-display" id="timeDisplay">0:00 / 0:50</span>
+          </div>
+
+          <div class="controls-right">
+            <button type="button" class="ctrl-btn" id="speedBtn" title="Playback rate" aria-label="Playback speed" style="font-weight: 700; font-size: 11px;">
+              1.0x
+            </button>
+            <button type="button" class="ctrl-btn" id="muteToggleBtn" aria-label="Mute/Unmute" title="Mute/Unmute (M)">
+              <svg id="volumeHighIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+              <svg id="volumeMutedIcon" viewBox="0 0 24 24" style="display: none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            </button>
+            <button type="button" class="ctrl-btn" id="fullscreenBtn" aria-label="Fullscreen" title="Fullscreen (F)">
+              <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage Milestone Jump Chips -->
+    <div class="stages-bar" id="stagesBar">
+      <button class="stage-chip active" data-time="0" title="Biological Nitrogen Fixation: Lightning & Rhizobia in root nodules">
+        <span class="chip-icon">⚡</span>
+        <span class="chip-label">1. Fixation</span>
+        <span class="chip-time">0:00</span>
+      </button>
+      <button class="stage-chip" data-time="20" title="Plant nitrate uptake & Animal protein assimilation">
+        <span class="chip-icon">🌱</span>
+        <span class="chip-label">2. Assimilation</span>
+        <span class="chip-time">0:20</span>
+      </button>
+      <button class="stage-chip" data-time="36" title="Excretion of nitrogenous waste by animals">
+        <span class="chip-icon">🐄</span>
+        <span class="chip-label">3. Excretion</span>
+        <span class="chip-time">0:36</span>
+      </button>
+      <button class="stage-chip" data-time="44" title="Decomposers & Nitrifying bacteria returning nitrates to soil">
+        <span class="chip-icon">🍄</span>
+        <span class="chip-label">4. Nitrification</span>
+        <span class="chip-time">0:44</span>
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-bar">
+      <div class="guide-tip">
+        <span>Shortcuts:</span>
+        <span class="key-badge">Space</span> <span>Play / Pause</span>
+        <span class="key-badge">← / →</span> <span>±5s</span>
+        <span class="key-badge">M</span> <span>Mute</span>
+      </div>
+      <div class="watermark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span>Gemini Notebook</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const video = document.getElementById("nitrogenVideo");
+    const videoCard = document.getElementById("videoCard");
+    const centerPlayOverlay = document.getElementById("centerPlayOverlay");
+    const overlayPlayBtn = document.getElementById("overlayPlayBtn");
+    const playToggleBtn = document.getElementById("playToggleBtn");
+    const playIcon = document.getElementById("playIcon");
+    const pauseIcon = document.getElementById("pauseIcon");
+    const restartBtn = document.getElementById("restartBtn");
+    const progressContainer = document.getElementById("progressContainer");
+    const progressBarFill = document.getElementById("progressBarFill");
+    const timeDisplay = document.getElementById("timeDisplay");
+    const muteToggleBtn = document.getElementById("muteToggleBtn");
+    const volumeHighIcon = document.getElementById("volumeHighIcon");
+    const volumeMutedIcon = document.getElementById("volumeMutedIcon");
+    const speedBtn = document.getElementById("speedBtn");
+    const fullscreenBtn = document.getElementById("fullscreenBtn");
+    const stageChips = document.querySelectorAll(".stage-chip");
+
+    const speeds = [1.0, 1.25, 1.5, 0.75];
+    let currentSpeedIdx = 0;
+
+    function formatTime(seconds) {
+      if (isNaN(seconds) || seconds < 0) return "0:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    function updatePlayState(isPlaying) {
+      if (isPlaying) {
+        centerPlayOverlay.classList.add("hidden");
+        videoCard.classList.remove("paused");
+        playIcon.style.display = "none";
+        pauseIcon.style.display = "block";
+      } else {
+        centerPlayOverlay.classList.remove("hidden");
+        videoCard.classList.add("paused");
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "none";
+      }
+    }
+
+    function togglePlay() {
+      if (video.paused || video.ended) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+
+    // Play/Pause Listeners
+    video.addEventListener("play", () => updatePlayState(true));
+    video.addEventListener("pause", () => updatePlayState(false));
+    video.addEventListener("ended", () => {
+      updatePlayState(false);
+      progressBarFill.style.width = "100%";
+    });
+
+    centerPlayOverlay.addEventListener("click", togglePlay);
+    video.addEventListener("click", togglePlay);
+    playToggleBtn.addEventListener("click", togglePlay);
+
+    // Restart
+    restartBtn.addEventListener("click", () => {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    });
+
+    // Time & Progress Update
+    video.addEventListener("timeupdate", () => {
+      const current = video.currentTime;
+      const total = video.duration || 50;
+      const pct = (current / total) * 100;
+      progressBarFill.style.width = `${Math.min(pct, 100)}%`;
+      timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
+
+      // Update active stage chip based on time
+      updateActiveStageChip(current);
+    });
+
+    function updateActiveStageChip(current) {
+      let activeIndex = 0;
+      if (current >= 44) activeIndex = 3;
+      else if (current >= 36) activeIndex = 2;
+      else if (current >= 20) activeIndex = 1;
+
+      stageChips.forEach((chip, idx) => {
+        chip.classList.toggle("active", idx === activeIndex);
+      });
+    }
+
+    // Timeline Scrubbing
+    function seekFromEvent(e) {
+      const rect = progressContainer.getBoundingClientRect();
+      const clickX = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+      const pct = clickX / rect.width;
+      const targetTime = pct * (video.duration || 50);
+      video.currentTime = targetTime;
+    }
+
+    let isScrubbing = false;
+    progressContainer.addEventListener("mousedown", (e) => {
+      isScrubbing = true;
+      seekFromEvent(e);
+    });
+    window.addEventListener("mousemove", (e) => {
+      if (isScrubbing) seekFromEvent(e);
+    });
+    window.addEventListener("mouseup", () => {
+      if (isScrubbing) isScrubbing = false;
+    });
+
+    // Stage Jump Chips
+    stageChips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        const time = parseFloat(chip.getAttribute("data-time") || "0");
+        video.currentTime = time;
+        if (video.paused) {
+          video.play().catch(() => {});
+        }
+      });
+    });
+
+    // Mute/Unmute
+    muteToggleBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      volumeHighIcon.style.display = video.muted ? "none" : "block";
+      volumeMutedIcon.style.display = video.muted ? "block" : "none";
+    });
+
+    // Speed cycling
+    speedBtn.addEventListener("click", () => {
+      currentSpeedIdx = (currentSpeedIdx + 1) % speeds.length;
+      const speed = speeds[currentSpeedIdx];
+      video.playbackRate = speed;
+      speedBtn.textContent = `${speed.toFixed(speed % 1 === 0 ? 1 : 2)}x`;
+    });
+
+    // Fullscreen
+    fullscreenBtn.addEventListener("click", () => {
+      if (!document.fullscreenElement) {
+        if (videoCard.requestFullscreen) videoCard.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    });
+
+    // Keyboard Shortcuts
+    window.addEventListener("keydown", (e) => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+      if (e.code === "Space" || e.key === "k") {
+        e.preventDefault();
+        togglePlay();
+      } else if (e.code === "ArrowLeft") {
+        e.preventDefault();
+        video.currentTime = Math.max(0, video.currentTime - 5);
+      } else if (e.code === "ArrowRight") {
+        e.preventDefault();
+        video.currentTime = Math.min(video.duration || 50, video.currentTime + 5);
+      } else if (e.key === "m" || e.key === "M") {
+        e.preventDefault();
+        muteToggleBtn.click();
+      } else if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        fullscreenBtn.click();
+      }
+    });
+
+    // Handle messages from host presentation
+    window.addEventListener("message", (event) => {
+      if (!event.data) return;
+      // When slide navigates away, pause video
+      if (event.data.type === "SLIDE_CHANGED" || event.data.action === "pause") {
+        try {
+          video.pause();
+        } catch (_) {}
+      }
+    });
+  </script>
+</body>
+</html>
