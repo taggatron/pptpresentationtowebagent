@@ -48,7 +48,7 @@ export const LESSON_SCHEDULE = [
     room: "Lab 1 (3.096)",
     topic: "Lesson 1: Welcome to Human Biology: What do you already know?",
     linkedLesson: "Linked AAQ Human Biology · Lesson 1",
-    matchingDeckId: "Lesson_01_Human_Biology_Scientist_Onboarding",
+    matchingDeckId: "Lesson_01_Welcome_to_Human_Biology",
     sharedWith: "with Matt"
   },
   {
@@ -65,7 +65,7 @@ export const LESSON_SCHEDULE = [
     room: "Lab 1 (3.096)",
     topic: "Lesson 2: Working like a Human Biologist",
     linkedLesson: "Linked AAQ Human Biology · Lesson 2",
-    matchingDeckId: "Lesson_01_Human_Biology_Scientist_Onboarding",
+    matchingDeckId: "Lesson_02_Working_like_a_Human_Biologist",
     sharedWith: "with Matt"
   },
   {
@@ -186,8 +186,34 @@ export function findMatchingDeckId(topic, className = "") {
   const topicLower = topic.toLowerCase();
 
   // Special handling for A Level Human Biology
-  if (className === "A Level" && (topicLower.includes("human biology") || topicLower.includes("scientist") || topicLower.includes("onboarding"))) {
-    return "Lesson_01_Human_Biology_Scientist_Onboarding";
+  if (className === "A Level" || className === "AAQ Cert" || topicLower.includes("human biology")) {
+    if (topicLower.includes("lesson 1") || topicLower.includes("what do you already know") || topicLower.includes("welcome to human biology")) {
+      return "Lesson_01_Welcome_to_Human_Biology";
+    }
+    if (topicLower.includes("lesson 2") || topicLower.includes("working like a human biologist")) {
+      return "Lesson_02_Working_like_a_Human_Biologist";
+    }
+    if (topicLower.includes("lesson 3") || topicLower.includes("heart rate") || topicLower.includes("interpolation")) {
+      return "Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical";
+    }
+    if (topicLower.includes("lesson 4") || topicLower.includes("referencing") || topicLower.includes("working like a scientist")) {
+      return "Lesson_04_Working_like_a_Scientist_Continued";
+    }
+    if (topicLower.includes("lesson 5") || topicLower.includes("clinical trials") || topicLower.includes("interpreting data")) {
+      return "Lesson_05_Communicating_like_a_Human_Biologist_Interpreting_Data_Clinical_Trials";
+    }
+    if (topicLower.includes("lesson 6") || topicLower.includes("academic writing")) {
+      return "Lesson_06_Communicating_like_a_Human_Biologist_Academic_Writing_and_Application";
+    }
+    if (topicLower.includes("lesson 7") || topicLower.includes("diagnostic profile") || topicLower.includes("target setting")) {
+      return "Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Target_Setting";
+    }
+    if (topicLower.includes("lesson 8") || topicLower.includes("transition to biomedical") || topicLower.includes("genetics")) {
+      return "Lesson_08_Transition_to_Biomedical_Science_and_Genetics";
+    }
+    if (topicLower.includes("scientist") || topicLower.includes("onboarding")) {
+      return "Lesson_01_Human_Biology_Scientist_Onboarding";
+    }
   }
 
   const decksDir = path.resolve(process.cwd(), "public", "decks");
