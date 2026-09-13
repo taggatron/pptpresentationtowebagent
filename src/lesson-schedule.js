@@ -211,8 +211,8 @@ export function findMatchingDeckId(topic, className = "") {
     if (topicLower.includes("lesson 8") || topicLower.includes("transition to biomedical") || topicLower.includes("genetics")) {
       return "Lesson_08_Transition_to_Biomedical_Science_and_Genetics";
     }
-    if (topicLower.includes("scientist") || topicLower.includes("onboarding")) {
-      return "Lesson_01_Human_Biology_Scientist_Onboarding";
+    if (topicLower.includes("lesson 0") || topicLower.includes("welcome to human biology") || topicLower.includes("scientist") || topicLower.includes("onboarding")) {
+      return "Lesson_00_Welcome_to_Human_Biology";
     }
   }
 
