@@ -671,7 +671,7 @@ function normalizeBuildSteps(slide) {
           endTime: Number.isFinite(Number(slide.endTime)) ? Number(slide.endTime) : null
         }
       ];
-    } else if (!steps[0].videoUrl) {
+    } else if (!steps.some((step) => Boolean(step.videoUrl))) {
       steps[0] = {
         ...steps[0],
         kind: "video",
@@ -3414,6 +3414,21 @@ async function startSlideshowTracking() {
     analyticsTracker.sessionId = `sess_${Date.now()}`;
   }
 
+  // Cloud Firestore session replication
+  const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
+  if (bridge && bridge.isUserAuthorized && bridge.isUserAuthorized()) {
+    bridge.saveFirestoreSession({
+      id: analyticsTracker.sessionId,
+      deckId: currentDeck.id,
+      deckTitle: currentDeck.title || currentDeck.id,
+      lessonId: currentSlot.id,
+      lessonGroup: currentSlot.group,
+      lessonPeriod: currentSlot.periodLabel,
+      lessonTopic: currentSlot.topic,
+      weekId: analyticsTracker.selectedWeekId || "year11-week-4"
+    }).catch((err) => console.warn("[Analytics] Firestore session save notice:", err));
+  }
+
   analyticsTracker.active = true;
   updateAnalyticsButtonStatus(true);
   if (analyticsStatusBadge) {
@@ -3456,6 +3471,13 @@ async function stopSlideshowTracking({ finishSession = true } = {}) {
         })
       });
     } catch (_) {}
+
+    // Cloud Firestore session finish
+    const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
+    if (bridge && bridge.isUserAuthorized && bridge.isUserAuthorized()) {
+      const totalSec = Object.values(analyticsTracker.dwells || {}).reduce((a, b) => a + b, 0) / 1000;
+      bridge.finishFirestoreSession(analyticsTracker.sessionId, totalSec).catch(() => {});
+    }
   }
 
   analyticsTracker.active = false;
@@ -3501,6 +3523,21 @@ async function sendSlideDwell(slideNumber, dwellMs) {
       })
     });
   } catch (_) {}
+
+  // Cloud Firestore dwell sync
+  const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
+  if (bridge && bridge.isUserAuthorized && bridge.isUserAuthorized()) {
+    const totalSec = Object.values(analyticsTracker.dwells || {}).reduce((a, b) => a + b, 0) / 1000;
+    bridge.recordFirestoreSlideDwell({
+      sessionId: analyticsTracker.sessionId,
+      deckId: analyticsTracker.deckId,
+      slideNumber,
+      slideTitle: `Slide ${slideNumber}`,
+      lessonPhase: phaseKey || "direct_instruction",
+      durationSeconds: Math.round(dwellMs) / 1000,
+      totalSessionSeconds: totalSec
+    }).catch(() => {});
+  }
 }
 
 async function sendAnalyticsHeartbeat() {
@@ -3532,6 +3569,22 @@ async function sendAnalyticsHeartbeat() {
 
 async function fetchDeckAnalyticsData(deckId) {
   if (!deckId) return null;
+
+  // 1. Try Cloud Firestore when user is authenticated
+  const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
+  if (bridge && bridge.isUserAuthorized && bridge.isUserAuthorized()) {
+    try {
+      const fsData = await bridge.getFirestoreDeckAnalytics(deckId);
+      if (fsData && fsData.hasData) {
+        analyticsTracker.cachedAnalysis = fsData;
+        return fsData;
+      }
+    } catch (fsErr) {
+      console.warn("[Analytics] Firestore deck query notice:", fsErr.message);
+    }
+  }
+
+  // 2. Fetch from server endpoint (backed by resilient SQLite)
   try {
     const res = await fetch(`/api/analytics/deck/${encodeURIComponent(deckId)}`);
     if (!res.ok) throw new Error("Failed to load analytics");
@@ -3545,6 +3598,21 @@ async function fetchDeckAnalyticsData(deckId) {
 }
 
 async function fetchAllDecksAverageData() {
+  // 1. Try Cloud Firestore when user is authenticated
+  const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
+  if (bridge && bridge.isUserAuthorized && bridge.isUserAuthorized()) {
+    try {
+      const fsAvg = await bridge.getFirestoreAllDecksAverage();
+      if (fsAvg && fsAvg.hasData) {
+        analyticsTracker.cachedAllDecksAverage = fsAvg;
+        return fsAvg;
+      }
+    } catch (fsErr) {
+      console.warn("[Analytics] Firestore average query notice:", fsErr.message);
+    }
+  }
+
+  // 2. Fetch from server endpoint
   try {
     const res = await fetch("/api/analytics/all-decks-average");
     if (!res.ok) throw new Error("Failed to load all decks average");
@@ -4035,6 +4103,13 @@ function renderSlideDwellTable(slides, currentSlideNum) {
 
 async function openAnalyticsModal() {
   if (!currentDeck?.id) return;
+
+  const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
+  if (bridge && !bridge.isUserAuthorized()) {
+    bridge.openAuthModal("Please sign in with danielptagg@googlemail.com to access cloud analytics.");
+    return;
+  }
+
   if (analyticsModal) analyticsModal.classList.remove("hidden");
 
   // Only show timetable if explicitly on timetable tab; default to current deck on fresh modal open
@@ -4228,11 +4303,21 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
       allData = await fetchAllDecksAverageData();
     }
     if (!allData) {
-      setAnalyticsNotice(
-        "⚠️ Unable to load cross-deck benchmark data from server.",
-        "error"
-      );
-      return;
+      allData = {
+        hasData: false,
+        isAllDecks: true,
+        totalSessions: 0,
+        deckCount: 0,
+        totalDurationMs: 0,
+        phases: [
+          { phaseKey: "starter", name: "Starter / Retrieval", targetPercentage: 15, actualPercentage: 0, color: "#f59e0b" },
+          { phaseKey: "direct_instruction", name: "Direct Instruction", targetPercentage: 25, actualPercentage: 0, color: "#3b82f6" },
+          { phaseKey: "modelling", name: "Teacher Modelling", targetPercentage: 15, actualPercentage: 0, color: "#8b5cf6" },
+          { phaseKey: "guided_practice", name: "Guided Practice", targetPercentage: 15, actualPercentage: 0, color: "#10b981" },
+          { phaseKey: "independent_practice", name: "Independent Practice", targetPercentage: 20, actualPercentage: 0, color: "#ec4899" },
+          { phaseKey: "plenary", name: "Plenary / Review", targetPercentage: 10, actualPercentage: 0, color: "#06b6d4" }
+        ]
+      };
     }
 
     const totalTrackedMs = allData.totalDurationMs || 0;
@@ -4294,11 +4379,20 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
     data = await fetchDeckAnalyticsData(currentDeck?.id);
   }
   if (!data) {
-    setAnalyticsNotice(
-      "⚠️ Unable to load analytics data from server. Please ensure your local server is restarted to load the latest analytics endpoints.",
-      "error"
-    );
-    return;
+    data = {
+      hasData: false,
+      deckId: currentDeck?.id,
+      totalDurationMs: 0,
+      phases: [
+        { phaseKey: "starter", name: "Starter / Retrieval", targetPercentage: 15, actualPercentage: 0, color: "#f59e0b" },
+        { phaseKey: "direct_instruction", name: "Direct Instruction", targetPercentage: 25, actualPercentage: 0, color: "#3b82f6" },
+        { phaseKey: "modelling", name: "Teacher Modelling", targetPercentage: 15, actualPercentage: 0, color: "#8b5cf6" },
+        { phaseKey: "guided_practice", name: "Guided Practice", targetPercentage: 15, actualPercentage: 0, color: "#10b981" },
+        { phaseKey: "independent_practice", name: "Independent Practice", targetPercentage: 20, actualPercentage: 0, color: "#ec4899" },
+        { phaseKey: "plenary", name: "Plenary / Review", targetPercentage: 10, actualPercentage: 0, color: "#06b6d4" }
+      ],
+      slides: []
+    };
   }
 
   let activeInFlightMs = 0;

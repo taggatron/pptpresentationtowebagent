@@ -1764,16 +1764,34 @@ export function createApp({
   app.get("/api/analytics/deck/:deckId", async (req, res) => {
     try {
       const safeDeckId = assertSafeDeckId(req.params.deckId);
-      const { manifest } = await readManifest(DECKS_DIR, safeDeckId);
+      let manifest = { id: safeDeckId, title: safeDeckId, slides: [] };
+      try {
+        const manifestResult = await readManifest(DECKS_DIR, safeDeckId);
+        if (manifestResult && manifestResult.manifest) {
+          manifest = manifestResult.manifest;
+        }
+      } catch (readErr) {
+        console.warn(`[Server] Manifest for ${safeDeckId} not found, proceeding with defaults:`, readErr.message);
+      }
+
       const phaseAnalysis = analyzeDeckLessonPhases(manifest);
-      const analytics = getDeckAnalytics(safeDeckId);
+      const analytics = getDeckAnalytics(safeDeckId) || {
+        hasData: false,
+        deckId: safeDeckId,
+        slides: [],
+        phaseBreakdown: [],
+        totalSessions: 0,
+        totalDurationMs: 0,
+        latestSession: null,
+        sessions: []
+      };
 
       const slideMetricsMap = new Map();
       if (analytics && Array.isArray(analytics.slides)) {
         analytics.slides.forEach((s) => slideMetricsMap.set(s.slideNumber, s));
       }
 
-      const enhancedSlides = phaseAnalysis.slides.map((s) => {
+      const enhancedSlides = (phaseAnalysis.slides || []).map((s) => {
         const metric = slideMetricsMap.get(s.slideNumber);
         return {
           ...s,
@@ -1784,8 +1802,8 @@ export function createApp({
       });
 
       const totalTrackedMs = analytics.totalDurationMs || 0;
-      const phasesWithActuals = phaseAnalysis.phaseSummary.map((p) => {
-        const matchingDbPhase = analytics.phaseBreakdown.find((dbP) => dbP.phaseKey === p.phaseKey);
+      const phasesWithActuals = (phaseAnalysis.phaseSummary || []).map((p) => {
+        const matchingDbPhase = (analytics.phaseBreakdown || []).find((dbP) => dbP.phaseKey === p.phaseKey || dbP.key === p.phaseKey);
         const actualDwellMs = matchingDbPhase ? matchingDbPhase.totalDwellMs : 0;
         const actualPercentage = totalTrackedMs > 0
           ? Math.round((actualDwellMs / totalTrackedMs) * 1000) / 10
@@ -1809,12 +1827,13 @@ export function createApp({
         benchmarks: LESSON_PHASE_BENCHMARKS,
         phases: phasesWithActuals,
         slides: enhancedSlides,
-        sessionCount: analytics.totalSessions,
-        totalDurationMs: analytics.totalDurationMs,
-        latestSession: analytics.latestSession,
-        allSessions: analytics.sessions
+        sessionCount: analytics.totalSessions || 0,
+        totalDurationMs: analytics.totalDurationMs || 0,
+        latestSession: analytics.latestSession || null,
+        allSessions: analytics.sessions || []
       });
     } catch (error) {
+      console.error("[Server] Error serving deck analytics:", error.message);
       res.status(error.statusCode || 500).json({ error: error.message });
     }
   });

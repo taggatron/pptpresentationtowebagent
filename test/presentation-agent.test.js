@@ -647,7 +647,7 @@ test("Lesson 9's real Gemini videos and segment timing survive planning and clea
   const intro = manifest.slides.find((slide) => slide.number === 1);
   const segmented = manifest.slides.find((slide) => slide.number === 3);
 
-  assert.equal(intro.progressiveBuilds[0].videoUrl, "/L9_anaerobic_resp_into.mp4");
+  assert.equal(intro.progressiveBuilds[1].videoUrl, "/L9_anaerobic_resp_into.mp4");
   assert.deepEqual(
     segmented.progressiveBuilds.map(({ videoUrl, startTime, endTime }) => ({
       videoUrl,

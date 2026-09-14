@@ -50,37 +50,36 @@
         "questionCount": 0,
         "detectionSource": "manifest-text"
       },
-      "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/Sunlight_illuminates_notebook_an…_1080p_20260910151343.mp4",
       "hasProgressiveBuilds": true,
       "originalImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/slide_01.png",
       "progressiveBuilds": [
         {
-          "id": "video_build_1",
+          "id": "image_build_1",
           "version": 1,
+          "kind": "image",
+          "label": "Build 1: Lesson Title & Objectives",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/slide_01.png"
+        },
+        {
+          "id": "video_build_2",
+          "version": 2,
           "kind": "video",
-          "label": "Build 1: Video Intro (Investigating Abundance and Distribution)",
+          "label": "Build 2: Video Intro (Investigating Abundance and Distribution)",
           "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/Sunlight_illuminates_notebook_an…_1080p_20260910151343.mp4",
           "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/slide_01.png",
           "posterUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/slide_01.png"
-        },
-        {
-          "id": "image_build_2",
-          "version": 2,
-          "kind": "image",
-          "label": "Build 2: Lesson Title & Objectives",
-          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/slide_01.png"
         }
       ],
       "history": [
         {
-          "id": "ver_video_intro",
-          "label": "Build 1: Video Intro (Investigating Abundance and Distribution)",
-          "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/Sunlight_illuminates_notebook_an…_1080p_20260910151343.mp4",
+          "id": "ver_orig",
+          "label": "Build 1: Lesson Title & Objectives",
           "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/slide_01.png"
         },
         {
-          "id": "ver_orig",
-          "label": "Original Slide Image",
+          "id": "ver_video_intro",
+          "label": "Build 2: Video Intro (Investigating Abundance and Distribution)",
+          "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/Sunlight_illuminates_notebook_an…_1080p_20260910151343.mp4",
           "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Investigating_Abundance_and_Distribution/slides/slide_01.png"
         }
       ],
@@ -90,25 +89,10 @@
         "serialSteps": [
           {
             "step": 1,
-            "buildId": "video_build_1",
-            "title": "Build 1: Video Intro (Investigating Abundance and Distribution)",
+            "buildId": "image_build_1",
+            "title": "Build 1: Lesson Title & Objectives",
             "componentIds": [
-              "video_build_1"
-            ],
-            "targetBounds": {
-              "x": 0,
-              "y": 0,
-              "w": 100,
-              "h": 100
-            },
-            "revealType": "play-video"
-          },
-          {
-            "step": 2,
-            "buildId": "image_build_2",
-            "title": "Build 2: Lesson Title & Objectives",
-            "componentIds": [
-              "image_build_2"
+              "image_build_1"
             ],
             "targetBounds": {
               "x": 0,
@@ -117,6 +101,21 @@
               "h": 100
             },
             "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "video_build_2",
+            "title": "Build 2: Video Intro (Investigating Abundance and Distribution)",
+            "componentIds": [
+              "video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
           }
         ]
       },

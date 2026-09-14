@@ -45,20 +45,15 @@
       "originalImageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01.png",
       "history": [
         {
+          "id": "ver_revised_1",
+          "label": "Build 1: Lesson Title & Organelle Callouts",
+          "imageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png"
+        },
+        {
           "id": "ver_video_intro",
-          "label": "Build 1: 3D Animated Cell Structure Video Intro",
+          "label": "Build 2: 3D Animated Cell Structure Video Intro",
           "videoUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/Please_animate_the_central_cel (1).mp4",
           "imageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png"
-        },
-        {
-          "id": "ver_revised_1",
-          "label": "Build 2: Custom region (Cell wall label kept)",
-          "imageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png"
-        },
-        {
-          "id": "ver_orig",
-          "label": "Original Slide Image",
-          "imageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01.png"
         }
       ],
       "title": "1. Cell Structure",
@@ -87,20 +82,20 @@
       },
       "progressiveBuilds": [
         {
-          "id": "video_build_1",
+          "id": "image_build_1",
           "version": 1,
+          "kind": "image",
+          "label": "Build 1: Lesson Title & Organelle Callouts",
+          "imageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png"
+        },
+        {
+          "id": "video_build_2",
+          "version": 2,
           "kind": "video",
-          "label": "Build 1: 3D Animated Cell Structure Video Intro",
+          "label": "Build 2: 3D Animated Cell Structure Video Intro",
           "videoUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/Please_animate_the_central_cel (1).mp4",
           "imageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png",
           "posterUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png"
-        },
-        {
-          "id": "image_build_2",
-          "version": 2,
-          "kind": "image",
-          "label": "Build 2: Lesson Title & Organelle Callouts",
-          "imageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png"
         }
       ],
       "serialAnimation": {
@@ -109,25 +104,10 @@
         "serialSteps": [
           {
             "step": 1,
-            "buildId": "video_build_1",
-            "title": "Build 1: 3D Animated Cell Structure Video Intro",
+            "buildId": "image_build_1",
+            "title": "Build 1: Lesson Title & Organelle Callouts",
             "componentIds": [
-              "video_build_1"
-            ],
-            "targetBounds": {
-              "x": 0,
-              "y": 0,
-              "w": 100,
-              "h": 100
-            },
-            "revealType": "play-video"
-          },
-          {
-            "step": 2,
-            "buildId": "image_build_2",
-            "title": "Build 2: Lesson Title & Organelle Callouts",
-            "componentIds": [
-              "image_build_2"
+              "image_build_1"
             ],
             "targetBounds": {
               "x": 0,
@@ -136,10 +116,24 @@
               "h": 100
             },
             "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "video_build_2",
+            "title": "Build 2: 3D Animated Cell Structure Video Intro",
+            "componentIds": [
+              "video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
           }
         ]
       },
-      "videoUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/Please_animate_the_central_cel (1).mp4",
       "posterUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01_revised_hd.png"
     },
     {

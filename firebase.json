@@ -1,0 +1,16 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "auth": {
+    "providers": {
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "PPT Presentation Agent",
+        "supportEmail": "danielptagg@googlemail.com",
+        "authorizedRedirectUris": [
+          "https://pptpresentationtowebagent.vercel.app/__/auth/handler"
+        ]
+      }
+    }
+  }
+}

@@ -46,26 +46,31 @@
       "progressiveBuilds": [
         {
           "version": 1,
-          "label": "Build 1: Video Intro (Anaerobic Respiration)",
-          "videoUrl": "/L9_anaerobic_resp_into.mp4",
-          "imageUrl": "/decks/cell_biology/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png"
+          "label": "Build 1: Lesson Title & Objectives",
+          "imageUrl": "/decks/cell_biology/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png",
+          "id": "image_build_1",
+          "kind": "image"
         },
         {
           "version": 2,
-          "label": "Build 2: Lesson Title & Objectives",
-          "imageUrl": "/decks/cell_biology/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png"
+          "label": "Build 2: Video Intro (Anaerobic Respiration)",
+          "videoUrl": "/L9_anaerobic_resp_into.mp4",
+          "imageUrl": "/decks/cell_biology/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png",
+          "id": "video_build_2",
+          "kind": "video",
+          "posterUrl": "/decks/cell_biology/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png"
         }
       ],
       "history": [
         {
-          "id": "ver_video_intro",
-          "label": "Build 1: Video Intro (Anaerobic Respiration)",
-          "videoUrl": "/L9_anaerobic_resp_into.mp4",
+          "id": "ver_orig",
+          "label": "Build 1: Lesson Title & Objectives",
           "imageUrl": "/decks/cell_biology/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png"
         },
         {
-          "id": "ver_orig",
-          "label": "Original Slide Image",
+          "id": "ver_video_intro",
+          "label": "Build 2: Video Intro (Anaerobic Respiration)",
+          "videoUrl": "/L9_anaerobic_resp_into.mp4",
           "imageUrl": "/decks/cell_biology/Lesson_09_ANAEROBIC_RESPIRATION/slides/slide_01.png"
         }
       ],
@@ -92,25 +97,10 @@
         "serialSteps": [
           {
             "step": 1,
-            "buildId": "video_build_1",
-            "title": "Build 1: Video Intro (Anaerobic Respiration)",
+            "buildId": "image_build_1",
+            "title": "Build 1: Lesson Title & Objectives",
             "componentIds": [
-              "video_build_1"
-            ],
-            "targetBounds": {
-              "x": 0,
-              "y": 0,
-              "w": 100,
-              "h": 100
-            },
-            "revealType": "play-video"
-          },
-          {
-            "step": 2,
-            "buildId": "image_build_2",
-            "title": "Build 2: Lesson Title & Objectives",
-            "componentIds": [
-              "image_build_2"
+              "image_build_1"
             ],
             "targetBounds": {
               "x": 0,
@@ -119,6 +109,21 @@
               "h": 100
             },
             "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "video_build_2",
+            "title": "Build 2: Video Intro (Anaerobic Respiration)",
+            "componentIds": [
+              "video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
           }
         ]
       },

@@ -3,7 +3,7 @@
   "title": "0. Welcome to Human Biology",
   "slideSet": "intro_aaq_human_bio",
   "filename": "Human_Biology_Scientist_Onboarding_(2).pptx",
-  "totalSlides": 18,
+  "totalSlides": 15,
   "slides": [
     {
       "number": 1,
@@ -65,31 +65,35 @@
         "transcript": "iz. ~~) Welcome to OCR Level : ia 0a:\n. | AAQ Human Biology — 1 fi iy\na), Department Induction & i i uy\na ape Course Onboarding rae a",
         "role": "title"
       },
-      "videoUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/Please_animate_the_attached_im.mp4",
       "originalImageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png",
       "progressiveBuilds": [
         {
           "version": 1,
-          "label": "Build 1: Video Intro (Human Biology Onboarding)",
-          "videoUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/Please_animate_the_attached_im.mp4",
-          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png"
+          "label": "Build 1: Welcome to OCR Level 3 AAQ Human Biology",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png",
+          "id": "image_build_1",
+          "kind": "image"
         },
         {
           "version": 2,
-          "label": "Build 2: Welcome to OCR Level 3 AAQ Human Biology",
-          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png"
+          "label": "Build 2: Video Intro (Human Biology Onboarding)",
+          "videoUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/Please_animate_the_attached_im.mp4",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png",
+          "id": "video_build_2",
+          "kind": "video",
+          "posterUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png"
         }
       ],
       "history": [
         {
-          "id": "ver_video_intro",
-          "label": "Build 1: Video Intro (Human Biology Onboarding)",
-          "videoUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/Please_animate_the_attached_im.mp4",
+          "id": "ver_orig",
+          "label": "Build 1: Welcome to OCR Level 3 AAQ Human Biology",
           "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png"
         },
         {
-          "id": "ver_orig",
-          "label": "Original Slide Image",
+          "id": "ver_video_intro",
+          "label": "Build 2: Video Intro (Human Biology Onboarding)",
+          "videoUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/Please_animate_the_attached_im.mp4",
           "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_01.png"
         }
       ],
@@ -99,25 +103,10 @@
         "serialSteps": [
           {
             "step": 1,
-            "buildId": "video_build_1",
-            "title": "Build 1: Video Intro (Human Biology Onboarding)",
+            "buildId": "image_build_1",
+            "title": "Build 1: Welcome to OCR Level 3 AAQ Human Biology",
             "componentIds": [
-              "video_build_1"
-            ],
-            "targetBounds": {
-              "x": 0,
-              "y": 0,
-              "w": 100,
-              "h": 100
-            },
-            "revealType": "play-video"
-          },
-          {
-            "step": 2,
-            "buildId": "image_build_2",
-            "title": "Build 2: Welcome to OCR Level 3 AAQ Human Biology",
-            "componentIds": [
-              "image_build_2"
+              "image_build_1"
             ],
             "targetBounds": {
               "x": 0,
@@ -126,6 +115,21 @@
               "h": 100
             },
             "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "video_build_2",
+            "title": "Build 2: Video Intro (Human Biology Onboarding)",
+            "componentIds": [
+              "video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
           }
         ]
       }
@@ -467,146 +471,6 @@
     },
     {
       "number": 5,
-      "title": "Process 1: Transcription — Copying the Genetic Code",
-      "imageFileName": "slide_transcription.png",
-      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_transcription.png",
-      "sourceMediaPath": null,
-      "isInteractive": false,
-      "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 28,
-        "timeGuideDisplay": "24–32s",
-        "vciScore": "4.2",
-        "complexityCategory": "Moderate",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 11000,
-          "semanticProcessingMs": 8000,
-          "wordCount": 35,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Mayer, R. E. (2002). Multimedia learning. Psychology of Learning and Motivation, 41, 85-139.",
-            "relevance": "Dual-coding theory for integrated visual-textual diagrams of molecular transcription."
-          }
-        ]
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "hasProgressiveBuilds": false,
-      "text": "Transcription: Copying the Genetic Code\nNuclear DNA is transcribed into single-stranded messenger RNA (mRNA).\n1. Unwind: DNA double helix unzips along the gene.\n2. Complementary Pairing: RNA nucleotides match template strand (A pairs with U, C pairs with G).\n3. Export: mRNA transcript exits nuclear pore to cytoplasm.",
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "concept-explanation",
-        "transcript": "Transcription: Copying the Genetic Code · Nuclear DNA is transcribed into single-stranded messenger RNA (mRNA)"
-      }
-    },
-    {
-      "number": 6,
-      "title": "Interactive Lab: Codon to Anticodon Translation Matching",
-      "imageFileName": "slide_codon_anticodon_cover.png",
-      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_codon_anticodon_cover.png",
-      "sourceMediaPath": null,
-      "isInteractive": true,
-      "interactiveType": "web_embed",
-      "webEmbed": {
-        "url": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/interactives/codon_anticodon_challenge.html",
-        "title": "Interactive Lab: Codon to Anticodon Matching",
-        "label": "Codon to Anticodon Challenge"
-      },
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "40–60s",
-        "vciScore": "3.5",
-        "complexityCategory": "Moderate",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Interactive Activity",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 8000,
-          "semanticProcessingMs": 25000,
-          "wordCount": 24,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 4,
-        "detectionSource": "manifest-structured"
-      },
-      "hasProgressiveBuilds": false,
-      "text": "Interactive Lab: Codon to Anticodon Challenge\nMatch the tRNA anticodons to the mRNA triplet codons using complementary base pairing (A to U, C to G).\nTranslate 5 to 3: AUG (Met), GCU (Ala), UAC (Tyr), CGA (Arg).",
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "interactive-activity",
-        "transcript": "Interactive Lab: Codon to Anticodon Challenge"
-      }
-    },
-    {
-      "number": 7,
-      "title": "Process 2: Translation — Building the Polypeptide",
-      "imageFileName": "slide_translation.png",
-      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_translation.png",
-      "sourceMediaPath": null,
-      "isInteractive": false,
-      "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 28,
-        "timeGuideDisplay": "24–32s",
-        "vciScore": "4.4",
-        "complexityCategory": "Moderate",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 11500,
-          "semanticProcessingMs": 8500,
-          "wordCount": 38,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Mayer, R. E. (2002). Multimedia learning. Psychology of Learning and Motivation, 41, 85-139.",
-            "relevance": "Dual-coding theory for integrated visual-textual diagrams of ribosomal translation."
-          }
-        ]
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "hasProgressiveBuilds": false,
-      "text": "Translation: Building the Polypeptide\nRibosomes read mRNA codons and tRNA delivers amino acids to build proteins.\n1. Ribosome Clamps: Ribosome binds to mRNA at the start codon.\n2. tRNA Anticodon Match: tRNA anticodons pair with mRNA codons (A to U, C to G).\n3. Peptide Bond: Amino acids link together into a growing protein chain.",
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "concept-explanation",
-        "transcript": "Translation: Building the Polypeptide · Ribosomes read mRNA codons and tRNA delivers amino acids to build proteins"
-      }
-    },
-    {
-      "number": 8,
       "title": "Image Analysis: Biological Impossibility Check",
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_05.png",
@@ -747,7 +611,7 @@
       ]
     },
     {
-      "number": 9,
+      "number": 6,
       "title": "Haematology Recall: Components of Blood Plasma",
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_06.png",
@@ -872,7 +736,7 @@
       ]
     },
     {
-      "number": 10,
+      "number": 7,
       "title": "Conceptual Check: Population Evolution vs. Metamorphosis",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_07.png",
@@ -1557,7 +1421,7 @@
       }
     },
     {
-      "number": 11,
+      "number": 8,
       "title": "The Blueprint: OCR AAQ Course Architecture (Units F170–F174)",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_08.png",
@@ -2404,7 +2268,7 @@
       }
     },
     {
-      "number": 12,
+      "number": 9,
       "title": "From Theory to Practice: Mapping Concepts to Execution",
       "imageFileName": "slide_09.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_09.png",
@@ -2523,7 +2387,7 @@
       }
     },
     {
-      "number": 13,
+      "number": 10,
       "title": "Real-World Application: S1 Pharmaceuticals Scenario (F173)",
       "imageFileName": "slide_10.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_10.png",
@@ -2642,7 +2506,7 @@
       }
     },
     {
-      "number": 14,
+      "number": 11,
       "title": "Clinical Dashboard: Nutrition & Metabolism (F174)",
       "imageFileName": "slide_11.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_11.png",
@@ -2762,7 +2626,7 @@
       "hidden": true
     },
     {
-      "number": 15,
+      "number": 12,
       "title": "Standard Operating Procedures & Expectations",
       "imageFileName": "slide_12.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_12.png",
@@ -2881,7 +2745,7 @@
       }
     },
     {
-      "number": 16,
+      "number": 13,
       "title": "The Digital Hub & Core Resources",
       "imageFileName": "slide_13.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_13.png",
@@ -3000,7 +2864,7 @@
       }
     },
     {
-      "number": 17,
+      "number": 14,
       "title": "First Mission: Transition Tasks",
       "imageFileName": "slide_14.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_14.png",
@@ -3120,7 +2984,7 @@
       "hidden": true
     },
     {
-      "number": 18,
+      "number": 15,
       "title": "Next Steps & Laboratory Preparation",
       "imageFileName": "slide_15.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_00_Welcome_to_Human_Biology/slides/slide_15.png",
