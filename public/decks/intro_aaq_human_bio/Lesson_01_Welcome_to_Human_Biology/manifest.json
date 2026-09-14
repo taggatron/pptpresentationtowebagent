@@ -14,7 +14,93 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_01.png",
       "sourceMediaPath": "ppt/media/image1.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 11,
+        "timeGuideDisplay": "9–13s",
+        "vciScore": "3.7",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 5250,
+          "semanticProcessingMs": 4300,
+          "wordCount": 16,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 1: \"Lesson 1: Welcome to Human Biology: What do you already know? - S1 Pharmaceuticals: Scientist Onboarding\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 1: Welcome to Human Biology: What do you already know? • S1 Pharmaceuticals: Scientist Onboarding\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_01.png"
+        },
+        {
+          "id": "gemini_slide_1_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 1: \"Lesson 1: Welcome to Human Biology: What do you already know? - S1 Pharmaceuticals: Scientist Onboarding\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 1: Welcome to Human Biology: What do you already know? • S1 Pharmaceuticals: Scientist Onboarding\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_01.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 2,
@@ -66,7 +152,9 @@
           "answer": "Eukaryotic cells possess a membrane-bound nucleus and membrane-bound organelles (mitochondria, ER), whereas bacterial pathogens are prokaryotes with circular naked DNA and no membrane-bound organelles.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_2",
@@ -83,7 +171,9 @@
           "answer": "Cell → Tissue → Organ → Organ System → Organism.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_3",
@@ -100,7 +190,9 @@
           "answer": "To synthesize ATP via aerobic cellular respiration / oxidative phosphorylation; requires oxygen (O2) as terminal electron acceptor.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_4",
@@ -117,7 +209,9 @@
           "answer": "Active transport; requires specific transmembrane carrier proteins (pumps) and metabolic energy in the form of ATP hydrolysis.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_5",
@@ -134,7 +228,9 @@
           "answer": "Any two of: FSH (Follicle-Stimulating Hormone), LH (Luteinising Hormone), Oestrogen, Progesterone.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_6",
@@ -151,7 +247,9 @@
           "answer": "Bacterial infections are treated with antibiotics targeting peptidoglycan cell walls or 70S ribosomes; viruses lack these targets and require antivirals, symptom management, or vaccines.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
       ],
       "cells": [
@@ -257,7 +355,172 @@
           "revealMode": "overlay",
           "confidence": 1
         }
-      ]
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "manifest-cells",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 138,
+        "timeGuideDisplay": "117–159s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 9100,
+          "readingMs": 82050,
+          "semanticProcessingMs": 46800,
+          "wordCount": 230,
+          "visualElementsCount": 20
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter Activity Grid: Retrieval & Reflection for Biomedical Leaders\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_02.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Cellular Architecture: Human cells are eukaryotic. What is the definitive characteristic of a eukaryotic cell compared to a bacterial pathogen?",
+            "componentIds": [
+              "cell_1"
+            ],
+            "targetBounds": {
+              "x": 3,
+              "y": 16,
+              "w": 29,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: System Organisation: From smallest to largest, map the hierarchy of human biological organisation starting with 'Cell' and ending with 'Organism'.",
+            "componentIds": [
+              "cell_2"
+            ],
+            "targetBounds": {
+              "x": 35.5,
+              "y": 16,
+              "w": 29,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Metabolic Energy: What is the primary function of the mitochondria in a human muscle cell, and what gas is required for this process?",
+            "componentIds": [
+              "cell_3"
+            ],
+            "targetBounds": {
+              "x": 68,
+              "y": 16,
+              "w": 29,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Cellular Transport: Which form of cellular transport moves substances against the concentration gradient, and what does it require to function?",
+            "componentIds": [
+              "cell_4"
+            ],
+            "targetBounds": {
+              "x": 3,
+              "y": 59,
+              "w": 29,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: Reproductive Endocrinology: Name two of the four primary hormones involved in regulating the female menstrual cycle.",
+            "componentIds": [
+              "cell_5"
+            ],
+            "targetBounds": {
+              "x": 35.5,
+              "y": 59,
+              "w": 29,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: Clinical Microbiology: What is the key difference between how we medically treat a bacterial infection versus a viral infection?",
+            "componentIds": [
+              "cell_6"
+            ],
+            "targetBounds": {
+              "x": 68,
+              "y": 59,
+              "w": 29,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -266,7 +529,453 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03.png",
       "sourceMediaPath": "ppt/media/image3.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 27,
+        "timeGuideDisplay": "22–32s",
+        "vciScore": "5.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 9000,
+          "semanticProcessingMs": 16600,
+          "wordCount": 23,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal Prior Paradigm (Traditional GCSE / A-Level: Theoretical focus)",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 3: \"Learning Objectives & Strategic Alignment\". Show now: Header and Column 1 (Traditional GCSE/A-Level). Temporarily omit: Column 2.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_1_comparison.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03.png",
+          "generatedAt": "2026-09-14T16:28:20.413Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.413Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Prior Paradigm (Traditional GCSE / A-Level: Theoretical focus)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "920415 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_1_comparison.png",
+              "byteLength": 920415,
+              "sha256": "b23a3a81aed17dd382c499b4c69158700b19228a86257cb980dc4ea8a99a8906",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "4786991c03038b745e1ec60c3051a751ebe63d1c57dfe49c65b6d769158541c7",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_3_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal Strategic Alignment (OCR Level 3 AAQ: Applied clinical pathology & NEA)",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 3: \"Learning Objectives & Strategic Alignment\". Show now: Header, Column 1 (attenuated monochrome), and Column 2 (OCR Level 3 AAQ Human Biology).",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_2_comparison.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03.png",
+          "generatedAt": "2026-09-14T16:28:20.413Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.413Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Strategic Alignment (OCR Level 3 AAQ: Applied clinical pathology & NEA)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1261214 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_2_comparison.png",
+              "byteLength": 1261214,
+              "sha256": "d10449bf65da1ccac199ef45122cd60bc828418e331090b2f22ee99fd0be5b62",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "4786991c03038b745e1ec60c3051a751ebe63d1c57dfe49c65b6d769158541c7",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "gemini-slide-sequencer",
+        "analyzedComponentCount": 2,
+        "plannedCellCount": 2,
+        "approvedCellCount": 2,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_3_1_comparison",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal Prior Paradigm (Traditional GCSE / A-Level: Theoretical focus)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_1_comparison.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 3: \"Learning Objectives & Strategic Alignment\". Show now: Header and Column 1 (Traditional GCSE/A-Level). Temporarily omit: Column 2.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.413Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Prior Paradigm (Traditional GCSE / A-Level: Theoretical focus)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "920415 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_1_comparison.png",
+              "byteLength": 920415,
+              "sha256": "b23a3a81aed17dd382c499b4c69158700b19228a86257cb980dc4ea8a99a8906",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "4786991c03038b745e1ec60c3051a751ebe63d1c57dfe49c65b6d769158541c7",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_3_2_comparison",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Reveal Strategic Alignment (OCR Level 3 AAQ: Applied clinical pathology & NEA)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_2_comparison.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 3: \"Learning Objectives & Strategic Alignment\". Show now: Header, Column 1 (attenuated monochrome), and Column 2 (OCR Level 3 AAQ Human Biology).",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.413Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Strategic Alignment (OCR Level 3 AAQ: Applied clinical pathology & NEA)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1261214 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_03_gemini_slide_3_2_comparison.png",
+              "byteLength": 1261214,
+              "sha256": "d10449bf65da1ccac199ef45122cd60bc828418e331090b2f22ee99fd0be5b62",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "4786991c03038b745e1ec60c3051a751ebe63d1c57dfe49c65b6d769158541c7",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_3_1_comparison",
+            "title": "Build 1: Reveal Prior Paradigm (Traditional GCSE / A-Level: Theoretical focus)",
+            "componentIds": [
+              "gemini_slide_3_1_comparison"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_3_2_comparison",
+            "title": "Build 2: Reveal Strategic Alignment (OCR Level 3 AAQ: Applied clinical pathology & NEA)",
+            "componentIds": [
+              "gemini_slide_3_2_comparison"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      }
     },
     {
       "number": 4,
@@ -275,7 +984,837 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
       "sourceMediaPath": "ppt/media/image4.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "4.0",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 4200,
+          "semanticProcessingMs": 7600,
+          "wordCount": 12,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal 1. The Blueprint (Nucleus: DNA transcription to mRNA)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header and Column 1 (The Blueprint / Nucleus: DNA transcription to mRNA). Temporarily omit: Columns 2, 3, and 4.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_1_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "generatedAt": "2026-09-14T16:28:20.018Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal 1. The Blueprint (Nucleus: DNA transcription to mRNA)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "870972 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_1_process.png",
+              "byteLength": 870972,
+              "sha256": "799c1664afe071354cb526b4f435f0233e0d7542e52fbd1272dae62216b62715",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_4_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal 2. The Assembly Line (Cytosol: Ribosome reads mRNA codons)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header, Column 1 (attenuated monochrome), and Column 2 (The Assembly Line / Cytosol: Ribosome translation). Temporarily omit: Columns 3 and 4.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_2_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "generatedAt": "2026-09-14T16:28:20.018Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal 2. The Assembly Line (Cytosol: Ribosome reads mRNA codons)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1084265 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_2_process.png",
+              "byteLength": 1084265,
+              "sha256": "9edd72b98b0410d895bf6184067886aab66c38a53a5ae398dee4d0c0f182a290",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_4_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal 3. The Cargo (tRNA: Amino acid carrier activation)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header, Columns 1 & 2 (attenuated monochrome), and Column 3 (The Cargo / tRNA: Amino acid activation). Temporarily omit: Column 4.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_3_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "generatedAt": "2026-09-14T16:28:20.018Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal 3. The Cargo (tRNA: Amino acid carrier activation)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1258742 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_3_process.png",
+              "byteLength": 1258742,
+              "sha256": "ce4b7f37e212f02871170529c557c5849194ddddb05684a1877c438b3282d872",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_4_4_process",
+          "order": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 4: Reveal 4. The Energy Cost (Mitochondria: ATP requirement for biosynthesis)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header, Columns 1, 2, 3 (attenuated monochrome), and Column 4 (The Energy Cost / Mitochondria: Critical misconception ATP requirement).",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_4_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "generatedAt": "2026-09-14T16:28:20.018Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 4: Reveal 4. The Energy Cost (Mitochondria: ATP requirement for biosynthesis)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1487749 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_4_process.png",
+              "byteLength": 1487749,
+              "sha256": "9ea50aa6128b2c73105bb8baa72f71b48d21afaf0f07a22ed2f8b4c3f9b1011d",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "gemini-slide-sequencer",
+        "analyzedComponentCount": 4,
+        "plannedCellCount": 4,
+        "approvedCellCount": 4,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_4_1_process",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal 1. The Blueprint (Nucleus: DNA transcription to mRNA)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_1_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header and Column 1 (The Blueprint / Nucleus: DNA transcription to mRNA). Temporarily omit: Columns 2, 3, and 4.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal 1. The Blueprint (Nucleus: DNA transcription to mRNA)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "870972 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_1_process.png",
+              "byteLength": 870972,
+              "sha256": "799c1664afe071354cb526b4f435f0233e0d7542e52fbd1272dae62216b62715",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_4_2_process",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Reveal 2. The Assembly Line (Cytosol: Ribosome reads mRNA codons)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_2_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header, Column 1 (attenuated monochrome), and Column 2 (The Assembly Line / Cytosol: Ribosome translation). Temporarily omit: Columns 3 and 4.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal 2. The Assembly Line (Cytosol: Ribosome reads mRNA codons)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1084265 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_2_process.png",
+              "byteLength": 1084265,
+              "sha256": "9edd72b98b0410d895bf6184067886aab66c38a53a5ae398dee4d0c0f182a290",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_4_3_process",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Reveal 3. The Cargo (tRNA: Amino acid carrier activation)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_3_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header, Columns 1 & 2 (attenuated monochrome), and Column 3 (The Cargo / tRNA: Amino acid activation). Temporarily omit: Column 4.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal 3. The Cargo (tRNA: Amino acid carrier activation)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1258742 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_3_process.png",
+              "byteLength": 1258742,
+              "sha256": "ce4b7f37e212f02871170529c557c5849194ddddb05684a1877c438b3282d872",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_4_4_process",
+          "version": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 4: Reveal 4. The Energy Cost (Mitochondria: ATP requirement for biosynthesis)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_4_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04.png",
+          "prompt": "Create cumulative full-slide still-image build 4 of 4 for slide 4: \"Technical Architecture Deep Dive: Central Dogma\". Show now: Slide header, Columns 1, 2, 3 (attenuated monochrome), and Column 4 (The Energy Cost / Mitochondria: Critical misconception ATP requirement).",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.018Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 4: Reveal 4. The Energy Cost (Mitochondria: ATP requirement for biosynthesis)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1487749 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_04_gemini_slide_4_4_process.png",
+              "byteLength": 1487749,
+              "sha256": "9ea50aa6128b2c73105bb8baa72f71b48d21afaf0f07a22ed2f8b4c3f9b1011d",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "acb1f0bd114556a9573071a14450e2542342ed40cf5fe717b45eeddbefbc112b",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_4_1_process",
+            "title": "Build 1: Reveal 1. The Blueprint (Nucleus: DNA transcription to mRNA)",
+            "componentIds": [
+              "gemini_slide_4_1_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_4_2_process",
+            "title": "Build 2: Reveal 2. The Assembly Line (Cytosol: Ribosome reads mRNA codons)",
+            "componentIds": [
+              "gemini_slide_4_2_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_4_3_process",
+            "title": "Build 3: Reveal 3. The Cargo (tRNA: Amino acid carrier activation)",
+            "componentIds": [
+              "gemini_slide_4_3_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 4,
+            "buildId": "gemini_slide_4_4_process",
+            "title": "Build 4: Reveal 4. The Energy Cost (Mitochondria: ATP requirement for biosynthesis)",
+            "componentIds": [
+              "gemini_slide_4_4_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      }
     },
     {
       "number": 5,
@@ -286,25 +1825,33 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 28,
-        "timeGuideDisplay": "24–32s",
-        "vciScore": "4.2",
+        "estimatedTimeSeconds": 30,
+        "timeGuideDisplay": "25–35s",
+        "vciScore": "5.1",
         "complexityCategory": "Moderate",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 11000,
-          "semanticProcessingMs": 8000,
-          "wordCount": 35,
+          "readingMs": 18300,
+          "semanticProcessingMs": 10000,
+          "wordCount": 56,
           "visualElementsCount": 3
         },
         "academicReferences": [
           {
-            "citation": "Mayer, R. E. (2002). Multimedia learning. Psychology of Learning and Motivation, 41, 85-139.",
-            "relevance": "Dual-coding theory for integrated visual-textual diagrams of molecular transcription."
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
@@ -312,9 +1859,9 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "gemini-slide-generation-agent"
       },
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "text": "Transcription: Copying the Genetic Code\nNuclear DNA is transcribed into single-stranded messenger RNA (mRNA).\n1. Unwind: DNA double helix unzips along the gene.\n2. Complementary Pairing: RNA nucleotides match template strand (A pairs with U, C pairs with G).\n3. Export: mRNA transcript exits nuclear pore to cytoplasm.",
       "contentAnalysis": {
         "schemaVersion": 1,
@@ -322,6 +1869,606 @@
         "source": "gemini-slide-generation-agent",
         "role": "concept-explanation",
         "transcript": "Transcription: Copying the Genetic Code · Nuclear DNA is transcribed into single-stranded messenger RNA (mRNA)"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal Step 1 (Unwind: DNA double helix unzips along the gene)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Process 1: Transcription\". Show now: Transcription diagram and Step 1 (Unwind: DNA unzips). Temporarily omit: Steps 2 and 3.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_1_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_transcription.png",
+          "generatedAt": "2026-09-14T16:28:20.180Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.180Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Step 1 (Unwind: DNA double helix unzips along the gene)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1698897 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_1_process.png",
+              "byteLength": 1698897,
+              "sha256": "c147d1713be5382b48cc157c738a8cc3b22a2366c94f0c835638bf835baf5fef",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "ae5757e8bb4259023988c75a688d9b9ba1b2f252af53e056f09a398490c61701",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_5_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal Step 2 (Complementary Pairing: RNA nucleotides match A to U, C to G)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Process 1: Transcription\". Show now: Transcription diagram, Step 1 (attenuated monochrome), and Step 2 (Complementary Pairing: A to U, C to G). Temporarily omit: Step 3.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_2_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_transcription.png",
+          "generatedAt": "2026-09-14T16:28:20.180Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.180Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Step 2 (Complementary Pairing: RNA nucleotides match A to U, C to G)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1816284 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_2_process.png",
+              "byteLength": 1816284,
+              "sha256": "fc2a55ceea26e3ec3913aa70d48d7e31a2069eaf6d5bafd31979b5d692d4bd70",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "ae5757e8bb4259023988c75a688d9b9ba1b2f252af53e056f09a398490c61701",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_5_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal Step 3 (Export: mRNA transcript exits nuclear pore to cytoplasm)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Process 1: Transcription\". Show now: Transcription diagram, Steps 1 & 2 (attenuated monochrome), and Step 3 (Export: mRNA exits nuclear pore).",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_3_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_transcription.png",
+          "generatedAt": "2026-09-14T16:28:20.180Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.180Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Step 3 (Export: mRNA transcript exits nuclear pore to cytoplasm)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1932081 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_3_process.png",
+              "byteLength": 1932081,
+              "sha256": "f3ed95f0d815e2dac8a02753f2c8d2fc01f69333dadbf7eda7ca02d32f985788",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "ae5757e8bb4259023988c75a688d9b9ba1b2f252af53e056f09a398490c61701",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "gemini-slide-sequencer",
+        "analyzedComponentCount": 3,
+        "plannedCellCount": 3,
+        "approvedCellCount": 3,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_5_1_process",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal Step 1 (Unwind: DNA double helix unzips along the gene)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_1_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_transcription.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Process 1: Transcription\". Show now: Transcription diagram and Step 1 (Unwind: DNA unzips). Temporarily omit: Steps 2 and 3.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.180Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Step 1 (Unwind: DNA double helix unzips along the gene)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1698897 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_1_process.png",
+              "byteLength": 1698897,
+              "sha256": "c147d1713be5382b48cc157c738a8cc3b22a2366c94f0c835638bf835baf5fef",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "ae5757e8bb4259023988c75a688d9b9ba1b2f252af53e056f09a398490c61701",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_5_2_process",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Reveal Step 2 (Complementary Pairing: RNA nucleotides match A to U, C to G)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_2_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_transcription.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Process 1: Transcription\". Show now: Transcription diagram, Step 1 (attenuated monochrome), and Step 2 (Complementary Pairing: A to U, C to G). Temporarily omit: Step 3.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.180Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Step 2 (Complementary Pairing: RNA nucleotides match A to U, C to G)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1816284 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_2_process.png",
+              "byteLength": 1816284,
+              "sha256": "fc2a55ceea26e3ec3913aa70d48d7e31a2069eaf6d5bafd31979b5d692d4bd70",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "ae5757e8bb4259023988c75a688d9b9ba1b2f252af53e056f09a398490c61701",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_5_3_process",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Reveal Step 3 (Export: mRNA transcript exits nuclear pore to cytoplasm)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_3_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_transcription.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Process 1: Transcription\". Show now: Transcription diagram, Steps 1 & 2 (attenuated monochrome), and Step 3 (Export: mRNA exits nuclear pore).",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.180Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Step 3 (Export: mRNA transcript exits nuclear pore to cytoplasm)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1932081 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05_gemini_slide_5_3_process.png",
+              "byteLength": 1932081,
+              "sha256": "f3ed95f0d815e2dac8a02753f2c8d2fc01f69333dadbf7eda7ca02d32f985788",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "ae5757e8bb4259023988c75a688d9b9ba1b2f252af53e056f09a398490c61701",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_5_1_process",
+            "title": "Build 1: Reveal Step 1 (Unwind: DNA double helix unzips along the gene)",
+            "componentIds": [
+              "gemini_slide_5_1_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_5_2_process",
+            "title": "Build 2: Reveal Step 2 (Complementary Pairing: RNA nucleotides match A to U, C to G)",
+            "componentIds": [
+              "gemini_slide_5_2_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_5_3_process",
+            "title": "Build 3: Reveal Step 3 (Export: mRNA transcript exits nuclear pore to cytoplasm)",
+            "componentIds": [
+              "gemini_slide_5_3_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -338,27 +2485,41 @@
         "label": "Codon to Anticodon Challenge"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "40–60s",
-        "vciScore": "3.5",
+        "estimatedTimeSeconds": 31,
+        "timeGuideDisplay": "26–36s",
+        "vciScore": "4.8",
         "complexityCategory": "Moderate",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Interactive Activity",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 8000,
-          "semanticProcessingMs": 25000,
-          "wordCount": 24,
-          "visualElementsCount": 4
-        }
+          "readingMs": 14700,
+          "semanticProcessingMs": 15000,
+          "wordCount": 44,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 4,
-        "detectionSource": "manifest-structured"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "gemini-slide-generation-agent"
       },
       "hasProgressiveBuilds": false,
       "text": "Interactive Lab: Codon to Anticodon Challenge\nMatch the tRNA anticodons to the mRNA triplet codons using complementary base pairing (A to U, C to G).\nTranslate 5 to 3: AUG (Met), GCU (Ala), UAC (Tyr), CGA (Arg).",
@@ -368,6 +2529,54 @@
         "source": "gemini-slide-generation-agent",
         "role": "interactive-activity",
         "transcript": "Interactive Lab: Codon to Anticodon Challenge"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 6: \"Interactive Lab: Codon to Anticodon Challenge\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Interactive Lab: Codon to Anticodon Translation Matching • Interactive Lab: Codon to Anticodon Challenge Match the tRNA anticodons to the mRNA triplet codons using complementary base pairing (A to U, C to G).\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_codon_anticodon_cover.png"
+        },
+        {
+          "id": "gemini_slide_6_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 6: \"Interactive Lab: Codon to Anticodon Challenge\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Interactive Lab: Codon to Anticodon Translation Matching • Interactive Lab: Codon to Anticodon Challenge Match the tRNA anticodons to the mRNA triplet codons using complementary base pairing (A to U, C to G).\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_codon_anticodon_cover.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 2,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -379,25 +2588,33 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 28,
-        "timeGuideDisplay": "24–32s",
-        "vciScore": "4.4",
+        "estimatedTimeSeconds": 34,
+        "timeGuideDisplay": "28–40s",
+        "vciScore": "5.4",
         "complexityCategory": "Moderate",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 11500,
-          "semanticProcessingMs": 8500,
-          "wordCount": 38,
+          "readingMs": 20700,
+          "semanticProcessingMs": 11600,
+          "wordCount": 62,
           "visualElementsCount": 3
         },
         "academicReferences": [
           {
-            "citation": "Mayer, R. E. (2002). Multimedia learning. Psychology of Learning and Motivation, 41, 85-139.",
-            "relevance": "Dual-coding theory for integrated visual-textual diagrams of ribosomal translation."
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
@@ -405,9 +2622,9 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "gemini-slide-generation-agent"
       },
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "text": "Translation: Building the Polypeptide\nRibosomes read mRNA codons and tRNA delivers amino acids to build proteins.\n1. Ribosome Clamps: Ribosome binds to mRNA at the start codon.\n2. tRNA Anticodon Match: tRNA anticodons pair with mRNA codons (A to U, C to G).\n3. Peptide Bond: Amino acids link together into a growing protein chain.",
       "contentAnalysis": {
         "schemaVersion": 1,
@@ -415,6 +2632,606 @@
         "source": "gemini-slide-generation-agent",
         "role": "concept-explanation",
         "transcript": "Translation: Building the Polypeptide · Ribosomes read mRNA codons and tRNA delivers amino acids to build proteins"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal Step 1 (Ribosome Clamps: Ribosome binds to mRNA at start codon)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Process 2: Translation\". Show now: Ribosome translation diagram and Step 1 (Ribosome Clamps). Temporarily omit: Steps 2 and 3.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_1_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_translation.png",
+          "generatedAt": "2026-09-14T16:28:20.329Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.329Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Step 1 (Ribosome Clamps: Ribosome binds to mRNA at start codon)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1625241 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_1_process.png",
+              "byteLength": 1625241,
+              "sha256": "d09af0743e7248e2917aba5a7b2c52c08d39c4334766857062527047f494e13b",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "5bc0dc2238d1237c76fcd68222c88d48672fd8c7dbd88c59408948d99713a9e9",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal Step 2 (tRNA Anticodon Match: tRNA anticodons pair with mRNA codons)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Process 2: Translation\". Show now: Ribosome translation diagram, Step 1 (attenuated monochrome), and Step 2 (tRNA Anticodon Match). Temporarily omit: Step 3.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_2_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_translation.png",
+          "generatedAt": "2026-09-14T16:28:20.329Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.329Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Step 2 (tRNA Anticodon Match: tRNA anticodons pair with mRNA codons)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1742455 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_2_process.png",
+              "byteLength": 1742455,
+              "sha256": "9d592f4efb28a0bff058c5c0d9de4c332088a6877644ca7cafe7848c09c24fb8",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "5bc0dc2238d1237c76fcd68222c88d48672fd8c7dbd88c59408948d99713a9e9",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal Step 3 (Peptide Bond: Amino acids link into growing protein chain)",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Process 2: Translation\". Show now: Ribosome translation diagram, Steps 1 & 2 (attenuated monochrome), and Step 3 (Peptide Bond formation).",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_3_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_translation.png",
+          "generatedAt": "2026-09-14T16:28:20.329Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.329Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Step 3 (Peptide Bond: Amino acids link into growing protein chain)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1866752 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_3_process.png",
+              "byteLength": 1866752,
+              "sha256": "8fb632b72dbbfbba7f500261315d543c3c31a19e2156915cd8a363dd039ee1ed",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "5bc0dc2238d1237c76fcd68222c88d48672fd8c7dbd88c59408948d99713a9e9",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "gemini-slide-sequencer",
+        "analyzedComponentCount": 3,
+        "plannedCellCount": 3,
+        "approvedCellCount": 3,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal Step 1 (Ribosome Clamps: Ribosome binds to mRNA at start codon)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_1_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_translation.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Process 2: Translation\". Show now: Ribosome translation diagram and Step 1 (Ribosome Clamps). Temporarily omit: Steps 2 and 3.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.329Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Step 1 (Ribosome Clamps: Ribosome binds to mRNA at start codon)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1625241 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_1_process.png",
+              "byteLength": 1625241,
+              "sha256": "d09af0743e7248e2917aba5a7b2c52c08d39c4334766857062527047f494e13b",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "5bc0dc2238d1237c76fcd68222c88d48672fd8c7dbd88c59408948d99713a9e9",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Reveal Step 2 (tRNA Anticodon Match: tRNA anticodons pair with mRNA codons)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_2_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_translation.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Process 2: Translation\". Show now: Ribosome translation diagram, Step 1 (attenuated monochrome), and Step 2 (tRNA Anticodon Match). Temporarily omit: Step 3.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.329Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Step 2 (tRNA Anticodon Match: tRNA anticodons pair with mRNA codons)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1742455 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_2_process.png",
+              "byteLength": 1742455,
+              "sha256": "9d592f4efb28a0bff058c5c0d9de4c332088a6877644ca7cafe7848c09c24fb8",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "5bc0dc2238d1237c76fcd68222c88d48672fd8c7dbd88c59408948d99713a9e9",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Reveal Step 3 (Peptide Bond: Amino acids link into growing protein chain)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_3_process.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_translation.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Process 2: Translation\". Show now: Ribosome translation diagram, Steps 1 & 2 (attenuated monochrome), and Step 3 (Peptide Bond formation).",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.329Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Step 3 (Peptide Bond: Amino acids link into growing protein chain)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1866752 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07_gemini_slide_7_3_process.png",
+              "byteLength": 1866752,
+              "sha256": "8fb632b72dbbfbba7f500261315d543c3c31a19e2156915cd8a363dd039ee1ed",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "5bc0dc2238d1237c76fcd68222c88d48672fd8c7dbd88c59408948d99713a9e9",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_7_1_process",
+            "title": "Build 1: Reveal Step 1 (Ribosome Clamps: Ribosome binds to mRNA at start codon)",
+            "componentIds": [
+              "gemini_slide_7_1_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_7_2_process",
+            "title": "Build 2: Reveal Step 2 (tRNA Anticodon Match: tRNA anticodons pair with mRNA codons)",
+            "componentIds": [
+              "gemini_slide_7_2_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_7_3_process",
+            "title": "Build 3: Reveal Step 3 (Peptide Bond: Amino acids link into growing protein chain)",
+            "componentIds": [
+              "gemini_slide_7_3_process"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
       }
     },
     {
@@ -424,7 +3241,645 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05.png",
       "sourceMediaPath": "ppt/media/image5.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 14,
+        "timeGuideDisplay": "11–17s",
+        "vciScore": "4.6",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 3900,
+          "semanticProcessingMs": 8400,
+          "wordCount": 10,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_component-reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal Patient File A (Case #892-A: Endocrine / Metabolic profiling)",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, and Patient File A (Case #892-A). Temporarily omit: Patient Files B and C.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_1_component-reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05.png",
+          "generatedAt": "2026-09-14T16:28:20.539Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.539Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Patient File A (Case #892-A: Endocrine / Metabolic profiling)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1309294 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_1_component-reveal.png",
+              "byteLength": 1309294,
+              "sha256": "8602485eb5e3a29b53cef3a39594388ae1b0f660413d54c807e3c0d94821833b",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "fe7fa54b06b0e3f76c4bcc71c9c309aed9e2cafb70e42536b766828eaadd9e29",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_8_2_component-reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal Patient File B (Case #892-B: Neurological / Dermatological profiling)",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient File A (attenuated monochrome), and Patient File B (Case #892-B). Temporarily omit: Patient File C.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_2_component-reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05.png",
+          "generatedAt": "2026-09-14T16:28:20.539Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.539Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Patient File B (Case #892-B: Neurological / Dermatological profiling)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1515495 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_2_component-reveal.png",
+              "byteLength": 1515495,
+              "sha256": "22cdebf496562e67103e01cf6e8ddc5d5a46fb60681ae523f1e0ff786d547717",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "fe7fa54b06b0e3f76c4bcc71c9c309aed9e2cafb70e42536b766828eaadd9e29",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_8_3_component-reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal Patient File C (Case #892-C: Hematological / Circulatory profiling)",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient Files A & B (attenuated monochrome), and Patient File C (Case #892-C).",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_3_component-reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05.png",
+          "generatedAt": "2026-09-14T16:28:20.539Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.539Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Patient File C (Case #892-C: Hematological / Circulatory profiling)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1699841 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_3_component-reveal.png",
+              "byteLength": 1699841,
+              "sha256": "4034e69d245804979b7006a6a1742f6b5c8eb6434a851c74c7bc2ea8bc205c64",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "fe7fa54b06b0e3f76c4bcc71c9c309aed9e2cafb70e42536b766828eaadd9e29",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-slide-sequencer",
+        "analyzedComponentCount": 3,
+        "plannedCellCount": 3,
+        "approvedCellCount": 3,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_8_1_component-reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Reveal Patient File A (Case #892-A: Endocrine / Metabolic profiling)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_1_component-reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, and Patient File A (Case #892-A). Temporarily omit: Patient Files B and C.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.539Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Reveal Patient File A (Case #892-A: Endocrine / Metabolic profiling)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1309294 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_1_component-reveal.png",
+              "byteLength": 1309294,
+              "sha256": "8602485eb5e3a29b53cef3a39594388ae1b0f660413d54c807e3c0d94821833b",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "fe7fa54b06b0e3f76c4bcc71c9c309aed9e2cafb70e42536b766828eaadd9e29",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_8_2_component-reveal",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Reveal Patient File B (Case #892-B: Neurological / Dermatological profiling)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_2_component-reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient File A (attenuated monochrome), and Patient File B (Case #892-B). Temporarily omit: Patient File C.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.539Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal Patient File B (Case #892-B: Neurological / Dermatological profiling)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1515495 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_2_component-reveal.png",
+              "byteLength": 1515495,
+              "sha256": "22cdebf496562e67103e01cf6e8ddc5d5a46fb60681ae523f1e0ff786d547717",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "fe7fa54b06b0e3f76c4bcc71c9c309aed9e2cafb70e42536b766828eaadd9e29",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        },
+        {
+          "id": "gemini_slide_8_3_component-reveal",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Reveal Patient File C (Case #892-C: Hematological / Circulatory profiling)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_3_component-reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_05.png",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient Files A & B (attenuated monochrome), and Patient File C (Case #892-C).",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-14T16:28:20.539Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 3: Reveal Patient File C (Case #892-C: Hematological / Circulatory profiling)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "1699841 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                },
+                {
+                  "id": "distinct-from-source",
+                  "passed": true,
+                  "detail": "A generated build must not be the unchanged source image."
+                },
+                {
+                  "id": "source-canvas-match",
+                  "passed": true,
+                  "detail": "generated aspect 1.7917; source aspect 1.7917"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08_gemini_slide_8_3_component-reveal.png",
+              "byteLength": 1699841,
+              "sha256": "4034e69d245804979b7006a6a1742f6b5c8eb6434a851c74c7bc2ea8bc205c64",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": "fe7fa54b06b0e3f76c4bcc71c9c309aed9e2cafb70e42536b766828eaadd9e29",
+              "sourceDimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              }
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_8_1_component-reveal",
+            "title": "Build 1: Reveal Patient File A (Case #892-A: Endocrine / Metabolic profiling)",
+            "componentIds": [
+              "gemini_slide_8_1_component-reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_8_2_component-reveal",
+            "title": "Build 2: Reveal Patient File B (Case #892-B: Neurological / Dermatological profiling)",
+            "componentIds": [
+              "gemini_slide_8_2_component-reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "gemini_slide_8_3_component-reveal",
+            "title": "Build 3: Reveal Patient File C (Case #892-C: Hematological / Circulatory profiling)",
+            "componentIds": [
+              "gemini_slide_8_3_component-reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      }
     },
     {
       "number": 9,
@@ -450,8 +3905,10 @@
             "w": 41.5,
             "h": 36
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_error_2_correction",
@@ -468,10 +3925,121 @@
             "w": 41.5,
             "h": 36
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "manifest-cells",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 26,
+        "timeGuideDisplay": "22–30s",
+        "vciScore": "6.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 2968,
+          "readingMs": 7200,
+          "semanticProcessingMs": 15800,
+          "wordCount": 18,
+          "visualElementsCount": 8
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Check for Understanding: Clinical Misconceptions & Strategic Corrections\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 2 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Correction: Microbiology Ribosomes & Antibiotics",
+            "componentIds": [
+              "reveal_error_1_correction"
+            ],
+            "targetBounds": {
+              "x": 5.6,
+              "y": 58.5,
+              "w": 41.5,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Correction: Bioenergetics & ATP Transfer",
+            "componentIds": [
+              "reveal_error_2_correction"
+            ],
+            "targetBounds": {
+              "x": 52.8,
+              "y": 58.5,
+              "w": 41.5,
+              "h": 36
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 10,
@@ -480,7 +4048,77 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07.png",
       "sourceMediaPath": "ppt/media/image7.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 12,
+        "timeGuideDisplay": "10–14s",
+        "vciScore": "5.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 2550,
+          "semanticProcessingMs": 8000,
+          "wordCount": 6,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"Workshop Protocol: 30-Mark Diagnostic Baseline Assessment\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Workshop Protocol: 30-Mark Diagnostic Baseline Assessment\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_07.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 11,
@@ -506,8 +4144,10 @@
             "w": 42,
             "h": 8.5
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "hinge_q2",
@@ -524,8 +4164,10 @@
             "w": 42,
             "h": 8.5
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "hinge_q3",
@@ -542,8 +4184,10 @@
             "w": 42,
             "h": 8.5
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "hinge_q4",
@@ -560,8 +4204,10 @@
             "w": 42,
             "h": 10.5
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "hinge_q5",
@@ -578,8 +4224,10 @@
             "w": 42,
             "h": 11.5
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "hinge_q6",
@@ -596,10 +4244,184 @@
             "w": 42,
             "h": 9.5
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "manifest-cells",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 32,
+        "timeGuideDisplay": "27–37s",
+        "vciScore": "9.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 7938,
+          "readingMs": 12150,
+          "semanticProcessingMs": 11200,
+          "wordCount": 34,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Plenary Summary & 3 Strategic Executive Takeaways\".\nDeck context: 1. S1 Pharmaceuticals: Scientist Onboarding & Clinical Knowledge Baseline.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_01_Welcome_to_Human_Biology/slides/slide_08.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Ribosome size in human cytosol",
+            "componentIds": [
+              "hinge_q1"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 26.5,
+              "w": 42,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Mitochondrial synthesized molecule",
+            "componentIds": [
+              "hinge_q2"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 36.5,
+              "w": 42,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Site of transcription",
+            "componentIds": [
+              "hinge_q3"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 46.5,
+              "w": 42,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Energy molecule for translation activation",
+            "componentIds": [
+              "hinge_q4"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 56.5,
+              "w": 42,
+              "h": 10.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: Two systems for NEA patient diagnosis",
+            "componentIds": [
+              "hinge_q5"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 69,
+              "w": 42,
+              "h": 11.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: F173 NEA scenario company name",
+            "componentIds": [
+              "hinge_q6"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 82.5,
+              "w": 42,
+              "h": 9.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-14T16:16:04.611Z"
+  }
 }
