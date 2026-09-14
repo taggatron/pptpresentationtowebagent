@@ -306,31 +306,181 @@
       font-weight: 700;
     }
 
-    /* Teacher Video Tip underneath */
+    /* Video under-tip explicitly disabled */
     .video-under-tip {
+      display: none !important;
+    }
+
+    /* Sequence Status Card & Click-to-Reveal Progression */
+    .sequence-status-card {
+      background: #ffffff;
+      border: 1.8px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.82rem;
-      color: #4b5563;
-      padding: 0 4px;
+      gap: 12px;
+      transition: all 0.22s ease;
+      user-select: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    .key-hint {
-      display: inline-flex;
+    .sequence-status-card.ready-to-advance {
+      background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+      border: 2px solid #10b981;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.18);
+      cursor: pointer;
+      animation: sequencePulse 2.2s infinite ease-in-out;
+    }
+
+    .sequence-status-card.ready-to-advance:hover {
+      background: #d1fae5;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.26);
+    }
+
+    .sequence-status-card.all-complete {
+      background: #f0fdf4;
+      border: 1.8px solid #34d399;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+      cursor: default;
+    }
+
+    @keyframes sequencePulse {
+      0%, 100% {
+        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.18);
+      }
+      50% {
+        box-shadow: 0 4px 22px rgba(16, 185, 129, 0.36);
+      }
+    }
+
+    .status-content {
+      display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 11px;
+      min-width: 0;
     }
 
-    .kbd-chip {
-      background: #e5e7eb;
-      border: 1px solid #cbd5e1;
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-family: monospace;
-      font-size: 0.76rem;
+    .status-badge {
+      background: #e2e8f0;
+      color: #334155;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 4px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .sequence-status-card.ready-to-advance .status-badge {
+      background: #10b981;
+      color: #ffffff;
+    }
+
+    .sequence-status-card.all-complete .status-badge {
+      background: #059669;
+      color: #ffffff;
+    }
+
+    .status-texts {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .status-title {
+      font-size: 0.88rem;
       font-weight: 700;
-      color: #374151;
+      color: #0f172a;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .sequence-status-card.ready-to-advance .status-title {
+      color: #065f46;
+    }
+
+    .status-desc {
+      font-size: 0.76rem;
+      color: #64748b;
+      margin-top: 2px;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sequence-status-card.ready-to-advance .status-desc {
+      color: #047857;
+    }
+
+    .status-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn-skip-video {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .btn-skip-video:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }
+
+    .advance-hint-chip {
+      background: #10b981;
+      color: #ffffff;
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      white-space: nowrap;
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .sequence-status-card.ready-to-advance .advance-hint-chip {
+      display: inline-flex;
+    }
+
+    /* Sequential build reveal classes */
+    .reveal-card.sequence-hidden {
+      display: none !important;
+    }
+
+    .reveal-card.sequence-visible {
+      display: block !important;
+      animation: cardBuildIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes cardBuildIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Right: Question & Critical Thinking Column */
@@ -613,15 +763,6 @@
             </div>
           </div>
         </div>
-
-        <div class="video-under-tip">
-          <span class="key-hint">
-            <kbd class="kbd-chip">Space</kbd> Play/Pause &nbsp;•&nbsp;
-            <kbd class="kbd-chip">R</kbd> Restart &nbsp;•&nbsp;
-            <kbd class="kbd-chip">S</kbd> Slow-mo
-          </span>
-          <span class="nav-prompt-pill">Next: Scientific Random Sampling ➔</span>
-        </div>
       </section>
 
       <!-- Right Column: Discussion & Checkpoint Prompts -->
@@ -634,9 +775,24 @@
           </div>
         </div>
 
+        <!-- Sequential Reveal Status / Controller -->
+        <div class="sequence-status-card" id="sequenceStatusBar" role="button" tabindex="0" title="Click to advance sequence">
+          <div class="status-content">
+            <span class="status-badge" id="statusBadge">Step 1</span>
+            <div class="status-texts">
+              <h4 class="status-title" id="statusTitle">Watch Fieldwork Video</h4>
+              <p class="status-desc" id="statusDesc">Observe the ecologist's technique. Containers 1–4 unlock after the clip.</p>
+            </div>
+          </div>
+          <div class="status-action" id="statusAction">
+            <button type="button" class="btn-skip-video" id="skipVideoBtn" title="Unlock discussion without waiting">Skip to Discussion ⏭</button>
+            <span class="advance-hint-chip" id="advanceHintChip">Click or Space ➔</span>
+          </div>
+        </div>
+
         <div class="reveal-cards-container" id="revealCardsContainer">
           <!-- Card 1 -->
-          <article class="reveal-card" data-card-id="bias" tabindex="0" role="button" aria-expanded="false">
+          <article class="reveal-card sequence-hidden" data-card-id="bias" data-index="1" tabindex="0" role="button" aria-expanded="false">
             <div class="card-header">
               <div class="card-title-wrap">
                 <span class="card-num">1</span>
@@ -650,7 +806,7 @@
           </article>
 
           <!-- Card 2 -->
-          <article class="reveal-card" data-card-id="probability" tabindex="0" role="button" aria-expanded="false">
+          <article class="reveal-card sequence-hidden" data-card-id="probability" data-index="2" tabindex="0" role="button" aria-expanded="false">
             <div class="card-header">
               <div class="card-title-wrap">
                 <span class="card-num">2</span>
@@ -664,7 +820,7 @@
           </article>
 
           <!-- Card 3 -->
-          <article class="reveal-card" data-card-id="safety" tabindex="0" role="button" aria-expanded="false">
+          <article class="reveal-card sequence-hidden" data-card-id="safety" data-index="3" tabindex="0" role="button" aria-expanded="false">
             <div class="card-header">
               <div class="card-title-wrap">
                 <span class="card-num">3</span>
@@ -678,7 +834,7 @@
           </article>
 
           <!-- Card 4 -->
-          <article class="reveal-card" data-card-id="solution" tabindex="0" role="button" aria-expanded="false">
+          <article class="reveal-card sequence-hidden" data-card-id="solution" data-index="4" tabindex="0" role="button" aria-expanded="false">
             <div class="card-header">
               <div class="card-title-wrap">
                 <span class="card-num">4</span>
@@ -696,6 +852,7 @@
           <button type="button" class="btn-reveal-all" id="revealAllBtn">Reveal All Insights</button>
           <button type="button" class="btn-reset-cards" id="resetCardsBtn">Reset Checkpoints</button>
         </div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -726,9 +883,94 @@
       const muteToggleBtn = document.getElementById("muteToggleBtn");
       const muteIcon = document.getElementById("muteIcon");
       const fullscreenToggleBtn = document.getElementById("fullscreenToggleBtn");
-      const revealCards = document.querySelectorAll(".reveal-card");
+      const revealCards = Array.from(document.querySelectorAll(".reveal-card"));
       const revealAllBtn = document.getElementById("revealAllBtn");
       const resetCardsBtn = document.getElementById("resetCardsBtn");
+
+      // Sequential reveal variables
+      let videoHasPlayed = false;
+      let revealedCount = 0;
+      const sequenceStatusBar = document.getElementById("sequenceStatusBar");
+      const statusBadge = document.getElementById("statusBadge");
+      const statusTitle = document.getElementById("statusTitle");
+      const statusDesc = document.getElementById("statusDesc");
+      const skipVideoBtn = document.getElementById("skipVideoBtn");
+      const advanceHintChip = document.getElementById("advanceHintChip");
+
+      const cardTitles = [
+        "Subconscious Human Bias",
+        "Unequal Sampling Probability",
+        "Physical Hazard & Habitat Damage",
+        "The Scientific Solution (Next Slide)"
+      ];
+
+      function updateStatusBar() {
+        if (!sequenceStatusBar) return;
+
+        if (!videoHasPlayed) {
+          sequenceStatusBar.classList.remove("ready-to-advance", "all-complete");
+          statusBadge.textContent = "Step 1";
+          statusTitle.textContent = "Watch Fieldwork Video";
+          statusDesc.textContent = "Observe the ecologist's technique. Containers 1–4 unlock after the clip.";
+          if (skipVideoBtn) skipVideoBtn.style.display = "inline-block";
+          if (advanceHintChip) advanceHintChip.style.display = "none";
+          return;
+        }
+
+        if (skipVideoBtn) skipVideoBtn.style.display = "none";
+
+        if (revealedCount < revealCards.length) {
+          sequenceStatusBar.classList.add("ready-to-advance");
+          sequenceStatusBar.classList.remove("all-complete");
+          statusBadge.textContent = `Click ${revealedCount + 1}/4`;
+          statusTitle.textContent = `Click to reveal Point ${revealedCount + 1}: ${cardTitles[revealedCount]} ➔`;
+          statusDesc.textContent = revealedCount === 0
+            ? "Video finished! Click anywhere or press Space/Enter to reveal containers."
+            : `Point ${revealedCount} revealed. Click Point ${revealedCount} card to view explanation, or click here for Point ${revealedCount + 1}.`;
+          if (advanceHintChip) advanceHintChip.style.display = "inline-flex";
+        } else {
+          sequenceStatusBar.classList.remove("ready-to-advance");
+          sequenceStatusBar.classList.add("all-complete");
+          statusBadge.textContent = "Complete ✓";
+          statusTitle.textContent = "All 4 Evaluation Points Revealed";
+          statusDesc.textContent = "Click any card above to explore explanations • Press Space or Next to advance ➔";
+          if (advanceHintChip) advanceHintChip.style.display = "none";
+        }
+      }
+
+      function advanceSequence() {
+        if (!videoHasPlayed) {
+          videoHasPlayed = true;
+        }
+
+        if (revealedCount < revealCards.length) {
+          const cardToShow = revealCards[revealedCount];
+          if (cardToShow) {
+            cardToShow.classList.remove("sequence-hidden");
+            cardToShow.classList.add("sequence-visible");
+          }
+          revealedCount++;
+          updateStatusBar();
+          broadcastCardsState();
+        } else {
+          // All 4 points already revealed; advance to next slide
+          window.parent.postMessage({ type: "NAVIGATE", direction: 1 }, "*");
+        }
+      }
+
+      function regressSequence() {
+        if (revealedCount <= 0) return;
+        revealedCount--;
+        const cardToHide = revealCards[revealedCount];
+        if (cardToHide) {
+          cardToHide.classList.remove("sequence-visible");
+          cardToHide.classList.add("sequence-hidden");
+          cardToHide.classList.remove("revealed");
+          cardToHide.setAttribute("aria-expanded", "false");
+        }
+        updateStatusBar();
+        broadcastCardsState();
+      }
 
       // Format time mm:ss
       function formatTime(seconds) {
@@ -740,7 +982,7 @@
       function updateUIPlayback(isPlaying) {
         playIcon.textContent = isPlaying ? "⏸" : "▶";
         centerPlayOverlay.classList.toggle("hidden", isPlaying);
-        broadcastState({ isPlaying, currentTime: video.currentTime });
+        broadcastState({ isPlaying, currentTime: video.currentTime, videoHasPlayed });
       }
 
       function togglePlay() {
@@ -759,8 +1001,11 @@
       video.addEventListener("play", () => updateUIPlayback(true));
       video.addEventListener("pause", () => updateUIPlayback(false));
       video.addEventListener("ended", () => {
+        videoHasPlayed = true;
         updateUIPlayback(false);
         centerPlayOverlay.classList.remove("hidden");
+        updateStatusBar();
+        broadcastState({ isPlaying: false, currentTime: video.duration || 10, videoHasPlayed: true });
       });
 
       video.addEventListener("timeupdate", () => {
@@ -769,6 +1014,10 @@
         timeDisplay.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
         const pct = (cur / dur) * 100;
         progressBarFill.style.width = `${pct}%`;
+        if (dur > 0 && cur >= dur - 0.3 && !videoHasPlayed) {
+          videoHasPlayed = true;
+          updateStatusBar();
+        }
       });
 
       // Seeking
@@ -778,7 +1027,7 @@
         const pct = Math.max(0, Math.min(1, clickX / rect.width));
         const dur = video.duration || 10;
         video.currentTime = pct * dur;
-        broadcastState({ isPlaying: !video.paused, currentTime: video.currentTime });
+        broadcastState({ isPlaying: !video.paused, currentTime: video.currentTime, videoHasPlayed });
       });
 
       // Restart
@@ -812,9 +1061,42 @@
         }
       });
 
+      // Click handlers for sequence status card and skip button
+      if (skipVideoBtn) {
+        skipVideoBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          videoHasPlayed = true;
+          updateStatusBar();
+        });
+      }
+
+      if (sequenceStatusBar) {
+        sequenceStatusBar.addEventListener("click", (e) => {
+          if (e.target.closest("#skipVideoBtn")) return;
+          if (!videoHasPlayed) {
+            videoHasPlayed = true;
+          }
+          advanceSequence();
+        });
+      }
+
+      // Clicking in the discussion column outside cards/buttons triggers advance
+      const discussionColumn = document.querySelector(".discussion-column");
+      if (discussionColumn) {
+        discussionColumn.addEventListener("click", (e) => {
+          if (e.target.closest(".reveal-card") || e.target.closest("button") || e.target.closest("#sequenceStatusBar")) {
+            return;
+          }
+          if (videoHasPlayed && revealedCount < revealCards.length) {
+            advanceSequence();
+          }
+        });
+      }
+
       // Checkpoint Cards Reveal logic
       revealCards.forEach(card => {
-        const toggle = () => {
+        const toggle = (e) => {
+          e.stopPropagation();
           const isRevealed = card.classList.toggle("revealed");
           card.setAttribute("aria-expanded", String(isRevealed));
           broadcastCardsState();
@@ -823,39 +1105,69 @@
         card.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            toggle();
+            e.stopPropagation();
+            toggle(e);
           }
         });
       });
 
       revealAllBtn.addEventListener("click", () => {
+        videoHasPlayed = true;
+        revealedCount = revealCards.length;
         revealCards.forEach(c => {
+          c.classList.remove("sequence-hidden");
+          c.classList.add("sequence-visible");
           c.classList.add("revealed");
           c.setAttribute("aria-expanded", "true");
         });
+        updateStatusBar();
         broadcastCardsState();
       });
 
       resetCardsBtn.addEventListener("click", () => {
+        revealedCount = 0;
         revealCards.forEach(c => {
+          c.classList.remove("sequence-visible");
+          c.classList.add("sequence-hidden");
           c.classList.remove("revealed");
           c.setAttribute("aria-expanded", "false");
         });
+        updateStatusBar();
         broadcastCardsState();
       });
 
       // Keyboard shortcuts inside iframe
       window.addEventListener("keydown", (e) => {
-        // Slide navigation forwarding to parent presentation
+        // Spacebar handling
+        if (e.key === " " && e.target !== progressContainer && !e.target.closest("button") && !e.target.closest(".reveal-card")) {
+          e.preventDefault();
+          if (!videoHasPlayed && video.paused) {
+            togglePlay();
+          } else if (!video.paused) {
+            togglePlay();
+          } else if (revealedCount < revealCards.length) {
+            advanceSequence();
+          } else {
+            window.parent.postMessage({ type: "NAVIGATE", direction: 1 }, "*");
+          }
+          return;
+        }
+
+        // Slide navigation & sequence forwarding
         if (e.key === "ArrowRight" || e.key === "PageDown") {
           e.preventDefault();
-          window.parent.postMessage({ type: "NAVIGATE", direction: 1 }, "*");
+          if (videoHasPlayed && revealedCount < revealCards.length) {
+            advanceSequence();
+          } else {
+            window.parent.postMessage({ type: "NAVIGATE", direction: 1 }, "*");
+          }
         } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
           e.preventDefault();
-          window.parent.postMessage({ type: "NAVIGATE", direction: -1 }, "*");
-        } else if (e.key === " " && e.target !== progressContainer) {
-          e.preventDefault();
-          togglePlay();
+          if (revealedCount > 0) {
+            regressSequence();
+          } else {
+            window.parent.postMessage({ type: "NAVIGATE", direction: -1 }, "*");
+          }
         } else if (e.key === "r" || e.key === "R") {
           video.currentTime = 0;
           video.play().catch(() => {});
@@ -877,13 +1189,14 @@
       }
 
       function broadcastCardsState() {
-        const revealed = Array.from(revealCards).map(c => c.classList.contains("revealed"));
+        const revealed = revealCards.map(c => c.classList.contains("revealed"));
+        const visible = revealCards.map(c => c.classList.contains("sequence-visible"));
         try {
           window.parent.postMessage({
             type: "INTERACTIVE_STATE_UPDATE",
             interactiveUrl: window.location.pathname,
             action: "CARDS_SYNC",
-            state: { revealed }
+            state: { revealed, visible, revealedCount, videoHasPlayed }
           }, "*");
         } catch (_) {}
       }
@@ -903,16 +1216,41 @@
             } else if (!data.state.isPlaying && !video.paused) {
               video.pause();
             }
-          } else if (data.action === "CARDS_SYNC" && Array.isArray(data.state?.revealed)) {
-            data.state.revealed.forEach((isRev, idx) => {
-              if (revealCards[idx]) {
-                revealCards[idx].classList.toggle("revealed", Boolean(isRev));
-                revealCards[idx].setAttribute("aria-expanded", String(Boolean(isRev)));
-              }
-            });
+            if (typeof data.state.videoHasPlayed === "boolean") {
+              videoHasPlayed = data.state.videoHasPlayed;
+              updateStatusBar();
+            }
+          } else if (data.action === "CARDS_SYNC" && data.state) {
+            if (typeof data.state.videoHasPlayed === "boolean") {
+              videoHasPlayed = data.state.videoHasPlayed;
+            }
+            if (typeof data.state.revealedCount === "number") {
+              revealedCount = data.state.revealedCount;
+              revealCards.forEach((card, idx) => {
+                if (idx < revealedCount) {
+                  card.classList.remove("sequence-hidden");
+                  card.classList.add("sequence-visible");
+                } else {
+                  card.classList.remove("sequence-visible");
+                  card.classList.add("sequence-hidden");
+                }
+              });
+            }
+            if (Array.isArray(data.state.revealed)) {
+              data.state.revealed.forEach((isRev, idx) => {
+                if (revealCards[idx]) {
+                  revealCards[idx].classList.toggle("revealed", Boolean(isRev));
+                  revealCards[idx].setAttribute("aria-expanded", String(Boolean(isRev)));
+                }
+              });
+            }
+            updateStatusBar();
           }
         }
       });
+
+      // Initial status bar setup
+      updateStatusBar();
 
       // Notify parent that interactive embed is ready
       try {
