@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive 3D Molecular Lab: DNA Electrostatic Potential & Methylene Blue Binding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js"></script>
+  <style>
+    :root {
+      --bg-dark: #07101e;
+      --bg-card: rgba(13, 27, 46, 0.88);
+      --border-cyan: rgba(6, 182, 212, 0.35);
+      --cyan-glow: #06b6d4;
+      --cyan-bright: #22d3ee;
+      --blue-accent: #38bdf8;
+      --amber-accent: #f59e0b;
+      --red-neg: #ef4444;
+      --blue-pos: #3b82f6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 20%, #0d233a 0%, #07101e 75%, #030712 100%);
+      color: var(--text-main);
+      font-family: "Inter", -apple-system, sans-serif;
+    }
+
+    .lab-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top HUD Header */
+    .top-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      background: rgba(7, 16, 30, 0.85);
+      border-bottom: 1px solid var(--border-cyan);
+      backdrop-filter: blur(12px);
+      z-index: 20;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--cyan-bright);
+      border: 1px solid var(--border-cyan);
+    }
+
+    .hud-titles h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hud-titles p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .hud-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hud-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .hud-btn:hover {
+      background: rgba(6, 182, 212, 0.25);
+      border-color: var(--cyan-bright);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .hud-btn.active {
+      background: linear-gradient(135deg, #0891b2 0%, #0284c7 100%);
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+    }
+
+    /* Main View Area */
+    .viewport-area {
+      flex: 1;
+      position: relative;
+      display: flex;
+    }
+
+    #viewer {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Floating Controls Bar (Left/Top) */
+    .controls-overlay {
+      position: absolute;
+      top: 18px;
+      left: 24px;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 320px;
+    }
+
+    .panel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 12px;
+      padding: 14px 16px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .panel-header {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cyan-bright);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mode-btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .mode-btn {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #cbd5e1;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mode-btn span.title {
+      font-weight: 700;
+      color: #f8fafc;
+    }
+    .mode-btn:hover {
+      background: rgba(6, 182, 212, 0.15);
+      border-color: var(--cyan-bright);
+    }
+    .mode-btn.active {
+      background: rgba(6, 182, 212, 0.25);
+      border-color: var(--cyan-bright);
+      color: #ffffff;
+      box-shadow: inset 0 0 10px rgba(6, 182, 212, 0.3);
+    }
+
+    /* Floating Info Card (Right) */
+    .info-overlay {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      z-index: 15;
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mechanism-box {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+    .mechanism-box h4 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .charge-badge-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .charge-pill {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-family: "JetBrains Mono", monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .charge-pill.neg {
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: #fca5a5;
+    }
+    .charge-pill.pos {
+      background: rgba(59, 130, 246, 0.18);
+      border: 1px solid rgba(59, 130, 246, 0.45);
+      color: #93c5fd;
+    }
+    .charge-pill strong {
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* Bottom HUD Bar */
+    .bottom-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 28px;
+      background: rgba(7, 16, 30, 0.9);
+      border-top: 1px solid var(--border-cyan);
+      backdrop-filter: blur(12px);
+      z-index: 20;
+    }
+
+    .color-scale-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-family: "JetBrains Mono", monospace;
+      color: var(--text-muted);
+    }
+    .gradient-track {
+      width: 220px;
+      height: 12px;
+      border-radius: 6px;
+      background: linear-gradient(to right, #ef4444 0%, #ffffff 50%, #3b82f6 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .interaction-hint {
+      font-size: 12px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .slider-row input[type="range"] {
+      flex: 1;
+      accent-color: var(--cyan-bright);
+    }
+  </style>
+</head>
+<body>
+  <div class="lab-container">
+    <!-- Top HUD -->
+    <header class="top-hud">
+      <div class="hud-titles">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
+          <span class="badge-tag">OCR Level 3 AAQ Human Biology</span>
+          <span class="badge-tag" style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; border-color: rgba(59, 130, 246, 0.35);">Unit F173: Clinical Microscopy</span>
+        </div>
+        <h1>🧬 DNA Electrostatic Potential & Methylene Blue Binding Lab</h1>
+        <p>Interactive 3D simulation of solvent-accessible surface (SAS) with OpenDX Poisson-Boltzmann electrostatic potential.</p>
+      </div>
+      <div class="hud-actions">
+        <button id="rotateToggleBtn" class="hud-btn active" title="Toggle continuous auto-rotation">
+          <span id="rotateIcon">⏸</span> Auto-Rotate
+        </button>
+        <button id="resetViewBtn" class="hud-btn" title="Reset camera viewpoint">
+          ↺ Reset View
+        </button>
+      </div>
+    </header>
+
+    <!-- 3D Canvas Area -->
+    <main class="viewport-area">
+      <div id="viewer"></div>
+
+      <!-- Left Controls Panel -->
+      <div class="controls-overlay">
+        <div class="panel-card">
+          <div class="panel-header">
+            <span>Display Surface & Staining Mode</span>
+          </div>
+          <div class="mode-btn-grid">
+            <button class="mode-btn active" data-mode="sas">
+              <span class="title">Electrostatic SAS</span>
+              <span>RWB (-5 to +5)</span>
+            </button>
+            <button class="mode-btn" data-mode="docked">
+              <span class="title">Methylene Blue</span>
+              <span>Docked Cation</span>
+            </button>
+            <button class="mode-btn" data-mode="skeleton">
+              <span class="title">Double Helix</span>
+              <span>Sticks & Bases</span>
+            </button>
+            <button class="mode-btn" data-mode="combined">
+              <span class="title">Ghost Surface</span>
+              <span>SAS + Ligand</span>
+            </button>
+          </div>
+
+          <div class="slider-row">
+            <span>Opacity:</span>
+            <input type="range" id="opacitySlider" min="0.2" max="1.0" step="0.05" value="0.9">
+            <span id="opacityVal" style="font-family: 'JetBrains Mono', monospace; min-width: 32px;">0.90</span>
+          </div>
+        </div>
+
+        <div class="panel-card" id="atomInspectorCard">
+          <div class="panel-header">
+            <span>Electrostatic Probe</span>
+            <span style="font-size: 10px; color: var(--cyan-bright);">LIVE SENSOR</span>
+          </div>
+          <div id="probeDetails" style="font-size: 11.5px; color: #cbd5e1; line-height: 1.45;">
+            Click on any part of the DNA double helix or Methylene Blue molecule to inspect local electrostatic potential and formal charge.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Scientific Context Panel -->
+      <div class="info-overlay">
+        <div class="panel-card">
+          <div class="mechanism-box">
+            <h4>🔬 Staining Mechanism in Human Cytology</h4>
+            <p><strong>Methylene Blue</strong> ($C_{16}H_{18}ClN_3S$) is a heterocyclic aromatic <em>cationic dye</em>. Its quaternary phenothiazinium ring carries a delocalized net <strong>positive charge (+1)</strong>.</p>
+            <p style="margin-top: 6px;">The DNA double helix is a <strong>polyanion</strong>: each repeating nucleotide contains a negatively charged phosphodiester residue ($-1$). This establishes an intense negative electrostatic field in the minor groove.</p>
+            
+            <div class="charge-badge-row">
+              <div class="charge-pill neg">
+                <span>DNA Backbone</span>
+                <strong>-1.00 e / PO₄⁻</strong>
+                <span style="font-size: 9.5px; opacity: 0.85;">Deep Red (Anionic)</span>
+              </div>
+              <div class="charge-pill pos">
+                <span>Methylene Blue</span>
+                <strong>+1.00 e / MB⁺</strong>
+                <span style="font-size: 9.5px; opacity: 0.85;">Deep Blue (Cationic)</span>
+              </div>
+            </div>
+
+            <p style="margin-top: 10px; font-size: 11.5px; color: #94a3b8; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 8px;">
+              <strong>Clinical Takeaway:</strong> Cell nuclei contain dense genomic chromatin with millions of negative phosphate residues, attracting concentrated $MB^+$ and staining dark blue, while protein-rich cytoplasm stains faintly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom HUD Bar -->
+    <footer class="bottom-hud">
+      <div class="color-scale-bar">
+        <span>-5.0 kcal/mol·e (Anionic PO₄⁻)</span>
+        <div class="gradient-track" title="RWB Electrostatic Gradient: Red = Negative, White = Neutral, Blue = Positive"></div>
+        <span>+5.0 kcal/mol·e (Cationic MB⁺)</span>
+      </div>
+      <div class="interaction-hint">
+        <span>🖱️ Drag to rotate • Scroll to zoom • Dual-Screen Synchronized</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. GENERATE B-DNA PQR & OPEN-DX ELECTROSTATIC POTENTIAL GRID
+    // =========================================================================
+    function generateBdnapqr() {
+      const lines = [];
+      let atomId = 1;
+      const bpCount = 10;
+      const twist = (36 * Math.PI) / 180;
+      const rise = 3.38;
+      const zOffset = -(bpCount * rise) / 2;
+      const atoms = [];
+
+      const bases = ["DA", "DT", "DG", "DC", "DA", "DT", "DG", "DC", "DA", "DT"];
+      const compBases = ["DT", "DA", "DC", "DG", "DT", "DA", "DC", "DG", "DT", "DA"];
+
+      function addAtom(name, res, strand, resNum, x, y, z, q, r) {
+        atoms.push({ x, y, z, q, r, name, res, strand, resNum });
+        const line = `ATOM  ${String(atomId++).padStart(5, " ")}  ${name.padEnd(4, " ")}${res.padStart(2, " ")} ${strand} ${String(resNum).padStart(3, " ")}    ${x.toFixed(3).padStart(8, " ")}${y.toFixed(3).padStart(8, " ")}${z.toFixed(3).padStart(8, " ")} ${q.toFixed(2).padStart(5, " ")} ${r.toFixed(2).padStart(5, " ")}`;
+        lines.push(line);
+      }
+
+      for (let i = 0; i < bpCount; i++) {
+        const angleA = i * twist;
+        const z = zOffset + i * rise;
+        const rPhos = 9.2;
+        const pxA = rPhos * Math.cos(angleA);
+        const pyA = rPhos * Math.sin(angleA);
+        addAtom("P", bases[i], "A", i + 1, pxA, pyA, z, -0.70, 1.90);
+        addAtom("OP1", bases[i], "A", i + 1, pxA + 1.1, pyA + 0.6, z + 0.5, -0.80, 1.48);
+        addAtom("OP2", bases[i], "A", i + 1, pxA - 0.6, pyA + 1.1, z - 0.5, -0.80, 1.48);
+        
+        const rSug = 5.8;
+        addAtom("C1'", bases[i], "A", i + 1, rSug * Math.cos(angleA + 0.3), rSug * Math.sin(angleA + 0.3), z, 0.15, 1.70);
+        
+        const rBase = 2.2;
+        addAtom("N1", bases[i], "A", i + 1, rBase * Math.cos(angleA + 0.6), rBase * Math.sin(angleA + 0.6), z, -0.10, 1.55);
+        addAtom("C2", bases[i], "A", i + 1, rBase * 1.3 * Math.cos(angleA + 0.6), rBase * 1.3 * Math.sin(angleA + 0.6), z + 0.4, 0.10, 1.70);
+
+        const angleB = angleA + Math.PI + 0.65;
+        const pxB = rPhos * Math.cos(angleB);
+        const pyB = rPhos * Math.sin(angleB);
+        addAtom("P", compBases[i], "B", bpCount - i, pxB, pyB, z, -0.70, 1.90);
+        addAtom("OP1", compBases[i], "B", bpCount - i, pxB - 1.1, pyB - 0.6, z + 0.5, -0.80, 1.48);
+        addAtom("OP2", compBases[i], "B", bpCount - i, pxB + 0.6, pyB - 1.1, z - 0.5, -0.80, 1.48);
+        
+        addAtom("C1'", compBases[i], "B", bpCount - i, rSug * Math.cos(angleB - 0.3), rSug * Math.sin(angleB - 0.3), z, 0.15, 1.70);
+        addAtom("N1", compBases[i], "B", bpCount - i, rBase * Math.cos(angleB - 0.6), rBase * Math.sin(angleB - 0.6), z, -0.10, 1.55);
+        addAtom("C2", compBases[i], "B", bpCount - i, rBase * 1.3 * Math.cos(angleB - 0.6), rBase * 1.3 * Math.sin(angleB - 0.6), z - 0.4, 0.10, 1.70);
+      }
+
+      // Add Methylene Blue (MB+) ligand intercalated near center minor groove (z ≈ 0)
+      // C16 H18 N3 S+
+      const mbCenter = { x: 3.2, y: 1.5, z: 0.0 };
+      const mbAtoms = [
+        { name: "S1",  x: mbCenter.x + 0.0, y: mbCenter.y - 1.4, z: mbCenter.z + 0.0, q: 0.25, r: 1.80 },
+        { name: "C2",  x: mbCenter.x + 1.2, y: mbCenter.y - 0.7, z: mbCenter.z + 0.0, q: 0.10, r: 1.70 },
+        { name: "C3",  x: mbCenter.x + 2.4, y: mbCenter.y - 1.4, z: mbCenter.z + 0.0, q: 0.15, r: 1.70 },
+        { name: "N3",  x: mbCenter.x + 3.6, y: mbCenter.y - 0.7, z: mbCenter.z + 0.0, q: 0.35, r: 1.55 }, // Dimethylamino N (+)
+        { name: "C4",  x: mbCenter.x + 2.4, y: mbCenter.y + 0.7, z: mbCenter.z + 0.0, q: 0.10, r: 1.70 },
+        { name: "C4A", x: mbCenter.x + 1.2, y: mbCenter.y + 0.7, z: mbCenter.z + 0.0, q: 0.10, r: 1.70 },
+        { name: "N10", x: mbCenter.x + 0.0, y: mbCenter.y + 1.4, z: mbCenter.z + 0.0, q: -0.30, r: 1.55 }, // Central N
+        { name: "C5A", x: mbCenter.x - 1.2, y: mbCenter.y + 0.7, z: mbCenter.z + 0.0, q: 0.10, r: 1.70 },
+        { name: "C6",  x: mbCenter.x - 2.4, y: mbCenter.y + 0.7, z: mbCenter.z + 0.0, q: 0.10, r: 1.70 },
+        { name: "N7",  x: mbCenter.x - 3.6, y: mbCenter.y - 0.7, z: mbCenter.z + 0.0, q: 0.35, r: 1.55 }, // Dimethylamino N (+)
+        { name: "C8",  x: mbCenter.x - 2.4, y: mbCenter.y - 1.4, z: mbCenter.z + 0.0, q: 0.15, r: 1.70 },
+        { name: "C9A", x: mbCenter.x - 1.2, y: mbCenter.y - 0.7, z: mbCenter.z + 0.0, q: 0.10, r: 1.70 }
+      ];
+
+      for (const mba of mbAtoms) {
+        addAtom(mba.name, "MB", "L", 99, mba.x, mba.y, mba.z, mba.q, mba.r);
+      }
+
+      return { pqrText: lines.join("\n"), atoms };
+    }
+
+    function generateDxGrid(atoms) {
+      const nx = 15, ny = 15, nz = 20;
+      const ox = -14.0, oy = -14.0, oz = -20.0;
+      const hx = 28.0 / (nx - 1);
+      const hy = 28.0 / (ny - 1);
+      const hz = 40.0 / (nz - 1);
+      const count = nx * ny * nz;
+
+      const dxHeader = [
+        `object 1 class gridpositions counts ${nx} ${ny} ${nz}`,
+        `origin ${ox.toFixed(2)} ${oy.toFixed(2)} ${oz.toFixed(2)}`,
+        `delta ${hx.toFixed(2)} 0.00 0.00`,
+        `delta 0.00 ${hy.toFixed(2)} 0.00`,
+        `delta 0.00 0.00 ${hz.toFixed(2)}`,
+        `object 2 class gridconnections counts ${nx} ${ny} ${nz}`,
+        `object 3 class array type double rank 0 items ${count} data follows`
+      ].join("\n");
+
+      const vals = [];
+      for (let ix = 0; ix < nx; ix++) {
+        const gx = ox + ix * hx;
+        for (let iy = 0; iy < ny; iy++) {
+          const gy = oy + iy * hy;
+          for (let iz = 0; iz < nz; iz++) {
+            const gz = oz + iz * hz;
+            let pot = 0;
+            for (let a = 0; a < atoms.length; a++) {
+              const dx = gx - atoms[a].x;
+              const dy = gy - atoms[a].y;
+              const dz = gz - atoms[a].z;
+              const dist = Math.sqrt(dx * dx + dy * dy + dz * dz + 1.2);
+              pot += (atoms[a].q * 8.0) / dist;
+            }
+            pot = Math.max(-5.0, Math.min(5.0, pot));
+            vals.push(pot.toFixed(3));
+          }
+        }
+      }
+
+      return dxHeader + "\n" + vals.join(" ") + "\n" + [
+        'attribute "dep" string "positions"',
+        'object "density" class field',
+        'component "positions" value 1',
+        'component "connections" value 2',
+        'component "data" value 3'
+      ].join("\n");
+    }
+
+    // =========================================================================
+    // 2. INITIALIZE 3DMOL VIEWER & EXACT CODE FROM USER REQUEST
+    // =========================================================================
+    const { pqrText: dnaData, atoms } = generateBdnapqr();
+    const dxData = generateDxGrid(atoms);
+
+    let viewer;
+    let surfaceRef = null;
+    let currentMode = "sas";
+    let autoRotate = true;
+    let currentOpacity = 0.9;
+
+    function initViewer() {
+      const element = document.getElementById("viewer");
+      viewer = $3Dmol.createViewer(element, { backgroundColor: "0x07101e" });
+
+      // Add model using the user-specified snippet
+      viewer.addModel(dnaData, "pqr");
+
+      applyViewMode("sas");
+
+      viewer.zoomTo();
+      viewer.render();
+
+      setupAtomInteraction();
+      startAnimationLoop();
+    }
+
+    function applyViewMode(mode) {
+      currentMode = mode;
+      viewer.removeAllSurfaces();
+      surfaceRef = null;
+
+      // Update UI buttons
+      document.querySelectorAll(".mode-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.mode === mode);
+      });
+
+      if (mode === "sas") {
+        // EXACT CODE FROM USER REQUEST:
+        const esp = new $3Dmol.VolumeData(dxData, "dx");
+        surfaceRef = viewer.addSurface(
+          $3Dmol.SurfaceType.SAS,
+          {
+            opacity: currentOpacity,
+            voldata: esp,
+            volscheme: new $3Dmol.Gradient.RWB(-5, 5)
+          }
+        );
+        viewer.setStyle({ resn: "MB" }, { stick: { color: "blue", radius: 0.3 } });
+        viewer.setStyle({ resn: ["DA", "DT", "DG", "DC"] }, { cartoon: { color: "white" } });
+      } else if (mode === "docked") {
+        // Highlight docked Methylene Blue cation into the DNA groove
+        viewer.setStyle({}, {});
+        viewer.setStyle({ resn: ["DA", "DT", "DG", "DC"] }, { 
+          cartoon: { color: "spectrum" },
+          stick: { opacity: 0.6, radius: 0.15 }
+        });
+        viewer.setStyle({ resn: "MB" }, { 
+          stick: { color: "#38bdf8", radius: 0.38 },
+          sphere: { scale: 0.35, color: "#2563eb" }
+        });
+      } else if (mode === "skeleton") {
+        // High-contrast stick & cartoon model showing phosphodiesters
+        viewer.setStyle({}, {});
+        viewer.setStyle({ atom: "P" }, { sphere: { radius: 0.9, color: "#ef4444" } });
+        viewer.setStyle({ atom: ["OP1", "OP2"] }, { sphere: { radius: 0.65, color: "#f87171" } });
+        viewer.setStyle({ resn: ["DA", "DT", "DG", "DC"] }, { stick: { radius: 0.22 } });
+        viewer.setStyle({ resn: "MB" }, { stick: { color: "#38bdf8", radius: 0.3 } });
+      } else if (mode === "combined") {
+        // Transparent SAS surface + docked ligand
+        const esp = new $3Dmol.VolumeData(dxData, "dx");
+        surfaceRef = viewer.addSurface(
+          $3Dmol.SurfaceType.SAS,
+          {
+            opacity: 0.55,
+            voldata: esp,
+            volscheme: new $3Dmol.Gradient.RWB(-5, 5)
+          }
+        );
+        viewer.setStyle({ resn: "MB" }, { stick: { color: "#38bdf8", radius: 0.35 } });
+        viewer.setStyle({ resn: ["DA", "DT", "DG", "DC"] }, { cartoon: { color: "white" } });
+      }
+
+      viewer.render();
+      broadcastState("mode_change");
+    }
+
+    function setupAtomInteraction() {
+      viewer.setClickable({}, true, (atom) => {
+        if (!atom) return;
+        const probeEl = document.getElementById("probeDetails");
+        let desc = "";
+        let chargeNote = "";
+
+        if (atom.resn === "MB") {
+          desc = `<span style="color: #38bdf8; font-weight: 700;">Methylene Blue Cation (${atom.atom})</span><br>
+                  Subunit: Cationic Chromophore<br>
+                  Formal Charge: <strong>+1.00 e</strong> (Resonance stabilized)<br>
+                  Electrostatic Potential: <strong style="color: #60a5fa;">+4.8 kcal/mol·e</strong><br>
+                  <em>Strongly attracted to the polyanionic phosphate oxygen atoms in the minor groove.</em>`;
+        } else if (atom.atom === "P" || atom.atom === "OP1" || atom.atom === "OP2") {
+          desc = `<span style="color: #f87171; font-weight: 700;">Phosphodiester Oxygen (${atom.atom})</span><br>
+                  Residue: ${atom.resn} ${atom.resi} (Strand ${atom.chain})<br>
+                  Partial Charge: <strong>-0.80 e</strong><br>
+                  Electrostatic Potential: <strong style="color: #ef4444;">-4.9 kcal/mol·e</strong><br>
+                  <em>Provides high negative electrostatic field that anchors the cationic methylene blue dye.</em>`;
+        } else if (atom.atom === "C1'") {
+          desc = `<span style="color: #f1f5f9; font-weight: 700;">Deoxyribose Sugar (${atom.atom})</span><br>
+                  Residue: ${atom.resn} ${atom.resi} (Strand ${atom.chain})<br>
+                  Charge: +0.15 e (Near-neutral structural backbone)`;
+        } else {
+          desc = `<span style="color: #cbd5e1; font-weight: 700;">Nitrogenous Base Atom (${atom.atom})</span><br>
+                  Residue: ${atom.resn} ${atom.resi} (Base Pair)<br>
+                  Binding Role: Aromatic π-π stacking stabilization during dye intercalation.`;
+        }
+
+        probeEl.innerHTML = desc;
+        broadcastState("atom_click", { atomName: atom.atom, resn: atom.resn });
+      });
+    }
+
+    function startAnimationLoop() {
+      function animate() {
+        if (autoRotate && viewer) {
+          viewer.rotate(0.4, "y");
+          viewer.render();
+        }
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // =========================================================================
+    // 3. UI LISTENERS & CONTROLS
+    // =========================================================================
+    document.querySelectorAll(".mode-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        applyViewMode(btn.dataset.mode);
+      });
+    });
+
+    const rotateToggleBtn = document.getElementById("rotateToggleBtn");
+    rotateToggleBtn.addEventListener("click", () => {
+      autoRotate = !autoRotate;
+      rotateToggleBtn.classList.toggle("active", autoRotate);
+      document.getElementById("rotateIcon").textContent = autoRotate ? "⏸" : "▶";
+      broadcastState("rotate_toggle", { autoRotate });
+    });
+
+    const resetViewBtn = document.getElementById("resetViewBtn");
+    resetViewBtn.addEventListener("click", () => {
+      viewer.zoomTo();
+      viewer.render();
+      broadcastState("reset_view");
+    });
+
+    const opacitySlider = document.getElementById("opacitySlider");
+    const opacityVal = document.getElementById("opacityVal");
+    opacitySlider.addEventListener("input", (e) => {
+      currentOpacity = parseFloat(e.target.value);
+      opacityVal.textContent = currentOpacity.toFixed(2);
+      if (surfaceRef && (currentMode === "sas" || currentMode === "combined")) {
+        applyViewMode(currentMode);
+      }
+    });
+
+    // =========================================================================
+    // 4. DUAL-SCREEN BROADCAST CHANNEL SYNCHRONIZATION
+    // =========================================================================
+    const syncChannel = typeof BroadcastChannel !== "undefined" ? new BroadcastChannel("slideshow_interactive_sync") : null;
+    let isRemoteUpdate = false;
+
+    function broadcastState(action = "update", extra = {}) {
+      if (isRemoteUpdate) return;
+      const msg = {
+        type: "INTERACTIVE_STATE_UPDATE",
+        interactiveId: "dna_electrostatic_methylene_blue",
+        state: {
+          mode: currentMode,
+          autoRotate,
+          opacity: currentOpacity,
+          ...extra
+        },
+        action,
+        timestamp: Date.now()
+      };
+      if (syncChannel) {
+        try { syncChannel.postMessage(msg); } catch (_) {}
+      }
+      try { window.parent.postMessage(msg, "*"); } catch (_) {}
+    }
+
+    function handleIncomingSync(data) {
+      if (!data || !data.state || isRemoteUpdate) return;
+      isRemoteUpdate = true;
+      try {
+        const s = data.state;
+        if (s.mode && s.mode !== currentMode) {
+          applyViewMode(s.mode);
+        }
+        if (s.autoRotate !== undefined && s.autoRotate !== autoRotate) {
+          autoRotate = s.autoRotate;
+          rotateToggleBtn.classList.toggle("active", autoRotate);
+          document.getElementById("rotateIcon").textContent = autoRotate ? "⏸" : "▶";
+        }
+        if (s.action === "reset_view") {
+          viewer.zoomTo();
+          viewer.render();
+        }
+      } finally {
+        isRemoteUpdate = false;
+      }
+    }
+
+    if (syncChannel) {
+      syncChannel.onmessage = (e) => {
+        if (e.data?.interactiveId === "dna_electrostatic_methylene_blue" || !e.data?.interactiveId) {
+          handleIncomingSync(e.data);
+        }
+      };
+    }
+
+    window.addEventListener("message", (e) => {
+      if (e.data?.type === "INTERACTIVE_STATE_UPDATE" && 
+         (e.data?.interactiveId === "dna_electrostatic_methylene_blue" || !e.data?.interactiveId)) {
+        handleIncomingSync(e.data);
+      }
+    });
+
+    // Boot
+    window.addEventListener("DOMContentLoaded", initViewer);
+  </script>
+</body>
+</html>
