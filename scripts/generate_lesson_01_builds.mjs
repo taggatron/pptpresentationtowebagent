@@ -43,10 +43,8 @@ async function main() {
     const w = 1376;
     const h = 768;
 
-    const col1 = { x: 45, y: 185, w: 295, h: 505 };
-    const col2 = { x: 355, y: 185, w: 320, h: 505 };
-    const col3 = { x: 690, y: 185, w: 310, h: 505 };
-    const col4 = { x: 1015, y: 185, w: 320, h: 505 };
+    const bgY = 226;
+    const bgH = h - bgY; // Extends cleanly to bottom edge
 
     function fillBg(ctx, rect) {
       ctx.fillStyle = "rgb(22, 34, 50)";
@@ -66,36 +64,30 @@ async function main() {
     b1.width = w; b1.height = h;
     const c1 = b1.getContext("2d");
     c1.drawImage(img, 0, 0);
-    fillBg(c1, col2);
-    fillBg(c1, col3);
-    fillBg(c1, col4);
+    fillBg(c1, { x: 350, y: bgY, w: w - 350, h: bgH });
 
     // Build 2: Col 1 attenuated. Reveal Col 2 (Assembly Line / Cytosol). Omit Cols 3, 4
     const b2 = document.createElement("canvas");
     b2.width = w; b2.height = h;
     const c2 = b2.getContext("2d");
     c2.drawImage(img, 0, 0);
-    attenuate(c2, col1);
-    fillBg(c2, col3);
-    fillBg(c2, col4);
+    attenuate(c2, { x: 40, y: bgY, w: 310, h: bgH });
+    fillBg(c2, { x: 678, y: bgY, w: w - 678, h: bgH });
 
     // Build 3: Cols 1 & 2 attenuated. Reveal Col 3 (Cargo / tRNA). Omit Col 4
     const b3 = document.createElement("canvas");
     b3.width = w; b3.height = h;
     const c3 = b3.getContext("2d");
     c3.drawImage(img, 0, 0);
-    attenuate(c3, col1);
-    attenuate(c3, col2);
-    fillBg(c3, col4);
+    attenuate(c3, { x: 40, y: bgY, w: 638, h: bgH });
+    fillBg(c3, { x: 995, y: bgY, w: w - 995, h: bgH });
 
     // Build 4: Cols 1, 2, 3 attenuated. Reveal Col 4 (Energy Cost / Mitochondria ATP).
     const b4 = document.createElement("canvas");
     b4.width = w; b4.height = h;
     const c4 = b4.getContext("2d");
     c4.drawImage(img, 0, 0);
-    attenuate(c4, col1);
-    attenuate(c4, col2);
-    attenuate(c4, col3);
+    attenuate(c4, { x: 40, y: bgY, w: 955, h: bgH });
 
     return {
       b1: b1.toDataURL("image/png"),
@@ -138,12 +130,12 @@ async function main() {
     const w = 1376;
     const h = 768;
 
-    const step1Box = { x: 800, y: 175, w: 535, h: 155 };
-    const step2Box = { x: 800, y: 340, w: 535, h: 150 };
-    const step3Box = { x: 800, y: 500, w: 535, h: 165 };
+    const step1Box = { x: 945, y: 280, w: w - 945, h: 98 };
+    const step2Box = { x: 945, y: 380, w: w - 945, h: 108 };
+    const step3Box = { x: 945, y: 490, w: w - 945, h: h - 490 };
 
     function fillBg(ctx, rect) {
-      ctx.fillStyle = "rgb(4, 15, 30)";
+      ctx.fillStyle = "rgb(1, 11, 29)";
       ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
     }
 
@@ -160,8 +152,7 @@ async function main() {
     b1.width = w; b1.height = h;
     const c1 = b1.getContext("2d");
     c1.drawImage(img, 0, 0);
-    fillBg(c1, step2Box);
-    fillBg(c1, step3Box);
+    fillBg(c1, { x: 945, y: 380, w: w - 945, h: h - 380 });
 
     // Build 2: Diagram + Step 1 attenuated + Step 2 (Complementary Pairing). Omit Step 3
     const b2 = document.createElement("canvas");
@@ -217,12 +208,12 @@ async function main() {
     const w = 1376;
     const h = 768;
 
-    const step1Box = { x: 800, y: 175, w: 535, h: 155 };
-    const step2Box = { x: 800, y: 340, w: 535, h: 150 };
-    const step3Box = { x: 800, y: 500, w: 535, h: 165 };
+    const step1Box = { x: 940, y: 275, w: w - 940, h: 103 };
+    const step2Box = { x: 940, y: 380, w: w - 940, h: 108 };
+    const step3Box = { x: 940, y: 490, w: w - 940, h: h - 490 };
 
     function fillBg(ctx, rect) {
-      ctx.fillStyle = "rgb(3, 14, 30)";
+      ctx.fillStyle = "rgb(1, 11, 29)";
       ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
     }
 
@@ -239,8 +230,7 @@ async function main() {
     b1.width = w; b1.height = h;
     const c1 = b1.getContext("2d");
     c1.drawImage(img, 0, 0);
-    fillBg(c1, step2Box);
-    fillBg(c1, step3Box);
+    fillBg(c1, { x: 940, y: 380, w: w - 940, h: h - 380 });
 
     // Build 2: Diagram + Step 1 attenuated + Step 2 (tRNA Anticodon Match). Omit Step 3
     const b2 = document.createElement("canvas");
@@ -296,8 +286,8 @@ async function main() {
     const w = 1376;
     const h = 768;
 
-    const col1 = { x: 35, y: 190, w: 635, h: 520 };
-    const col2 = { x: 685, y: 190, w: 650, h: 520 };
+    const bgY = 240;
+    const bgH = h - bgY;
 
     function fillBg(ctx, rect) {
       ctx.fillStyle = "rgb(255, 255, 255)";
@@ -317,14 +307,14 @@ async function main() {
     b1.width = w; b1.height = h;
     const c1 = b1.getContext("2d");
     c1.drawImage(img, 0, 0);
-    fillBg(c1, col2);
+    fillBg(c1, { x: 670, y: bgY, w: w - 670, h: bgH });
 
     // Build 2: Header + Column 1 attenuated + Column 2 (OCR Level 3 AAQ Human Biology)
     const b2 = document.createElement("canvas");
     b2.width = w; b2.height = h;
     const c2 = b2.getContext("2d");
     c2.drawImage(img, 0, 0);
-    attenuate(c2, col1);
+    attenuate(c2, { x: 40, y: bgY, w: 625, h: bgH });
 
     return {
       b1: b1.toDataURL("image/png"),
@@ -361,17 +351,11 @@ async function main() {
     const w = 1376;
     const h = 768;
 
-    const card1 = { x: 40, y: 310, w: 410, h: 375 };
-    const card2 = { x: 470, y: 310, w: 420, h: 375 };
-    const card3 = { x: 910, y: 310, w: 425, h: 375 };
+    const bgY = 270;
+    const bgH = h - bgY;
 
     function fillBg(ctx, rect) {
-      // Background in this region is a teal/blue gradient
-      const grad = ctx.createLinearGradient(0, rect.y, 0, rect.y + rect.h);
-      grad.addColorStop(0, "rgb(180, 212, 218)");
-      grad.addColorStop(1, "rgb(105, 158, 172)");
-      ctx.fillStyle = grad;
-      ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+      ctx.drawImage(img, 20, rect.y, 2, rect.h, rect.x, rect.y, rect.w, rect.h);
     }
 
     function attenuate(ctx, rect) {
@@ -387,24 +371,23 @@ async function main() {
     b1.width = w; b1.height = h;
     const c1 = b1.getContext("2d");
     c1.drawImage(img, 0, 0);
-    fillBg(c1, card2);
-    fillBg(c1, card3);
+    fillBg(c1, { x: 460, y: bgY, w: w - 460, h: bgH });
 
     // Build 2: Patient A attenuated + Patient B. Omit Patient C
     const b2 = document.createElement("canvas");
     b2.width = w; b2.height = h;
     const c2 = b2.getContext("2d");
     c2.drawImage(img, 0, 0);
-    attenuate(c2, card1);
-    fillBg(c2, card3);
+    attenuate(c2, { x: 45, y: bgY, w: 410, h: bgH });
+    fillBg(c2, { x: 895, y: bgY, w: w - 895, h: bgH });
 
     // Build 3: Patients A & B attenuated + Patient C.
     const b3 = document.createElement("canvas");
     b3.width = w; b3.height = h;
     const c3 = b3.getContext("2d");
     c3.drawImage(img, 0, 0);
-    attenuate(c3, card1);
-    attenuate(c3, card2);
+    attenuate(c3, { x: 45, y: bgY, w: 410, h: bgH });
+    attenuate(c3, { x: 465, y: bgY, w: 430, h: bgH });
 
     return {
       b1: b1.toDataURL("image/png"),
