@@ -1,0 +1,906 @@
+{
+  "id": "Classic_Lesson_02_Random_Sampling",
+  "title": "2. Investigating Abundance (Random Sampling)",
+  "filename": "Classic_Lesson_02_Random_Sampling.pptx",
+  "totalSlides": 15,
+  "slideSet": "ecology_atmosphere_classic",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Lesson 2: Investigating Abundance (Random Sampling)",
+      "imageFileName": "slide_01.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_01.png",
+      "sourceMediaPath": "ppt/media/image1.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 6,
+        "timeGuideDisplay": "5–7s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 3600,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "title": "Starter Activity: Knowledge Retrieval",
+      "imageFileName": "slide_02.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_02.png",
+      "sourceMediaPath": "ppt/media/image2.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 15,
+        "timeGuideDisplay": "12–18s",
+        "vciScore": "4.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 3200,
+          "semanticProcessingMs": 8500,
+          "wordCount": 84,
+          "visualElementsCount": 6
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "manifest-text"
+      },
+      "interactiveCells": [
+        {
+          "id": "reveal_2_card_1",
+          "question": "Which technique estimates woodlice or field mice populations, and why?",
+          "bounds": {
+            "x": 4.5,
+            "y": 21.9,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "answerBounds": {
+            "x": 4.5,
+            "y": 21.9,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "reveal_2_card_2",
+          "question": "When is systematic sampling along a transect used instead of random sampling?",
+          "bounds": {
+            "x": 52.7,
+            "y": 21.9,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "answerBounds": {
+            "x": 52.7,
+            "y": 21.9,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "reveal_2_card_3",
+          "question": "In capture-recapture: 20 marked, 30 caught later, 10 marked. Estimate total population.",
+          "bounds": {
+            "x": 4.5,
+            "y": 56.1,
+            "w": 42.8,
+            "h": 5.2
+          },
+          "answerBounds": {
+            "x": 4.5,
+            "y": 56.1,
+            "w": 42.8,
+            "h": 5.2
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "reveal_2_card_4",
+          "question": "Name two abiotic gradients investigated using a line or belt transect.",
+          "bounds": {
+            "x": 52.7,
+            "y": 53.2,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "answerBounds": {
+            "x": 52.7,
+            "y": 53.2,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "reveal_2_card_5",
+          "question": "State one key assumption regarding marks applied during capture-recapture.",
+          "bounds": {
+            "x": 4.5,
+            "y": 84.6,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "answerBounds": {
+            "x": 4.5,
+            "y": 84.6,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "reveal_2_card_6",
+          "question": "What is the fundamental difference between abundance and distribution?",
+          "bounds": {
+            "x": 52.7,
+            "y": 84.6,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "answerBounds": {
+            "x": 52.7,
+            "y": 84.6,
+            "w": 42.8,
+            "h": 8.1
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The Impossible Task",
+      "imageFileName": "slide_03.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_03.png",
+      "sourceMediaPath": "ppt/media/image3.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 11000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "title": "The Detective's Frame: The Quadrat",
+      "imageFileName": "slide_04.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_04.png",
+      "sourceMediaPath": "ppt/media/image4.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 5,
+      "title": "What is wrong with this method?",
+      "imageFileName": "slide_05_video_embed.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_05_video_embed.png",
+      "sourceMediaPath": "ppt/media/image5_video_embed.png",
+      "isInteractive": false,
+      "interactiveType": "web_embed",
+      "webEmbed": {
+        "url": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/what_is_wrong_with_this_method.html",
+        "title": "What is wrong with this method?",
+        "label": "Fieldwork Method Video"
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 15,
+        "timeGuideDisplay": "12–18s",
+        "vciScore": "3.1",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1200,
+          "semanticProcessingMs": 8000,
+          "wordCount": 8,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "title": "The Bias Trap: Why We Don't Throw",
+      "imageFileName": "slide_06.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_06.png",
+      "sourceMediaPath": "ppt/media/image5.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 7,
+      "title": "Random Sampling Method: Step-by-Step Fieldwork Protocol",
+      "imageFileName": "slide_07.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_07.png",
+      "sourceMediaPath": "ppt/media/image6.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 10,
+        "timeGuideDisplay": "8–12s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 800,
+          "semanticProcessingMs": 7900,
+          "wordCount": 4,
+          "visualElementsCount": 4
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 8,
+      "title": "Interactive Practical: Random Quadrat Sampling",
+      "imageFileName": "slide_08_web_embed.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_08_web_embed.png",
+      "sourceMediaPath": "ppt/media/image7_web_embed.png",
+      "isInteractive": false,
+      "interactiveType": "web_embed",
+      "webEmbed": {
+        "url": "https://codexvirtualchemlab.vercel.app/?quadrats-focus=1",
+        "title": "Interactive Practical: Random Quadrat Sampling",
+        "label": "Live Practical Simulation"
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 18,
+        "timeGuideDisplay": "15–20s",
+        "vciScore": "3.2",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 5700,
+          "semanticProcessingMs": 11000,
+          "wordCount": 18,
+          "visualElementsCount": 4
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 9,
+      "title": "Making Sense of the Clues: Averages",
+      "imageFileName": "slide_09.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_09.png",
+      "sourceMediaPath": "ppt/media/image8.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 11000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 10,
+      "title": "Scaling Up to the Total Population",
+      "imageFileName": "slide_10.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_10.png",
+      "sourceMediaPath": "ppt/media/image9.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 11,
+      "title": "South Devon College: Fieldwork & Satellite Investigation",
+      "imageFileName": "slide_11_google_earth_embed.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_11_google_earth_embed.png",
+      "sourceMediaPath": "ppt/media/image10_google_earth_embed.png",
+      "isInteractive": false,
+      "interactiveType": "web_embed",
+      "webEmbed": {
+        "url": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/south_devon_college_field_sampling.html",
+        "title": "South Devon College: Fieldwork & Satellite Investigation",
+        "label": "Google Earth & Field GIS Simulation"
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 22,
+        "timeGuideDisplay": "18–25s",
+        "vciScore": "3.4",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1400,
+          "semanticProcessingMs": 12000,
+          "wordCount": 12,
+          "visualElementsCount": 4
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 12,
+      "title": "Scientific Shorthand (Mathematical Symbols)",
+      "imageFileName": "slide_12.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_12.png",
+      "sourceMediaPath": "ppt/media/image14.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 11000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 13,
+      "title": "Quality Control: Errors and Safety",
+      "imageFileName": "slide_13.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_13.png",
+      "sourceMediaPath": "ppt/media/image15.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 14,
+      "title": "Case Study: Meadow Wildflower Survey",
+      "imageFileName": "slide_14.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_14.png",
+      "sourceMediaPath": "ppt/media/image16.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 25,
+        "timeGuideDisplay": "20–30s",
+        "vciScore": "4.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 4500,
+          "semanticProcessingMs": 14000,
+          "wordCount": 95,
+          "visualElementsCount": 6
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "manifest-text"
+      },
+      "interactiveCells": [
+        {
+          "id": "case_study_q1",
+          "question": "1. Which sampling method eliminates human bias across this open meadow?",
+          "bounds": {
+            "x": 5.5,
+            "y": 40.8,
+            "w": 46.3,
+            "h": 7.8
+          },
+          "answerBounds": {
+            "x": 5.5,
+            "y": 40.8,
+            "w": 46.3,
+            "h": 7.8
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "case_study_q2",
+          "question": "2. How should the team scale up their counts to estimate total meadow population?",
+          "bounds": {
+            "x": 5.5,
+            "y": 63.6,
+            "w": 46.3,
+            "h": 7.8
+          },
+          "answerBounds": {
+            "x": 5.5,
+            "y": 63.6,
+            "w": 46.3,
+            "h": 7.8
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "case_study_q3",
+          "question": "3. Which counting rule prevents recording the same flower twice on edges?",
+          "bounds": {
+            "x": 5.5,
+            "y": 83.4,
+            "w": 46.3,
+            "h": 7.8
+          },
+          "answerBounds": {
+            "x": 5.5,
+            "y": 83.4,
+            "w": 46.3,
+            "h": 7.8
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Field Notes Summary: Final Retrieval",
+      "imageFileName": "slide_15.png",
+      "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_15.png",
+      "sourceMediaPath": "ppt/media/image17.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 20,
+        "timeGuideDisplay": "15–25s",
+        "vciScore": "4.2",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 3800,
+          "semanticProcessingMs": 11000,
+          "wordCount": 88,
+          "visualElementsCount": 4
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "manifest-text"
+      },
+      "interactiveCells": [
+        {
+          "id": "summary_reveal_1",
+          "question": "Reveal term: [abundance]",
+          "bounds": {
+            "x": 29.9,
+            "y": 38.5,
+            "w": 12.4,
+            "h": 6.9
+          },
+          "answerBounds": {
+            "x": 29.9,
+            "y": 38.5,
+            "w": 12.4,
+            "h": 6.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "summary_reveal_2",
+          "question": "Reveal term: [quadrat]",
+          "bounds": {
+            "x": 37.6,
+            "y": 44.6,
+            "w": 9.4,
+            "h": 6.9
+          },
+          "answerBounds": {
+            "x": 37.6,
+            "y": 44.6,
+            "w": 9.4,
+            "h": 6.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "summary_reveal_3",
+          "question": "Reveal term: [random]",
+          "bounds": {
+            "x": 17.3,
+            "y": 50.8,
+            "w": 9.4,
+            "h": 6.9
+          },
+          "answerBounds": {
+            "x": 17.3,
+            "y": 50.8,
+            "w": 9.4,
+            "h": 6.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "summary_reveal_4",
+          "question": "Reveal term: [mean]",
+          "bounds": {
+            "x": 38.9,
+            "y": 57,
+            "w": 7.5,
+            "h": 6.9
+          },
+          "answerBounds": {
+            "x": 38.9,
+            "y": 57,
+            "w": 7.5,
+            "h": 6.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "summary_reveal_5",
+          "question": "Reveal term: [area]",
+          "bounds": {
+            "x": 49.7,
+            "y": 63.1,
+            "w": 6.5,
+            "h": 6.9
+          },
+          "answerBounds": {
+            "x": 49.7,
+            "y": 63.1,
+            "w": 6.5,
+            "h": 6.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        },
+        {
+          "id": "summary_reveal_6",
+          "question": "Reveal term: [boundary]",
+          "bounds": {
+            "x": 37.9,
+            "y": 69.3,
+            "w": 11.1,
+            "h": 6.9
+          },
+          "answerBounds": {
+            "x": 37.9,
+            "y": 69.3,
+            "w": 11.1,
+            "h": 6.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        }
+      ]
+    }
+  ]
+}

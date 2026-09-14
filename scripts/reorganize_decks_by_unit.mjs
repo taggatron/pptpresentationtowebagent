@@ -31,6 +31,7 @@ const DECK_MAPPING = {
   ecology_atmosphere_classic: [
     "Classic_Lesson_01_Ecosystems",
     "Classic_Lesson_02_Investigating_Abundance_and_Distribution",
+    "Classic_Lesson_02_Random_Sampling",
     "Classic_Lesson_03_Competition",
     "Classic_Lesson_04_Nitrogen_Cycle",
     "Classic_Lesson_05_Carbon_and_Water_Cycle",
