@@ -88,7 +88,7 @@ test("Slide Sets API returns categorized slide sets and default IDs", async () =
     // Verify Intro to Human Bio slide set is present
     const aaqSet = data.slideSets.find((s) => s.id === "intro_aaq_human_bio");
     assert.ok(aaqSet, "Intro to Human Bio slide set should be present");
-    assert.ok(aaqSet.decks.some((d) => d.id === "Lesson_01_Human_Biology_Scientist_Onboarding"));
+    assert.ok(aaqSet.decks.some((d) => d.id === "Lesson_01_Welcome_to_Human_Biology" || d.id === "Lesson_01_Human_Biology_Scientist_Onboarding"));
     assert.equal(aaqSet.title, "Intro to Human Bio");
 
     // Verify default IDs

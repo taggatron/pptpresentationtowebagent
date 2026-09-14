@@ -378,9 +378,9 @@ test("the player contains no focus halo, dimming, or serial-active visualization
 });
 
 test("Lesson 1 Cell Structure slide 3 has build 3 identical to slide 03 original and no build 0", async () => {
-  const manifestPath = path.join(ROOT_DIR, "public", "decks", "Lesson_01_CELL_STRUCTURE", "manifest.json");
+  const manifestPath = path.join(ROOT_DIR, "public", "decks", "cell_biology", "Lesson_01_CELL_STRUCTURE", "manifest.json");
   const manifest = JSON.parse(await fs.readFile(manifestPath, "utf-8"));
-  const slide3 = manifest.slides.find((s) => s.number === 3);
+  const slide3 = manifest.slides.find((s) => s.imageFileName === "slide_03.png") || manifest.slides.find((s) => s.number === 3);
   assert.ok(slide3, "Slide 3 must exist");
 
   const build3 = slide3.progressiveBuilds.find((b) => b.version === 3 || b.id === "gemini_slide_3_3_staged_objectives");

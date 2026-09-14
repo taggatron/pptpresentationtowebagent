@@ -1,5 +1,6 @@
 import express from "express";
 import fs from "node:fs/promises";
+import fsSync from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractPptxDeck } from "./pptx-extractor.js";
@@ -66,15 +67,94 @@ function assertSafeDeckId(deckId) {
     !deckId ||
     typeof deckId !== "string" ||
     deckId.includes("..") ||
-    deckId.includes("/") ||
     deckId.includes("\\") ||
-    !/^[\w.\- ’'()]+$/u.test(deckId)
+    !/^[\w.\- ’'()/]+$/u.test(deckId)
   ) {
     const error = new Error("Invalid deck id.");
     error.statusCode = 400;
     throw error;
   }
   return deckId;
+}
+
+export async function findDeckLocation(decksDir, deckId) {
+  const safeDeckId = assertSafeDeckId(deckId);
+  const directPath = path.join(decksDir, safeDeckId, "manifest.json");
+  try {
+    const stat = await fs.stat(directPath);
+    if (stat.isFile()) {
+      const relToDecks = path.relative(decksDir, path.dirname(directPath)).split(path.sep);
+      return {
+        manifestPath: directPath,
+        deckDir: path.dirname(directPath),
+        unitId: relToDecks.length > 1 ? relToDecks[0] : null
+      };
+    }
+  } catch {}
+
+  try {
+    const entries = await fs.readdir(decksDir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+      const candidatePath = path.join(decksDir, entry.name, safeDeckId, "manifest.json");
+      try {
+        const stat = await fs.stat(candidatePath);
+        if (stat.isFile()) {
+          return {
+            manifestPath: candidatePath,
+            deckDir: path.dirname(candidatePath),
+            unitId: entry.name
+          };
+        }
+      } catch {}
+    }
+  } catch {}
+
+  return null;
+}
+
+export async function scanAllDecks(decksDir) {
+  const convertedMap = new Map();
+  try {
+    const entries = await fs.readdir(decksDir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+      const directManifest = path.join(decksDir, entry.name, "manifest.json");
+      let isDirectDeck = false;
+      try {
+        const raw = await fs.readFile(directManifest, "utf8");
+        convertedMap.set(entry.name, {
+          manifest: JSON.parse(raw),
+          manifestPath: directManifest,
+          unitId: null,
+          deckDir: path.join(decksDir, entry.name)
+        });
+        isDirectDeck = true;
+      } catch {}
+
+      if (!isDirectDeck) {
+        try {
+          const subEntries = await fs.readdir(path.join(decksDir, entry.name), { withFileTypes: true });
+          for (const subEntry of subEntries) {
+            if (!subEntry.isDirectory() || subEntry.name.startsWith(".")) continue;
+            const subManifest = path.join(decksDir, entry.name, subEntry.name, "manifest.json");
+            try {
+              const raw = await fs.readFile(subManifest, "utf8");
+              convertedMap.set(subEntry.name, {
+                manifest: JSON.parse(raw),
+                manifestPath: subManifest,
+                unitId: entry.name,
+                deckDir: path.join(decksDir, entry.name, subEntry.name)
+              });
+            } catch {}
+          }
+        } catch {}
+      }
+    }
+  } catch (err) {
+    console.warn("[Server] Error scanning decksDir:", err.message);
+  }
+  return convertedMap;
 }
 
 function clampPercent(value, min = 0, max = 100) {
@@ -322,6 +402,13 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (/^Classic_/i.test(deckId) || /classic/i.test(deckId)) return "ecology_atmosphere_classic";
   if (deckId === "digital_literacy_conference_deck") return "digital_literacy";
   if (
+    /(?:Cell_cycle|Stem_cells|Differentiation|Mitosis|Reproduction|meiosis|Genetic_diagrams|inheritance|Selective_breeding|genetic_modification|Variation)/i.test(
+      deckId
+    )
+  ) {
+    return "genetics_selection";
+  }
+  if (
     /(?:CELL|MICROSCOPES|MAGNIFICATION|DNA|ENZYMES|Aerobic|ANAEROBIC|FERMENTATION|PHOTOSYNTHESIS)/i.test(
       deckId
     )
@@ -329,7 +416,7 @@ export function inferSlideSetId(deckId, manifest = null) {
     return "cell_biology";
   }
   if (
-    /(?:Ecosystems|Abundance|Distribution|Competition|Nitrogen|Carbon_and_Water|Atmosphere|Crude_Oil|Greenhouse|Pollutants|Lifecycle|Recycling|Ecology|Atmospheric)/i.test(
+    /(?:Ecosystem|Ecosystems|Abundance|Distribution|Competition|Nitrogen|Carbon_and_Water|Atmosphere|Crude_Oil|Greenhouse|Pollutants|Lifecycle|Recycling|Ecology|Atmospheric|Arena_of_Life|Circular_Economy)/i.test(
       deckId
     )
   ) {
@@ -345,17 +432,10 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (/(?:Forces|TERMINAL|NEWTON)/i.test(deckId)) {
     return "forces_energy";
   }
-  if (
-    /(?:Cell_cycle|Mitosis|Reproduction|Genetic_diagrams|Variation)/i.test(
-      deckId
-    )
-  ) {
-    return "genetics_selection";
-  }
   if (/(?:Reaction_rates|Rate_experiments|Calculating_rates)/i.test(deckId)) {
     return "reaction_rates";
   }
-  if (/(?:Waves|Reflection|Refraction|Electromagnetic)/i.test(deckId)) {
+  if (/(?:Wave|Waves|Reflection|Refraction|Electromagnetic)/i.test(deckId)) {
     return "waves_radioactivity";
   }
   if (/(?:Agentic_|Governing_|AI_Landscape|Chatbots)/i.test(deckId)) {
@@ -381,13 +461,17 @@ async function tryAutoExtractDeck(deckId, decksDir) {
     const stat = await fs.stat(outputDir).catch(() => null);
     if (!stat || !stat.isDirectory()) return null;
 
+    const unitId = inferSlideSetId(safeDeckId);
+    const targetBaseDir = path.join(decksDir, unitId);
+    await fs.mkdir(targetBaseDir, { recursive: true });
+
     if (safeDeckId.startsWith("Classic_")) {
       const rawFileName = `${safeDeckId.replace(/^Classic_/i, "")}.pptx`;
       const classicPptx = path.join(outputDir, "powerpoints_ecology_atmosphere_sequence_classic", rawFileName);
       const fileStat = await fs.stat(classicPptx).catch(() => null);
       if (fileStat && fileStat.isFile()) {
         console.log(`[Server] Auto-extracting classic deck ${safeDeckId} from ${classicPptx}...`);
-        const manifest = await extractPptxDeck(classicPptx, decksDir, safeDeckId, {
+        const manifest = await extractPptxDeck(classicPptx, targetBaseDir, safeDeckId, {
           slideSet: "ecology_atmosphere_classic",
           title: formatDisplayTitle(safeDeckId, safeDeckId)
         });
@@ -397,7 +481,7 @@ async function tryAutoExtractDeck(deckId, decksDir) {
       const fallbackStat = await fs.stat(fallbackPptx).catch(() => null);
       if (fallbackStat && fallbackStat.isFile()) {
         console.log(`[Server] Auto-extracting classic deck ${safeDeckId} from fallback ${fallbackPptx}...`);
-        const manifest = await extractPptxDeck(fallbackPptx, decksDir, safeDeckId, {
+        const manifest = await extractPptxDeck(fallbackPptx, targetBaseDir, safeDeckId, {
           slideSet: "ecology_atmosphere_classic",
           title: formatDisplayTitle(safeDeckId, safeDeckId)
         });
@@ -415,7 +499,10 @@ async function tryAutoExtractDeck(deckId, decksDir) {
       const fileStat = await fs.stat(candidatePptx).catch(() => null);
       if (fileStat && fileStat.isFile()) {
         console.log(`[Server] Auto-extracting deck ${safeDeckId} from ${candidatePptx}...`);
-        const manifest = await extractPptxDeck(candidatePptx, decksDir);
+        const manifest = await extractPptxDeck(candidatePptx, targetBaseDir, safeDeckId, {
+          slideSet: unitId,
+          title: formatDisplayTitle(safeDeckId, safeDeckId)
+        });
         return manifest;
       }
     }
@@ -460,6 +547,19 @@ export function resolvePublicAssetPath(publicDir, assetUrlOrPath) {
   } else {
     const pathname = decodeURIComponent(requested.split(/[?#]/, 1)[0]).replace(/^\/+/, "");
     resolvedPath = path.resolve(publicRoot, pathname);
+
+    if (!fsSync.existsSync(resolvedPath) && pathname.startsWith("decks/")) {
+      const parts = pathname.split("/");
+      if (parts.length >= 3) {
+        for (const setCfg of KNOWN_SLIDE_SETS) {
+          const candidate = path.resolve(publicRoot, "decks", setCfg.id, ...parts.slice(1));
+          if (fsSync.existsSync(candidate)) {
+            resolvedPath = candidate;
+            break;
+          }
+        }
+      }
+    }
   }
 
   if (resolvedPath !== publicRoot && !resolvedPath.startsWith(`${publicRoot}${path.sep}`)) {
@@ -478,9 +578,19 @@ function publicAssetUrl(publicDir, assetUrlOrPath) {
 
 async function readManifest(decksDir, deckId) {
   const safeDeckId = assertSafeDeckId(deckId);
-  const manifestPath = path.join(decksDir, safeDeckId, "manifest.json");
-  const raw = await fs.readFile(manifestPath, "utf-8");
-  return { manifestPath, manifest: JSON.parse(raw) };
+  const location = await findDeckLocation(decksDir, safeDeckId);
+  if (!location) {
+    const manifestPath = path.join(decksDir, safeDeckId, "manifest.json");
+    const raw = await fs.readFile(manifestPath, "utf-8");
+    return { manifestPath, manifest: JSON.parse(raw), deckDir: path.dirname(manifestPath), unitId: null };
+  }
+  const raw = await fs.readFile(location.manifestPath, "utf-8");
+  return {
+    manifestPath: location.manifestPath,
+    manifest: JSON.parse(raw),
+    deckDir: location.deckDir,
+    unitId: location.unitId
+  };
 }
 
 async function runRevision({
@@ -514,13 +624,14 @@ async function runRevision({
 
   let result;
   if (selectedPathway === AGENT_PATHWAYS.GEMINI_IMAGE_CHAT) {
-    const imagePath = path.join(decksDir, manifest.id, "slides", slide.imageFileName);
+    const deckDir = path.dirname(manifestPath);
+    const imagePath = path.join(deckDir, "slides", slide.imageFileName);
     result = await generateGeminiSlideImage(
       manifest.id,
       sNum,
       imagePath,
       targetedPrompt,
-      { dispatch, decksDir }
+      { dispatch, decksDir, deckDir, unitId: manifest.slideSet }
     );
   } else if (selectedPathway === AGENT_PATHWAYS.NOTEBOOKLM_SLIDE_REVISION) {
     result = await triggerNotebookLMRevision(manifest.id, sNum, targetedPrompt);
@@ -767,6 +878,24 @@ export function createApp({
   const app = express();
 
   app.use(express.json({ limit: "2mb" }));
+
+  // Legacy URL fallback: if /decks/:deckId/... is requested without unit prefix,
+  // rewrite to /decks/:unitId/:deckId/... if found in a unit directory.
+  app.use("/decks", async (req, res, next) => {
+    const parts = req.url.split("/").filter(Boolean);
+    if (parts.length >= 2) {
+      const potentialDeckId = parts[0];
+      const isKnownUnit = KNOWN_SLIDE_SETS.some((s) => s.id === potentialDeckId);
+      if (!isKnownUnit) {
+        const loc = await findDeckLocation(decksDir, potentialDeckId);
+        if (loc && loc.unitId) {
+          req.url = `/${loc.unitId}${req.url}`;
+        }
+      }
+    }
+    next();
+  });
+
   app.use(express.static(publicDir));
 
   app.get("/api/agent-pathways", (req, res) => {
@@ -783,18 +912,8 @@ export function createApp({
       } catch (err) {
         if (err.code !== "EROFS" && err.code !== "EEXIST") throw err;
       }
-      const entries = await fs.readdir(decksDir, { withFileTypes: true });
-      const decks = [];
-
-      for (const entry of entries) {
-        if (!entry.isDirectory()) continue;
-        try {
-          const { manifest } = await readManifest(decksDir, entry.name);
-          decks.push(manifest);
-        } catch {
-          // Ignore partial deck directories that do not yet contain a manifest.
-        }
-      }
+      const convertedMap = await scanAllDecks(decksDir);
+      const decks = Array.from(convertedMap.values()).map((v) => v.manifest);
 
       decks.sort(
         (a, b) =>
@@ -819,19 +938,7 @@ export function createApp({
         if (err.code !== "EROFS" && err.code !== "EEXIST") throw err;
       }
 
-      const entries = await fs.readdir(decksDir, { withFileTypes: true });
-      const convertedMap = new Map();
-
-      for (const entry of entries) {
-        if (!entry.isDirectory()) continue;
-        try {
-          const { manifest } = await readManifest(decksDir, entry.name);
-          convertedMap.set(entry.name, manifest);
-        } catch {
-          // Ignore partial or unextracted deck directories
-        }
-      }
-
+      const convertedMap = await scanAllDecks(decksDir);
       const slideSets = [];
       const usedDeckIds = new Set();
 
@@ -839,8 +946,9 @@ export function createApp({
         const setDecks = [];
 
         // 1. Existing converted decks in decksDir
-        for (const [dId, manifest] of convertedMap.entries()) {
-          if (inferSlideSetId(dId, manifest) === setCfg.id) {
+        for (const [dId, { manifest, unitId }] of convertedMap.entries()) {
+          const assignedUnit = manifest.slideSet || unitId || inferSlideSetId(dId, manifest);
+          if (assignedUnit === setCfg.id) {
             setDecks.push({
               id: manifest.id,
               title: formatDisplayTitle(manifest.title || manifest.id, manifest.id || dId),
@@ -897,7 +1005,7 @@ export function createApp({
 
       // 3. Any additional converted decks not in known sets
       const otherDecks = [];
-      for (const [dId, manifest] of convertedMap.entries()) {
+      for (const [dId, { manifest, unitId }] of convertedMap.entries()) {
         if (!usedDeckIds.has(dId)) {
           otherDecks.push({
             id: manifest.id,
@@ -1435,7 +1543,7 @@ export function createApp({
 
   app.get("/api/agent/status", async (req, res) => {
     try {
-      const deckDirs = (await fs.readdir(decksDir)).filter((d) => !d.startsWith(".")).sort();
+      const convertedMap = await scanAllDecks(decksDir);
       let totalSlides = 0;
       let totalAnalyzed = 0;
       let totalPlannedCells = 0;
@@ -1446,15 +1554,8 @@ export function createApp({
       let totalQuestionSlides = 0;
       const decksSummary = [];
 
-      for (const deckId of deckDirs) {
-        const manifestPath = path.join(decksDir, deckId, "manifest.json");
-        const analysisDir = path.join(decksDir, deckId, "analysis");
-        let manifest = null;
-        try {
-          manifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
-        } catch {
-          continue;
-        }
+      for (const [deckId, { manifest, deckDir }] of Array.from(convertedMap.entries()).sort((a, b) => a[0].localeCompare(b[0]))) {
+        const analysisDir = path.join(deckDir, "analysis");
 
         let analyzedSlideNums = new Set();
         try {

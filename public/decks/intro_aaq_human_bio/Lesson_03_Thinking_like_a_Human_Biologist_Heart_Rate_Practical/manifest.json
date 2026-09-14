@@ -1,0 +1,341 @@
+{
+  "id": "Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical",
+  "title": "Thinking like a Human Biologist: Interpolation and Extrapolation",
+  "slideSet": "intro_aaq_human_bio",
+  "filename": "Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical.pptx",
+  "totalSlides": 8,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Slide 1",
+      "imageFileName": "slide_01.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_01.png",
+      "sourceMediaPath": "ppt/media/image1.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 2,
+      "title": "Starter Activity: 6-Cell Knowledge Retrieval",
+      "imageFileName": "slide_02.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_02.png",
+      "sourceMediaPath": "ppt/media/image2.png",
+      "isInteractive": true,
+      "interactiveType": "six_cell_grid",
+      "starterQuestions": [
+        {
+          "q": "Convert 350 nm into micrometres (µm) in standard form.",
+          "a": "350 nm ÷ 1,000 = 0.35 µm = 3.5 × 10⁻¹ µm (or 3.5 × 10⁻⁷ m)."
+        },
+        {
+          "q": "Calculate percentage change if resting heart rate is 65 bpm and peak post-exercise is 143 bpm.",
+          "a": "[(143 - 65) / 65] × 100% = (78 / 65) × 100% = +120%."
+        },
+        {
+          "q": "What is the mathematical distinction between interpolation and extrapolation?",
+          "a": "Interpolation estimates values within the range of collected data points; extrapolation predicts values beyond the measured experimental boundaries."
+        },
+        {
+          "q": "Why is extrapolation risky when modelling human physiological recovery curves?",
+          "a": "Physiological responses are governed by non-linear homeostatic feedback, enzymatic saturation, and recovery limits, so trends rarely stay linear."
+        },
+        {
+          "q": "What happens to the Surface Area-to-Volume (SA:V) ratio as cell radius increases?",
+          "a": "The SA:V ratio decreases because volume scales with radius cubed (r³) while surface area scales with radius squared (r²)."
+        },
+        {
+          "q": "State the standard metric unit for cardiac frequency.",
+          "a": "Beats per minute (bpm) or Hertz (Hz = beats per second)."
+        }
+      ],
+      "cells": [
+        {
+          "id": "cell_1",
+          "row": 0,
+          "col": 0,
+          "bounds": {
+            "x": 6.8,
+            "y": 30.5,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "Convert 350 nm into micrometres (µm) in standard form.",
+          "expectedAnswer": "350 nm ÷ 1,000 = 0.35 µm = 3.5 × 10⁻¹ µm (or 3.5 × 10⁻⁷ m).",
+          "answer": "350 nm ÷ 1,000 = 0.35 µm = 3.5 × 10⁻¹ µm (or 3.5 × 10⁻⁷ m).",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_2",
+          "row": 0,
+          "col": 1,
+          "bounds": {
+            "x": 51.5,
+            "y": 30.5,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "Calculate percentage change if resting heart rate is 65 bpm and peak post-exercise is 143 bpm.",
+          "expectedAnswer": "[(143 - 65) / 65] × 100% = (78 / 65) × 100% = +120%.",
+          "answer": "[(143 - 65) / 65] × 100% = (78 / 65) × 100% = +120%.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_3",
+          "row": 1,
+          "col": 0,
+          "bounds": {
+            "x": 6.8,
+            "y": 55,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "What is the mathematical distinction between interpolation and extrapolation?",
+          "expectedAnswer": "Interpolation estimates values within the range of collected data points; extrapolation predicts values beyond the measured experimental boundaries.",
+          "answer": "Interpolation estimates values within the range of collected data points; extrapolation predicts values beyond the measured experimental boundaries.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_4",
+          "row": 1,
+          "col": 1,
+          "bounds": {
+            "x": 51.5,
+            "y": 55,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "Why is extrapolation risky when modelling human physiological recovery curves?",
+          "expectedAnswer": "Physiological responses are governed by non-linear homeostatic feedback, enzymatic saturation, and recovery limits, so trends rarely stay linear.",
+          "answer": "Physiological responses are governed by non-linear homeostatic feedback, enzymatic saturation, and recovery limits, so trends rarely stay linear.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_5",
+          "row": 2,
+          "col": 0,
+          "bounds": {
+            "x": 6.8,
+            "y": 78.5,
+            "w": 41.5,
+            "h": 18.5
+          },
+          "question": "What happens to the Surface Area-to-Volume (SA:V) ratio as cell radius increases?",
+          "expectedAnswer": "The SA:V ratio decreases because volume scales with radius cubed (r³) while surface area scales with radius squared (r²).",
+          "answer": "The SA:V ratio decreases because volume scales with radius cubed (r³) while surface area scales with radius squared (r²).",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_6",
+          "row": 2,
+          "col": 1,
+          "bounds": {
+            "x": 51.5,
+            "y": 78.5,
+            "w": 41.5,
+            "h": 18.5
+          },
+          "question": "State the standard metric unit for cardiac frequency.",
+          "expectedAnswer": "Beats per minute (bpm) or Hertz (Hz = beats per second).",
+          "answer": "Beats per minute (bpm) or Hertz (Hz = beats per second).",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        }
+      ],
+      "interactiveCells": [
+        {
+          "id": "cell_1",
+          "row": 0,
+          "col": 0,
+          "bounds": {
+            "x": 6.8,
+            "y": 30.5,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "Convert 350 nm into micrometres (µm) in standard form.",
+          "expectedAnswer": "350 nm ÷ 1,000 = 0.35 µm = 3.5 × 10⁻¹ µm (or 3.5 × 10⁻⁷ m).",
+          "answer": "350 nm ÷ 1,000 = 0.35 µm = 3.5 × 10⁻¹ µm (or 3.5 × 10⁻⁷ m).",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_2",
+          "row": 0,
+          "col": 1,
+          "bounds": {
+            "x": 51.5,
+            "y": 30.5,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "Calculate percentage change if resting heart rate is 65 bpm and peak post-exercise is 143 bpm.",
+          "expectedAnswer": "[(143 - 65) / 65] × 100% = (78 / 65) × 100% = +120%.",
+          "answer": "[(143 - 65) / 65] × 100% = (78 / 65) × 100% = +120%.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_3",
+          "row": 1,
+          "col": 0,
+          "bounds": {
+            "x": 6.8,
+            "y": 55,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "What is the mathematical distinction between interpolation and extrapolation?",
+          "expectedAnswer": "Interpolation estimates values within the range of collected data points; extrapolation predicts values beyond the measured experimental boundaries.",
+          "answer": "Interpolation estimates values within the range of collected data points; extrapolation predicts values beyond the measured experimental boundaries.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_4",
+          "row": 1,
+          "col": 1,
+          "bounds": {
+            "x": 51.5,
+            "y": 55,
+            "w": 41.5,
+            "h": 22
+          },
+          "question": "Why is extrapolation risky when modelling human physiological recovery curves?",
+          "expectedAnswer": "Physiological responses are governed by non-linear homeostatic feedback, enzymatic saturation, and recovery limits, so trends rarely stay linear.",
+          "answer": "Physiological responses are governed by non-linear homeostatic feedback, enzymatic saturation, and recovery limits, so trends rarely stay linear.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_5",
+          "row": 2,
+          "col": 0,
+          "bounds": {
+            "x": 6.8,
+            "y": 78.5,
+            "w": 41.5,
+            "h": 18.5
+          },
+          "question": "What happens to the Surface Area-to-Volume (SA:V) ratio as cell radius increases?",
+          "expectedAnswer": "The SA:V ratio decreases because volume scales with radius cubed (r³) while surface area scales with radius squared (r²).",
+          "answer": "The SA:V ratio decreases because volume scales with radius cubed (r³) while surface area scales with radius squared (r²).",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_6",
+          "row": 2,
+          "col": 1,
+          "bounds": {
+            "x": 51.5,
+            "y": 78.5,
+            "w": 41.5,
+            "h": 18.5
+          },
+          "question": "State the standard metric unit for cardiac frequency.",
+          "expectedAnswer": "Beats per minute (bpm) or Hertz (Hz = beats per second).",
+          "answer": "Beats per minute (bpm) or Hertz (Hz = beats per second).",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Slide 3",
+      "imageFileName": "slide_03.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_03.png",
+      "sourceMediaPath": "ppt/media/image3.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 4,
+      "title": "Slide 4",
+      "imageFileName": "slide_04.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_04.png",
+      "sourceMediaPath": "ppt/media/image4.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 5,
+      "title": "Slide 5",
+      "imageFileName": "slide_05.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_05.png",
+      "sourceMediaPath": "ppt/media/image5.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 6,
+      "title": "Slide 6",
+      "imageFileName": "slide_06.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_06.png",
+      "sourceMediaPath": "ppt/media/image6.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 7,
+      "title": "Slide 7",
+      "imageFileName": "slide_07.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_07.png",
+      "sourceMediaPath": "ppt/media/image7.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 8,
+      "title": "Slide 8",
+      "imageFileName": "slide_08.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical/slides/slide_08.png",
+      "sourceMediaPath": "ppt/media/image8.png",
+      "isInteractive": false,
+      "interactiveType": null
+    }
+  ],
+  "lessonNumber": 3,
+  "courseName": "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology",
+  "teacher": "Matt",
+  "objectives": {
+    "knowledge": "Master core biological mathematical calculations: standard form, unit conversions across 3 orders of magnitude, and SA:V ratios.",
+    "application": "Collect live cardiovascular data (resting vs post-exercise heart rate) and construct scientifically rigorous line graphs.",
+    "evaluation": "Evaluate the validity of interpolated vs extrapolated clinical predictions, highlighting physiological limits to linear models."
+  },
+  "terminology": [
+    {
+      "term": "Metric Hierarchy",
+      "def": "1 mm = 1,000 µm = 1,000,000 nm. Scale factors are powers of 10³."
+    },
+    {
+      "term": "Interpolation",
+      "def": "Estimating unmeasured intermediate values located strictly within the experimental range of known data points."
+    },
+    {
+      "term": "Extrapolation",
+      "def": "Projecting trends beyond the observed data range, carrying high risk of error due to unverified biological assumptions."
+    },
+    {
+      "term": "Cardiac Recovery Rate",
+      "def": "The velocity at which heart rate decelerates back to baseline following exercise cessation, indicating vagal tone."
+    }
+  ]
+}

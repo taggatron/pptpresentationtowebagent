@@ -81,6 +81,11 @@ export async function extractPptxDeck(pptxPath, outputBaseDir, customDeckId = nu
       
       await extractZipEntryToFile(pptxPath, entries.get(targetImage), outSlidePath);
 
+      const unitId = options.slideSet || (path.basename(outputBaseDir) !== "decks" ? path.basename(outputBaseDir) : null);
+      const imageUrl = unitId
+        ? `/decks/${unitId}/${deckId}/slides/${outSlideFileName}`
+        : `/decks/${deckId}/slides/${outSlideFileName}`;
+
       const extractedSlide = {
         number: slideNum,
         title:
@@ -88,7 +93,7 @@ export async function extractPptxDeck(pptxPath, outputBaseDir, customDeckId = nu
             ? "Starter Activity: Knowledge Retrieval"
             : `Slide ${slideNum}`,
         imageFileName: outSlideFileName,
-        imageUrl: `/decks/${deckId}/slides/${outSlideFileName}`,
+        imageUrl,
         sourceMediaPath: targetImage,
         isInteractive: false,
         interactiveType: null
@@ -123,6 +128,7 @@ export async function extractPptxDeck(pptxPath, outputBaseDir, customDeckId = nu
     return await ingestPowerPointDeck(pptxPath, outputBaseDir);
   }
 
+  const unitId = options.slideSet || (path.basename(outputBaseDir) !== "decks" ? path.basename(outputBaseDir) : null);
   const manifest = {
     ...(previousManifest || {}),
     id: deckId,
@@ -130,7 +136,7 @@ export async function extractPptxDeck(pptxPath, outputBaseDir, customDeckId = nu
       options.title ||
       previousManifest?.title ||
       fileName.replace(/^Classic_/i, "").replace(/^Lesson_\d+_\d*_?/, "").replace(/_/g, " "),
-    slideSet: options.slideSet || previousManifest?.slideSet,
+    slideSet: options.slideSet || unitId || previousManifest?.slideSet,
     filename: path.basename(pptxPath),
     totalSlides: slides.length,
     slides

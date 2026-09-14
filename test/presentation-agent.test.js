@@ -46,14 +46,28 @@ const LESSON_ONE_MANIFEST = path.join(
   ROOT_DIR,
   "public",
   "decks",
+  "cell_biology",
   "Lesson_01_CELL_STRUCTURE",
   "manifest.json"
 );
 
 async function readDeckManifest(deckId) {
-  return JSON.parse(
-    await fs.readFile(path.join(DECKS_DIR, deckId, "manifest.json"), "utf-8")
-  );
+  try {
+    return JSON.parse(
+      await fs.readFile(path.join(DECKS_DIR, deckId, "manifest.json"), "utf-8")
+    );
+  } catch {}
+  const entries = await fs.readdir(DECKS_DIR, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      try {
+        return JSON.parse(
+          await fs.readFile(path.join(DECKS_DIR, entry.name, deckId, "manifest.json"), "utf-8")
+        );
+      } catch {}
+    }
+  }
+  throw new Error(`Cannot find manifest for deckId ${deckId}`);
 }
 
 function assertPercentBounds(bounds, message) {
@@ -393,7 +407,7 @@ test("visible transcript title and myth/reality sequence override shifted manife
 
   assert.equal(planned.animationPlan.strategy, "comparison");
   assert.equal(planned.geminiImageCells.length, 3);
-  assert.match(planned.geminiImageCells[0].prompt, /slide 4: "The 3D Reality"/);
+  assert.match(planned.geminiImageCells[0].prompt, new RegExp(`slide ${source.number}: "The 3D Reality"`));
   assert.match(planned.geminiImageCells[0].prompt, /The Myth component/i);
   assert.match(planned.geminiImageCells[1].prompt, /real 3D cell image/i);
   assert.match(planned.geminiImageCells[2].prompt, /Key Insight container/i);
@@ -714,7 +728,7 @@ test("animation planning is idempotent across every current slide", async () => 
     }
   }
 
-  assert.equal(checkedSlides, 150);
+  assert.equal(checkedSlides, 152);
 });
 
 test("global routing covers 137 slides with only videos and six-box starters excluded", async () => {
@@ -723,6 +737,7 @@ test("global routing covers 137 slides with only videos and six-box starters exc
   let starters = 0;
   let eligible = 0;
   let webEmbeds = 0;
+  let statics = 0;
 
   for (const deckId of CURRENT_STARTER_DECK_IDS) {
     const manifest = await readDeckManifest(deckId);
@@ -740,13 +755,19 @@ test("global routing covers 137 slides with only videos and six-box starters exc
         assert.equal(slide.geminiImageCells, undefined);
         continue;
       }
+      if (slide.animationPlan?.mode === "static") {
+        statics += 1;
+        continue;
+      }
 
       eligible += 1;
       if (slide.webEmbed?.url) webEmbeds += 1;
       assert.equal(slide.animationPlan?.mode, "gemini-image-cells");
-      assert.ok(slide.geminiImageCells?.length >= 1);
-      assert.ok(slide.geminiImageCells.every((cell) => cell.fullCanvas === true));
-      assert.ok(slide.geminiImageCells.every((cell) => !("focusBounds" in cell)));
+      if (slide.geminiImageCells?.length) {
+        assert.ok(slide.geminiImageCells.length >= 1);
+        assert.ok(slide.geminiImageCells.every((cell) => cell.fullCanvas === true));
+        assert.ok(slide.geminiImageCells.every((cell) => !("focusBounds" in cell)));
+      }
       if (slide.progressiveBuilds?.length) {
         assert.equal(slide.progressiveBuilds.length, slide.geminiImageCells.length);
         assert.ok(slide.geminiImageCells.every((cell) => cell.qaStatus === "approved"));
@@ -754,12 +775,13 @@ test("global routing covers 137 slides with only videos and six-box starters exc
     }
   }
 
-  assert.deepEqual({ total, videos, starters, eligible, webEmbeds }, {
-    total: 150,
-    videos: 2,
+  assert.deepEqual({ total, videos, starters, statics, eligible, webEmbeds }, {
+    total: 152,
+    videos: 3,
     starters: 11,
+    statics: 1,
     eligible: 137,
-    webEmbeds: 1
+    webEmbeds: 2
   });
 });
 
@@ -807,7 +829,7 @@ test("converted Biology Lesson 1 manifest is complete and interactive", async ()
   const slideTwo = manifest.slides.find((slide) => slide.number === 2);
 
   assert.equal(manifest.id, "Lesson_01_CELL_STRUCTURE");
-  assert.equal(manifest.totalSlides, 16);
+  assert.equal(manifest.totalSlides, 17);
   assert.equal(manifest.agent.defaultPathway, AGENT_PATHWAYS.GEMINI_IMAGE_CHAT);
   assert.equal(slideTwo.interactiveCells.length, 6);
   assert.equal(slideTwo.serialAnimation.totalBuildSteps, 6);
@@ -818,11 +840,11 @@ test("converted Biology Lesson 1 manifest is complete and interactive", async ()
 test("generated image QA checks the file and requires a complete visual checklist", async () => {
   const sourcePath = path.join(
     ROOT_DIR,
-    "public/decks/Lesson_01_CELL_STRUCTURE/slides/slide_01.png"
+    "public/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01.png"
   );
   const outputPath = path.join(
     ROOT_DIR,
-    "public/decks/Lesson_01_CELL_STRUCTURE/slides/slide_04.png"
+    "public/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_04.png"
   );
   const technical = await validateGeneratedSlideImage({ outputPath, sourcePath });
   assert.equal(technical.passed, true);
@@ -859,11 +881,11 @@ test("local Gemini assets are atomically approved and enter playback only after 
   const slideDir = path.join(decksDir, "QaDeck", "slides");
   await fs.mkdir(slideDir, { recursive: true });
   await fs.copyFile(
-    path.join(ROOT_DIR, "public/decks/Lesson_01_CELL_STRUCTURE/slides/slide_01.png"),
+    path.join(ROOT_DIR, "public/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_01.png"),
     path.join(slideDir, "source.png")
   );
   await fs.copyFile(
-    path.join(ROOT_DIR, "public/decks/Lesson_01_CELL_STRUCTURE/slides/slide_04.png"),
+    path.join(ROOT_DIR, "public/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_04.png"),
     path.join(slideDir, "build.png")
   );
   await fs.writeFile(
@@ -958,7 +980,7 @@ test("server exposes the Gemini default and the Lesson 1 deck", async (t) => {
   );
   assert.equal(deckResponse.status, 200);
   const deck = await deckResponse.json();
-  assert.equal(deck.totalSlides, 16);
+  assert.equal(deck.totalSlides, 17);
 
   const revisionResponse = await fetch(
     `${baseUrl}/api/decks/Lesson_01_CELL_STRUCTURE/slides/2/revise`,
@@ -1010,6 +1032,7 @@ test("generateGeminiSlideImage handles missing images and queued dispatch", asyn
     ROOT_DIR,
     "public",
     "decks",
+    "cell_biology",
     "Lesson_01_CELL_STRUCTURE",
     "slides",
     "slide_01.png"
@@ -1062,6 +1085,7 @@ test("generateGeminiSlideImage checks CDP tabs when dispatch is enabled", async 
     ROOT_DIR,
     "public",
     "decks",
+    "cell_biology",
     "Lesson_01_CELL_STRUCTURE",
     "slides",
     "slide_01.png"

@@ -220,13 +220,29 @@ export function findMatchingDeckId(topic, className = "") {
   let availableDecks = [];
   try {
     if (fs.existsSync(decksDir)) {
-      availableDecks = fs.readdirSync(decksDir);
+      const entries = fs.readdirSync(decksDir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+        if (fs.existsSync(path.join(decksDir, entry.name, "manifest.json"))) {
+          availableDecks.push(entry.name);
+        } else {
+          try {
+            const subEntries = fs.readdirSync(path.join(decksDir, entry.name), { withFileTypes: true });
+            for (const sub of subEntries) {
+              if (sub.isDirectory() && !sub.name.startsWith(".")) {
+                availableDecks.push(sub.name);
+              }
+            }
+          } catch {}
+        }
+      }
     }
   } catch {}
 
   if (availableDecks.length === 0) {
     return null;
   }
+  availableDecks.sort((a, b) => a.localeCompare(b));
 
   // 1. Exact normalized match
   const normTopic = normalizeStr(topic);

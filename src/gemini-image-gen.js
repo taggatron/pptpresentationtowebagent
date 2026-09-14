@@ -196,7 +196,8 @@ async function captureGeneratedGeminiImage(
   deckId,
   slideNum,
   decksDir,
-  baseline = { imageCount: 0, videoCount: 0 }
+  baseline = { imageCount: 0, videoCount: 0 },
+  options = {}
 ) {
   if (!decksDir) return null;
 
@@ -330,11 +331,36 @@ async function captureGeneratedGeminiImage(
 
           if (buffer && buffer.length > 5000) {
             const fileName = `slide_${String(slideNum).padStart(2, "0")}_revised_${Date.now()}.png`;
-            const slideDir = path.join(decksDir, deckId, "slides");
+            let slideDir;
+            let relativeUrl;
+            if (options.deckDir) {
+              slideDir = path.join(options.deckDir, "slides");
+              const unitPart = options.unitId ? `${options.unitId}/` : "";
+              relativeUrl = `/decks/${unitPart}${deckId}/slides/${fileName}`;
+            } else {
+              let unitId = options.unitId || null;
+              if (!unitId && decksDir) {
+                try {
+                  const entries = await fs.readdir(decksDir);
+                  for (const entry of entries) {
+                    if (await fs.stat(path.join(decksDir, entry, deckId)).then((s) => s.isDirectory()).catch(() => false)) {
+                      unitId = entry;
+                      break;
+                    }
+                  }
+                } catch {}
+              }
+              if (unitId) {
+                slideDir = path.join(decksDir, unitId, deckId, "slides");
+                relativeUrl = `/decks/${unitId}/${deckId}/slides/${fileName}`;
+              } else {
+                slideDir = path.join(decksDir, deckId, "slides");
+                relativeUrl = `/decks/${deckId}/slides/${fileName}`;
+              }
+            }
             await fs.mkdir(slideDir, { recursive: true });
             const savePath = path.join(slideDir, fileName);
             await fs.writeFile(savePath, buffer);
-            const relativeUrl = `/decks/${deckId}/slides/${fileName}`;
             console.log(
               `[Gemini Image Gen] Successfully captured generated image (${buffer.length} bytes) to ${relativeUrl}`
             );
@@ -432,7 +458,8 @@ export async function generateGeminiSlideImage(
                     deckId,
                     slideNum,
                     decksDir,
-                    baseline
+                    baseline,
+                    options
                   );
                   if (capturedMedia?.kind === "image") {
                     capturedImageUrl = capturedMedia.imageUrl;

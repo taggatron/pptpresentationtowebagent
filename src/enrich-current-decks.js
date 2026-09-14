@@ -77,27 +77,55 @@ async function mapWithConcurrency(items, limit, mapper) {
 
 export async function enrichCurrentDecks({ decksDir = DEFAULT_DECKS_DIR, concurrency = 6 } = {}) {
   const entries = await fs.readdir(decksDir, { withFileTypes: true });
-  const deckIds = entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+  const deckEntries = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const directManifest = path.join(decksDir, entry.name, "manifest.json");
+    try {
+      await fs.access(directManifest);
+      deckEntries.push({
+        deckId: entry.name,
+        deckDir: path.join(decksDir, entry.name),
+        manifestPath: directManifest
+      });
+      continue;
+    } catch {}
+
+    try {
+      const subEntries = await fs.readdir(path.join(decksDir, entry.name), { withFileTypes: true });
+      for (const sub of subEntries) {
+        if (!sub.isDirectory()) continue;
+        const subManifest = path.join(decksDir, entry.name, sub.name, "manifest.json");
+        try {
+          await fs.access(subManifest);
+          deckEntries.push({
+            deckId: sub.name,
+            deckDir: path.join(decksDir, entry.name, sub.name),
+            manifestPath: subManifest
+          });
+        } catch {}
+      }
+    } catch {}
+  }
+
+  deckEntries.sort((a, b) => a.deckId.localeCompare(b.deckId));
   const jobs = [];
   const manifests = new Map();
 
-  for (const deckId of deckIds) {
-    const manifestPath = path.join(decksDir, deckId, "manifest.json");
+  for (const { deckId, deckDir, manifestPath } of deckEntries) {
     let manifest;
     try {
       manifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
     } catch {
       continue;
     }
-    manifests.set(deckId, { manifest, manifestPath });
+    manifests.set(deckId, { manifest, manifestPath, deckDir });
     for (const slide of manifest.slides || []) {
       jobs.push({
         deckId,
         slide,
-        imagePath: path.join(decksDir, deckId, "slides", slide.imageFileName)
+        imagePath: path.join(deckDir, "slides", slide.imageFileName)
       });
     }
   }

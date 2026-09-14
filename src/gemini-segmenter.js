@@ -112,6 +112,28 @@ async function loadGeminiSlideAnalysis(targetDir, slide) {
   }
 }
 
+async function resolveDeckDirectory(outputBaseDir, deckId) {
+  const directPath = path.join(outputBaseDir, deckId);
+  try {
+    await fs.access(path.join(directPath, "manifest.json"));
+    return directPath;
+  } catch {}
+
+  try {
+    const entries = await fs.readdir(outputBaseDir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      const candidate = path.join(outputBaseDir, entry.name, deckId);
+      try {
+        await fs.access(path.join(candidate, "manifest.json"));
+        return candidate;
+      } catch {}
+    }
+  } catch {}
+
+  return directPath;
+}
+
 /**
  * Generates cell grid segmentation and interactive overlay data for Q&A slides,
  * along with academic cognitive processing time estimates.
@@ -122,7 +144,7 @@ export async function generateSlideInteractivity(
   { pathway = DEFAULT_AGENT_PATHWAY } = {}
 ) {
   const selectedPathway = normalizeAgentPathway(pathway);
-  const targetDir = path.join(outputBaseDir, deckId);
+  const targetDir = await resolveDeckDirectory(outputBaseDir, deckId);
   const manifestPath = path.join(targetDir, "manifest.json");
 
   let manifest;
@@ -313,9 +335,24 @@ async function runCli() {
   if (deckId === "--all") {
     const entries = await fs.readdir(outputBaseDir, { withFileTypes: true });
     for (const entry of entries.filter((candidate) => candidate.isDirectory())) {
-      await generateSlideInteractivity(entry.name, outputBaseDir, {
-        pathway: DEFAULT_AGENT_PATHWAY
-      });
+      const directManifest = path.join(outputBaseDir, entry.name, "manifest.json");
+      let isDeck = false;
+      try {
+        await fs.access(directManifest);
+        isDeck = true;
+      } catch {}
+      if (isDeck) {
+        await generateSlideInteractivity(entry.name, outputBaseDir, {
+          pathway: DEFAULT_AGENT_PATHWAY
+        });
+      } else {
+        const subEntries = await fs.readdir(path.join(outputBaseDir, entry.name), { withFileTypes: true });
+        for (const sub of subEntries.filter((candidate) => candidate.isDirectory())) {
+          await generateSlideInteractivity(sub.name, outputBaseDir, {
+            pathway: DEFAULT_AGENT_PATHWAY
+          });
+        }
+      }
     }
     return;
   }
