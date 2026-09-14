@@ -6623,10 +6623,7 @@ function initWelcomeModal() {
     dontShowWelcomeCheckbox.checked = hidePref;
   }
 
-  // Open automatically on startup unless explicitly opted out (and not in presentation window)
-  if (!hidePref && welcomeModal && !isPresentationWindow) {
-    welcomeModal.classList.remove("hidden");
-  }
+  // Do not open automatically on startup; users can open anytime via the About button
 
   function closeWelcome() {
     if (dontShowWelcomeCheckbox) {

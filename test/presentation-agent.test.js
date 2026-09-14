@@ -1153,7 +1153,13 @@ test("welcome modal and RAG guide are present in index.html", async () => {
   assert.match(html, /RAG Cognitive Processing Time Guide/);
   assert.match(html, /rag-pill-green/);
   assert.match(html, /rag-pill-amber/);
-  assert.match(html, /rag-pill-red/);
+  assert.match(html, /id="welcomeModal"\s+class="modal-overlay\s+hidden"/);
+
+  const js = await fs.readFile(path.join(ROOT_DIR, "public", "js", "app.js"), "utf-8");
+  assert.doesNotMatch(
+    js,
+    /if\s*\(!hidePref\s*&&\s*welcomeModal\s*&&\s*!isPresentationWindow\)\s*\{\s*welcomeModal\.classList\.remove\("hidden"\);/
+  );
 });
 
 test("light theme is default and theme toggle button is present", async () => {
