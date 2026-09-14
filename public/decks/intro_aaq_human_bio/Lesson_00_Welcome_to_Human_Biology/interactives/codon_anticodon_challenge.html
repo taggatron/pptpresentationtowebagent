@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Lab: Codon to Anticodon Matching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07101e;
+      --bg-card: rgba(13, 27, 46, 0.85);
+      --border-cyan: rgba(6, 182, 212, 0.35);
+      --cyan-glow: #06b6d4;
+      --cyan-bright: #22d3ee;
+      --blue-accent: #38bdf8;
+      --amber-accent: #f59e0b;
+      --amber-glow: rgba(245, 158, 11, 0.4);
+      --green-correct: #10b981;
+      --red-error: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 20%, #0d233a 0%, #07101e 75%, #030712 100%);
+      color: var(--text-main);
+      font-family: "Inter", -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-canvas {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px 36px 18px 36px;
+      position: relative;
+    }
+
+    /* Top HUD Header */
+    .top-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+      padding-bottom: 12px;
+    }
+
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--cyan-bright);
+      border: 1px solid var(--border-cyan);
+    }
+
+    .hud-badge.amber {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    .title-main {
+      font-size: 22px;
+      font-weight: 800;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .hud-stats {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .stat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 8px;
+      padding: 6px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 90px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .stat-val {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: "JetBrains Mono", monospace;
+      color: var(--cyan-bright);
+    }
+
+    .hud-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-hud {
+      background: rgba(13, 27, 46, 0.9);
+      border: 1px solid var(--border-cyan);
+      color: var(--cyan-bright);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-hud:hover {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Polypeptide Synthesis Ribbon */
+    .polypeptide-stage {
+      background: rgba(10, 20, 36, 0.75);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: 12px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .poly-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fbbf24;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .amino-chain-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      overflow-x: auto;
+      min-height: 40px;
+    }
+
+    .amino-node {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: "JetBrains Mono", monospace;
+      padding: 4px 12px;
+      border-radius: 20px;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .peptide-bond {
+      width: 14px;
+      height: 3px;
+      background: #fbbf24;
+      box-shadow: 0 0 8px #fbbf24;
+      border-radius: 2px;
+    }
+
+    /* Main Interaction Board */
+    .interaction-board {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+      flex: 1;
+      margin: 12px 0;
+      position: relative;
+    }
+
+    /* Available tRNAs Dock */
+    .trna-dock-panel {
+      background: rgba(13, 27, 46, 0.7);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: 14px;
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .dock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dock-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cyan-bright);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dock-instruction {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .trna-dock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      min-height: 90px;
+    }
+
+    /* tRNA Molecule Card */
+    .trna-card {
+      width: 104px;
+      height: 92px;
+      background: linear-gradient(180deg, rgba(30, 58, 95, 0.8) 0%, rgba(13, 27, 46, 0.95) 100%);
+      border: 1.5px solid var(--border-cyan);
+      border-radius: 12px;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      cursor: grab;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .trna-card:hover {
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.4);
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .trna-card.selected {
+      border-color: #fbbf24;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+      transform: translateY(-5px) scale(1.05);
+      background: linear-gradient(180deg, rgba(45, 40, 20, 0.9) 0%, rgba(20, 25, 35, 0.95) 100%);
+    }
+
+    .trna-card.docked {
+      opacity: 0.3;
+      pointer-events: none;
+      filter: grayscale(80%);
+      transform: scale(0.9);
+    }
+
+    .amino-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .trna-stem {
+      width: 4px;
+      height: 14px;
+      background: rgba(6, 182, 212, 0.5);
+      border-radius: 2px;
+    }
+
+    .anticodon-box {
+      font-size: 15px;
+      font-weight: 800;
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.12em;
+      color: var(--cyan-bright);
+      background: rgba(6, 182, 212, 0.18);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      padding: 3px 8px;
+      border-radius: 6px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .trna-card.error-card .anticodon-box {
+      color: #f87171;
+      border-color: rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    /* mRNA Strand Track */
+    .mrna-track-panel {
+      background: rgba(10, 20, 36, 0.85);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 14px;
+      padding: 14px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .track-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .track-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mrna-strand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 12px;
+      position: relative;
+      margin: 10px 0;
+    }
+
+    .backbone-line {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 22px;
+      height: 6px;
+      background: linear-gradient(90deg, #0284c7, #06b6d4, #38bdf8);
+      border-radius: 3px;
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.5);
+      z-index: 1;
+    }
+
+    .strand-direction {
+      font-size: 13px;
+      font-weight: 800;
+      font-family: "JetBrains Mono", monospace;
+      color: var(--cyan-bright);
+      z-index: 2;
+    }
+
+    /* Codon Slot */
+    .codon-slot {
+      width: 145px;
+      min-height: 180px;
+      background: rgba(13, 27, 46, 0.6);
+      border: 2px dashed rgba(6, 182, 212, 0.35);
+      border-radius: 12px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .codon-slot:hover {
+      border-color: var(--cyan-bright);
+      background: rgba(6, 182, 212, 0.08);
+    }
+
+    .codon-slot.highlight {
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .codon-slot.matched {
+      border: 2px solid var(--green-correct);
+      background: rgba(16, 185, 129, 0.12);
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.3);
+    }
+
+    .slot-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .docked-trna-view {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .bond-lines {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 80%;
+      height: 20px;
+    }
+
+    .bond-bar {
+      width: 4px;
+      height: 16px;
+      background: var(--green-correct);
+      box-shadow: 0 0 8px var(--green-correct);
+      border-radius: 2px;
+      animation: growDown 0.3s ease;
+    }
+
+    .mrna-triplet-box {
+      width: 100%;
+      background: rgba(2, 132, 199, 0.25);
+      border: 1px solid var(--cyan-bright);
+      border-radius: 8px;
+      padding: 6px 4px;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+    }
+
+    .triplet-text {
+      font-size: 19px;
+      font-weight: 800;
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.18em;
+      color: #ffffff;
+      text-shadow: 0 0 8px var(--cyan-bright);
+    }
+
+    .codon-meaning {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--cyan-bright);
+      margin-top: 2px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    /* Feedback & Dialog Banner */
+    .feedback-banner {
+      min-height: 38px;
+      background: rgba(13, 27, 46, 0.9);
+      border: 1px solid var(--border-cyan);
+      border-radius: 10px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-main);
+      backdrop-filter: blur(8px);
+    }
+
+    .feedback-banner.success {
+      border-color: var(--green-correct);
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+    }
+
+    .feedback-banner.error {
+      border-color: var(--red-error);
+      background: rgba(239, 68, 68, 0.18);
+      color: #fca5a5;
+    }
+
+    /* Modal dialog */
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-backdrop.visible {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #0b1a2e;
+      border: 1.5px solid var(--cyan-bright);
+      border-radius: 16px;
+      padding: 24px 32px;
+      max-width: 540px;
+      box-shadow: 0 0 32px rgba(6, 182, 212, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--cyan-bright);
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    /* Footer Meta */
+    .bottom-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(6, 182, 212, 0.2);
+      padding-top: 8px;
+    }
+
+    .gemini-watermark {
+      font-weight: 700;
+      color: var(--cyan-bright);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes growDown {
+      0% { height: 0; }
+      100% { height: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas">
+    <!-- Top HUD Header -->
+    <header class="top-hud">
+      <div class="title-group">
+        <div class="badge-row">
+          <span class="hud-badge">🔬 Interactive Clinical Lab</span>
+          <span class="hud-badge amber">F173 NEA Core Skill</span>
+        </div>
+        <h1 class="title-main">Codon to Anticodon Matching Challenge</h1>
+        <p class="title-sub">Translate the 5' &rarr; 3' mRNA sequence by docking matching tRNA anticodons using RNA base-pairing rules (A&harr;U, C&harr;G).</p>
+      </div>
+
+      <div class="hud-stats">
+        <div class="stat-pill">
+          <span class="stat-label">Matched</span>
+          <span class="stat-val" id="statMatched">0 / 4</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Fidelity</span>
+          <span class="stat-val" id="statFidelity">100%</span>
+        </div>
+      </div>
+
+      <div class="hud-controls">
+        <button class="btn-hud" id="btnHint">💡 Base Rules</button>
+        <button class="btn-hud" id="btnReset">🔄 Reset</button>
+      </div>
+    </header>
+
+    <!-- Synthesized Polypeptide Ribbon -->
+    <div class="polypeptide-stage">
+      <div class="poly-label">✨ Polypeptide Chain:</div>
+      <div class="amino-chain-container" id="aminoChain">
+        <span style="font-size: 12px; color: #64748b; font-style: italic;">Awaiting Ribosomal Initiation (Start Codon AUG)...</span>
+      </div>
+    </div>
+
+    <!-- Main Interaction Board -->
+    <div class="interaction-board">
+      <!-- tRNA Dock (Available tRNAs) -->
+      <div class="trna-dock-panel">
+        <div class="dock-header">
+          <span class="dock-title">📦 Cytoplasmic tRNA Pool</span>
+          <span class="dock-instruction">Click a tRNA card to select, then click the matching mRNA codon slot below:</span>
+        </div>
+        <div class="trna-dock" id="trnaDock">
+          <!-- Dynamically filled -->
+        </div>
+      </div>
+
+      <!-- mRNA Strand Track -->
+      <div class="mrna-track-panel">
+        <div class="track-header">
+          <span class="track-title">🧬 Ribosome Decoding Centre (mRNA 5' &rarr; 3')</span>
+          <span style="font-size: 11px; color: #38bdf8; font-weight: 600;">Template Reading Frame: Codons 1 &ndash; 4</span>
+        </div>
+
+        <div class="mrna-strand-row">
+          <span class="strand-direction">5'</span>
+          <div class="backbone-line"></div>
+
+          <!-- Codon Slot 1 -->
+          <div class="codon-slot" data-slot="0" id="slot_0">
+            <span class="slot-label">Codon 1 (Start)</span>
+            <div class="docked-trna-view" id="docked_0">
+              <span style="font-size: 11px; color: #475569; text-align: center;">Dock tRNA</span>
+            </div>
+            <div class="mrna-triplet-box">
+              <div class="triplet-text">AUG</div>
+              <div class="codon-meaning">Start / Met</div>
+            </div>
+          </div>
+
+          <!-- Codon Slot 2 -->
+          <div class="codon-slot" data-slot="1" id="slot_1">
+            <span class="slot-label">Codon 2</span>
+            <div class="docked-trna-view" id="docked_1">
+              <span style="font-size: 11px; color: #475569; text-align: center;">Dock tRNA</span>
+            </div>
+            <div class="mrna-triplet-box">
+              <div class="triplet-text">GCU</div>
+              <div class="codon-meaning">Alanine</div>
+            </div>
+          </div>
+
+          <!-- Codon Slot 3 -->
+          <div class="codon-slot" data-slot="2" id="slot_2">
+            <span class="slot-label">Codon 3</span>
+            <div class="docked-trna-view" id="docked_2">
+              <span style="font-size: 11px; color: #475569; text-align: center;">Dock tRNA</span>
+            </div>
+            <div class="mrna-triplet-box">
+              <div class="triplet-text">UAC</div>
+              <div class="codon-meaning">Tyrosine</div>
+            </div>
+          </div>
+
+          <!-- Codon Slot 4 -->
+          <div class="codon-slot" data-slot="3" id="slot_3">
+            <span class="slot-label">Codon 4</span>
+            <div class="docked-trna-view" id="docked_3">
+              <span style="font-size: 11px; color: #475569; text-align: center;">Dock tRNA</span>
+            </div>
+            <div class="mrna-triplet-box">
+              <div class="triplet-text">CGA</div>
+              <div class="codon-meaning">Arginine</div>
+            </div>
+          </div>
+
+          <span class="strand-direction">3'</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Feedback Banner -->
+    <div class="feedback-banner" id="feedbackBanner">
+      <span id="feedbackText">Select the complementary tRNA for start codon <strong>AUG</strong> to initiate protein synthesis.</span>
+      <span id="feedbackRule" style="font-size: 11px; color: var(--cyan-bright); font-family: 'JetBrains Mono', monospace;">Rule: A &harr; U | C &harr; G</span>
+    </div>
+
+    <!-- Footer HUD -->
+    <footer class="bottom-hud">
+      <span>OCR Level 3 AAQ Human Biology &bull; Lesson 0: Diagnostic Induction</span>
+      <span class="gemini-watermark">✦ Gemini Notebook Presentation Suite</span>
+    </footer>
+  </div>
+
+  <!-- Hint / Base Rules Modal -->
+  <div class="modal-backdrop" id="hintModal">
+    <div class="modal-box">
+      <h2 class="modal-title">🧬 RNA Base Pairing Rules</h2>
+      <div class="modal-desc">
+        <p style="margin-bottom: 10px;">During Translation, the 3 bases of the <strong>mRNA codon</strong> pair with the 3 complementary bases of the <strong>tRNA anticodon</strong> via hydrogen bonding:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; text-align: left;">
+          <div style="background: rgba(6, 182, 212, 0.12); padding: 10px; border-radius: 8px; border: 1px solid rgba(6, 182, 212, 0.3);">
+            <strong style="color: #22d3ee;">Adenine (A) &harr; Uracil (U)</strong><br>
+            <span style="font-size: 12px; color: #94a3b8;">Linked by 2 Hydrogen bonds</span>
+          </div>
+          <div style="background: rgba(6, 182, 212, 0.12); padding: 10px; border-radius: 8px; border: 1px solid rgba(6, 182, 212, 0.3);">
+            <strong style="color: #22d3ee;">Cytosine (C) &harr; Guanine (G)</strong><br>
+            <span style="font-size: 12px; color: #94a3b8;">Linked by 3 Hydrogen bonds</span>
+          </div>
+        </div>
+        <p style="color: #f87171; font-weight: 600; font-size: 13px;">⚠️ Key OCR Examiner Tip: Thymine (T) NEVER appears in mRNA or tRNA. Always use Uracil (U)!</p>
+      </div>
+      <button class="btn-hud" id="btnCloseHint" style="align-self: center;">Got it!</button>
+    </div>
+  </div>
+
+  <!-- Celebration Modal on Completion -->
+  <div class="modal-backdrop" id="celebrationModal">
+    <div class="modal-box">
+      <h2 class="modal-title" style="color: #10b981;">🎉 Translation Complete!</h2>
+      <div class="modal-desc">
+        <p>All 4 codons successfully decoded with 100% biological fidelity!</p>
+        <p style="margin-top: 8px; font-weight: 700; color: #fbbf24;">Synthesized Polypeptide: Met &mdash; Ala &mdash; Tyr &mdash; Arg</p>
+        <p style="margin-top: 8px; font-size: 13px; color: #94a3b8;">This polypeptide will now fold into its tertiary 3D conformation to become a functional human protein.</p>
+      </div>
+      <button class="btn-hud" id="btnProceedSlide" style="align-self: center; background: rgba(16, 185, 129, 0.3); border-color: #10b981; color: #ffffff;">Proceed to Translation Deep Dive &rarr;</button>
+    </div>
+  </div>
+
+  <script>
+    // Audio synthesis for responsive haptic/auditory feedback
+    function playTone(type) {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        if (type === "success") {
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+          osc.frequency.exponentialRampToValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+          osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.2); // G5
+          gain.gain.setValueAtTime(0.12, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+          osc.start(ctx.currentTime);
+          osc.stop(ctx.currentTime + 0.3);
+        } else if (type === "error") {
+          osc.frequency.setValueAtTime(220, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(160, ctx.currentTime + 0.15);
+          gain.gain.setValueAtTime(0.15, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+          osc.start(ctx.currentTime);
+          osc.stop(ctx.currentTime + 0.25);
+        } else if (type === "complete") {
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+          osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+          osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+          osc.frequency.setValueAtTime(1046.50, ctx.currentTime + 0.3);
+          gain.gain.setValueAtTime(0.15, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+          osc.start(ctx.currentTime);
+          osc.stop(ctx.currentTime + 0.5);
+        }
+      } catch (_) {}
+    }
+
+    // Codon Dataset:
+    // Slot 0: mRNA = AUG -> Anticodon = UAC (Met)
+    // Slot 1: mRNA = GCU -> Anticodon = CGA (Ala)
+    // Slot 2: mRNA = UAC -> Anticodon = AUG (Tyr)
+    // Slot 3: mRNA = CGA -> Anticodon = GCU (Arg)
+    const CODONS = [
+      { slot: 0, mrna: "AUG", expectedAnticodon: "UAC", amino: "Met", fullName: "Methionine (Start)" },
+      { slot: 1, mrna: "GCU", expectedAnticodon: "CGA", amino: "Ala", fullName: "Alanine" },
+      { slot: 2, mrna: "UAC", expectedAnticodon: "AUG", amino: "Tyr", fullName: "Tyrosine" },
+      { slot: 3, mrna: "CGA", expectedAnticodon: "GCU", amino: "Arg", fullName: "Arginine" }
+    ];
+
+    // Candidate tRNAs pool (including common misconception distractors like Thymine-containing anticodons):
+    const TRNA_POOL = [
+      { id: "trna_1", anticodon: "UAC", amino: "Met", isError: false },
+      { id: "trna_2", anticodon: "CGA", amino: "Ala", isError: false },
+      { id: "trna_3", anticodon: "AUG", amino: "Tyr", isError: false },
+      { id: "trna_4", anticodon: "GCU", amino: "Arg", isError: false },
+      { id: "trna_5", anticodon: "ATC", amino: "Met", isError: true, errorMsg: "Misconception alert: Thymine (T) is NEVER present in RNA! tRNA uses Uracil (U)." },
+      { id: "trna_6", anticodon: "AAC", amino: "Leu", isError: false }
+    ];
+
+    // Local state
+    const state = {
+      selectedTrnaId: null,
+      docked: {
+        0: null,
+        1: null,
+        2: null,
+        3: null
+      },
+      mistakes: 0,
+      attempts: 0
+    };
+
+    // BroadcastChannel sync across dual displays
+    const syncChannel = typeof BroadcastChannel !== "undefined" ? new BroadcastChannel("slideshow_interactive_sync") : null;
+    let isApplyingRemoteState = false;
+
+    function broadcastState(action = "update") {
+      if (isApplyingRemoteState) return;
+      const message = {
+        type: "INTERACTIVE_STATE_UPDATE",
+        interactiveId: "codon_anticodon_challenge",
+        interactiveUrl: window.location.pathname,
+        state: {
+          docked: state.docked,
+          selectedTrnaId: state.selectedTrnaId,
+          mistakes: state.mistakes,
+          attempts: state.attempts
+        },
+        action: action,
+        timestamp: Date.now()
+      };
+
+      if (syncChannel) {
+        try { syncChannel.postMessage(message); } catch (_) {}
+      }
+      try { window.parent.postMessage(message, "*"); } catch (_) {}
+    }
+
+    function applyRemoteState(data) {
+      if (!data || !data.state) return;
+      isApplyingRemoteState = true;
+      try {
+        const s = data.state;
+        if (s.docked) state.docked = { ...s.docked };
+        if (s.selectedTrnaId !== undefined) state.selectedTrnaId = s.selectedTrnaId;
+        if (s.mistakes !== undefined) state.mistakes = s.mistakes;
+        if (s.attempts !== undefined) state.attempts = s.attempts;
+        render();
+      } finally {
+        isApplyingRemoteState = false;
+      }
+    }
+
+    if (syncChannel) {
+      syncChannel.onmessage = (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") return;
+        if (data.interactiveId === "codon_anticodon_challenge" || !data.interactiveId) {
+          if (data.type === "INTERACTIVE_STATE_UPDATE") {
+            applyRemoteState(data);
+          } else if (data.type === "REQUEST_INTERACTIVE_STATE") {
+            broadcastState("reply");
+          }
+        }
+      };
+    }
+
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      if (!data || typeof data !== "object") return;
+      if (data.type === "INTERACTIVE_STATE_UPDATE" && (data.interactiveId === "codon_anticodon_challenge" || !data.interactiveId)) {
+        applyRemoteState(data);
+      }
+    });
+
+    // Request master state on load
+    function requestMasterState() {
+      const req = {
+        type: "REQUEST_INTERACTIVE_STATE",
+        interactiveId: "codon_anticodon_challenge",
+        interactiveUrl: window.location.pathname
+      };
+      if (syncChannel) {
+        try { syncChannel.postMessage(req); } catch (_) {}
+      }
+      try { window.parent.postMessage(req, "*"); } catch (_) {}
+    }
+
+    // UI DOM Elements
+    const trnaDockEl = document.getElementById("trnaDock");
+    const aminoChainEl = document.getElementById("aminoChain");
+    const statMatchedEl = document.getElementById("statMatched");
+    const statFidelityEl = document.getElementById("statFidelity");
+    const feedbackBannerEl = document.getElementById("feedbackBanner");
+    const feedbackTextEl = document.getElementById("feedbackText");
+    const hintModalEl = document.getElementById("hintModal");
+    const celebrationModalEl = document.getElementById("celebrationModal");
+
+    // Render Function
+    function render() {
+      // 1. Render tRNAs in Dock
+      trnaDockEl.innerHTML = "";
+      TRNA_POOL.forEach(trna => {
+        const isDocked = Object.values(state.docked).some(item => item && item.trnaId === trna.id);
+        const isSelected = state.selectedTrnaId === trna.id;
+
+        const card = document.createElement("div");
+        card.className = `trna-card ${trna.isError ? 'error-card' : ''} ${isSelected ? 'selected' : ''} ${isDocked ? 'docked' : ''}`;
+        card.id = trna.id;
+
+        card.innerHTML = `
+          <div class="amino-badge">${trna.amino}</div>
+          <div class="trna-stem"></div>
+          <div class="anticodon-box">${trna.anticodon}</div>
+        `;
+
+        if (!isDocked) {
+          card.onclick = () => selectTrna(trna.id);
+        }
+
+        trnaDockEl.appendChild(card);
+      });
+
+      // 2. Render Codon Slots & Bonds
+      let matchedCount = 0;
+      CODONS.forEach(codon => {
+        const slotEl = document.getElementById(`slot_${codon.slot}`);
+        const dockedEl = document.getElementById(`docked_${codon.slot}`);
+        const dockedData = state.docked[codon.slot];
+
+        if (dockedData) {
+          matchedCount++;
+          slotEl.classList.add("matched");
+          slotEl.classList.remove("highlight");
+          dockedEl.innerHTML = `
+            <div style="font-size: 11px; font-weight: 700; color: #fbbf24; font-family: 'JetBrains Mono', monospace;">tRNA [${dockedData.amino}]</div>
+            <div class="bond-lines">
+              <div class="bond-bar"></div>
+              <div class="bond-bar"></div>
+              <div class="bond-bar"></div>
+            </div>
+            <div style="font-size: 13px; font-weight: 800; color: #22d3ee; font-family: 'JetBrains Mono', monospace;">${dockedData.anticodon}</div>
+          `;
+        } else {
+          slotEl.classList.remove("matched");
+          if (state.selectedTrnaId) {
+            slotEl.classList.add("highlight");
+          } else {
+            slotEl.classList.remove("highlight");
+          }
+          dockedEl.innerHTML = `<span style="font-size: 11px; color: #475569; text-align: center;">Click to dock</span>`;
+        }
+
+        slotEl.onclick = () => handleSlotClick(codon.slot);
+      });
+
+      // 3. Render Polypeptide Ribbon
+      aminoChainEl.innerHTML = "";
+      let chainItems = [];
+      for (let i = 0; i < CODONS.length; i++) {
+        if (state.docked[i]) {
+          chainItems.push(state.docked[i].amino);
+        } else {
+          break; // sequential translation
+        }
+      }
+
+      if (chainItems.length === 0) {
+        aminoChainEl.innerHTML = `<span style="font-size: 12px; color: #64748b; font-style: italic;">Awaiting Ribosomal Initiation (Start Codon AUG)...</span>`;
+      } else {
+        chainItems.forEach((amino, idx) => {
+          const node = document.createElement("div");
+          node.className = "amino-node";
+          node.innerText = `${idx + 1}. ${amino}`;
+          aminoChainEl.appendChild(node);
+
+          if (idx < chainItems.length - 1) {
+            const bond = document.createElement("div");
+            bond.className = "peptide-bond";
+            aminoChainEl.appendChild(bond);
+          }
+        });
+      }
+
+      // 4. Update Stats
+      statMatchedEl.innerText = `${matchedCount} / ${CODONS.length}`;
+      const totalAttempts = state.attempts || matchedCount;
+      const fidelity = totalAttempts > 0 ? Math.round(((totalAttempts - state.mistakes) / totalAttempts) * 100) : 100;
+      statFidelityEl.innerText = `${Math.max(0, fidelity)}%`;
+
+      // 5. Check Completion
+      if (matchedCount === CODONS.length) {
+        celebrationModalEl.classList.add("visible");
+        playTone("complete");
+      }
+    }
+
+    function selectTrna(id) {
+      const trna = TRNA_POOL.find(t => t.id === id);
+      if (!trna) return;
+
+      if (state.selectedTrnaId === id) {
+        state.selectedTrnaId = null;
+        setFeedback("Selection cleared. Select a tRNA from the pool.", "normal");
+      } else {
+        state.selectedTrnaId = id;
+        if (trna.isError) {
+          setFeedback(trna.errorMsg, "error");
+          playTone("error");
+          state.mistakes++;
+          state.attempts++;
+        } else {
+          setFeedback(`Selected tRNA with anticodon [${trna.anticodon}]. Click the matching mRNA codon slot.`, "normal");
+        }
+      }
+      render();
+      broadcastState("select");
+    }
+
+    function handleSlotClick(slotIndex) {
+      if (!state.selectedTrnaId) {
+        setFeedback("Please select a tRNA from the pool above first.", "normal");
+        return;
+      }
+
+      const codon = CODONS.find(c => c.slot === slotIndex);
+      const trna = TRNA_POOL.find(t => t.id === state.selectedTrnaId);
+
+      if (!codon || !trna) return;
+
+      state.attempts++;
+
+      if (trna.isError) {
+        setFeedback(trna.errorMsg, "error");
+        playTone("error");
+        state.mistakes++;
+        state.selectedTrnaId = null;
+        render();
+        broadcastState("mismatch");
+        return;
+      }
+
+      // Check complementary base pairing
+      if (trna.anticodon === codon.expectedAnticodon) {
+        state.docked[slotIndex] = {
+          trnaId: trna.id,
+          anticodon: trna.anticodon,
+          amino: trna.amino
+        };
+        state.selectedTrnaId = null;
+        setFeedback(`Correct! Codon ${codon.mrna} pairs with tRNA anticodon ${trna.anticodon} (&plusmn; ${trna.amino}).`, "success");
+        playTone("success");
+      } else {
+        state.mistakes++;
+        setFeedback(`Mismatch: Codon ${codon.mrna} does not pair with ${trna.anticodon}. Remember A pairs with U, and C pairs with G.`, "error");
+        playTone("error");
+      }
+
+      render();
+      broadcastState("dock");
+    }
+
+    function setFeedback(text, type = "normal") {
+      feedbackTextEl.innerHTML = text;
+      feedbackBannerEl.className = `feedback-banner ${type}`;
+    }
+
+    // Modal controls
+    document.getElementById("btnHint").onclick = () => hintModalEl.classList.add("visible");
+    document.getElementById("btnCloseHint").onclick = () => hintModalEl.classList.remove("visible");
+    document.getElementById("btnReset").onclick = () => {
+      state.docked = { 0: null, 1: null, 2: null, 3: null };
+      state.selectedTrnaId = null;
+      state.mistakes = 0;
+      state.attempts = 0;
+      celebrationModalEl.classList.remove("visible");
+      setFeedback("Reset complete. Select tRNA for start codon AUG.", "normal");
+      render();
+      broadcastState("reset");
+    };
+
+    document.getElementById("btnProceedSlide").onclick = () => {
+      celebrationModalEl.classList.remove("visible");
+      try {
+        window.parent.postMessage({ type: "NEXT_SLIDE" }, "*");
+      } catch (_) {}
+    };
+
+    // Initial render
+    render();
+    requestMasterState();
+  </script>
+</body>
+</html>
