@@ -50,38 +50,80 @@
         "questionCount": 0,
         "detectionSource": "manifest-text"
       },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_1_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"Competition and Species Interactions\".\\nDeck context: 3. Competition and Species Interactions.\\nUse the attached original slide as the visual and stylistic source.\\nReturn exactly one 16:9 presentation slide image.\\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png",
-          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
+      "hasProgressiveBuilds": true,
       "animationPlan": {
         "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
+        "mode": "protected-video",
+        "reason": "Existing Gemini video media is preserved without image-plan replacement.",
+        "protectedVideoCount": 1
+      },
+      "originalImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png",
+      "progressiveBuilds": [
+        {
+          "id": "image_build_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Build 1: Lesson Title",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png"
+        },
+        {
+          "id": "video_build_2",
+          "version": 2,
+          "kind": "video",
+          "label": "Build 2: Animated Title Turn",
+          "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/sorry_by_animate_I_meant_turn.mp4",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png",
+          "posterUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png"
+        }
+      ],
+      "history": [
+        {
+          "id": "ver_orig",
+          "label": "Build 1: Lesson Title",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png"
+        },
+        {
+          "id": "ver_video_intro",
+          "label": "Build 2: Animated Title Turn",
+          "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/sorry_by_animate_I_meant_turn.mp4",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_01.png"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "image_build_1",
+            "title": "Build 1: Lesson Title",
+            "componentIds": [
+              "image_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "video_build_2",
+            "title": "Build 2: Animated Title Turn",
+            "componentIds": [
+              "video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
+          }
+        ]
       }
     },
     {
