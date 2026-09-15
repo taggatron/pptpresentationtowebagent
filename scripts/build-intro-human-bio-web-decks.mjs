@@ -11,7 +11,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { lessons, COURSE_NAME } from "../src/configs/intro_aaq_human_bio.js";
 
-const PUBLIC_DECKS_DIR = path.resolve("public/decks");
+const PUBLIC_DECKS_DIR = path.resolve("public/decks/intro_aaq_human_bio");
 
 function sanitizeDeckId(title, number) {
   const safe = title
@@ -1483,7 +1483,7 @@ function generateSlideManifest(lesson, deckId) {
       number: i,
       title: slideTitles[i - 1],
       imageFileName: fileName,
-      imageUrl: `/decks/${deckId}/slides/${fileName}`,
+      imageUrl: `/decks/intro_aaq_human_bio/${deckId}/slides/${fileName}`,
       sourceMediaPath: `ppt/media/image${i}.png`,
       isInteractive: isSlide2,
       interactiveType: isSlide2 ? "qa_grid" : null,
@@ -1581,7 +1581,11 @@ async function main() {
   const context = await browser.newContext({ viewport: { width: 1376, height: 768 } });
   const page = await context.newPage();
 
-  for (const lesson of lessons) {
+  const startLesson = parseInt(process.env.START_LESSON || "1", 10);
+  const endLesson = parseInt(process.env.END_LESSON || "8", 10);
+  const targetLessons = lessons.filter(l => l.number >= startLesson && l.number <= endLesson);
+
+  for (const lesson of targetLessons) {
     const deckId = lesson.deckId || sanitizeDeckId(lesson.title, lesson.number);
     const deckDir = path.join(PUBLIC_DECKS_DIR, deckId);
     const slidesDir = path.join(deckDir, "slides");

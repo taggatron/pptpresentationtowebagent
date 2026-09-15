@@ -74,6 +74,10 @@ body.theme-dark {
   padding: 0;
 }
 
+.hidden {
+  display: none !important;
+}
+
 body {
   font-family: var(--font-family);
   background-color: var(--bg-app);
@@ -7799,6 +7803,14 @@ body.theme-dark .timetable-close-btn {
 }
 
 .timetable-nav-reopen-btn.hidden {
+  display: none !important;
+}
+
+.active-lesson-filter-bar.hidden {
+  display: none !important;
+}
+
+.filter-action-btn.hidden {
   display: none !important;
 }
 

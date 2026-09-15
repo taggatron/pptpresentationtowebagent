@@ -378,3 +378,48 @@ test("Express server endpoints handle reset, delete-latest, all-decks-average, a
   }
 });
 
+test("Clear Selection button, filter bar hidden styles, and index.html defaults are correctly wired", async () => {
+  const fs = await import("node:fs/promises");
+  const path = await import("node:path");
+
+  const htmlPath = path.resolve("public", "index.html");
+  const cssPath = path.resolve("public", "css", "styles.css");
+  const appPath = path.resolve("public", "js", "app.js");
+
+  const html = await fs.readFile(htmlPath, "utf-8");
+  const css = await fs.readFile(cssPath, "utf-8");
+  const js = await fs.readFile(appPath, "utf-8");
+
+  // 1. Check index.html filter bar structure and initial hidden state
+  assert.ok(html.includes('id="activeLessonFilterBar"'), "activeLessonFilterBar must exist in index.html");
+  assert.ok(html.includes('id="clearLessonFilterBtn"'), "clearLessonFilterBtn must exist in index.html");
+  assert.ok(
+    html.includes('id="activeLessonFilterBar" class="active-lesson-filter-bar hidden" style="display: none;"'),
+    "activeLessonFilterBar must have hidden class and inline display: none on initial render"
+  );
+  assert.ok(
+    !html.includes('<strong id="activeFilterGroupBadge" class="filter-group-badge">Broadsands</strong>'),
+    "activeLessonFilterBar should not contain hardcoded Broadsands text in index.html"
+  );
+
+  // 2. Check CSS hiding rules
+  assert.ok(
+    /\.active-lesson-filter-bar\.hidden\s*\{[^}]*display:\s*none\s*!important/.test(css),
+    "CSS must define .active-lesson-filter-bar.hidden with display: none !important"
+  );
+  assert.ok(
+    /\.filter-action-btn\.hidden\s*\{[^}]*display:\s*none\s*!important/.test(css),
+    "CSS must define .filter-action-btn.hidden with display: none !important"
+  );
+  assert.ok(
+    /(^|\n|\})\s*\.hidden\s*\{[^}]*display:\s*none\s*!important/.test(css),
+    "CSS must define universal .hidden utility with display: none !important"
+  );
+
+  // 3. Check JS implementation of clearTimetableLessonSelection and filter toggling
+  assert.ok(js.includes("function clearTimetableLessonSelection()"), "clearTimetableLessonSelection function exists");
+  assert.ok(js.includes("analyticsTracker.selectionClearedExplicitly = true"), "clearTimetableLessonSelection marks selection as explicitly cleared");
+  assert.ok(js.includes("clearLessonFilterBtn?.addEventListener(\"click\", clearTimetableLessonSelection)"), "clearLessonFilterBtn is wired to clearTimetableLessonSelection");
+  assert.ok(js.includes("activeLessonFilterBar.style.display = \"none\""), "clearTimetableLessonSelection explicitly sets display: none on activeLessonFilterBar");
+});
+

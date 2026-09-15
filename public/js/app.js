@@ -1614,12 +1614,14 @@ function renderSlideStage(slide = currentDeck?.slides[currentSlideIndex]) {
   hideWebEmbed();
   renderMediaBuild(slide, currentBuild);
 
-  interactiveOverlay.innerHTML = "";
-  const hasAnswers = appendInteractiveGrid(slide);
-  interactiveOverlay.classList.toggle("hidden", !hasAnswers);
+  if (interactiveOverlay) {
+    interactiveOverlay.innerHTML = "";
+    const hasAnswers = appendInteractiveGrid(slide);
+    interactiveOverlay.classList.toggle("hidden", !hasAnswers);
+  }
   updateStageControls(slide);
-  renderComponentEditorPanel();
-  renderStageCognitiveGuide(slide);
+  if (typeof renderComponentEditorPanel === "function") renderComponentEditorPanel();
+  if (typeof renderStageCognitiveGuide === "function") renderStageCognitiveGuide(slide);
 }
 
 function moveMediaBuildStep(slide, direction) {
@@ -3449,6 +3451,7 @@ const analyticsTracker = {
   deckScope: "current", // "current" | "timetable" | "all"
   timetableComponentOpen: true,
   selectedLessonId: null,
+  selectionClearedExplicitly: false,
   selectedWeekId: "year11-week-4",
   noticeTimeout: null
 };
@@ -3907,18 +3910,30 @@ async function renderTimetableCalendar(weekId = "year11-week-4") {
       }
       if (activeSlot && activeLessonFilterBar) {
         activeLessonFilterBar.classList.remove("hidden");
+        activeLessonFilterBar.style.display = "flex";
         if (activeFilterGroupBadge) activeFilterGroupBadge.textContent = activeSlot.group;
         if (activeFilterTopicText) activeFilterTopicText.textContent = activeSlot.topic;
         if (activeFilterSlotTag) activeFilterSlotTag.textContent = `${activeSlot.day} ${activeSlot.periodLabel} (${activeSlot.startTime}–${activeSlot.endTime})`;
         if (loadFilteredDeckBtn && activeSlot.matchingDeckId) {
           loadFilteredDeckBtn.classList.remove("hidden");
+          loadFilteredDeckBtn.style.display = "inline-flex";
           loadFilteredDeckBtn.onclick = () => {
             loadDeck(activeSlot.matchingDeckId);
             closeAnalyticsModal();
           };
         } else if (loadFilteredDeckBtn) {
           loadFilteredDeckBtn.classList.add("hidden");
+          loadFilteredDeckBtn.style.display = "none";
         }
+      }
+    } else {
+      if (activeLessonFilterBar) {
+        activeLessonFilterBar.classList.add("hidden");
+        activeLessonFilterBar.style.display = "none";
+      }
+      if (loadFilteredDeckBtn) {
+        loadFilteredDeckBtn.classList.add("hidden");
+        loadFilteredDeckBtn.style.display = "none";
       }
     }
 
@@ -3931,6 +3946,7 @@ async function renderTimetableCalendar(weekId = "year11-week-4") {
 async function selectTimetableLesson(slotId) {
   if (!slotId) return;
   analyticsTracker.selectedLessonId = slotId;
+  analyticsTracker.selectionClearedExplicitly = false;
   analyticsTracker.deckScope = "timetable";
 
   // Update selection indicator on table cells
@@ -3954,18 +3970,21 @@ async function selectTimetableLesson(slotId) {
 
   if (slot && activeLessonFilterBar) {
     activeLessonFilterBar.classList.remove("hidden");
+    activeLessonFilterBar.style.display = "flex";
     if (activeFilterGroupBadge) activeFilterGroupBadge.textContent = slot.group;
     if (activeFilterTopicText) activeFilterTopicText.textContent = slot.topic;
     if (activeFilterSlotTag) activeFilterSlotTag.textContent = `${slot.day} ${slot.periodLabel} (${slot.startTime}–${slot.endTime})`;
 
     if (loadFilteredDeckBtn && slot.matchingDeckId) {
       loadFilteredDeckBtn.classList.remove("hidden");
+      loadFilteredDeckBtn.style.display = "inline-flex";
       loadFilteredDeckBtn.onclick = () => {
         loadDeck(slot.matchingDeckId);
         closeAnalyticsModal();
       };
     } else if (loadFilteredDeckBtn) {
       loadFilteredDeckBtn.classList.add("hidden");
+      loadFilteredDeckBtn.style.display = "none";
     }
   }
 
@@ -3974,11 +3993,25 @@ async function selectTimetableLesson(slotId) {
 
 function clearTimetableLessonSelection() {
   analyticsTracker.selectedLessonId = null;
+  analyticsTracker.selectionClearedExplicitly = true;
+  analyticsTracker.cachedLessonAnalysis = null;
   planningTable?.querySelectorAll(".planner-session-cell").forEach((cell) => {
     cell.classList.remove("is-selected");
   });
-  if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
-  if (loadFilteredDeckBtn) loadFilteredDeckBtn.classList.add("hidden");
+  if (activeFilterGroupBadge) activeFilterGroupBadge.textContent = "";
+  if (activeFilterTopicText) activeFilterTopicText.textContent = "";
+  if (activeFilterSlotTag) activeFilterSlotTag.textContent = "";
+  if (activeLessonFilterBar) {
+    activeLessonFilterBar.classList.add("hidden");
+    activeLessonFilterBar.style.display = "none";
+  }
+  if (loadFilteredDeckBtn) {
+    loadFilteredDeckBtn.classList.add("hidden");
+    loadFilteredDeckBtn.style.display = "none";
+  }
+  if (analyticsTracker.deckScope === "timetable") {
+    analyticsTracker.deckScope = "current";
+  }
   refreshAnalyticsModalViews(true);
 }
 
@@ -4255,6 +4288,15 @@ async function openAnalyticsModal() {
   // Only show timetable if explicitly on timetable tab; default to current deck on fresh modal open
   if (analyticsTracker.deckScope !== "timetable") {
     analyticsTracker.deckScope = "current";
+    analyticsTracker.selectedLessonId = null;
+    if (activeLessonFilterBar) {
+      activeLessonFilterBar.classList.add("hidden");
+      activeLessonFilterBar.style.display = "none";
+    }
+    if (loadFilteredDeckBtn) {
+      loadFilteredDeckBtn.classList.add("hidden");
+      loadFilteredDeckBtn.style.display = "none";
+    }
   }
 
   await refreshAnalyticsModalViews(true);
@@ -4310,8 +4352,14 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
       reopenTimetableNavBtn.classList.toggle("hidden", isComponentOpen);
       reopenTimetableNavBtn.style.display = isComponentOpen ? "none" : "inline-flex";
     }
+    const hasFilter = Boolean(analyticsTracker.selectedLessonId);
     if (activeLessonFilterBar) {
-      activeLessonFilterBar.classList.toggle("hidden", !analyticsTracker.selectedLessonId);
+      activeLessonFilterBar.classList.toggle("hidden", !hasFilter);
+      activeLessonFilterBar.style.display = hasFilter ? "flex" : "none";
+    }
+    if (loadFilteredDeckBtn && !hasFilter) {
+      loadFilteredDeckBtn.classList.add("hidden");
+      loadFilteredDeckBtn.style.display = "none";
     }
   } else {
     if (analyticsTimetableSection) {
@@ -4324,6 +4372,11 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
     }
     if (activeLessonFilterBar) {
       activeLessonFilterBar.classList.add("hidden");
+      activeLessonFilterBar.style.display = "none";
+    }
+    if (loadFilteredDeckBtn) {
+      loadFilteredDeckBtn.classList.add("hidden");
+      loadFilteredDeckBtn.style.display = "none";
     }
   }
 
@@ -4363,7 +4416,7 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
       await renderTimetableCalendar(analyticsTracker.selectedWeekId || "year11-week-4");
     }
 
-    if (!analyticsTracker.selectedLessonId) {
+    if (!analyticsTracker.selectedLessonId && !analyticsTracker.selectionClearedExplicitly) {
       const currentSlot = getCurrentLessonSlot();
       if (currentSlot) {
         await selectTimetableLesson(currentSlot.id);
@@ -7157,7 +7210,15 @@ function setupEventListeners() {
     console.log("[Analytics] scopeDeckBtn clicked");
     analyticsTracker.deckScope = "current";
     analyticsTracker.selectedLessonId = null;
-    if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
+    analyticsTracker.selectionClearedExplicitly = true;
+    if (activeLessonFilterBar) {
+      activeLessonFilterBar.classList.add("hidden");
+      activeLessonFilterBar.style.display = "none";
+    }
+    if (loadFilteredDeckBtn) {
+      loadFilteredDeckBtn.classList.add("hidden");
+      loadFilteredDeckBtn.style.display = "none";
+    }
     refreshAnalyticsModalViews(true);
   });
   scopeTimetableBtn?.addEventListener("click", () => {
@@ -7168,6 +7229,7 @@ function setupEventListeners() {
     } else {
       analyticsTracker.deckScope = "timetable";
       analyticsTracker.timetableComponentOpen = true;
+      analyticsTracker.selectionClearedExplicitly = false;
     }
     refreshAnalyticsModalViews(true);
   });
@@ -7183,7 +7245,15 @@ function setupEventListeners() {
     console.log("[Analytics] scopeAllDecksBtn clicked");
     analyticsTracker.deckScope = "all";
     analyticsTracker.selectedLessonId = null;
-    if (activeLessonFilterBar) activeLessonFilterBar.classList.add("hidden");
+    analyticsTracker.selectionClearedExplicitly = true;
+    if (activeLessonFilterBar) {
+      activeLessonFilterBar.classList.add("hidden");
+      activeLessonFilterBar.style.display = "none";
+    }
+    if (loadFilteredDeckBtn) {
+      loadFilteredDeckBtn.classList.add("hidden");
+      loadFilteredDeckBtn.style.display = "none";
+    }
     refreshAnalyticsModalViews(true);
   });
   timetableWeekSelect?.addEventListener("change", (e) => {

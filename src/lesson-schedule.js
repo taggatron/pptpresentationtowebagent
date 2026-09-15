@@ -199,17 +199,17 @@ export function findMatchingDeckId(topic, className = "") {
     if (topicLower.includes("lesson 4") || topicLower.includes("referencing") || topicLower.includes("working like a scientist")) {
       return "Lesson_04_Working_like_a_Scientist_Continued";
     }
-    if (topicLower.includes("lesson 5") || topicLower.includes("clinical trials") || topicLower.includes("interpreting data")) {
-      return "Lesson_05_Communicating_like_a_Human_Biologist_Interpreting_Data_Clinical_Trials";
+    if (topicLower.includes("lesson 5") || topicLower.includes("source reliability") || topicLower.includes("goldacre") || topicLower.includes("clinical trials") || topicLower.includes("interpreting data")) {
+      return "Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing";
     }
-    if (topicLower.includes("lesson 6") || topicLower.includes("academic writing")) {
-      return "Lesson_06_Communicating_like_a_Human_Biologist_Academic_Writing_and_Application";
+    if (topicLower.includes("lesson 6") || topicLower.includes("mrna") || topicLower.includes("mock nea") || topicLower.includes("academic writing")) {
+      return "Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA";
     }
-    if (topicLower.includes("lesson 7") || topicLower.includes("diagnostic profile") || topicLower.includes("target setting")) {
-      return "Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Target_Setting";
+    if (topicLower.includes("lesson 7") || topicLower.includes("peer review") || topicLower.includes("diagnostic profile") || topicLower.includes("target setting")) {
+      return "Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review";
     }
-    if (topicLower.includes("lesson 8") || topicLower.includes("transition to biomedical") || topicLower.includes("genetics")) {
-      return "Lesson_08_Transition_to_Biomedical_Science_and_Genetics";
+    if (topicLower.includes("lesson 8") || topicLower.includes("finalisation") || topicLower.includes("transition to biomedical") || topicLower.includes("genetics")) {
+      return "Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics";
     }
     if (topicLower.includes("lesson 0") || topicLower.includes("welcome to human biology") || topicLower.includes("scientist") || topicLower.includes("onboarding")) {
       return "Lesson_00_Welcome_to_Human_Biology";

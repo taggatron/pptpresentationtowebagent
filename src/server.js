@@ -448,7 +448,7 @@ export function inferSlideSetId(deckId, manifest = null) {
   ) {
     return "tbi_neuro";
   }
-  if (/(?:AAQ|Human_Bio|Human_Biology|Biomedical)/i.test(deckId)) {
+  if (/(?:AAQ|Human_Bio|Human_Biology|Biomedical|Introductory_Unit_Synthesis)/i.test(deckId)) {
     return "intro_aaq_human_bio";
   }
   return "other";

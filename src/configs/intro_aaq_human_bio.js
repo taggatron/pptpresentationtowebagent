@@ -324,303 +324,344 @@ export const lessons = [
     plenary: [
       "Rigorous academic referencing is mandatory in all OCR Level 3 AAQ coursework and extended investigations.",
       "Always scrutinize the funding disclosures and sample sizes of clinical papers before citing their conclusions.",
-      "Next Lesson: Communicating like a Human Biologist — interpreting clinical trial data, error bars, and risk metrics."
+      "Next Lesson: Communicating like a Human Biologist — source reliability, publication bias, and academic referencing."
     ]
   },
   {
     number: 5,
     part: 2,
     teacher: "Dan",
-    deckId: "Lesson_05_Communicating_like_a_Human_Biologist_Interpreting_Data_Clinical_Trials",
-    title: "Communicating like a Human Biologist: Interpreting Data Clinical Trials",
-    focus: "Statistical Literacy, RCT Outcomes, Error Bars & Risk Metrics",
-    deliverable: "Analyze clinical trial graphical datasets, evaluate statistical significance from error bars and confidence intervals, and calculate ARR vs RRR.",
-    details: "Data interpretation, graphical analysis, and statistical literacy diagnostic using clinical trial datasets. Processing randomised controlled trial (RCT) outcomes and physiological datasets; interpreting error bars, standard deviation, and confidence intervals; evaluating relative risk reduction vs absolute risk reduction; identifying mathematical relationships (linear, exponential, saturation); evaluating validity, sources of systematic vs random error, and drawing evidence-based conclusions from biological data.",
+    deckId: "Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing",
+    title: "Communicating like a Human Biologist: Source Reliability & Academic Referencing",
+    focus: "Source Credibility, Critical Appraisal (CRAAP/PROMPT) & Harvard Referencing",
+    deliverable: "Evaluate biomedical source reliability using CRAAP/PROMPT, critique sensationalised trial reporting, and construct compliant Harvard references.",
+    details: "Communicating like a Human Biologist: Source Reliability & Academic Referencing. Lead: Dan. Starter & Hook (Ben Goldacre’s Bad Science): Play an excerpt from Ben Goldacre’s TED Talk ('Battling Bad Science'), specifically examining publication bias, industry trial distortion, and how negative or unpromising data is frequently withheld from medical literature. Structured oracy prompt: 'How can a published claim appear robust on the surface while masking methodological bias or missing data?' Evaluating Biomedical Sources: Framework for critical appraisal (CRAAP/PROMPT adapted for biosciences): peer-review status, sample size, blinding, control selection, and funding declarations/conflicts of interest. Activity: Compare a sensationalised tabloid headline regarding vaccine mechanisms against an extract from a peer-reviewed trial paper (e.g., The Lancet or NEJM). Academic Conventions & Referencing: Mechanics of Harvard referencing for biomedical contexts: citing clinical registries, meta-analyses, and journal papers (in-text author-date citations vs. reference lists). Synthesising evidence without plagiarising: distinguishing direct citation from critical paraphrase. Formative Check: Quick-fire referencing repair task correcting deliberately malformed in-text citations and reference list entries.",
     starterQuestions: [
-      { q: "What does it mean when error bars representing 95% Confidence Intervals overlap between two trial arms?", a: "There is generally no statistically significant difference between the two treatments at the p < 0.05 threshold." },
-      { q: "What is the formula for Absolute Risk Reduction (ARR)?", a: "ARR = Control Event Rate (CER) - Experimental Event Rate (EER)." },
-      { q: "How is Relative Risk Reduction (RRR) calculated from ARR and CER?", a: "RRR = (ARR ÷ CER) × 100% or [(CER - EER) ÷ CER] × 100%." },
-      { q: "What is the difference between Standard Deviation (SD) and Standard Error of the Mean (SEM)?", a: "SD quantifies biological dispersion/spread among individuals; SEM estimates the precision of the sample mean relative to the population mean." },
-      { q: "Why is a double-blind protocol essential in phase III drug trials?", a: "To eliminate both participant placebo effect and investigator observation/allocation bias during outcome assessment." },
-      { q: "Describe a biological relationship demonstrating 'saturation kinetics'.", a: "Enzyme-catalyzed reaction rates plateauing at V_max as all active sites become occupied by substrate (Michaelis-Menten kinetics)." }
+      { q: "Why is publication bias (withholding negative/unpromising trial data) dangerous in clinical medicine?", a: "It distorts the published evidence base, leading physicians to overestimate drug efficacy and underestimate adverse risks." },
+      { q: "What is the core question in Ben Goldacre's 'Battling Bad Science' oracy prompt?", a: "How a published claim can appear robust on the surface while masking methodological bias, selective reporting, or missing data." },
+      { q: "What biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework?", a: "Peer-review status, sample size power, blinding protocols, control group selection, and commercial funding/conflicts of interest." },
+      { q: "How do sensationalised media headlines typically distort clinical trial papers?", a: "They conflate correlation with causation, omit sample limitations/confounding variables, and report relative risk rather than absolute risk." },
+      { q: "In biomedical Harvard referencing, how do you format an in-text citation for three or more authors?", a: "(LeadAuthor et al., Year) — e.g., (Goldacre et al., 2024)." },
+      { q: "What is the academic distinction between direct quotation and critical paraphrase?", a: "Direct quotation reproduces exact wording in quotation marks; critical paraphrase synthesises, evaluates, and integrates evidence in the researcher's own words with citation." }
     ],
     objectives: {
-      knowledge: "Differentiate statistical significance metrics: SD vs SEM vs 95% CI, p-values, and statistical power.",
-      application: "Calculate Absolute Risk Reduction (ARR), Relative Risk Reduction (RRR), and Number Needed to Treat (NNT) from RCT clinical datasets.",
-      evaluation: "Critique graphical trends for saturation plateaus, linear proportionality, and distinguish random biological variation from clinical effect."
+      knowledge: "Understand publication bias, industry trial distortion, and the CRAAP/PROMPT critical appraisal criteria in biosciences.",
+      application: "Deconstruct sensationalised tabloid reporting against peer-reviewed trial papers (Lancet/NEJM) and repair malformed Harvard citations.",
+      evaluation: "Critically appraise trial validity based on blinding, sample size, control selection, and commercial conflict of interest declarations."
     },
     terminology: [
-      { term: "Randomised Controlled Trial (RCT)", def: "Gold-standard experimental trial where participants are randomly assigned to experimental or control cohorts." },
-      { term: "95% Confidence Interval (CI)", def: "A range of values around a sample statistic that has a 95% probability of containing the true population parameter." },
-      { term: "Absolute Risk Reduction (ARR)", def: "The simple arithmetic difference in event rates between control and experimental treatment groups (ARR = CER - EER)." },
-      { term: "Relative Risk Reduction (RRR)", def: "The proportional reduction in adverse event rates in treated vs untreated patients [RRR = (ARR / CER) × 100%]." }
+      { term: "Publication Bias", def: "The selective publication of studies with positive outcomes, while trials showing negative or equivocal results remain unpublished." },
+      { term: "CRAAP / PROMPT Framework", def: "Systematic critical appraisal tool adapted for biosciences: Currency, Relevance, Authority, Accuracy, and Purpose/Funding bias." },
+      { term: "Harvard Biomedical Referencing", def: "Standard author-date citation system linking parenthetical in-text citations to a comprehensive alphabetised bibliography." },
+      { term: "Critical Paraphrase", def: "Synthesising and evaluating findings in your own academic voice without plagiarising original phrasing, supported by proper citation." }
     ],
     theoryPoints: [
-      "Overlapping Error Bars: When 95% CIs overlap substantially, the difference between group means is not statistically significant (p > 0.05). If CIs do not overlap, p < 0.05.",
-      "The ARR vs RRR Clinical Paradox: If baseline cardiac risk drops from 2% to 1%, ARR is only 1%, but RRR is a sensationalized 50%. Always report ARR alongside RRR.",
-      "Number Needed to Treat (NNT): NNT = 1 / ARR. If ARR = 0.02 (2%), NNT = 50 (50 patients must be treated to prevent one single adverse event).",
-      "Curve Types in Physiology: Linear (direct proportionality), Exponential (bacterial population growth), Saturation/Sigmoidal (enzyme kinetics, haemoglobin oxygen dissociation)."
+      "Publication Bias & Trial Distortion: Up to 50% of clinical trials conducted by pharmaceutical sponsors have historically gone unpublished, skewing meta-analyses toward false-positive efficacy.",
+      "The CRAAP/PROMPT Appraisal Framework: Scrutinise peer-review status, sample power (n numbers), randomisation, double-blinding, appropriate controls, and author financial disclosures.",
+      "Sensationalised Media vs Peer-Reviewed Trials: Tabloid media often extrapolates in vitro/animal findings to humans or conflates surrogate biomarkers with clinical survival.",
+      "Referencing Mechanics: In-text author-date citation requires (Author, Year) or Author (Year). Reference lists must contain full authors, year, article title, journal, volume, and DOI."
     ],
     workedExample: {
-      title: "Cardiovascular Drug Trial Analysis (Statin vs Placebo)",
-      subtitle: "Extracting ARR, RRR, and evaluating clinical significance",
+      title: "Referencing Repair Clinic: Correcting Malformed Biomedical Citations",
+      subtitle: "Transforming flawed citations into publication-ready Harvard format",
       steps: [
-        { label: "Trial Parameters (n=5,000 per arm)", detail: "Control (Placebo): 200 myocardial infarctions out of 5,000 → CER = 200 / 5,000 = 0.04 (4.0%)." },
-        { label: "Experimental (Statin)", detail: "Experimental: 100 myocardial infarctions out of 5,000 → EER = 100 / 5,000 = 0.02 (2.0%)." },
-        { label: "Calculate ARR", detail: "ARR = CER - EER = 0.04 - 0.02 = 0.02 = 2.0% absolute benefit." },
-        { label: "Calculate RRR", detail: "RRR = (ARR / CER) × 100% = (0.02 / 0.04) × 100% = 50% relative risk reduction." },
-        { label: "Calculate NNT", detail: "NNT = 1 / ARR = 1 / 0.02 = 50 patients treated over 5 years to prevent 1 myocardial infarction." }
+        { label: "Flawed In-Text Citation", detail: "Malformed: 'mRNA vaccines are effective (Dan, Goldacre, and others in Lancet 2021).' Error: Lists first names, lacks year parentheses, includes journal in-text." },
+        { label: "Repaired In-Text Citation", detail: "Corrected: 'mRNA platforms elicit robust humoral and cellular immunogenicity (Goldacre et al., 2021).' Follows standard author-date format." },
+        { label: "Flawed Reference List Entry", detail: "Malformed: 'Goldacre B. 2021. Lancet paper on trial data. www.google.com.' Error: Missing article title, journal volume, pagination, and persistent DOI." },
+        { label: "Repaired Reference List Entry", detail: "Corrected: Goldacre, B., Smeeth, L. and Perry, R. (2021) 'Methodological bias and publication deficit in modern clinical trials', The Lancet, 398(10302), pp. 789–796. doi:10.1016/S0140-6736(21)01452-9." },
+        { label: "Critical Appraisal Takeaway", detail: "Consistent Harvard citation allows readers to independently audit source authority and verify raw experimental evidence." }
       ]
     },
     hingeQuestions: [
       {
-        question: "In a stroke trial, cardiovascular event rates were 4% in the control group and 2% in the drug group. What are the ARR and RRR?",
-        options: ["ARR = 2%, RRR = 50%", "ARR = 50%, RRR = 2%", "ARR = 0.5%, RRR = 25%", "ARR = 2%, RRR = 2%"],
-        correctIndex: 0,
-        explanation: "ARR = 4% - 2% = 2%. RRR = (2% / 4%) * 100 = 50%. Commercial sources often quote the 50% RRR to exaggerate perceived benefit over the 2% ARR."
+        question: "Which scenario best illustrates publication bias in biomedical research?",
+        options: [
+          "A researcher publishes an open-access study in The Lancet",
+          "A pharmaceutical sponsor funds 10 trials of an antidepressant; only the 4 positive trials are submitted for publication while 6 neutral trials remain sealed",
+          "A peer reviewer rejects a paper due to inadequate sample size",
+          "A clinical registry records adverse events during Phase I trials"
+        ],
+        correctIndex: 1,
+        explanation: "Publication bias occurs when research with unpromising or negative results is deliberately withheld, biasing clinical perceptions."
       },
       {
-        question: "If the 95% Confidence Interval for an odds ratio (OR) includes 1.0 (e.g., OR = 1.35, 95% CI: 0.88–1.92), what is the valid conclusion?",
-        options: ["The experimental treatment is significantly better", "The result is not statistically significant because the null effect (OR = 1.0) cannot be rejected", "The sample size was too large", "The treatment caused a doubling of risk"],
+        question: "A news headline claims: 'Breakthrough Miracle Drug Cures All Cancers!' What should a Human Biologist check FIRST?",
+        options: [
+          "The font style of the headline",
+          "Whether the underlying trial is in peer-reviewed literature, sample size (n), human vs animal model, and funding declarations",
+          "How many likes the headline has on social media",
+          "The price of the drug in pharmacies"
+        ],
         correctIndex: 1,
-        explanation: "An odds ratio of 1.0 indicates identical odds between groups; if the 95% CI spans 1.0, the effect is not significant at p < 0.05."
+        explanation: "Evaluating peer-review status, model organism, sample size, and conflicts of interest is central to CRAAP/PROMPT appraisal."
       }
     ],
     examQuestion: {
-      question: "The graph shows plasma antibody titres in vaccinated vs control cohorts. Cohort A mean = 450 units (95% CI: 420–480); Cohort B mean = 510 units (95% CI: 475–545). Evaluate whether Cohort B has a significantly higher antibody titre than Cohort A. [3 marks]",
-      marks: "3 marks",
+      question: "A popular news outlet reported that a new synthetic therapeutic molecule 'completely halts viral infection with zero side effects'. The article cited a pilot study of 8 healthy volunteers funded by the drug manufacturer. Critically evaluate this report, identifying three methodological and reporting flaws. [6 marks]",
+      marks: "6 marks",
       guidance: [
-        "State that the 95% Confidence Intervals overlap (between 475 and 480 units). [1 mark]",
-        "Conclude that the difference between the cohorts is NOT statistically significant at p < 0.05. [1 mark]",
-        "Explain that the observed difference between means may simply be due to random biological sampling variation. [1 mark]"
+        "Critique 1: Sample size is critically underpowered (n=8), introducing severe sampling error and precluding detection of uncommon adverse events. [2 marks]",
+        "Critique 2: High risk of commercial conflict of interest / funding bias from manufacturer sponsorship without independent replication. [2 marks]",
+        "Critique 3: Tabloid claim 'zero side effects' ignores Phase I safety limits and confuses early tolerance with confirmed clinical efficacy. [2 marks]"
       ]
     },
     plenary: [
-      "Never report Relative Risk Reduction (RRR) in isolation; always pair it with Absolute Risk Reduction (ARR) and sample size.",
-      "Check error bar overlaps before claiming a biological intervention has a genuine clinical effect.",
-      "Next Lesson: Communicating like a Human Biologist — academic writing masterclass and evidence synthesis on unfamiliar stimuli."
+      "Goldacre's principle: Clinical practice must be grounded in transparent, fully reported trial registries, not selective publication.",
+      "Always apply CRAAP/PROMPT to distinguish sensationalised claims from robust peer-reviewed evidence in The Lancet and NEJM.",
+      "Next Lesson: Interpreting Clinical Data & Mock NEA Drafting — comparing COVID-19 vs oncology mRNA clinical datasets."
     ]
   },
   {
     number: 6,
     part: 2,
     teacher: "Dan",
-    deckId: "Lesson_06_Communicating_like_a_Human_Biologist_Academic_Writing_and_Application",
-    title: "Communicating like a Human Biologist: Academic Writing & Application",
-    focus: "Evidence Synthesis, Structured Explanations & Clinical Coursework Baseline",
-    deliverable: "Synthesize unfamiliar clinical trial stimulus evidence into a tripartite biological explanation (Fact → Mechanism → Clinical Impact) with Harvard citations.",
-    details: "Academic literature sourcing & Harvard referencing masterclass. Evaluating the credibility of scientific information; distinguishing peer-reviewed medical journals from commercial/secondary sources; assessing author authority, currency, sample sizes, and potential conflict of interest/bias; academic database search strategies (PubMed, Europe PMC, Google Scholar); constructing standard in-text citations and complete Harvard reference lists for journal papers, books, clinical trial registries, and NHS/NICE clinical guidelines. Academic writing + evidence synthesis initial assessment. Controlled written task centered on an unfamiliar Human Biology stimulus (e.g. artificial organs clinical trial outcome data). Students extract and synthesize evidence, formulate structured biological explanations (fact → mechanism → clinical impact), correctly apply Harvard in-text citations, and complete evaluative conclusions to set a baseline for NEA and extended coursework.",
+    deckId: "Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA",
+    title: "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study)",
+    focus: "Clinical Data Interpretation (COVID-19 vs Oncology mRNA) & Mock NEA Drafting",
+    deliverable: "Draft the Literature Review and Methodology Evaluation of the mock NEA, synthesizing mRNA clinical datasets with Harvard citations.",
+    details: "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Lead: Dan. Context & Clinical History Focus: Contextualise mRNA technology: establish that mRNA platforms were not originally conceived for infectious respiratory viruses, but were developed through early-phase oncology trials (therapeutic cancer vaccines targeting patient-specific tumour neoantigens, such as melanoma and colorectal cancers). Address the clinical trial trajectory: examine how the COVID-19 pandemic necessitated a rapid pivot—deploying the technology into massive Phase I–III infectious disease trials (with tens of thousands of participants ran under compressed, overlapping timelines) before broader clinical trial success had been achieved in oncology. Data Interpretation Activity: Learners analyse clinical trial datasets comparing: Phase III COVID-19 mRNA trial data (primary endpoints: symptom prevention, antibody titres, efficacy percentages across age cohorts, adverse event profiles) vs Early-phase mRNA oncology clinical data (endpoints: T-cell mediated response, tumour regression, progression-free survival). Critical evaluation: discuss why surrogate endpoints (immune markers) in oncology differ from public health endpoints in infectious disease trials. Mock NEA Writing Session: Learners begin drafting the Literature Review & Methodology Evaluation of their mock NEA based on this clinical data. Writing targets: Synthesise the physiological mechanism and clinical justification of mRNA platforms; Critically evaluate trial methodology (e.g., accelerated overlapping phases, trial cohort demographics, primary vs. secondary endpoints); Embed at least two peer-reviewed sources using correct Harvard referencing conventions. Exit Task: Submission of the working draft into the shared learning folder ahead of peer review.",
     starterQuestions: [
-      { q: "Explain the three tiers of the 'Fact → Mechanism → Clinical Impact' writing framework.", a: "Fact: State the empirical finding/data; Mechanism: Explain the underlying cellular/physiological pathway; Clinical Impact: Explain the therapeutic outcome or prognostic consequence for patients." },
-      { q: "Why are personal pronouns (I, we, our) avoided in scientific academic writing?", a: "Passive and objective third-person syntax maintains scientific neutrality and focuses emphasis on the evidence rather than the investigator." },
-      { q: "What is an 'unfamiliar stimulus' in Level 3 AAQ assessments?", a: "Novel clinical data, experimental scenarios, or cutting-edge therapeutic trials not explicitly memorized from the specification, testing applied analytical skills." },
-      { q: "How should limitations of a clinical study be constructively framed?", a: "Identify the specific constraint (e.g. short follow-up duration), explain how it limits clinical generalisability, and propose targeted methodological refinement." },
-      { q: "What constitutes plagiarism in NEA coursework?", a: "Presenting another's ideas, text, figures, or synthesized arguments without explicit in-text citation and corresponding bibliography entry." },
-      { q: "What is the clinical role of bio-artificial organs in end-stage disease?", a: "Providing vital organ functions (e.g., hemodialysis, metabolic processing, cardiac assist) as a bridge to transplantation or permanent destination therapy." }
+      { q: "What was the original clinical disease target of mRNA platform technology prior to COVID-19?", a: "Therapeutic oncology vaccines targeting patient-specific tumour neoantigens (e.g., metastatic melanoma, colorectal cancers)." },
+      { q: "How did the trial trajectory of COVID-19 mRNA vaccines differ from conventional drug development?", a: "Accelerated overlapping clinical trial phases (Phase I/II/III run concurrently) under pandemic public health emergency authorisations." },
+      { q: "What is the distinction between a 'surrogate endpoint' and a 'clinical primary endpoint'?", a: "Surrogate endpoints are measurable biomarkers (e.g. antibody titres or T-cell counts); clinical primary endpoints measure direct patient health outcomes (e.g. disease prevention, overall survival)." },
+      { q: "Why are surrogate endpoints (like CD8+ T-cell expansion) heavily relied upon in early-phase oncology trials?", a: "Tumour regression and progression-free survival require years to evaluate, so immune activation biomarkers provide immediate proof-of-mechanism." },
+      { q: "What are the core sections required in the Mock NEA drafted in this lesson?", a: "Literature Review (mechanism and justification) and Methodology Evaluation (trial design critique and endpoint comparison)." },
+      { q: "State two mandatory criteria for embedding citations into the Mock NEA draft.", a: "Include at least two peer-reviewed sources, cited using author-date Harvard in-text format and matched to a complete reference list." }
     ],
     objectives: {
-      knowledge: "Master the clinical tripartite explanation model: Biological Fact → Physiological Mechanism → Clinical Impact.",
-      application: "Extract and synthesize quantitative evidence from unfamiliar clinical trial stimuli (bio-artificial organ trial data).",
-      evaluation: "Draft an evaluative coursework baseline report integrating standard in-text Harvard citations and rigorous methodological critique."
+      knowledge: "Trace mRNA technology from personalized cancer neoantigen trials to rapid-scale Phase III pandemic infectious disease trials.",
+      application: "Compare quantitative clinical datasets: Phase III COVID-19 vaccine endpoints vs early-phase oncology surrogate endpoints.",
+      evaluation: "Draft a Level 3 Mock NEA Literature Review & Methodology Evaluation with peer-reviewed Harvard citations."
     },
     terminology: [
-      { term: "Tripartite Model", def: "A scientific writing structure linking empirical quantitative evidence to cellular mechanisms and clinical patient outcomes." },
-      { term: "Bio-artificial Kidney / Organ", def: "A hybrid device combining synthetic filtration membranes with living renal tubule epithelial cells to replace organ function." },
-      { term: "Clinical Translation", def: "The iterative process of transitioning laboratory bench discoveries into safe, effective clinical therapies." },
-      { term: "Biomarker Endpoint", def: "A measurable biological indicator (e.g., serum creatinine, ejection fraction) used to evaluate therapeutic response." }
+      { term: "Tumour Neoantigen", def: "A mutated peptide antigen uniquely expressed on cancer cells, targeted by personalized therapeutic mRNA vaccines." },
+      { term: "Surrogate Endpoint", def: "A biological marker (e.g., neutralising antibody titre, CD8+ T-cell count) used as a proxy for clinical efficacy." },
+      { term: "Overlapping Trial Phases", def: "Compressing clinical pipelines by running Phase I, II, and III concurrently to accelerate therapeutic availability during public health crises." },
+      { term: "Mock NEA (Literature & Methodology)", def: "An extended biomedical investigation drafting session evaluating research background, trial methodology, and evidence synthesis." }
     ],
     theoryPoints: [
-      "The Tripartite Structure: Fact = What the data objectively proves; Mechanism = Biochemical or physiological reason WHY; Clinical Impact = Consequence for patient morbidity, mortality, or healthcare pathways.",
-      "Academic Precision: Avoid emotive adjectives ('miracle cure', 'terrible failure'); use measured clinical terminology ('statistically significant reduction in all-cause mortality').",
-      "Unfamiliar Stimulus Handling: Deconstruct complex medical diagrams by identifying the independent variable, dependent variable, controls, and error bar boundaries first.",
-      "Formulating Evaluative Conclusions: Balance therapeutic benefits against adverse reactions, economic costs (NICE QALY thresholds), and technical translation hurdles."
+      "The mRNA Oncology Origin Story: Karikó, Weissman, Sahin and Türeci pioneered modified mRNA platforms originally for therapeutic cancer immunotherapies targeting somatic mutations.",
+      "Pandemic Pivot: COVID-19 required immediate pivot from niche personalized cancer cohorts (n=20–50) to global preventative trials (n=30,000–44,000) under overlapping phases.",
+      "Dataset Comparison: COVID-19 trials measured infection rate, symptom prevention (95% efficacy), and antibody titres; oncology trials measure progression-free survival (PFS) and T-cell response.",
+      "Methodological Critique in NEA: Evaluate cohort demographic representation, surrogate marker limitations, follow-up durations, and accelerated phase trade-offs."
     ],
     workedExample: {
-      title: "Model Paragraph: Bio-Artificial Kidney Stimulus",
-      subtitle: "Applying Fact → Mechanism → Clinical Impact with Harvard Citation",
+      title: "Mock NEA Writing Exemplar: Literature Review & Methodology Evaluation",
+      subtitle: "Model paragraph integrating mechanism, dataset critique, and Harvard citation",
       steps: [
-        { label: "Empirical Fact (Data)", detail: "In a Phase II multi-centre trial, patients implanted with the bio-artificial renal device exhibited a 42% reduction in serum urea concentrations compared to standard hemodialysis controls (p = 0.003) over 12 weeks (Williams et al., 2023)." },
-        { label: "Physiological Mechanism", detail: "This clearance is facilitated by the incorporated proximal tubule epithelial cells, which perform active transcellular reabsorption and secretory transport via basolateral Na+/K+ ATPase pumps, mimicking native nephron tubuloglomerular feedback." },
-        { label: "Clinical Impact", detail: "Consequently, patient incidence of uremic encephalopathy and systemic fluid overload was reduced, decreasing rehospitalization rates by 28% and demonstrating therapeutic efficacy as a destination bridge therapy." },
-        { label: "Methodological Critique", detail: "However, trial generalisability is restricted by a small cohort (n=45) and short 12-week observation window, warranting Phase III longitudinal survival monitoring." }
+        { label: "Mechanism & Clinical Context", detail: "Synthetic nucleoside-modified mRNA encapsulated in lipid nanoparticles (LNPs) directs ribosomal translation of target antigens while evading toll-like receptor (TLR) degradation (Karikó et al., 2020)." },
+        { label: "Clinical Trajectory Pivot", detail: "Originally engineered for personalized tumour neoantigen therapy in melanoma, the platform was rapidly adapted in response to SARS-CoV-2, transitioning from boutique oncology trials to global cohorts exceeding 40,000 participants (Polack et al., 2020)." },
+        { label: "Endpoint Comparison (Public Health vs Oncology)", detail: "While Phase III vaccine trials evaluated definitive public health endpoints (symptomatic COVID-19 prevention, yielding 95% efficacy), oncology trials rely primarily on surrogate immunogenicity markers such as IFN-γ CD8+ T-cell induction." },
+        { label: "Methodological Evaluation", detail: "The accelerated overlapping phase design enabled unprecedented deployment speed; however, median 2-month safety follow-ups in initial trials limited longitudinal detection of rare adverse events, necessitating ongoing Phase IV pharmacovigilance." },
+        { label: "NEA Standard Checklist", detail: "Third-person academic tone, quantitative data cited, mechanism clearly linked to outcome, two peer-reviewed Harvard citations embedded." }
       ]
     },
     hingeQuestions: [
       {
-        question: "Which sentence best exemplifies the 'Fact → Mechanism → Clinical Impact' framework?",
+        question: "Why was the pivot from oncology to COVID-19 vaccines for mRNA technology considered unprecedented in clinical trial history?",
         options: [
-          "The drug works really well for patients and lowers blood pressure nicely.",
-          "Patients receiving Drug X showed a 14 mmHg systolic drop (p<0.01) because competitive ACE inhibition reduces angiotensin II vasoconstriction, significantly reducing stroke incidence.",
-          "Angiotensin is bad for vessels and causes hypertension so doctors prescribe tablets.",
-          "Clinical trials prove that cardiovascular medicine is effective when prescribed regularly."
+          "mRNA vaccines were abandoned entirely in oncology",
+          "A platform undergoing small early-phase therapeutic oncology trials was rapidly scaled into massive Phase III preventative trials under compressed overlapping timelines",
+          "COVID-19 trials did not require any regulatory approvals",
+          "Oncology trials require no immune response"
         ],
         correctIndex: 1,
-        explanation: "Option B provides the quantitative Fact (14 mmHg drop, p<0.01), physiological Mechanism (competitive ACE inhibition prevents vasoconstriction), and Clinical Impact (reduced stroke incidence)."
+        explanation: "mRNA had only been tested in small therapeutic oncology cohorts before being deployed in global Phase III preventative trials with >40,000 patients."
+      },
+      {
+        question: "In a mock NEA methodology critique, why is it critical to distinguish between antibody titres and symptom prevention?",
+        options: [
+          "Antibody titres are irrelevant to immunology",
+          "Antibody titres are surrogate markers; high titres do not guarantee sterilising immunity or complete protection against symptomatic disease in all age cohorts",
+          "Symptom prevention can only be measured in animal models",
+          "Antibody titres cannot be measured quantitatively"
+        ],
+        correctIndex: 1,
+        explanation: "Surrogate biomarkers estimate biological response, whereas clinical disease prevention represents the true primary patient outcome."
       }
     ],
     examQuestion: {
-      question: "Using the stimulus data provided for the novel artificial cardiac assist device: (a) Synthesize the evidence to write a structured paragraph explaining its impact on left ventricular workload. (b) Identify two clinical limitations of the study design. [6 marks]",
+      question: "A student is writing their Mock NEA on mRNA platform technology. (a) Explain why mRNA platforms were rapidly adapted for COVID-19 despite earlier focus on oncology. (b) Critically evaluate two methodological challenges of evaluating surrogate endpoints in oncology compared to definitive endpoints in infectious disease. [6 marks]",
       marks: "6 marks",
       guidance: [
-        "Include quantitative Fact with correct units from stimulus data. [1 mark]",
-        "Explain physiological Mechanism (e.g. reduced afterload, decreased myocardial wall stress, lower myocardial oxygen demand). [2 marks]",
-        "Describe Clinical Impact on patient exercise tolerance or heart failure staging. [1 mark]",
-        "Critique Limitation 1: e.g. lack of blinding or small sample size reducing statistical power. [1 mark]",
-        "Critique Limitation 2: e.g. short follow-up duration failing to capture late device thrombosis or infection risks. [1 mark]"
+        "(a) Modular synthesis allowed rapid coding of the spike sequence once genomic data was published, leveraging pre-existing lipid nanoparticle delivery systems. [2 marks]",
+        "(b) Challenge 1: Surrogate endpoints (e.g. T-cell activation) do not directly prove tumour regression or extended progression-free survival. [2 marks]",
+        "(b) Challenge 2: Infectious disease trials use clear binary clinical endpoints (symptomatic infection: yes/no) across large populations, whereas tumour progression is heterogeneous and confounded by prior treatments. [2 marks]"
       ]
     },
     plenary: [
-      "The 'Fact → Mechanism → Clinical Impact' formula is your primary engine for scoring top-band marks in OCR Level 3 extended answers.",
-      "Every evaluative claim must be anchored to empirical evidence, statistical significance, and Harvard citations.",
-      "Next Lesson: Introductory Unit Synthesis — triangulating diagnostic evidence and personal target setting."
+      "mRNA platforms represent a modular biotechnology paradigm: from personalized neoantigen oncology to global preventative public health.",
+      "Ensure your Mock NEA draft integrates: 1) Mechanism, 2) Dataset comparison, 3) Methodological critique, and 4) At least two peer-reviewed Harvard citations.",
+      "Exit Task: Upload your working draft to the shared learning folder ahead of Lesson 7 Peer Review Workshop."
     ]
   },
   {
     number: 7,
     part: 2,
     teacher: "Matt",
-    deckId: "Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Target_Setting",
-    title: "Introductory Unit Synthesis: Diagnostic Profile & Target Setting",
-    focus: "Diagnostic Triangulation, Competency Profiling & SMART Target Setting",
-    deliverable: "Triangulate baseline diagnostic performance across recall, maths, microscopy, and writing to produce an individual RAG competence profile and NEA priorities.",
-    details: "Triangulation of baseline diagnostic evidence across knowledge recall, scientific maths, microscope practical competence, and academic writing/data interpretation to set individual learner targets and NEA skill priorities.",
+    deckId: "Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review",
+    title: "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop",
+    focus: "Standardisation Exemplars, Diagnostic Peer Review & Diagnostic Competency Profiling",
+    deliverable: "Perform structured peer review on Lesson 6 Mock NEA drafts using diagnostic rubrics and compile an individual competency diagnostic tracker.",
+    details: "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Lead: Matt. Standardisation & Exemplars: Review an anonymised exemplar mock NEA draft demonstrating high-level academic critique alongside a weaker draft that relies on uncritical, surface-level claims. Diagnostic Peer Review: Learners swap Lesson 6 drafts and use a structured diagnostic rubric assessing: Critical appraisal of the clinical trial data (depth of methodology critique); Academic objectivity and tone; Accuracy and consistency of Harvard referencing (both in-text and bibliographic). Diagnostic Profiling: Learners complete their individual diagnostic tracker, highlighting personal strengths and actionable targets in scientific writing and statistical evaluation.",
     starterQuestions: [
-      { q: "What does 'triangulation' mean in educational diagnostics?", a: "Cross-referencing multiple independent performance indicators (written recall, live practical skills, mathematical calculations, extended analysis) to construct an accurate competency profile." },
-      { q: "What are the four core competencies evaluated in this induction diagnostic?", a: "1. Core biological knowledge recall; 2. Quantitative scientific maths; 3. Laboratory microscopy competence; 4. Academic writing and data evaluation." },
-      { q: "What defines a SMART learning target in Level 3 vocational science?", a: "Specific, Measurable, Achievable, Relevant, and Time-bound (e.g. Master unit conversion and standard form calculation within 2 weeks)." },
-      { q: "Why is self-evaluation of experimental error critical before starting Unit F173 NEA?", a: "NEA criteria mandate independent identification of confounding variables, measurement uncertainties, and procedural limitations." },
-      { q: "How does a diagnostic RAG rating guide learner study allocation?", a: "Red (immediate intervention needed), Amber (requires consolidation and guided practice), Green (secure mastery; ready for extension)." },
-      { q: "State one high-priority skill for success in non-examined assessment (NEA).", a: "Accurate calibration and execution of analytical techniques with reproducible quantitative record-keeping." }
+      { q: "What is the primary pedagogical goal of a standardisation exercise before peer review?", a: "To calibrate evaluative judgements against defined grade criteria using contrasting high- and low-scoring exemplar drafts." },
+      { q: "What characterizes an 'uncritical, surface-level claim' in a biomedical literature review?", a: "Accepting published trial conclusions uncritically without interrogating sample power, control validity, surrogate endpoints, or sponsor bias." },
+      { q: "What three core criteria are evaluated in the Lesson 7 diagnostic peer-review rubric?", a: "1. Depth of clinical trial data and methodology critique; 2. Academic objectivity and tone; 3. Accuracy and consistency of Harvard referencing." },
+      { q: "How should academic objectivity and scientific tone be maintained in an NEA evaluation?", a: "By using impersonal third-person syntax, hedged modal verbs (e.g. 'evidence suggests'), and avoiding emotive adjectives." },
+      { q: "What is an individual diagnostic tracker in Level 3 Human Biology?", a: "A self-reflective profiling tool triangulating performance across recall, maths, microscopy, and writing to set SMART developmental targets." },
+      { q: "What makes peer review feedback 'actionable' for the Lesson 8 refinement clinic?", a: "Providing specific, concrete revisions (e.g. 'replace colloquial adjective with quantitative p-value' or 'add missing DOI to citation')." }
     ],
     objectives: {
-      knowledge: "Understand diagnostic triangulation across the 4 foundational pillars: Knowledge Recall, Scientific Maths, Microscopy Competence, and Academic Writing.",
-      application: "Compile individual performance metrics into a personalized RAG (Red/Amber/Green) diagnostic competency profile.",
-      evaluation: "Formulate individual SMART targets and prioritize practical skill development ahead of Unit F173 NEA coursework."
+      knowledge: "Understand standardisation benchmarks: contrasting high-level academic critique against uncritical surface-level claims.",
+      application: "Execute structured peer review using a diagnostic rubric assessing methodology critique, tone, and Harvard referencing.",
+      evaluation: "Triangulate diagnostic performance to construct an individual competency profile with actionable targets for Lesson 8 refinement."
     },
     terminology: [
-      { term: "Diagnostic Triangulation", def: "Synthesizing multiple independent assessments to form a robust, multi-dimensional view of learner strengths and deficits." },
-      { term: "RAG Competency Rating", def: "Red (needs structured intervention), Amber (needs consolidation), Green (autonomous mastery demonstrated)." },
-      { term: "SMART Target", def: "Specific, Measurable, Achievable, Relevant, and Time-bound developmental objectives." },
-      { term: "NEA Skill Priorities", def: "Practical laboratory and analytical proficiencies essential for succeeding in the Non-Examined Assessment components." }
+      { term: "Standardisation Exemplar", def: "An anonymised benchmark draft demonstrating concrete evidence of high- vs low-band performance against assessment rubrics." },
+      { term: "Diagnostic Peer Review", def: "Collaborative evaluation of peer work against explicit rubrics to diagnose methodological, syntactic, and referencing gaps." },
+      { term: "Academic Tone & Hedging", def: "Objective, non-emotive scientific expression using qualified claims ('the data indicates' rather than 'this proves without doubt')." },
+      { term: "Diagnostic Profiling Tracker", def: "A personal competency matrix identifying strengths, consolidation needs, and priority targets ahead of final NEA submission." }
     ],
     theoryPoints: [
-      "Pillar 1 - Knowledge Recall: Foundational cellular biology, organelle functions, and human physiology concepts sampled in the 30-mark baseline.",
-      "Pillar 2 - Scientific Maths: Metric conversions ($mm \to \mu m \to nm$), magnification formulas ($M=I/A$), standard form, percentage change, and graph trends.",
-      "Pillar 3 - Practical Competence: Microscope set-up, wet mount preparation (cheek/onion), biological drawing conventions, and scale calibration.",
-      "Pillar 4 - Academic Writing & Data Literacy: Interpreting RCT datasets, distinguishing SD from 95% CI, and using Fact $\to$ Mechanism $\to$ Clinical Impact structure."
+      "High-Level Critique vs Surface Claims: Top-band responses probe clinical trial methodology, confounders, and endpoints; weak responses simply summarise promotional abstracts.",
+      "The Three-Pillar Peer Review Rubric: Pillar 1: Depth of Clinical Data Appraisal; Pillar 2: Academic Objectivity & Tone; Pillar 3: Harvard Referencing Precision.",
+      "Constructive Feedback Protocol: State one diagnostic strength, two specific methodology/syntactic refinements, and one citation repair.",
+      "Triangulated Diagnostic Profiling: Triangulate baseline knowledge (L1), microscope skills (L2), mathematical graphing (L3), referencing (L4-5), and writing (L6)."
     ],
     workedExample: {
-      title: "Triangulating an Individual Diagnostic Profile",
-      subtitle: "Case Study: Learner A Performance Triangulation",
+      title: "Standardisation Clinic: High-Level Critique vs Surface-Level Draft",
+      subtitle: "Comparing exemplar extracts to calibrate peer review grading",
       steps: [
-        { label: "Pillar 1: Knowledge Recall", detail: "Score: 24/30 (80%) → GREEN. Secure understanding of organelle function and biological systems; minor misconception in bacterial ribosomes." },
-        { label: "Pillar 2: Scientific Maths", detail: "Score: 6/15 (40%) → RED. Struggled with $mm \to nm$ conversions and standard form; magnification calculation inverted." },
-        { label: "Pillar 3: Microscopy Practical", detail: "Competency: SECURE (AMBER). Slide prepared well without air bubbles; drawing missed horizontal label lines and scale bar." },
-        { label: "Pillar 4: Academic Writing", detail: "Score: 8/10 (80%) → GREEN. Fluent application of Fact $\to$ Mechanism $\to$ Clinical Impact; accurate Harvard in-text citation." },
-        { label: "Resulting SMART Action Plan", detail: "Target: 'Complete 10 unit conversion and magnification calculation drills weekly with tutor check-in by Friday Week 4.'" }
+        { label: "Draft A (Weak / Surface-Level)", detail: "'The Pfizer vaccine was amazing because it cured 95% of people and is much better than cancer treatments which don't work as well (Johnson, 2021). Doctors were very happy with this result.'" },
+        { label: "Critique of Draft A", detail: "Emotive language ('amazing'), factually inaccurate ('cured' vs prevented symptomatic disease), uncritical comparison, incomplete citation lacking peer-reviewed authority." },
+        { label: "Draft B (High-Level Academic Critique)", detail: "'Polack et al. (2020) reported 95.0% vaccine efficacy (95% CI: 90.3–97.6%) against symptomatic SARS-CoV-2 infection in a Phase III multinational trial (n=43,548). In contrast to oncology platforms measuring progression-free survival, this trial utilised a binary clinical primary endpoint. However, the median follow-up of 60 days post-dose two limited longitudinal characterisation of waning humoral immunity.'" },
+        { label: "Evaluation of Draft B", detail: "Quantitatively precise, includes confidence intervals, accurately distinguishes public health from oncology endpoints, objective tone, identifies methodological follow-up limitation." },
+        { label: "Peer Review Grading Calibrator", detail: "Award top marks only when claims are accompanied by quantitative bounds, mechanistic rationale, and balanced methodological critique." }
       ]
     },
     hingeQuestions: [
       {
-        question: "A learner scores 85% in cellular knowledge recall, but 40% in calculating eyepiece graticule calibration and 45% in interpreting clinical error bars. What should be their primary SMART target?",
+        question: "Which piece of peer feedback provides the most actionable guidance for an NEA draft?",
         options: [
-          "Reread the textbook chapters on organelle functions",
-          "Focus weekly intervention on magnification formulas (M=I/A), unit conversions, and statistical confidence interval interpretation",
-          "Retake the entire GCSE biology examination",
-          "Skip practical sessions to read clinical trial papers"
+          "Your writing looks pretty good, maybe write a bit more about mRNA",
+          "I liked your introduction",
+          "In paragraph 2, replace 'this drug worked great' with the exact ARR (2.1%) and explain how the lack of blinding may have biased adverse event reporting",
+          "Change the font to Arial"
+        ],
+        correctIndex: 2,
+        explanation: "Actionable feedback identifies the exact location, provides specific replacement data, and suggests a clear methodological critique."
+      },
+      {
+        question: "A peer's draft cites a news article instead of a primary trial paper for clinical efficacy. Under the rubric, how should this be classified?",
+        options: [
+          "Acceptable if the article has a recent date",
+          "A referencing deficit: the student must substitute the secondary media report with the primary peer-reviewed trial paper (e.g. NEJM / The Lancet)",
+          "An example of high-level synthesis",
+          "A minor formatting preference"
         ],
         correctIndex: 1,
-        explanation: "Targeted support must focus directly on the diagnosed deficiency: quantitative magnification mathematics and statistical data literacy."
+        explanation: "Secondary news reporting lacks peer-review rigor and must be replaced with primary trial citations in Level 3 NEA work."
       }
     ],
     examQuestion: {
-      question: "Evaluate how triangulating multiple assessment methods (written tests, live practical observation, mathematical problem-solving) provides a more valid diagnostic profile than a written test alone. [4 marks]",
+      question: "Evaluate the role of structured peer review and standardised exemplars in developing academic objectivity and analytical critique in biomedical students. [4 marks]",
       marks: "4 marks",
       guidance: [
-        "A written test only assesses theoretical recall and simulated problem-solving. [1 mark]",
-        "Practical observation directly verifies fine motor laboratory competency, aseptic technique, and equipment safety that cannot be tested on paper. [1 mark]",
-        "Mathematical problem-solving isolates quantitative numeracy from verbal literacy constraints. [1 mark]",
-        "Triangulation prevents false negatives/positives, ensuring interventions target true procedural or conceptual deficits. [1 mark]"
+        "Standardised exemplars calibrate students' understanding of top-band vs weak criteria, removing ambiguity about expected academic rigor. [1 mark]",
+        "Critiquing peer work forces learners to identify methodological gaps (e.g. confounding factors, unverified claims) that they often overlook in their own drafts. [1 mark]",
+        "Peer review reinforces objective third-person scientific tone and prevents informal colloquialisms. [1 mark]",
+        "Diagnostic rubrics provide concrete actionable targets that directly drive iterative draft refinement before final submission. [1 mark]"
       ]
     },
     plenary: [
-      "Your diagnostic profile is a roadmap for excellence: turn Red domains into Amber, and Amber into Green before NEA submission.",
-      "File your completed Diagnostic Profile and SMART Targets in your practical portfolio.",
-      "Next Lesson: Transition to Biomedical Science & Genetics — curriculum overview, NEA scheduling, and lab safety."
+      "Peer review is standard scientific practice: even Nobel Prize-winning papers undergo rigorous scrutiny by peers.",
+      "Ensure your peer review feedback slip contains at least two specific, actionable methodology and citation targets.",
+      "Complete your Diagnostic Profile Tracker and file it in your NEA working portfolio ahead of Lesson 8."
     ]
   },
   {
     number: 8,
     part: 2,
     teacher: "Matt",
-    deckId: "Lesson_08_Transition_to_Biomedical_Science_and_Genetics",
-    title: "Transition to Biomedical Science & Genetics",
-    focus: "Curriculum Roadmap, Assessment Routes, Lab Safety & Genetics Unit Bridge",
-    deliverable: "Map the linear qualification progression, sign off diagnostic laboratory reagent COSHH protocols, and master prerequisites for the Genetics Unit.",
-    details: "Introduction to the linear curriculum structure: Genetics unit → Biomedical Techniques unit → Fundamentals of Human Biology unit. Overview of assessment routes, NEA task schedule, health & safety briefing for diagnostic reagents, and transition to Genetics Unit topics.",
+    deckId: "Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics",
+    title: "Mock NEA Finalisation & Transition to Biomedical Science & Genetics",
+    focus: "Draft Refinement Clinic, Cohort Debrief & Transition to Molecular Genetics",
+    deliverable: "Finalize the mock NEA section based on Lesson 7 peer feedback and complete the curriculum transition bridge to molecular genetics.",
+    details: "Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Lead: Matt. Draft Refinement Clinic: Learners implement the feedback received in Lesson 7, polishing their mock NEA section to final standard. Cohort Synthesis & Debrief: Address common cohort trends: tightening up the distinction between correlation and causation in clinical endpoints, and ensuring precise citation formatting. Curriculum Transition Bridge: Connect the mRNA case study directly to Biomedical Science & Genetics: How synthetic modified mRNA bypasses intracellular innate immune sensors (e.g., TLR pathways); Ribosomal translation, antigen processing, and the transition into molecular genetics and cellular pathology.",
     starterQuestions: [
-      { q: "Outline the three core units comprising the AAQ Human Biology qualification.", a: "1. Genetics & Gene Expression; 2. Biomedical Techniques (F173); 3. Fundamentals of Human Biology (F170)." },
-      { q: "What is the assessment distinction between mandatory exam units and NEA units?", a: "Exam units are externally assessed via timed terminal papers; NEA units are internally completed coursework tasks validated by OCR moderation." },
-      { q: "What is a COSHH assessment in a biomedical teaching laboratory?", a: "Control of Substances Hazardous to Health: systematic identification of hazardous reagents, exposure routes, and necessary risk mitigations." },
-      { q: "Name three standard personal protective equipment (PPE) requirements for diagnostic reagents.", a: "Lab coat (fastened), safety spectacles/goggles, and nitrile protective gloves." },
-      { q: "What core genetic concept connects Unit 1 to the upcoming Genetics unit?", a: "Phenotypic variation arising from the complex interplay of polygenic inheritance and environmental influences." },
-      { q: "Why is a strict NEA task schedule essential for Year 12 learners?", a: "NEA tasks require multi-week practical optimization, clinical record tracking, and sequential milestone submission deadlines." }
+      { q: "Why is the distinction between correlation and causation paramount when evaluating clinical endpoints?", a: "Correlation indicates a statistical association between variables, whereas causation proves that one variable directly produces the clinical change without confounding factors." },
+      { q: "How does synthetic modified mRNA (incorporating N1-methylpseudouridine) evade intracellular innate immune sensors?", a: "Unmodified in vitro transcribed mRNA activates toll-like receptors (TLR3, TLR7, TLR8) and RIG-I, triggering ribonuclease degradation and translational arrest; nucleoside modifications prevent sensor binding." },
+      { q: "Once mRNA is delivered into the host cytosol, which cellular organelle translates it into antigen proteins?", a: "Host cell ribosomes (80S complexes in the cytoplasm), translating mRNA codons via tRNA-delivered amino acids." },
+      { q: "What happens to the synthesized viral/tumour antigen after ribosomal translation?", a: "It is processed by the proteasome and presented on cell-surface MHC Class I/II molecules to activate cytotoxic T-cells and helper T-cells." },
+      { q: "State two primary improvements required during today's Draft Refinement Clinic.", a: "Implement Lesson 7 peer feedback targets and eliminate any remaining informal syntax or citation errors." },
+      { q: "Which upcoming unit does this induction directly bridge into?", a: "Unit F171: Genetics, Gene Expression, and Molecular Pathology." }
     ],
     objectives: {
-      knowledge: "Understand the linear three-unit curriculum structure: Genetics → Biomedical Techniques → Fundamentals of Human Biology.",
-      application: "Apply COSHH regulations and risk assessments to hazardous diagnostic reagents, stains, and biological specimens.",
-      evaluation: "Evaluate the assessment milestones and bridge foundational knowledge into the upcoming Genetics and Phenotypic Variation unit."
+      knowledge: "Understand the biochemical mechanism of modified mRNA: escaping TLR innate sensors, cytosolic ribosomal translation, and MHC antigen presentation.",
+      application: "Refine and finalize the Mock NEA draft, implementing peer diagnostic feedback and ensuring rigorous Harvard citations.",
+      evaluation: "Evaluate the conceptual transition from applied clinical immunology to fundamental molecular genetics and cellular pathology."
     },
     terminology: [
-      { term: "Linear Curriculum Structure", def: "Sequential course progression ensuring prerequisite molecular genetics concepts precede applied biomedical laboratory techniques." },
-      { term: "Non-Examined Assessment (NEA)", def: "Internally assessed, OCR-moderated practical and research coursework contributing directly to the final qualification grade." },
-      { term: "COSHH Regulations", def: "UK legal framework mandating employers and schools to control health hazards from hazardous chemical substances." },
-      { term: "Phenotypic Variation", def: "Observable physical and biochemical differences among individuals resulting from genetic alleles, environment, and epigenetics." }
+      { term: "Correlation vs Causation", def: "Distinguishing an observed mutual relationship between clinical variables from a verified direct causal mechanism." },
+      { term: "N1-Methylpseudouridine", def: "A modified nucleoside that replaces uridine in therapeutic mRNA, preventing detection by pattern-recognition receptors (TLRs)." },
+      { term: "Toll-Like Receptors (TLR3/7/8)", def: "Pattern-recognition receptors that detect foreign pathogen-associated molecular patterns (like viral single-stranded RNA)." },
+      { term: "Curriculum Bridge (Genetics)", def: "The conceptual link connecting synthetic mRNA translation to transcription, codon translation, mutations, and phenotypic variation." }
     ],
     theoryPoints: [
-      "The Qualification Roadmap: Year 12 Term 1: Genetics & Gene Regulation → Term 2: Unit F173 Biomedical Techniques & NEA → Term 3: Fundamentals of Human Biology & Pathology.",
-      "Assessment Architecture: 50% Externally examined written assessments (Unit F170 / Unit F171) + 50% Internally assessed NEA coursework portfolio (Unit F173).",
-      "Diagnostic Reagent Safety: Methylene blue (eye irritant), iodine solution (corrosive/staining), ethanol (flammable), biological tissues (microbial infection risk). Always use appropriate PPE and bleach disposal.",
-      "The Genetics Bridge: Upcoming Lesson 1 explores continuous vs discontinuous variation, Gaussian normal distribution curves, and polygenic inheritance."
+      "Draft Refinement Clinic: Systematically implement Lesson 7 rubric targets—upgrade informal vocabulary, cite exact statistical bounds, and align reference lists.",
+      "The Correlation vs Causation Fallacy: A decrease in viral load concurrent with symptom relief does not automatically prove causality without randomised control arms.",
+      "The Molecular Genetics Bridge: Synthetic modified mRNA must survive long enough to reach cytosolic 80S ribosomes without triggering PKR (protein kinase R) or TLR activation.",
+      "Transition to Unit F171: Foundational knowledge now bridges directly into DNA replication, transcription, translation fidelity, genetic alleles, and epigenetic control."
     ],
     workedExample: {
-      title: "COSHH Risk Assessment for Diagnostic Laboratory",
-      subtitle: "Standard Level 3 Risk Assessment Matrix",
+      title: "Refining the NEA Draft & Bridging to Molecular Genetics",
+      subtitle: "Polishing a clinical paragraph and linking to intracellular translation",
       steps: [
-        { label: "Substance / Hazard", detail: "Methylene blue stain (0.5% aqueous solution) & Methylene blue powder. Hazard: Irritant to eyes and mucous membranes; stains skin." },
-        { label: "Route of Exposure", detail: "Accidental eye splash, skin absorption, or ingestion." },
-        { label: "Risk Rating before Controls", detail: "Likelihood: Medium; Severity: Moderate → Overall Risk: Medium." },
-        { label: "Control Measures", detail: "Wear chemical splash goggles (BS EN 166), nitrile gloves, and buttoned lab coat. Dispense via dropper bottles in secondary containment trays." },
-        { label: "Emergency Response", detail: "Eye splash: Irrigate immediately with sterile eyewash solution for 10 minutes. Skin contact: Wash with warm soap and water." }
+        { label: "Peer Feedback Implemented", detail: "Peer note: 'Paragraph 3 implies mRNA enters the nucleus and causes mutations. Clarify that mRNA acts strictly in the cytosol.'" },
+        { label: "Refined Text", detail: "'Exogenous synthetic mRNA does not integrate into the host genome; it remains strictly cytoplasmic where host 80S ribosomes translate the encoded open reading frame into immunogenic target proteins (Sahin et al., 2020).'" },
+        { label: "Biochemical Sensor Evasion", detail: "'Incorporation of N1-methylpseudouridine suppresses Toll-like receptor (TLR3, TLR7/8) activation, preventing interferon-mediated translation inhibition and allowing sustained polypeptide synthesis.'" },
+        { label: "Correlation vs Causation Refinement", detail: "'High neutralising antibody titres correlated with reduced hospitalisations (r=0.88), and placebo-controlled Phase III trials confirmed this relationship to be directly causal (p < 0.001).'" },
+        { label: "Final Standard Sign-off", detail: "Objective tone verified, Harvard citations cross-checked with bibliography, and ready for portfolio archive." }
       ]
     },
     hingeQuestions: [
       {
-        question: "When transitioning to the Genetics Unit, what is the critical distinction between continuous and discontinuous phenotypic variation?",
+        question: "Why does therapeutic mRNA require nucleoside modification (e.g. N1-methylpseudouridine) before clinical administration?",
         options: [
-          "Continuous variation has distinct non-overlapping categories; discontinuous is quantitative",
-          "Continuous variation exhibits a quantitative numerical spectrum shaped by polygenes and environment; discontinuous exhibits discrete non-overlapping phenotypic categories controlled by 1–2 genes",
-          "Continuous variation is only found in plants",
-          "Discontinuous variation is caused exclusively by epigenetic factors"
+          "To make the mRNA double-stranded like DNA",
+          "To prevent unmodified single-stranded RNA from triggering innate pattern-recognition receptors (TLRs) that destroy the mRNA and halt translation",
+          "To allow the mRNA to permanently integrate into host chromosomes",
+          "To change the genetic code from RNA to protein"
         ],
         correctIndex: 1,
-        explanation: "Continuous variation (e.g. human height) shows a normal distribution spectrum; discontinuous variation (e.g. ABO blood groups) consists of discrete distinct categories."
+        explanation: "Unmodified in vitro transcribed mRNA triggers severe innate immune sensors (TLR3, TLR7/8) causing immediate translational arrest and inflammatory degradation."
+      },
+      {
+        question: "How does the mRNA case study connect directly to the upcoming Genetics unit?",
+        options: [
+          "It shows how genetic codons in mRNA are translated by ribosomes into functional polypeptides, bridging into gene expression and mutation biology",
+          "It proves genetics is no longer needed in medicine",
+          "It shows all diseases are caused by viruses",
+          "It replaces microscopy completely"
+        ],
+        correctIndex: 0,
+        explanation: "mRNA translation on ribosomes is the core of gene expression (the Central Dogma), linking directly into molecular genetics and transcription."
       }
     ],
     examQuestion: {
-      question: "Explain why standard operating procedures in a biomedical diagnostic laboratory require both a risk assessment (COSHH) and a defined sample chain-of-custody protocol. [4 marks]",
-      marks: "4 marks",
+      question: "Explain how synthetic modified mRNA illustrates the Central Dogma of molecular biology, and describe how intracellular innate immune mechanisms would destroy unmodified mRNA before translation could occur. [6 marks]",
+      marks: "6 marks",
       guidance: [
-        "COSHH ensures technician safety by identifying toxic/biohazardous reagents and establishing mandatory PPE/engineering controls. [1 mark]",
-        "COSHH mitigates environmental contamination and hazardous chemical spill emergencies. [1 mark]",
-        "Chain-of-custody protocols provide an unbroken auditable record of sample collection, handling, and storage. [1 mark]",
-        "This prevents sample misidentification, cross-contamination, or degradation, guaranteeing diagnostic accuracy for patient clinical care. [1 mark]"
+        "Central Dogma: Exogenous mRNA serves as the direct transcriptional intermediate, translated by host ribosomes into specific antigen polypeptides. [2 marks]",
+        "Intracellular Sensors: Unmodified foreign ssRNA is recognized by pattern-recognition receptors (Toll-like receptors TLR7/8 in endosomes; RIG-I/MDA5 in cytosol). [2 marks]",
+        "Consequences: Sensor activation triggers Type I interferon cascades, activating 2'-5'-oligoadenylate synthetase and RNase L, which degrade mRNA and phosphorylate eIF2α to shut down all translation. [2 marks]"
       ]
     },
     plenary: [
-      "You have completed the 2-week Induction and Baseline Diagnostic unit for OCR Level 3 AAQ Human Biology!",
-      "Review your Unit Roadmap and confirm all laboratory safety agreements are signed in your lab portfolio.",
-      "Next Unit: Genetics & Genomics — starting with Lesson 1: Phenotypic Variation and Environmental Interactions."
+      "Congratulations on completing the 2-week Induction and Baseline Diagnostic Unit for OCR Level 3 AAQ Human Biology!",
+      "Your refined Mock NEA draft and Diagnostic Competency Profile are now archived in your student portfolio.",
+      "Next Unit: Unit F171 Genetics, Gene Expression & Molecular Pathology — beginning with Lesson 1: Phenotypic Variation and Environmental Interactions."
     ]
   }
 ];
