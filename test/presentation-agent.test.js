@@ -1511,4 +1511,52 @@ test("print media styles suppress skip links, headers, footers, and accessibilit
   assert.match(printCss, /visibility:\s*hidden\s*!important/);
 });
 
+test("settings dropdown menu contains speech, theme, sidebar, and dashboard action buttons with gear icon", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+
+  // Settings dropdown container and trigger with gear icon
+  assert.match(html, /id="settingsDropdownWrap"/);
+  assert.match(html, /id="settingsDropdownBtn"/);
+  assert.match(html, /class="[^"]*settings-dropdown-btn[^"]*"/);
+  assert.match(html, /class="[^"]*settings-svg-icon[^"]*"/);
+  assert.match(html, /aria-controls="settingsDropdownMenu"/);
+  assert.match(html, /aria-haspopup="menu"/);
+
+  // Settings dropdown menu element
+  assert.match(html, /id="settingsDropdownMenu"/);
+  assert.match(html, /role="menu"/);
+  assert.match(html, /aria-labelledby="settingsDropdownBtn"/);
+
+  // Contains the 4 action items from the screenshot
+  assert.match(html, /id="speechReadBtn"[^>]*class="[^"]*settings-dropdown-item/);
+  assert.match(html, /id="themeToggleBtn"[^>]*class="[^"]*settings-dropdown-item/);
+  assert.match(html, /id="toggleSidebarBtn"[^>]*class="[^"]*settings-dropdown-item/);
+  assert.match(html, /id="dashboardBtn"[^>]*class="[^"]*settings-dropdown-item/);
+
+  // Icons present
+  assert.match(html, /🔊/);
+  assert.match(html, /🌙/);
+  assert.match(html, /▥/);
+  assert.match(html, /📊/);
+
+  // CSS rules
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(css, /\.settings-dropdown-wrap/);
+  assert.match(css, /\.settings-dropdown-btn/);
+  assert.match(css, /\.settings-dropdown-menu/);
+  assert.match(css, /\.settings-dropdown-item/);
+  assert.match(css, /\.settings-item-icon-box/);
+  assert.match(css, /\.sound-box/);
+  assert.match(css, /\.theme-box/);
+  assert.match(css, /\.sidebar-box/);
+  assert.match(css, /\.dashboard-box/);
+
+  // JS handlers
+  const js = await fs.readFile(path.join(ROOT_DIR, "public", "js", "app.js"), "utf-8");
+  assert.match(js, /initSettingsDropdown\(\)/);
+  assert.match(js, /settingsDropdownBtn/);
+  assert.match(js, /settingsDropdownMenu/);
+});
+
+
 

@@ -340,13 +340,100 @@ async function main() {
   });
 
   // =========================================================================
-  // 5. SLIDE 8: Real-World Applications (3 Builds: Patient A, Patient B, Patient C)
+  // 5. SLIDE 8: Structure Determines Function (4 Builds: Blueprint, Assembly, Cargo, Conformation)
   // =========================================================================
-  console.log("\n--- Processing Slide 8: Real-World Applications (3 builds) ---");
-  const slide8Source = path.join(SLIDES_DIR, "slide_05.png");
+  console.log("\n--- Processing Slide 8: Structure Determines Function (4 builds) ---");
+  const slide8Source = path.join(SLIDES_DIR, "slide_08_structure_function.png");
   await page.goto("file://" + slide8Source);
 
   const slide8Builds = await page.evaluate(async () => {
+    const img = document.querySelector("img");
+    const w = 1376;
+    const h = 768;
+
+    const bgY = 226;
+    const bgH = h - bgY;
+
+    function fillBg(ctx, rect) {
+      ctx.fillStyle = "rgb(22, 34, 50)";
+      ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+    }
+
+    function attenuate(ctx, rect) {
+      fillBg(ctx, rect);
+      ctx.save();
+      ctx.filter = "grayscale(100%) opacity(35%)";
+      ctx.drawImage(img, rect.x, rect.y, rect.w, rect.h, rect.x, rect.y, rect.w, rect.h);
+      ctx.restore();
+    }
+
+    // Build 1: Reveal Col 1 (Blueprint / Nucleus). Omit Cols 2, 3, 4
+    const b1 = document.createElement("canvas");
+    b1.width = w; b1.height = h;
+    const c1 = b1.getContext("2d");
+    c1.drawImage(img, 0, 0);
+    fillBg(c1, { x: 350, y: bgY, w: w - 350, h: bgH });
+
+    // Build 2: Col 1 attenuated. Reveal Col 2 (Assembly Line / Cytosol). Omit Cols 3, 4
+    const b2 = document.createElement("canvas");
+    b2.width = w; b2.height = h;
+    const c2 = b2.getContext("2d");
+    c2.drawImage(img, 0, 0);
+    attenuate(c2, { x: 40, y: bgY, w: 310, h: bgH });
+    fillBg(c2, { x: 678, y: bgY, w: w - 678, h: bgH });
+
+    // Build 3: Cols 1 & 2 attenuated. Reveal Col 3 (Cargo / tRNA). Omit Col 4
+    const b3 = document.createElement("canvas");
+    b3.width = w; b3.height = h;
+    const c3 = b3.getContext("2d");
+    c3.drawImage(img, 0, 0);
+    attenuate(c3, { x: 40, y: bgY, w: 638, h: bgH });
+    fillBg(c3, { x: 995, y: bgY, w: w - 995, h: bgH });
+
+    // Build 4: Cols 1, 2, 3 attenuated. Reveal Col 4 (Protein Conformation / Shape & Function)
+    const b4 = document.createElement("canvas");
+    b4.width = w; b4.height = h;
+    const c4 = b4.getContext("2d");
+    c4.drawImage(img, 0, 0);
+    attenuate(c4, { x: 40, y: bgY, w: 955, h: bgH });
+
+    return {
+      b1: b1.toDataURL("image/png"),
+      b2: b2.toDataURL("image/png"),
+      b3: b3.toDataURL("image/png"),
+      b4: b4.toDataURL("image/png")
+    };
+  });
+
+  await saveAndRegisterBuilds({
+    manifest,
+    slideNumber: 8,
+    sourceImage: slide8Source,
+    sourceFileName: "slide_08_structure_function.png",
+    buildsData: slide8Builds,
+    strategy: "process",
+    labels: [
+      "Build 1: Reveal 1. The Blueprint (Nucleus: DNA triplet code transcription to mRNA)",
+      "Build 2: Reveal 2. The Assembly Line (Cytosol: Ribosome reads mRNA codons to assemble polypeptide)",
+      "Build 3: Reveal 3. The Cargo (tRNA: Amino acid activation and sequence delivery)",
+      "Build 4: Reveal 4. Protein Conformation (Shape & Function: Altering code changes 3D protein shape)"
+    ],
+    prompts: [
+      "Create cumulative full-slide still-image build 1 of 4 for slide 8: \"Structure Determines Function\". Show now: Slide header and Column 1 (The Blueprint / Nucleus: DNA triplet code transcription to mRNA). Temporarily omit: Columns 2, 3, and 4.",
+      "Create cumulative full-slide still-image build 2 of 4 for slide 8: \"Structure Determines Function\". Show now: Slide header, Column 1 (attenuated monochrome), and Column 2 (The Assembly Line / Cytosol: Ribosome translation). Temporarily omit: Columns 3 and 4.",
+      "Create cumulative full-slide still-image build 3 of 4 for slide 8: \"Structure Determines Function\". Show now: Slide header, Columns 1 & 2 (attenuated monochrome), and Column 3 (The Cargo / tRNA: Amino acid sequence delivery). Temporarily omit: Column 4.",
+      "Create cumulative full-slide still-image build 4 of 4 for slide 8: \"Structure Determines Function\". Show now: Slide header, Columns 1, 2, 3 (attenuated monochrome), and Column 4 (Protein Conformation: Changing code changes 3D tertiary protein shape and function)."
+    ]
+  });
+
+  // =========================================================================
+  // 6. SLIDE 9: Real-World Applications (3 Builds: Patient A, Patient B, Patient C)
+  // =========================================================================
+  console.log("\n--- Processing Slide 9: Real-World Applications (3 builds) ---");
+  const slide9Source = path.join(SLIDES_DIR, "slide_05.png");
+  await page.goto("file://" + slide9Source);
+
+  const slide9Builds = await page.evaluate(async () => {
     const img = document.querySelector("img");
     const w = 1376;
     const h = 768;
@@ -398,10 +485,10 @@ async function main() {
 
   await saveAndRegisterBuilds({
     manifest,
-    slideNumber: 8,
-    sourceImage: slide8Source,
+    slideNumber: 9,
+    sourceImage: slide9Source,
     sourceFileName: "slide_05.png",
-    buildsData: slide8Builds,
+    buildsData: slide9Builds,
     strategy: "component-reveal",
     labels: [
       "Build 1: Reveal Patient File A (Case #892-A: Endocrine / Metabolic profiling)",
@@ -409,9 +496,9 @@ async function main() {
       "Build 3: Reveal Patient File C (Case #892-C: Hematological / Circulatory profiling)"
     ],
     prompts: [
-      "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, and Patient File A (Case #892-A). Temporarily omit: Patient Files B and C.",
-      "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient File A (attenuated monochrome), and Patient File B (Case #892-B). Temporarily omit: Patient File C.",
-      "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient Files A & B (attenuated monochrome), and Patient File C (Case #892-C)."
+      "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, and Patient File A (Case #892-A). Temporarily omit: Patient Files B and C.",
+      "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient File A (attenuated monochrome), and Patient File B (Case #892-B). Temporarily omit: Patient File C.",
+      "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"Industry Applications: NEA Briefing\". Show now: Header, scenario briefing, Patient Files A & B (attenuated monochrome), and Patient File C (Case #892-C)."
     ]
   });
 

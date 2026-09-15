@@ -1524,7 +1524,7 @@ function appendInteractiveGrid(slide) {
 
     card.type = "button";
     card.id = `qa_card_${cell.id}`;
-    card.className = `qa-card-overlay ${revealed ? `revealed reveal-${revealMode}` : revealMode === "blur" ? "masked masked-blur" : "masked"}`;
+    card.className = `qa-card-overlay ${revealed ? `revealed reveal-${revealMode}` : revealMode === "blur" ? "masked masked-blur" : revealMode === "overlay" ? "masked masked-overlay" : "masked"}`;
     card.style.left = `${bounds.x}%`;
     card.style.top = `${bounds.y}%`;
     card.style.width = `${bounds.w}%`;
@@ -1546,6 +1546,10 @@ function appendInteractiveGrid(slide) {
       prompt.textContent = "Click to reveal";
       content.appendChild(prompt);
     } else if (revealMode === "overlay") {
+      const tag = document.createElement("span");
+      tag.className = "qa-answer-tag";
+      tag.textContent = "Answer";
+      content.appendChild(tag);
       const answer = document.createElement("span");
       answer.className = "qa-answer-text";
       answer.textContent = cell.expectedAnswer || cell.answer || "Answer revealed";
@@ -2820,7 +2824,20 @@ function applyTheme(theme) {
   document.body.classList.toggle("theme-light", !isDark);
 
   if (themeToggleBtn) {
-    themeToggleBtn.textContent = isDark ? "☀️" : "🌙";
+    const iconSpan = document.getElementById("themeToggleIcon");
+    const labelSpan = document.getElementById("themeToggleLabel");
+    const descSpan = document.getElementById("themeToggleDesc");
+    const statusPill = document.getElementById("themeStatusPill");
+
+    if (iconSpan) {
+      iconSpan.textContent = isDark ? "☀️" : "🌙";
+      if (labelSpan) labelSpan.textContent = isDark ? "Light Theme" : "Dark Theme";
+      if (descSpan) descSpan.textContent = isDark ? "Switch to light mode" : "Switch to dark mode";
+      if (statusPill) statusPill.textContent = isDark ? "Dark" : "Light";
+    } else {
+      themeToggleBtn.textContent = isDark ? "☀️" : "🌙";
+    }
+
     themeToggleBtn.setAttribute(
       "title",
       isDark ? "Switch to Light theme" : "Switch to Dark theme"
@@ -2830,6 +2847,89 @@ function applyTheme(theme) {
       isDark ? "Switch to Light theme" : "Switch to Dark theme"
     );
   }
+}
+
+function initSettingsDropdown() {
+  const settingsDropdownWrap = document.getElementById("settingsDropdownWrap");
+  const settingsDropdownBtn = document.getElementById("settingsDropdownBtn");
+  const settingsDropdownMenu = document.getElementById("settingsDropdownMenu");
+
+  if (!settingsDropdownBtn || !settingsDropdownMenu) return;
+
+  function closeMenu() {
+    if (settingsDropdownMenu.classList.contains("hidden")) return;
+    settingsDropdownMenu.classList.add("hidden");
+    settingsDropdownBtn.setAttribute("aria-expanded", "false");
+    settingsDropdownBtn.classList.remove("active");
+  }
+
+  function openMenu() {
+    // Close other popovers/dropdowns if open
+    const analyticsExportMenu = document.getElementById("analyticsExportMenu");
+    analyticsExportMenu?.classList.add("hidden");
+
+    settingsDropdownMenu.classList.remove("hidden");
+    settingsDropdownBtn.setAttribute("aria-expanded", "true");
+    settingsDropdownBtn.classList.add("active");
+
+    const firstItem = settingsDropdownMenu.querySelector(".settings-dropdown-item");
+    firstItem?.focus();
+  }
+
+  function toggleMenu() {
+    if (settingsDropdownMenu.classList.contains("hidden")) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  }
+
+  settingsDropdownBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  settingsDropdownMenu.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (settingsDropdownWrap && !settingsDropdownWrap.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  settingsDropdownMenu.addEventListener("keydown", (e) => {
+    const items = Array.from(
+      settingsDropdownMenu.querySelectorAll(".settings-dropdown-item:not([disabled])")
+    );
+    const currentIndex = items.indexOf(document.activeElement);
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const nextIndex = (currentIndex + 1) % items.length;
+      items[nextIndex]?.focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const prevIndex = (currentIndex - 1 + items.length) % items.length;
+      items[prevIndex]?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      items[0]?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      items[items.length - 1]?.focus();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      closeMenu();
+      settingsDropdownBtn.focus();
+    }
+  });
+
+  const dashboardLink = document.getElementById("dashboardBtn");
+  dashboardLink?.addEventListener("click", () => {
+    closeMenu();
+  });
 }
 
 let interactiveSyncChannel = null;
@@ -4755,6 +4855,7 @@ async function startSlideshow() {
 async function init() {
   initTheme();
   initVisualImpairmentMode();
+  initSettingsDropdown();
   initMlpExport();
   initSlideshowSync();
   setupEventListeners();
@@ -7246,6 +7347,13 @@ function setupEventListeners() {
       closeCognitiveModal();
     } else if (event.key === "Escape" && analyticsModal && !analyticsModal.classList.contains("hidden")) {
       closeAnalyticsModal();
+    } else if (event.key === "Escape" && !document.getElementById("settingsDropdownMenu")?.classList.contains("hidden")) {
+      const sMenu = document.getElementById("settingsDropdownMenu");
+      const sBtn = document.getElementById("settingsDropdownBtn");
+      sMenu?.classList.add("hidden");
+      sBtn?.setAttribute("aria-expanded", "false");
+      sBtn?.classList.remove("active");
+      sBtn?.focus();
     } else if (
       event.key === "Escape" &&
       activeSidebarTab === "editor" &&
