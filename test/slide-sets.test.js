@@ -118,6 +118,11 @@ test("index.html contains slide set and lesson selectors without visible duplica
 
   // Verify accessible screen reader heading exists
   assert.match(html, /id="srDeckTitle"\s+class="sr-only"/);
+
+  // Verify selector-group styling ensures same height for slide set and lesson selector containers
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(css, /\.selector-group\s*\{[^}]*height:\s*36px;/);
+  assert.match(css, /\.selector-group\.slide-set-group/);
 });
 
 test("GET /api/decks/:deckId automatically extracts unextracted deck from available sequence", async () => {

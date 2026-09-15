@@ -28,8 +28,8 @@
           <span class="brand-title">Vibe Deck Agent</span>
         </div>
         <div class="header-selectors" role="group" aria-label="Presentation navigation">
-          <div class="selector-group" style="padding-right: 0;">
-            <button id="slideSetBtn" class="deck-select slide-set-select selector-label" type="button" aria-haspopup="dialog" aria-expanded="false" style="cursor: pointer; padding: 0; outline: none; text-transform: none; font-size: 0.9rem; margin-right: 8px;">
+          <div class="selector-group slide-set-group">
+            <button id="slideSetBtn" class="deck-select slide-set-select" type="button" aria-haspopup="dialog" aria-expanded="false">
               Sets
             </button>
           </div>
@@ -1092,6 +1092,7 @@
   <!-- Firebase Google Auth Gate Modal -->
   <div id="authGateModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
     <div class="modal-card auth-modal-card">
+      <button id="closeAuthGateModalBtn" class="close-btn auth-modal-close-btn" type="button" aria-label="Close sign in modal">&times;</button>
       <div class="auth-modal-header">
         <div class="auth-brand-badge">
           <span class="auth-brand-icon">✦</span>
@@ -1113,6 +1114,12 @@
         <p class="auth-footer-note">All teaching timetable schedules, slide dwell analytics, and interactive answers are synced with Cloud Firestore.</p>
       </div>
     </div>
+  </div>
+
+  <!-- Presentation Mode Fullscreen Prompt Banner -->
+  <div id="presentationFsBanner" class="presentation-fs-banner hidden" role="button" tabindex="0" aria-label="Enter full screen">
+    <span class="fs-banner-icon">⛶</span>
+    <span>Click anywhere for full screen (F)</span>
   </div>
 
   <!-- Sets Modal -->

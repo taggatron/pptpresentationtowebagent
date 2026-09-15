@@ -459,6 +459,7 @@ body.slideshow-display #setsModal,
 body.slideshow-display #cognitiveModal,
 body.slideshow-display #viSettingsModal,
 body.slideshow-display #mlpExportModal,
+body.slideshow-display #authGateModal,
 body.slideshow-display .stage-video-toggle-btn {
   display: none !important;
 }
@@ -598,7 +599,10 @@ body.theme-dark .brand {
   background: var(--bg-input);
   border: var(--glass-border);
   border-radius: 8px;
-  padding: 0.15rem 0.35rem 0.15rem 0.6rem;
+  padding: 0 0.4rem 0 0.6rem;
+  height: 36px;
+  min-height: 36px;
+  box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
@@ -606,6 +610,10 @@ body.theme-dark .brand {
 .selector-group:focus-within {
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+.selector-group.slide-set-group {
+  padding: 0 0.75rem;
 }
 
 .selector-label {
@@ -622,7 +630,7 @@ body.theme-dark .brand {
   background: transparent;
   color: var(--text-main);
   border: none;
-  padding: 0.35rem 0.35rem;
+  padding: 0 0.35rem;
   font-size: 0.85rem;
   font-family: var(--font-family);
   cursor: pointer;
@@ -630,11 +638,26 @@ body.theme-dark .brand {
   transition: all 0.2s ease;
   width: auto;
   max-width: 220px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
 }
 
 .slide-set-select {
   font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  text-transform: none;
   max-width: 230px;
+  padding: 0;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
 }
 
 .deck-select option {
@@ -8281,6 +8304,42 @@ body.theme-dark .user-profile-chip {
   overflow: hidden;
 }
 
+.auth-modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-muted, #64748b);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.auth-modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-main, #0f172a);
+  transform: scale(1.05);
+}
+
+body.theme-dark .auth-modal-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+body.theme-dark .auth-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
 .auth-modal-header {
   margin-bottom: 1.5rem;
 }
@@ -8357,5 +8416,51 @@ body.theme-dark .auth-subtitle {
   margin-top: 1.25rem;
   line-height: 1.4;
 }
+
+/* Presentation Screen Fullscreen Hint Banner */
+.presentation-fs-banner {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 10000;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+  user-select: none;
+  animation: pulseFsBanner 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseFsBanner {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.45);
+  }
+}
+
+.presentation-fs-banner:hover {
+  background: rgba(30, 41, 59, 0.96);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.presentation-fs-banner.hidden {
+  display: none !important;
+}
+
 
 

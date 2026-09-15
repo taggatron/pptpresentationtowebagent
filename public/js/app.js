@@ -3003,6 +3003,23 @@ function handleInteractiveSyncMessage(data) {
   }
 }
 
+async function requestPresentationFullscreen() {
+  if (typeof document === "undefined") return false;
+  if (document.fullscreenElement || document.webkitIsFullScreen) return true;
+  try {
+    if (document.documentElement.requestFullscreen) {
+      await document.documentElement.requestFullscreen();
+      return true;
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+      return true;
+    }
+  } catch (err) {
+    console.info("[Presentation] Fullscreen request deferred or waiting for user interaction:", err?.message || err);
+  }
+  return false;
+}
+
 function initSlideshowSync() {
   if (typeof BroadcastChannel === "function") {
     try {
@@ -3055,6 +3072,10 @@ function initSlideshowSync() {
     presenterMode = false;
     document.body.classList.remove("presenter-mode");
     document.body.classList.add("student-mode");
+    document.body.classList.add("slideshow-display");
+
+    // Immediately trigger fullscreen attempt in presentation window
+    requestPresentationFullscreen();
 
     // Request initial state from controller
     broadcastSlideshowMessage({ type: "REQUEST_STATE" });
@@ -3221,9 +3242,15 @@ function handleSlideshowSyncMessage(event) {
         if (data.deckId && (!currentDeck || currentDeck.id !== data.deckId)) {
           loadDeck(data.deckId, Number.isFinite(data.slideIndex) ? data.slideIndex : 0).then(() => {
             applySync();
+            if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+              requestPresentationFullscreen();
+            }
           });
         } else {
           applySync();
+          if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+            requestPresentationFullscreen();
+          }
         }
         break;
       }
@@ -3280,6 +3307,11 @@ function handleSlideshowSyncMessage(event) {
         try {
           window.close();
         } catch (_) {}
+        break;
+      }
+
+      case "REQUEST_FULLSCREEN": {
+        requestPresentationFullscreen();
         break;
       }
     }
@@ -4802,23 +4834,41 @@ async function startSlideshow() {
     const top = secondaryScreen.availTop ?? secondaryScreen.top ?? 0;
     const width = secondaryScreen.availWidth ?? secondaryScreen.width ?? window.screen.width;
     const height = secondaryScreen.availHeight ?? secondaryScreen.height ?? window.screen.height;
-    const features = `left=${left},top=${top},width=${width},height=${height},menubar=no,toolbar=no,location=no,status=no,resizable=yes`;
+    const features = `popup=yes,left=${left},top=${top},width=${width},height=${height},menubar=no,toolbar=no,location=no,status=no,resizable=yes`;
 
-    const presentationUrl = `${window.location.origin}${window.location.pathname}?presentation=1&deck=${encodeURIComponent(currentDeck?.id || "")}&slide=${currentSlideIndex}`;
+    const presentationUrl = `${window.location.origin}${window.location.pathname}?presentation=1&fullscreen=1&deck=${encodeURIComponent(currentDeck?.id || "")}&slide=${currentSlideIndex}`;
     presentationWindowRef = window.open(presentationUrl, "VibeDeckPresentationWindow", features);
 
     if (presentationWindowRef) {
       setSlideshowButtonActive(true);
 
+      const triggerChildFullscreen = () => {
+        try {
+          if (presentationWindowRef && !presentationWindowRef.closed) {
+            presentationWindowRef.focus?.();
+            presentationWindowRef.postMessage({ type: "REQUEST_FULLSCREEN" }, "*");
+          }
+        } catch (_) {}
+      };
+
+      // Staged triggering to ensure the child window receives activation/message
+      triggerChildFullscreen();
+
       // Attempt fullscreen on secondary screen when loaded and broadcast state
       presentationWindowRef.addEventListener("load", async () => {
+        triggerChildFullscreen();
         try {
           if (presentationWindowRef.document?.documentElement?.requestFullscreen) {
             await presentationWindowRef.document.documentElement.requestFullscreen({ screen: secondaryScreen });
           }
         } catch (_) {}
         broadcastSlideshowSync("SYNC_STATE");
+        setTimeout(triggerChildFullscreen, 100);
       });
+
+      setTimeout(triggerChildFullscreen, 150);
+      setTimeout(triggerChildFullscreen, 400);
+      setTimeout(triggerChildFullscreen, 800);
 
       setTimeout(() => {
         broadcastSlideshowSync("SYNC_STATE");
@@ -7341,7 +7391,9 @@ function setupEventListeners() {
       return;
     }
 
-    if (event.key === "Escape" && mlpModal && !mlpModal.classList.contains("hidden")) {
+    if (event.key === "Escape" && !document.getElementById("authGateModal")?.classList.contains("hidden")) {
+      document.getElementById("authGateModal")?.classList.add("hidden");
+    } else if (event.key === "Escape" && mlpModal && !mlpModal.classList.contains("hidden")) {
       closeMlpExportModal();
     } else if (event.key === "Escape" && viModal && !viModal.classList.contains("hidden")) {
       closeViSettingsModal();
@@ -7410,11 +7462,45 @@ function setupEventListeners() {
     document.body.classList.remove("presenter-mode");
     presenterMode = false;
 
-    // Clicking anywhere on the presentation stage requests fullscreen
-    slideStage?.addEventListener("click", () => {
-      if (!document.fullscreenElement && !document.webkitIsFullScreen) {
-        document.documentElement.requestFullscreen?.().catch(() => {});
+    const fsBanner = document.getElementById("presentationFsBanner");
+
+    const updateFsBannerVisibility = () => {
+      const isFS = Boolean(document.fullscreenElement || document.webkitIsFullScreen);
+      if (fsBanner) {
+        fsBanner.classList.toggle("hidden", isFS);
       }
+    };
+
+    document.addEventListener("fullscreenchange", updateFsBannerVisibility);
+    document.addEventListener("webkitfullscreenchange", updateFsBannerVisibility);
+
+    // Initial fullscreen attempt
+    requestPresentationFullscreen().then(() => {
+      updateFsBannerVisibility();
+    });
+
+    // Re-attempt upon window load
+    window.addEventListener("load", () => {
+      requestPresentationFullscreen().then(updateFsBannerVisibility);
+    });
+
+    // Clicking anywhere in the presentation window requests fullscreen
+    window.addEventListener("click", () => {
+      if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+        requestPresentationFullscreen();
+      }
+    }, { capture: true });
+
+    // Pressing F or Space in presentation window requests fullscreen
+    window.addEventListener("keydown", (e) => {
+      if (e.key.toLowerCase() === "f" || (!document.fullscreenElement && e.key === " ")) {
+        requestPresentationFullscreen();
+      }
+    }, { capture: true });
+
+    fsBanner?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      requestPresentationFullscreen();
     });
 
     window.addEventListener("beforeunload", () => {

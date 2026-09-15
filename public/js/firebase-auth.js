@@ -164,6 +164,7 @@ export function initAuthBindings() {
   const modalSignInBtn = document.getElementById("authModalGoogleSignInBtn");
   const signOutBtn = document.getElementById("userSignOutBtn");
   const authModal = document.getElementById("authGateModal");
+  const closeAuthBtn = document.getElementById("closeAuthGateModalBtn");
 
   signInBtn?.addEventListener("click", () => {
     openAuthModal();
@@ -177,8 +178,12 @@ export function initAuthBindings() {
     logoutUser();
   });
 
+  closeAuthBtn?.addEventListener("click", () => {
+    closeAuthModal();
+  });
+
   authModal?.addEventListener("click", (e) => {
-    if (e.target === authModal && currentAuthUser) {
+    if (e.target === authModal) {
       closeAuthModal();
     }
   });

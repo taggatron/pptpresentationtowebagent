@@ -657,4 +657,36 @@ test("Presentation window on extended screen receives INTERACTIVE_SYNC and forwa
   assert.deepEqual(forwardedMsg.state.placements, { factor_1: "abiotic", factor_2: "biotic" });
 });
 
+test("Auth gate modal contains close button and is properly structured in index.html", async () => {
+  const htmlPath = path.join(ROOT_DIR, "public", "index.html");
+  const html = await fs.readFile(htmlPath, "utf-8");
+
+  assert.ok(
+    html.includes('id="closeAuthGateModalBtn"'),
+    "index.html must contain #closeAuthGateModalBtn for closing the auth modal"
+  );
+  assert.ok(
+    html.includes('id="presentationFsBanner"'),
+    "index.html must contain #presentationFsBanner for presentation full screen fallback"
+  );
+});
+
+test("Multi-display presentation launch uses popup=yes and fullscreen=1 flag", async () => {
+  const source = await fs.readFile(APP_PATH, "utf-8");
+
+  assert.ok(
+    source.includes("popup=yes"),
+    "Multi-display features string must specify popup=yes to eliminate browser omnibox"
+  );
+  assert.ok(
+    source.includes("fullscreen=1"),
+    "Presentation URL must include fullscreen=1 to instruct presentation view to enter fullscreen"
+  );
+  assert.ok(
+    source.includes('type: "REQUEST_FULLSCREEN"'),
+    "Controller must broadcast REQUEST_FULLSCREEN to presentation window"
+  );
+});
+
+
 
