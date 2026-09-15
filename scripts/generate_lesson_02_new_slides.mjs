@@ -60,7 +60,7 @@ async function main() {
   .slide-container {
     width: 1376px;
     height: 768px;
-    padding: 26px 44px 20px 44px;
+    padding: 30px 48px 24px 48px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -72,7 +72,7 @@ async function main() {
   .header {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
   }
   .badge-row {
     display: flex;
@@ -89,27 +89,26 @@ async function main() {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 9999px;
     border: 1px solid #bae6fd;
     font-family: "Plus Jakarta Sans", sans-serif;
   }
   .header-meta {
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 600;
     color: #64748b;
-    letter-spacing: 0.02em;
   }
   .title {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 800;
     color: #091e42;
     letter-spacing: -0.025em;
     line-height: 1.15;
   }
   .subtitle {
-    font-size: 14px;
+    font-size: 15px;
     color: #475569;
     font-weight: 500;
   }
@@ -118,27 +117,27 @@ async function main() {
   .pillars-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: 20px;
     flex: 1;
-    margin: 16px 0 16px 0;
+    margin: 18px 0 16px 0;
   }
 
   .pillar-card {
     background: #ffffff;
-    border-radius: 14px;
+    border-radius: 16px;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 
   .pillar-header {
-    padding: 12px 14px;
+    padding: 14px 16px;
     color: #ffffff;
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    justify-content: space-between;
   }
   .card-p1 .pillar-header { background: linear-gradient(135deg, #091e42 0%, #0369a1 100%); }
   .card-p2 .pillar-header { background: linear-gradient(135deg, #0f172a 0%, #0d9488 100%); }
@@ -147,22 +146,24 @@ async function main() {
 
   .pillar-title {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 14.5px;
+    font-size: 16px;
     font-weight: 800;
     display: flex;
     align-items: center;
-    gap: 7px;
-    letter-spacing: -0.01em;
+    gap: 8px;
   }
-  .pillar-badge {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.85;
+  .step-num {
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+    font-family: "JetBrains Mono", monospace;
   }
+
   .pillar-divider {
-    height: 3px;
+    height: 4px;
     width: 100%;
   }
   .card-p1 .pillar-divider { background: linear-gradient(90deg, #0284c7, #38bdf8); }
@@ -171,66 +172,74 @@ async function main() {
   .card-p4 .pillar-divider { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
 
   .pillar-body {
-    padding: 13px 13px;
+    padding: 18px 16px 14px 16px;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 10px;
+    gap: 14px;
     background: #ffffff;
   }
 
-  .point-list {
-    list-style: none;
+  /* Concise Action Directives */
+  .action-block {
     display: flex;
     flex-direction: column;
-    gap: 7px;
-    font-size: 12px;
-    color: #334155;
-    line-height: 1.42;
+    gap: 10px;
   }
-  .point-list li {
-    display: flex;
-    gap: 6px;
-    align-items: flex-start;
-  }
-  .point-list li::before {
-    content: "•";
-    color: #0284c7;
-    font-weight: bold;
-    font-size: 15px;
-    line-height: 1;
-  }
-  .card-p2 .point-list li::before { color: #0d9488; }
-  .card-p3 .point-list li::before { color: #6366f1; }
-  .card-p4 .point-list li::before { color: #d97706; }
-  .point-list strong {
+  .action-main {
+    font-size: 16px;
+    font-weight: 800;
     color: #0f172a;
-    font-weight: 600;
+    line-height: 1.35;
+    font-family: "Plus Jakarta Sans", sans-serif;
   }
+  .action-detail {
+    font-size: 13px;
+    font-weight: 500;
+    color: #475569;
+    line-height: 1.45;
+  }
+  .action-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: "JetBrains Mono", monospace;
+    width: fit-content;
+    margin-top: 2px;
+  }
+  .card-p1 .action-tag { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+  .card-p2 .action-tag { background: #f0fdfa; color: #0f766e; border: 1px solid #99f6e4; }
+  .card-p3 .action-tag { background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; }
+  .card-p4 .action-tag { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
 
   /* Technical Checkpoint Area */
   .checkpoint-box {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 9px;
-    padding: 9px 10px;
+    border-radius: 12px;
+    padding: 12px 14px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    min-height: 105px;
+    justify-content: space-between;
+    height: 165px;
     position: relative;
+    box-sizing: border-box;
   }
-  .card-p1 .checkpoint-box { border-left: 3px solid #0284c7; }
-  .card-p2 .checkpoint-box { border-left: 3px solid #0d9488; }
-  .card-p3 .checkpoint-box { border-left: 3px solid #6366f1; }
-  .card-p4 .checkpoint-box { border-left: 3px solid #d97706; }
+  .card-p1 .checkpoint-box { border-left: 4px solid #0284c7; }
+  .card-p2 .checkpoint-box { border-left: 4px solid #0d9488; }
+  .card-p3 .checkpoint-box { border-left: 4px solid #6366f1; }
+  .card-p4 .checkpoint-box { border-left: 4px solid #d97706; }
 
   .checkpoint-label {
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     font-family: "JetBrains Mono", monospace;
   }
   .card-p1 .checkpoint-label { color: #0284c7; }
@@ -239,28 +248,27 @@ async function main() {
   .card-p4 .checkpoint-label { color: #d97706; }
 
   .checkpoint-question {
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
     color: #1e293b;
     line-height: 1.35;
   }
 
   .interactive-hint {
-    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3px 0;
+    margin-top: auto;
   }
   .interactive-hint span {
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     color: #64748b;
     background: #f1f5f9;
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 3px 8px;
+    border-radius: 5px;
     border: 1px dashed #cbd5e1;
   }
 
@@ -268,7 +276,7 @@ async function main() {
   .footer-banner {
     background: #091e42;
     border-radius: 10px;
-    padding: 10px 18px;
+    padding: 11px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -292,7 +300,7 @@ async function main() {
     font-family: "JetBrains Mono", monospace;
   }
   .banner-text {
-    font-size: 12px;
+    font-size: 12.5px;
     color: #f1f5f9;
     font-weight: 500;
   }
@@ -324,94 +332,94 @@ async function main() {
     <div class="header">
       <div class="badge-row">
         <div class="badge">Starter Practical Challenge</div>
-        <div class="header-meta">Unit F173: Biomedical Techniques • 05:00 min Timed Lab Routine</div>
+        <div class="header-meta">5-Minute Lab Routine • 100× & 400× Focus</div>
       </div>
-      <h1 class="title">Starter Practical Challenge: Microscope Setup & Focus Calibration</h1>
-      <p class="subtitle">Diagnostic Laboratory Baseline: Standard Operating Procedure for Premade Slide Optical Alignment</p>
+      <h1 class="title">Starter: Focus on Your Premade Slide</h1>
+      <p class="subtitle">Complete the 4 steps below to set up your microscope and focus on your stained slide.</p>
     </div>
 
     <!-- 4 Pillars Grid -->
     <div class="pillars-grid">
       
-      <!-- Phase 1 -->
+      <!-- Step 1 -->
       <div class="pillar-card card-p1">
         <div class="pillar-header">
-          <div class="pillar-badge">Phase 01</div>
-          <div class="pillar-title">⚙️ Bench Setup & Safety</div>
+          <div class="pillar-title">⚙️ Setup & Power</div>
+          <div class="step-num">01</div>
         </div>
         <div class="pillar-divider"></div>
         <div class="pillar-body">
-          <ul class="point-list">
-            <li><strong>Bench Position:</strong> Place microscope ≥10 cm from bench edge; route power lead safely to avoid trip hazards.</li>
-            <li><strong>Illumination:</strong> Switch on lamp; adjust rheostat dial to moderate intensity to protect bulb & retina.</li>
-            <li><strong>Optics Inspection:</strong> Polish ocular & objective lenses gently using dedicated lint-free lens paper only.</li>
-          </ul>
+          <div class="action-block">
+            <div class="action-main">Plug in and turn on light.</div>
+            <div class="action-detail">Wipe lenses gently with lens paper only. Place base ≥10cm from edge.</div>
+            <div class="action-tag">💡 Illuminator ON</div>
+          </div>
           <div class="checkpoint-box">
-            <div class="checkpoint-label">Checkpoint 1: Optical QA</div>
-            <div class="checkpoint-question">Why must optical lenses only be wiped with dedicated lens paper rather than paper towels?</div>
+            <div class="checkpoint-label">Checkpoint 1</div>
+            <div class="checkpoint-question">Why use lens paper only?</div>
             <div class="interactive-hint"><span>Click to reveal answer</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Phase 2 -->
+      <!-- Step 2 -->
       <div class="pillar-card card-p2">
         <div class="pillar-header">
-          <div class="pillar-badge">Phase 02</div>
-          <div class="pillar-title">🔬 Mount & Align Slide</div>
+          <div class="pillar-title">🔬 Mount & Align</div>
+          <div class="step-num">02</div>
         </div>
         <div class="pillar-divider"></div>
         <div class="pillar-body">
-          <ul class="point-list">
-            <li><strong>Low-Power Objective:</strong> Rotate revolving nosepiece until 4× or 10× clicks firmly into the optical light path.</li>
-            <li><strong>Stage Securing:</strong> Place premade slide coverslip-up on stage; secure with mechanical caliper arm.</li>
-            <li><strong>Beam Centering:</strong> Turn coaxial X-Y stage knobs to position stained specimen in the illuminated center.</li>
-          </ul>
+          <div class="action-block">
+            <div class="action-main">Click 10× lens into place.</div>
+            <div class="action-detail">Clip premade slide onto stage and center specimen over light beam.</div>
+            <div class="action-tag">🔍 10× Low Power</div>
+          </div>
           <div class="checkpoint-box">
-            <div class="checkpoint-label">Checkpoint 2: Optical QA</div>
-            <div class="checkpoint-question">Why must initial slide orientation and focusing always begin on the lowest power objective?</div>
+            <div class="checkpoint-label">Checkpoint 2</div>
+            <div class="checkpoint-question">Why start on lowest power (10×)?</div>
             <div class="interactive-hint"><span>Click to reveal answer</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Phase 3 -->
+      <!-- Step 3 -->
       <div class="pillar-card card-p3">
         <div class="pillar-header">
-          <div class="pillar-badge">Phase 03</div>
-          <div class="pillar-title">🎯 Coarse & Fine Focus</div>
+          <div class="pillar-title">🎯 Focus Safely</div>
+          <div class="step-num">03</div>
         </div>
         <div class="pillar-divider"></div>
         <div class="pillar-body">
-          <ul class="point-list">
-            <li><strong>Side Elevation:</strong> View from the side at stage level; use coarse focus knob to elevate stage close to lens safely.</li>
-            <li><strong>Ocular Descent:</strong> Look through eyepiece; turn coarse focus so stage descends until specimen comes into view.</li>
-            <li><strong>Fine Detail:</strong> Use fine focus knob (1/4 turns) to sharpen cytological borders and nuclear chromatin.</li>
-          </ul>
+          <div class="action-block">
+            <div class="action-main">Look from side to raise stage.</div>
+            <div class="action-detail">Then look into eyepiece and lower stage slowly until focused.</div>
+            <div class="action-tag">👀 Side View First</div>
+          </div>
           <div class="checkpoint-box">
-            <div class="checkpoint-label">Checkpoint 3: Hazard Control</div>
-            <div class="checkpoint-question">Why is using the coarse focus knob strictly prohibited when operating under the 40× objective?</div>
+            <div class="checkpoint-label">Checkpoint 3</div>
+            <div class="checkpoint-question">Why look from the side first?</div>
             <div class="interactive-hint"><span>Click to reveal answer</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Phase 4 -->
+      <!-- Step 4 -->
       <div class="pillar-card card-p4">
         <div class="pillar-header">
-          <div class="pillar-badge">Phase 04</div>
-          <div class="pillar-title">✨ High-Power Resolution</div>
+          <div class="pillar-title">✨ 40× High Power</div>
+          <div class="step-num">04</div>
         </div>
         <div class="pillar-divider"></div>
         <div class="pillar-body">
-          <ul class="point-list">
-            <li><strong>Parfocal Transition:</strong> Center cellular target; rotate nosepiece to 40× high-dry objective (400× total).</li>
-            <li><strong>Fine Focus ONLY:</strong> High-dry working distance is &lt;0.5 mm; sharpen purely with fine focus knob.</li>
-            <li><strong>Aperture Contrast:</strong> Adjust condenser iris diaphragm to eliminate glare and maximize edge contrast.</li>
-          </ul>
+          <div class="action-block">
+            <div class="action-main">Switch to 40× objective.</div>
+            <div class="action-detail">Sharpen image using FINE FOCUS only (never touch coarse focus!).</div>
+            <div class="action-tag">⚠️ Fine Focus Only</div>
+          </div>
           <div class="checkpoint-box">
-            <div class="checkpoint-label">Checkpoint 4: Quality Audit</div>
-            <div class="checkpoint-question">What optical adjustment should be made if cellular boundaries appear washed out with low contrast?</div>
+            <div class="checkpoint-label">Checkpoint 4</div>
+            <div class="checkpoint-question">Why no coarse focus at 40×?</div>
             <div class="interactive-hint"><span>Click to reveal answer</span></div>
           </div>
         </div>
@@ -422,8 +430,8 @@ async function main() {
     <!-- Bottom Callout Banner -->
     <div class="footer-banner">
       <div class="banner-left">
-        <div class="banner-pill">Clinical QA Rule</div>
-        <div class="banner-text"><strong>Zero Collision Protocol:</strong> Always look from the side when raising the stage; never focus downwards toward the slide while looking through the eyepiece.</div>
+        <div class="banner-pill">Golden Rule</div>
+        <div class="banner-text"><strong>Zero Collision Protocol:</strong> Always look from the side when raising the stage. Never use coarse focus at 40×.</div>
       </div>
       <div class="banner-right">
         <svg class="gemini-spark" viewBox="0 0 24 24"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
@@ -877,7 +885,7 @@ async function main() {
   // New Slide 3 Entry
   const slide3ManifestEntry = {
     number: 3,
-    title: "Starter Practical Challenge: Microscope Setup & Focus Calibration (Premade Slide)",
+    title: "Starter: Focus on Your Premade Slide",
     imageFileName: "slide_02b_microscope_setup_premade_slide.png",
     imageUrl: "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
     sourceMediaPath: null,
@@ -885,40 +893,40 @@ async function main() {
     interactiveType: "custom_reveals",
     starterQuestions: [
       {
-        q: "Checkpoint 1: Why must optical lenses only be wiped with dedicated lens paper rather than standard paper towels?",
-        a: "Standard paper towels contain abrasive cellulose wood-pulp fibers that scratch anti-reflective lens coatings; optical lens tissue is non-abrasive and lint-free."
+        q: "Why use lens paper only?",
+        a: "Paper towels scratch delicate anti-reflective lens coatings. Lens paper is non-abrasive and lint-free."
       },
       {
-        q: "Checkpoint 2: Why must initial slide orientation and focusing always begin on the lowest power objective?",
-        a: "Lowest power offers the widest field of view and largest depth of field, enabling rapid specimen location and centering while preventing slide collision."
+        q: "Why start on lowest power (10x)?",
+        a: "Lowest power provides the widest field of view to easily find and center the specimen."
       },
       {
-        q: "Checkpoint 3: Why is using the coarse focus knob strictly prohibited when operating under the 40x objective?",
-        a: "High-dry lenses have working distances under 0.5 mm; coarse movement risks crushing the glass coverslip, damaging the specimen, and cracking the front objective lens."
+        q: "Why look from the side when raising?",
+        a: "Looking from the side stops the objective lens from colliding with and crushing the glass slide."
       },
       {
-        q: "Checkpoint 4: What optical adjustment should be made if cellular boundaries appear washed out and low contrast?",
-        a: "Narrow the condenser iris diaphragm aperture to decrease beam glare and increase optical contrast and depth of focus."
+        q: "Why no coarse focus at 40x?",
+        a: "Working distance is <0.5 mm. Coarse focus moves too fast, risking crushing the slide and cracking the lens."
       }
     ],
     interactiveCells: [
       {
         id: "starter_focus_chk_1",
         bounds: {
-          x: 3.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 3.5,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
         answerBounds: {
-          x: 3.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 3.5,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
-        question: "Checkpoint 1: Why must optical lenses only be wiped with dedicated lens paper rather than standard paper towels?",
-        expectedAnswer: "Standard paper towels contain abrasive cellulose wood-pulp fibers that scratch anti-reflective lens coatings; optical lens tissue is non-abrasive and lint-free.",
-        answer: "Standard paper towels contain abrasive cellulose wood-pulp fibers that scratch anti-reflective lens coatings; optical lens tissue is non-abrasive and lint-free.",
+        question: "Why use lens paper only?",
+        expectedAnswer: "Paper towels scratch delicate anti-reflective lens coatings. Lens paper is non-abrasive and lint-free.",
+        answer: "Paper towels scratch delicate anti-reflective lens coatings. Lens paper is non-abrasive and lint-free.",
         overlayAnswer: true,
         revealMode: "overlay",
         confidence: 1
@@ -926,20 +934,20 @@ async function main() {
       {
         id: "starter_focus_chk_2",
         bounds: {
-          x: 27.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 27.1,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
         answerBounds: {
-          x: 27.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 27.1,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
-        question: "Checkpoint 2: Why must initial slide orientation and focusing always begin on lowest power?",
-        expectedAnswer: "Lowest power offers the widest field of view and largest depth of field, enabling rapid specimen location and centering while preventing slide collision.",
-        answer: "Lowest power offers the widest field of view and largest depth of field, enabling rapid specimen location and centering while preventing slide collision.",
+        question: "Why start on lowest power (10x)?",
+        expectedAnswer: "Lowest power provides the widest field of view to easily find and center the specimen.",
+        answer: "Lowest power provides the widest field of view to easily find and center the specimen.",
         overlayAnswer: true,
         revealMode: "overlay",
         confidence: 1
@@ -947,20 +955,20 @@ async function main() {
       {
         id: "starter_focus_chk_3",
         bounds: {
-          x: 51.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 50.7,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
         answerBounds: {
-          x: 51.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 50.7,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
-        question: "Checkpoint 3: Why is using the coarse focus knob strictly prohibited when operating under the 40x objective?",
-        expectedAnswer: "High-dry lenses have working distances under 0.5 mm; coarse movement risks crushing the glass coverslip, damaging the specimen, and cracking the front objective lens.",
-        answer: "High-dry lenses have working distances under 0.5 mm; coarse movement risks crushing the glass coverslip, damaging the specimen, and cracking the front objective lens.",
+        question: "Why look from the side when raising?",
+        expectedAnswer: "Looking from the side stops the objective lens from colliding with and crushing the glass slide.",
+        answer: "Looking from the side stops the objective lens from colliding with and crushing the glass slide.",
         overlayAnswer: true,
         revealMode: "overlay",
         confidence: 1
@@ -968,20 +976,20 @@ async function main() {
       {
         id: "starter_focus_chk_4",
         bounds: {
-          x: 75.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 74.3,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
         answerBounds: {
-          x: 75.2,
-          y: 65.5,
-          w: 22.4,
-          h: 17.5
+          x: 74.3,
+          y: 62.5,
+          w: 22.1,
+          h: 20.0
         },
-        question: "Checkpoint 4: What optical adjustment should be made if cellular boundaries appear washed out and low contrast?",
-        expectedAnswer: "Narrow the condenser iris diaphragm aperture to decrease beam glare and increase optical contrast and depth of focus.",
-        answer: "Narrow the condenser iris diaphragm aperture to decrease beam glare and increase optical contrast and depth of focus.",
+        question: "Why no coarse focus at 40x?",
+        expectedAnswer: "Working distance is <0.5 mm. Coarse focus moves too fast, risking crushing the slide and cracking the lens.",
+        answer: "Working distance is <0.5 mm. Coarse focus moves too fast, risking crushing the slide and cracking the lens.",
         overlayAnswer: true,
         revealMode: "overlay",
         confidence: 1

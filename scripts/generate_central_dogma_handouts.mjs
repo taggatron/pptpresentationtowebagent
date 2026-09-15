@@ -32,7 +32,7 @@ async function prepareAssets() {
     await fs.writeFile(path.join(assetsDir, name), Buffer.from(dataUrl.replace(/^data:image\/png;base64,/, ''), 'base64'));
   }
 
-  // Pure isolated icons
+  // Crop pure glowing icons
   await crop('slide_08_gemini_slide_8_1_process.png', { x: 95, y: 345, w: 180, h: 180 }, 'pure_icon_1.png');
   await crop('slide_08_gemini_slide_8_2_process.png', { x: 430, y: 345, w: 170, h: 170 }, 'pure_icon_2.png');
   await crop('slide_08_gemini_slide_8_3_process.png', { x: 750, y: 345, w: 170, h: 170 }, 'pure_icon_3.png');
@@ -59,15 +59,8 @@ async function buildAllHandouts() {
   const s83B64 = await imageToBase64(path.join(slidesDir, 'slide_08_gemini_slide_8_3_process.png'));
   const s84B64 = await imageToBase64(path.join(slidesDir, 'slide_08_gemini_slide_8_4_process.png'));
 
-  // =========================================================================
-  // 1. MASTER 2-PAGE STUDENT STUDY GUIDE & EXAM WORKSHEET
-  // =========================================================================
-  const masterHtml = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>The Central Dogma & Molecular Causality — Student Handout</title>
-  <style>
+  // Common CSS Styles shared across all handouts
+  const commonCss = `
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
 
     @page {
@@ -254,7 +247,7 @@ async function buildAllHandouts() {
       font-weight: 700;
     }
 
-    /* Diagram Section - Large & Crisp */
+    /* Diagram Section */
     .diagram-section {
       margin-top: 3.5px;
       background: #090e17;
@@ -286,7 +279,7 @@ async function buildAllHandouts() {
 
     .diagram-img-wrap {
       width: 100%;
-      height: 60mm;
+      height: 52mm;
       border-radius: 4px;
       overflow: hidden;
       background: #0a111a;
@@ -418,7 +411,6 @@ async function buildAllHandouts() {
       color: #0f172a;
     }
 
-    /* Key Terms Tags inside each card */
     .stage-terms-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -461,15 +453,28 @@ async function buildAllHandouts() {
       padding-top: 2.5px;
       font-size: 6.5px;
       color: #475569;
+      background: #f1f5f9;
+      padding: 3px 5px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .stage-card.stage-4 .stage-check-prompt {
+      background: #ffedd5;
+      border-color: #fed7aa;
+      color: #9a3412;
     }
 
     .stage-check-prompt strong {
       color: #0f172a;
     }
+    .stage-card.stage-4 .stage-check-prompt strong {
+      color: #c2410c;
+    }
 
     .stage-check-line {
       border-bottom: 1px dashed #94a3b8;
-      height: 9px;
+      height: 10px;
       margin-top: 1px;
     }
 
@@ -539,9 +544,7 @@ async function buildAllHandouts() {
       color: #0f172a;
     }
 
-    /* ============================================================
-       PAGE 2: Molecular Causality & Exam Mastery
-       ============================================================ */
+    /* Page 2 Styles */
     .page-2-header {
       display: flex;
       justify-content: space-between;
@@ -597,7 +600,6 @@ async function buildAllHandouts() {
       font-weight: 700;
     }
 
-    /* 6-Step Causal Chain */
     .causal-section {
       margin-top: 3.5px;
       background: #f8fafc;
@@ -668,7 +670,6 @@ async function buildAllHandouts() {
       color: #475569;
     }
 
-    /* Tertiary Bonding Matrix */
     .bonds-matrix-section {
       margin-top: 3.5px;
       display: grid;
@@ -699,7 +700,6 @@ async function buildAllHandouts() {
       color: #334155;
     }
 
-    /* Level 3 Exam Question Box */
     .exam-box {
       margin-top: 3.5px;
       border: 1.5px solid #0f172a;
@@ -785,7 +785,6 @@ async function buildAllHandouts() {
       height: 9.5px;
     }
 
-    /* Self Assessment Checklist */
     .checklist-section {
       margin-top: 3.5px;
       background: #f0fdf4;
@@ -827,7 +826,6 @@ async function buildAllHandouts() {
       flex-shrink: 0;
     }
 
-    /* Examiner Bar */
     .examiner-bar {
       margin-top: 3.5px;
       background: #fffbeb;
@@ -844,15 +842,158 @@ async function buildAllHandouts() {
       color: #b45309;
       font-weight: 800;
     }
-  </style>
-</head>
-<body>
 
-  <!-- ============================================================
-       PAGE 1: PROCESS ARCHITECTURE & THE CENTRAL DOGMA
-       ============================================================ -->
+    /* Slide Companion Row Styles */
+    .slide-units-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+      margin-top: 3mm;
+      flex: 1;
+    }
+
+    .slide-unit {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 7px;
+      padding: 4.5mm 5.5mm;
+      background: #f8fafc;
+      display: grid;
+      grid-template-columns: 96mm 1fr;
+      gap: 5mm;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      flex: 1;
+    }
+
+    .slide-unit.highlight-unit {
+      border-color: #fdba74;
+      background: #fffaf5;
+    }
+
+    .slide-visual-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 3.5px;
+    }
+
+    .slide-img-box {
+      width: 100%;
+      height: 53mm;
+      border-radius: 5px;
+      overflow: hidden;
+      background: #090e17;
+      border: 1px solid #1e293b;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+    }
+
+    .slide-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
+
+    .slide-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.2px;
+    }
+
+    .slide-badge {
+      font-weight: 800;
+      padding: 1.5px 5px;
+      border-radius: 3px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .badge-b1 { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
+    .badge-b2 { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+    .badge-b3 { background: #ccfbf1; color: #0d9488; border: 1px solid #99f6e4; }
+    .badge-b4 { background: #ffedd5; color: #ea580c; border: 1px solid #fed7aa; }
+
+    .slide-label-text {
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .slide-notes-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 3.5px;
+    }
+
+    .notes-header-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .notes-header-sub {
+      font-size: 7.5px;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .theory-pill-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      padding: 4px 7px;
+      font-size: 7px;
+      line-height: 1.32;
+      color: #334155;
+    }
+
+    .theory-pill-box strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .guided-notes-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 4.5px 7px;
+    }
+
+    .notes-prompt {
+      font-size: 7.2px;
+      font-weight: 800;
+      color: #0284c7;
+      margin-bottom: 2px;
+    }
+    .slide-unit.highlight-unit .notes-prompt {
+      color: #ea580c;
+    }
+
+    .guided-line-group {
+      margin-bottom: 1.5px;
+    }
+
+    .guided-line-label {
+      font-size: 6.8px;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .guided-line {
+      border-bottom: 1px dashed #cbd5e1;
+      height: 11.5px;
+      width: 100%;
+    }
+  `;
+
+  // Content for Page 1
+  const page1Content = `
   <div class="page">
-    <!-- Top Header -->
     <div>
       <div class="header-banner">
         <div class="header-left">
@@ -866,7 +1007,6 @@ async function buildAllHandouts() {
         </div>
       </div>
 
-      <!-- Student Metadata Bar -->
       <div class="student-meta">
         <div class="meta-field"><span class="meta-label">Student Name:</span><span class="meta-line"></span></div>
         <div class="meta-field"><span class="meta-label">Date:</span><span class="meta-line"></span></div>
@@ -874,7 +1014,6 @@ async function buildAllHandouts() {
         <div class="meta-field"><span class="meta-label">Target Grade:</span><span class="meta-line"></span></div>
       </div>
 
-      <!-- Core Principle Anchor -->
       <div class="hero-concept">
         <div class="hero-badge-icon">&bull; RULE</div>
         <div class="hero-text">
@@ -888,7 +1027,6 @@ async function buildAllHandouts() {
         </div>
       </div>
 
-      <!-- Hero Diagram from Slide 8.4 -->
       <div class="diagram-section">
         <div class="diagram-header">
           <div class="diagram-title">&bull; Full Technical Architecture & Progressive Pathway</div>
@@ -900,7 +1038,6 @@ async function buildAllHandouts() {
       </div>
     </div>
 
-    <!-- 4 Sequential Stages Breakdown -->
     <div class="stages-grid">
       <!-- Stage 1 -->
       <div class="stage-card stage-1">
@@ -931,9 +1068,9 @@ async function buildAllHandouts() {
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> Transcribe DNA triplet <em>3'-TAC-5'</em>:
+          <div><strong>Check 1:</strong> Transcribe DNA triplet <em>3'-TAC-5'</em>:</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Why is mRNA single-stranded?
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Why is mRNA single-stranded?</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
@@ -967,9 +1104,9 @@ async function buildAllHandouts() {
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> Number of bases in 1 codon:
+          <div><strong>Check 1:</strong> Number of bases in 1 codon:</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Why is the code non-overlapping?
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Why is the code non-overlapping?</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
@@ -1003,9 +1140,9 @@ async function buildAllHandouts() {
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> tRNA anticodon for codon AUG:
+          <div><strong>Check 1:</strong> tRNA anticodon for codon AUG:</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Bond linking adjacent amino acids:
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Bond linking adjacent amino acids:</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
@@ -1039,15 +1176,14 @@ async function buildAllHandouts() {
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> What creates the active site?
+          <div><strong>Check 1:</strong> What creates the active site?</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Result if tertiary shape deforms:
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Result if tertiary shape deforms:</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
     </div>
 
-    <!-- Quick Check Prompt -->
     <div>
       <div class="page1-bottom-bar">
         <div class="bottom-bar-left">
@@ -1059,7 +1195,6 @@ async function buildAllHandouts() {
         </div>
       </div>
 
-      <!-- Footer -->
       <div class="page-footer" style="margin-top: 3.5px;">
         <div class="footer-left">
           <span>AAQ Human Biology &bull; Foundation Module</span>
@@ -1068,14 +1203,12 @@ async function buildAllHandouts() {
         <div class="footer-right">Page 1 of 2 &bull; Process Architecture</div>
       </div>
     </div>
-  </div>
+  </div>`;
 
-  <!-- ============================================================
-       PAGE 2: MOLECULAR CAUSALITY, MUTATION & EXAM MASTERY
-       ============================================================ -->
+  // Content for Page 2
+  const page2Content = `
   <div class="page">
     <div>
-      <!-- Top Header Page 2 -->
       <div class="page-2-header">
         <div class="header-left">
           <span class="badge-course" style="color: #ea580c;">Pearson BTEC / AAQ Level 3 in Human Biology &bull; Lesson 01</span>
@@ -1088,7 +1221,6 @@ async function buildAllHandouts() {
         </div>
       </div>
 
-      <!-- Critical Principle Alert Box -->
       <div class="alert-mutation-box">
         <div class="alert-header">
           <div class="alert-badge">&bull; Altered Conformation: Critical Principle</div>
@@ -1099,44 +1231,37 @@ async function buildAllHandouts() {
         </p>
       </div>
 
-      <!-- 6-Step Causal Chain -->
       <div class="causal-section">
         <div class="causal-title">
           <span>&bull; The Level 3 Molecular Causality Chain (Memorise for Full Marks)</span>
           <span>Sequential Step-by-Step Mechanism</span>
         </div>
         <div class="causal-flow">
-          <!-- Step 1 -->
           <div class="causal-step">
             <span class="step-num">STEP 01</span>
             <div class="step-heading">DNA Mutation</div>
             <div class="step-text">Base substitution alters triplet code sequence in the gene.</div>
           </div>
-          <!-- Step 2 -->
           <div class="causal-step">
             <span class="step-num">STEP 02</span>
             <div class="step-heading">Altered mRNA</div>
             <div class="step-text">Transcription produces mRNA with an altered codon.</div>
           </div>
-          <!-- Step 3 -->
           <div class="causal-step">
             <span class="step-num">STEP 03</span>
             <div class="step-heading">Different Amino Acid</div>
             <div class="step-text">tRNA delivers a substituted amino acid during translation.</div>
           </div>
-          <!-- Step 4 -->
           <div class="causal-step step-fail">
             <span class="step-num">STEP 04</span>
             <div class="step-heading">R-Group Disruption</div>
             <div class="step-text">New R-group cannot form original ionic / hydrogen / disulfide bonds.</div>
           </div>
-          <!-- Step 5 -->
           <div class="causal-step step-fail">
             <span class="step-num">STEP 05</span>
             <div class="step-heading">Altered Tertiary Shape</div>
             <div class="step-text">3D conformation folds abnormally, changing active site geometry.</div>
           </div>
-          <!-- Step 6 -->
           <div class="causal-step step-fail">
             <span class="step-num">STEP 06</span>
             <div class="step-heading">Loss of Function</div>
@@ -1145,7 +1270,6 @@ async function buildAllHandouts() {
         </div>
       </div>
 
-      <!-- Tertiary Bonding Reference Matrix -->
       <div class="bonds-matrix-section">
         <div class="bond-card">
           <div class="bond-name">&bull; Disulfide Bridges</div>
@@ -1166,7 +1290,6 @@ async function buildAllHandouts() {
       </div>
     </div>
 
-    <!-- Exam-Style Question Box -->
     <div class="exam-box">
       <div class="exam-header">
         <div class="exam-badge">&bull; Level 3 Exam Application Task</div>
@@ -1203,7 +1326,6 @@ async function buildAllHandouts() {
       </div>
     </div>
 
-    <!-- Self-Assessment Checklist & Examiner Bar -->
     <div>
       <div class="checklist-section">
         <div class="checklist-title">
@@ -1224,7 +1346,6 @@ async function buildAllHandouts() {
         <strong>Examiner's Top Tip for Distinction (Level 3):</strong> Never simply write "the protein doesn't work". Always link the chain: <em>Primary structure &rarr; R-group bonds &rarr; 3D tertiary conformation &rarr; active site complementarity &rarr; inability to form enzyme-substrate complexes</em>.
       </div>
 
-      <!-- Footer Page 2 -->
       <div class="page-footer" style="margin-top: 3.5px;">
         <div class="footer-left">
           <span>AAQ Human Biology &bull; Foundation Module</span>
@@ -1233,29 +1354,266 @@ async function buildAllHandouts() {
         <div class="footer-right">Page 2 of 2 &bull; Molecular Causality & Exam Mastery</div>
       </div>
     </div>
-  </div>
+  </div>`;
 
+  // Content for Page 3 (Slide Companion Part 1)
+  const page3Content = `
+  <div class="page">
+    <div>
+      <div class="header-banner">
+        <div class="header-left">
+          <span class="badge-course">Pearson BTEC / AAQ Level 3 in Human Biology &bull; Lesson 01</span>
+          <h1 class="header-title">Slide Companion: The Central Dogma (Part 1)</h1>
+          <p class="header-sub">Guided Classroom Lecture Companion &bull; Slides 8.1 & 8.2</p>
+        </div>
+        <div class="header-right">
+          <span class="tag-lesson">Lecture Companion</span>
+          <span class="tag-type" style="color: #2563eb; background: #dbeafe; border-color: #bfdbfe;">Student Note-Taker</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-units-container">
+      <!-- SLIDE 8.1 -->
+      <div class="slide-unit">
+        <div class="slide-visual-col">
+          <div class="slide-meta-row">
+            <span class="slide-badge badge-b1">Slide 8 &bull; Build 1</span>
+            <span class="slide-label-text">1. The Blueprint (Nucleus)</span>
+          </div>
+          <div class="slide-img-box">
+            <img src="${s81B64}" alt="Slide 8.1: The Blueprint">
+          </div>
+          <div class="theory-pill-box">
+            <strong>Core Concept:</strong> DNA contains triplet codes transcribed into single-stranded messenger RNA (mRNA) by RNA polymerase.
+            <em>DNA never leaves the nucleus; it is the protected master architecture.</em>
+          </div>
+        </div>
+        <div class="slide-notes-col">
+          <div>
+            <div class="notes-header-title">1. The Blueprint: Transcription in the Nucleus</div>
+            <div class="notes-header-sub">Focus: Nuclear protection & working transcript generation</div>
+          </div>
+          <div class="guided-notes-area">
+            <div class="notes-prompt">&bull; Guided Lecture Notes (Record during teacher explanation):</div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">1. Role of RNA Polymerase during transcription:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">2. Why DNA is strictly restricted to the nucleus:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">3. How mRNA exits through nuclear pores into cytosol:</span>
+              <div class="guided-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8.2 -->
+      <div class="slide-unit">
+        <div class="slide-visual-col">
+          <div class="slide-meta-row">
+            <span class="slide-badge badge-b2">Slide 8 &bull; Build 2</span>
+            <span class="slide-label-text">2. The Assembly Line (Cytosol)</span>
+          </div>
+          <div class="slide-img-box">
+            <img src="${s82B64}" alt="Slide 8.2: The Assembly Line">
+          </div>
+          <div class="theory-pill-box">
+            <strong>Core Concept:</strong> mRNA binds to the ribosome in the cytosol. The ribosome reads the code <strong>three letters at a time</strong> (codons) to assemble the product with strict reading frame fidelity.
+          </div>
+        </div>
+        <div class="slide-notes-col">
+          <div>
+            <div class="notes-header-title">2. The Assembly Line: Ribosomal Translation</div>
+            <div class="notes-header-sub">Focus: Codon reading & peptide bond formation</div>
+          </div>
+          <div class="guided-notes-area">
+            <div class="notes-prompt">&bull; Guided Lecture Notes (Record during teacher explanation):</div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">1. Define codon and explain triplet reading frame:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">2. Function of ribosome as the catalytic workbench:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">3. Why non-overlapping translation prevents frame errors:</span>
+              <div class="guided-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div>AAQ Human Biology &bull; Lesson 01: Welcome to Human Biology</div>
+      <div>Page 1 of 2 &bull; Slide Companion (Builds 1 & 2)</div>
+    </div>
+  </div>`;
+
+  // Content for Page 4 (Slide Companion Part 2)
+  const page4Content = `
+  <div class="page">
+    <div>
+      <div class="header-banner">
+        <div class="header-left">
+          <span class="badge-course" style="color: #ea580c;">Pearson BTEC / AAQ Level 3 in Human Biology &bull; Lesson 01</span>
+          <h1 class="header-title">Slide Companion: The Central Dogma (Part 2)</h1>
+          <p class="header-sub">Guided Classroom Lecture Companion &bull; Slides 8.3 & 8.4</p>
+        </div>
+        <div class="header-right">
+          <span class="tag-lesson" style="background: #ea580c;">Lecture Companion</span>
+          <span class="tag-type" style="color: #c2410c; background: #ffedd5; border-color: #fdba74;">Student Note-Taker</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-units-container">
+      <!-- SLIDE 8.3 -->
+      <div class="slide-unit">
+        <div class="slide-visual-col">
+          <div class="slide-meta-row">
+            <span class="slide-badge badge-b3">Slide 8 &bull; Build 3</span>
+            <span class="slide-label-text">3. The Cargo (tRNA)</span>
+          </div>
+          <div class="slide-img-box">
+            <img src="${s83B64}" alt="Slide 8.3: The Cargo">
+          </div>
+          <div class="theory-pill-box">
+            <strong>Core Concept:</strong> Transfer RNA (tRNA) molecules are loaded with specific amino acids. The tRNA <strong>anticodon</strong> pairs complementarily with mRNA codons, building the polypeptide chain.
+          </div>
+        </div>
+        <div class="slide-notes-col">
+          <div>
+            <div class="notes-header-title">3. The Cargo: Amino Acid Activation & Delivery</div>
+            <div class="notes-header-sub">Focus: Anticodon complementarity & primary sequence</div>
+          </div>
+          <div class="guided-notes-area">
+            <div class="notes-prompt">&bull; Guided Lecture Notes (Record during teacher explanation):</div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">1. How amino acid activation ensures translation accuracy:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">2. Matching between mRNA codon and tRNA anticodon:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">3. The condensation reaction forming peptide bonds:</span>
+              <div class="guided-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8.4 -->
+      <div class="slide-unit highlight-unit">
+        <div class="slide-visual-col">
+          <div class="slide-meta-row">
+            <span class="slide-badge badge-b4">Slide 8 &bull; Build 4</span>
+            <span class="slide-label-text" style="color: #c2410c;">4. Protein Conformation & Mutation</span>
+          </div>
+          <div class="slide-img-box">
+            <img src="${s84B64}" alt="Slide 8.4: Protein Conformation">
+          </div>
+          <div class="theory-pill-box" style="border-color: #fdba74; background: #fff;">
+            <strong style="color: #c2410c;">CRITICAL PRINCIPLE:</strong> Altering the DNA triplet changes the amino acid in the primary structure. Different R-group interactions disrupt tertiary folding—altering active site geometry and disabling function!
+          </div>
+        </div>
+        <div class="slide-notes-col">
+          <div>
+            <div class="notes-header-title" style="color: #9a3412;">4. Conformation: Shape Dictates Function</div>
+            <div class="notes-header-sub">Focus: Molecular causality & mutation disruption</div>
+          </div>
+          <div class="guided-notes-area" style="border-color: #fdba74;">
+            <div class="notes-prompt">&bull; Guided Lecture Notes (Record during teacher explanation):</div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">1. Types of R-group bonds stabilizing 3D tertiary structure:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">2. Why a point mutation alters R-group chemical interactions:</span>
+              <div class="guided-line"></div>
+              <div class="guided-line"></div>
+            </div>
+            <div class="guided-line-group">
+              <span class="guided-line-label">3. Why deformed active sites prevent substrate binding:</span>
+              <div class="guided-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div>AAQ Human Biology &bull; Lesson 01: Welcome to Human Biology</div>
+      <div>Page 2 of 2 &bull; Slide Companion (Builds 3 & 4)</div>
+    </div>
+  </div>`;
+
+  // HTML Assemblies
+  const masterHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Central Dogma & Molecular Causality — Student Handout</title>
+  <style>${commonCss}</style>
+</head>
+<body>
+  ${page1Content}
+  ${page2Content}
 </body>
 </html>`;
 
-  // Save HTML files
+  const slideCompanionHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson 01 Slide Companion — Student Lecture Notes</title>
+  <style>${commonCss}</style>
+</head>
+<body>
+  ${page3Content}
+  ${page4Content}
+</body>
+</html>`;
+
+  const completePackHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complete Student Pack — The Central Dogma & Molecular Causality</title>
+  <style>${commonCss}</style>
+</head>
+<body>
+  ${page1Content}
+  ${page2Content}
+  ${page3Content}
+  ${page4Content}
+</body>
+</html>`;
+
   const masterHtmlPath = path.join(handoutsDir, 'Central_Dogma_Student_Handout.html');
   const slideCompanionHtmlPath = path.join(handoutsDir, 'Central_Dogma_Slide_Companion.html');
   const completePackHtmlPath = path.join(handoutsDir, 'Central_Dogma_Complete_Student_Pack.html');
 
-  const slideCompanionHtmlContent = await fs.readFile(slideCompanionHtmlPath, 'utf8');
-
-  // Build combined pack HTML
-  const completePackHtml = masterHtml.replace('</body>\n</html>', '') + `
-  <!-- PAGE 3: Slide Companion Part 1 -->
-  ${slideCompanionHtmlContent.slice(slideCompanionHtmlContent.indexOf('<div class="page">'), slideCompanionHtmlContent.lastIndexOf('</body>'))}
-  </body>
-</html>`;
-
   await fs.writeFile(masterHtmlPath, masterHtml, 'utf8');
+  await fs.writeFile(slideCompanionHtmlPath, slideCompanionHtml, 'utf8');
   await fs.writeFile(completePackHtmlPath, completePackHtml, 'utf8');
 
-  console.log('Saved all updated HTML files.');
+  console.log('Saved all HTML files.');
 
   // Launch browser and render PDFs
   console.log('Rendering PDFs with Playwright Chrome channel...');
@@ -1291,7 +1649,7 @@ async function buildAllHandouts() {
   await renderPdf(completePackHtmlPath, 'Central_Dogma_Complete_Student_Pack.pdf', 'complete_pack');
 
   await browser.close();
-  console.log('All PDF handouts rendered and updated successfully!');
+  console.log('All PDF handouts rendered and verified successfully!');
 }
 
 buildAllHandouts().catch(err => {

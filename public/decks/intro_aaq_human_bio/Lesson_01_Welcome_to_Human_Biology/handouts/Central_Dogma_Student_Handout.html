@@ -190,7 +190,7 @@
       font-weight: 700;
     }
 
-    /* Diagram Section - Large & Crisp */
+    /* Diagram Section */
     .diagram-section {
       margin-top: 3.5px;
       background: #090e17;
@@ -222,7 +222,7 @@
 
     .diagram-img-wrap {
       width: 100%;
-      height: 60mm;
+      height: 52mm;
       border-radius: 4px;
       overflow: hidden;
       background: #0a111a;
@@ -354,7 +354,6 @@
       color: #0f172a;
     }
 
-    /* Key Terms Tags inside each card */
     .stage-terms-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -397,15 +396,28 @@
       padding-top: 2.5px;
       font-size: 6.5px;
       color: #475569;
+      background: #f1f5f9;
+      padding: 3px 5px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .stage-card.stage-4 .stage-check-prompt {
+      background: #ffedd5;
+      border-color: #fed7aa;
+      color: #9a3412;
     }
 
     .stage-check-prompt strong {
       color: #0f172a;
     }
+    .stage-card.stage-4 .stage-check-prompt strong {
+      color: #c2410c;
+    }
 
     .stage-check-line {
       border-bottom: 1px dashed #94a3b8;
-      height: 9px;
+      height: 10px;
       margin-top: 1px;
     }
 
@@ -475,9 +487,7 @@
       color: #0f172a;
     }
 
-    /* ============================================================
-       PAGE 2: Molecular Causality & Exam Mastery
-       ============================================================ */
+    /* Page 2 Styles */
     .page-2-header {
       display: flex;
       justify-content: space-between;
@@ -533,7 +543,6 @@
       font-weight: 700;
     }
 
-    /* 6-Step Causal Chain */
     .causal-section {
       margin-top: 3.5px;
       background: #f8fafc;
@@ -604,7 +613,6 @@
       color: #475569;
     }
 
-    /* Tertiary Bonding Matrix */
     .bonds-matrix-section {
       margin-top: 3.5px;
       display: grid;
@@ -635,7 +643,6 @@
       color: #334155;
     }
 
-    /* Level 3 Exam Question Box */
     .exam-box {
       margin-top: 3.5px;
       border: 1.5px solid #0f172a;
@@ -721,7 +728,6 @@
       height: 9.5px;
     }
 
-    /* Self Assessment Checklist */
     .checklist-section {
       margin-top: 3.5px;
       background: #f0fdf4;
@@ -763,7 +769,6 @@
       flex-shrink: 0;
     }
 
-    /* Examiner Bar */
     .examiner-bar {
       margin-top: 3.5px;
       background: #fffbeb;
@@ -780,15 +785,158 @@
       color: #b45309;
       font-weight: 800;
     }
+
+    /* Slide Companion Row Styles */
+    .slide-units-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+      margin-top: 3mm;
+      flex: 1;
+    }
+
+    .slide-unit {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 7px;
+      padding: 4.5mm 5.5mm;
+      background: #f8fafc;
+      display: grid;
+      grid-template-columns: 96mm 1fr;
+      gap: 5mm;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      flex: 1;
+    }
+
+    .slide-unit.highlight-unit {
+      border-color: #fdba74;
+      background: #fffaf5;
+    }
+
+    .slide-visual-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 3.5px;
+    }
+
+    .slide-img-box {
+      width: 100%;
+      height: 53mm;
+      border-radius: 5px;
+      overflow: hidden;
+      background: #090e17;
+      border: 1px solid #1e293b;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+    }
+
+    .slide-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
+
+    .slide-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.2px;
+    }
+
+    .slide-badge {
+      font-weight: 800;
+      padding: 1.5px 5px;
+      border-radius: 3px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .badge-b1 { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
+    .badge-b2 { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+    .badge-b3 { background: #ccfbf1; color: #0d9488; border: 1px solid #99f6e4; }
+    .badge-b4 { background: #ffedd5; color: #ea580c; border: 1px solid #fed7aa; }
+
+    .slide-label-text {
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .slide-notes-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 3.5px;
+    }
+
+    .notes-header-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .notes-header-sub {
+      font-size: 7.5px;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .theory-pill-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      padding: 4px 7px;
+      font-size: 7px;
+      line-height: 1.32;
+      color: #334155;
+    }
+
+    .theory-pill-box strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .guided-notes-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 4.5px 7px;
+    }
+
+    .notes-prompt {
+      font-size: 7.2px;
+      font-weight: 800;
+      color: #0284c7;
+      margin-bottom: 2px;
+    }
+    .slide-unit.highlight-unit .notes-prompt {
+      color: #ea580c;
+    }
+
+    .guided-line-group {
+      margin-bottom: 1.5px;
+    }
+
+    .guided-line-label {
+      font-size: 6.8px;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .guided-line {
+      border-bottom: 1px dashed #cbd5e1;
+      height: 11.5px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-
-  <!-- ============================================================
-       PAGE 1: PROCESS ARCHITECTURE & THE CENTRAL DOGMA
-       ============================================================ -->
+  
   <div class="page">
-    <!-- Top Header -->
     <div>
       <div class="header-banner">
         <div class="header-left">
@@ -802,7 +950,6 @@
         </div>
       </div>
 
-      <!-- Student Metadata Bar -->
       <div class="student-meta">
         <div class="meta-field"><span class="meta-label">Student Name:</span><span class="meta-line"></span></div>
         <div class="meta-field"><span class="meta-label">Date:</span><span class="meta-line"></span></div>
@@ -810,7 +957,6 @@
         <div class="meta-field"><span class="meta-label">Target Grade:</span><span class="meta-line"></span></div>
       </div>
 
-      <!-- Core Principle Anchor -->
       <div class="hero-concept">
         <div class="hero-badge-icon">&bull; RULE</div>
         <div class="hero-text">
@@ -824,7 +970,6 @@
         </div>
       </div>
 
-      <!-- Hero Diagram from Slide 8.4 -->
       <div class="diagram-section">
         <div class="diagram-header">
           <div class="diagram-title">&bull; Full Technical Architecture & Progressive Pathway</div>
@@ -836,7 +981,6 @@
       </div>
     </div>
 
-    <!-- 4 Sequential Stages Breakdown -->
     <div class="stages-grid">
       <!-- Stage 1 -->
       <div class="stage-card stage-1">
@@ -867,9 +1011,9 @@
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> Transcribe DNA triplet <em>3'-TAC-5'</em>:
+          <div><strong>Check 1:</strong> Transcribe DNA triplet <em>3'-TAC-5'</em>:</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Why is mRNA single-stranded?
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Why is mRNA single-stranded?</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
@@ -903,9 +1047,9 @@
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> Number of bases in 1 codon:
+          <div><strong>Check 1:</strong> Number of bases in 1 codon:</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Why is the code non-overlapping?
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Why is the code non-overlapping?</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
@@ -939,9 +1083,9 @@
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> tRNA anticodon for codon AUG:
+          <div><strong>Check 1:</strong> tRNA anticodon for codon AUG:</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Bond linking adjacent amino acids:
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Bond linking adjacent amino acids:</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
@@ -975,15 +1119,14 @@
           </div>
         </div>
         <div class="stage-check-prompt">
-          <strong>Check 1:</strong> What creates the active site?
+          <div><strong>Check 1:</strong> What creates the active site?</div>
           <div class="stage-check-line"></div>
-          <strong>Check 2:</strong> Result if tertiary shape deforms:
+          <div style="margin-top:2px;"><strong>Check 2:</strong> Result if tertiary shape deforms:</div>
           <div class="stage-check-line"></div>
         </div>
       </div>
     </div>
 
-    <!-- Quick Check Prompt -->
     <div>
       <div class="page1-bottom-bar">
         <div class="bottom-bar-left">
@@ -995,7 +1138,6 @@
         </div>
       </div>
 
-      <!-- Footer -->
       <div class="page-footer" style="margin-top: 3.5px;">
         <div class="footer-left">
           <span>AAQ Human Biology &bull; Foundation Module</span>
@@ -1005,13 +1147,9 @@
       </div>
     </div>
   </div>
-
-  <!-- ============================================================
-       PAGE 2: MOLECULAR CAUSALITY, MUTATION & EXAM MASTERY
-       ============================================================ -->
+  
   <div class="page">
     <div>
-      <!-- Top Header Page 2 -->
       <div class="page-2-header">
         <div class="header-left">
           <span class="badge-course" style="color: #ea580c;">Pearson BTEC / AAQ Level 3 in Human Biology &bull; Lesson 01</span>
@@ -1024,7 +1162,6 @@
         </div>
       </div>
 
-      <!-- Critical Principle Alert Box -->
       <div class="alert-mutation-box">
         <div class="alert-header">
           <div class="alert-badge">&bull; Altered Conformation: Critical Principle</div>
@@ -1035,44 +1172,37 @@
         </p>
       </div>
 
-      <!-- 6-Step Causal Chain -->
       <div class="causal-section">
         <div class="causal-title">
           <span>&bull; The Level 3 Molecular Causality Chain (Memorise for Full Marks)</span>
           <span>Sequential Step-by-Step Mechanism</span>
         </div>
         <div class="causal-flow">
-          <!-- Step 1 -->
           <div class="causal-step">
             <span class="step-num">STEP 01</span>
             <div class="step-heading">DNA Mutation</div>
             <div class="step-text">Base substitution alters triplet code sequence in the gene.</div>
           </div>
-          <!-- Step 2 -->
           <div class="causal-step">
             <span class="step-num">STEP 02</span>
             <div class="step-heading">Altered mRNA</div>
             <div class="step-text">Transcription produces mRNA with an altered codon.</div>
           </div>
-          <!-- Step 3 -->
           <div class="causal-step">
             <span class="step-num">STEP 03</span>
             <div class="step-heading">Different Amino Acid</div>
             <div class="step-text">tRNA delivers a substituted amino acid during translation.</div>
           </div>
-          <!-- Step 4 -->
           <div class="causal-step step-fail">
             <span class="step-num">STEP 04</span>
             <div class="step-heading">R-Group Disruption</div>
             <div class="step-text">New R-group cannot form original ionic / hydrogen / disulfide bonds.</div>
           </div>
-          <!-- Step 5 -->
           <div class="causal-step step-fail">
             <span class="step-num">STEP 05</span>
             <div class="step-heading">Altered Tertiary Shape</div>
             <div class="step-text">3D conformation folds abnormally, changing active site geometry.</div>
           </div>
-          <!-- Step 6 -->
           <div class="causal-step step-fail">
             <span class="step-num">STEP 06</span>
             <div class="step-heading">Loss of Function</div>
@@ -1081,7 +1211,6 @@
         </div>
       </div>
 
-      <!-- Tertiary Bonding Reference Matrix -->
       <div class="bonds-matrix-section">
         <div class="bond-card">
           <div class="bond-name">&bull; Disulfide Bridges</div>
@@ -1102,7 +1231,6 @@
       </div>
     </div>
 
-    <!-- Exam-Style Question Box -->
     <div class="exam-box">
       <div class="exam-header">
         <div class="exam-badge">&bull; Level 3 Exam Application Task</div>
@@ -1139,7 +1267,6 @@
       </div>
     </div>
 
-    <!-- Self-Assessment Checklist & Examiner Bar -->
     <div>
       <div class="checklist-section">
         <div class="checklist-title">
@@ -1160,7 +1287,6 @@
         <strong>Examiner's Top Tip for Distinction (Level 3):</strong> Never simply write "the protein doesn't work". Always link the chain: <em>Primary structure &rarr; R-group bonds &rarr; 3D tertiary conformation &rarr; active site complementarity &rarr; inability to form enzyme-substrate complexes</em>.
       </div>
 
-      <!-- Footer Page 2 -->
       <div class="page-footer" style="margin-top: 3.5px;">
         <div class="footer-left">
           <span>AAQ Human Biology &bull; Foundation Module</span>
@@ -1170,6 +1296,5 @@
       </div>
     </div>
   </div>
-
 </body>
 </html>
