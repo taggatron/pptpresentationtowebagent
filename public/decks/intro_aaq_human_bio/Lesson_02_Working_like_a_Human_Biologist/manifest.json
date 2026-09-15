@@ -3,7 +3,7 @@
   "title": "2. Biomedical Microscopy Standards & Slide Preparation",
   "slideSet": "intro_aaq_human_bio",
   "filename": "Lesson_02_Working_like_a_Human_Biologist.pptx",
-  "totalSlides": 11,
+  "totalSlides": 13,
   "courseName": "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology",
   "teacher": "Dan",
   "slides": [
@@ -261,6 +261,148 @@
     },
     {
       "number": 3,
+      "title": "Starter Practical Challenge: Microscope Setup & Focus Calibration (Premade Slide)",
+      "imageFileName": "slide_02b_microscope_setup_premade_slide.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
+      "sourceMediaPath": null,
+      "isInteractive": true,
+      "interactiveType": "custom_reveals",
+      "starterQuestions": [
+        {
+          "q": "Checkpoint 1: Why must optical lenses only be wiped with dedicated lens paper rather than standard paper towels?",
+          "a": "Standard paper towels contain abrasive cellulose wood-pulp fibers that scratch anti-reflective lens coatings; optical lens tissue is non-abrasive and lint-free."
+        },
+        {
+          "q": "Checkpoint 2: Why must initial slide orientation and focusing always begin on the lowest power objective?",
+          "a": "Lowest power offers the widest field of view and largest depth of field, enabling rapid specimen location and centering while preventing slide collision."
+        },
+        {
+          "q": "Checkpoint 3: Why is using the coarse focus knob strictly prohibited when operating under the 40x objective?",
+          "a": "High-dry lenses have working distances under 0.5 mm; coarse movement risks crushing the glass coverslip, damaging the specimen, and cracking the front objective lens."
+        },
+        {
+          "q": "Checkpoint 4: What optical adjustment should be made if cellular boundaries appear washed out and low contrast?",
+          "a": "Narrow the condenser iris diaphragm aperture to decrease beam glare and increase optical contrast and depth of focus."
+        }
+      ],
+      "interactiveCells": [
+        {
+          "id": "starter_focus_chk_1",
+          "bounds": {
+            "x": 3.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "answerBounds": {
+            "x": 3.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "question": "Checkpoint 1: Why must optical lenses only be wiped with dedicated lens paper rather than standard paper towels?",
+          "expectedAnswer": "Standard paper towels contain abrasive cellulose wood-pulp fibers that scratch anti-reflective lens coatings; optical lens tissue is non-abrasive and lint-free.",
+          "answer": "Standard paper towels contain abrasive cellulose wood-pulp fibers that scratch anti-reflective lens coatings; optical lens tissue is non-abrasive and lint-free.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "starter_focus_chk_2",
+          "bounds": {
+            "x": 27.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "answerBounds": {
+            "x": 27.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "question": "Checkpoint 2: Why must initial slide orientation and focusing always begin on lowest power?",
+          "expectedAnswer": "Lowest power offers the widest field of view and largest depth of field, enabling rapid specimen location and centering while preventing slide collision.",
+          "answer": "Lowest power offers the widest field of view and largest depth of field, enabling rapid specimen location and centering while preventing slide collision.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "starter_focus_chk_3",
+          "bounds": {
+            "x": 51.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "answerBounds": {
+            "x": 51.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "question": "Checkpoint 3: Why is using the coarse focus knob strictly prohibited when operating under the 40x objective?",
+          "expectedAnswer": "High-dry lenses have working distances under 0.5 mm; coarse movement risks crushing the glass coverslip, damaging the specimen, and cracking the front objective lens.",
+          "answer": "High-dry lenses have working distances under 0.5 mm; coarse movement risks crushing the glass coverslip, damaging the specimen, and cracking the front objective lens.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "starter_focus_chk_4",
+          "bounds": {
+            "x": 75.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "answerBounds": {
+            "x": 75.2,
+            "y": 65.5,
+            "w": 22.4,
+            "h": 17.5
+          },
+          "question": "Checkpoint 4: What optical adjustment should be made if cellular boundaries appear washed out and low contrast?",
+          "expectedAnswer": "Narrow the condenser iris diaphragm aperture to decrease beam glare and increase optical contrast and depth of focus.",
+          "answer": "Narrow the condenser iris diaphragm aperture to decrease beam glare and increase optical contrast and depth of focus.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "40–50s",
+        "vciScore": "4.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1000,
+          "readingMs": 18000,
+          "semanticProcessingMs": 15000,
+          "wordCount": 54,
+          "visualElementsCount": 4
+        },
+        "academicReferences": [
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Reduces procedural split-attention effect by aligning hands-on optical steps with diagnostic reflection checkpoints."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 4,
+        "format": "checkpoint_grid"
+      }
+    },
+    {
+      "number": 4,
       "title": "Learning Objectives & Strategic Alignment: Unit F173 (Biomedical Techniques)",
       "imageFileName": "slide_03.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03.png",
@@ -269,7 +411,7 @@
       "interactiveType": null
     },
     {
-      "number": 4,
+      "number": 5,
       "title": "Technical Architecture: Achieving Köhler Illumination: Phases 1 to 3",
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_04.png",
@@ -278,7 +420,7 @@
       "interactiveType": null
     },
     {
-      "number": 5,
+      "number": 6,
       "title": "List the stages in obtaining Köhler illumination",
       "imageFileName": "slide_05_koehler_illumination_video.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_05_koehler_illumination_video.png",
@@ -321,7 +463,7 @@
       }
     },
     {
-      "number": 6,
+      "number": 7,
       "title": "Enterprise Scenario: S1 Pharmaceuticals Diagnostic Microscopy Link",
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_05.png",
@@ -330,7 +472,7 @@
       "interactiveType": null
     },
     {
-      "number": 7,
+      "number": 8,
       "title": "Diagnostic Troubleshooting Workshop: Sub-Optimal Microscopy Results",
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_06.png",
@@ -395,7 +537,7 @@
       ]
     },
     {
-      "number": 8,
+      "number": 9,
       "title": "Task Execution: Temporary Wet Mounts & Biological Data Recording",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_07.png",
@@ -404,7 +546,45 @@
       "interactiveType": null
     },
     {
-      "number": 9,
+      "number": 10,
+      "title": "Practical Protocol: Human Cheek Epithelial Cell Wet Mount Preparation",
+      "imageFileName": "slide_08b_human_cheek_practical.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08b_human_cheek_practical.png",
+      "sourceMediaPath": null,
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 40,
+        "timeGuideDisplay": "35–45s",
+        "vciScore": "4.9",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1100,
+          "readingMs": 18500,
+          "semanticProcessingMs": 16000,
+          "wordCount": 58,
+          "visualElementsCount": 4
+        },
+        "academicReferences": [
+          {
+            "citation": "CLEAPSS (2020). Student Safety Sheet 61: Cells and tissues. CLEAPSS Laboratory Safety.",
+            "relevance": "Directs aseptic buccal scraping and immediate disinfectant immersion protocol."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "format": "statement_only"
+      }
+    },
+    {
+      "number": 11,
       "title": "Biochemical Mechanism: Methylene Blue Targeting & DNA Binding",
       "imageFileName": "slide_08_methylene_blue_mechanism.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08_methylene_blue_mechanism.png",
@@ -446,7 +626,7 @@
       }
     },
     {
-      "number": 10,
+      "number": 12,
       "title": "Interactive 3D Molecular Lab: DNA Electrostatic Potential & Methylene Blue Binding",
       "imageFileName": "slide_09_methylene_blue_interactive_cover.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_09_methylene_blue_interactive_cover.png",
@@ -489,7 +669,7 @@
       }
     },
     {
-      "number": 11,
+      "number": 13,
       "title": "Plenary Summary & 3 Strategic Executive Takeaways: Working like a Human Biologist",
       "imageFileName": "slide_10.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_10.png",
