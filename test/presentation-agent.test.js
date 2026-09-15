@@ -1589,7 +1589,7 @@ test("analytics button contains stylish animated SVG icon with gradients, bars, 
   assert.match(html, /class="analytics-svg-bar analytics-bar-2"/);
   assert.match(html, /class="analytics-svg-bar analytics-bar-3"/);
   assert.match(html, /class="analytics-svg-trend"/);
-  assert.match(html, /class="analytics-svg-dot"/);
+  assert.doesNotMatch(html, /class="analytics-svg-dot"/);
 
   // CSS animations for SVG
   const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
@@ -1597,7 +1597,7 @@ test("analytics button contains stylish animated SVG icon with gradients, bars, 
   assert.match(css, /@keyframes analyticsBarWave1/);
   assert.match(css, /@keyframes analyticsBarBounce/);
   assert.match(css, /@keyframes analyticsTrendFlow/);
-  assert.match(css, /@keyframes analyticsDotGlow/);
+  assert.doesNotMatch(css, /analyticsDotGlow/);
   assert.match(css, /@keyframes analyticsLiveEq/);
 });
 

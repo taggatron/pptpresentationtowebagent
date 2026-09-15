@@ -2580,23 +2580,6 @@ body.theme-dark .settings-link-pill {
   100% { stroke-dashoffset: -40; }
 }
 
-.analytics-svg-dot {
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.25s ease, filter 0.25s ease;
-  animation: analyticsDotGlow 2.4s ease-in-out infinite;
-}
-
-@keyframes analyticsDotGlow {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 1px #f43f5e); }
-  50% { transform: scale(1.35); filter: drop-shadow(0 0 5px #f43f5e); }
-}
-
-.analytics-icon-btn:hover .analytics-svg-dot {
-  transform: scale(1.45);
-  filter: drop-shadow(0 0 6px #f43f5e);
-}
-
 /* Active Live-Recording State */
 #analyticsModalBtn.tracking-active .analytics-svg {
   filter: drop-shadow(0 0 5px rgba(2, 132, 199, 0.45));
