@@ -1558,5 +1558,49 @@ test("settings dropdown menu contains speech, theme, sidebar, and dashboard acti
   assert.match(js, /settingsDropdownMenu/);
 });
 
+test("settings dropdown menu appears above slide zoom controls with proper header stacking context", async () => {
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+
+  // .app-header must be positioned with z-index >= 500 to create a stacking context above main-content and slide-zoom-bar
+  assert.match(css, /\.app-header\s*\{[^}]*position:\s*relative;/);
+  assert.match(css, /\.app-header\s*\{[^}]*z-index:\s*500;/);
+
+  // .settings-dropdown-wrap must have relative positioning and elevated z-index
+  assert.match(css, /\.settings-dropdown-wrap\s*\{[^}]*z-index:\s*510;/);
+
+  // .settings-dropdown-menu must have elevated z-index (e.g. 2000) and opaque background to float cleanly
+  assert.match(css, /\.settings-dropdown-menu\s*\{[^}]*z-index:\s*2000;/);
+  assert.match(css, /\.settings-dropdown-menu\s*\{[^}]*background:\s*#ffffff;/);
+});
+
+test("analytics button contains stylish animated SVG icon with gradients, bars, trendline, and keyframe animations", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+
+  // Button exists with analytics-icon-btn class
+  assert.match(html, /id="analyticsModalBtn"[^>]*class="[^"]*analytics-icon-btn[^"]*"/);
+
+  // Contains SVG markup with gradients, bars, trend line and pulsing dot
+  assert.match(html, /<svg class="analytics-svg" viewBox="0 0 24 24"/);
+  assert.match(html, /id="analyticsBarGrad1"/);
+  assert.match(html, /id="analyticsBarGrad2"/);
+  assert.match(html, /id="analyticsBarGrad3"/);
+  assert.match(html, /id="analyticsLineGrad"/);
+  assert.match(html, /class="analytics-svg-bar analytics-bar-1"/);
+  assert.match(html, /class="analytics-svg-bar analytics-bar-2"/);
+  assert.match(html, /class="analytics-svg-bar analytics-bar-3"/);
+  assert.match(html, /class="analytics-svg-trend"/);
+  assert.match(html, /class="analytics-svg-dot"/);
+
+  // CSS animations for SVG
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(css, /\.analytics-icon-btn \.analytics-svg/);
+  assert.match(css, /@keyframes analyticsBarWave1/);
+  assert.match(css, /@keyframes analyticsBarBounce/);
+  assert.match(css, /@keyframes analyticsTrendFlow/);
+  assert.match(css, /@keyframes analyticsDotGlow/);
+  assert.match(css, /@keyframes analyticsLiveEq/);
+});
+
+
 
 
