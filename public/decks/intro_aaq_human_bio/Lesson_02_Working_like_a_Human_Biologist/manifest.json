@@ -305,7 +305,8 @@
           "answer": "Paper towels scratch delicate anti-reflective lens coatings. Lens paper is non-abrasive and lint-free.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "minBuildStep": 2
         },
         {
           "id": "starter_focus_chk_2",
@@ -326,7 +327,8 @@
           "answer": "Lowest power provides the widest field of view to easily find and center the specimen.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "minBuildStep": 2
         },
         {
           "id": "starter_focus_chk_3",
@@ -347,7 +349,8 @@
           "answer": "Looking from the side stops the objective lens from colliding with and crushing the glass slide.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "minBuildStep": 2
         },
         {
           "id": "starter_focus_chk_4",
@@ -368,7 +371,8 @@
           "answer": "Working distance is <0.5 mm. Coarse focus moves too fast, risking crushing the slide and cracking the lens.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "minBuildStep": 2
         }
       ],
       "cognitiveGuide": {
@@ -399,6 +403,359 @@
         "confidence": "high",
         "questionCount": 4,
         "format": "checkpoint_grid"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header and Hero Task Card stating: Task: Set up and focus the microscope slide. Send me a picture on the Teams chat. Temporarily omit: The 4 step-by-step guidance pillars and diagnostic checkpoints.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
+          "generatedAt": "2026-09-15T14:16:33.844Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-15T14:16:33.844Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "138278 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
+              "byteLength": 138278,
+              "sha256": "bd85d416f2302bb4c95b81bdf915dffb0ff9754b866a8d45e87a8ccaf44c4017",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": null,
+              "sourceDimensions": null
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header, Task subtitle, and full 4-pillar Standard Operating Procedure with 4 diagnostic technical checkpoints.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
+          "generatedAt": "2026-09-15T14:16:33.844Z",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-15T14:16:33.844Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "184667 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
+              "byteLength": 184667,
+              "sha256": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": null,
+              "sourceDimensions": null
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "progressiveBuilds": [
+        {
+          "id": "gemini_slide_3_1_component_reveal",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header and Hero Task Card stating: Task: Set up and focus the microscope slide. Send me a picture on the Teams chat. Temporarily omit: The 4 step-by-step guidance pillars and diagnostic checkpoints.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-15T14:16:33.844Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "138278 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
+              "byteLength": 138278,
+              "sha256": "bd85d416f2302bb4c95b81bdf915dffb0ff9754b866a8d45e87a8ccaf44c4017",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": null,
+              "sourceDimensions": null
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "fade"
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
+          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header, Task subtitle, and full 4-pillar Standard Operating Procedure with 4 diagnostic technical checkpoints.",
+          "generationStatus": "ready",
+          "qaStatus": "approved",
+          "qa": {
+            "status": "approved",
+            "reviewedAt": "2026-09-15T14:16:33.844Z",
+            "reviewer": "Teacher_Dan",
+            "notes": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true,
+                  "detail": "184667 bytes; minimum 20000"
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "1376×768; minimum 1000×550"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7917; target 1.7778"
+                }
+              ],
+              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
+              "byteLength": 184667,
+              "sha256": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
+              "dimensions": {
+                "format": "png",
+                "width": 1376,
+                "height": 768
+              },
+              "sourceHash": null,
+              "sourceDimensions": null
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          },
+          "source": "gemini-image-chat",
+          "targetBounds": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "transition": "crossfade"
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "gemini_slide_3_1_component_reveal",
+            "title": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
+            "componentIds": [
+              "gemini_slide_3_1_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "gemini_slide_3_2_component_reveal",
+            "title": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
+            "componentIds": [
+              "gemini_slide_3_2_component_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Slide 3 progressive build sequence: Build 1 presents the challenge task, Build 2 reveals the 4-step SOP and diagnostic checkpoints.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-slide-sequencer",
+        "analyzedComponentCount": 2,
+        "plannedCellCount": 2,
+        "approvedCellCount": 2,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {

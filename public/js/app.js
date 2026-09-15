@@ -1494,8 +1494,13 @@ function normalizeRevealMode(cell) {
 
 function appendInteractiveGrid(slide) {
   const cells = getInteractiveCells(slide);
+  let renderedCount = 0;
 
   cells.forEach((cell, index) => {
+    if (cell.minBuildStep && currentMediaBuildStep > 0 && currentMediaBuildStep < cell.minBuildStep) {
+      return;
+    }
+    renderedCount++;
     const revealed = isAnswerRevealed(slide, cell);
     const revealMode = isGeneratedQuestionAnswerSequence(slide)
       ? "unmask"
@@ -1582,7 +1587,7 @@ function appendInteractiveGrid(slide) {
 
     interactiveOverlay.appendChild(card);
   });
-  return cells.length > 0;
+  return renderedCount > 0;
 }
 
 function renderSlideStage(slide = currentDeck?.slides[currentSlideIndex]) {
@@ -1613,7 +1618,8 @@ function renderSlideStage(slide = currentDeck?.slides[currentSlideIndex]) {
   const hasAnswers = appendInteractiveGrid(slide);
   interactiveOverlay.classList.toggle("hidden", !hasAnswers);
   updateStageControls(slide);
-  renderEditTargetSelection();
+  renderComponentEditorPanel();
+  renderStageCognitiveGuide(slide);
 }
 
 function moveMediaBuildStep(slide, direction) {
@@ -1622,7 +1628,8 @@ function moveMediaBuildStep(slide, direction) {
   const nextStep = clamp(currentMediaBuildStep + direction, minStep, totalSteps);
   if (nextStep === currentMediaBuildStep) return false;
   currentMediaBuildStep = nextStep;
-  syncQuestionAnswersToCurrentBuild(slide);
+  renderSlideStage(slide);
+  if (activeSidebarTab === "editor") renderComponentEditorPanel();
   return true;
 }
 
@@ -1630,9 +1637,7 @@ function advanceMediaBuildStep() {
   if (!currentDeck) return false;
   const slide = currentDeck.slides[currentSlideIndex];
   if (!moveMediaBuildStep(slide, 1)) return false;
-  renderSlideStage(slide);
-  if (activeSidebarTab === "editor") renderComponentEditorPanel();
-  if (!isPresentationWindow) broadcastSlideshowSync("BUILD_STEP");
+  if (!isPresentationWindow) broadcastSlideshowSync("BUILD_UPDATE");
   return true;
 }
 
@@ -1642,9 +1647,7 @@ function regressMediaBuildStep() {
   const minStep = getStageBuildSteps(slide).length > 0 ? 1 : 0;
   if (currentMediaBuildStep <= minStep) return false;
   if (!moveMediaBuildStep(slide, -1)) return false;
-  renderSlideStage(slide);
-  if (activeSidebarTab === "editor") renderComponentEditorPanel();
-  if (!isPresentationWindow) broadcastSlideshowSync("BUILD_STEP");
+  if (!isPresentationWindow) broadcastSlideshowSync("BUILD_UPDATE");
   return true;
 }
 
@@ -1661,7 +1664,12 @@ function revealNextAnswer() {
     if (!isPresentationWindow) broadcastSlideshowSync("ANSWERS_UPDATE");
     return true;
   }
-  const nextCell = cells.find((cell) => !isAnswerRevealed(slide, cell));
+  const nextCell = cells.find((cell) => {
+    if (cell.minBuildStep && currentMediaBuildStep > 0 && currentMediaBuildStep < cell.minBuildStep) {
+      return false;
+    }
+    return !isAnswerRevealed(slide, cell);
+  });
   if (!nextCell) return false;
   setAnswerRevealed(slide, nextCell, true);
   renderSlideStage(slide);
