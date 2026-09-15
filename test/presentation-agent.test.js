@@ -1601,6 +1601,42 @@ test("analytics button contains stylish animated SVG icon with gradients, bars, 
   assert.match(css, /@keyframes analyticsLiveEq/);
 });
 
+test("play button and toggle fullscreen button are located inside magnification container with animated SVGs", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+
+  // Both buttons must be nested inside the slideZoomBar magnification container
+  const zoomBarMatch = html.match(/<div id="slideZoomBar"[\s\S]*?<\/div>\s*<\/div>/);
+  assert.ok(zoomBarMatch, "slideZoomBar container must exist in HTML");
+  const zoomBarHtml = zoomBarMatch[0];
+
+  assert.match(zoomBarHtml, /id="startSlideshowBtn"/);
+  assert.match(zoomBarHtml, /id="fullscreenBtn"/);
+  assert.match(zoomBarHtml, /class="[^"]*zoom-bar-divider[^"]*"/);
+
+  // Animated SVG inside startSlideshowBtn
+  assert.match(zoomBarHtml, /class="slideshow-svg"/);
+  assert.match(zoomBarHtml, /class="slideshow-ring-svg"/);
+  assert.match(zoomBarHtml, /class="slideshow-triangle-svg"/);
+  assert.match(zoomBarHtml, /class="slideshow-stop-svg"/);
+
+  // Animated SVG inside fullscreenBtn
+  assert.match(zoomBarHtml, /class="fullscreen-svg"/);
+  assert.match(zoomBarHtml, /class="fs-corners-expand"/);
+  assert.match(zoomBarHtml, /class="fs-corners-contract"/);
+  assert.match(zoomBarHtml, /class="fs-corner fs-tl"/);
+  assert.match(zoomBarHtml, /class="fs-corner fs-tr"/);
+
+  // Verify CSS animation rules
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(css, /@keyframes slideshowRingRotate/);
+  assert.match(css, /@keyframes slideshowStopPulse/);
+  assert.match(css, /\.zoom-fullscreen-btn/);
+  assert.match(css, /\.zoom-fullscreen-btn \.fullscreen-svg/);
+  assert.match(css, /\.zoom-bar-divider/);
+  assert.match(css, /\.fs-corners-expand \.fs-tl/);
+});
+
+
 
 
 

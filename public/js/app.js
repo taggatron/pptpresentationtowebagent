@@ -7178,6 +7178,10 @@ function setupEventListeners() {
   const updateFullscreenClass = () => {
     const isFS = Boolean(document.fullscreenElement || document.webkitIsFullScreen);
     document.body.classList.toggle("is-fullscreen", isFS);
+    if (fullscreenBtn) {
+      fullscreenBtn.setAttribute("title", isFS ? "Exit fullscreen (F)" : "Toggle fullscreen (F)");
+      fullscreenBtn.setAttribute("aria-label", isFS ? "Exit fullscreen" : "Toggle fullscreen");
+    }
     if (!isFS) {
       document.querySelector(".app-footer")?.classList.remove("is-nav-approached");
       // Stop slideshow tracking and reset button when exiting fullscreen (unless external presentation window is active)
