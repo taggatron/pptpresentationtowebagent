@@ -28,7 +28,7 @@ export async function verifyLesson03Slides() {
   console.log(`Reported Total Slides: ${manifest.totalSlides}`);
   console.log(`Slides in Array: ${manifest.slides.length}`);
 
-  const targetSlides = [15, 16, 17, 18, 19];
+  const targetSlides = [8, 9, 10, 11, 12];
   for (const num of targetSlides) {
     const slideDef = manifest.slides.find((s) => s.number === num);
     if (!slideDef) {
