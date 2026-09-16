@@ -9,16 +9,13 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const portrait = matchMedia('(max-aspect-ratio: 1/1)');
   const resources = [
-    { id:'light-1', text:'Light', x:43.7, y:25.2, w:11.15, style:'warm' },
-    { id:'space', text:'Space', x:55.9, y:27.7, w:9.7 },
-    { id:'food-1', text:'Food', x:58.5, y:33.0, w:7.6 },
-    { id:'light-2', text:'Light', x:53.6, y:40.8, w:8.5 },
-    { id:'mineral-ions', text:'Mineral Ions', x:60.2, y:51.0, w:16.1, style:'mineral' },
-    { id:'mates', text:'Mates', x:45.3, y:53.9, w:8.4 },
-    { id:'light-3', text:'Light', x:40.3, y:62.2, w:8.6 },
-    { id:'water', text:'Water', x:57.9, y:61.6, w:7.9 },
-    { id:'territory-1', text:'Territory', x:41.9, y:70.9, w:12.3 },
-    { id:'territory-2', text:'Territory', x:56.1, y:79.7, w:12.3 },
+    { id:'light', text:'Light', x:44.0, y:24.5, w:10.5, style:'warm' },
+    { id:'space', text:'Space', x:56.5, y:31.0, w:9.7 },
+    { id:'food', text:'Food', x:43.5, y:39.5, w:8.0 },
+    { id:'mineral-ions', text:'Mineral Ions', x:57.0, y:48.5, w:16.1, style:'mineral' },
+    { id:'mates', text:'Mates', x:43.0, y:58.0, w:8.5 },
+    { id:'water', text:'Water', x:56.5, y:66.5, w:8.0 },
+    { id:'territory', text:'Territory', x:45.0, y:76.0, w:12.3 },
   ];
   document.getElementById('total').textContent=resources.length;
   document.getElementById('completion-summary').textContent=`All ${resources.length} labels sorted.`;
