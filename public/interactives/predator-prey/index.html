@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1720">
+<meta name="description" content="A slide-ready predator–prey investigation. Observe populations, test a disturbance and explain the cycle.">
+<title>Natural Dynamics · Predator & Prey</title>
+<link rel="stylesheet" href="style.css">
+<script src="model.js" defer></script><script src="activity.js" defer></script>
+</head>
+<body>
+<main class="app" id="app">
+ <header class="masthead">
+  <div><div class="eyebrow">FIELD LAB <span>01 / POPULATION ECOLOGY</span></div><h1>Predator <em>&</em> prey</h1></div>
+  <div class="header-actions"><label class="select-wrap"><span class="sr-only">Ecosystem</span><select id="ecosystem"><option value="forest">Pine forest</option><option value="ocean">Coral reef</option><option value="savanna">Savanna</option><option value="meadow">Moonlit meadow</option></select></label><button id="info" class="icon-button" aria-label="About the model">i</button></div>
+ </header>
+ <section class="workspace" aria-label="Population investigation">
+  <section class="habitat panel">
+   <div class="panel-top"><span class="eyebrow" id="biome-label">PINE FOREST</span><span class="status" id="status">READY TO OBSERVE</span></div>
+   <div class="population-row"><div class="species prey"><span class="species-label"><i class="dot"></i><span id="prey-label">Rabbits</span></span><strong id="prey-count">40</strong><span>prey</span></div><div class="species predator"><span class="species-label"><i class="triangle"></i><span id="predator-label">Wolves</span></span><strong id="predator-count">9</strong><span>predators</span></div></div>
+   <div class="arena-wrap"><canvas id="arena" aria-label="Population arena: green circles represent prey; orange triangles represent predators"></canvas><span class="arena-label" id="arena-caption">Each mark represents one individual</span></div>
+   <div class="habitat-bottom"><span id="arena-description">A simplified ecosystem. A shared rhythm.</span><button id="add-prey" title="Add 10 prey to the current population">+ 10 prey</button></div>
+  </section>
+  <section class="chart-panel panel">
+   <div class="panel-top"><h2>Follow the populations</h2><div class="segmented" aria-label="Chart view"><button id="timeline" aria-pressed="true">Over time</button><button id="phase" aria-pressed="false">Phase portrait</button></div></div>
+   <div class="chart-legend"><span><i class="line prey-line"></i>Prey</span><span><i class="line predator-line"></i>Predators</span><span class="time-label">TIME <b id="time">0.0</b></span></div>
+   <div class="chart-wrap"><canvas id="chart" role="img" aria-label="Population graph. Run the simulation to trace prey and predator populations over time."></canvas><div id="chart-empty">Who will peak first?<span>Make a prediction, then press play.</span></div></div>
+   <div class="observation"><span class="eyebrow">LOOK FOR THE LAG</span><p id="observation">When prey increase, what happens to predators next?</p><button id="explain" aria-expanded="false">Reveal why <span aria-hidden="true">↗</span></button></div>
+  </section>
+ </section>
+ <section class="experiment-bar" aria-label="Experiment controls"><div class="experiment-label"><span class="eyebrow">CHANGE ONE THING</span><span>Then watch what follows.</span></div><div class="interventions"><button data-event="famine"><span class="event-icon">−</span>Prey famine <small>−75% prey</small></button><button data-event="disease"><span class="event-icon">◇</span>Predator disease <small>−80% predators</small></button><button data-event="fire"><span class="event-icon">↘</span>Habitat loss <small>−50% of both</small></button></div></section>
+ <footer class="transport"><div class="playback"><button class="play" id="play"><span aria-hidden="true">▶</span><span id="play-text">Run simulation</span></button><button id="reset" class="reset" aria-label="Restart simulation">↺ <span>Reset</span></button><button id="speed" aria-label="Simulation speed: 1 times">1×</button></div><div class="model-controls"><div class="segmented" aria-label="Simulation model"><button id="mode-math" aria-pressed="true">Population model</button><button id="mode-agent" aria-pressed="false">Agent model</button></div><button id="settings">Tune model <span aria-hidden="true">☷</span></button></div></footer>
+ <div class="toast" role="status" aria-live="polite" id="message"></div>
+ <dialog id="model-dialog"><form method="dialog"><div class="dialog-heading"><div><span class="eyebrow">BEHIND THE CYCLE</span><h2>Tune the ecosystem</h2></div><button class="icon-button" aria-label="Close model settings">×</button></div></form><p class="dialog-intro">Change one factor, predict its effect, then run the model.</p><div id="sliders"></div><label class="capacity-toggle"><input type="checkbox" id="logistic"> Limit prey resources <span>Logistic growth</span></label><label class="capacity-row" for="capacity">Carrying capacity <output id="capacity-value">200</output><input type="range" id="capacity" min="50" max="500" step="10" value="200" disabled></label><div class="formula"><span id="equation-prey">dN/dt = αN − βNP</span><span>dP/dt = δNP − γP</span></div><p class="model-note" id="model-note">An idealised Lotka–Volterra model, solved with fourth-order Runge–Kutta integration. Populations are continuous estimates; arena marks are illustrative.</p><button class="restore" id="restore">Restore ecosystem defaults</button></dialog>
+ <dialog id="about-dialog"><form method="dialog"><div class="dialog-heading"><div><span class="eyebrow">NATURAL DYNAMICS</span><h2>One ecosystem. Two lenses.</h2></div><button class="icon-button" aria-label="Close information">×</button></div></form><p><b>Population model</b> traces idealised, continuous populations. Prey reproduce; predators eat prey, reproduce and die. The arena illustrates the graph, rather than driving it.</p><p><b>Agent model</b> tracks individuals. Prey move and reproduce; predators seek nearby prey and may starve. Chance and encounters create a less regular pattern.</p><p>The pairings illustrate a simplified two-species relationship. Real ecosystems contain many species, migration, changing resources and other pressures. These are teaching models, not forecasts.</p><p><b>Try this:</b> observe one cycle, predict the effect of a disturbance, then explain the graph. The axes rescale as populations change. Time is in model units, not years.</p><p class="model-note">Keyboard: Tab to a control, then Enter or Space. Sliders use arrow keys. Escape closes these panels. All controls support touch.</p></dialog>
+</main>
+</body></html>
