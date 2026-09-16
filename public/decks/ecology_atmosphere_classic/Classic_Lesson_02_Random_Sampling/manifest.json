@@ -14,9 +14,9 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 6,
-        "timeGuideDisplay": "5–7s",
-        "vciScore": "2.8",
+        "estimatedTimeSeconds": 16,
+        "timeGuideDisplay": "13–19s",
+        "vciScore": "4.4",
         "complexityCategory": "Low",
         "ragLevel": "low",
         "ragColor": "green",
@@ -24,9 +24,9 @@
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 3600,
-          "wordCount": 2,
+          "readingMs": 9600,
+          "semanticProcessingMs": 4900,
+          "wordCount": 28,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -43,6 +43,56 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "gone\nLesson 2: Investigating 4\n_ Abundance SA\ni; Random Sampling and Mathematical Modelling go ~ — : -\n~al a 4)|",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5c102a8108a6b22daf54a2b97320cc26d722fcd04b72b3ea950777dc365f19c5",
+        "transcript": "gone\nLesson 2: Investigating 4\n_ Abundance SA\ni; Random Sampling and Mathematical Modelling go ~ — : -\n~al a 4)|",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"2. Investigating Abundance (Random Sampling)\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"2. Investigating Abundance (Random Sampling)\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_01.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -54,26 +104,40 @@
       "isInteractive": true,
       "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 15,
-        "timeGuideDisplay": "12–18s",
-        "vciScore": "4.5",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 151,
+        "timeGuideDisplay": "128–174s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 3200,
-          "semanticProcessingMs": 8500,
-          "wordCount": 84,
-          "visualElementsCount": 6
-        }
+          "visualScanMs": 7938,
+          "readingMs": 98400,
+          "semanticProcessingMs": 44800,
+          "wordCount": 287,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 6,
+        "questionCount": 10,
         "detectionSource": "manifest-text"
       },
       "interactiveCells": [
@@ -93,10 +157,12 @@
             "w": 43.2,
             "h": 10.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_card_2",
@@ -114,10 +180,12 @@
             "w": 43.2,
             "h": 10.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_card_3",
@@ -135,10 +203,12 @@
             "w": 43.2,
             "h": 10.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_card_4",
@@ -156,10 +226,12 @@
             "w": 43.2,
             "h": 10.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_card_5",
@@ -177,10 +249,12 @@
             "w": 43.2,
             "h": 10.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_card_6",
@@ -198,12 +272,166 @@
             "w": 43.2,
             "h": 10.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "Question: Which technique estimates woodlice or field mice Question: Whenis systematic sampling along a transect used instead\npopulations, and why? of random sampling?\nSuccess Cue: Capture-recapture Success Cue: When investigating changes across an\n(because animals are motile / moving). environmental gradient (e.g., light, moisture).\njit Py Py PP igh PPP Py Py igh PP\nQuestion: In capture-recapture: 20 marked, 30 caught later, 10 Question: Name two abiotic gradients investigated using a line or\nmarked. Estimate total population. belt transect.\nSuccess Cue: 60 individuals Success Cue: E.g., [Light intensity] (tree canopy) or\n(Total population = (20 x 30) +10 = 60). [moisture / salinity] (rocky seashore).\nQuestion: State one key assumption regarding marks applied during Question: What is the fundamental difference between abundance\ncapture-recapture. and distribution?\nSuccess Cue: Mark does not affect survival or predation, and Success Cue: Abundance = how many exist;\ndoes not rub or wash off. Distribution = where they are located.\nGeminiNotebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "335360afa6966aaddbd974cbfb63613c19869b1c80d7d94508ddb1575cf18e85",
+        "transcript": "Question: Which technique estimates woodlice or field mice Question: Whenis systematic sampling along a transect used instead\npopulations, and why? of random sampling?\nSuccess Cue: Capture-recapture Success Cue: When investigating changes across an\n(because animals are motile / moving). environmental gradient (e.g., light, moisture).\njit Py Py PP igh PPP Py Py igh PP\nQuestion: In capture-recapture: 20 marked, 30 caught later, 10 Question: Name two abiotic gradients investigated using a line or\nmarked. Estimate total population. belt transect.\nSuccess Cue: 60 individuals Success Cue: E.g., [Light intensity] (tree canopy) or\n(Total population = (20 x 30) +10 = 60). [moisture / salinity] (rocky seashore).\nQuestion: State one key assumption regarding marks applied during Question: What is the fundamental difference between abundance\ncapture-recapture. and distribution?\nSuccess Cue: Mark does not affect survival or predation, and Success Cue: Abundance = how many exist;\ndoes not rub or wash off. Distribution = where they are located.\nGeminiNotebook",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Which technique estimates woodlice or field mice Question: Whenis systematic sampling along a transect used instead populations, and why?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "State one key assumption regarding marks applied during Question: What is the fundamental difference between abundance capture-recapture. and distribution?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter Activity: Knowledge Retrieval\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_02.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Which technique estimates woodlice or field mice populations, and why?",
+            "componentIds": [
+              "reveal_2_card_1"
+            ],
+            "targetBounds": {
+              "x": 4.1,
+              "y": 19.1,
+              "w": 43.2,
+              "h": 10.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: When is systematic sampling along a transect used instead of random sampling?",
+            "componentIds": [
+              "reveal_2_card_2"
+            ],
+            "targetBounds": {
+              "x": 52.7,
+              "y": 19.1,
+              "w": 43.2,
+              "h": 10.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: In capture-recapture: 20 marked, 30 caught later, 10 marked. Estimate total population.",
+            "componentIds": [
+              "reveal_2_card_3"
+            ],
+            "targetBounds": {
+              "x": 4.1,
+              "y": 51.4,
+              "w": 43.2,
+              "h": 10.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Name two abiotic gradients investigated using a line or belt transect.",
+            "componentIds": [
+              "reveal_2_card_4"
+            ],
+            "targetBounds": {
+              "x": 52.7,
+              "y": 51.4,
+              "w": 43.2,
+              "h": 10.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: State one key assumption regarding marks applied during capture-recapture.",
+            "componentIds": [
+              "reveal_2_card_5"
+            ],
+            "targetBounds": {
+              "x": 4.1,
+              "y": 83.7,
+              "w": 43.2,
+              "h": 10.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: What is the fundamental difference between abundance and distribution?",
+            "componentIds": [
+              "reveal_2_card_6"
+            ],
+            "targetBounds": {
+              "x": 52.7,
+              "y": 83.7,
+              "w": 43.2,
+              "h": 10.9
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -214,19 +442,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 36,
+        "timeGuideDisplay": "30–42s",
+        "vciScore": "5.2",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 19200,
+          "semanticProcessingMs": 15800,
+          "wordCount": 58,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -243,6 +471,101 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "e@\nThe Impossible Task\nImagine you are tasked with counting every single daisy in a 10,000 square metre field to monitor the\nhealth of the population.\nInteractive Checkpoint (Pair-and-Share):\nYou have 60 seconds. Talk to your partner: How can you accurately estimate the number of daisies without\ncounting them all? What is the smartest shortcut?",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "8e9753b7f7aa454044a62abb4c42412a870951909e8f278e999f31c1b06e6e65",
+        "transcript": "e@\nThe Impossible Task\nImagine you are tasked with counting every single daisy in a 10,000 square metre field to monitor the\nhealth of the population.\nInteractive Checkpoint (Pair-and-Share):\nYou have 60 seconds. Talk to your partner: How can you accurately estimate the number of daisies without\ncounting them all? What is the smartest shortcut?",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "are metre field to monitor the health of the population. Interactive Checkpoint (Pair-and-Share): You have 60 seconds. Talk to your partner: How can you accurately estimate the number of daisies without counting them all?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What is the smartest shortcut?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"The Impossible Task\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Impossible Task\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Impossible Task. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"The Impossible Task\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Impossible Task\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Impossible Task. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"The Impossible Task\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Impossible Task\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Impossible Task. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_03.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -254,19 +577,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 48,
+        "timeGuideDisplay": "40–56s",
+        "vciScore": "6.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 33900,
+          "semanticProcessingMs": 12400,
+          "wordCount": 105,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -283,6 +606,95 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "The Detective’s Frame: The Quadrat\nA quadrat is a standard unit of area used to isolate a sample of a habitat. We use it\nto measure abundance (the number of individuals).\nInteractive Checkpoint (Diagram Labelling & Maths):\nTask1:Labelthe 7 (@aXipeNRnyy ae)\nstandard dimensions SAAN a aie\n| Answer: 0.5m by 0.5m NN f nN | él Fy | LY\nBaL GIN UA ZA A Task 1; Label the\n3 KS iS g | LS es standard dimensions\nSA nnAd rae \\|/ ~~ Answer: 0.5m by 0.5m |\nTask 2: Calculate the total area of this standard quadrat\nAnswer: 0.25m? —",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "b1027fff75f0eda6504a694a3f01a9e0854b2de7cce3b8bf00ab00142cd11fae",
+        "transcript": "The Detective’s Frame: The Quadrat\nA quadrat is a standard unit of area used to isolate a sample of a habitat. We use it\nto measure abundance (the number of individuals).\nInteractive Checkpoint (Diagram Labelling & Maths):\nTask1:Labelthe 7 (@aXipeNRnyy ae)\nstandard dimensions SAAN a aie\n| Answer: 0.5m by 0.5m NN f nN | él Fy | LY\nBaL GIN UA ZA A Task 1; Label the\n3 KS iS g | LS es standard dimensions\nSA nnAd rae \\|/ ~~ Answer: 0.5m by 0.5m |\nTask 2: Calculate the total area of this standard quadrat\nAnswer: 0.25m? —",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "iS g | LS es standard dimensions SA nnAd rae \\|/ ~~ Answer: 0.5m by 0.5m | Task 2: Calculate the total area of this standard quadrat Answer: 0.25m?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"The Detective's Frame: The Quadrat\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"The Detective's Frame: The Quadrat\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"The Detective's Frame: The Quadrat\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_04.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -299,19 +711,19 @@
         "label": "Fieldwork Method Video"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 15,
-        "timeGuideDisplay": "12–18s",
-        "vciScore": "3.1",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 83,
+        "timeGuideDisplay": "70–96s",
+        "vciScore": "9.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 1200,
-          "semanticProcessingMs": 8000,
-          "wordCount": 8,
+          "readingMs": 58650,
+          "semanticProcessingMs": 22800,
+          "wordCount": 182,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -328,6 +740,101 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "FIELDWORK INVESTIGATION - OBSERVATION TASK © Ecology Fieldwork\n° ° ° >\nWhat is wrong with this method?\nObserve the ecologist's sampling procedure in the meadow.\nF ) ee ; . > sani . *\nj Think & Discuss with your partner\nsh Why does “throwing a quadrat\" violate sound scientific methodology?\n= 1 Subconscious Human Bias v\ni resend en et Senn 2 Unequal Sampling Probability v\n5 ARE tse ie: pe eg To tg ee a a 3. Physical Hazard & Habitat Damage v\ntie ae aS SS a ee Ate bn = . an . i\nDore = ae oa mide h bi <\\- PWIA 23 4 The Scientific Solution (Next Slide) v\n+-\"e BY \\%6 ic a Sou eee cre ai aes\n“4 ‘ Eee, 0 aired de Una ne\n- a eS es [ Reveat allinsights } Reset Checkpoints\n> 8 0:00/0:10 im 2 2\nSpace Play/Pause « |R Restart » |S Slow-mo Next: Scientific Random Sampling >\nLesson 2: Investigating Abundance and Distribution + Ecological Sampling Methods © Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "49ab0d3bdc1379c1d250d8ddd72a928fc6eb19fb18b88c9661aa4561aa771869",
+        "transcript": "FIELDWORK INVESTIGATION - OBSERVATION TASK © Ecology Fieldwork\n° ° ° >\nWhat is wrong with this method?\nObserve the ecologist's sampling procedure in the meadow.\nF ) ee ; . > sani . *\nj Think & Discuss with your partner\nsh Why does “throwing a quadrat\" violate sound scientific methodology?\n= 1 Subconscious Human Bias v\ni resend en et Senn 2 Unequal Sampling Probability v\n5 ARE tse ie: pe eg To tg ee a a 3. Physical Hazard & Habitat Damage v\ntie ae aS SS a ee Ate bn = . an . i\nDore = ae oa mide h bi <\\- PWIA 23 4 The Scientific Solution (Next Slide) v\n+-\"e BY \\%6 ic a Sou eee cre ai aes\n“4 ‘ Eee, 0 aired de Una ne\n- a eS es [ Reveat allinsights } Reset Checkpoints\n> 8 0:00/0:10 im 2 2\nSpace Play/Pause « |R Restart » |S Slow-mo Next: Scientific Random Sampling >\nLesson 2: Investigating Abundance and Distribution + Ecological Sampling Methods © Gemini Notebook",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "What is wrong with this method?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Why does “throwing a quadrat\" violate sound scientific methodology?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 5,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"What is wrong with this method?\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"What is wrong with this method?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: What is wrong with this method?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_05_video_embed.png"
+        },
+        {
+          "id": "gemini_slide_5_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"What is wrong with this method?\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"What is wrong with this method?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: What is wrong with this method?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_05_video_embed.png"
+        },
+        {
+          "id": "gemini_slide_5_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"What is wrong with this method?\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"What is wrong with this method?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: What is wrong with this method?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_05_video_embed.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -339,19 +846,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 61,
+        "timeGuideDisplay": "51–71s",
+        "vciScore": "7.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 39750,
+          "semanticProcessingMs": 19800,
+          "wordCount": 129,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -368,6 +875,95 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "The Bias Trap: Why We Don’t Throw\nTo get a representative sample, every part of the area must have an equal chance of\nbeing selected. Human choice, even subconscious, ruins data.\nQuick-Fire Checkpoint: Why might a student accidentally bias their results if they just\n‘throw’ the quadrat behind their back?\nBiased Method Scientific Method\ny [a oa. MP al\n— | tia (p, vial\neeehe | icacnas)| | | ||| | eee 7 |\nce ees eal Ai\npe = BER ri, 7_| |_| | (enemas\nSMA AG Cy | Tie AGGEERI\n[ee an LT at 7 ees\nee yee ap”. » ABE | Ee\nesl v 2’. M08 > (eee\n9 SI) pore ei |s.| ||| [al | | etal\n(AO",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "16bc1de02f2d68bba23779573b36e7ccf45199f5179fef0b7cf253b731c8e1b8",
+        "transcript": "The Bias Trap: Why We Don’t Throw\nTo get a representative sample, every part of the area must have an equal chance of\nbeing selected. Human choice, even subconscious, ruins data.\nQuick-Fire Checkpoint: Why might a student accidentally bias their results if they just\n‘throw’ the quadrat behind their back?\nBiased Method Scientific Method\ny [a oa. MP al\n— | tia (p, vial\neeehe | icacnas)| | | ||| | eee 7 |\nce ees eal Ai\npe = BER ri, 7_| |_| | (enemas\nSMA AG Cy | Tie AGGEERI\n[ee an LT at 7 ees\nee yee ap”. » ABE | Ee\nesl v 2’. M08 > (eee\n9 SI) pore ei |s.| ||| [al | | etal\n(AO",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why might a student accidentally bias their results if they just ‘throw’ the quadrat behind their back?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"The Bias Trap: Why We Don't Throw\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"The Bias Trap: Why We Don't Throw\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"The Bias Trap: Why We Don't Throw\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -379,20 +975,20 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 10,
-        "timeGuideDisplay": "8–12s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 72,
+        "timeGuideDisplay": "61–83s",
+        "vciScore": "8.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 800,
-          "semanticProcessingMs": 7900,
-          "wordCount": 4,
-          "visualElementsCount": 4
+          "readingMs": 49200,
+          "semanticProcessingMs": 21600,
+          "wordCount": 152,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -408,6 +1004,88 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Random Sampling Method\nStep-by-Step Fieldwork Protocol\n1. Lay Out Tape Measures: Place two tape =\nmeasures at right angles along the field edges | NY eV AWA\nto form a coordinate grid (e.g., 10m x 10m). ®, a es w . Ww Vy), BBS\n2. Obtain Random Coordinates: Use a oe ig ZS | sors\nrandom number generator on a calculator to Vv \\y SeesesesesS iv\nget (X, Y) coordinates, removing human bias. vik Minne SEA\" iM ;\n3. Place the Quadrat: Locate the coordinates Ven M/ . : , eh i\non the grid and set the quadrat frame down ‘ic ar ; y Me\nat the intersection point. \\ hat vi ™ Sony,\n——— Wie Ms vv SG\n4. Count and Repeat: Count organisms inside MINNA DALIAN AVANAA\nthe quadrat. Repeat at 10+ random coordinate [reer enero\nlocations to calculate a representative mean. X",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "04c6da5d0ae6cac606f97c7a5493738395189133158fe2281b9c4295f9b9f427",
+        "transcript": "Random Sampling Method\nStep-by-Step Fieldwork Protocol\n1. Lay Out Tape Measures: Place two tape =\nmeasures at right angles along the field edges | NY eV AWA\nto form a coordinate grid (e.g., 10m x 10m). ®, a es w . Ww Vy), BBS\n2. Obtain Random Coordinates: Use a oe ig ZS | sors\nrandom number generator on a calculator to Vv \\y SeesesesesS iv\nget (X, Y) coordinates, removing human bias. vik Minne SEA\" iM ;\n3. Place the Quadrat: Locate the coordinates Ven M/ . : , eh i\non the grid and set the quadrat frame down ‘ic ar ; y Me\nat the intersection point. \\ hat vi ™ Sony,\n——— Wie Ms vv SG\n4. Count and Repeat: Count organisms inside MINNA DALIAN AVANAA\nthe quadrat. Repeat at 10+ random coordinate [reer enero\nlocations to calculate a representative mean. X",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Random Sampling Method: Step-by-Step Fieldwork Protocol\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Random Sampling Method: Step-by-Step Fieldwork Protocol\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Random Sampling Method: Step-by-Step Fieldwork Protocol\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_07.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -424,20 +1102,20 @@
         "label": "Live Practical Simulation"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 18,
-        "timeGuideDisplay": "15–20s",
-        "vciScore": "3.2",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 37,
+        "timeGuideDisplay": "31–43s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 5700,
-          "semanticProcessingMs": 11000,
-          "wordCount": 18,
-          "visualElementsCount": 4
+          "readingMs": 21900,
+          "semanticProcessingMs": 13600,
+          "wordCount": 71,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -453,6 +1131,88 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "> ~ = al ~\nAha sh ae aN ak mrt ih i RE tag Ad\nAAC A esa RR TEN Hd il\nAe i, NY ‘ ‘AN iy \\ th 1 ith f ON iN y My hi Hh \\ tt va pide Wig\nSEAN BS Sa NY Wen De ON OAS f Dit\nNacwmaramd on anki ARN RR EE al A Mla ee meme",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "38b2b60aacb520248f0ea54919dfc7df7d1ad1501edd57261ba128dc8115b9bc",
+        "transcript": "> ~ = al ~\nAha sh ae aN ak mrt ih i RE tag Ad\nAAC A esa RR TEN Hd il\nAe i, NY ‘ ‘AN iy \\ th 1 ith f ON iN y My hi Hh \\ tt va pide Wig\nSEAN BS Sa NY Wen De ON OAS f Dit\nNacwmaramd on anki ARN RR EE al A Mla ee meme",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"AAC A esa RR TEN Hd il\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_08_web_embed.png"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"AAC A esa RR TEN Hd il\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_08_web_embed.png"
+        },
+        {
+          "id": "gemini_slide_8_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"AAC A esa RR TEN Hd il\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_08_web_embed.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -464,19 +1224,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 41,
+        "timeGuideDisplay": "34–48s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 21150,
+          "semanticProcessingMs": 19000,
+          "wordCount": 68,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -493,6 +1253,88 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Making Sense of the Clues: Averages\nOnce we collect our random samples, we must process the raw data to find the\ncentral tendency.\n4 Field Data Log\nQuadrat counts: L 2s 2 3, i, 5 ] p\nCalculation Race: Race your partner to calculate all three values for our 5\nquadrat samples.\nMean = (2+3+3+7+5) Ordered: 2, 3, 3, 5, 7. _",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "123b685ee36b6c1734e3013d36ebf9f7e3252dfcbcd642701dc2aa26a05d5cce",
+        "transcript": "Making Sense of the Clues: Averages\nOnce we collect our random samples, we must process the raw data to find the\ncentral tendency.\n4 Field Data Log\nQuadrat counts: L 2s 2 3, i, 5 ] p\nCalculation Race: Race your partner to calculate all three values for our 5\nquadrat samples.\nMean = (2+3+3+7+5) Ordered: 2, 3, 3, 5, 7. _",
+        "role": "worked-example",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"Making Sense of the Clues: Averages\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Making Sense of the Clues: Averages\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Making Sense of the Clues: Averages. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"Making Sense of the Clues: Averages\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Making Sense of the Clues: Averages\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Making Sense of the Clues: Averages. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"Making Sense of the Clues: Averages\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Making Sense of the Clues: Averages\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Making Sense of the Clues: Averages. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_09.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -504,19 +1346,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 58,
+        "timeGuideDisplay": "49–67s",
+        "vciScore": "7.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 39150,
+          "semanticProcessingMs": 18000,
+          "wordCount": 123,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -533,6 +1375,95 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Scaling Up to the Total Population\nWe assume our random samples perfectly represent the wider field. We divide\nthe total habitat area by our quadrat area to find our multiplier.\n: .____ Total Area\nEstimated Population = Qusdcauares X Mean Count per Quadrat\nGuided Calculation: :\nScenario: A sports pitch is 200mz2. Mee ia |\nYou use a 1m? quadrat. Your mean we 3 = , at |\ncount of dandelions is 6 per quadrat. |; Uf a tic\nTask: Calculate the estimated total (aim = | , a |\ndandelions on the pitch. [aes i irae err \\\nAnswer: 200 / 1 = 200. / a ae\n200 x 6 = 1,200 dandelions _ Lt |",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "2a4d2969b9946dbee15e220f4b73e6e58f558f238ae973e96251ecc242f72967",
+        "transcript": "Scaling Up to the Total Population\nWe assume our random samples perfectly represent the wider field. We divide\nthe total habitat area by our quadrat area to find our multiplier.\n: .____ Total Area\nEstimated Population = Qusdcauares X Mean Count per Quadrat\nGuided Calculation: :\nScenario: A sports pitch is 200mz2. Mee ia |\nYou use a 1m? quadrat. Your mean we 3 = , at |\ncount of dandelions is 6 per quadrat. |; Uf a tic\nTask: Calculate the estimated total (aim = | , a |\ndandelions on the pitch. [aes i irae err \\\nAnswer: 200 / 1 = 200. / a ae\n200 x 6 = 1,200 dandelions _ Lt |",
+        "role": "worked-example",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is 200mz2. Mee ia | You use a 1m?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Scaling Up to the Total Population\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Scaling Up to the Total Population\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Scaling Up to the Total Population. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Scaling Up to the Total Population\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Scaling Up to the Total Population\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Scaling Up to the Total Population. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Scaling Up to the Total Population\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Scaling Up to the Total Population\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Scaling Up to the Total Population. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_10.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -549,20 +1480,20 @@
         "label": "Google Earth & Field GIS Simulation"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 22,
-        "timeGuideDisplay": "18–25s",
-        "vciScore": "3.4",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 119,
+        "timeGuideDisplay": "101–137s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 1400,
-          "semanticProcessingMs": 12000,
-          "wordCount": 12,
-          "visualElementsCount": 4
+          "readingMs": 92850,
+          "semanticProcessingMs": 24400,
+          "wordCount": 294,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
@@ -578,6 +1509,101 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "+ FIELDWORK INVESTIGATION - GIS SATELLITE APPLICATION ,\n@. South Devon College « Paignton Campus\nSouth Devon College: Estimating Campus Plant Populations\nApplying our random quadrat sampling protocol and scaling formula to our actual college sports field.\nCampus Satellite Field Map 50.4142\" mw, 3.5884\" Ww @ open in Google Earth (30) 7 I. SCALING FORMULA (FROM SLIDE 10) Sports Pitch Mode!\n7 ae gd Estimated Pop. = (Total Area + Quadrat Area) x Mean Count\n+ s - #\n%‘ £ feb COLLEGE PITCH AREA QUADRAT MULTIPLIER\nDi he 4,950 m? 4,950 x\nAmes ile au |= aaa\nee | mage Mean dandelions/m; 48\n; ” ‘ Estimated Campus Pitch Dandelions\n{i ma’ ip 450 me 48 sandelonem 23,760\nFA ” wal z 7 i ties eur\nrs ea ——— i Sa 1 Why use Satellite GIS before stepping outside? v\nFs y 4 | ig\n— ee 4 = at r\nalll y } { sil | i 2 Campus Pitch Edge Effects & Footpaths v\nTin z 4 ele ¥ ; 3 Assumption: Is the field uniform? v\n. y rt Cae lice al ption: Is the field uniform?\n} wy oO =\nWhe ime | fa Sowell | Lea\"\na Se of a P| ee -~7\nas 4 . J; we . :\n“= =a 5\n“ n n rin = , 5 ‘= Lost |Tles © Esri — South Devon College Grounds\nExplore South Devon College in 3D. [ taunch ap earth” |\n© er attinss yams top-ccim tacis apect compu tere tonnes « pen Doran Launch 3D Earth ~ [Reveal Alt insights | Ent che amas\nLesson 2: Investigating Abundance and Distribution « Fieldwork Sampling « South Devon College G Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "666507cc99e250447658a7d4f2d6f7246c92326a664b02f40adcce67dc5d48ec",
+        "transcript": "+ FIELDWORK INVESTIGATION - GIS SATELLITE APPLICATION ,\n@. South Devon College « Paignton Campus\nSouth Devon College: Estimating Campus Plant Populations\nApplying our random quadrat sampling protocol and scaling formula to our actual college sports field.\nCampus Satellite Field Map 50.4142\" mw, 3.5884\" Ww @ open in Google Earth (30) 7 I. SCALING FORMULA (FROM SLIDE 10) Sports Pitch Mode!\n7 ae gd Estimated Pop. = (Total Area + Quadrat Area) x Mean Count\n+ s - #\n%‘ £ feb COLLEGE PITCH AREA QUADRAT MULTIPLIER\nDi he 4,950 m? 4,950 x\nAmes ile au |= aaa\nee | mage Mean dandelions/m; 48\n; ” ‘ Estimated Campus Pitch Dandelions\n{i ma’ ip 450 me 48 sandelonem 23,760\nFA ” wal z 7 i ties eur\nrs ea ——— i Sa 1 Why use Satellite GIS before stepping outside? v\nFs y 4 | ig\n— ee 4 = at r\nalll y } { sil | i 2 Campus Pitch Edge Effects & Footpaths v\nTin z 4 ele ¥ ; 3 Assumption: Is the field uniform? v\n. y rt Cae lice al ption: Is the field uniform?\n} wy oO =\nWhe ime | fa Sowell | Lea\"\na Se of a P| ee -~7\nas 4 . J; we . :\n“= =a 5\n“ n n rin = , 5 ‘= Lost |Tles © Esri — South Devon College Grounds\nExplore South Devon College in 3D. [ taunch ap earth” |\n© er attinss yams top-ccim tacis apect compu tere tonnes « pen Doran Launch 3D Earth ~ [Reveal Alt insights | Ent che amas\nLesson 2: Investigating Abundance and Distribution « Fieldwork Sampling « South Devon College G Gemini Notebook",
+        "role": "worked-example",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why use Satellite GIS before stepping outside?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Is the field uniform?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"FIELDWORK INVESTIGATION - GIS SATELLITE APPLICATION\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_11_google_earth_embed.png"
+        },
+        {
+          "id": "gemini_slide_11_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"FIELDWORK INVESTIGATION - GIS SATELLITE APPLICATION\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_11_google_earth_embed.png"
+        },
+        {
+          "id": "gemini_slide_11_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"FIELDWORK INVESTIGATION - GIS SATELLITE APPLICATION\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Investigating Abundance (Random Sampling). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_11_google_earth_embed.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -589,19 +1615,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 55,
+        "timeGuideDisplay": "46–64s",
+        "vciScore": "6.6",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 32550,
+          "semanticProcessingMs": 21400,
+          "wordCount": 103,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -619,7 +1645,89 @@
           }
         ]
       },
-      "hidden": true
+      "hidden": true,
+      "text": "sit\nScientific Shorthand (Mathematical Symbols)\nEcologists use specific symbols to quickly communicate relationships in their\nfield notes.\n= } Symbol Match: Fill in the blank with the\n\\ —| < correct symbol (<<, >>, or ~).\n— —_— (J 1. Plant growth in full sun [_] Plant\neres | [ ] growth in pitch black.\n<< 7? i > | 2. Number of daisies in Quadrat 1 (14)\n: { ]Number of daisies in Quadrat 2 (15).\nwy } y. As 3. Oxygen levels in a polluted stream\n\\ =) Cal [ ] Oxygen levels in a clean stream.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "fea407b0d6927ed735a765d1f278674cac6ad46a6bdb4a8b519549d96260b42b",
+        "transcript": "sit\nScientific Shorthand (Mathematical Symbols)\nEcologists use specific symbols to quickly communicate relationships in their\nfield notes.\n= } Symbol Match: Fill in the blank with the\n\\ —| < correct symbol (<<, >>, or ~).\n— —_— (J 1. Plant growth in full sun [_] Plant\neres | [ ] growth in pitch black.\n<< 7? i > | 2. Number of daisies in Quadrat 1 (14)\n: { ]Number of daisies in Quadrat 2 (15).\nwy } y. As 3. Oxygen levels in a polluted stream\n\\ =) Cal [ ] Oxygen levels in a clean stream.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_12_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"Scientific Shorthand (Mathematical Symbols)\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Scientific Shorthand (Mathematical Symbols)\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Scientific Shorthand (Mathematical Symbols). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"Scientific Shorthand (Mathematical Symbols)\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Scientific Shorthand (Mathematical Symbols)\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Scientific Shorthand (Mathematical Symbols). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"Scientific Shorthand (Mathematical Symbols)\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Scientific Shorthand (Mathematical Symbols)\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Scientific Shorthand (Mathematical Symbols). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_12.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 13,
@@ -630,19 +1738,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 27,
+        "timeGuideDisplay": "22–32s",
+        "vciScore": "4.9",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 16950,
+          "semanticProcessingMs": 8800,
+          "wordCount": 53,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -659,6 +1767,88 @@
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
+      },
+      "text": "Quality Control: Errors and Safety\nSystematic Errors |\na Fix: Institute a consistent rule (e.g.,\n\"Only count plants touching the top and\nleft bars\").\nHealth & Safety\n| Fixes: Wash hands after soil contact\nk (microbes/pathogens), wear sturdy\nfootwear (uneven ground), do not ingest\nunidentified plants or berries.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "100e0d3b3b41c7ef85731b4355de747cde9a78d4248a3195306fd070598f2516",
+        "transcript": "Quality Control: Errors and Safety\nSystematic Errors |\na Fix: Institute a consistent rule (e.g.,\n\"Only count plants touching the top and\nleft bars\").\nHealth & Safety\n| Fixes: Wash hands after soil contact\nk (microbes/pathogens), wear sturdy\nfootwear (uneven ground), do not ingest\nunidentified plants or berries.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_13_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 13: \"Quality Control: Errors and Safety\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Quality Control: Errors and Safety\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Quality Control: Errors and Safety. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 13: \"Quality Control: Errors and Safety\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Quality Control: Errors and Safety\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Quality Control: Errors and Safety. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 13: \"Quality Control: Errors and Safety\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Quality Control: Errors and Safety\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Quality Control: Errors and Safety. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_13.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -670,26 +1860,40 @@
       "isInteractive": true,
       "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 25,
-        "timeGuideDisplay": "20–30s",
-        "vciScore": "4.8",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 103,
+        "timeGuideDisplay": "87–119s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 4500,
-          "semanticProcessingMs": 14000,
-          "wordCount": 95,
-          "visualElementsCount": 6
-        }
+          "visualScanMs": 4312,
+          "readingMs": 70050,
+          "semanticProcessingMs": 28400,
+          "wordCount": 213,
+          "visualElementsCount": 11
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 3,
+        "questionCount": 11,
         "detectionSource": "manifest-text"
       },
       "interactiveCells": [
@@ -708,10 +1912,12 @@
             "w": 46.3,
             "h": 7.8
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "case_study_q2",
@@ -728,10 +1934,12 @@
             "w": 46.3,
             "h": 7.8
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "case_study_q3",
@@ -748,12 +1956,130 @@
             "w": 46.3,
             "h": 7.8
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "2\nCase Study: Meadow Wildflower Survey\nA local nature reserve needs to estimate the abundance of Yellow Rattle across a 2,500 m? uniform conservation meadow to evaluate\nbiodiversity recovery.\nFieldwork Synoptic Challenge GZ0izac3 \\¢ Conservation Meadow Grid (50m x 50m = 2,500 m*)\n50m\n1. Which sampling method eliminates human bias across this open meadow? Ls\n‘Answer: Random sampling using two tape measures at right angles to establish an fom\n(X, Y) grid and generating coordinates with a random number generator.\n° [of\n30m\ne\n2. How should the team scale up their counts to estimate total meadow |\npopulation? a\nAnswer: Estimated Pop = (2,500 m? + Quadrat Area) x Mean Count across 10+ e\nrandomly placed quadrats.\n‘om [x]\n3. Which counting rule prevents recording the same flower twice on edges? a\n‘Om 10m 20m 30m 40m Som (x)\nAnswer: Consistent boundary rule (e.g. only count plants touching the top and left\nbars of the quadrat frame). [1 0.5m x 0.5m Quadrat Frame © Target Wildflower\n4 Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "2b56ae067d27e46b5c8e5dd563f68ec0f81d6b0a7606243fcdf27812f34c4036",
+        "transcript": "2\nCase Study: Meadow Wildflower Survey\nA local nature reserve needs to estimate the abundance of Yellow Rattle across a 2,500 m? uniform conservation meadow to evaluate\nbiodiversity recovery.\nFieldwork Synoptic Challenge GZ0izac3 \\¢ Conservation Meadow Grid (50m x 50m = 2,500 m*)\n50m\n1. Which sampling method eliminates human bias across this open meadow? Ls\n‘Answer: Random sampling using two tape measures at right angles to establish an fom\n(X, Y) grid and generating coordinates with a random number generator.\n° [of\n30m\ne\n2. How should the team scale up their counts to estimate total meadow |\npopulation? a\nAnswer: Estimated Pop = (2,500 m? + Quadrat Area) x Mean Count across 10+ e\nrandomly placed quadrats.\n‘om [x]\n3. Which counting rule prevents recording the same flower twice on edges? a\n‘Om 10m 20m 30m 40m Som (x)\nAnswer: Consistent boundary rule (e.g. only count plants touching the top and left\nbars of the quadrat frame). [1 0.5m x 0.5m Quadrat Frame © Target Wildflower\n4 Gemini Notebook",
+        "role": "process",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "evaluate biodiversity recovery. Fieldwork Synoptic Challenge GZ0izac3 \\¢ Conservation Meadow Grid (50m x 50m = 2,500 m*) 50m 1. Which sampling method eliminates human bias across this open meadow?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "How should the team scale up their counts to estimate total meadow | population?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Which counting rule prevents recording the same flower twice on edges?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_14_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Case Study: Meadow Wildflower Survey\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Case Study: Meadow Wildflower Survey\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_14.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: 1. Which sampling method eliminates human bias across this open meadow?",
+            "componentIds": [
+              "case_study_q1"
+            ],
+            "targetBounds": {
+              "x": 5.5,
+              "y": 40.8,
+              "w": 46.3,
+              "h": 7.8
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: 2. How should the team scale up their counts to estimate total meadow population?",
+            "componentIds": [
+              "case_study_q2"
+            ],
+            "targetBounds": {
+              "x": 5.5,
+              "y": 63.6,
+              "w": 46.3,
+              "h": 7.8
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: 3. Which counting rule prevents recording the same flower twice on edges?",
+            "componentIds": [
+              "case_study_q3"
+            ],
+            "targetBounds": {
+              "x": 5.5,
+              "y": 83.4,
+              "w": 46.3,
+              "h": 7.8
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 15,
@@ -764,21 +2090,35 @@
       "isInteractive": true,
       "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 20,
-        "timeGuideDisplay": "15–25s",
-        "vciScore": "4.2",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 64,
+        "timeGuideDisplay": "54–74s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 3800,
-          "semanticProcessingMs": 11000,
-          "wordCount": 88,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 7938,
+          "readingMs": 36900,
+          "semanticProcessingMs": 19000,
+          "wordCount": 113,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
@@ -802,10 +2142,12 @@
             "w": 12.4,
             "h": 6.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "summary_reveal_2",
@@ -822,10 +2164,12 @@
             "w": 9.4,
             "h": 6.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "summary_reveal_3",
@@ -842,10 +2186,12 @@
             "w": 9.4,
             "h": 6.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "summary_reveal_4",
@@ -862,10 +2208,12 @@
             "w": 7.5,
             "h": 6.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "summary_reveal_5",
@@ -882,10 +2230,12 @@
             "w": 6.5,
             "h": 6.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "summary_reveal_6",
@@ -902,12 +2252,160 @@
             "w": 11.1,
             "h": 6.9
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-created",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "°\nField Notes Summary\nFinal Retrieval: Random Sampling Protocol\nTo estimate the total [abundance] of a plant species in a uniform habitat, we sample\nusing a square frame called a [quadrat] . To eliminate human bias, we position frames\nusing [random] coordinates generated with a calculator or computer. We count the\ntarget organisms, calculate the [mean] average count per quadrat, and multiply this by\nthe total habitat area divided by the quadrat [area] . Finally, to prevent miscounting on\nthe edges, we enforce a strict [boundary] rule.\n+ Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "f609bac313352a098e0994ca13c9d44a3630062487a4b7c5da3385a72d87c15b",
+        "transcript": "°\nField Notes Summary\nFinal Retrieval: Random Sampling Protocol\nTo estimate the total [abundance] of a plant species in a uniform habitat, we sample\nusing a square frame called a [quadrat] . To eliminate human bias, we position frames\nusing [random] coordinates generated with a calculator or computer. We count the\ntarget organisms, calculate the [mean] average count per quadrat, and multiply this by\nthe total habitat area divided by the quadrat [area] . Finally, to prevent miscounting on\nthe edges, we enforce a strict [boundary] rule.\n+ Gemini Notebook",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 0
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_15_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Field Notes Summary: Final Retrieval\".\nDeck context: 2. Investigating Abundance (Random Sampling).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_02_Random_Sampling/slides/slide_15.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Reveal term: [abundance]",
+            "componentIds": [
+              "summary_reveal_1"
+            ],
+            "targetBounds": {
+              "x": 29.9,
+              "y": 38.5,
+              "w": 12.4,
+              "h": 6.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Reveal term: [quadrat]",
+            "componentIds": [
+              "summary_reveal_2"
+            ],
+            "targetBounds": {
+              "x": 37.6,
+              "y": 44.6,
+              "w": 9.4,
+              "h": 6.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Reveal term: [random]",
+            "componentIds": [
+              "summary_reveal_3"
+            ],
+            "targetBounds": {
+              "x": 17.3,
+              "y": 50.8,
+              "w": 9.4,
+              "h": 6.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Reveal term: [mean]",
+            "componentIds": [
+              "summary_reveal_4"
+            ],
+            "targetBounds": {
+              "x": 38.9,
+              "y": 57,
+              "w": 7.5,
+              "h": 6.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: Reveal term: [area]",
+            "componentIds": [
+              "summary_reveal_5"
+            ],
+            "targetBounds": {
+              "x": 49.7,
+              "y": 63.1,
+              "w": 6.5,
+              "h": 6.9
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: Reveal term: [boundary]",
+            "componentIds": [
+              "summary_reveal_6"
+            ],
+            "targetBounds": {
+              "x": 37.9,
+              "y": 69.3,
+              "w": 11.1,
+              "h": 6.9
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-16T00:20:34.294Z"
+  }
 }

@@ -14,7 +14,88 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_01.png",
       "sourceMediaPath": "ppt/media/image1.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Lesson 2: Working like a Human Biologist\nFocus Area: Microscopy Baseline & Clinical Slide Preparation\nKey Deliverable Objective\nBy the end of this session, you will prepare una a\ncalibrated wet mounts of cheek and onion ee “\ncells, execute textbook-standard biological\ndrawings with annotations, and calculate\noptical magnification to industry standards.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "e93766515f67a936691aec24854b2f163326ef603792dd17f274954126bc80ec",
+        "transcript": "Lesson 2: Working like a Human Biologist\nFocus Area: Microscopy Baseline & Clinical Slide Preparation\nKey Deliverable Objective\nBy the end of this session, you will prepare una a\ncalibrated wet mounts of cheek and onion ee “\ncells, execute textbook-standard biological\ndrawings with annotations, and calculate\noptical magnification to industry standards.",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 31,
+        "timeGuideDisplay": "26–36s",
+        "vciScore": "5.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 22950,
+          "semanticProcessingMs": 6800,
+          "wordCount": 66,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"2. Biomedical Microscopy Standards & Slide Preparation\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"2. Biomedical Microscopy Standards & Slide Preparation\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_01.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 2,
@@ -66,7 +147,9 @@
           "answer": "A distinct membrane-bound nucleus with chromatin, well-defined cytoplasm bounded by a plasma membrane, and intracellular compartmentalisation/organelles.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_2",
@@ -83,7 +166,9 @@
           "answer": "Total Magnification = Eyepiece (10×) × Objective (40×) = 400× total magnification.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_3",
@@ -100,7 +185,9 @@
           "answer": "Passive diffusion moves stain molecules down a concentration gradient without ATP expenditure; active transport requires ATP to move solutes against an electrochemical gradient across intact cell membranes.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_4",
@@ -117,7 +204,9 @@
           "answer": "To ensure adequate cellular density, avoid overlapping clumps or cell lysis/debris, and prevent unstandardised staining or non-diagnostic slide artefacts.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_5",
@@ -134,7 +223,9 @@
           "answer": "High-dry objective lenses have very short working distances and high numerical apertures calibrated for No. 1.5 (0.17 mm) coverslips; deviation causes spherical aberration and risks crushing the slide.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_6",
@@ -151,7 +242,9 @@
           "answer": "To guarantee clinical repeatability, diagnostic reproducibility, control dye purity/concentration, and comply with clinical quality assurance (ISO/GLP) standards.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
       ],
       "cells": [
@@ -257,7 +350,202 @@
           "revealMode": "overlay",
           "confidence": 1
         }
-      ]
+      ],
+      "text": "ee e °\n°\nStarter Activity Grid: Industry Leader Reflections\nSPP AN RT SORT Se A EEE ET\nOperational Recall Strategic Application\nee Po VISITED SRT TESS IO REA ELS ALE ONSET OCT SN OEIC AT SENOS ETOP\n1. The Eukaryotic Baseline 4. Quality Control in Centrifugation\nHuman cells are eukaryotic. From an analytical perspective, Why must cell suspensions be assessed for cell count and\nwhat defining structural features (e.g., nucleus, cell integrity before we dedicate resources to slide preparation?\nmembrane, mitochondria) must our lab technicians look for\nunder the microscope?\nSE RESO 2S ED ESAS, AS IE DS\n2. Magnification Mechanics 5. The High-Dry Hazard\nIf a technician uses a 10x eyepiece and a 40x objective lens, When using the 40x objective, why must we ensure the\nwhat is the total operational magnification? coverslip tnkesness ang mou medium strictly adhere to\ne 0.17mm tolerance limit?\nSTE) SL A a a ET ET\n3. Cellular Transport Principles 6. Standardising Stains\nIdentify the core difference between passive diffusion and Why do industry standards require strict batch reporting for\nactive transport when considering how biological samples molecular formula, molar mass, and intended use?\ninteract with chemical stains.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "16fa543fd3cc9007305926074688817755265e839175c701eb70594538129a45",
+        "transcript": "ee e °\n°\nStarter Activity Grid: Industry Leader Reflections\nSPP AN RT SORT Se A EEE ET\nOperational Recall Strategic Application\nee Po VISITED SRT TESS IO REA ELS ALE ONSET OCT SN OEIC AT SENOS ETOP\n1. The Eukaryotic Baseline 4. Quality Control in Centrifugation\nHuman cells are eukaryotic. From an analytical perspective, Why must cell suspensions be assessed for cell count and\nwhat defining structural features (e.g., nucleus, cell integrity before we dedicate resources to slide preparation?\nmembrane, mitochondria) must our lab technicians look for\nunder the microscope?\nSE RESO 2S ED ESAS, AS IE DS\n2. Magnification Mechanics 5. The High-Dry Hazard\nIf a technician uses a 10x eyepiece and a 40x objective lens, When using the 40x objective, why must we ensure the\nwhat is the total operational magnification? coverslip tnkesness ang mou medium strictly adhere to\ne 0.17mm tolerance limit?\nSTE) SL A a a ET ET\n3. Cellular Transport Principles 6. Standardising Stains\nIdentify the core difference between passive diffusion and Why do industry standards require strict batch reporting for\nactive transport when considering how biological samples molecular formula, molar mass, and intended use?\ninteract with chemical stains.",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "are eukaryotic. From an analytical perspective, Why must cell suspensions be assessed for cell count and what defining structural features (e.g., nucleus, cell integrity before we dedicate resources to slide preparation?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "When using the 40x objective, why must we ensure the what is the total operational magnification?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Identify the core difference between passive diffusion and Why do industry standards require strict batch reporting for active transport when considering how biological samples molecular formula, molar mass, and intended use?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 244,
+        "timeGuideDisplay": "207–281s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 7938,
+          "readingMs": 160200,
+          "semanticProcessingMs": 75200,
+          "wordCount": 455,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 11,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter Activity Grid: Industry Leader Reflections\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Starter Activity Grid: Industry Leader Reflections\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: The Eukaryotic Baseline: Human cells are eukaryotic. From an analytical perspective, what defining structural features (nucleus, cell membrane, mitochondria) must our lab technicians look for under the microscope?",
+            "componentIds": [
+              "cell_1"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 30,
+              "w": 45.2,
+              "h": 21.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Magnification Mechanics: If a technician uses a 10x eyepiece and a 40x objective lens, what is the total operational magnification?",
+            "componentIds": [
+              "cell_2"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 53,
+              "w": 45.2,
+              "h": 21.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Cellular Transport Principles: Identify the core difference between passive diffusion and active transport when considering how biological samples interact with chemical stains.",
+            "componentIds": [
+              "cell_3"
+            ],
+            "targetBounds": {
+              "x": 4,
+              "y": 76,
+              "w": 45.2,
+              "h": 20.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Quality Control in Centrifugation: Why must cell suspensions be assessed for cell count and integrity before we dedicate resources to slide preparation?",
+            "componentIds": [
+              "cell_4"
+            ],
+            "targetBounds": {
+              "x": 50.6,
+              "y": 30,
+              "w": 45.2,
+              "h": 21.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: The High-Dry Hazard: When using the 40x objective, why must we ensure the coverslip thickness and mounting medium strictly adhere to the 0.17mm tolerance limit?",
+            "componentIds": [
+              "cell_5"
+            ],
+            "targetBounds": {
+              "x": 50.6,
+              "y": 53,
+              "w": 45.2,
+              "h": 21.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: Standardising Stains: Why do industry standards require strict batch reporting for molecular formula, molar mass, and intended use?",
+            "componentIds": [
+              "cell_6"
+            ],
+            "targetBounds": {
+              "x": 50.6,
+              "y": 76,
+              "w": 45.2,
+              "h": 20.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -306,7 +594,9 @@
           "overlayAnswer": true,
           "revealMode": "overlay",
           "confidence": 1,
-          "minBuildStep": 2
+          "minBuildStep": 2,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_2",
@@ -328,7 +618,9 @@
           "overlayAnswer": true,
           "revealMode": "overlay",
           "confidence": 1,
-          "minBuildStep": 2
+          "minBuildStep": 2,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_3",
@@ -350,7 +642,9 @@
           "overlayAnswer": true,
           "revealMode": "overlay",
           "confidence": 1,
-          "minBuildStep": 2
+          "minBuildStep": 2,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_4",
@@ -372,390 +666,184 @@
           "overlayAnswer": true,
           "revealMode": "overlay",
           "confidence": 1,
-          "minBuildStep": 2
+          "minBuildStep": 2,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "40–50s",
-        "vciScore": "4.8",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 118,
+        "timeGuideDisplay": "100–136s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1000,
-          "readingMs": 18000,
-          "semanticProcessingMs": 15000,
-          "wordCount": 54,
-          "visualElementsCount": 4
+          "visualScanMs": 5278,
+          "readingMs": 85650,
+          "semanticProcessingMs": 27000,
+          "wordCount": 273,
+          "visualElementsCount": 13
         },
         "academicReferences": [
           {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Reduces procedural split-attention effect by aligning hands-on optical steps with diagnostic reflection checkpoints."
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 4,
-        "format": "checkpoint_grid"
+        "questionCount": 12,
+        "format": "checkpoint_grid",
+        "detectionSource": "manifest-cells"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_3_1_component_reveal",
+          "id": "gemini_slide_3_1_question_base_overlay",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
-          "strategy": "component-reveal",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header and Hero Task Card stating: Task: Set up and focus the microscope slide. Send me a picture on the Teams chat. Temporarily omit: The 4 step-by-step guidance pillars and diagnostic checkpoints.",
-          "status": "ready",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
-          "generatedAt": "2026-09-15T14:16:33.844Z",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-15T14:16:33.844Z",
-            "reviewer": "Teacher_Dan",
-            "notes": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
-            "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "138278 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1376×768; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7917; target 1.7778"
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
-              "byteLength": 138278,
-              "sha256": "bd85d416f2302bb4c95b81bdf915dffb0ff9754b866a8d45e87a8ccaf44c4017",
-              "dimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              },
-              "sourceHash": null,
-              "sourceDimensions": null
-            },
-            "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
-            }
-          }
-        },
-        {
-          "id": "gemini_slide_3_2_component_reveal",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header, Task subtitle, and full 4-pillar Standard Operating Procedure with 4 diagnostic technical checkpoints.",
-          "status": "ready",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
-          "generatedAt": "2026-09-15T14:16:33.844Z",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-15T14:16:33.844Z",
-            "reviewer": "Teacher_Dan",
-            "notes": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
-            "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "184667 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1376×768; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7917; target 1.7778"
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
-              "byteLength": 184667,
-              "sha256": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
-              "dimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              },
-              "sourceHash": null,
-              "sourceDimensions": null
-            },
-            "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
-            }
-          }
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 3: \"Starter: Focus on Your Premade Slide\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png"
         }
       ],
-      "progressiveBuilds": [
-        {
-          "id": "gemini_slide_3_1_component_reveal",
-          "version": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
-          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
-          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header and Hero Task Card stating: Task: Set up and focus the microscope slide. Send me a picture on the Teams chat. Temporarily omit: The 4 step-by-step guidance pillars and diagnostic checkpoints.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-15T14:16:33.844Z",
-            "reviewer": "Teacher_Dan",
-            "notes": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
-            "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "138278 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1376×768; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7917; target 1.7778"
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_1_component_reveal.png",
-              "byteLength": 138278,
-              "sha256": "bd85d416f2302bb4c95b81bdf915dffb0ff9754b866a8d45e87a8ccaf44c4017",
-              "dimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              },
-              "sourceHash": null,
-              "sourceDimensions": null
-            },
-            "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "fade"
-        },
-        {
-          "id": "gemini_slide_3_2_component_reveal",
-          "version": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "label": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
-          "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png",
-          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 3: \"Starter: Focus on Your Premade Slide\". Show now: Header, Task subtitle, and full 4-pillar Standard Operating Procedure with 4 diagnostic technical checkpoints.",
-          "generationStatus": "ready",
-          "qaStatus": "approved",
-          "qa": {
-            "status": "approved",
-            "reviewedAt": "2026-09-15T14:16:33.844Z",
-            "reviewer": "Teacher_Dan",
-            "notes": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
-            "technical": {
-              "passed": true,
-              "checks": [
-                {
-                  "id": "file-readable",
-                  "passed": true
-                },
-                {
-                  "id": "supported-image-signature",
-                  "passed": true,
-                  "detail": "png"
-                },
-                {
-                  "id": "minimum-file-size",
-                  "passed": true,
-                  "detail": "184667 bytes; minimum 20000"
-                },
-                {
-                  "id": "minimum-resolution",
-                  "passed": true,
-                  "detail": "1376×768; minimum 1000×550"
-                },
-                {
-                  "id": "sixteen-nine-canvas",
-                  "passed": true,
-                  "detail": "aspect 1.7917; target 1.7778"
-                }
-              ],
-              "outputPath": "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/pptpresentationtowebagent/public/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03_gemini_slide_3_2_component_reveal.png",
-              "byteLength": 184667,
-              "sha256": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
-              "dimensions": {
-                "format": "png",
-                "width": 1376,
-                "height": 768
-              },
-              "sourceHash": null,
-              "sourceDimensions": null
-            },
-            "visual": {
-              "passed": true,
-              "missing": [],
-              "checks": {
-                "fullCanvas": true,
-                "styleMatch": true,
-                "cumulativeContent": true,
-                "legibleText": true,
-                "noFocusTreatment": true
-              }
-            }
-          },
-          "source": "gemini-image-chat",
-          "targetBounds": {
-            "x": 0,
-            "y": 0,
-            "w": 100,
-            "h": 100
-          },
-          "transition": "crossfade"
-        }
-      ],
-      "hasProgressiveBuilds": true,
+      "hasProgressiveBuilds": false,
       "serialAnimation": {
-        "totalBuildSteps": 2,
+        "totalBuildSteps": 4,
         "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "buildId": "gemini_slide_3_1_component_reveal",
-            "title": "Build 1: Task Briefing (Set up and focus the microscope slide. Send me a picture on the Teams chat)",
+            "title": "Reveal: Why use lens paper only?",
             "componentIds": [
-              "gemini_slide_3_1_component_reveal"
+              "starter_focus_chk_1"
             ],
             "targetBounds": {
-              "x": 0,
-              "y": 0,
-              "w": 100,
-              "h": 100
+              "x": 3.5,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
             },
-            "revealType": "crossfade"
+            "revealType": "answer-overlay"
           },
           {
             "step": 2,
-            "buildId": "gemini_slide_3_2_component_reveal",
-            "title": "Build 2: Reveal 4-Step Standard Operating Procedure & Diagnostic Checkpoints",
+            "title": "Reveal: Why start on lowest power (10x)?",
             "componentIds": [
-              "gemini_slide_3_2_component_reveal"
+              "starter_focus_chk_2"
             ],
             "targetBounds": {
-              "x": 0,
-              "y": 0,
-              "w": 100,
-              "h": 100
+              "x": 27.1,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
             },
-            "revealType": "crossfade"
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Why look from the side when raising?",
+            "componentIds": [
+              "starter_focus_chk_3"
+            ],
+            "targetBounds": {
+              "x": 50.7,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Why no coarse focus at 40x?",
+            "componentIds": [
+              "starter_focus_chk_4"
+            ],
+            "targetBounds": {
+              "x": 74.3,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
+            },
+            "revealType": "answer-overlay"
           }
         ]
       },
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
-        "reason": "Slide 3 progressive build sequence: Build 1 presents the challenge task, Build 2 reveals the 4-step SOP and diagnostic checkpoints.",
-        "strategy": "component-reveal",
-        "planningSource": "gemini-slide-sequencer",
-        "analyzedComponentCount": 2,
-        "plannedCellCount": 2,
-        "approvedCellCount": 2,
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
         "qaRequired": true,
-        "questionReveal": false,
+        "questionReveal": true,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
+        "transcript": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why use lens paper only?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Why start on lowest power (10x)?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Why look from the side first?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "Why no coarse focus at 40x?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 4
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
       }
     },
     {
@@ -804,7 +892,9 @@
           "answer": "Paper towels scratch delicate anti-reflective lens coatings. Lens paper is non-abrasive and lint-free.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_2",
@@ -825,7 +915,9 @@
           "answer": "Lowest power provides the widest field of view to easily find and center the specimen.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_3",
@@ -846,7 +938,9 @@
           "answer": "Looking from the side stops the objective lens from colliding with and crushing the glass slide.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_4",
@@ -867,37 +961,184 @@
           "answer": "Working distance is <0.5 mm. Coarse focus moves too fast, risking crushing the slide and cracking the lens.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "40–50s",
-        "vciScore": "4.8",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 113,
+        "timeGuideDisplay": "96–130s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1000,
-          "readingMs": 18000,
-          "semanticProcessingMs": 15000,
-          "wordCount": 54,
-          "visualElementsCount": 4
+          "visualScanMs": 5278,
+          "readingMs": 85650,
+          "semanticProcessingMs": 22000,
+          "wordCount": 273,
+          "visualElementsCount": 13
         },
         "academicReferences": [
           {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Reduces procedural split-attention effect by aligning hands-on optical steps with diagnostic reflection checkpoints."
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 4,
-        "format": "checkpoint_grid"
+        "questionCount": 12,
+        "format": "checkpoint_grid",
+        "detectionSource": "manifest-cells"
+      },
+      "text": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
+        "transcript": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why use lens paper only?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Why start on lowest power (10x)?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Why look from the side first?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "Why no coarse focus at 40x?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 4
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"Starter: Focus on Your Premade Slide\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Why use lens paper only?",
+            "componentIds": [
+              "starter_focus_chk_1"
+            ],
+            "targetBounds": {
+              "x": 3.5,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Why start on lowest power (10x)?",
+            "componentIds": [
+              "starter_focus_chk_2"
+            ],
+            "targetBounds": {
+              "x": 27.1,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Why look from the side when raising?",
+            "componentIds": [
+              "starter_focus_chk_3"
+            ],
+            "targetBounds": {
+              "x": 50.7,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Why no coarse focus at 40x?",
+            "componentIds": [
+              "starter_focus_chk_4"
+            ],
+            "targetBounds": {
+              "x": 74.3,
+              "y": 62.5,
+              "w": 22.1,
+              "h": 20
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -946,7 +1187,9 @@
           "answer": "Paper towels contain abrasive wood fibers that scratch lens coatings. Optical lens tissue is non-abrasive and lint-free.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_2",
@@ -967,7 +1210,9 @@
           "answer": "Lowest power provides the widest field of view and greatest depth of field to rapidly locate and center the specimen safely.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_3",
@@ -988,7 +1233,9 @@
           "answer": "Working distance is <0.5 mm. Coarse focus moves too fast, risking crushing the glass slide and cracking the objective lens.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_4",
@@ -1009,37 +1256,184 @@
           "answer": "Partially close the condenser iris diaphragm to reduce glare, sharpening optical contrast and specimen depth of focus.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "40–50s",
-        "vciScore": "4.8",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 143,
+        "timeGuideDisplay": "121–165s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1000,
-          "readingMs": 18000,
-          "semanticProcessingMs": 15000,
-          "wordCount": 54,
-          "visualElementsCount": 4
+          "visualScanMs": 5278,
+          "readingMs": 106500,
+          "semanticProcessingMs": 31200,
+          "wordCount": 331,
+          "visualElementsCount": 13
         },
         "academicReferences": [
           {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Reduces procedural split-attention effect by aligning hands-on optical steps with diagnostic reflection checkpoints."
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 4,
-        "format": "checkpoint_grid"
+        "questionCount": 12,
+        "format": "checkpoint_grid",
+        "detectionSource": "manifest-cells"
+      },
+      "text": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
+        "transcript": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why use lens paper only?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Why start on lowest power (10x)?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Why look from the side first?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "Why no coarse focus at 40x?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 4
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"Starter Practical Challenge: Microscope Setup & Focus Calibration (Premade Slide)\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Checkpoint 1: Why must optical lenses only be wiped with dedicated lens paper rather than paper towels?",
+            "componentIds": [
+              "starter_focus_chk_1"
+            ],
+            "targetBounds": {
+              "x": 3.2,
+              "y": 64,
+              "w": 22.4,
+              "h": 19.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Checkpoint 2: Why must initial slide orientation and focusing always begin on lowest power?",
+            "componentIds": [
+              "starter_focus_chk_2"
+            ],
+            "targetBounds": {
+              "x": 27.2,
+              "y": 64,
+              "w": 22.4,
+              "h": 19.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Checkpoint 3: Why is using the coarse focus knob strictly prohibited when operating under the 40x objective?",
+            "componentIds": [
+              "starter_focus_chk_3"
+            ],
+            "targetBounds": {
+              "x": 51.2,
+              "y": 64,
+              "w": 22.4,
+              "h": 19.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Checkpoint 4: What optical adjustment should be made if cellular boundaries appear washed out and low contrast?",
+            "componentIds": [
+              "starter_focus_chk_4"
+            ],
+            "targetBounds": {
+              "x": 75.2,
+              "y": 64,
+              "w": 22.4,
+              "h": 19.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -1088,7 +1482,9 @@
           "answer": "Standard paper towels contain abrasive cellulose wood-pulp fibers that scratch anti-reflective lens coatings; optical lens tissue is non-abrasive and lint-free.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_2",
@@ -1109,7 +1505,9 @@
           "answer": "Lowest power offers the widest field of view and largest depth of field, enabling rapid specimen location and centering while preventing slide collision.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_3",
@@ -1130,7 +1528,9 @@
           "answer": "High-dry lenses have working distances under 0.5 mm; coarse movement risks crushing the glass coverslip, damaging the specimen, and cracking the front objective lens.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "starter_focus_chk_4",
@@ -1151,37 +1551,184 @@
           "answer": "Narrow the condenser iris diaphragm aperture to decrease beam glare and increase optical contrast and depth of focus.",
           "overlayAnswer": true,
           "revealMode": "overlay",
-          "confidence": 1
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "40–50s",
-        "vciScore": "4.8",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 158,
+        "timeGuideDisplay": "134–182s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1000,
-          "readingMs": 18000,
-          "semanticProcessingMs": 15000,
-          "wordCount": 54,
-          "visualElementsCount": 4
+          "visualScanMs": 5278,
+          "readingMs": 111600,
+          "semanticProcessingMs": 41000,
+          "wordCount": 342,
+          "visualElementsCount": 13
         },
         "academicReferences": [
           {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Reduces procedural split-attention effect by aligning hands-on optical steps with diagnostic reflection checkpoints."
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 4,
-        "format": "checkpoint_grid"
+        "questionCount": 12,
+        "format": "checkpoint_grid",
+        "detectionSource": "manifest-cells"
+      },
+      "text": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "667a7f2cba1defe268c06e220ddf810418d05df5da6b5d031de3f1c5eb0c552a",
+        "transcript": "STARTER PRACTICAL CHALLENGE 5-Minute Lab Routine « 100x & 400x Focus\nTask: Set up and focus the microscope slide. Send mea picture on the Teams chat.\n{setup & Power 9 ere 0 ED == ;\nPlug in and turn on light. Click 10x lens into place. Look from side to raise stage. Switch to 40x objective.\nWipe lenses gently with lens paper only. Cllp premade slide onto stage and center Then look Into eyepiece and lower stage Sharpen Image using FINE FOCUS only\nPlace base =10cm from edge. specimen over light beam. slowly untll focused. (never touch coarse focus!).\n¢ TUuninator oN Q 10% Low Power +) Side View First | A Fine Focus Onty\nCHECKPOINT 1 cHEcKPorur 2 CHECKPOINT 3 ‘cHECKPOINT &\nWhy use lens paper only? Why start on lowest power (10x)? Why look from the side first? Why no coarse focus at 40x?\nCLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER CLICK TO REVEAL ANSWER\nGOLDEN RULE ‘Always look from the side when raising the stage. Never use coarse focus at 40x. Gemini Notebook",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why use lens paper only?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Why start on lowest power (10x)?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "Why look from the side first?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "Why no coarse focus at 40x?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 4
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"Starter Practical Challenge: Microscope Setup & Focus Calibration (Premade Slide)\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_02b_microscope_setup_premade_slide.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Checkpoint 1: Why must optical lenses only be wiped with dedicated lens paper rather than standard paper towels?",
+            "componentIds": [
+              "starter_focus_chk_1"
+            ],
+            "targetBounds": {
+              "x": 3.2,
+              "y": 65.5,
+              "w": 22.4,
+              "h": 17.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Checkpoint 2: Why must initial slide orientation and focusing always begin on lowest power?",
+            "componentIds": [
+              "starter_focus_chk_2"
+            ],
+            "targetBounds": {
+              "x": 27.2,
+              "y": 65.5,
+              "w": 22.4,
+              "h": 17.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Checkpoint 3: Why is using the coarse focus knob strictly prohibited when operating under the 40x objective?",
+            "componentIds": [
+              "starter_focus_chk_3"
+            ],
+            "targetBounds": {
+              "x": 51.2,
+              "y": 65.5,
+              "w": 22.4,
+              "h": 17.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Checkpoint 4: What optical adjustment should be made if cellular boundaries appear washed out and low contrast?",
+            "componentIds": [
+              "starter_focus_chk_4"
+            ],
+            "targetBounds": {
+              "x": 75.2,
+              "y": 65.5,
+              "w": 22.4,
+              "h": 17.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -1191,7 +1738,120 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03.png",
       "sourceMediaPath": "ppt/media/image3.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Learning Objectives & Strategic Alignment: Unit\nA 7 F173 (Biomedical Techniques\nExecutive Strategic ( ques)\nAlignment ON\nOperational Objectives for Today's P04 (Execution): Perform the planned\n. investigation safely. Collect sufficient, valid\nWorkshop: data with appropriate procision. Record data\nusing correct conventions.\n1. Setup & Calibration: Master microscope\nset-up and K6hler illumination for optimal 7. \\\noptical resolution. PO2 (Application):\n2. Sample Preparation: Prepare temporary Explain how the integrity of samples is\nwet mounts (cheek &onion cells) maintained during preparation.\nmaintaining cellular integrity. 7 \\\\\n3. Data Recording: Execute scientific\nbiological drawings with annotations and PO3 (Evaluation):\ncalculate optical magnification from Justify the choice of appropriate equipment for\nmeasurements. the chosen techniques.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5b99e595038702862fb930dd0e4f24d41f7d750dc73f80205ba45d33bf1aaa82",
+        "transcript": "Learning Objectives & Strategic Alignment: Unit\nA 7 F173 (Biomedical Techniques\nExecutive Strategic ( ques)\nAlignment ON\nOperational Objectives for Today's P04 (Execution): Perform the planned\n. investigation safely. Collect sufficient, valid\nWorkshop: data with appropriate procision. Record data\nusing correct conventions.\n1. Setup & Calibration: Master microscope\nset-up and K6hler illumination for optimal 7. \\\noptical resolution. PO2 (Application):\n2. Sample Preparation: Prepare temporary Explain how the integrity of samples is\nwet mounts (cheek &onion cells) maintained during preparation.\nmaintaining cellular integrity. 7 \\\\\n3. Data Recording: Execute scientific\nbiological drawings with annotations and PO3 (Evaluation):\ncalculate optical magnification from Justify the choice of appropriate equipment for\nmeasurements. the chosen techniques.",
+        "role": "objectives",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 77,
+        "timeGuideDisplay": "65–89s",
+        "vciScore": "7.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 43650,
+          "semanticProcessingMs": 31600,
+          "wordCount": 121,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Learning Objectives & Strategic Alignment: Unit\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_7_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Learning Objectives & Strategic Alignment: Unit\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_7_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Learning Objectives & Strategic Alignment: Unit\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_03.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 8,
@@ -1200,7 +1860,120 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_04.png",
       "sourceMediaPath": "ppt/media/image4.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "A A A\nCore Framework Breakdown & Technical Architecture Deep Dive\nTechnical Architecture: Achieving Kohler Illumination\nTo generate maximum microscopic resolution and uniform illumination, industry standards require precise alignment of the optical axis.\nPhase 1: Initial Acquisition Phase 2: Diaphragm Calibration Phase 3: Optical Optimisation\nvay .\n{ye <i\nSelect a high-contrast object (e.g., - Close the field diaphragm to check image - Open the field diaphragm until its\nsuperficial squamous cell). centring. image just disappears from view\nEngage the 10x objective and centre - Focus the image of the field diaphragm (avoids contrast-degrading glare).\nthe object in the field-of-view. iris leaves by adjusting the substage - Adjust the substage condenser\ncondenser height (look for a sharp diaphragm to maximise contrast.\nmagenta/blue halo).\n=—_— “| +4\n@) F-\n—e\nTheoretical resolution is never achieved without proper alignment.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "7300cab30ab5f8ea30caa95e1c3d28078027107b878c2547de39c6f23482a1b3",
+        "transcript": "A A A\nCore Framework Breakdown & Technical Architecture Deep Dive\nTechnical Architecture: Achieving Kohler Illumination\nTo generate maximum microscopic resolution and uniform illumination, industry standards require precise alignment of the optical axis.\nPhase 1: Initial Acquisition Phase 2: Diaphragm Calibration Phase 3: Optical Optimisation\nvay .\n{ye <i\nSelect a high-contrast object (e.g., - Close the field diaphragm to check image - Open the field diaphragm until its\nsuperficial squamous cell). centring. image just disappears from view\nEngage the 10x objective and centre - Focus the image of the field diaphragm (avoids contrast-degrading glare).\nthe object in the field-of-view. iris leaves by adjusting the substage - Adjust the substage condenser\ncondenser height (look for a sharp diaphragm to maximise contrast.\nmagenta/blue halo).\n=—_— “| +4\n@) F-\n—e\nTheoretical resolution is never achieved without proper alignment.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 83,
+        "timeGuideDisplay": "70–96s",
+        "vciScore": "8.6",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 50850,
+          "semanticProcessingMs": 30800,
+          "wordCount": 146,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Core Framework Breakdown & Technical Architecture Deep Dive\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Core Framework Breakdown & Technical Architecture Deep Dive\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_8_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Core Framework Breakdown & Technical Architecture Deep Dive\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_04.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 9,
@@ -1216,33 +1989,86 @@
         "label": "Köhler Illumination Video"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 60,
-        "timeGuideDisplay": "45–60s",
-        "vciScore": "3.5",
+        "estimatedTimeSeconds": 21,
+        "timeGuideDisplay": "17–25s",
+        "vciScore": "4.0",
         "complexityCategory": "Moderate",
         "ragLevel": "medium",
         "ragColor": "amber",
         "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 800,
-          "readingMs": 8000,
-          "semanticProcessingMs": 25000,
-          "wordCount": 8,
-          "visualElementsCount": 2
+          "visualScanMs": 1050,
+          "readingMs": 6750,
+          "semanticProcessingMs": 13000,
+          "wordCount": 20,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
-            "citation": "Mayer, R. E. (2002). Multimedia learning. Psychology of Learning and Motivation, 41, 85-139.",
-            "relevance": "Provides multimedia video scaffolding to consolidate optical alignment theory into procedural memory."
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "format": "open_prompt"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "format": "open_prompt",
+        "detectionSource": "local-ocr-fallback"
+      },
+      "text": "List the stages in obtaining KGhler illumination\n~ Open video on YouTube (SMfZweoJ6A8)",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c2ea1871fbccfbcda790b6ee6d8525f41317d1793ff347e28a168ec5b650ba79",
+        "transcript": "List the stages in obtaining KGhler illumination\n~ Open video on YouTube (SMfZweoJ6A8)",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"List the stages in obtaining KGhler illumination\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"2. Biomedical Microscopy Standards & Slide Preparation\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_05_koehler_illumination_video.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -1254,25 +2080,33 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 40,
-        "timeGuideDisplay": "35–45s",
-        "vciScore": "4.9",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 171,
+        "timeGuideDisplay": "145–197s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 18500,
-          "semanticProcessingMs": 16000,
-          "wordCount": 58,
-          "visualElementsCount": 4
+          "visualScanMs": 1050,
+          "readingMs": 122100,
+          "semanticProcessingMs": 48000,
+          "wordCount": 362,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
-            "citation": "CLEAPSS (2020). Student Safety Sheet 61: Cells and tissues. CLEAPSS Laboratory Safety.",
-            "relevance": "Directs aseptic buccal scraping and immediate disinfectant immersion protocol."
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
@@ -1280,7 +2114,84 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "format": "statement_only"
+        "format": "statement_only",
+        "detectionSource": "local-ocr-fallback"
+      },
+      "text": "CORELABORATORY PRACTICAL | Unit F173: Blomedical Techniques + CLEAPSS Student Safety Sheet 61\nStandard Operating Procedure: Aseptic Buccal Mucosa Sampling, Methylene Blue Staining & Biohazard Disinfection\nSTAGE 01+ SAMPLING STAGE 02 STAINING STAGE 03 + MOUNTING STAGE 04 + DIAGNOSTIC\n/ Aseptic Cell Harvesting 4 Differential Staining \\\\ 45° Coverslip Placement 4 Diagnostic Examination\nTarget Tissue Stratified Sqvanous Stain Solution 4% Hethylene Blue Tolerance Spec 0.17 mm Coverstip Magnification 100% + 400% Totat\n© Sterile Gently rotate swab against inside of © Single Using dropping pipette, add exactly ©45% Rest one edge of a clean coverslip * Low-to- Scan at 100x to find isolated\nCotton cheek (buccal mucosa) for 5~10 Drop 1 drop of 1% methylene blue onto ‘Angle on the slide touching the edge of the High polygonal cells; advance to 400x\nSwab: seconds, Reagent: the cell smear. Resting: liquid stain. Power: using fine focus only.\n© Cell Rub and roll the swab in small © Penetration Allow dye to incubate for 60-90 * Mounted Support opposite edge with * Observed Dark blue nucleus (~8 im), pale\nTransfer: circular motion onto the center of a Time: seconds at room temperature for Needle mounted needle; slowly lower to Cytology: biue granular cytoplasm (~50-70\nclean glass slide. chromatin binding, Descent: displace air bubbles. lum), thin membrane,\n© Immediate Plunge used swab directly into * Electrostatic Cationic [MB]* binds polyanionic * Wicking Touch bibulous filter paper gently to * Oral Commensal bacteria appear as\nDisinfection: 10% bleach discard jar Binding: phosphate groups in nuclear Excess: coverslip perimeter to absorb surplus Microbiota: tiny dark blue rods/cocci adhering\n(CLEAPSS GL113). DNA/RNA aye. to cell margins.\nCLEAPSS Safety Control: Chemical Handling: Bubble Elimination: Post-Lab Immersion:\nNever scrape gums or teeth; discard swab Methylene biue causes permanent staining; wear ‘Trapped bubbles appear as thick black-ringed Finished slide must be soaked in 10% bleach\nimmediately into disinfectant beaker. gloves & safety glasses. spheres that obscure diagnostic cells. disinfectant for 230 min before disposal.\nCLEAPSS 6L113 Cheek cells present Category 1 biological risk. Students must only harvest their own cells. All swabs and slides must enter disinfectant Gemini\nBIOHAZARD immediately. Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "3d895a87f494f605614b71a36fc2a20a42a05e13863bd03a35bfbb13b6bea1b4",
+        "transcript": "CORELABORATORY PRACTICAL | Unit F173: Blomedical Techniques + CLEAPSS Student Safety Sheet 61\nStandard Operating Procedure: Aseptic Buccal Mucosa Sampling, Methylene Blue Staining & Biohazard Disinfection\nSTAGE 01+ SAMPLING STAGE 02 STAINING STAGE 03 + MOUNTING STAGE 04 + DIAGNOSTIC\n/ Aseptic Cell Harvesting 4 Differential Staining \\\\ 45° Coverslip Placement 4 Diagnostic Examination\nTarget Tissue Stratified Sqvanous Stain Solution 4% Hethylene Blue Tolerance Spec 0.17 mm Coverstip Magnification 100% + 400% Totat\n© Sterile Gently rotate swab against inside of © Single Using dropping pipette, add exactly ©45% Rest one edge of a clean coverslip * Low-to- Scan at 100x to find isolated\nCotton cheek (buccal mucosa) for 5~10 Drop 1 drop of 1% methylene blue onto ‘Angle on the slide touching the edge of the High polygonal cells; advance to 400x\nSwab: seconds, Reagent: the cell smear. Resting: liquid stain. Power: using fine focus only.\n© Cell Rub and roll the swab in small © Penetration Allow dye to incubate for 60-90 * Mounted Support opposite edge with * Observed Dark blue nucleus (~8 im), pale\nTransfer: circular motion onto the center of a Time: seconds at room temperature for Needle mounted needle; slowly lower to Cytology: biue granular cytoplasm (~50-70\nclean glass slide. chromatin binding, Descent: displace air bubbles. lum), thin membrane,\n© Immediate Plunge used swab directly into * Electrostatic Cationic [MB]* binds polyanionic * Wicking Touch bibulous filter paper gently to * Oral Commensal bacteria appear as\nDisinfection: 10% bleach discard jar Binding: phosphate groups in nuclear Excess: coverslip perimeter to absorb surplus Microbiota: tiny dark blue rods/cocci adhering\n(CLEAPSS GL113). DNA/RNA aye. to cell margins.\nCLEAPSS Safety Control: Chemical Handling: Bubble Elimination: Post-Lab Immersion:\nNever scrape gums or teeth; discard swab Methylene biue causes permanent staining; wear ‘Trapped bubbles appear as thick black-ringed Finished slide must be soaked in 10% bleach\nimmediately into disinfectant beaker. gloves & safety glasses. spheres that obscure diagnostic cells. disinfectant for 230 min before disposal.\nCLEAPSS 6L113 Cheek cells present Category 1 biological risk. Students must only harvest their own cells. All swabs and slides must enter disinfectant Gemini\nBIOHAZARD immediately. Notebook",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Practical Protocol: Human Cheek Epithelial Cell Wet Mount Preparation\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08b_human_cheek_practical.png"
+        },
+        {
+          "id": "gemini_slide_10_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Practical Protocol: Human Cheek Epithelial Cell Wet Mount Preparation\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08b_human_cheek_practical.png"
+        },
+        {
+          "id": "gemini_slide_10_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Practical Protocol: Human Cheek Epithelial Cell Wet Mount Preparation\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08b_human_cheek_practical.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -1290,7 +2201,127 @@
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_05.png",
       "sourceMediaPath": "ppt/media/image5.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Real-World Enterprise Case Studies & Industry Applications\nEnterprise Scenario: S1 Pharmaceuticals\nYou are a Biomedical Research Scientist. You have been given anonymous samples (one urine,\ntwo plasma) to match to three clinical profiles.\nPatient A Profile Patient B Profile Patient C Profile\nSymptoms: Constant fatigue, Symptoms: Seizures, irritability, Symptoms: Constant\nsudden weight loss, blurred dry scaly skin, very pale weakness, leg pains, bruises\nvision, slow wound healing. complexion. easily.\nDiagnostic Link: How might Diagnostic Link: What specific Diagnostic Link: How does\ncellular or fluid analysis under biomedical stains or cellular accurate microscopy ensure\na microscope reveal abnormalities might a we don't misdiagnose cellular\nindicators of metabolic or laboratory technician look for deficiencies in these blood\nvascular distress? in plasma? products?",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "ec9dfd69af4d5650ba6fbc8786a1d17c46c125f6b9b34634264cb704b88a4851",
+        "transcript": "Real-World Enterprise Case Studies & Industry Applications\nEnterprise Scenario: S1 Pharmaceuticals\nYou are a Biomedical Research Scientist. You have been given anonymous samples (one urine,\ntwo plasma) to match to three clinical profiles.\nPatient A Profile Patient B Profile Patient C Profile\nSymptoms: Constant fatigue, Symptoms: Seizures, irritability, Symptoms: Constant\nsudden weight loss, blurred dry scaly skin, very pale weakness, leg pains, bruises\nvision, slow wound healing. complexion. easily.\nDiagnostic Link: How might Diagnostic Link: What specific Diagnostic Link: How does\ncellular or fluid analysis under biomedical stains or cellular accurate microscopy ensure\na microscope reveal abnormalities might a we don't misdiagnose cellular\nindicators of metabolic or laboratory technician look for deficiencies in these blood\nvascular distress? in plasma? products?",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is under biomedical stains or cellular accurate microscopy ensure a microscope reveal abnormalities might a we don't misdiagnose cellular indicators of metabolic or laboratory technician look for deficiencies in these blood vascular distress?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 78,
+        "timeGuideDisplay": "66–90s",
+        "vciScore": "8.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 45450,
+          "semanticProcessingMs": 31600,
+          "wordCount": 127,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"Real-World Enterprise Case Studies & Industry Applications\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_11_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"Real-World Enterprise Case Studies & Industry Applications\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_11_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"Real-World Enterprise Case Studies & Industry Applications\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_05.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 12,
@@ -1301,25 +2332,33 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 40,
-        "timeGuideDisplay": "35–45s",
-        "vciScore": "4.9",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 176,
+        "timeGuideDisplay": "149–203s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 18500,
-          "semanticProcessingMs": 16000,
-          "wordCount": 58,
-          "visualElementsCount": 4
+          "visualScanMs": 1050,
+          "readingMs": 122100,
+          "semanticProcessingMs": 53000,
+          "wordCount": 362,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
-            "citation": "CLEAPSS (2020). Student Safety Sheet 61: Cells and tissues. CLEAPSS Laboratory Safety.",
-            "relevance": "Directs aseptic buccal scraping and immediate disinfectant immersion protocol."
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
@@ -1327,7 +2366,84 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "format": "statement_only"
+        "format": "statement_only",
+        "detectionSource": "local-ocr-fallback"
+      },
+      "text": "CORELABORATORY PRACTICAL | Unit F173: Blomedical Techniques + CLEAPSS Student Safety Sheet 61\nStandard Operating Procedure: Aseptic Buccal Mucosa Sampling, Methylene Blue Staining & Biohazard Disinfection\nSTAGE 01+ SAMPLING STAGE 02 STAINING STAGE 03 + MOUNTING STAGE 04 + DIAGNOSTIC\n/ Aseptic Cell Harvesting 4 Differential Staining \\\\ 45° Coverslip Placement 4 Diagnostic Examination\nTarget Tissue Stratified Sqvanous Stain Solution 4% Hethylene Blue Tolerance Spec 0.17 mm Coverstip Magnification 100% + 400% Totat\n© Sterile Gently rotate swab against inside of © Single Using dropping pipette, add exactly ©45% Rest one edge of a clean coverslip * Low-to- Scan at 100x to find isolated\nCotton cheek (buccal mucosa) for 5~10 Drop 1 drop of 1% methylene blue onto ‘Angle on the slide touching the edge of the High polygonal cells; advance to 400x\nSwab: seconds, Reagent: the cell smear. Resting: liquid stain. Power: using fine focus only.\n© Cell Rub and roll the swab in small © Penetration Allow dye to incubate for 60-90 * Mounted Support opposite edge with * Observed Dark blue nucleus (~8 im), pale\nTransfer: circular motion onto the center of a Time: seconds at room temperature for Needle mounted needle; slowly lower to Cytology: biue granular cytoplasm (~50-70\nclean glass slide. chromatin binding, Descent: displace air bubbles. lum), thin membrane,\n© Immediate Plunge used swab directly into * Electrostatic Cationic [MB]* binds polyanionic * Wicking Touch bibulous filter paper gently to * Oral Commensal bacteria appear as\nDisinfection: 10% bleach discard jar Binding: phosphate groups in nuclear Excess: coverslip perimeter to absorb surplus Microbiota: tiny dark blue rods/cocci adhering\n(CLEAPSS GL113). DNA/RNA aye. to cell margins.\nCLEAPSS Safety Control: Chemical Handling: Bubble Elimination: Post-Lab Immersion:\nNever scrape gums or teeth; discard swab Methylene biue causes permanent staining; wear ‘Trapped bubbles appear as thick black-ringed Finished slide must be soaked in 10% bleach\nimmediately into disinfectant beaker. gloves & safety glasses. spheres that obscure diagnostic cells. disinfectant for 230 min before disposal.\nCLEAPSS 6L113 Cheek cells present Category 1 biological risk. Students must only harvest their own cells. All swabs and slides must enter disinfectant Gemini\nBIOHAZARD immediately. Notebook",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "3d895a87f494f605614b71a36fc2a20a42a05e13863bd03a35bfbb13b6bea1b4",
+        "transcript": "CORELABORATORY PRACTICAL | Unit F173: Blomedical Techniques + CLEAPSS Student Safety Sheet 61\nStandard Operating Procedure: Aseptic Buccal Mucosa Sampling, Methylene Blue Staining & Biohazard Disinfection\nSTAGE 01+ SAMPLING STAGE 02 STAINING STAGE 03 + MOUNTING STAGE 04 + DIAGNOSTIC\n/ Aseptic Cell Harvesting 4 Differential Staining \\\\ 45° Coverslip Placement 4 Diagnostic Examination\nTarget Tissue Stratified Sqvanous Stain Solution 4% Hethylene Blue Tolerance Spec 0.17 mm Coverstip Magnification 100% + 400% Totat\n© Sterile Gently rotate swab against inside of © Single Using dropping pipette, add exactly ©45% Rest one edge of a clean coverslip * Low-to- Scan at 100x to find isolated\nCotton cheek (buccal mucosa) for 5~10 Drop 1 drop of 1% methylene blue onto ‘Angle on the slide touching the edge of the High polygonal cells; advance to 400x\nSwab: seconds, Reagent: the cell smear. Resting: liquid stain. Power: using fine focus only.\n© Cell Rub and roll the swab in small © Penetration Allow dye to incubate for 60-90 * Mounted Support opposite edge with * Observed Dark blue nucleus (~8 im), pale\nTransfer: circular motion onto the center of a Time: seconds at room temperature for Needle mounted needle; slowly lower to Cytology: biue granular cytoplasm (~50-70\nclean glass slide. chromatin binding, Descent: displace air bubbles. lum), thin membrane,\n© Immediate Plunge used swab directly into * Electrostatic Cationic [MB]* binds polyanionic * Wicking Touch bibulous filter paper gently to * Oral Commensal bacteria appear as\nDisinfection: 10% bleach discard jar Binding: phosphate groups in nuclear Excess: coverslip perimeter to absorb surplus Microbiota: tiny dark blue rods/cocci adhering\n(CLEAPSS GL113). DNA/RNA aye. to cell margins.\nCLEAPSS Safety Control: Chemical Handling: Bubble Elimination: Post-Lab Immersion:\nNever scrape gums or teeth; discard swab Methylene biue causes permanent staining; wear ‘Trapped bubbles appear as thick black-ringed Finished slide must be soaked in 10% bleach\nimmediately into disinfectant beaker. gloves & safety glasses. spheres that obscure diagnostic cells. disinfectant for 230 min before disposal.\nCLEAPSS 6L113 Cheek cells present Category 1 biological risk. Students must only harvest their own cells. All swabs and slides must enter disinfectant Gemini\nBIOHAZARD immediately. Notebook",
+        "role": "process",
+        "questions": [],
+        "questionCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_12_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"Practical Protocol: Human Cheek Epithelial Cell Wet Mount Preparation\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08b_human_cheek_practical.png"
+        },
+        {
+          "id": "gemini_slide_12_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"Practical Protocol: Human Cheek Epithelial Cell Wet Mount Preparation\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08b_human_cheek_practical.png"
+        },
+        {
+          "id": "gemini_slide_12_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"Practical Protocol: Human Cheek Epithelial Cell Wet Mount Preparation\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 2. Biomedical Microscopy Standards & Slide Preparation. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_08b_human_cheek_practical.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -1354,8 +2470,10 @@
             "w": 42.5,
             "h": 14.5
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "troubleshoot_2",
@@ -1372,8 +2490,10 @@
             "w": 42.5,
             "h": 12
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "troubleshoot_3",
@@ -1390,10 +2510,166 @@
             "w": 42.5,
             "h": 14
           },
-          "revealMode": "blur",
-          "confidence": 1
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "Check for Understanding & Executive Pair-and-Share Discussion\nSub-Optimal Result Diagnostic Troubleshooting Workshop\n\\ . Fe The Issue:\nA technician reports that their stained tissue section\nappears sharp when viewed with the 10x objective, but\ny becomes unacceptably hazy and blurred when switching\nY Y to the high-dry 40x objective.\nas\n/ Executive Pair-and-Share: Identify the sources of error.\n| 1. Preparation Error: What physical mistake might\n\\ have been made when applying the mounting\n\\ medium and coverslip? (Hint: Look at the 0.17mm\n— boot tolerance).\nfp NN 2. Calibration Error: Has the technician properly\n/ adjusted the KGhler illumination for the new\n( \\ magnification?\n\\ } 3. Methodology Evaluation: How does excess fluid or\n\\ il a trapped air bubble impact the refractive index and\nAN the objective's capture cone?",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "fda0cf01de8965e2c4268e681f5088efea47c798b45cfa2f5165e3854daf1a8e",
+        "transcript": "Check for Understanding & Executive Pair-and-Share Discussion\nSub-Optimal Result Diagnostic Troubleshooting Workshop\n\\ . Fe The Issue:\nA technician reports that their stained tissue section\nappears sharp when viewed with the 10x objective, but\ny becomes unacceptably hazy and blurred when switching\nY Y to the high-dry 40x objective.\nas\n/ Executive Pair-and-Share: Identify the sources of error.\n| 1. Preparation Error: What physical mistake might\n\\ have been made when applying the mounting\n\\ medium and coverslip? (Hint: Look at the 0.17mm\n— boot tolerance).\nfp NN 2. Calibration Error: Has the technician properly\n/ adjusted the KGhler illumination for the new\n( \\ magnification?\n\\ } 3. Methodology Evaluation: How does excess fluid or\n\\ il a trapped air bubble impact the refractive index and\nAN the objective's capture cone?",
+        "role": "process",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "when switching Y Y to the high-dry 40x objective. as / Executive Pair-and-Share: Identify the sources of error. | 1. Preparation Error: What physical mistake might \\ have been made when applying the mounting \\ medium and coverslip?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "How does excess fluid or \\ il a trapped air bubble impact the refractive index and AN the objective's capture cone?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 83,
+        "timeGuideDisplay": "70–96s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 4312,
+          "readingMs": 50250,
+          "semanticProcessingMs": 28400,
+          "wordCount": 147,
+          "visualElementsCount": 11
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_13_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Check for Understanding & Executive Pair-and-Share Discussion\".\nDeck context: 2. Biomedical Microscopy Standards & Slide Preparation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 3 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_02_Working_like_a_Human_Biologist/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: 1. Preparation Error",
+            "componentIds": [
+              "troubleshoot_1"
+            ],
+            "targetBounds": {
+              "x": 50.5,
+              "y": 52,
+              "w": 42.5,
+              "h": 14.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: 2. Calibration Error",
+            "componentIds": [
+              "troubleshoot_2"
+            ],
+            "targetBounds": {
+              "x": 50.5,
+              "y": 68,
+              "w": 42.5,
+              "h": 12
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: 3. Methodology Evaluation",
+            "componentIds": [
+              "troubleshoot_3"
+            ],
+            "targetBounds": {
+              "x": 50.5,
+              "y": 81.5,
+              "w": 42.5,
+              "h": 14
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-16T00:20:34.522Z"
+  }
 }

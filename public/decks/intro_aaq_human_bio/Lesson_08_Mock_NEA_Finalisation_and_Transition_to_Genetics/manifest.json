@@ -14,36 +14,86 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 20,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "4.0",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 42,
+        "timeGuideDisplay": "35–49s",
+        "vciScore": "6.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 32550,
+          "semanticProcessingMs": 8100,
+          "wordCount": 92,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
+        "source": "local-ocr-fallback",
         "role": "title",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Welcome & Induction: Mock NEA Finalisation & Transition to Biomedical Science & Genetics"
+        "transcript": "« LESSON 8 OF 8 - INDUCTION PROGRAMME\n. = . uae . = .\nMock NEA Finalisation & Transition to Biomedical Science &\n.\nGenetics\nFocus: Draft Refinement Clinic, Cohort Debrief & Transition to Molecular Genetics\n(¢ KEY LEARNING DELIVERABLE\nFinalize the mock NEA section based on Lesson 7 peer feedback and complete the curriculum transition bridge to molecular genetics.\n© OCR Specification Level 3 Cambridge Advanced National __® Diagnostic Benchmark & Skills Profiling ° Academic Year 2026-2027",
+        "sourceHash": "2782be5ff79f0a3b5115f0d1e3b0cccb6d1aae9e83d87038fa9a4a2888c82055",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "« LESSON 8 OF 8 - INDUCTION PROGRAMME\n. = . uae . = .\nMock NEA Finalisation & Transition to Biomedical Science &\n.\nGenetics\nFocus: Draft Refinement Clinic, Cohort Debrief & Transition to Molecular Genetics\n(¢ KEY LEARNING DELIVERABLE\nFinalize the mock NEA section based on Lesson 7 peer feedback and complete the curriculum transition bridge to molecular genetics.\n© OCR Specification Level 3 Cambridge Advanced National __® Diagnostic Benchmark & Skills Profiling ° Academic Year 2026-2027",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"Mock NEA Finalisation & Transition to Biomedical Science &\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_01.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 2,
@@ -54,34 +104,64 @@
       "isInteractive": true,
       "interactiveType": "qa_grid",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "30–60s",
-        "vciScore": "3.2",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 203,
+        "timeGuideDisplay": "172–234s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 14500,
-          "semanticProcessingMs": 6500,
-          "wordCount": 80,
-          "visualElementsCount": 6
-        }
+          "visualScanMs": 7938,
+          "readingMs": 131700,
+          "semanticProcessingMs": 63600,
+          "wordCount": 367,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 6,
+        "questionCount": 10,
         "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "starter_grid",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Starter Activity: Knowledge Retrieval Grid"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "| STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\nWhy is the distinction between correlation and causation paramount when evaluating pow core synthe modified mRNA \\ (incorporating Ni-methylpseudouridine) evade\nEXPECTED ANSWER / SUCCESS CUE: Unmodified in vitro transcribed mRNA activates toll-like receptors (TLR3, TLR7, TLR8) and RIG-I,\nCorrelation indicates a statistical association between variables, whereas causation proves that triggering ribonuclease degradation and translational arrest; nucleoside modifications prevent\none variable directly produces the clinical change without confounding factors. sensor binding.\nOnce mRNA is delivered into the host cytosol, which cellular organelle translates it into n i \" a \"\nc s oy \"9 What happens to the synthesized viral/tumour antigen after ribosomal translation?\nantigen proteins?\nHost cell ribosomes (80S complexes in the cytoplasm), translating mRNA codons via tRNA- Itis processed by the proteasome and presented on cell-surface MHC Class I/II molecules to\nState two primary improvements required during today's Draft Refinement Clinic. Which upcoming unit does this induction directly bridge into?\nImplement Lesson 7 peer feedback targets and eliminate any remaining informal syntax or EXPECTED ANSWER / SUCCESS CUE:",
+        "sourceHash": "aaef3f9869313ec4221f084f21eba24d35280f425af5f6814047840918e33bad",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is delivered into the host cytosol, which cellular organelle translates it into n i \" a \" c s oy \"9 What happens to the synthesized viral/tumour antigen after ribosomal translation?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "is processed by the proteasome and presented on cell-surface MHC Class I/II molecules to State two primary improvements required during today's Draft Refinement Clinic. Which upcoming unit does this induction directly bridge into?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
       },
       "hasProgressiveBuilds": false,
       "interactiveCells": [
@@ -103,9 +183,11 @@
           },
           "question": "Why is the distinction between correlation and causation paramount when evaluating clinical endpoints?",
           "expectedAnswer": "Correlation indicates a statistical association between variables, whereas causation proves that one variable directly produces the clinical change without confounding factors.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_2",
@@ -125,9 +207,11 @@
           },
           "question": "How does synthetic modified mRNA (incorporating N1-methylpseudouridine) evade intracellular innate immune sensors?",
           "expectedAnswer": "Unmodified in vitro transcribed mRNA activates toll-like receptors (TLR3, TLR7, TLR8) and RIG-I, triggering ribonuclease degradation and translational arrest; nucleoside modifications prevent sensor binding.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_3",
@@ -147,9 +231,11 @@
           },
           "question": "Once mRNA is delivered into the host cytosol, which cellular organelle translates it into antigen proteins?",
           "expectedAnswer": "Host cell ribosomes (80S complexes in the cytoplasm), translating mRNA codons via tRNA-delivered amino acids.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_4",
@@ -169,9 +255,11 @@
           },
           "question": "What happens to the synthesized viral/tumour antigen after ribosomal translation?",
           "expectedAnswer": "It is processed by the proteasome and presented on cell-surface MHC Class I/II molecules to activate cytotoxic T-cells and helper T-cells.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_5",
@@ -191,9 +279,11 @@
           },
           "question": "State two primary improvements required during today's Draft Refinement Clinic.",
           "expectedAnswer": "Implement Lesson 7 peer feedback targets and eliminate any remaining informal syntax or citation errors.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_6",
@@ -213,11 +303,141 @@
           },
           "question": "Which upcoming unit does this induction directly bridge into?",
           "expectedAnswer": "Unit F171: Genetics, Gene Expression, and Molecular Pathology.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "| STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\nWhy is the distinction between correlation and causation paramount when evaluating pow core synthe modified mRNA \\ (incorporating Ni-methylpseudouridine) evade\nEXPECTED ANSWER / SUCCESS CUE: Unmodified in vitro transcribed mRNA activates toll-like receptors (TLR3, TLR7, TLR8) and RIG-I,\nCorrelation indicates a statistical association between variables, whereas causation proves that triggering ribonuclease degradation and translational arrest; nucleoside modifications prevent\none variable directly produces the clinical change without confounding factors. sensor binding.\nOnce mRNA is delivered into the host cytosol, which cellular organelle translates it into n i \" a \"\nc s oy \"9 What happens to the synthesized viral/tumour antigen after ribosomal translation?\nantigen proteins?\nHost cell ribosomes (80S complexes in the cytoplasm), translating mRNA codons via tRNA- Itis processed by the proteasome and presented on cell-surface MHC Class I/II molecules to\nState two primary improvements required during today's Draft Refinement Clinic. Which upcoming unit does this induction directly bridge into?\nImplement Lesson 7 peer feedback targets and eliminate any remaining informal syntax or EXPECTED ANSWER / SUCCESS CUE:",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_02.png"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Why is the distinction between correlation and causation paramount when evaluating clinical endpoints?",
+            "componentIds": [
+              "cell_1"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 28,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: How does synthetic modified mRNA (incorporating N1-methylpseudouridine) evade intracellular innate immune sensors?",
+            "componentIds": [
+              "cell_2"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 28,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Once mRNA is delivered into the host cytosol, which cellular organelle translates it into antigen proteins?",
+            "componentIds": [
+              "cell_3"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 52.5,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: What happens to the synthesized viral/tumour antigen after ribosomal translation?",
+            "componentIds": [
+              "cell_4"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 52.5,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: State two primary improvements required during today's Draft Refinement Clinic.",
+            "componentIds": [
+              "cell_5"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 77,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: Which upcoming unit does this induction directly bridge into?",
+            "componentIds": [
+              "cell_6"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 77,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -228,36 +448,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 84,
+        "timeGuideDisplay": "71–97s",
+        "vciScore": "7.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 41850,
+          "semanticProcessingMs": 40600,
+          "wordCount": 110,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "objectives",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Learning Objectives & Success Criteria"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: MATT\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nUnderstand the biochemical mechanism of Refine and finalize the Mock NEA draft, Evaluate the conceptual transition from applied\nmodified mRNA: escaping TLR innate sensors, implementing peer diagnostic feedback and clinical immunology to fundamental molecular\ncytosolic ribosomal translation, and MHC antigen ensuring rigorous Harvard citations. genetics and cellular pathology.\npresentation.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
+        "sourceHash": "9c85f29a0a80e2f0c247727532f4e66d689ac859a42adff91459052b9c25ae74",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: MATT\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nUnderstand the biochemical mechanism of Refine and finalize the Mock NEA draft, Evaluate the conceptual transition from applied\nmodified mRNA: escaping TLR innate sensors, implementing peer diagnostic feedback and clinical immunology to fundamental molecular\ncytosolic ribosomal translation, and MHC antigen ensuring rigorous Harvard citations. genetics and cellular pathology.\npresentation.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_03.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 4,
@@ -268,36 +570,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 70,
+        "timeGuideDisplay": "59–81s",
+        "vciScore": "7.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 41400,
+          "semanticProcessingMs": 26800,
+          "wordCount": 112,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "terminology",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Essential Scientific & Clinical Vocabulary"
+        "source": "local-ocr-fallback",
+        "role": "instructional-content",
+        "transcript": "| COREVOCABULARY CLINICALTERMINOLOGY TEACHER: MATT\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nCorrelation vs Causation N1-Methylpseudouridine\nDistinguishing an observed mutual relationship between clinical variables from a A modified nucleoside that replaces uridine in therapeutic mRNA, preventing\nverified direct causal mechanism. detection by pattern-recognition receptors (TLRs).\nTERM 03 TERM 04\nToll-Like Receptors (TLR3/7/8) Curriculum Bridge (Genetics)\nPattern-recognition receptors that detect foreign pathogen-associated molecular The conceptual link connecting synthetic mRNA translation to transcription, codon\npatterns (like viral single-stranded RNA). translation, mutations, and phenotypic variation.\nLesson &: Mock NEA Finalisation & Transition to Biomedical Science & Genetics Slide 4 of 10",
+        "sourceHash": "b88d0657da4fda4983c1752901ccdbe0f308f88998b9a0446d7fb4d25aadbf50",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "| COREVOCABULARY CLINICALTERMINOLOGY TEACHER: MATT\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nCorrelation vs Causation N1-Methylpseudouridine\nDistinguishing an observed mutual relationship between clinical variables from a A modified nucleoside that replaces uridine in therapeutic mRNA, preventing\nverified direct causal mechanism. detection by pattern-recognition receptors (TLRs).\nTERM 03 TERM 04\nToll-Like Receptors (TLR3/7/8) Curriculum Bridge (Genetics)\nPattern-recognition receptors that detect foreign pathogen-associated molecular The conceptual link connecting synthetic mRNA translation to transcription, codon\npatterns (like viral single-stranded RNA). translation, mutations, and phenotypic variation.\nLesson &: Mock NEA Finalisation & Transition to Biomedical Science & Genetics Slide 4 of 10",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"COREVOCABULARY CLINICALTERMINOLOGY TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"COREVOCABULARY CLINICALTERMINOLOGY TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"COREVOCABULARY CLINICALTERMINOLOGY TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_04.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 5,
@@ -308,36 +692,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 62,
+        "timeGuideDisplay": "52–72s",
+        "vciScore": "7.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 38100,
+          "semanticProcessingMs": 22800,
+          "wordCount": 106,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "theory",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Core Biological Theory & Mechanisms"
+        "source": "local-ocr-fallback",
+        "role": "instructional-content",
+        "transcript": "| MECHANISTICTHEORY FOUNDATIONALSCIENCE TEACHER: MATT\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nDraft Refinement Clinic: Systematically implement Lesson 7 rubric targets—upgrade The Correlation vs Causation Fallacy: A decrease in viral load concurrent with\ninformal vocabulary, cite exact statistical bounds, and align reference lists. symptom relief does not automatically prove causality without randomised control\nThe Molecular Genetics Bridge: Synthetic modified MRNA must survive long enough Transition to Unit F171: Foundational knowledge now bridges directly into DNA\nto reach cytosolic 80S ribosomes without triggering PKR (protein kinase R) or TLR replication, transcription, translation fidelity, genetic alleles, and epigenetic control.\nactivation.",
+        "sourceHash": "12a090a70923c1a177ffce6cc4beaecf415f4a2fef8167c6567b4b530462e64a",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "| MECHANISTICTHEORY FOUNDATIONALSCIENCE TEACHER: MATT\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nDraft Refinement Clinic: Systematically implement Lesson 7 rubric targets—upgrade The Correlation vs Causation Fallacy: A decrease in viral load concurrent with\ninformal vocabulary, cite exact statistical bounds, and align reference lists. symptom relief does not automatically prove causality without randomised control\nThe Molecular Genetics Bridge: Synthetic modified MRNA must survive long enough Transition to Unit F171: Foundational knowledge now bridges directly into DNA\nto reach cytosolic 80S ribosomes without triggering PKR (protein kinase R) or TLR replication, transcription, translation fidelity, genetic alleles, and epigenetic control.\nactivation.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_05.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 6,
@@ -348,36 +814,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 109,
+        "timeGuideDisplay": "92–126s",
+        "vciScore": "9.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 63600,
+          "semanticProcessingMs": 44200,
+          "wordCount": 178,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "worked_example",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Worked Demonstration & Practical Protocol"
+        "source": "local-ocr-fallback",
+        "role": "worked-example",
+        "transcript": "PRACTICALPROTOCOL | WORKED DEMONSTRATION TEACHER: MATT\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nRefining the NEA Draft & Bridging to Molecular Genetics\nPolishing a clinical paragraph and linking to intracellular translation\nPeer note: ‘Paragraph 3 implies mRNA enters the nucleus and causes mutations. Clarify that mRNA acts strictly in the cytosol.’\n‘Exogenous synthetic mRNA does not integrate into the host genome; it remains strictly cytoplasmic where host 80S ribosomes translate the encoded open\nreading frame into immunogenic target proteins (Sahin et al., 2020).'\n‘Incorporation of N1-methylpseudouridine suppresses Toll-like receptor (TLRS, TLR7/8) activation, preventing interferon-mediated translation\ninhibition and allowing sustained polypeptide synthesis.’\n‘High neutralising antibody titres correlated with reduced hospitalisations (r=0.88), and placebo-controlled Phase Ill trials confirmed this\nrelationship to be directly causal (p < 0.001).'\nObjective tone verified, Harvard citations cross-checked with bibliography, and ready for portfolio archive.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 8: Mock NEA Finalsation & Transition to Biomedical Science & Genetics Slide 6 of 10",
+        "sourceHash": "6433bd1fa8a3b6418c177112f2cf5167f50095a1b55eaa74820488304fa4ac58",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "PRACTICALPROTOCOL | WORKED DEMONSTRATION TEACHER: MATT\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nRefining the NEA Draft & Bridging to Molecular Genetics\nPolishing a clinical paragraph and linking to intracellular translation\nPeer note: ‘Paragraph 3 implies mRNA enters the nucleus and causes mutations. Clarify that mRNA acts strictly in the cytosol.’\n‘Exogenous synthetic mRNA does not integrate into the host genome; it remains strictly cytoplasmic where host 80S ribosomes translate the encoded open\nreading frame into immunogenic target proteins (Sahin et al., 2020).'\n‘Incorporation of N1-methylpseudouridine suppresses Toll-like receptor (TLRS, TLR7/8) activation, preventing interferon-mediated translation\ninhibition and allowing sustained polypeptide synthesis.’\n‘High neutralising antibody titres correlated with reduced hospitalisations (r=0.88), and placebo-controlled Phase Ill trials confirmed this\nrelationship to be directly causal (p < 0.001).'\nObjective tone verified, Harvard citations cross-checked with bibliography, and ready for portfolio archive.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 8: Mock NEA Finalsation & Transition to Biomedical Science & Genetics Slide 6 of 10",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"PRACTICALPROTOCOL | WORKED DEMONSTRATION TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"PRACTICALPROTOCOL | WORKED DEMONSTRATION TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"PRACTICALPROTOCOL | WORKED DEMONSTRATION TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_06.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 7,
@@ -388,36 +936,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 94,
+        "timeGuideDisplay": "79–109s",
+        "vciScore": "9.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 57450,
+          "semanticProcessingMs": 35200,
+          "wordCount": 155,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "case_study",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Clinical Application & Stimulus Evidence"
+        "source": "local-ocr-fallback",
+        "role": "process",
+        "transcript": "“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
+        "sourceHash": "609ecf7dff8384ea98b9edab56755b51b61fccccf3506d0857627ca18a4d1d35",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_07.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 8,
@@ -428,36 +1058,125 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 77,
+        "timeGuideDisplay": "65–89s",
+        "vciScore": "8.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 52050,
+          "semanticProcessingMs": 23200,
+          "wordCount": 152,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 2,
-        "detectionSource": "manifest-structured"
+        "questionCount": 3,
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "hinge_questions",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Diagnostic Check for Understanding (Hinge Questions)"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "“HINGE QUESTIONS TEACHER: MarT\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhy does therapeutic mRNA require nucleoside modification (e.g. N1- How does the mRNA case study connect directly to the upcoming Genetics unit?\nmethylpseudouridine) before clinical administration?\nA Tomake the maWA double-stranded ike BNA 4 SERDMIGHI MEMS yee\nfunctional polypeptides, bridging into gene expression and mutation biology\nTo prevent unmodified single-stranded RNA from triggering innate pattern- Gam\n® recognition receptors (TLRs) that destroy the mRNA and halt translation ¥ as BD liegacisbolpase Ene\n© Toallow the mRNA to permanently integrate into host chromosomes @ _ Bombe EEC CHEER UESD\nD To change the genetic code from RNA to protein B _ Wiieon EE ean Sey\nRationale: Unmodified in vitro transcribed mRNA triggers severe innate immune sensors (TLR3, TLR7/8) Rationale: mRNA translation on ribosomes is the core of gene expression (the Central Dogma), linking",
+        "sourceHash": "49f62c0ad47100d229535fa686f4a10d82e8ba8c5ac52bd8a41c88cff1c429cd",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Identify and resolve common misconception patterns Why does therapeutic mRNA require nucleoside modification (e.g. N1- How does the mRNA case study connect directly to the upcoming Genetics unit?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“HINGE QUESTIONS TEACHER: MarT\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhy does therapeutic mRNA require nucleoside modification (e.g. N1- How does the mRNA case study connect directly to the upcoming Genetics unit?\nmethylpseudouridine) before clinical administration?\nA Tomake the maWA double-stranded ike BNA 4 SERDMIGHI MEMS yee\nfunctional polypeptides, bridging into gene expression and mutation biology\nTo prevent unmodified single-stranded RNA from triggering innate pattern- Gam\n® recognition receptors (TLRs) that destroy the mRNA and halt translation ¥ as BD liegacisbolpase Ene\n© Toallow the mRNA to permanently integrate into host chromosomes @ _ Bombe EEC CHEER UESD\nD To change the genetic code from RNA to protein B _ Wiieon EE ean Sey\nRationale: Unmodified in vitro transcribed mRNA triggers severe innate immune sensors (TLR3, TLR7/8) Rationale: mRNA translation on ribosomes is the core of gene expression (the Central Dogma), linking",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"“HINGE QUESTIONS TEACHER: MarT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"“HINGE QUESTIONS TEACHER: MarT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"“HINGE QUESTIONS TEACHER: MarT\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_08.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 9,
@@ -468,36 +1187,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 86,
+        "timeGuideDisplay": "73–99s",
+        "vciScore": "8.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 52050,
+          "semanticProcessingMs": 32200,
+          "wordCount": 147,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "detectionSource": "manifest-structured"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "exam_practice",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · OCR Level 3 Exam-Style Application"
+        "source": "local-ocr-fallback",
+        "role": "instructional-content",
+        "transcript": "[EXAM TECHNIQUE | OCRAAGASSESSMENT TEACHER: MATT\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 6 marks\nExplain how synthetic modified mRNA illustrates the Central Dogma of molecular biology, and describe how intracellular innate immune mechanisms would\ndestroy unmodified mRNA before translation could occur. [6 marks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol Central Dogma: Exogenous mRNA serves as the direct transcriptional intermediate, translated by host ribosomes into specific antigen polypeptides. [2 marks]\nPointo2 —_ Intracellular Sensors: Unmodified foreign ssRNA is recognized by pattern-recognition receptors (Toll-like receptors TLR7/8 in endosomes; RIG-I/MDAS in cytosol). [2 marks]\npointes Consequences: Sensor activation triggers Type | interferon cascades, activating 2'-5'-oligoadenylate synthetase and RNase L, which degrade mRNA and phosphorylate elF 2a\nto shut down all translation. [2 marks]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
+        "sourceHash": "064415685500fc0132751ed3936d7484a19af75b814b611763a31c31a2338f05",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "[EXAM TECHNIQUE | OCRAAGASSESSMENT TEACHER: MATT\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 6 marks\nExplain how synthetic modified mRNA illustrates the Central Dogma of molecular biology, and describe how intracellular innate immune mechanisms would\ndestroy unmodified mRNA before translation could occur. [6 marks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol Central Dogma: Exogenous mRNA serves as the direct transcriptional intermediate, translated by host ribosomes into specific antigen polypeptides. [2 marks]\nPointo2 —_ Intracellular Sensors: Unmodified foreign ssRNA is recognized by pattern-recognition receptors (Toll-like receptors TLR7/8 in endosomes; RIG-I/MDAS in cytosol). [2 marks]\npointes Consequences: Sensor activation triggers Type | interferon cascades, activating 2'-5'-oligoadenylate synthetase and RNase L, which degrade mRNA and phosphorylate elF 2a\nto shut down all translation. [2 marks]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_09.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 10,
@@ -508,40 +1309,129 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 48,
+        "timeGuideDisplay": "40–56s",
+        "vciScore": "6.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 30450,
+          "semanticProcessingMs": 16000,
+          "wordCount": 89,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
+        "detected": true,
+        "confidence": "medium",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "plenary",
-        "transcript": "Mock NEA Finalisation & Transition to Biomedical Science & Genetics · Plenary Summary & Target Setting"
+        "source": "local-ocr-fallback",
+        "role": "instructional-content",
+        "transcript": "[ iesson consounarion I reacuen: warr J\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n@ Congratulations on completing the 2-week Induction and Baseline Diagnostic Unit for OCR Level 3 AAQ Human Biology!\n8 Your refined Mock NEA draft and Diagnostic Competency Profile are now archived in your student portfolio.\n8 Next Unit: Unit F171 Genetics, Gene Expression & Molecular Pathology — beginning with Lesson 1: Phenotypic Variation and Environmental Interactions.\nProgression Target: Induction Complete - Ready for Unit F171 Genetics",
+        "sourceHash": "9e4e28713ef36882ceedd58e1f46968f7da38ff20ea281642368ce772e01be88",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "[ iesson consounarion I reacuen: warr J\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n@ Congratulations on completing the 2-week Induction and Baseline Diagnostic Unit for OCR Level 3 AAQ Human Biology!\n8 Your refined Mock NEA draft and Diagnostic Competency Profile are now archived in your student portfolio.\n8 Next Unit: Unit F171 Genetics, Gene Expression & Molecular Pathology — beginning with Lesson 1: Phenotypic Variation and Environmental Interactions.\nProgression Target: Induction Complete - Ready for Unit F171 Genetics",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 8. Mock NEA Finalisation & Transition to Biomedical Science & Genetics.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_08_Mock_NEA_Finalisation_and_Transition_to_Genetics/slides/slide_10.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
   ],
   "unit": "Intro to Human Biology",
   "teacher": "Matt",
   "academicYear": "2026–27",
-  "generatedAt": "2026-09-15T21:56:55.395Z"
+  "generatedAt": "2026-09-15T21:56:55.395Z",
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-16T00:20:34.644Z"
+  }
 }

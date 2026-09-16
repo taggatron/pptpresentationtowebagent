@@ -13,9 +13,9 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 6,
-        "timeGuideDisplay": "5–7s",
-        "vciScore": "2.8",
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "4.2",
         "complexityCategory": "Low",
         "ragLevel": "low",
         "ragColor": "green",
@@ -23,9 +23,9 @@
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 3600,
-          "wordCount": 2,
+          "readingMs": 6900,
+          "semanticProcessingMs": 4500,
+          "wordCount": 20,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -47,7 +47,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -60,7 +60,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 1: \"Lesson 2: Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-centre with exact source wording: “Lesson 2: Mitosis”; slide_subtitle at top-centre with exact source wording: “GCSE Biology: Genetics, Inheritance & Selection”\nTemporarily omit: chromosome_illustration at centre; bottom_instruction at bottom-centre with exact source wording: “No learner activities required yet. Get your mini-whiteboards ready.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Title slide for GCSE Biology featuring the lesson title, topic subtitle, a central graphic of a replicated chromosome divided vertically by a dashed line, and a preparatory instruction note at the bottom. Spatial layout: Centered vertical hierarchy: top-centered main title and subtitle, central chromosome graphic with vertical dashed dividing line, and bottom-centered teacher instruction line with a small branding logo at the bottom right.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 1: \"Lesson 2: Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-centre with exact source wording: “Lesson 2: Mitosis”; slide_subtitle at top-centre with exact source wording: “GCSE Biology: Genetics, Inheritance & Selection”\nTemporarily omit: chromosome_illustration at centre; bottom_instruction at bottom-centre with exact source wording: “No learner activities required yet. Get your mini-whiteboards ready.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"Mitosis\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nSource-content reference: Title slide for GCSE Biology featuring the lesson title, topic subtitle, a central graphic of a replicated chromosome divided vertically by a dashed line, and a preparatory instruction note at the bottom. Spatial layout: Centered vertical hierarchy: top-centered main title and subtitle, central chromosome graphic with vertical dashed dividing line, and bottom-centered teacher instruction line with a small branding logo at the bottom right.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -76,7 +76,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 1: \"Lesson 2: Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render those previously animated in slide image elements as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide image elements, diagrams, text blocks, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Only the newly animated elements for this step must be rendered with full opacity and natural colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-centre with exact source wording: “Lesson 2: Mitosis”; slide_subtitle at top-centre with exact source wording: “GCSE Biology: Genetics, Inheritance & Selection”; chromosome_illustration at centre; bottom_instruction at bottom-centre with exact source wording: “No learner activities required yet. Get your mini-whiteboards ready.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Title slide for GCSE Biology featuring the lesson title, topic subtitle, a central graphic of a replicated chromosome divided vertically by a dashed line, and a preparatory instruction note at the bottom. Spatial layout: Centered vertical hierarchy: top-centered main title and subtitle, central chromosome graphic with vertical dashed dividing line, and bottom-centered teacher instruction line with a small branding logo at the bottom right.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 1: \"Lesson 2: Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-centre with exact source wording: “Lesson 2: Mitosis”; slide_subtitle at top-centre with exact source wording: “GCSE Biology: Genetics, Inheritance & Selection”; chromosome_illustration at centre; bottom_instruction at bottom-centre with exact source wording: “No learner activities required yet. Get your mini-whiteboards ready.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"Mitosis\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nSource-content reference: Title slide for GCSE Biology featuring the lesson title, topic subtitle, a central graphic of a replicated chromosome divided vertically by a dashed line, and a preparatory instruction note at the bottom. Spatial layout: Centered vertical hierarchy: top-centered main title and subtitle, central chromosome graphic with vertical dashed dividing line, and bottom-centered teacher instruction line with a small branding logo at the bottom right.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -174,6 +174,17 @@
         "pathway": "gemini-image-chat",
         "segmentationSource": "gemini-multimodal-slide-analysis",
         "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+      },
+      "text": "Lesson 2: Mitosis\nGCSE Biology: Genetics, Inheritance & Selection\nNo learner activities required yet. Get your mini-whiteboards ready.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "8b9db847c0a154fc748fdc6ecd1204ef9ff4f6fa1c199415d846e5f4957b414a",
+        "transcript": "Lesson 2: Mitosis\nGCSE Biology: Genetics, Inheritance & Selection\nNo learner activities required yet. Get your mini-whiteboards ready.",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -185,19 +196,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 10,
-        "timeGuideDisplay": "8–12s",
-        "vciScore": "4.7",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 36,
+        "timeGuideDisplay": "30–42s",
+        "vciScore": "5.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 1650,
-          "semanticProcessingMs": 7200,
-          "wordCount": 4,
+          "readingMs": 24000,
+          "semanticProcessingMs": 10800,
+          "wordCount": 74,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -217,9 +228,9 @@
       },
       "questionAnalysis": {
         "detected": true,
-        "confidence": "medium",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -228,11 +239,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter Activity: Knowledge Retrieval\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Starter Activity: Knowledge Retrieval\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 2: \"Starter: Quick-Fire Retrieval (5 Minutes)\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_02.png"
+        },
+        {
+          "id": "gemini_slide_2_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 2: \"Starter: Quick-Fire Retrieval (5 Minutes)\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_02.png"
+        },
+        {
+          "id": "gemini_slide_2_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 2: \"Starter: Quick-Fire Retrieval (5 Minutes)\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -247,12 +290,42 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Starter: Quick-Fire Retrieval (5 Minutes)\nWhere is genetic material What is the shape of a DNA\nstored in a eukaryotic cell? molecule?\nWhat term describes a section | How many chromosomes are in\nof DNA that codes for a protein? | in anormal human body cell?\nWhat does the term ‘diploid’ | Are normal body cells diploid or\nmean? haploid?\nTeacher Note: Reveal answers one by one.\nStudents use mini-whiteboavidaun",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5ed140452ac0ccba6727895027bdf885f9ac03f3ec6939fadec128d3e68a000c",
+        "transcript": "Starter: Quick-Fire Retrieval (5 Minutes)\nWhere is genetic material What is the shape of a DNA\nstored in a eukaryotic cell? molecule?\nWhat term describes a section | How many chromosomes are in\nof DNA that codes for a protein? | in anormal human body cell?\nWhat does the term ‘diploid’ | Are normal body cells diploid or\nmean? haploid?\nTeacher Note: Reveal answers one by one.\nStudents use mini-whiteboavidaun",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Where is genetic material What is the shape of a DNA stored in a eukaryotic cell?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What term describes a section | How many chromosomes are in of DNA that codes for a protein?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "What does the term ‘diploid’ | Are normal body cells diploid or mean?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
       }
     },
     {
@@ -264,19 +337,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 38,
+        "timeGuideDisplay": "32–44s",
+        "vciScore": "4.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 16050,
+          "semanticProcessingMs": 20600,
+          "wordCount": 49,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -298,7 +371,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -307,11 +380,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 3: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Growth Tissue Repair Asexual Reproduction\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Growth Tissue Repair Asexual Reproduction\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Growth Tissue Repair Asexual Reproduction\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -326,12 +431,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "The ‘Why’: Growth, Repair, and Reproduction\nGrowth Tissue Repair Asexual Reproduction\n=> 5\n3 am : \\)\nas > (>\nre SS A\\l@| VW\nIncreasing the total Replacing damaged or Producing genetically\nnumber of cells in an dead cells to heal identical offspring\norganism. tissues. without gametes.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5479203de10a4e60fff0c96e5bfee5439517356e4bb902dac331c804c04d924a",
+        "transcript": "The ‘Why’: Growth, Repair, and Reproduction\nGrowth Tissue Repair Asexual Reproduction\n=> 5\n3 am : \\)\nas > (>\nre SS A\\l@| VW\nIncreasing the total Replacing damaged or Producing genetically\nnumber of cells in an dead cells to heal identical offspring\norganism. tissues. without gametes.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -343,19 +459,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 29,
+        "timeGuideDisplay": "24–34s",
+        "vciScore": "5.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 17850,
+          "semanticProcessingMs": 9600,
+          "wordCount": 55,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -377,20 +493,52 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_4_1_component_reveal",
+          "id": "gemini_slide_4_1_process",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"The Cell Cycle: The Big Picture\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"The Cell Cycle: The Big Picture\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"The Cell Cycle: The Big Picture\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -402,15 +550,26 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "process",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "The Cell Cycle: The Big Picture\nMITOSIS\nnee Movement of\nCell Growth & —> chromosomes\nDNA Replication\nThe cell spends most\nof its life here,\ngrowing and copying\nits genetic material.\nCell Division\nThe cell physically\nsplits into two.\nTrace the cycle in the air: Growth -> Replication -> Movement -> Division -",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "25023523360b3a4bae3e71487f4dbe30218596727e37e53dda4d442a6e3377a5",
+        "transcript": "The Cell Cycle: The Big Picture\nMITOSIS\nnee Movement of\nCell Growth & —> chromosomes\nDNA Replication\nThe cell spends most\nof its life here,\ngrowing and copying\nits genetic material.\nCell Division\nThe cell physically\nsplits into two.\nTrace the cycle in the air: Growth -> Replication -> Movement -> Division -",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -422,19 +581,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 25,
+        "timeGuideDisplay": "21–29s",
+        "vciScore": "4.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 14100,
+          "semanticProcessingMs": 10000,
+          "wordCount": 42,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -456,7 +615,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -465,11 +624,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 5: \"Stage 1: Chromosome Replication\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 5: \"Stage 1: Chromosome Replication\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -484,12 +659,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Stage 1: Chromosome Replication\n(chromatids) joined at\n| the centre. x\nSingle Chromosome Replicated Chromosome\nBefore mitosis begins, the DNA replicates. The single chromosome copies itself\nto form an ‘X' shape, ensuring there is enough genetic material for two cells.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "46ef39b2dee71123b2835cb51386e8b1c03eed86535078754d05b477217c5f19",
+        "transcript": "Stage 1: Chromosome Replication\n(chromatids) joined at\n| the centre. x\nSingle Chromosome Replicated Chromosome\nBefore mitosis begins, the DNA replicates. The single chromosome copies itself\nto form an ‘X' shape, ensuring there is enough genetic material for two cells.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -501,19 +687,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 41,
+        "timeGuideDisplay": "34–48s",
+        "vciScore": "5.2",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 20250,
+          "semanticProcessingMs": 19000,
+          "wordCount": 65,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -535,7 +721,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -544,11 +730,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"Stage 2: Alignment\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"Stage 2: Alignment\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"Stage 2: Alignment\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -563,12 +781,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Stage 2: Alignment\nBO\noN\n4 l ‘N\ni ! SS\n‘ f N\nms 1 %\nc i] x\nN ' v7)\n‘N t 4\nNN f 4\n\\ 7 7\nN 1 4\nN 4\n\\ls\nThe nuclear membrane breaks down. Chromosomes line up perfectly along the\nequator (centre) of the cell. Spindle fibres attach to the centre of each chromosome.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "30be3a1608715704c7befeb47275a1c6c2c1cab19d7593b5ff2090e4bd587097",
+        "transcript": "Stage 2: Alignment\nBO\noN\n4 l ‘N\ni ! SS\n‘ f N\nms 1 %\nc i] x\nN ' v7)\n‘N t 4\nNN f 4\n\\ 7 7\nN 1 4\nN 4\n\\ls\nThe nuclear membrane breaks down. Chromosomes line up perfectly along the\nequator (centre) of the cell. Spindle fibres attach to the centre of each chromosome.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -580,19 +809,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 28,
+        "timeGuideDisplay": "23–33s",
+        "vciScore": "5.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 18750,
+          "semanticProcessingMs": 8000,
+          "wordCount": 60,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -614,7 +843,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -623,11 +852,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 7: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Stage 3: Separation\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Stage 3: Separation\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Stage 3: Separation\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -642,12 +903,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Stage 3: Separation\nA RS\nooh Sy\nay <s\ni SON\n7 XN\n4 N\ni ae\n< >\nXN 7\ni < > vit\nXe W7\nN 7\nXX s o 7\nSS Re ‘on\nhe\nSk en\nThe spindle fibres contract. The identical copies of each chromosome are\npulled apart to opposite poles of the cell.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "34be875e6702e04d5c5c065c403e32c5aff5d831d1ba2726524ba783dec6d848",
+        "transcript": "Stage 3: Separation\nA RS\nooh Sy\nay <s\ni SON\n7 XN\n4 N\ni ae\n< >\nXN 7\ni < > vit\nXe W7\nN 7\nXX s o 7\nSS Re ‘on\nhe\nSk en\nThe spindle fibres contract. The identical copies of each chromosome are\npulled apart to opposite poles of the cell.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -659,19 +931,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 22,
+        "timeGuideDisplay": "18–26s",
+        "vciScore": "4.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 11700,
+          "semanticProcessingMs": 9200,
+          "wordCount": 35,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -693,7 +965,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -702,11 +974,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 8: \"Stage 4: Nuclear Division & Cell Splitting\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 8: \"Stage 4: Nuclear Division & Cell Splitting\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -721,12 +1009,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Stage 4: Nuclear Division & Cell Splitting\nNew nuclear membranes form around the chromosomes at each pole. Finally, the cell\nmembrane and cytoplasm pinch in the middle, physically splitting the cell into two.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "7fcae9520bfe0cea22e77ce08afcf51f89a39a7508e35c4d7834313cef8b162d",
+        "transcript": "Stage 4: Nuclear Division & Cell Splitting\nNew nuclear membranes form around the chromosomes at each pole. Finally, the cell\nmembrane and cytoplasm pinch in the middle, physically splitting the cell into two.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -738,19 +1037,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 29,
+        "timeGuideDisplay": "24–34s",
+        "vciScore": "4.6",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 12750,
+          "semanticProcessingMs": 14600,
+          "wordCount": 38,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -772,7 +1071,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -781,11 +1080,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 9: \"Activity: Diagram Labelling Race (60 Seconds)\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 9: \"Activity: Diagram Labelling Race (60 Seconds)\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -800,12 +1115,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Activity: Diagram Labelling Race (60 Seconds)\nAlignment / Separation / Chromosome Replication / Nuclear Division\nMini-whiteboards up! Match the letter to the correct stage name,\nname, AND write them in the correct biological order! Go! eee",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "8a985c99e5218fb7911f08ad96f6c11110e3583a82c8b70db030988194dad40d",
+        "transcript": "Activity: Diagram Labelling Race (60 Seconds)\nAlignment / Separation / Chromosome Replication / Nuclear Division\nMini-whiteboards up! Match the letter to the correct stage name,\nname, AND write them in the correct biological order! Go! eee",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -817,19 +1143,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 34,
+        "timeGuideDisplay": "28–40s",
+        "vciScore": "5.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 15150,
+          "semanticProcessingMs": 17200,
+          "wordCount": 44,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -851,7 +1177,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -860,11 +1186,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 10: \"The Result: Genetically Identical Clones\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 10: \"The Result: Genetically Identical Clones\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -879,12 +1221,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "The Result: Genetically Identical Clones\n3\n—\n=a\nGenetically Identical Clones Genetically Identical Clones\nBecause of exact DNA replication and precise separation, the resulting daughter cells are 100%\ngenetically identical to the parent cell. They remain diploid (two full sets of chromosomes).",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "089bcd90b98eac0e895f8e9dab01d109f93176fc8635551922eb78c344ee5529",
+        "transcript": "The Result: Genetically Identical Clones\n3\n—\n=a\nGenetically Identical Clones Genetically Identical Clones\nBecause of exact DNA replication and precise separation, the resulting daughter cells are 100%\ngenetically identical to the parent cell. They remain diploid (two full sets of chromosomes).",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -896,19 +1249,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 25,
+        "timeGuideDisplay": "21–29s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 10200,
+          "semanticProcessingMs": 13600,
+          "wordCount": 32,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -927,23 +1280,39 @@
         ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_11_1_component_reveal",
+          "id": "gemini_slide_11_1_worked_example",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 11: \"High-Speed Calculation Race\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_11_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 11: \"High-Speed Calculation Race\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -955,15 +1324,33 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "worked-example",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "High-Speed Calculation Race\nA single human skin cell\nbegins dividing by mitosis.\nHow many cells will there be\nafter 5 rounds of division?\ngq 2 00 o—@e\n~~ -6—-00 0—-@",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "5dfad8468a12601a7383bfc7ce5eeae26cea3161331933b4513617e3f1a9ca93",
+        "transcript": "High-Speed Calculation Race\nA single human skin cell\nbegins dividing by mitosis.\nHow many cells will there be\nafter 5 rounds of division?\ngq 2 00 o—@e\n~~ -6—-00 0—-@",
+        "role": "worked-example",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is. How many cells will there be after 5 rounds of division?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
       }
     },
     {
@@ -975,19 +1362,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 49,
+        "timeGuideDisplay": "41–57s",
+        "vciScore": "6.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 27750,
+          "semanticProcessingMs": 19800,
+          "wordCount": 89,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -1006,10 +1393,10 @@
         ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1018,11 +1405,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 12: \"Stem Cells Meristems\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 12: \"Stem Cells Meristems\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_12.png"
+        },
+        {
+          "id": "gemini_slide_12_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 12: \"Stem Cells Meristems\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1037,12 +1456,30 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Application: Where does this happen the fastest?\nAnimals Plants\nStem Cells Meristems\nHHA THE OF as\ny 4 MIME Aete ba\npo none HEED dpm KON\n> ye CH ey) Pp | @| 9) 4\n0) > eho oX NR ae Teterey\nR WS \\l LS} O y\na Wik) = “SIKH\nFound in embryos and adult bone marrow. Found at the tips of roots and shoots.\nThey use rapid mitosis for vital growth, Dedicated zones of continuous mitosis\ndevelopment, and tissue repair. allowing lifelong plant growth.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "316a6d5aa4c1a10531723185797481c38e4e15be4da7350bd2c32cfb8d4368dd",
+        "transcript": "Application: Where does this happen the fastest?\nAnimals Plants\nStem Cells Meristems\nHHA THE OF as\ny 4 MIME Aete ba\npo none HEED dpm KON\n> ye CH ey) Pp | @| 9) 4\n0) > eho oX NR ae Teterey\nR WS \\l LS} O y\na Wik) = “SIKH\nFound in embryos and adult bone marrow. Found at the tips of roots and shoots.\nThey use rapid mitosis for vital growth, Dedicated zones of continuous mitosis\ndevelopment, and tissue repair. allowing lifelong plant growth.",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Where does this happen the fastest?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
       }
     },
     {
@@ -1054,19 +1491,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "38–52s",
+        "vciScore": "6.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 34200,
+          "semanticProcessingMs": 9200,
+          "wordCount": 110,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -1085,23 +1522,55 @@
         ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 5,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_13_1_component_reveal",
+          "id": "gemini_slide_13_1_process",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 13: \"Pair-and-Share: What if the brakes fail?\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 13: \"Pair-and-Share: What if the brakes fail?\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_13.png"
+        },
+        {
+          "id": "gemini_slide_13_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 13: \"Pair-and-Share: What if the brakes fail?\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1113,15 +1582,45 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "process",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Pair-and-Share: What if the brakes fail?\nP yeaa (e \\GE y~ The cell cycle is usually\nmink e a strictly controlled.\nwa) Cet ’ ce ®: Discuss with your partner (2 mins):\nOe c. DS RR What happens if a mutation\naay SPAY A 762, | occurs, the brakes fail, anda\n' COR. hye ») cell undergoes mitosis\nwigs it BOPS de fags uncontrollably?\nae (a , & 2 © | Whatis the medical term for\n» # SS nS ZA\\@®) this mass of cells?\nLP y i A S / \\ ‘ Uncontrolled growth and division\naCay aN ane Zé. \\ leads to a Tumour / Cancer.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "1bca10f5979e2a236b2ee6dd864a6ef6ee8bb7fd8b766a0d6811b02e9c56cdeb",
+        "transcript": "Pair-and-Share: What if the brakes fail?\nP yeaa (e \\GE y~ The cell cycle is usually\nmink e a strictly controlled.\nwa) Cet ’ ce ®: Discuss with your partner (2 mins):\nOe c. DS RR What happens if a mutation\naay SPAY A 762, | occurs, the brakes fail, anda\n' COR. hye ») cell undergoes mitosis\nwigs it BOPS de fags uncontrollably?\nae (a , & 2 © | Whatis the medical term for\n» # SS nS ZA\\@®) this mass of cells?\nLP y i A S / \\ ‘ Uncontrolled growth and division\naCay aN ane Zé. \\ leads to a Tumour / Cancer.",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "are: What if the brakes fail?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What happens if a mutation aay SPAY A 762, | occurs, the brakes fail, anda ' COR. hye ») cell undergoes mitosis wigs it BOPS de fags uncontrollably?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "is the medical term for » # SS nS ZA\\@®) this mass of cells?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
       }
     },
     {
@@ -1133,19 +1632,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 32,
+        "timeGuideDisplay": "27–37s",
+        "vciScore": "5.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 19800,
+          "semanticProcessingMs": 10800,
+          "wordCount": 60,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -1167,7 +1666,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -1176,11 +1675,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 14: \"Plenary: Concept-Matching Game\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_14.png"
+        },
+        {
+          "id": "gemini_slide_14_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 14: \"Plenary: Concept-Matching Game\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_14.png"
+        },
+        {
+          "id": "gemini_slide_14_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 14: \"Plenary: Concept-Matching Game\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1195,12 +1726,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Plenary: Concept-Matching Game\n1. Mitosis A. The copying of DNA prior to\ncell division.\n2. Diploid B. A cell containing two full sets\nof chromosomes.\n3. Daughter Cell C. The product of cell division.\nD. Cell division resulting in\n4. Replication genetically identical clones\nfor growth and repair.\nMatch the number to the correct letter on your whiteboards.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "2d40fa92e10def6fc0878a612e93a7038f3c14218e2c90047706c80e16c5a5a0",
+        "transcript": "Plenary: Concept-Matching Game\n1. Mitosis A. The copying of DNA prior to\ncell division.\n2. Diploid B. A cell containing two full sets\nof chromosomes.\n3. Daughter Cell C. The product of cell division.\nD. Cell division resulting in\n4. Replication genetically identical clones\nfor growth and repair.\nMatch the number to the correct letter on your whiteboards.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -1212,19 +1754,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 46,
+        "timeGuideDisplay": "39–53s",
+        "vciScore": "5.6",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 22050,
+          "semanticProcessingMs": 23000,
+          "wordCount": 66,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -1246,20 +1788,52 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_15_1_component_reveal",
+          "id": "gemini_slide_15_1_process",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Mitosis\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 15: \"Lesson Summary: Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_15.png"
+        },
+        {
+          "id": "gemini_slide_15_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 15: \"Lesson Summary: Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_selection/Lesson_02_Mitosis/slides/slide_15.png"
+        },
+        {
+          "id": "gemini_slide_15_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 15: \"Lesson Summary: Mitosis\".\nDeck context: Mitosis.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: Mitosis. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1271,15 +1845,26 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "process",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Lesson Summary: Mitosis\n[4 The Purpose: Essential for organism growth, tissue repair,\nand asexual reproduction.\n[% The Mechanism: A strict sequence: Chromosome\nReplication -> Alignment at the equator -> Separation to\nthe poles -> Nuclear & Cell Division.\na The Outcome: One parent cell produces two genetically\nidentical, diploid daughter cells.\nPlease ensure these three points are noted in\nyour planners before packing away.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "893bd0df97e7872232fe986fb2312802492ae6b261294ddcdcd4cbae8b1c316e",
+        "transcript": "Lesson Summary: Mitosis\n[4 The Purpose: Essential for organism growth, tissue repair,\nand asexual reproduction.\n[% The Mechanism: A strict sequence: Chromosome\nReplication -> Alignment at the equator -> Separation to\nthe poles -> Nuclear & Cell Division.\na The Outcome: One parent cell produces two genetically\nidentical, diploid daughter cells.\nPlease ensure these three points are noted in\nyour planners before packing away.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     }
   ],
@@ -1288,7 +1873,7 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-08T08:44:15.201Z"
+    "updatedAt": "2026-09-16T00:20:34.509Z"
   },
   "slideSet": "genetics_selection"
 }

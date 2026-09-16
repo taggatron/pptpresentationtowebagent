@@ -14,36 +14,86 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 20,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "4.0",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 40,
+        "timeGuideDisplay": "34–46s",
+        "vciScore": "6.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 31350,
+          "semanticProcessingMs": 7750,
+          "wordCount": 85,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
+        "source": "local-ocr-fallback",
         "role": "title",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Welcome & Induction: Communicating like a Human Biologist: Source Reliability & Academic Referencing"
+        "transcript": "LESSON 5 OF 8 - INDUCTION PROGRAMME\n: . a . . = a7:\nCommunicating like a Human Biologist: Source Reliability &\n. .\nAcademic Referencing\nFocus: Source Credibility, Critical Appraisal (CRAAP/PROMPT) & Harvard Referencing\n‘¢ KEY LEARNING DELIVERABLE\nEvaluate biomedical source reliability using CRAAP/PROMPT, critique sensationalised trial reporting, and construct compliant Harvard\nreferences.\n© OCR Specification Level 3 Cambridge Advanced National _* Diagnostic Benchmark & Skills Profiling © Academic Year 2026-2027",
+        "sourceHash": "eb25ac952ebe1d0da70b955a41c2e6f69cdb720d99fc1f35a62497d431c28657",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "LESSON 5 OF 8 - INDUCTION PROGRAMME\n: . a . . = a7:\nCommunicating like a Human Biologist: Source Reliability &\n. .\nAcademic Referencing\nFocus: Source Credibility, Critical Appraisal (CRAAP/PROMPT) & Harvard Referencing\n‘¢ KEY LEARNING DELIVERABLE\nEvaluate biomedical source reliability using CRAAP/PROMPT, critique sensationalised trial reporting, and construct compliant Harvard\nreferences.\n© OCR Specification Level 3 Cambridge Advanced National _* Diagnostic Benchmark & Skills Profiling © Academic Year 2026-2027",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"5. Communicating like a Human Biologist: Source Reliability & Academic Referencing\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"5. Communicating like a Human Biologist: Source Reliability & Academic Referencing\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_01.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 2,
@@ -54,34 +104,76 @@
       "isInteractive": true,
       "interactiveType": "qa_grid",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "30–60s",
-        "vciScore": "3.2",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 190,
+        "timeGuideDisplay": "161–219s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 14500,
-          "semanticProcessingMs": 6500,
-          "wordCount": 80,
-          "visualElementsCount": 6
-        }
+          "visualScanMs": 7938,
+          "readingMs": 123450,
+          "semanticProcessingMs": 58400,
+          "wordCount": 346,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 6,
+        "questionCount": 15,
         "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "starter_grid",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Starter Activity: Knowledge Retrieval Grid"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "| STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\n‘Why is publication bias (withholding negative/unpromising trial data) dangerous in What is the core question in Ben Goldacre's ‘Battling Bad Science’ oracy prompt?\nclinical medicine?\nIt distorts the published evidence base, leading physicians to overestimate drug efficacy and How a published claim can appear robust on the surface while masking methodological bias,\nWhat biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework? How do sensationalised media headlines typically distort clinical trial papers?\nPeer-review status, sample size power, blinding protocols, control group selection, and ‘They conflate correlation with causation, omit sample limitations/confounding variables, and\ncommercial funding/conflicts of interest. report relative risk rather than absolute risk.\nIn biomedical Harvard referencing, how do you format an in-text citation for three or What is the academic distinction between direct quotation and critical paraphrase?\nmore authors?\n(LeadAuthor et al., Year) —e.g., (Goldacre et al., 2024). evaluates, and integrates evidence in the researcher's own words with citation.",
+        "sourceHash": "0e3282f1729b1b7ade614e6a89ab3213d0e74d830f5de1e707880c54054f0455",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why is publication bias (withholding negative/unpromising trial data) dangerous in What is the core question in Ben Goldacre's ‘Battling Bad Science’ oracy prompt?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "How a published claim can appear robust on the surface while masking methodological bias, What biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "How do sensationalised media headlines typically distort clinical trial papers?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "how do you format an in-text citation for three or What is the academic distinction between direct quotation and critical paraphrase?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 4
       },
       "hasProgressiveBuilds": false,
       "interactiveCells": [
@@ -103,9 +195,11 @@
           },
           "question": "Why is publication bias (withholding negative/unpromising trial data) dangerous in clinical medicine?",
           "expectedAnswer": "It distorts the published evidence base, leading physicians to overestimate drug efficacy and underestimate adverse risks.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_2",
@@ -125,9 +219,11 @@
           },
           "question": "What is the core question in Ben Goldacre's 'Battling Bad Science' oracy prompt?",
           "expectedAnswer": "How a published claim can appear robust on the surface while masking methodological bias, selective reporting, or missing data.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_3",
@@ -147,9 +243,11 @@
           },
           "question": "What biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework?",
           "expectedAnswer": "Peer-review status, sample size power, blinding protocols, control group selection, and commercial funding/conflicts of interest.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_4",
@@ -169,9 +267,11 @@
           },
           "question": "How do sensationalised media headlines typically distort clinical trial papers?",
           "expectedAnswer": "They conflate correlation with causation, omit sample limitations/confounding variables, and report relative risk rather than absolute risk.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_5",
@@ -191,9 +291,11 @@
           },
           "question": "In biomedical Harvard referencing, how do you format an in-text citation for three or more authors?",
           "expectedAnswer": "(LeadAuthor et al., Year) — e.g., (Goldacre et al., 2024).",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_6",
@@ -213,11 +315,141 @@
           },
           "question": "What is the academic distinction between direct quotation and critical paraphrase?",
           "expectedAnswer": "Direct quotation reproduces exact wording in quotation marks; critical paraphrase synthesises, evaluates, and integrates evidence in the researcher's own words with citation.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "| STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\n‘Why is publication bias (withholding negative/unpromising trial data) dangerous in What is the core question in Ben Goldacre's ‘Battling Bad Science’ oracy prompt?\nclinical medicine?\nIt distorts the published evidence base, leading physicians to overestimate drug efficacy and How a published claim can appear robust on the surface while masking methodological bias,\nWhat biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework? How do sensationalised media headlines typically distort clinical trial papers?\nPeer-review status, sample size power, blinding protocols, control group selection, and ‘They conflate correlation with causation, omit sample limitations/confounding variables, and\ncommercial funding/conflicts of interest. report relative risk rather than absolute risk.\nIn biomedical Harvard referencing, how do you format an in-text citation for three or What is the academic distinction between direct quotation and critical paraphrase?\nmore authors?\n(LeadAuthor et al., Year) —e.g., (Goldacre et al., 2024). evaluates, and integrates evidence in the researcher's own words with citation.",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_02.png"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Why is publication bias (withholding negative/unpromising trial data) dangerous in clinical medicine?",
+            "componentIds": [
+              "cell_1"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 28,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: What is the core question in Ben Goldacre's 'Battling Bad Science' oracy prompt?",
+            "componentIds": [
+              "cell_2"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 28,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: What biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework?",
+            "componentIds": [
+              "cell_3"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 52.5,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: How do sensationalised media headlines typically distort clinical trial papers?",
+            "componentIds": [
+              "cell_4"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 52.5,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: In biomedical Harvard referencing, how do you format an in-text citation for three or more authors?",
+            "componentIds": [
+              "cell_5"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 77,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: What is the academic distinction between direct quotation and critical paraphrase?",
+            "componentIds": [
+              "cell_6"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 77,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -228,36 +460,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 82,
+        "timeGuideDisplay": "69–95s",
+        "vciScore": "7.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 40500,
+          "semanticProcessingMs": 40200,
+          "wordCount": 106,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "objectives",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Learning Objectives & Success Criteria"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: DAN\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nUnderstand publication bias, industry trial Deconstruct sensationalised tabloid reporting Critically appraise trial validity based on blinding,\ndistortion, and the CRAAP/PROMPT critical against peer-reviewed trial papers (Lancet/NEJM) sample size, control selection, and commercial\nappraisal criteria in biosciences. and repair malformed Harvard citations. conflict of interest declarations.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
+        "sourceHash": "6f187c961c4c6d1c862acf5f98bdd0eb6af03609ec46ac3c59d2920ca2f5c579",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: DAN\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nUnderstand publication bias, industry trial Deconstruct sensationalised tabloid reporting Critically appraise trial validity based on blinding,\ndistortion, and the CRAAP/PROMPT critical against peer-reviewed trial papers (Lancet/NEJM) sample size, control selection, and commercial\nappraisal criteria in biosciences. and repair malformed Harvard citations. conflict of interest declarations.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_03.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 4,
@@ -268,36 +582,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 73,
+        "timeGuideDisplay": "62–84s",
+        "vciScore": "8.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 43950,
+          "semanticProcessingMs": 28000,
+          "wordCount": 119,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "terminology",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Essential Scientific & Clinical Vocabulary"
+        "source": "local-ocr-fallback",
+        "role": "data",
+        "transcript": "(CORE VOCABULARY | CLINICALTERMINOLOGY TEACHER: DAN\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nPublication Bias CRAAP / PROMPT Framework\nThe selective publication of studies with positive outcomes, while trials showing Systematic critical appraisal tool adapted for biosciences: Currency, Relevance,\nnegative or equivocal results remain unpublished. Authority, Accuracy, and Purpose/Funding bias.\nTERM 03 TERM 04\nHarvard Biomedical Referencing Critical Paraphrase\nStandard author-date citation system linking parenthetical in-text citations to a ‘Synthesising and evaluating findings in your own academic voice without\ncomprehensive alphabetised bibliography. plagiarising original phrasing, supported by proper citation.\nLesson 5: Communicating ike a Human Biologist: Source Reliability & Academic Referencing Slide 4 of 10",
+        "sourceHash": "e072074cbdae4ed5f3e42ba0980b199232dd7888f294d1d6b4393832b0f63b87",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "(CORE VOCABULARY | CLINICALTERMINOLOGY TEACHER: DAN\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nPublication Bias CRAAP / PROMPT Framework\nThe selective publication of studies with positive outcomes, while trials showing Systematic critical appraisal tool adapted for biosciences: Currency, Relevance,\nnegative or equivocal results remain unpublished. Authority, Accuracy, and Purpose/Funding bias.\nTERM 03 TERM 04\nHarvard Biomedical Referencing Critical Paraphrase\nStandard author-date citation system linking parenthetical in-text citations to a ‘Synthesising and evaluating findings in your own academic voice without\ncomprehensive alphabetised bibliography. plagiarising original phrasing, supported by proper citation.\nLesson 5: Communicating ike a Human Biologist: Source Reliability & Academic Referencing Slide 4 of 10",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Publication Bias CRAAP / PROMPT Framework\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Publication Bias CRAAP / PROMPT Framework\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Publication Bias CRAAP / PROMPT Framework\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_04.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 5,
@@ -308,36 +704,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 73,
+        "timeGuideDisplay": "62–84s",
+        "vciScore": "7.6",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 40200,
+          "semanticProcessingMs": 31200,
+          "wordCount": 110,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "theory",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Core Biological Theory & Mechanisms"
+        "source": "local-ocr-fallback",
+        "role": "instructional-content",
+        "transcript": "| MECHANISTICTHEORY FOUNDATIONAL SCIENCE TEACHER: DAN\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nPublication Bias & Trial Distortion: Up to 50% of clinical trials conducted by The CRAAP/PROMPT Appraisal Framework: Scrutinise peer-review status, sample\npharmaceutical sponsors have historically gone unpublished, skewing meta- power (n numbers), randomisation, double-blinding, appropriate controls, and\nanalyses toward false-positive efficacy. author financial disclosures.\nSensationalised Media vs Peer-Reviewed Trials: Tabloid media often extrapolates in Referencing Mechanics: In-text author-date citation requires (Author, Year) or\nvitro/animal findings to humans or conflates surrogate biomarkers with clinical Author (Year). Reference lists must contain full authors, year, article title, journal,\nsurvival. volume, and DOI.",
+        "sourceHash": "a56d80a2dba29f263d2cf1edce2361f9e67b28d0c2d2998ab0248b8aaf3b29c3",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "| MECHANISTICTHEORY FOUNDATIONAL SCIENCE TEACHER: DAN\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nPublication Bias & Trial Distortion: Up to 50% of clinical trials conducted by The CRAAP/PROMPT Appraisal Framework: Scrutinise peer-review status, sample\npharmaceutical sponsors have historically gone unpublished, skewing meta- power (n numbers), randomisation, double-blinding, appropriate controls, and\nanalyses toward false-positive efficacy. author financial disclosures.\nSensationalised Media vs Peer-Reviewed Trials: Tabloid media often extrapolates in Referencing Mechanics: In-text author-date citation requires (Author, Year) or\nvitro/animal findings to humans or conflates surrogate biomarkers with clinical Author (Year). Reference lists must contain full authors, year, article title, journal,\nsurvival. volume, and DOI.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_05.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 6,
@@ -348,36 +826,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 93,
+        "timeGuideDisplay": "79–107s",
+        "vciScore": "9.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 57900,
+          "semanticProcessingMs": 34200,
+          "wordCount": 164,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "worked_example",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Worked Demonstration & Practical Protocol"
+        "source": "local-ocr-fallback",
+        "role": "worked-example",
+        "transcript": "PRACTICALPROTOCOL ) WORKED DEMONSTRATION TEACHER: DAN\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nReferencing Repair Clinic: Correcting Malformed Biomedical Citations\n‘Transforming flawed citations into publication-ready Harvard format\nMalformed: 'mRNA vaccines are effective (Dan, Goldacre, and others in Lancet 2021). Error: Lists first names, lacks year parentheses, includes journal\nCorrected: 'mRNA platforms elicit robust humoral and cellular immunogenicity (Goldacre et al., 2021).' Follows standard author-date format.\nMalformed: 'Goldacre B. 2021. Lancet paper on trial data. www.google.com.' Error: Missing article title, journal volume, pagination, and persistent\nMal\nCorrected: Goldacre, B., Smeeth, L. and Perry, R. (2021) 'Methodological bias and publication deficit in modern clinical trials', The Lancet,\n398(10302), pp. 789-796. doi:10.1016/S0140-6736(21)01452-9.\nConsistent Harvard citation allows readers to independently audit source authority and verify raw experimental evidence.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 5: Communicating ike @ Human Biologist: Source Reliability & Academic Referencing Slide 6 of 10",
+        "sourceHash": "d4c0f600ac5af525e14c5b31f11a6b368d27686ef839e568099112da2ee169ef",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "PRACTICALPROTOCOL ) WORKED DEMONSTRATION TEACHER: DAN\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nReferencing Repair Clinic: Correcting Malformed Biomedical Citations\n‘Transforming flawed citations into publication-ready Harvard format\nMalformed: 'mRNA vaccines are effective (Dan, Goldacre, and others in Lancet 2021). Error: Lists first names, lacks year parentheses, includes journal\nCorrected: 'mRNA platforms elicit robust humoral and cellular immunogenicity (Goldacre et al., 2021).' Follows standard author-date format.\nMalformed: 'Goldacre B. 2021. Lancet paper on trial data. www.google.com.' Error: Missing article title, journal volume, pagination, and persistent\nMal\nCorrected: Goldacre, B., Smeeth, L. and Perry, R. (2021) 'Methodological bias and publication deficit in modern clinical trials', The Lancet,\n398(10302), pp. 789-796. doi:10.1016/S0140-6736(21)01452-9.\nConsistent Harvard citation allows readers to independently audit source authority and verify raw experimental evidence.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 5: Communicating ike @ Human Biologist: Source Reliability & Academic Referencing Slide 6 of 10",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_worked_example",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the problem and known values",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"PRACTICALPROTOCOL ) WORKED DEMONSTRATION TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_worked_example",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add substitution and reasoning",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"PRACTICALPROTOCOL ) WORKED DEMONSTRATION TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_worked_example",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Reveal the final answer",
+          "strategy": "worked-example",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"PRACTICALPROTOCOL ) WORKED DEMONSTRATION TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_06.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "worked-example",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 7,
@@ -388,36 +948,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 94,
+        "timeGuideDisplay": "79–109s",
+        "vciScore": "9.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 57750,
+          "semanticProcessingMs": 35200,
+          "wordCount": 156,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "case_study",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Clinical Application & Stimulus Evidence"
+        "source": "local-ocr-fallback",
+        "role": "process",
+        "transcript": "“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
+        "sourceHash": "801f2c6a5817bb54d6bc368665de71fc3719783c309dfbd5c286fd4439729bc8",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_07.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 8,
@@ -428,36 +1070,131 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 52,
+        "timeGuideDisplay": "44–60s",
+        "vciScore": "6.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 33900,
+          "semanticProcessingMs": 16400,
+          "wordCount": 100,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 2,
-        "detectionSource": "manifest-structured"
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "hinge_questions",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Diagnostic Check for Understanding (Hinge Questions)"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "“HINGE QUESTIONS | TEACHER: DAN\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhich scenario best illustrates publication bias in biomedical research? Anews headline claims: ‘Breakthrough Miracle Drug Cures All Cancers!' What\nshould a Human Biologist check FIRST?\nA The ont style ofthe headine\nA pharmaceutical sponsor funds 10 trials of an antidepressant; only the 4\nB__ positive trials are submitted for publication while 6 neutral trials remain v CORRECT p Whether the underlying trial is in peer-reviewed literature, sample size (n), on\nsealed human vs animal model, and funding declarations CORRE",
+        "sourceHash": "ae23f505ec0e211ec75b6ddec6aec4e9f926df442d27777aba1e1ce3562b256e",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Identify and resolve common misconception patterns Which scenario best illustrates publication bias in biomedical research?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What should a Human Biologist check FIRST?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“HINGE QUESTIONS | TEACHER: DAN\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhich scenario best illustrates publication bias in biomedical research? Anews headline claims: ‘Breakthrough Miracle Drug Cures All Cancers!' What\nshould a Human Biologist check FIRST?\nA The ont style ofthe headine\nA pharmaceutical sponsor funds 10 trials of an antidepressant; only the 4\nB__ positive trials are submitted for publication while 6 neutral trials remain v CORRECT p Whether the underlying trial is in peer-reviewed literature, sample size (n), on\nsealed human vs animal model, and funding declarations CORRE",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"“HINGE QUESTIONS | TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"“HINGE QUESTIONS | TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"“HINGE QUESTIONS | TEACHER: DAN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_08.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 9,
@@ -468,36 +1205,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 95,
+        "timeGuideDisplay": "80–110s",
+        "vciScore": "9.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 55650,
+          "semanticProcessingMs": 38200,
+          "wordCount": 159,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "detectionSource": "manifest-structured"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "exam_practice",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · OCR Level 3 Exam-Style Application"
+        "source": "local-ocr-fallback",
+        "role": "process",
+        "transcript": "[EXAM TECHNIQUE | OCRAAG ASSESSMENT TEACHER: DAN\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 6 marks\nA popular news outlet reported that a new synthetic therapeutic molecule ‘completely halts viral infection with zero side effects'. The article cited a pilot study\nof 8 healthy volunteers funded by the drug manufacturer. Critically evaluate this report, identifying three methodological and reporting flaws. [6 marks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol Critique 1: Sample size is critically underpowered (n=8), introducing severe sampling error and precluding detection of uncommon adverse events. [2 marks]\nPoint02 Critique 2: High risk of commercial conflict of interest / funding bias from manufacturer sponsorship without independent replication. [2 marks]\nPointo3 Critique 3: Tabloid claim ‘zero side effects' ignores Phase | safety limits and confuses early tolerance with confirmed clinical efficacy. [2 marks]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
+        "sourceHash": "1ef4eb1911df6f7f7be14b438e117fcbbfe62defae8eb1bfc74b4354ba2c67e1",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "[EXAM TECHNIQUE | OCRAAG ASSESSMENT TEACHER: DAN\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 6 marks\nA popular news outlet reported that a new synthetic therapeutic molecule ‘completely halts viral infection with zero side effects'. The article cited a pilot study\nof 8 healthy volunteers funded by the drug manufacturer. Critically evaluate this report, identifying three methodological and reporting flaws. [6 marks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol Critique 1: Sample size is critically underpowered (n=8), introducing severe sampling error and precluding detection of uncommon adverse events. [2 marks]\nPoint02 Critique 2: High risk of commercial conflict of interest / funding bias from manufacturer sponsorship without independent replication. [2 marks]\nPointo3 Critique 3: Tabloid claim ‘zero side effects' ignores Phase | safety limits and confuses early tolerance with confirmed clinical efficacy. [2 marks]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_09.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 10,
@@ -508,40 +1327,129 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 53,
+        "timeGuideDisplay": "45–61s",
+        "vciScore": "6.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 33450,
+          "semanticProcessingMs": 18400,
+          "wordCount": 96,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
+        "detected": true,
+        "confidence": "medium",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "plenary",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Plenary Summary & Target Setting"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "{ tesson consounarion If teacher: oan )\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n@ Goldacre's principle: Clinical practice must be grounded in transparent, fully reported trial registries, not selective publication.\n8 Always apply CRAAP/PROMPT to distinguish sensationalised claims from robust peer-reviewed evidence in The Lancet and NEJM.\n8 Next Lesson: Interpreting Clinical Data & Mock NEA Drafting — comparing COVID-19 vs oncology mRNA clinical datasets.\nf Progression Target: Next: Lesson 6 (Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study)",
+        "sourceHash": "f53b87b5b1d70eb57a56177a78ea8774e10cfae292959e581d679fe0a7ac7360",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "{ tesson consounarion If teacher: oan )\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n@ Goldacre's principle: Clinical practice must be grounded in transparent, fully reported trial registries, not selective publication.\n8 Always apply CRAAP/PROMPT to distinguish sensationalised claims from robust peer-reviewed evidence in The Lancet and NEJM.\n8 Next Lesson: Interpreting Clinical Data & Mock NEA Drafting — comparing COVID-19 vs oncology mRNA clinical datasets.\nf Progression Target: Next: Lesson 6 (Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study)",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 5. Communicating like a Human Biologist: Source Reliability & Academic Referencing.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_10.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
   ],
   "unit": "Intro to Human Biology",
   "teacher": "Dan",
   "academicYear": "2026–27",
-  "generatedAt": "2026-09-15T21:56:38.580Z"
+  "generatedAt": "2026-09-15T21:56:38.580Z",
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-16T00:20:34.595Z"
+  }
 }

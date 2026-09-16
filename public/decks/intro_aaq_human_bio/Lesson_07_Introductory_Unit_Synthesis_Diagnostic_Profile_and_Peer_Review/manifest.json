@@ -14,36 +14,86 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 20,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "4.0",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 40,
+        "timeGuideDisplay": "34–46s",
+        "vciScore": "6.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 30750,
+          "semanticProcessingMs": 7800,
+          "wordCount": 86,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
+        "source": "local-ocr-fallback",
         "role": "title",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Welcome & Induction: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop"
+        "transcript": "« LESSON 7 OF 8 - INDUCTION PROGRAMME\n. . . .\nIntroductory Unit Synthesis: Diagnostic Profile & Peer\n.\nReview Workshop\nFocus: Standardisation Exemplars, Diagnostic Peer Review & Diagnostic Competency Profiling\n(¢ KEY LEARNING DELIVERABLE\nPerform structured peer review on Lesson 6 Mock NEA drafts using diagnostic rubrics and compile an individual competency diagnostic\ntracker.\n© OCR Specification Level 3 Cambridge Advanced National _* Diagnostic Benchmark & Skills Profiling © Academic Year 2026-2027",
+        "sourceHash": "07ed154cc3ef9cd36adc9eda43125ff7ffc8684afc466ba7f7d3bbcd4dd2f1fd",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "« LESSON 7 OF 8 - INDUCTION PROGRAMME\n. . . .\nIntroductory Unit Synthesis: Diagnostic Profile & Peer\n.\nReview Workshop\nFocus: Standardisation Exemplars, Diagnostic Peer Review & Diagnostic Competency Profiling\n(¢ KEY LEARNING DELIVERABLE\nPerform structured peer review on Lesson 6 Mock NEA drafts using diagnostic rubrics and compile an individual competency diagnostic\ntracker.\n© OCR Specification Level 3 Cambridge Advanced National _* Diagnostic Benchmark & Skills Profiling © Academic Year 2026-2027",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"Introductory Unit Synthesis: Diagnostic Profile & Peer\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_01.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 2,
@@ -54,34 +104,82 @@
       "isInteractive": true,
       "interactiveType": "qa_grid",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "30–60s",
-        "vciScore": "3.2",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 205,
+        "timeGuideDisplay": "174–236s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 14500,
-          "semanticProcessingMs": 6500,
-          "wordCount": 80,
-          "visualElementsCount": 6
-        }
+          "visualScanMs": 7938,
+          "readingMs": 134250,
+          "semanticProcessingMs": 62400,
+          "wordCount": 377,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 6,
+        "questionCount": 16,
         "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "starter_grid",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Starter Activity: Knowledge Retrieval Grid"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "| SAOMINUTES CLICKTO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\nWhat is the primary pedagogical goal of a standardisation exercise before peer review? What characterizes an ‘uncritical, surface-level claim' in a biomedical literature review?\nTo calibrate evaluative judgements against defined grade criteria using contrasting high- and Accepting published trial conclusions uncritically without interrogating sample power, control\nlow-scoring exemplar drafts. validity, surrogate endpoints, or sponsor bias.\n‘teri: . :. 7 5 5 How should academic objectivity and scientific tone be maintained in an NEA\nWhat three core criteria are evaluated in the Lesson 7 diagnostic peer-review rubric? . ty\nevaluation?\n1. Depth of clinical trial data and methodology critique; 2. Academic objectivity and tone; 3. By using impersonal third-person syntax, hedged modal verbs (e.g. ‘evidence suggests’), and\nAccuracy and consistency of Harvard referencing. avoiding emotive adjectives.\nWhat is an individual diagnostic tracker in Level 3 Human Biology? What makes peer review feedback ‘actionable’ for the Lesson 8 refinement clinic?\nA self-reflective profiling tool triangulating performance across recall, maths, microscopy, and Providing specific, concrete revisions (e.g. 'replace colloquial adjective with quantitative p-\nwriting to set SMART developmental targets. value! or ‘add missing DO! to citation’).",
+        "sourceHash": "476b226c135d74183f05a5e31ad2925427df73555e1590338c5319275416c91e",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "What is the primary pedagogical goal of a standardisation exercise before peer review?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What characterizes an ‘uncritical, surface-level claim' in a biomedical literature review?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "How should academic objectivity and scientific tone be maintained in an NEA What three core criteria are evaluated in the Lesson 7 diagnostic peer-review rubric?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_4",
+            "question": "What is an individual diagnostic tracker in Level 3 Human Biology?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_5",
+            "question": "What makes peer review feedback ‘actionable’ for the Lesson 8 refinement clinic?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 5
       },
       "hasProgressiveBuilds": false,
       "interactiveCells": [
@@ -103,9 +201,11 @@
           },
           "question": "What is the primary pedagogical goal of a standardisation exercise before peer review?",
           "expectedAnswer": "To calibrate evaluative judgements against defined grade criteria using contrasting high- and low-scoring exemplar drafts.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_2",
@@ -125,9 +225,11 @@
           },
           "question": "What characterizes an 'uncritical, surface-level claim' in a biomedical literature review?",
           "expectedAnswer": "Accepting published trial conclusions uncritically without interrogating sample power, control validity, surrogate endpoints, or sponsor bias.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_3",
@@ -147,9 +249,11 @@
           },
           "question": "What three core criteria are evaluated in the Lesson 7 diagnostic peer-review rubric?",
           "expectedAnswer": "1. Depth of clinical trial data and methodology critique; 2. Academic objectivity and tone; 3. Accuracy and consistency of Harvard referencing.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_4",
@@ -169,9 +273,11 @@
           },
           "question": "How should academic objectivity and scientific tone be maintained in an NEA evaluation?",
           "expectedAnswer": "By using impersonal third-person syntax, hedged modal verbs (e.g. 'evidence suggests'), and avoiding emotive adjectives.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_5",
@@ -191,9 +297,11 @@
           },
           "question": "What is an individual diagnostic tracker in Level 3 Human Biology?",
           "expectedAnswer": "A self-reflective profiling tool triangulating performance across recall, maths, microscopy, and writing to set SMART developmental targets.",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "cell_6",
@@ -213,11 +321,141 @@
           },
           "question": "What makes peer review feedback 'actionable' for the Lesson 8 refinement clinic?",
           "expectedAnswer": "Providing specific, concrete revisions (e.g. 'replace colloquial adjective with quantitative p-value' or 'add missing DOI to citation').",
-          "revealMode": "toggle",
+          "revealMode": "overlay",
           "confidence": 1,
-          "provenance": "gemini-agent"
+          "provenance": "gemini-agent",
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "| SAOMINUTES CLICKTO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\nWhat is the primary pedagogical goal of a standardisation exercise before peer review? What characterizes an ‘uncritical, surface-level claim' in a biomedical literature review?\nTo calibrate evaluative judgements against defined grade criteria using contrasting high- and Accepting published trial conclusions uncritically without interrogating sample power, control\nlow-scoring exemplar drafts. validity, surrogate endpoints, or sponsor bias.\n‘teri: . :. 7 5 5 How should academic objectivity and scientific tone be maintained in an NEA\nWhat three core criteria are evaluated in the Lesson 7 diagnostic peer-review rubric? . ty\nevaluation?\n1. Depth of clinical trial data and methodology critique; 2. Academic objectivity and tone; 3. By using impersonal third-person syntax, hedged modal verbs (e.g. ‘evidence suggests’), and\nAccuracy and consistency of Harvard referencing. avoiding emotive adjectives.\nWhat is an individual diagnostic tracker in Level 3 Human Biology? What makes peer review feedback ‘actionable’ for the Lesson 8 refinement clinic?\nA self-reflective profiling tool triangulating performance across recall, maths, microscopy, and Providing specific, concrete revisions (e.g. 'replace colloquial adjective with quantitative p-\nwriting to set SMART developmental targets. value! or ‘add missing DO! to citation’).",
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"SAOMINUTES CLICKTO REVEAL ANSWERS\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_02.png"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: What is the primary pedagogical goal of a standardisation exercise before peer review?",
+            "componentIds": [
+              "cell_1"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 28,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: What characterizes an 'uncritical, surface-level claim' in a biomedical literature review?",
+            "componentIds": [
+              "cell_2"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 28,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: What three core criteria are evaluated in the Lesson 7 diagnostic peer-review rubric?",
+            "componentIds": [
+              "cell_3"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 52.5,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: How should academic objectivity and scientific tone be maintained in an NEA evaluation?",
+            "componentIds": [
+              "cell_4"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 52.5,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: What is an individual diagnostic tracker in Level 3 Human Biology?",
+            "componentIds": [
+              "cell_5"
+            ],
+            "targetBounds": {
+              "x": 4.5,
+              "y": 77,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: What makes peer review feedback 'actionable' for the Lesson 8 refinement clinic?",
+            "componentIds": [
+              "cell_6"
+            ],
+            "targetBounds": {
+              "x": 52.5,
+              "y": 77,
+              "w": 43,
+              "h": 8.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -228,36 +466,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 80,
+        "timeGuideDisplay": "68–92s",
+        "vciScore": "7.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 39300,
+          "semanticProcessingMs": 39400,
+          "wordCount": 103,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "objectives",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Learning Objectives & Success Criteria"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: MATT\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nUnderstand standardisation benchmarks: Execute structured peer review using a diagnostic Triangulate diagnostic performance to construct\ncontrasting high-level academic critique against rubric assessing methodology critique, tone, and an individual competency profile with actionable\nuncritical surface-level claims. Harvard referencing. targets for Lesson 8 refinement.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
+        "sourceHash": "b6c916e2dae1fa5834796f359c34741ce11ea7aace477cf9b7fd980ecda11c55",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: MATT\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nUnderstand standardisation benchmarks: Execute structured peer review using a diagnostic Triangulate diagnostic performance to construct\ncontrasting high-level academic critique against rubric assessing methodology critique, tone, and an individual competency profile with actionable\nuncritical surface-level claims. Harvard referencing. targets for Lesson 8 refinement.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_03.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 4,
@@ -268,36 +588,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 70,
+        "timeGuideDisplay": "59–81s",
+        "vciScore": "7.9",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 43200,
+          "semanticProcessingMs": 25200,
+          "wordCount": 120,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "terminology",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Essential Scientific & Clinical Vocabulary"
+        "source": "local-ocr-fallback",
+        "role": "data",
+        "transcript": "| COREVOCABULARY CLINICALTERMINOLOGY TEACHER: MATT\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nStandardisation Exemplar Diagnostic Peer Review\nAn anonymised benchmark draft demonstrating concrete evidence of high- vs low- Collaborative evaluation of peer work against explicit rubrics to diagnose\nband performance against assessment rubrics. methodological, syntactic, and referencing gaps.\nTERM 03 TERM 04\nAcademic Tone & Hedging Diagnostic Profiling Tracker\nObjective, non-emotive scientific expression using qualified claims (‘the data A personal competency matrix identifying strengths, consolidation needs, and\nindicates' rather than ‘this proves without doubt’). priority targets ahead of final NEA submission.\nLesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 4 of 10",
+        "sourceHash": "41ad1ac9cc2c8044b1d931e53eaf8631d1a74ea648a730390eca04bd95cb08ea",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "| COREVOCABULARY CLINICALTERMINOLOGY TEACHER: MATT\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nStandardisation Exemplar Diagnostic Peer Review\nAn anonymised benchmark draft demonstrating concrete evidence of high- vs low- Collaborative evaluation of peer work against explicit rubrics to diagnose\nband performance against assessment rubrics. methodological, syntactic, and referencing gaps.\nTERM 03 TERM 04\nAcademic Tone & Hedging Diagnostic Profiling Tracker\nObjective, non-emotive scientific expression using qualified claims (‘the data A personal competency matrix identifying strengths, consolidation needs, and\nindicates' rather than ‘this proves without doubt’). priority targets ahead of final NEA submission.\nLesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 4 of 10",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Lesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 4 of 10\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Lesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 4 of 10\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Lesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 4 of 10\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_04.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 5,
@@ -308,36 +710,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 68,
+        "timeGuideDisplay": "57–79s",
+        "vciScore": "7.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 35850,
+          "semanticProcessingMs": 30800,
+          "wordCount": 96,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "theory",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Core Biological Theory & Mechanisms"
+        "source": "local-ocr-fallback",
+        "role": "data",
+        "transcript": "MECHANISTICTHEORY FOUNDATIONAL SCIENCE TEACHER: MATT\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nHigh-Level Critique vs Surface Claims: Top-band responses probe clinical trial The Three-Pillar Peer Review Rubric: Pillar 1: Depth of Clinical Data Appraisal; Pillar\nmethodology, confounders, and endpoints; weak responses simply summarise 2: Academic Objectivity & Tone; Pillar 3: Harvard Referencing Precision.\npromotional abstracts.\nConstructive Feedback Protocol: State one diagnostic strength, two specific Triangulated Diagnostic Profiling: Triangulate baseline knowledge (L1), microscope\nmethodology/syntactic refinements, and one citation repair. skills (L2), mathematical graphing (L3), referencing (L4-5), and writing (L6).",
+        "sourceHash": "54b9c42385f1da11072cdecd2983cd02703afc406a3dd3c932ee11a2d3c0f0a5",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "MECHANISTICTHEORY FOUNDATIONAL SCIENCE TEACHER: MATT\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nHigh-Level Critique vs Surface Claims: Top-band responses probe clinical trial The Three-Pillar Peer Review Rubric: Pillar 1: Depth of Clinical Data Appraisal; Pillar\nmethodology, confounders, and endpoints; weak responses simply summarise 2: Academic Objectivity & Tone; Pillar 3: Harvard Referencing Precision.\npromotional abstracts.\nConstructive Feedback Protocol: State one diagnostic strength, two specific Triangulated Diagnostic Profiling: Triangulate baseline knowledge (L1), microscope\nmethodology/syntactic refinements, and one citation repair. skills (L2), mathematical graphing (L3), referencing (L4-5), and writing (L6).",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_05.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 6,
@@ -348,36 +832,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 126,
+        "timeGuideDisplay": "107–145s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 76650,
+          "semanticProcessingMs": 47800,
+          "wordCount": 217,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "worked_example",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Worked Demonstration & Practical Protocol"
+        "source": "local-ocr-fallback",
+        "role": "worked-example",
+        "transcript": "PRACTICALPROTOCOL | WORKED DEMONSTRATION TEACHER: MATT\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nStandardisation Clinic: High-Level Critique vs Surface-Level Draft\nComparing exemplar extracts to calibrate peer review grading\n'The Pfizer vaccine was amazing because it cured 95% of people and is much better than cancer treatments which don't work as well (Johnson,\n2021). Doctors were very happy with this result.’\ner amazing\" , cured “edi i con i veati ; 7\n: \\guage (‘amazing’), factually inaccurate (‘cured! vs prevented symptomatic disease), uncritical comparison, incomplete citation lacking peer\nreviewed authority.\n\"Polack et al. (2020) reported 95.0% vaccine efficacy (95% Cl: 90.3-97.6%) against symptomatic SARS-CoV-2 infection in a Phase Il\nmultinational trial (n=43,548). In contrast to oncology platforms measuring progression-free survival, this trial utilised a binary clinical\nprimary endpoint. However, the median follow-up of 60 days post-dose two limited longitudinal characterisation of waning humoral\nimmunity.\"\nQuantitatively precise, includes confidence intervals, accurately distinguishes public health from oncology endpoints, objective tone, identifies\nmethodological follow-up limitation.\nAward top marks only when claims are accompanied by quantitative bounds, mechanistic rationale, and balanced methodological critique.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 6 of 10",
+        "sourceHash": "3204aab62efd9e0ffe9a99fcfac534a9e3018f892d76d730af6a0ec829c5ea50",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "PRACTICALPROTOCOL | WORKED DEMONSTRATION TEACHER: MATT\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nStandardisation Clinic: High-Level Critique vs Surface-Level Draft\nComparing exemplar extracts to calibrate peer review grading\n'The Pfizer vaccine was amazing because it cured 95% of people and is much better than cancer treatments which don't work as well (Johnson,\n2021). Doctors were very happy with this result.’\ner amazing\" , cured “edi i con i veati ; 7\n: \\guage (‘amazing’), factually inaccurate (‘cured! vs prevented symptomatic disease), uncritical comparison, incomplete citation lacking peer\nreviewed authority.\n\"Polack et al. (2020) reported 95.0% vaccine efficacy (95% Cl: 90.3-97.6%) against symptomatic SARS-CoV-2 infection in a Phase Il\nmultinational trial (n=43,548). In contrast to oncology platforms measuring progression-free survival, this trial utilised a binary clinical\nprimary endpoint. However, the median follow-up of 60 days post-dose two limited longitudinal characterisation of waning humoral\nimmunity.\"\nQuantitatively precise, includes confidence intervals, accurately distinguishes public health from oncology endpoints, objective tone, identifies\nmethodological follow-up limitation.\nAward top marks only when claims are accompanied by quantitative bounds, mechanistic rationale, and balanced methodological critique.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 6 of 10",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"Lesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 6 of 10\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"Lesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 6 of 10\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"Lesson 7: Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop Slide 6 of 10\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_06.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 7,
@@ -388,36 +954,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 94,
+        "timeGuideDisplay": "79–109s",
+        "vciScore": "9.3",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 57450,
+          "semanticProcessingMs": 35200,
+          "wordCount": 155,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "high",
+        "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "case_study",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Clinical Application & Stimulus Evidence"
+        "source": "local-ocr-fallback",
+        "role": "process",
+        "transcript": "“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
+        "sourceHash": "b6a3ae42f3af1275a08ef7e1bf58c775520bdca7ea7e62ec41d27c5c6c1bda9b",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"“CASESTUDY CLINICAL STIMULUS TEACHER: MATT\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_07.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 8,
@@ -428,36 +1076,131 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 73,
+        "timeGuideDisplay": "62–84s",
+        "vciScore": "8.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 48600,
+          "semanticProcessingMs": 23200,
+          "wordCount": 148,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 2,
-        "detectionSource": "manifest-structured"
+        "questionCount": 4,
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "hinge_questions",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Diagnostic Check for Understanding (Hinge Questions)"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "“HINGE QUESTIONS TEACHER: MarT\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhich piece of peer feedback provides the most actionable guidance for an NEA Apeer's draft cites a news article instead of a primary trial paper for clinical\ndraft? efficacy. Under the rubric, how should this be classified?\n‘A Your writing looks pretty good, maybe write a bit more about mRNA\nA Acceptable if the article has a recent date\ngp _ Areferencing deficit: the student must substitute the secondary media OE\nreport with the primary peer-reviewed trial paper (e.g. NEJM / The Lancet)\nIn paragraph 2, replace ‘this drug worked great’ with the exact ARR (2.1%)\n‘© and explain how the lack of blinding may have biased adverse event v CORRECT\nand ex © _Anexample of high-level synthesis\nD Change the font to Arial D_— Aminor formatting preference",
+        "sourceHash": "7c0957710e7a0fd596a3f8f7977458548a3ac543e632433144dec9e64a8a19bf",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Identify and resolve common misconception patterns Which piece of peer feedback provides the most actionable guidance for an NEA Apeer's draft cites a news article instead of a primary trial paper for clinical draft?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "how should this be classified?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "“HINGE QUESTIONS TEACHER: MarT\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhich piece of peer feedback provides the most actionable guidance for an NEA Apeer's draft cites a news article instead of a primary trial paper for clinical\ndraft? efficacy. Under the rubric, how should this be classified?\n‘A Your writing looks pretty good, maybe write a bit more about mRNA\nA Acceptable if the article has a recent date\ngp _ Areferencing deficit: the student must substitute the secondary media OE\nreport with the primary peer-reviewed trial paper (e.g. NEJM / The Lancet)\nIn paragraph 2, replace ‘this drug worked great’ with the exact ARR (2.1%)\n‘© and explain how the lack of blinding may have biased adverse event v CORRECT\nand ex © _Anexample of high-level synthesis\nD Change the font to Arial D_— Aminor formatting preference",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"“HINGE QUESTIONS TEACHER: MarT\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"“HINGE QUESTIONS TEACHER: MarT\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"“HINGE QUESTIONS TEACHER: MarT\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_08.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 9,
@@ -468,36 +1211,118 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 88,
+        "timeGuideDisplay": "74–102s",
+        "vciScore": "8.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 51900,
+          "semanticProcessingMs": 35000,
+          "wordCount": 143,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "detectionSource": "manifest-structured"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "exam_practice",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · OCR Level 3 Exam-Style Application"
+        "source": "local-ocr-fallback",
+        "role": "process",
+        "transcript": "[EXAM TECHNIQUE | OCRAAGASSESSMENT TEACHER: MATT\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 4marks\nEvaluate the role of structured peer review and standardised exemplars in developing academic objectivity and analytical critique in biomedical students. [4\nmarks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol Standardised exemplars calibrate students' understanding of top-band vs weak criteria, removing ambiguity about expected academic rigor. [1 mark]\nPointo2 Critiquing peer work forces learners to identify methodological gaps (e.g. confounding factors, unverified claims) that they often overlook in their own drafts. [1 mark]\nPointo3 Peer review reinforces objective third-person scientific tone and prevents informal colloquialisms. [1 mark]\nPointos Diagnostic rubrics provide concrete actionable targets that directly drive iterative draft refinement before final submission. [1 mark]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
+        "sourceHash": "425a7bf8ec95f6d25350697c25c4464d3bfc9042bd9a19fb864dee182ec2e424",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "[EXAM TECHNIQUE | OCRAAGASSESSMENT TEACHER: MATT\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 4marks\nEvaluate the role of structured peer review and standardised exemplars in developing academic objectivity and analytical critique in biomedical students. [4\nmarks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol Standardised exemplars calibrate students' understanding of top-band vs weak criteria, removing ambiguity about expected academic rigor. [1 mark]\nPointo2 Critiquing peer work forces learners to identify methodological gaps (e.g. confounding factors, unverified claims) that they often overlook in their own drafts. [1 mark]\nPointo3 Peer review reinforces objective third-person scientific tone and prevents informal colloquialisms. [1 mark]\nPointos Diagnostic rubrics provide concrete actionable targets that directly drive iterative draft refinement before final submission. [1 mark]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"EXAMINATION TASK 4marks\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"EXAMINATION TASK 4marks\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"EXAMINATION TASK 4marks\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_09.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 10,
@@ -508,40 +1333,129 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
+        "estimatedTimeSeconds": 54,
+        "timeGuideDisplay": "45–63s",
+        "vciScore": "7.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
+          "visualScanMs": 1050,
+          "readingMs": 35850,
+          "semanticProcessingMs": 16800,
+          "wordCount": 106,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
+        "detected": true,
+        "confidence": "medium",
         "questionCount": 0,
-        "detectionSource": "manifest-structured"
+        "detectionSource": "local-ocr-fallback"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "plenary",
-        "transcript": "Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop · Plenary Summary & Target Setting"
+        "source": "local-ocr-fallback",
+        "role": "learner-question",
+        "transcript": "[ Lesson consounarion J reacer: marr J\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n(G) Peer review is standard scientific practice: even Nobel Prize-winning papers undergo rigorous scrutiny by peers.\n8 Ensure your peer review feedback slip contains at least two specific, actionable methodology and citation targets.\n8 Complete your Diagnostic Profile Tracker and file it in your NEA working portfolio ahead of Lesson 8.\nce Progression Target: Next: Lesson 8 (Mock NEA Finalisation & Transition to Biomedical Science & Genetics)\nOCR Level 3 Cambridge Advanced National (AAQ) in Human Biology Side 10 of 10 Lesson Complete",
+        "sourceHash": "9becc536fa362ce917105e76bc6e7cd972a6e45530cb6478c422cfaf5885a2e8",
+        "questions": [],
+        "questionCount": 0
       },
-      "hasProgressiveBuilds": false
+      "hasProgressiveBuilds": false,
+      "text": "[ Lesson consounarion J reacer: marr J\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n(G) Peer review is standard scientific practice: even Nobel Prize-winning papers undergo rigorous scrutiny by peers.\n8 Ensure your peer review feedback slip contains at least two specific, actionable methodology and citation targets.\n8 Complete your Diagnostic Profile Tracker and file it in your NEA working portfolio ahead of Lesson 8.\nce Progression Target: Next: Lesson 8 (Mock NEA Finalisation & Transition to Biomedical Science & Genetics)\nOCR Level 3 Cambridge Advanced National (AAQ) in Human Biology Side 10 of 10 Lesson Complete",
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 7. Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Peer_Review/slides/slide_10.png"
+        }
+      ],
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
   ],
   "unit": "Intro to Human Biology",
   "teacher": "Matt",
   "academicYear": "2026–27",
-  "generatedAt": "2026-09-15T21:56:49.808Z"
+  "generatedAt": "2026-09-15T21:56:49.808Z",
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-16T00:20:34.627Z"
+  }
 }

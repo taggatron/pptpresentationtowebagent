@@ -14,9 +14,9 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 6,
-        "timeGuideDisplay": "5–7s",
-        "vciScore": "2.8",
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "4.0",
         "complexityCategory": "Low",
         "ragLevel": "low",
         "ragColor": "green",
@@ -24,9 +24,9 @@
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 3600,
-          "wordCount": 2,
+          "readingMs": 7350,
+          "semanticProcessingMs": 4600,
+          "wordCount": 22,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -48,7 +48,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "hasProgressiveBuilds": true,
       "animationPlan": {
@@ -124,6 +124,17 @@
             "revealType": "play-video"
           }
         ]
+      },
+      "text": "Competition and Species Interactions —\nGCSE Combined Science: Ecolog} 4\n2 GO” TN\nao ima dé A ete!",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "d52718c93cb956445aa8c9dbb5c1bf5c9fe401533b3cd0e0824119bd1095810d",
+        "transcript": "Competition and Species Interactions —\nGCSE Combined Science: Ecolog} 4\n2 GO” TN\nao ima dé A ete!",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -135,20 +146,20 @@
       "isInteractive": true,
       "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 10,
-        "timeGuideDisplay": "8–12s",
-        "vciScore": "4.7",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 95,
+        "timeGuideDisplay": "80–110s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 1650,
-          "semanticProcessingMs": 7200,
-          "wordCount": 4,
-          "visualElementsCount": 3
+          "visualScanMs": 7938,
+          "readingMs": 58950,
+          "semanticProcessingMs": 27600,
+          "wordCount": 177,
+          "visualElementsCount": 18
         },
         "academicReferences": [
           {
@@ -167,22 +178,22 @@
       },
       "questionAnalysis": {
         "detected": true,
-        "confidence": "medium",
-        "questionCount": 0,
+        "confidence": "high",
+        "questionCount": 11,
         "detectionSource": "manifest-text"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_2_1_component_reveal",
+          "id": "gemini_slide_2_1_question_base_overlay",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter Activity: Knowledge Retrieval\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Starter Activity: Knowledge Retrieval\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter Activity: Knowledge Retrieval\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -194,13 +205,13 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "question-base-overlay",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
         "approvedCellCount": 0,
         "qaRequired": true,
-        "questionReveal": false,
+        "questionReveal": true,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
       },
@@ -221,10 +232,12 @@
             "w": 33.8,
             "h": 10.7
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_2",
@@ -242,10 +255,12 @@
             "w": 34,
             "h": 10.7
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_3",
@@ -263,10 +278,12 @@
             "w": 33.8,
             "h": 10.7
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_4",
@@ -284,10 +301,12 @@
             "w": 34,
             "h": 10.7
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_5",
@@ -305,10 +324,12 @@
             "w": 33.8,
             "h": 10.7
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_6",
@@ -326,12 +347,133 @@
             "w": 34,
             "h": 10.7
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "Q: Define “ecosystem”. Q: Name two abiotic factors.\nSuccess Cue: Think of the interaction Success Cue: Non-living chemical/physical\nbetween living and non-living things. parts (e.g., light, temperature). |\n)\nQ: Name two biotic factors. Q: What is a producer?\n|\nSuccess Cue: Living components (e.g., Success Cue: An organism that makes its |\npredators, pathogens). own biomass (e.g., green plants). |\nQ: What four things do plants need for Q: Why do animals require energy from\nphotosynthesis? respiration?\nSuccess Cue: Think of the equation Success Cue: Think of B1.3 (Movement,\n(Light, Chlorophyll, CO2, H20). keeping warm, chemical reactions).",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c7a85a14907a61ea0ee3688077136d2da5482e560feab8db303b3d1af59faf08",
+        "transcript": "Q: Define “ecosystem”. Q: Name two abiotic factors.\nSuccess Cue: Think of the interaction Success Cue: Non-living chemical/physical\nbetween living and non-living things. parts (e.g., light, temperature). |\n)\nQ: Name two biotic factors. Q: What is a producer?\n|\nSuccess Cue: Living components (e.g., Success Cue: An organism that makes its |\npredators, pathogens). own biomass (e.g., green plants). |\nQ: What four things do plants need for Q: Why do animals require energy from\nphotosynthesis? respiration?\nSuccess Cue: Think of the equation Success Cue: Think of B1.3 (Movement,\n(Light, Chlorophyll, CO2, H20). keeping warm, chemical reactions).",
+        "role": "worked-example",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Name two abiotic factors. Success Cue: Think of the interaction Success Cue: Non-living chemical/physical between living and non-living things. parts (e.g., light, temperature). | ) Q: Name two biotic factors. Q: What is a producer?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What four things do plants need for Q: Why do animals require energy from photosynthesis?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Define \"ecosystem\".",
+            "componentIds": [
+              "reveal_2_cell_1"
+            ],
+            "targetBounds": {
+              "x": 14.5,
+              "y": 20.5,
+              "w": 33.8,
+              "h": 10.7
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: Name two abiotic factors.",
+            "componentIds": [
+              "reveal_2_cell_2"
+            ],
+            "targetBounds": {
+              "x": 61.5,
+              "y": 20.5,
+              "w": 34,
+              "h": 10.7
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: Name two biotic factors.",
+            "componentIds": [
+              "reveal_2_cell_3"
+            ],
+            "targetBounds": {
+              "x": 14.5,
+              "y": 52,
+              "w": 33.8,
+              "h": 10.7
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: What is a producer?",
+            "componentIds": [
+              "reveal_2_cell_4"
+            ],
+            "targetBounds": {
+              "x": 61.5,
+              "y": 52,
+              "w": 34,
+              "h": 10.7
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: What four things do plants need for photosynthesis?",
+            "componentIds": [
+              "reveal_2_cell_5"
+            ],
+            "targetBounds": {
+              "x": 14.5,
+              "y": 83,
+              "w": 33.8,
+              "h": 10.7
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: Why do animals require energy from respiration?",
+            "componentIds": [
+              "reveal_2_cell_6"
+            ],
+            "targetBounds": {
+              "x": 61.5,
+              "y": 83,
+              "w": 34,
+              "h": 10.7
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      }
     },
     {
       "number": 3,
@@ -342,19 +484,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 78,
+        "timeGuideDisplay": "66–90s",
+        "vciScore": "8.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 52500,
+          "semanticProcessingMs": 24200,
+          "wordCount": 166,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -376,23 +518,55 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_3_1_component_reveal",
+          "id": "gemini_slide_3_1_comparison",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 3: \"Lesson Objectives: Competition & Species Interactions\".\\nObjectives target list:\\n1. Identify what plants and animals compete for.\\n2. Compare interspecific and intraspecific competition.\\n3. Explain symbiotic interactions: mutualism and parasitism.\\n4. Analyse predator and prey population cycles.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_03.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"sins iam a ay cl matt aa\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"sins iam a ay cl matt aa\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"sins iam a ay cl matt aa\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
           "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_03.png"
         }
       ],
@@ -401,15 +575,26 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "comparison",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "| sins iam a ay cl matt aa\nane ee ee | | | The Problem: Nature’s resources\nVy ON alls ys >» | | |are finite. Organisms must |\nmy ,; 7 FNte Se” eV compete to survive and reproduce. F\n: mS, “RESOURCES Bs i :\nMike ‘= «| ote G Objectives Target List:\nPeaoe) g & a ite 4 wap ‘Se °\na Pel i ——— oa G Identify what plants and animals ~\na ee \\ = wr y ee compete for. ({\nSpaie 4 BD gating\nPe, —_—«=Cti‘(i‘(C[” /) Ae G Compare interspecific and '\nreepe wen ie intraspecific competition.\nyy sy NE eee ta G Explain symbiotic interactions: ’\n) Dz es a a es) FH mutualism and parasitism. |.\nOMe er a © 2 = | | Analyse predator and prey —\na ag a 7, > s GY population cycles.\nfy i ° = ; if T\n(Oa oka —— ae |",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "7278190e5c371629df42836bff037093b1e8be5b14201309d8fc062dc4024963",
+        "transcript": "| sins iam a ay cl matt aa\nane ee ee | | | The Problem: Nature’s resources\nVy ON alls ys >» | | |are finite. Organisms must |\nmy ,; 7 FNte Se” eV compete to survive and reproduce. F\n: mS, “RESOURCES Bs i :\nMike ‘= «| ote G Objectives Target List:\nPeaoe) g & a ite 4 wap ‘Se °\na Pel i ——— oa G Identify what plants and animals ~\na ee \\ = wr y ee compete for. ({\nSpaie 4 BD gating\nPe, —_—«=Cti‘(i‘(C[” /) Ae G Compare interspecific and '\nreepe wen ie intraspecific competition.\nyy sy NE eee ta G Explain symbiotic interactions: ’\n) Dz es a a es) FH mutualism and parasitism. |.\nOMe er a © 2 = | | Analyse predator and prey —\na ag a 7, > s GY population cycles.\nfy i ° = ; if T\n(Oa oka —— ae |",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -421,9 +606,9 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
+        "estimatedTimeSeconds": 19,
+        "timeGuideDisplay": "16–22s",
+        "vciScore": "4.0",
         "complexityCategory": "Low",
         "ragLevel": "low",
         "ragColor": "green",
@@ -431,9 +616,9 @@
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 10950,
+          "semanticProcessingMs": 6400,
+          "wordCount": 36,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -452,10 +637,10 @@
         ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -464,11 +649,27 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 4: \"3. Competition\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 3. Competition\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 4: \"MN Space g Territory\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 4: \"MN Space g Territory\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -483,12 +684,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "~ 27M\nbe CSN |\n| Plants compete for: Animals compete for:\n3@5 Light f? Food\nMN Space g Territory |\nry Water @® Mates |\ng\nNOT compete for food. They make it.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "e4a00a0a2081d0c3cb9f002ae939b4ad1ee549e84a835e2c15833ed782c3ab3d",
+        "transcript": "~ 27M\nbe CSN |\n| Plants compete for: Animals compete for:\n3@5 Light f? Food\nMN Space g Territory |\nry Water @® Mates |\ng\nNOT compete for food. They make it.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -505,9 +717,9 @@
         "label": "Plant & Animal · Neon Sort"
       },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
+        "estimatedTimeSeconds": 17,
+        "timeGuideDisplay": "14–20s",
+        "vciScore": "3.3",
         "complexityCategory": "Low",
         "ragLevel": "low",
         "ragColor": "green",
@@ -515,9 +727,9 @@
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 3150,
+          "semanticProcessingMs": 12400,
+          "wordCount": 10,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -539,15 +751,52 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "hasProgressiveBuilds": false,
       "animationPlan": {
         "version": 2,
-        "mode": "web-embed",
-        "reason": "Interactive glowing circuit-board sorting activity: Plant & Animal Neon Sort.",
-        "webEmbedPreserved": true
-      }
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
+      },
+      "text": ". 4 ,\n= She",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "3c34a88e0da16082c08f0dc23e91d981e97cba15c2145698e99c1e9400cae2f6",
+        "transcript": ". 4 ,\n= She",
+        "role": "title",
+        "questions": [],
+        "questionCount": 0
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 5: \"3. Competition\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"3. Competition\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_05.png"
+        }
+      ]
     },
     {
       "number": 6,
@@ -558,19 +807,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 40,
+        "timeGuideDisplay": "34–46s",
+        "vciScore": "5.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
+          "readingMs": 17850,
+          "semanticProcessingMs": 20600,
+          "wordCount": 55,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -592,7 +841,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -601,11 +850,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"3. Competition\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 3. Competition\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"i NTE R = Between\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"i NTE R = Between\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_6_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"i NTE R = Between\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -620,12 +901,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "i NTE R = Between |\ndifferent groups |\n_| (Anchor words: Intersect, International) 5 |\nInterspecific Competition gyro\" 4S ~ 4\n(Between DIFFERENT species) | ;\n| 1 samegroup aS r |\n_ (Anchor words: Intranet, Intravenous) a \\ ame\nf Sa E\n_ (Between the SAME species) yo a SS Fee",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "f2fd23222098be78eee21021009e106985f741f0ae18cad3f30f07e733b2b477",
+        "transcript": "i NTE R = Between |\ndifferent groups |\n_| (Anchor words: Intersect, International) 5 |\nInterspecific Competition gyro\" 4S ~ 4\n(Between DIFFERENT species) | ;\n| 1 samegroup aS r |\n_ (Anchor words: Intranet, Intravenous) a \\ ame\nf Sa E\n_ (Between the SAME species) yo a SS Fee",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -637,19 +929,19 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 44,
+        "timeGuideDisplay": "37–51s",
+        "vciScore": "6.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
           "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
+          "readingMs": 28500,
+          "semanticProcessingMs": 14400,
+          "wordCount": 92,
           "visualElementsCount": 3
         },
         "academicReferences": [
@@ -671,7 +963,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -680,11 +972,43 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 7: \"3. Competition\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: 3. Competition\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \". 2 rz Eee so ah AS\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \". 2 rz Eee so ah AS\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \". 2 rz Eee so ah AS\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -699,12 +1023,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Hold up 1 finger for INTER. Hold up 2 fingers for INTRA. )\n. 2 rz Eee so ah AS\n4 - ah = ON OS AR Ter ah q\n| + nn eae > (INTER)\nee etm - a Weeds and tomato plants growing in\n|» Two Robins fighting over a garden territory. the same greenhouse bed.\n. ——_——— a. eee Tair on y\nRed squirrels and Grey squirrels 1 \" Red deer stags locking antlers\ncompeting for acorns. during rutting season. i\non —\"_ oO 0 as y",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "66c56ee6997182bd31ec785a0042b46f6cd3004c219b18c202a86c9c31eac17a",
+        "transcript": "Hold up 1 finger for INTER. Hold up 2 fingers for INTRA. )\n. 2 rz Eee so ah AS\n4 - ah = ON OS AR Ter ah q\n| + nn eae > (INTER)\nee etm - a Weeds and tomato plants growing in\n|» Two Robins fighting over a garden territory. the same greenhouse bed.\n. ——_——— a. eee Tair on y\nRed squirrels and Grey squirrels 1 \" Red deer stags locking antlers\ncompeting for acorns. during rutting season. i\non —\"_ oO 0 as y",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -716,49 +1051,89 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "7–9s",
-        "vciScore": "3.6",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 40,
+        "timeGuideDisplay": "34–46s",
+        "vciScore": "5.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 1250,
-          "semanticProcessingMs": 4800,
-          "wordCount": 22,
-          "visualElementsCount": 4
+          "visualScanMs": 1050,
+          "readingMs": 22050,
+          "semanticProcessingMs": 16400,
+          "wordCount": 68,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Dual-coding of visual symbiont photography with text contrast."
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_8_1_component_reveal",
+          "id": "gemini_slide_8_1_comparison",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"Beyond Competition: Mutualism vs. Parasitism\".\\nDeck context: 3. Competition.\\nSpecies interactions: Mutualism (+/+) where both species benefit versus Parasitism (+/-) where parasite benefits and host is harmed.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_08.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"MUTUALISM ist\" UPL\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"MUTUALISM ist\" UPL\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"MUTUALISM ist\" UPL\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
           "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_08.png"
         }
       ],
@@ -767,15 +1142,26 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "comparison",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 1,
-        "qaRequired": false,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "MUTUALISM ist\" UPL\nbenefit ’ A, All SS. Fn fh (\n_ | (Anchor words: Mutual, Cooperation, Win-Win) \\Ng , , r?\n(Both species GAIN an advantage) ~ Sa ae}\n‘PARASITISM “osx | SSE\ni host harmed Se eI\n__ (Anchor words: Parasite, Host, Exploit) =—— =». el\n; Parasitic Interaction ZF. OS LS\n(One species BENEFITS, host is HARMED) ZZ 6 WKS",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "57c55c59c3c9ef6b86aeab7a32c634c496cbb526bcda51c5c2a737ecdfa60bd9",
+        "transcript": "MUTUALISM ist\" UPL\nbenefit ’ A, All SS. Fn fh (\n_ | (Anchor words: Mutual, Cooperation, Win-Win) \\Ng , , r?\n(Both species GAIN an advantage) ~ Sa ae}\n‘PARASITISM “osx | SSE\ni host harmed Se eI\n__ (Anchor words: Parasite, Host, Exploit) =—— =». el\n; Parasitic Interaction ZF. OS LS\n(One species BENEFITS, host is HARMED) ZZ 6 WKS",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -787,25 +1173,33 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 9,
-        "timeGuideDisplay": "8–11s",
-        "vciScore": "3.9",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 44,
+        "timeGuideDisplay": "37–51s",
+        "vciScore": "5.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1200,
-          "readingMs": 1600,
-          "semanticProcessingMs": 5400,
-          "wordCount": 30,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 21000,
+          "semanticProcessingMs": 21800,
+          "wordCount": 64,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
             "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
             "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
@@ -813,7 +1207,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -822,14 +1216,46 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Ecological Dossier: Mutualism in Action\".\\nDeck context: 3. Competition.\\nDeep dive on mutualistic symbiosis between clownfish and sea anemone with technical HUD telemetry callouts.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_09.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"Ecological Dossier: Mutualism\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"Ecological Dossier: Mutualism\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_9_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"Ecological Dossier: Mutualism\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
           "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_09.png"
         }
       ],
@@ -841,12 +1267,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 1,
-        "qaRequired": false,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "_ Ecological Dossier: Mutualism |\nSs jal nematocyst stings. e Vt Gp: di <>\n. fa : \\ Nell\na A; Ye < SOS \\ (— aoe |\n‘ a —— ys p= Ae ei Ves ze E |\nClownfish actively chases || mamas Cae 8 a SE\nReciprocal Advantage (+/+): Both species gain\nsurvival and reproductive benefits. Ae",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "3ee86fc3f85af81246612ac25e3e88d7e34563169fcc941e4cd6efbdf2c4e398",
+        "transcript": "_ Ecological Dossier: Mutualism |\nSs jal nematocyst stings. e Vt Gp: di <>\n. fa : \\ Nell\na A; Ye < SOS \\ (— aoe |\n‘ a —— ys p= Ae ei Ves ze E |\nClownfish actively chases || mamas Cae 8 a SE\nReciprocal Advantage (+/+): Both species gain\nsurvival and reproductive benefits. Ae",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -858,25 +1295,33 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 10,
-        "timeGuideDisplay": "9–12s",
-        "vciScore": "4.2",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 63,
+        "timeGuideDisplay": "53–73s",
+        "vciScore": "7.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1300,
-          "readingMs": 1800,
-          "semanticProcessingMs": 5900,
-          "wordCount": 38,
-          "visualElementsCount": 6
+          "visualScanMs": 1050,
+          "readingMs": 39900,
+          "semanticProcessingMs": 21600,
+          "wordCount": 121,
+          "visualElementsCount": 3
         },
         "academicReferences": [
           {
             "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
             "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
@@ -884,7 +1329,7 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
@@ -893,14 +1338,46 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
+          "label": "Build 1: Reveal the first component",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"The Parasite Arsenal: Exploiting the Host (+/–)\".\\nDeck context: 3. Competition.\\nComparative analysis of ectoparasites (ticks) vs endoparasites (tapeworms) and adaptations for host exploitation.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_10.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"The Parasite Arsenal: Exploiting the Host (+/–)\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"The Parasite Arsenal: Exploiting the Host (+/–)\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_10_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"The Parasite Arsenal: Exploiting the Host (+/–)\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 3. Competition. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
           "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_10.png"
         }
       ],
@@ -912,12 +1389,23 @@
         "strategy": "component-reveal",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 1,
-        "qaRequired": false,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "e The Parasite Arsenal: Exploiting the Host (+/-) |)\n: a . = 5 y : ; o— |\ndE Ectoparasites (Surface Feeders) _ Endoparasites (Internal Inhabitants) | |\n: ; we” ; p IY hee ®\n= |. ¢ Piercing mouthparts to breach host skin | ¢ Hooks and suckers anchor firmly to gut wall\nse ¢ Anticoagulant saliva stops blood clotting « Lacks digestive tract — absorbs pre-digested food ||} Z\n¢ Flattened exoskeleton & claws to cling on ¢ Enormous egg output to maximize transmission 2 |\n‘ |\nA\\ Critical Ecological Rule: Parasites rarely kill the host quickly.\nN A living host is an essential shelter and continuous food factory.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "553b589cee4742091a728397803c104be3d1736214c51a2dd95462ba4f2729c2",
+        "transcript": "e The Parasite Arsenal: Exploiting the Host (+/-) |)\n: a . = 5 y : ; o— |\ndE Ectoparasites (Surface Feeders) _ Endoparasites (Internal Inhabitants) | |\n: ; we” ; p IY hee ®\n= |. ¢ Piercing mouthparts to breach host skin | ¢ Hooks and suckers anchor firmly to gut wall\nse ¢ Anticoagulant saliva stops blood clotting « Lacks digestive tract — absorbs pre-digested food ||} Z\n¢ Flattened exoskeleton & claws to cling on ¢ Enormous egg output to maximize transmission 2 |\n‘ |\nA\\ Critical Ecological Rule: Parasites rarely kill the host quickly.\nN A living host is an essential shelter and continuous food factory.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -929,22 +1417,30 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 11,
-        "timeGuideDisplay": "10–13s",
-        "vciScore": "4.5",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 54,
+        "timeGuideDisplay": "45–63s",
+        "vciScore": "6.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1400,
-          "readingMs": 1500,
-          "semanticProcessingMs": 6200,
-          "wordCount": 28,
-          "visualElementsCount": 5
+          "visualScanMs": 1050,
+          "readingMs": 34200,
+          "semanticProcessingMs": 18400,
+          "wordCount": 106,
+          "visualElementsCount": 3
         },
         "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
           {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
             "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
@@ -955,23 +1451,55 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "local-ocr-fallback"
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_11_1_component_reveal",
+          "id": "gemini_slide_11_1_comparison",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Predator-Prey Dynamics: The Population Seesaw\".\\nDeck context: 3. Competition.\\nCanada Lynx vs Snowshoe Hare population oscillations with telemetry graph and 4-stage cyclical feedback loop.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_11.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"Predator-Prey Dynamics: The Population Seesaw\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Predator-Prey Dynamics: The Population Seesaw\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Predator-Prey Dynamics: The Population Seesaw. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_11_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"Predator-Prey Dynamics: The Population Seesaw\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Predator-Prey Dynamics: The Population Seesaw\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Predator-Prey Dynamics: The Population Seesaw. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_11_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"Predator-Prey Dynamics: The Population Seesaw\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Predator-Prey Dynamics: The Population Seesaw\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Predator-Prey Dynamics: The Population Seesaw. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
           "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_11.png"
         }
       ],
@@ -980,15 +1508,26 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "comparison",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 1,
-        "qaRequired": false,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
+      },
+      "text": "Predator-Prey Dynamics: The Population Seesaw\nfa 2! mo pry 38 ae f Se eeriae | |\n: *\\ SAB\" Gite se. ee 22 Fcc Se ~ Population ;\n‘plat Toes, toate ey Prey (Hare) |\npes ee ee LO a Ge | o Population }\ni ¢ , i . q 2 Time Lag:\nl Ne + | ° Predator peak\na> | follows prey peak\n) The Classic Model: , ; {\nCanada Lynx vs. Snowshoe Hare @ pe ear) = .\n2. Predator Increase 3. Prey Crash 4. Predator Crash\n1. Prey Increase = (Lagged)) =» (Overpredation)) => (Starvation)",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "097e8489b04176202b28d3bf1e21f412d7d7937ca0c504fea368fa7713aa1d5e",
+        "transcript": "Predator-Prey Dynamics: The Population Seesaw\nfa 2! mo pry 38 ae f Se eeriae | |\n: *\\ SAB\" Gite se. ee 22 Fcc Se ~ Population ;\n‘plat Toes, toate ey Prey (Hare) |\npes ee ee LO a Ge | o Population }\ni ¢ , i . q 2 Time Lag:\nl Ne + | ° Predator peak\na> | follows prey peak\n) The Classic Model: , ; {\nCanada Lynx vs. Snowshoe Hare @ pe ear) = .\n2. Predator Increase 3. Prey Crash 4. Predator Crash\n1. Prey Increase = (Lagged)) =» (Overpredation)) => (Starvation)",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
@@ -1000,25 +1539,33 @@
       "isInteractive": true,
       "interactiveType": "question_reveal",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 12,
-        "timeGuideDisplay": "10–14s",
-        "vciScore": "4.8",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 75,
+        "timeGuideDisplay": "63–87s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1500,
-          "readingMs": 1900,
-          "semanticProcessingMs": 6800,
-          "wordCount": 34,
-          "visualElementsCount": 6
+          "visualScanMs": 5278,
+          "readingMs": 42450,
+          "semanticProcessingMs": 27000,
+          "wordCount": 129,
+          "visualElementsCount": 13
         },
         "academicReferences": [
           {
             "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
             "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
           }
         ]
       },
@@ -1030,19 +1577,19 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_12_1_component_reveal",
+          "id": "gemini_slide_12_1_question_base_overlay",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"Active Retrieval: Classify the Species Interaction\".\\nDeck context: 3. Competition.\\n4-quadrant interactive card challenge asking learners to classify mutualism, parasitism, and predation.",
-          "status": "approved",
-          "qaStatus": "approved",
-          "outputImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_12.png",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"Active Retrieval: Classify the Species Interaction\".\nDeck context: 3. Competition.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 4 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
           "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_03_Competition/slides/slide_12.png"
         }
       ],
@@ -1051,12 +1598,12 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
+        "strategy": "question-base-overlay",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
         "plannedCellCount": 1,
-        "approvedCellCount": 1,
-        "qaRequired": false,
+        "approvedCellCount": 0,
+        "qaRequired": true,
         "questionReveal": true,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
@@ -1078,10 +1625,12 @@
             "w": 13.5,
             "h": 8
           },
-          "revealMode": "unmask",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_12_cell_2",
@@ -1099,10 +1648,12 @@
             "w": 13.5,
             "h": 8
           },
-          "revealMode": "unmask",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_12_cell_3",
@@ -1120,10 +1671,12 @@
             "w": 13.5,
             "h": 8
           },
-          "revealMode": "unmask",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_12_cell_4",
@@ -1141,12 +1694,92 @@
             "w": 13.5,
             "h": 8
           },
-          "revealMode": "unmask",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "Hold up 1 finger for MUTUALISM. 2 for PARASITISM. 3 for PREDATION. J\nAY alae So B ‘ Tage ‘ j\n| Oxpecker eating ticks off.a Cape Buffalo. Cuckoo chick raised in a reed warbler nest.\na a 4 ee 4\n7 Por (PREDATION) = er ATUL)\nBarn Owl catching a field f Honeybee gathering nectar |\n4 mouse at dusk. | while pollinating flowers. J",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "20d408898cd3d4d30e3d56140228adf16f050cce9eb11191743bc4f3d1958319",
+        "transcript": "Hold up 1 finger for MUTUALISM. 2 for PARASITISM. 3 for PREDATION. J\nAY alae So B ‘ Tage ‘ j\n| Oxpecker eating ticks off.a Cape Buffalo. Cuckoo chick raised in a reed warbler nest.\na a 4 ee 4\n7 Por (PREDATION) = er ATUL)\nBarn Owl catching a field f Honeybee gathering nectar |\n4 mouse at dusk. | while pollinating flowers. J",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "serialAnimation": {
+        "totalBuildSteps": 4,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: A. Oxpecker eating ticks off a Cape Buffalo. What interaction is this?",
+            "componentIds": [
+              "reveal_12_cell_1"
+            ],
+            "targetBounds": {
+              "x": 32.5,
+              "y": 34,
+              "w": 13.5,
+              "h": 8
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: B. Cuckoo chick raised in a reed warbler nest. What interaction is this?",
+            "componentIds": [
+              "reveal_12_cell_2"
+            ],
+            "targetBounds": {
+              "x": 78,
+              "y": 34,
+              "w": 13.5,
+              "h": 8
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: C. Barn Owl catching a field mouse at dusk. What interaction is this?",
+            "componentIds": [
+              "reveal_12_cell_3"
+            ],
+            "targetBounds": {
+              "x": 32.5,
+              "y": 73,
+              "w": 13.5,
+              "h": 8
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: D. Honeybee gathering nectar while pollinating flowers. What interaction is this?",
+            "componentIds": [
+              "reveal_12_cell_4"
+            ],
+            "targetBounds": {
+              "x": 78,
+              "y": 73,
+              "w": 13.5,
+              "h": 8
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      }
     }
   ],
   "agent": {
@@ -1154,6 +1787,6 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-08T10:48:34.516Z"
+    "updatedAt": "2026-09-16T00:20:34.304Z"
   }
 }

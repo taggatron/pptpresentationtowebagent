@@ -12,7 +12,95 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_01.png",
       "sourceMediaPath": "ppt/media/image1.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Lesson 10: Pollutants\nHow does the combustion of fossil fuels\ndisrupt our atmospheric and ecological\nbalance?\nLesson Overview: ee ee\n° Investigating the chemical mechanics of fossil fuel combustion. re\n¢ Tracking the formation of carbon monoxide, soot, sulfur dioxide, and\nnitrogen oxides.\n¢ Mapping the ecological and infrastructural damage caused by acid rain\nand smog.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "600a4708140244f977998141d4620a09b3105391505d97ca23423c3d049caf00",
+        "transcript": "Lesson 10: Pollutants\nHow does the combustion of fossil fuels\ndisrupt our atmospheric and ecological\nbalance?\nLesson Overview: ee ee\n° Investigating the chemical mechanics of fossil fuel combustion. re\n¢ Tracking the formation of carbon monoxide, soot, sulfur dioxide, and\nnitrogen oxides.\n¢ Mapping the ecological and infrastructural damage caused by acid rain\nand smog.",
+        "role": "title",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "How does the combustion of fossil fuels disrupt our atmospheric and ecological balance?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 27,
+        "timeGuideDisplay": "22–32s",
+        "vciScore": "5.4",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 19650,
+          "semanticProcessingMs": 6400,
+          "wordCount": 58,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"10. Pollutants\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"10. Pollutants\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_01.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 2,
@@ -39,10 +127,12 @@
             "w": 28,
             "h": 6.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_2",
@@ -60,10 +150,12 @@
             "w": 16.5,
             "h": 6.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_3",
@@ -81,10 +173,12 @@
             "w": 34,
             "h": 6.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_4",
@@ -102,10 +196,12 @@
             "w": 38,
             "h": 6.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_5",
@@ -123,10 +219,12 @@
             "w": 10,
             "h": 6.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_6",
@@ -144,12 +242,209 @@
             "w": 8,
             "h": 6.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "Starter: Systems Check (5 Minutes)\nWhat two elements make up a What gas from the atmosphere is\n| hydrocarbon fuel? i | l strictly required for combustion?\n[Hydrogenand Carbon] .. [Oxygen / 0,] [\nS Par ll\nWhat are the two main products of the Is combustion an exothermic or\n| complete combustion of a hydrocarbon? — endothermic chemical reaction? i\n[Carbon dioxide and Water] ~~ - [Exothermic - it releases energy] ~\nWhat term describes a substance that is What is the chemical formula for carbon\n| burned to release energy? : l dioxide? :\n[Fuel] [C0,]\n(t ii y i",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "590b62adbeb8b2cc85d1fb44646c65b5d24766528df6de5c06ff7eeb3e6f788b",
+        "transcript": "Starter: Systems Check (5 Minutes)\nWhat two elements make up a What gas from the atmosphere is\n| hydrocarbon fuel? i | l strictly required for combustion?\n[Hydrogenand Carbon] .. [Oxygen / 0,] [\nS Par ll\nWhat are the two main products of the Is combustion an exothermic or\n| complete combustion of a hydrocarbon? — endothermic chemical reaction? i\n[Carbon dioxide and Water] ~~ - [Exothermic - it releases energy] ~\nWhat term describes a substance that is What is the chemical formula for carbon\n| burned to release energy? : l dioxide? :\n[Fuel] [C0,]\n(t ii y i",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "What two elements make up a What gas from the atmosphere is | hydrocarbon fuel?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What are the two main products of the Is combustion an exothermic or | complete combustion of a hydrocarbon?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "What term describes a substance that is What is the chemical formula for carbon | burned to release energy?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 93,
+        "timeGuideDisplay": "79–107s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 7938,
+          "readingMs": 61050,
+          "semanticProcessingMs": 24000,
+          "wordCount": 181,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 10,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter: Systems Check (5 Minutes)\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_02.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: What two elements make up a hydrocarbon fuel?",
+            "componentIds": [
+              "reveal_2_cell_1"
+            ],
+            "targetBounds": {
+              "x": 13.5,
+              "y": 30.5,
+              "w": 28,
+              "h": 6.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: What gas from the atmosphere is strictly required for combustion?",
+            "componentIds": [
+              "reveal_2_cell_2"
+            ],
+            "targetBounds": {
+              "x": 64.5,
+              "y": 30.5,
+              "w": 16.5,
+              "h": 6.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: What are the two main products of the complete combustion of a hydrocarbon?",
+            "componentIds": [
+              "reveal_2_cell_3"
+            ],
+            "targetBounds": {
+              "x": 10.5,
+              "y": 58.5,
+              "w": 34,
+              "h": 6.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Is combustion an exothermic or endothermic chemical reaction?",
+            "componentIds": [
+              "reveal_2_cell_4"
+            ],
+            "targetBounds": {
+              "x": 53.5,
+              "y": 58.5,
+              "w": 38,
+              "h": 6.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: What term describes a substance that is burned to release energy?",
+            "componentIds": [
+              "reveal_2_cell_5"
+            ],
+            "targetBounds": {
+              "x": 22.5,
+              "y": 85.5,
+              "w": 10,
+              "h": 6.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: What is the chemical formula for carbon dioxide?",
+            "componentIds": [
+              "reveal_2_cell_6"
+            ],
+            "targetBounds": {
+              "x": 69,
+              "y": 85.5,
+              "w": 8,
+              "h": 6.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -158,7 +453,120 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_03.png",
       "sourceMediaPath": "ppt/media/image3.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Learning Objectives Essential Terminology\nKnow: The major atmospheric Combustion: The chemical reaction of a\npollutants produced by burning fuel with oxygen, releasing energy.\nfossil fuels, ‘ se\nParticulates: Microscopic solid particles of\nUnderstand: The chemical carbon (soot) suspended in the air.\nWw mechanics distinguishing complete a\nfrom incomplete combustion. | ——$\nAcid Rain: Precipitation made dangerously\nacidic by dissolved sulfur dioxide and oxides\n| of nitrogen.\nApply: Link specific pollutant gases ee\nto their direct environmental, —_\n$4 infrastructural, and human Smog: A hazy, toxic form of air pollution\n! health hazards. caused by the photochemical reaction of\nnitrogen oxides.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "96fe0eacd5f3842648fe1126969973e70c471fecc2582d2f90b8ce04ad621324",
+        "transcript": "Learning Objectives Essential Terminology\nKnow: The major atmospheric Combustion: The chemical reaction of a\npollutants produced by burning fuel with oxygen, releasing energy.\nfossil fuels, ‘ se\nParticulates: Microscopic solid particles of\nUnderstand: The chemical carbon (soot) suspended in the air.\nWw mechanics distinguishing complete a\nfrom incomplete combustion. | ——$\nAcid Rain: Precipitation made dangerously\nacidic by dissolved sulfur dioxide and oxides\n| of nitrogen.\nApply: Link specific pollutant gases ee\nto their direct environmental, —_\n$4 infrastructural, and human Smog: A hazy, toxic form of air pollution\n! health hazards. caused by the photochemical reaction of\nnitrogen oxides.",
+        "role": "objectives",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 62,
+        "timeGuideDisplay": "52–72s",
+        "vciScore": "7.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 35700,
+          "semanticProcessingMs": 24600,
+          "wordCount": 102,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Learning Objectives Essential Terminology\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Learning Objectives Essential Terminology\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Learning Objectives Essential Terminology\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_03.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 4,
@@ -167,7 +575,120 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_04.png",
       "sourceMediaPath": "ppt/media/image4.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "The Combustion Matrix: Oxygen Supply Determines the Output\nComplete Combustion @ Incomplete Combustion nN ]\nI (The Ideal) i | (The Reality) i\n| Condition: Occurs with an abundant si Condition: Occurs when there is =\n| » supply of oxygen. restricted oxygen starvation. “\nProducts: Produces only carbon dioxide Rogue Products: Produces carbon monoxi- |\n(CO,) and water (H,0). de (CO) and soot (carbon particulates).\nEnergy: Maximum energy release. :|| | Energy: Less energy released. A\n» | >» : ili |",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "26c97a736c7602834d2c33d8bea58730bf7f7cd34a164ba6c75587b7fa378857",
+        "transcript": "The Combustion Matrix: Oxygen Supply Determines the Output\nComplete Combustion @ Incomplete Combustion nN ]\nI (The Ideal) i | (The Reality) i\n| Condition: Occurs with an abundant si Condition: Occurs when there is =\n| » supply of oxygen. restricted oxygen starvation. “\nProducts: Produces only carbon dioxide Rogue Products: Produces carbon monoxi- |\n(CO,) and water (H,0). de (CO) and soot (carbon particulates).\nEnergy: Maximum energy release. :|| | Energy: Less energy released. A\n» | >» : ili |",
+        "role": "data",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 48,
+        "timeGuideDisplay": "40–56s",
+        "vciScore": "6.2",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 28050,
+          "semanticProcessingMs": 18800,
+          "wordCount": 85,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_comparison",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"The Combustion Matrix: Oxygen Supply Determines the Output\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_comparison",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second comparison component",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"The Combustion Matrix: Oxygen Supply Determines the Output\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the comparison insight",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"The Combustion Matrix: Oxygen Supply Determines the Output\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_04.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "comparison",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 5,
@@ -176,7 +697,120 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_05.png",
       "sourceMediaPath": "ppt/media/image5.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Atmospheric Analytics Dashboard\nTHREAT CARD 1: A | THREAT CARD 2: A\n| Sulfur Dioxide (SO,) ; | Oxides of Nitrogen (NOx) !\n~ SOURCE: Sulfur impurities naturally present ) SOURCE: Nitrogen and oxygen from the air react\nin fossil fuels burn in oxygen. under high temperatures inside car engines.\n| HAZARD: Causes respiratory irritation and - | HAZARD: Triggers photochemical smog and\nforms acid rain. i forms acid rain. i\n>> . __wili ) ——\nan = ACID RAIN DAMAGE CYCLE —_\nStep 1: Gases Step 2: Acidic Step 3: Irreversibly Step 4: Lowers pH\ndissolve in precipitation falls corrodes limestone in lakes, causing\natmospheric water to Earth. buildings and metal severe damage to\ndroplets. a structures. aquatic life.\n” re Ea eo",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "4feaf47a6c94797cb261cc5b96a7d10407c0c34af2b20fcb55fea1f6b4f55643",
+        "transcript": "Atmospheric Analytics Dashboard\nTHREAT CARD 1: A | THREAT CARD 2: A\n| Sulfur Dioxide (SO,) ; | Oxides of Nitrogen (NOx) !\n~ SOURCE: Sulfur impurities naturally present ) SOURCE: Nitrogen and oxygen from the air react\nin fossil fuels burn in oxygen. under high temperatures inside car engines.\n| HAZARD: Causes respiratory irritation and - | HAZARD: Triggers photochemical smog and\nforms acid rain. i forms acid rain. i\n>> . __wili ) ——\nan = ACID RAIN DAMAGE CYCLE —_\nStep 1: Gases Step 2: Acidic Step 3: Irreversibly Step 4: Lowers pH\ndissolve in precipitation falls corrodes limestone in lakes, causing\natmospheric water to Earth. buildings and metal severe damage to\ndroplets. a structures. aquatic life.\n” re Ea eo",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 63,
+        "timeGuideDisplay": "53–73s",
+        "vciScore": "7.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 40950,
+          "semanticProcessingMs": 20400,
+          "wordCount": 126,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_staged_objectives",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Atmospheric Analytics Dashboard\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: staged-objectives.\nShow now: The exact source title plus the complete Step 1 heading and body text (for example, 'Step 1: Know'). The only allowed visual is the compact visual cluster immediately touching or directly below Step 1.\nTemporarily omit: Every Step 2 and Step 3 heading, body, stair segment, arrow, example, label, and diagram. Replace every omitted later-step region with the untouched source background so the rest of the canvas is genuinely blank. Never keep a later diagram as decoration and never substitute a later step for Step 1.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_staged_objectives",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the second learning step",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Atmospheric Analytics Dashboard\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: staged-objectives.\nShow now: Everything from build 1 plus the complete Step 2 heading and body text (for example, 'Step 2: Identify') and only the visual cluster immediately touching or directly below Step 2.\nTemporarily omit: Every Step 3 heading, body, stair segment, arrow, conclusion, label, and diagram. Replace the entire omitted Step 3 region with the untouched source background so it is genuinely blank. Never keep a Step 3 diagram as decoration or replace Step 1 or Step 2 with Step 3.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_3_staged_objectives",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the learning sequence",
+          "strategy": "staged-objectives",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Atmospheric Analytics Dashboard\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: staged-objectives.\nShow now: Everything from builds 1 and 2 plus the complete final numbered step (for example, 'Step 3: Explain'), its exact body text, and its directly related visual or conclusion.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nFor numbered steps, read the requested step heading and body directly from the attached pixels and reproduce them verbatim. Do not show, relabel, or borrow content from a later step before its build.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_05.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "staged-objectives",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 6,
@@ -203,12 +837,127 @@
             "w": 20,
             "h": 6.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "System Diagnostics: Check for Understanding\nMisconception Buster \\2., Diagnostic Hinge Question = i\n4 a = |\n| Myth: Acicisze\"s so corros! your. Which pollutant is a toxic, colourless, and odourless, |\nJen if fy Wal RO } gas produced directly by incomplete combustion? _\nF : dest\nz a3 Neco ; | @lAlsulrdovie © [8}Cabon dove\ncon oleteiy harmlesstetiuman skin on contact. = © [C Carbon monoxide © [D] Nitrogen oxide =\n> es . . lls asic sial_ >_>» . —\n‘ai Active Pair-and-Share Prompt —\nTask: Explain to your partner why a poorly ventilated gas boiler is a severe, undetectable health hazard.\n| . ) Alack of ventilation -> This causes a :\n| el ES Be kee",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "fdbc52e946017dadfdd72c74e3de78f56f2efe09e1fa2b3f77c3fa028c527aca",
+        "transcript": "System Diagnostics: Check for Understanding\nMisconception Buster \\2., Diagnostic Hinge Question = i\n4 a = |\n| Myth: Acicisze\"s so corros! your. Which pollutant is a toxic, colourless, and odourless, |\nJen if fy Wal RO } gas produced directly by incomplete combustion? _\nF : dest\nz a3 Neco ; | @lAlsulrdovie © [8}Cabon dove\ncon oleteiy harmlesstetiuman skin on contact. = © [C Carbon monoxide © [D] Nitrogen oxide =\n> es . . lls asic sial_ >_>» . —\n‘ai Active Pair-and-Share Prompt —\nTask: Explain to your partner why a poorly ventilated gas boiler is a severe, undetectable health hazard.\n| . ) Alack of ventilation -> This causes a :\n| el ES Be kee",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Which pollutant is a toxic, colourless, and odourless, | Jen if fy Wal RO } gas produced directly by incomplete combustion?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 77,
+        "timeGuideDisplay": "65–89s",
+        "vciScore": "9.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 2142,
+          "readingMs": 46050,
+          "semanticProcessingMs": 28600,
+          "wordCount": 139,
+          "visualElementsCount": 6
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered question",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 6: \"System Diagnostics: Check for Understanding\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Which pollutant is a toxic, colourless, and odourless gas produced directly by incomplete combustion?",
+            "componentIds": [
+              "reveal_6_cell_1"
+            ],
+            "targetBounds": {
+              "x": 54,
+              "y": 41.5,
+              "w": 20,
+              "h": 6.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 7,
@@ -217,7 +966,120 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_07.png",
       "sourceMediaPath": "ppt/media/image7.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Application Workshop: Trace the Threat\n( Activity 1: The Threat-Match Matrix Activity 2: Ecological Impact Labelling\nTask: Mentally draw lines fo link the Task: Identify the specific pollutant effect\nSource -> Pollutant -> Primary Hazard. at each labelled-site——\nA\\ Global dimming /\nSOURCES POLLUTANTS HAZARDS Respiratory problems\n<= = —— . {| (Caused by soot/particulates).\nHigh engine Sulfur Smog& | 4 a\ntemp =, J) Dioxide {4 Acid Rain, z * ~~ BE Metal corrosion\na ~ ve oe 2 b | (caused by acid rain).\np Sue | Oxides of iff) Toxicto weMeee AVAVA Mw\n| SEED yi t alusegjau hl | es = El == S— eI ee fe\nSulfur i’) Carbon i } Corrodes | Satur :— alt\n| _ impurity }_ Monoxide ) limestone ised ge ttrain) oe",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "07d190d864a95161dc9fa1b19965b12be4d5aa214731a73e2a9f2e50f1511a40",
+        "transcript": "Application Workshop: Trace the Threat\n( Activity 1: The Threat-Match Matrix Activity 2: Ecological Impact Labelling\nTask: Mentally draw lines fo link the Task: Identify the specific pollutant effect\nSource -> Pollutant -> Primary Hazard. at each labelled-site——\nA\\ Global dimming /\nSOURCES POLLUTANTS HAZARDS Respiratory problems\n<= = —— . {| (Caused by soot/particulates).\nHigh engine Sulfur Smog& | 4 a\ntemp =, J) Dioxide {4 Acid Rain, z * ~~ BE Metal corrosion\na ~ ve oe 2 b | (caused by acid rain).\np Sue | Oxides of iff) Toxicto weMeee AVAVA Mw\n| SEED yi t alusegjau hl | es = El == S— eI ee fe\nSulfur i’) Carbon i } Corrodes | Satur :— alt\n| _ impurity }_ Monoxide ) limestone ised ge ttrain) oe",
+        "role": "data",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 66,
+        "timeGuideDisplay": "56–76s",
+        "vciScore": "7.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 43650,
+          "semanticProcessingMs": 21200,
+          "wordCount": 134,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_data_table",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal headings and first evidence group",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"Application Workshop: Trace the Threat\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: data-table.\nShow now: The title, column or axis headings, and the first evidence group needed to understand the structure.\nTemporarily omit: Remaining rows, secondary annotations, and decorative imagery.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_2_data_table",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the comparison pattern",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"Application Workshop: Trace the Threat\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: data-table.\nShow now: Everything from the earlier build plus the additional rows or marks needed to reveal the overall pattern.\nTemporarily omit: The final interpretation, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_7_3_data_table",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the data insight",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"Application Workshop: Trace the Threat\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: data-table.\nShow now: Everything from the earlier builds plus the final interpretation, conclusion, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_07.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "data-table",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 8,
@@ -226,7 +1088,127 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_08.png",
       "sourceMediaPath": "ppt/media/image8.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Atmospheric Summary Matrix & Exit Ticket\n( 1. Oxygen dictates ( 2. Impurities & ( 3. Acid rain disrupts\n}| combustion ee \\| Heat trigger acid = 5} ecosystems <@>\n“ ° ©) |\nPlentiful oxygen yields Fuel impurities form — Acid precipitation dl\nCO, + H,0; restricted sulfur dioxide; high irreversibly damages\n4) oxygen yields toxic f engine temperatures / limestone, metal\n4) carbon monoxide and 4] form oxides of nitrogen. ‘| structures, and aquatic\nsoot. life.\nRapid Exit-Ticket (Verify Mastery): :\nQi: Name the specific pollutant responsible for both global dimming and human\nrespiratory problems.\nQ2: State two specific materials/environments directly damaged by acid rain. |",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "1ec093d9e8de3216d6e1cc50302891847b2f3af37c45e059a12ebc0c94070c85",
+        "transcript": "Atmospheric Summary Matrix & Exit Ticket\n( 1. Oxygen dictates ( 2. Impurities & ( 3. Acid rain disrupts\n}| combustion ee \\| Heat trigger acid = 5} ecosystems <@>\n“ ° ©) |\nPlentiful oxygen yields Fuel impurities form — Acid precipitation dl\nCO, + H,0; restricted sulfur dioxide; high irreversibly damages\n4) oxygen yields toxic f engine temperatures / limestone, metal\n4) carbon monoxide and 4] form oxides of nitrogen. ‘| structures, and aquatic\nsoot. life.\nRapid Exit-Ticket (Verify Mastery): :\nQi: Name the specific pollutant responsible for both global dimming and human\nrespiratory problems.\nQ2: State two specific materials/environments directly damaged by acid rain. |",
+        "role": "learner-question",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 60,
+        "timeGuideDisplay": "51–69s",
+        "vciScore": "7.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 36750,
+          "semanticProcessingMs": 22000,
+          "wordCount": 110,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "medium",
+        "questionCount": 1,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_data_table",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal headings and first evidence group",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Atmospheric Summary Matrix & Exit Ticket\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: data-table.\nShow now: The title, column or axis headings, and the first evidence group needed to understand the structure.\nTemporarily omit: Remaining rows, secondary annotations, and decorative imagery.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_2_data_table",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the comparison pattern",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Atmospheric Summary Matrix & Exit Ticket\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: data-table.\nShow now: Everything from the earlier build plus the additional rows or marks needed to reveal the overall pattern.\nTemporarily omit: The final interpretation, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_08.png"
+        },
+        {
+          "id": "gemini_slide_8_3_data_table",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the data insight",
+          "strategy": "data-table",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Atmospheric Summary Matrix & Exit Ticket\".\nDeck context: 10. Pollutants.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: data-table.\nShow now: Everything from the earlier builds plus the final interpretation, conclusion, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 10. Pollutants. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_08.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "data-table",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-16T00:20:34.349Z"
+  }
 }

@@ -12,7 +12,95 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_01.png",
       "sourceMediaPath": "ppt/media/image1.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "The Micro-Engines of the Ecosystem\nCentral Big Inquiry Question: How does an invisible, unreactive\ngas become the physical building block of all life on Earth?",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "e1f79ae058db5312b49dd1b7c02ea7c2887051d870a871f60471ebdd524a143e",
+        "transcript": "The Micro-Engines of the Ecosystem\nCentral Big Inquiry Question: How does an invisible, unreactive\ngas become the physical building block of all life on Earth?",
+        "role": "title",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "How does an invisible, unreactive gas become the physical building block of all life on Earth?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 16,
+        "timeGuideDisplay": "13–19s",
+        "vciScore": "4.4",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 9900,
+          "semanticProcessingMs": 4950,
+          "wordCount": 29,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_1_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"The Micro-Engines of the Ecosystem\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"4. Nitrogen Cycle\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 4. Nitrogen Cycle. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_01.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 2,
@@ -39,10 +127,12 @@
             "w": 43,
             "h": 7.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_2",
@@ -60,10 +150,12 @@
             "w": 43,
             "h": 7.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_3",
@@ -81,10 +173,12 @@
             "w": 43,
             "h": 7.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_4",
@@ -102,10 +196,12 @@
             "w": 43,
             "h": 7.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_5",
@@ -123,10 +219,12 @@
             "w": 43,
             "h": 7.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         },
         {
           "id": "reveal_2_cell_6",
@@ -144,12 +242,209 @@
             "w": 43,
             "h": 7.5
           },
-          "revealMode": "blur",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "® 5-Minute Starter: Activate Prior Knowledge\nAnswer the 6 questions in the grid below to unlock today’s learning.\nEcosystem Dynamics Biological Molecules\n1. Which gas makes up 78% of the Earth's 4. What smaller molecules join together to\natmosphere? make proteins?\n( = [Success Cue: Nitrogen] } (i [Success Cue: Amino acids] _ : J\n2. What is the role of a decomposer in a food 5. What do plants need from the soil to grow\nweb? healthily?\n( [Success Cue: Breaks down dead matter to recycle nutrients} | t oan [Success Cue: Water and mineral ions / nitrates]\n3. Give one reason why organisms compete in 6. By what process do plants produce their\nan ecosystem. own food?\n( [Success Cue: Limited resources like food, water, or space] } ( [Success Cue: Photosynthesis] J",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "f4816300b594ccf5e183f9ff044320ae1f893f95a08058445a7ed6c0e380c1f8",
+        "transcript": "® 5-Minute Starter: Activate Prior Knowledge\nAnswer the 6 questions in the grid below to unlock today’s learning.\nEcosystem Dynamics Biological Molecules\n1. Which gas makes up 78% of the Earth's 4. What smaller molecules join together to\natmosphere? make proteins?\n( = [Success Cue: Nitrogen] } (i [Success Cue: Amino acids] _ : J\n2. What is the role of a decomposer in a food 5. What do plants need from the soil to grow\nweb? healthily?\n( [Success Cue: Breaks down dead matter to recycle nutrients} | t oan [Success Cue: Water and mineral ions / nitrates]\n3. Give one reason why organisms compete in 6. By what process do plants produce their\nan ecosystem. own food?\n( [Success Cue: Limited resources like food, water, or space] } ( [Success Cue: Photosynthesis] J",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Which gas makes up 78% of the Earth's 4. What smaller molecules join together to atmosphere?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "What is the role of a decomposer in a food 5. What do plants need from the soil to grow web?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_3",
+            "question": "why organisms compete in 6. By what process do plants produce their an ecosystem. own food?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 3
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 108,
+        "timeGuideDisplay": "91–125s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 7938,
+          "readingMs": 73050,
+          "semanticProcessingMs": 26800,
+          "wordCount": 225,
+          "visualElementsCount": 18
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 16,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_2_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered questions",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Ecosystem Dynamics Biological Molecules\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_02.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: 1. Which gas makes up 78% of the Earth's atmosphere?",
+            "componentIds": [
+              "reveal_2_cell_1"
+            ],
+            "targetBounds": {
+              "x": 5,
+              "y": 42.2,
+              "w": 43,
+              "h": 7.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: 4. What smaller molecules join together to make proteins?",
+            "componentIds": [
+              "reveal_2_cell_2"
+            ],
+            "targetBounds": {
+              "x": 51.8,
+              "y": 42.2,
+              "w": 43,
+              "h": 7.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: 2. What is the role of a decomposer in a food web?",
+            "componentIds": [
+              "reveal_2_cell_3"
+            ],
+            "targetBounds": {
+              "x": 5,
+              "y": 64.8,
+              "w": 43,
+              "h": 7.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: 5. What do plants need from the soil to grow healthily?",
+            "componentIds": [
+              "reveal_2_cell_4"
+            ],
+            "targetBounds": {
+              "x": 51.8,
+              "y": 64.8,
+              "w": 43,
+              "h": 7.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: 3. Give one reason why organisms compete in an ecosystem.",
+            "componentIds": [
+              "reveal_2_cell_5"
+            ],
+            "targetBounds": {
+              "x": 5,
+              "y": 87.5,
+              "w": 43,
+              "h": 7.5
+            },
+            "revealType": "answer-overlay"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: 6. By what process do plants produce their own food?",
+            "componentIds": [
+              "reveal_2_cell_6"
+            ],
+            "targetBounds": {
+              "x": 51.8,
+              "y": 87.5,
+              "w": 43,
+              "h": 7.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 3,
@@ -158,7 +453,127 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_03.png",
       "sourceMediaPath": "ppt/media/image3.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Where Are We Going Today? Essential Terminology\nNAL ° 1 5\n(The ‘Micro-Engine’ Workers):\nLearning Objectives: ‘el ‘\nAPPLY: — Cy = x&\nEvaluate the agricultural\nimpact of artificial Nitrogen-fixing bacteria: Nitrifying bacteria:\nrotation on ecosystems. atmospheric nitrogen gas nitrites, and then into\ninto soluble nitrogen nitrates.\ncompounds (like nitrates),\nUNDERSTAND:\nExplain the sequence of (4\nhow nitrogen is transferred O O\nbetween the atmosphere, @\nsoil, and living organisms. at ae ae @\na Denitrifying bacteria: =e Legumes ,\nIdentify the key processes convert nitrates back jouse nitrogen-fixing\nand specific microorganisms into nitrogen gas. bacteria inside special\ninvolved in the nitrogen\ncycle.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "e2155111cf3acb8ff2db670a63ed02687d88a27bc82b667bef25a040a2eb1741",
+        "transcript": "Where Are We Going Today? Essential Terminology\nNAL ° 1 5\n(The ‘Micro-Engine’ Workers):\nLearning Objectives: ‘el ‘\nAPPLY: — Cy = x&\nEvaluate the agricultural\nimpact of artificial Nitrogen-fixing bacteria: Nitrifying bacteria:\nrotation on ecosystems. atmospheric nitrogen gas nitrites, and then into\ninto soluble nitrogen nitrates.\ncompounds (like nitrates),\nUNDERSTAND:\nExplain the sequence of (4\nhow nitrogen is transferred O O\nbetween the atmosphere, @\nsoil, and living organisms. at ae ae @\na Denitrifying bacteria: =e Legumes ,\nIdentify the key processes convert nitrates back jouse nitrogen-fixing\nand specific microorganisms into nitrogen gas. bacteria inside special\ninvolved in the nitrogen\ncycle.",
+        "role": "objectives",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Where Are We Going Today?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 72,
+        "timeGuideDisplay": "61–83s",
+        "vciScore": "7.4",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 38250,
+          "semanticProcessingMs": 32600,
+          "wordCount": 108,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_3_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Where Are We Going Today?\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Where Are We Going Today?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Where Are We Going Today?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Where Are We Going Today?\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Where Are We Going Today?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Where Are We Going Today?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_03.png"
+        },
+        {
+          "id": "gemini_slide_3_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Where Are We Going Today?\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Where Are We Going Today?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Where Are We Going Today?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_03.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 4,
@@ -172,6 +587,126 @@
         "url": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/interactives/martian_potato_video.html",
         "title": "Why does Matt Damon put his potatoes in poo?",
         "label": "The Martian Video Clip"
+      },
+      "text": "Why does Matt Damon put his potatoes in poo?\nee) oe eg |\na aes ee ae a i\n(TREE OR: iat a eae\nz |\n.\n) |\n> The Martian (2015) « Planting Potatoes on Mars\nWatch the clip closely: notice what Martian soll Is missing. ‘meoneneaas",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "9bb2f2fcc1db0ce433c2dbf23aa1e2ad16e34ef32409fec6ab934e6aea43493b",
+        "transcript": "Why does Matt Damon put his potatoes in poo?\nee) oe eg |\na aes ee ae a i\n(TREE OR: iat a eae\nz |\n.\n) |\n> The Martian (2015) « Planting Potatoes on Mars\nWatch the clip closely: notice what Martian soll Is missing. ‘meoneneaas",
+        "role": "instructional-content",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "Why does Matt Damon put his potatoes in poo?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 27,
+        "timeGuideDisplay": "22–32s",
+        "vciScore": "4.9",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 18150,
+          "semanticProcessingMs": 8000,
+          "wordCount": 58,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_4_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal the first component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Why does Matt Damon put his potatoes in poo?\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Why does Matt Damon put his potatoes in poo?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Why does Matt Damon put his potatoes in poo?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_2_component_reveal",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the next component",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Why does Matt Damon put his potatoes in poo?\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Why does Matt Damon put his potatoes in poo?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Why does Matt Damon put his potatoes in poo?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_04.png"
+        },
+        {
+          "id": "gemini_slide_4_3_component_reveal",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Why does Matt Damon put his potatoes in poo?\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Why does Matt Damon put his potatoes in poo?\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Why does Matt Damon put his potatoes in poo?. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_04.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -181,7 +716,120 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_05.png",
       "sourceMediaPath": "ppt/media/image5_overview.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "H i\nWhatif we haven't got enough faeces?\nHow an invisible, unreactive atmospheric gas becomes the physical building block of all life on Earth.\nTHE PROBLEM y THE SOLUTION eS THE APPLICATION rs\nKoy %\nNitrogenis everywhere, but The microscopic bacterial workforce How farmers hack the nitrogen cycle\nunusable to mostlife that fixes andrecycles it using fertilisers and crop rotation\n5 ee\nA\n$e @ Living Transformers: Soil bacteria drive the cycle @ Agriculture: Feeding humanity while protecting ecosystems\n» a\n~ Poe",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "4add2206acd95e0ce772afcc861729f1a28654afb5e595cccf3fb0f70fa02aeb",
+        "transcript": "H i\nWhatif we haven't got enough faeces?\nHow an invisible, unreactive atmospheric gas becomes the physical building block of all life on Earth.\nTHE PROBLEM y THE SOLUTION eS THE APPLICATION rs\nKoy %\nNitrogenis everywhere, but The microscopic bacterial workforce How farmers hack the nitrogen cycle\nunusable to mostlife that fixes andrecycles it using fertilisers and crop rotation\n5 ee\nA\n$e @ Living Transformers: Soil bacteria drive the cycle @ Agriculture: Feeding humanity while protecting ecosystems\n» a\n~ Poe",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 54,
+        "timeGuideDisplay": "45–63s",
+        "vciScore": "6.5",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 30600,
+          "semanticProcessingMs": 21600,
+          "wordCount": 90,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_5_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"THE PROBLEM y THE SOLUTION eS THE APPLICATION rs\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 4. Nitrogen Cycle. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"THE PROBLEM y THE SOLUTION eS THE APPLICATION rs\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 4. Nitrogen Cycle. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_05.png"
+        },
+        {
+          "id": "gemini_slide_5_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"THE PROBLEM y THE SOLUTION eS THE APPLICATION rs\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 4. Nitrogen Cycle. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_05.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 6,
@@ -195,6 +843,119 @@
         "url": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/interactives/nitrogen_cycle_video.html",
         "title": "The Nitrogen Cycle: Fixation, Feeding & Recycling",
         "label": "Nitrogen Cycle Animation"
+      },
+      "text": "The Nitrogen Cycle: Fixation, Feeding & Recycling\nTHE NITROGEN CYCLE: BIOLOGICAL NITROGEN FIXATION\n-—— ATMOSPHERIC NITROGEN\nLEGUME RooTs ——®>—~ St (No) ABSORPTION\nNITROGEN 20 of i Paar\ni Wo) fh “3A NITRATE (NOs)\n2 NODULES ayn J left OF. mies Penile\naa | y CN i di (“Gaar ~ ‘\n- : \\-a ae e A\n=>. \\ ez (a >| CS 3\n>» $ 0:00/0:50 1m 0",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "07a5dd40f51a5fbf957e6533fafb4554f5fb9a368138db33eedadfc2d9919d0f",
+        "transcript": "The Nitrogen Cycle: Fixation, Feeding & Recycling\nTHE NITROGEN CYCLE: BIOLOGICAL NITROGEN FIXATION\n-—— ATMOSPHERIC NITROGEN\nLEGUME RooTs ——®>—~ St (No) ABSORPTION\nNITROGEN 20 of i Paar\ni Wo) fh “3A NITRATE (NOs)\n2 NODULES ayn J left OF. mies Penile\naa | y CN i di (“Gaar ~ ‘\n- : \\-a ae e A\n=>. \\ ez (a >| CS 3\n>» $ 0:00/0:50 1m 0",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 49,
+        "timeGuideDisplay": "41–57s",
+        "vciScore": "5.8",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 24600,
+          "semanticProcessingMs": 22600,
+          "wordCount": 75,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_6_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"The Nitrogen Cycle: Fixation, Feeding & Recycling\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Nitrogen Cycle: Fixation, Feeding & Recycling\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Nitrogen Cycle: Fixation, Feeding & Recycling. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_06_video.png"
+        },
+        {
+          "id": "gemini_slide_6_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"The Nitrogen Cycle: Fixation, Feeding & Recycling\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Nitrogen Cycle: Fixation, Feeding & Recycling\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Nitrogen Cycle: Fixation, Feeding & Recycling. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_06_video.png"
+        },
+        {
+          "id": "gemini_slide_6_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"The Nitrogen Cycle: Fixation, Feeding & Recycling\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Nitrogen Cycle: Fixation, Feeding & Recycling\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Nitrogen Cycle: Fixation, Feeding & Recycling. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_06_video.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": true,
+        "protectedVideoCount": 0
       }
     },
     {
@@ -204,7 +965,120 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_06.png",
       "sourceMediaPath": "ppt/media/image4.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "The Nitrogen Cycle: A Step-by-Step Mechanism\nCy iit to Sol) Pl 2. Assimilation & Feeding\n; _ ger (Soil to Life)\n- Nitrogen-fixing bacteria (free in soil\nor in legume root nodules) convert Np ~ Plant uptake: Plant roots absorb\ngas into nitrates. nitrates to synthesize proteins.\n| - Lightning provides enough energy to - Feeding: Animals eat plants, digesting\n| an nittoyn to react with oe. and absorbing the nitrogen to build\nalso creating nitrates. their own proteins.\nBe\nA 4. Nitrification & Denitrification ‘ 7 F\nGe (Recycling & Loss) GB 3. Decomposition Yar\n- Nitrification: Nitrifying bacteria convert toxic (Death to Ammonia)\nammonia -> nitrites -> nitrates (usable by - Plants and animals die; animals\nplants). excrete urea.\n- Denitrification: In oxygen-poor, waterlogged - Decomposers (bacteria and fungi)\nsoil, denitrifying bacteria convert nitrates back break down dead matter and proteins,\ninto Np gas, reducing soil fertility. releasing ammonia into the soil.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "4a5b73d5722345035858fd9d8056294f2838805150400b4da1fb421b1e069ee0",
+        "transcript": "The Nitrogen Cycle: A Step-by-Step Mechanism\nCy iit to Sol) Pl 2. Assimilation & Feeding\n; _ ger (Soil to Life)\n- Nitrogen-fixing bacteria (free in soil\nor in legume root nodules) convert Np ~ Plant uptake: Plant roots absorb\ngas into nitrates. nitrates to synthesize proteins.\n| - Lightning provides enough energy to - Feeding: Animals eat plants, digesting\n| an nittoyn to react with oe. and absorbing the nitrogen to build\nalso creating nitrates. their own proteins.\nBe\nA 4. Nitrification & Denitrification ‘ 7 F\nGe (Recycling & Loss) GB 3. Decomposition Yar\n- Nitrification: Nitrifying bacteria convert toxic (Death to Ammonia)\nammonia -> nitrites -> nitrates (usable by - Plants and animals die; animals\nplants). excrete urea.\n- Denitrification: In oxygen-poor, waterlogged - Decomposers (bacteria and fungi)\nsoil, denitrifying bacteria convert nitrates back break down dead matter and proteins,\ninto Np gas, reducing soil fertility. releasing ammonia into the soil.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 78,
+        "timeGuideDisplay": "66–90s",
+        "vciScore": "9.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 54300,
+          "semanticProcessingMs": 22800,
+          "wordCount": 160,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"The Nitrogen Cycle: A Step-by-Step Mechanism\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Nitrogen Cycle: A Step-by-Step Mechanism\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Nitrogen Cycle: A Step-by-Step Mechanism. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_7_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"The Nitrogen Cycle: A Step-by-Step Mechanism\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Nitrogen Cycle: A Step-by-Step Mechanism\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Nitrogen Cycle: A Step-by-Step Mechanism. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_06.png"
+        },
+        {
+          "id": "gemini_slide_7_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"The Nitrogen Cycle: A Step-by-Step Mechanism\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"The Nitrogen Cycle: A Step-by-Step Mechanism\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: The Nitrogen Cycle: A Step-by-Step Mechanism. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_06.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 8,
@@ -213,7 +1087,127 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_07.png",
       "sourceMediaPath": "ppt/media/image5.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Hacking the Cycle: Agricultural Interventions\nHow do we ensure there is enough nitrogen in the soil to feed 8 billion people?\n<2) Strategy A: ( Strategy B: a\nOB Artificial Fertilisers LZ Crop Rotation & Legumes”\n{O)54 The Mechanism | The Mechanism\nqa Shiny ota mites OF sez! Farmers aerate oe yea,\n: irectly onto fields to rapi ear, periodically planting legumes “ (>\nL@ boost con yield. ai S| © tike hee or beenet ae |\n& ; The Advantage The Advantage\n| Immediate nutrient availability; Nitrogen-fixing bacteria in the\n} - guarantees high-volume food mill legume root nodules naturally\n| production. replenish the soil’s nitrate levels.\nThe Ecological Risk The Ecological Benefit Ay\nExcess fertiliser washes into rivers, < A highly sustainable, natural method 5\ntoxic algal blooms and suffocating ~— Boy Dy, that reduces reliance on expensive,\naquatic life (eutrophication). = polluting chemicals.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "bbc8f2072ba2462269b0438ba4967d8cb1f4b1569a85e2057b39d9cdc480a57e",
+        "transcript": "Hacking the Cycle: Agricultural Interventions\nHow do we ensure there is enough nitrogen in the soil to feed 8 billion people?\n<2) Strategy A: ( Strategy B: a\nOB Artificial Fertilisers LZ Crop Rotation & Legumes”\n{O)54 The Mechanism | The Mechanism\nqa Shiny ota mites OF sez! Farmers aerate oe yea,\n: irectly onto fields to rapi ear, periodically planting legumes “ (>\nL@ boost con yield. ai S| © tike hee or beenet ae |\n& ; The Advantage The Advantage\n| Immediate nutrient availability; Nitrogen-fixing bacteria in the\n} - guarantees high-volume food mill legume root nodules naturally\n| production. replenish the soil’s nitrate levels.\nThe Ecological Risk The Ecological Benefit Ay\nExcess fertiliser washes into rivers, < A highly sustainable, natural method 5\ntoxic algal blooms and suffocating ~— Boy Dy, that reduces reliance on expensive,\naquatic life (eutrophication). = polluting chemicals.",
+        "role": "process",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "How do we ensure there is enough nitrogen in the soil to feed 8 billion people?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 78,
+        "timeGuideDisplay": "66–90s",
+        "vciScore": "8.6",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 50700,
+          "semanticProcessingMs": 26400,
+          "wordCount": 151,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"Hacking the Cycle: Agricultural Interventions\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Hacking the Cycle: Agricultural Interventions\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Hacking the Cycle: Agricultural Interventions. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_8_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"Hacking the Cycle: Agricultural Interventions\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Hacking the Cycle: Agricultural Interventions\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Hacking the Cycle: Agricultural Interventions. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_07.png"
+        },
+        {
+          "id": "gemini_slide_8_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"Hacking the Cycle: Agricultural Interventions\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Hacking the Cycle: Agricultural Interventions\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Hacking the Cycle: Agricultural Interventions. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_07.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 9,
@@ -240,12 +1234,133 @@
             "w": 31,
             "h": 5.5
           },
-          "revealMode": "unmask",
+          "revealMode": "overlay",
           "confidence": 1,
           "provenance": "user-adjusted",
-          "locked": true
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
         }
-      ]
+      ],
+      "text": "Stop & Think: Checking Our Logic Cay\n| _y@y. Diagnostic Hinge Question: Active x BA\n® If a farmer's field becomes severely flooded and waterlogged :\nfor a month, what will happen to the nitrate levels in the soil? Pair-and-Share\nO A) Increase (due to extra water for fixation) Prompt\n© B) Decrease (due to anaerobic denitrifying bacteria) Challenge: :\nO C) Stay the exact same Why can’t humans just\n[Teacher cue: Correct answer is B] sl ad or,\n———————— pubescent muscles?\nMisconception Buster! \"& | || Response Stem:\nMyth: “Plants breathe in nitrogen gas from the ~ “Humans cannot use\nair through their leaves to grow.” nitrogen gas because...\nFact: Plants cannot use nitrogen gas! The triple apa oy get our\n, bond in N, is too strong. They completely rely on gen by...\nbacteria to “fix” it into soluble nitrates so they\nASS can absorb it through their roots.",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "76a22c8e32614cfc4ebfa6cd7b11b0257cdab3cb7c20d4803f0586ebc0ac48b1",
+        "transcript": "Stop & Think: Checking Our Logic Cay\n| _y@y. Diagnostic Hinge Question: Active x BA\n® If a farmer's field becomes severely flooded and waterlogged :\nfor a month, what will happen to the nitrate levels in the soil? Pair-and-Share\nO A) Increase (due to extra water for fixation) Prompt\n© B) Decrease (due to anaerobic denitrifying bacteria) Challenge: :\nO C) Stay the exact same Why can’t humans just\n[Teacher cue: Correct answer is B] sl ad or,\n———————— pubescent muscles?\nMisconception Buster! \"& | || Response Stem:\nMyth: “Plants breathe in nitrogen gas from the ~ “Humans cannot use\nair through their leaves to grow.” nitrogen gas because...\nFact: Plants cannot use nitrogen gas! The triple apa oy get our\n, bond in N, is too strong. They completely rely on gen by...\nbacteria to “fix” it into soluble nitrates so they\nASS can absorb it through their roots.",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "what will happen to the nitrate levels in the soil?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          },
+          {
+            "id": "ocr_question_2",
+            "question": "Why can’t humans just [Teacher cue: Correct answer is B] sl ad or, ———————— pubescent muscles?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 2
+      },
+      "agentAnalysis": {
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "local-ocr-fallback",
+        "status": "Question and answer targets are ready for reveal."
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 86,
+        "timeGuideDisplay": "73–99s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 2142,
+          "readingMs": 61050,
+          "semanticProcessingMs": 22600,
+          "wordCount": 189,
+          "visualElementsCount": 6
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 5,
+        "detectionSource": "manifest-cells"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_question_base_overlay",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Prepare the unanswered question",
+          "strategy": "question-base-overlay",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Stop & Think: Checking Our Logic\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 1 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Stop & Think: Checking Our Logic\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_08.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "serialAnimation": {
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: If a farmer's field becomes severely flooded and waterlogged for a month, what will happen to the nitrate levels in the soil?",
+            "componentIds": [
+              "reveal_8_cell_1"
+            ],
+            "targetBounds": {
+              "x": 11,
+              "y": 49.5,
+              "w": 31,
+              "h": 5.5
+            },
+            "revealType": "answer-overlay"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "question-base-overlay",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 10,
@@ -254,7 +1369,120 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_09.png",
       "sourceMediaPath": "ppt/media/image7.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Concept Mapping Game: Match the Microbe\nWorking in pairs, use the logic of the nitrogen cycle to fill in the missing bacterial\nworkforce and end-products in this biochemical factory table.\n— nen\nStarting Material The “Worker” End Product\nNitrogen Fixation | Atmospheric Nitrogen (N.) ( [1] } Soluble Nitrates\n[90:00] It\n| i oe oo\nGp Denitrification Soil Nitrates Denitrifying Bacteria ty,\nSS EE\no| Answer Bank / Reveal Tray (>)|>\nfi Model Answers: i Gi Ci by\n1. Worker: Nitrogen-fixing 2. End Product: 3. Worker: 4. End Product: Nitrogen Gas\n—— | bacteria (or Lightning) Ammonia Nitrifying bacteria (Nz) released to atmosphere I —",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "c53631558bd66850965008a3fa207d7f0a09a0d714f9051fb5a22324d1b0129a",
+        "transcript": "Concept Mapping Game: Match the Microbe\nWorking in pairs, use the logic of the nitrogen cycle to fill in the missing bacterial\nworkforce and end-products in this biochemical factory table.\n— nen\nStarting Material The “Worker” End Product\nNitrogen Fixation | Atmospheric Nitrogen (N.) ( [1] } Soluble Nitrates\n[90:00] It\n| i oe oo\nGp Denitrification Soil Nitrates Denitrifying Bacteria ty,\nSS EE\no| Answer Bank / Reveal Tray (>)|>\nfi Model Answers: i Gi Ci by\n1. Worker: Nitrogen-fixing 2. End Product: 3. Worker: 4. End Product: Nitrogen Gas\n—— | bacteria (or Lightning) Ammonia Nitrifying bacteria (Nz) released to atmosphere I —",
+        "role": "data",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 54,
+        "timeGuideDisplay": "45–63s",
+        "vciScore": "7.1",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 36900,
+          "semanticProcessingMs": 15600,
+          "wordCount": 111,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_10_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Concept Mapping Game: Match the Microbe\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Concept Mapping Game: Match the Microbe\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Concept Mapping Game: Match the Microbe. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_10_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Concept Mapping Game: Match the Microbe\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Concept Mapping Game: Match the Microbe\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Concept Mapping Game: Match the Microbe. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_09.png"
+        },
+        {
+          "id": "gemini_slide_10_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Concept Mapping Game: Match the Microbe\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Concept Mapping Game: Match the Microbe\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Concept Mapping Game: Match the Microbe. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_09.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     },
     {
       "number": 11,
@@ -263,7 +1491,134 @@
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_10.png",
       "sourceMediaPath": "ppt/media/image8.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "text": "Lesson Consolidation & Exit Ticket\n3 High-Impact Takeaways:\n_——— SS ra |\n(7) \\, 1. Bacteria run the cycle: The nitrogen 98) i 3. Farming requires management: Humans\n| 1 ) cycle is entirely dependent on microscopic | 3 manipulate this cycle using crop rotation ue |\n[ engines: Fixers, Nitrifiers, and Denitrifiers. St plants on legumes and fertitein food piats.\naa\n\\ 2. Nitrates are the goal: Nitrogen must } ec\n| 72 be converted into nitrates in the soil before | Rapid Exit-Ticket (Answer before you leave):\nb plants can absorb it for protein synthesis. “A}*= ; 1\nNN Ses ; Q1: What specific type of bacteria lives '\n‘ ' inside the root nodules of clover i y\nOT 4 and beans? ! ¢\n3. Farming requires management: Humans r |\n|| | 4} manipulate this cycle using crop rotation 209 | { | G2: Name one negative environmental Hy Sit\n| (relying on legumes) and fertilisers to 1 consequence of overusing artificial er:\nMp, c maintain soil fertility and maximize food yields. Ct fertilisers. | SARS",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "local-ocr-fallback",
+        "sourceHash": "918aef196d2ab4f64a3e1305e59c6ac9b17ba4c73c2ada938136ebe25159b600",
+        "transcript": "Lesson Consolidation & Exit Ticket\n3 High-Impact Takeaways:\n_——— SS ra |\n(7) \\, 1. Bacteria run the cycle: The nitrogen 98) i 3. Farming requires management: Humans\n| 1 ) cycle is entirely dependent on microscopic | 3 manipulate this cycle using crop rotation ue |\n[ engines: Fixers, Nitrifiers, and Denitrifiers. St plants on legumes and fertitein food piats.\naa\n\\ 2. Nitrates are the goal: Nitrogen must } ec\n| 72 be converted into nitrates in the soil before | Rapid Exit-Ticket (Answer before you leave):\nb plants can absorb it for protein synthesis. “A}*= ; 1\nNN Ses ; Q1: What specific type of bacteria lives '\n‘ ' inside the root nodules of clover i y\nOT 4 and beans? ! ¢\n3. Farming requires management: Humans r |\n|| | 4} manipulate this cycle using crop rotation 209 | { | G2: Name one negative environmental Hy Sit\n| (relying on legumes) and fertilisers to 1 consequence of overusing artificial er:\nMp, c maintain soil fertility and maximize food yields. Ct fertilisers. | SARS",
+        "role": "learner-question",
+        "questions": [
+          {
+            "id": "ocr_question_1",
+            "question": "is. “A}*= ; 1 NN Ses ; Q1: What specific type of bacteria lives ' ‘ ' inside the root nodules of clover i y OT 4 and beans?",
+            "confidence": "candidate",
+            "status": "needs-gemini-bounds-or-review"
+          }
+        ],
+        "questionCount": 1
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 90,
+        "timeGuideDisplay": "76–104s",
+        "vciScore": "9.7",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 61200,
+          "semanticProcessingMs": 27200,
+          "wordCount": 185,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "local-ocr-fallback"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_11_1_process",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Reveal inputs and the first stage",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"Lesson Consolidation & Exit Ticket\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Lesson Consolidation & Exit Ticket\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Lesson Consolidation & Exit Ticket. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_11_2_process",
+          "order": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 2: Add the remaining pathway",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"Lesson Consolidation & Exit Ticket\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Lesson Consolidation & Exit Ticket\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Lesson Consolidation & Exit Ticket. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_10.png"
+        },
+        {
+          "id": "gemini_slide_11_3_process",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Add the process insight",
+          "strategy": "process",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"Lesson Consolidation & Exit Ticket\".\nDeck context: 4. Nitrogen Cycle.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Lesson Consolidation & Exit Ticket\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Lesson Consolidation & Exit Ticket. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/slides/slide_10.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "process",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 3,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
     }
-  ]
+  ],
+  "agent": {
+    "defaultPathway": "gemini-image-chat",
+    "selectedPathway": "gemini-image-chat",
+    "imageChatProvider": "Google Gemini",
+    "offlineFallback": "local-grid-segmentation",
+    "updatedAt": "2026-09-16T00:20:34.315Z"
+  }
 }
