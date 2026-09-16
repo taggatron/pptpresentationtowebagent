@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Nitrogen Cycle: Step-by-Step Handout & Interactive Matcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --scale: 1;
+      --bg-dark: #0f172a;
+      --bg-panel: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --primary-light: #e0f2fe;
+      --emerald: #10b981;
+      --emerald-light: #ecfdf5;
+      --amber: #f59e0b;
+      --amber-light: #fef3c7;
+      --purple: #8b5cf6;
+      --purple-light: #f3e8ff;
+      --rose: #f43f5e;
+      --shadow-sm: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.06);
+      --shadow-md: 0 calc(4px * var(--scale)) calc(12px * var(--scale)) rgba(0,0,0,0.08);
+      --shadow-lg: 0 calc(8px * var(--scale)) calc(24px * var(--scale)) rgba(0,0,0,0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .app-root {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-dark);
+      position: relative;
+    }
+
+    /* Top Navigation & Control Header */
+    .top-bar {
+      height: calc(54px * var(--scale));
+      min-height: calc(54px * var(--scale));
+      background: #ffffff;
+      border-bottom: calc(1.5px * var(--scale)) solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 calc(16px * var(--scale));
+      box-shadow: var(--shadow-sm);
+      z-index: 50;
+      gap: calc(12px * var(--scale));
+    }
+
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: calc(10px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .badge-handout {
+      background: #eff6ff;
+      border: calc(1px * var(--scale)) solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: calc(6px * var(--scale));
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
+    }
+
+    .slide-heading {
+      font-size: calc(14.5px * var(--scale));
+      font-weight: 700;
+      color: #1e293b;
+      white-space: nowrap;
+    }
+
+    /* Segmented Mode Switcher */
+    .mode-switcher {
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      padding: calc(3px * var(--scale));
+      border-radius: calc(10px * var(--scale));
+      border: calc(1px * var(--scale)) solid #e2e8f0;
+      gap: calc(3px * var(--scale));
+    }
+
+    .mode-btn {
+      border: none;
+      background: transparent;
+      padding: calc(6px * var(--scale)) calc(12px * var(--scale));
+      border-radius: calc(7px * var(--scale));
+      font-size: calc(12px * var(--scale));
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .mode-btn:hover {
+      color: var(--text-main);
+    }
+
+    .mode-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.1);
+      font-weight: 700;
+    }
+
+    /* Action Buttons */
+    .actions-group {
+      display: flex;
+      align-items: center;
+      gap: calc(8px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .btn-action {
+      border: calc(1px * var(--scale)) solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      padding: calc(6px * var(--scale)) calc(12px * var(--scale));
+      border-radius: calc(7px * var(--scale));
+      font-size: calc(12px * var(--scale));
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: calc(5px * var(--scale));
+      transition: all 0.15s ease;
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .btn-action:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      color: #0f172a;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      color: #ffffff;
+    }
+
+    /* Main Display Area */
+    .main-viewport {
+      flex: 1;
+      width: 100%;
+      height: calc(100vh - 54px * var(--scale));
+      overflow: hidden;
+      position: relative;
+      display: flex;
+    }
+
+    /* =========================================
+       VIEW 1: INTERACTIVE MATCHING WORKSPACE
+       ========================================= */
+    .view-matcher {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: #090d16;
+      position: absolute;
+      inset: 0;
+      padding: calc(12px * var(--scale)) calc(18px * var(--scale));
+      gap: calc(10px * var(--scale));
+      z-index: 10;
+    }
+
+    /* Matcher Subheader */
+    .matcher-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: calc(8px * var(--scale));
+      padding: calc(8px * var(--scale)) calc(14px * var(--scale));
+      backdrop-filter: blur(8px);
+    }
+
+    .matcher-instruction {
+      font-size: calc(13px * var(--scale));
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: calc(8px * var(--scale));
+    }
+
+    .matcher-instruction strong {
+      color: #38bdf8;
+    }
+
+    .matcher-stats {
+      display: flex;
+      align-items: center;
+      gap: calc(12px * var(--scale));
+    }
+
+    .score-badge {
+      background: rgba(2, 132, 199, 0.25);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      padding: calc(4px * var(--scale)) calc(10px * var(--scale));
+      border-radius: calc(6px * var(--scale));
+      font-size: calc(12px * var(--scale));
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: calc(5px * var(--scale));
+    }
+
+    .matcher-ctrl-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f1f5f9;
+      padding: calc(5px * var(--scale)) calc(11px * var(--scale));
+      border-radius: calc(6px * var(--scale));
+      font-size: calc(11.5px * var(--scale));
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .matcher-ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .matcher-ctrl-btn.btn-check {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+
+    .matcher-ctrl-btn.btn-check:hover {
+      background: #0369a1;
+    }
+
+    /* Diagram Interactive Canvas */
+    .diagram-stage {
+      flex: 1;
+      position: relative;
+      background: #000000;
+      border-radius: calc(10px * var(--scale));
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .diagram-canvas {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: calc((100vh - 240px * var(--scale)) * (1024 / 558));
+      aspect-ratio: 1024 / 558;
+    }
+
+    .stage-diagram-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* Interactive Drop Target Zones */
+    .drop-zone {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      min-width: calc(150px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(10px * var(--scale));
+      background: rgba(15, 23, 42, 0.9);
+      border: calc(2px * var(--scale)) dashed #38bdf8;
+      border-radius: calc(8px * var(--scale));
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: calc(4px * var(--scale));
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(6px);
+      z-index: 20;
+    }
+
+    .drop-zone:hover, .drop-zone.drag-hover {
+      border-color: #67e8f9;
+      background: rgba(2, 132, 199, 0.3);
+      box-shadow: 0 0 calc(20px * var(--scale)) rgba(56, 189, 248, 0.6);
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+
+    .drop-zone.active-target {
+      border-color: #facc15;
+      background: rgba(234, 179, 8, 0.25);
+      animation: pulse-border 1.2s infinite alternate;
+    }
+
+    @keyframes pulse-border {
+      from { box-shadow: 0 0 calc(6px * var(--scale)) rgba(250, 204, 21, 0.4); }
+      to { box-shadow: 0 0 calc(22px * var(--scale)) rgba(250, 204, 21, 0.9); }
+    }
+
+    .drop-zone-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: calc(6px * var(--scale));
+    }
+
+    .zone-badge {
+      width: calc(22px * var(--scale));
+      height: calc(22px * var(--scale));
+      border-radius: 50%;
+      background: #0284c7;
+      color: #ffffff;
+      font-size: calc(11px * var(--scale));
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zone-title {
+      font-size: calc(10.5px * var(--scale));
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.15;
+    }
+
+    .zone-hint {
+      font-size: calc(9px * var(--scale));
+      color: #94a3b8;
+    }
+
+    .zone-content-slot {
+      min-height: calc(24px * var(--scale));
+      background: rgba(255, 255, 255, 0.05);
+      border: calc(1px * var(--scale)) dashed rgba(255, 255, 255, 0.2);
+      border-radius: calc(5px * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(2px * var(--scale)) calc(6px * var(--scale));
+      font-size: calc(10px * var(--scale));
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .zone-content-slot.filled {
+      background: #ffffff;
+      border: calc(1.5px * var(--scale)) solid #10b981;
+      color: #0f172a;
+      font-style: normal;
+      font-weight: 700;
+      justify-content: space-between;
+      box-shadow: 0 calc(2px * var(--scale)) calc(6px * var(--scale)) rgba(0,0,0,0.15);
+    }
+
+    .btn-remove-match {
+      background: #fee2e2;
+      border: none;
+      color: #dc2626;
+      width: calc(18px * var(--scale));
+      height: calc(18px * var(--scale));
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(10px * var(--scale));
+      font-weight: 800;
+      line-height: 1;
+      margin-left: calc(4px * var(--scale));
+    }
+
+    .btn-remove-match:hover {
+      background: #fca5a5;
+    }
+
+    /* Target Positions on the 1024x558 Canvas */
+    .zone-1 { top: 35%; left: 21%; }
+    .zone-2 { top: 22%; left: 61%; }
+    .zone-3 { top: 58%; left: 74%; }
+    .zone-4 { top: 82%; left: 86%; }
+
+    /* Matcher Cards Dock (Bottom) */
+    .matcher-dock {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: calc(10px * var(--scale));
+      max-height: calc(135px * var(--scale));
+      min-height: calc(115px * var(--scale));
+    }
+
+    .interactive-card {
+      background: #ffffff;
+      border: calc(1.5px * var(--scale)) solid #cbd5e1;
+      border-radius: calc(8px * var(--scale));
+      padding: calc(8px * var(--scale)) calc(10px * var(--scale));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: grab;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 calc(2px * var(--scale)) calc(6px * var(--scale)) rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .interactive-card:active {
+      cursor: grabbing;
+    }
+
+    .interactive-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(calc(-3px * var(--scale)));
+      box-shadow: 0 calc(6px * var(--scale)) calc(16px * var(--scale)) rgba(0,0,0,0.15);
+    }
+
+    .interactive-card.selected {
+      border-color: #f59e0b;
+      background: #fffbeb;
+      box-shadow: 0 0 calc(14px * var(--scale)) rgba(245, 158, 11, 0.4);
+      transform: translateY(calc(-4px * var(--scale)));
+    }
+
+    .interactive-card.placed {
+      opacity: 0.45;
+      filter: grayscale(0.7);
+      cursor: default;
+      pointer-events: auto;
+      border-style: dashed;
+    }
+
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: calc(4px * var(--scale));
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: calc(3px * var(--scale));
+    }
+
+    .card-id-badge {
+      width: calc(20px * var(--scale));
+      height: calc(20px * var(--scale));
+      border-radius: calc(4px * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(10px * var(--scale));
+      font-weight: 800;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .card-a-badge { background: #3b82f6; }
+    .card-b-badge { background: #10b981; }
+    .card-c-badge { background: #f59e0b; }
+    .card-d-badge { background: #8b5cf6; }
+
+    .card-heading {
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      color: #0f172a;
+      flex: 1;
+      margin-left: calc(6px * var(--scale));
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-drag-hint {
+      font-size: calc(9px * var(--scale));
+      color: #0284c7;
+      font-weight: 600;
+    }
+
+    .card-bullets {
+      font-size: calc(9.2px * var(--scale));
+      line-height: 1.3;
+      color: #334155;
+      padding-left: calc(12px * var(--scale));
+      margin: 0;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    .card-bullets li {
+      margin-bottom: calc(2px * var(--scale));
+    }
+
+    /* Celebration Modal */
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .celebration-box {
+      background: #ffffff;
+      border-radius: calc(14px * var(--scale));
+      padding: calc(24px * var(--scale)) calc(32px * var(--scale));
+      text-align: center;
+      max-width: calc(420px * var(--scale));
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      transform: scale(0.9);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.active .celebration-box {
+      transform: scale(1);
+    }
+
+    .celebration-icon {
+      font-size: calc(48px * var(--scale));
+      margin-bottom: calc(10px * var(--scale));
+    }
+
+    .celebration-title {
+      font-size: calc(20px * var(--scale));
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: calc(6px * var(--scale));
+    }
+
+    .celebration-text {
+      font-size: calc(13px * var(--scale));
+      color: #475569;
+      line-height: 1.4;
+      margin-bottom: calc(18px * var(--scale));
+    }
+
+    .celebration-buttons {
+      display: flex;
+      gap: calc(10px * var(--scale));
+      justify-content: center;
+    }
+
+    /* =========================================
+       VIEW 2, 3, 4: SHEET PREVIEW MODES
+       ========================================= */
+    .sheet-viewer {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      background: #0b1120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: calc(16px * var(--scale));
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .sheet-viewer.active {
+      display: flex;
+    }
+
+    .sheet-container {
+      max-height: 96%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      border-radius: calc(6px * var(--scale));
+      overflow: hidden;
+      background: #ffffff;
+      transition: transform 0.2s ease;
+    }
+
+    .sheet-img {
+      max-height: calc(100vh - 86px * var(--scale));
+      width: auto;
+      display: block;
+    }
+
+    /* Split View Container */
+    .split-container {
+      display: flex;
+      gap: calc(20px * var(--scale));
+      height: 96%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .split-container .sheet-container {
+      height: 100%;
+    }
+
+    .split-container .sheet-img {
+      max-height: 100%;
+      width: auto;
+    }
+
+    /* =========================================
+       PRINT STYLES FOR CRISP A4 OUTPUT
+       ========================================= */
+    @media print {
+      body, html {
+        background: #ffffff !important;
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      .top-bar, .matcher-header, .matcher-dock, .modal-overlay {
+        display: none !important;
+      }
+
+      .app-root {
+        display: block !important;
+        height: auto !important;
+        background: transparent !important;
+      }
+
+      .main-viewport {
+        display: block !important;
+        height: auto !important;
+      }
+
+      .view-matcher {
+        display: none !important;
+      }
+
+      .sheet-viewer {
+        display: block !important;
+        position: static !important;
+        background: transparent !important;
+        padding: 0 !important;
+      }
+
+      .sheet-container {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        page-break-after: always;
+      }
+
+      .sheet-img {
+        width: 100% !important;
+        max-height: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-root" id="appRoot">
+    <!-- Top Navigation & Control Bar -->
+    <header class="top-bar">
+      <div class="title-group">
+        <span class="badge-handout">📄 Student Handout</span>
+        <h2 class="slide-heading">The Nitrogen Cycle: Step-by-Step Mechanism</h2>
+      </div>
+
+      <!-- Segmented Mode Switcher -->
+      <nav class="mode-switcher" role="tablist" aria-label="Handout Views">
+        <button id="btnModeMatcher" class="mode-btn active" role="tab" aria-selected="true" title="Interactive Diagram Matcher">
+          <span>🎯 Interactive Matcher</span>
+        </button>
+        <button id="btnModeHandout" class="mode-btn" role="tab" aria-selected="false" title="View Printable Student Handout">
+          <span>📄 Student Handout</span>
+        </button>
+        <button id="btnModeAnswers" class="mode-btn" role="tab" aria-selected="false" title="View Teacher Mark Scheme">
+          <span>🎓 Teacher Key</span>
+        </button>
+        <button id="btnModeSplit" class="mode-btn" role="tab" aria-selected="false" title="View Handout & Key Side-by-Side">
+          <span>⚖️ Split View</span>
+        </button>
+      </nav>
+
+      <!-- Action Buttons: Print & Download -->
+      <div class="actions-group">
+        <button id="btnPrint" class="btn-action" title="Print Handout or Answer Key">
+          <span>🖨️ Print</span>
+        </button>
+        <a id="btnDownload" class="btn-action btn-primary" href="/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/assets/handouts/nitrogen_cycle_mechanism_handout.pdf" target="_blank" download="nitrogen_cycle_mechanism_handout.pdf" title="Download Printable A4 PDF">
+          <span>⬇️ Download PDF</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Viewport -->
+    <main class="main-viewport" id="mainViewport">
+
+      <!-- ==================== VIEW 1: INTERACTIVE MATCHER ==================== -->
+      <div class="view-matcher" id="viewMatcher">
+        <!-- Matcher Subheader -->
+        <div class="matcher-header">
+          <div class="matcher-instruction">
+            <span>🎯 <strong>Task:</strong> Match each simplified Mechanism Card below to its correct numbered target zone (<strong>[1]</strong>, <strong>[2]</strong>, <strong>[3]</strong>, or <strong>[4]</strong>) on the Gemini diagram. Drag a card or click a card then click a target.</span>
+          </div>
+          <div class="matcher-stats">
+            <div class="score-badge" id="scoreDisplay">
+              <span>Score:</span> <strong id="scoreCount">0 / 4</strong>
+            </div>
+            <button class="matcher-ctrl-btn" id="btnHint" title="Show helpful hint">
+              <span>💡 Hint</span>
+            </button>
+            <button class="matcher-ctrl-btn" id="btnReset" title="Reset all placements">
+              <span>↺ Reset</span>
+            </button>
+            <button class="matcher-ctrl-btn" id="btnReveal" title="Reveal teacher solution">
+              <span>👁️ Reveal Key</span>
+            </button>
+            <button class="matcher-ctrl-btn btn-check" id="btnCheckAnswers" title="Check your matches">
+              <span>✓ Check Answers</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Diagram Stage with Overlaid Targets -->
+        <div class="diagram-stage">
+          <div class="diagram-canvas">
+            <img class="stage-diagram-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/assets/handouts/gemini_nitrogen_cycle_diagram.jpg" alt="Gemini Nitrogen Cycle Diagram" />
+
+            <!-- Target Zone 1: Fixation (Air to Soil) -->
+            <div class="drop-zone zone-1" data-target="1" data-correct="A" tabindex="0" role="button" aria-label="Target Zone 1: Air to Soil">
+              <div class="drop-zone-header">
+                <span class="zone-badge">1</span>
+                <div>
+                  <div class="zone-title">Air to Soil</div>
+                  <div class="zone-hint">Lightning & Root Nodules</div>
+                </div>
+              </div>
+              <div class="zone-content-slot" id="slot-1">Empty Slot (Drop Card)</div>
+            </div>
+
+            <!-- Target Zone 2: Assimilation & Feeding (Soil to Life) -->
+            <div class="drop-zone zone-2" data-target="2" data-correct="B" tabindex="0" role="button" aria-label="Target Zone 2: Soil to Life">
+              <div class="drop-zone-header">
+                <span class="zone-badge">2</span>
+                <div>
+                  <div class="zone-title">Soil to Life</div>
+                  <div class="zone-hint">Crops & Cow Feeding</div>
+                </div>
+              </div>
+              <div class="zone-content-slot" id="slot-2">Empty Slot (Drop Card)</div>
+            </div>
+
+            <!-- Target Zone 3: Decomposition (Death to Ammonia) -->
+            <div class="drop-zone zone-3" data-target="3" data-correct="C" tabindex="0" role="button" aria-label="Target Zone 3: Death to Ammonia">
+              <div class="drop-zone-header">
+                <span class="zone-badge">3</span>
+                <div>
+                  <div class="zone-title">Death to Ammonia</div>
+                  <div class="zone-hint">Waste & Decomposers</div>
+                </div>
+              </div>
+              <div class="zone-content-slot" id="slot-3">Empty Slot (Drop Card)</div>
+            </div>
+
+            <!-- Target Zone 4: Nitrification & Denitrification (Recycling & Loss) -->
+            <div class="drop-zone zone-4" data-target="4" data-correct="D" tabindex="0" role="button" aria-label="Target Zone 4: Recycling and Loss">
+              <div class="drop-zone-header">
+                <span class="zone-badge">4</span>
+                <div>
+                  <div class="zone-title">Recycling & Loss</div>
+                  <div class="zone-hint">Nitrifying & Denitrifying</div>
+                </div>
+              </div>
+              <div class="zone-content-slot" id="slot-4">Empty Slot (Drop Card)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matcher Cards Dock (4 Cards from Slide 7) -->
+        <div class="matcher-dock" id="cardsDock">
+          <!-- Card A -->
+          <div class="interactive-card" id="card-A" data-card="A" draggable="true" tabindex="0" role="button" aria-label="Card A: Fixation">
+            <div class="card-top-row">
+              <span class="card-id-badge card-a-badge">A</span>
+              <span class="card-heading">Fixation (Air to Soil)</span>
+              <span class="card-drag-hint">Drag / Click</span>
+            </div>
+            <ul class="card-bullets">
+              <li><strong>Bacteria:</strong> In root nodules & soil; turn N₂ gas into nitrates.</li>
+              <li><strong>Lightning:</strong> High energy forces N₂ to react with O₂ to form nitrates.</li>
+            </ul>
+          </div>
+
+          <!-- Card B -->
+          <div class="interactive-card" id="card-B" data-card="B" draggable="true" tabindex="0" role="button" aria-label="Card B: Assimilation and Feeding">
+            <div class="card-top-row">
+              <span class="card-id-badge card-b-badge">B</span>
+              <span class="card-heading">Assimilation & Feeding</span>
+              <span class="card-drag-hint">Drag / Click</span>
+            </div>
+            <ul class="card-bullets">
+              <li><strong>Plant Uptake:</strong> Roots absorb nitrates from soil to build proteins.</li>
+              <li><strong>Feeding:</strong> Animals eat plants to absorb nitrogen for animal proteins.</li>
+            </ul>
+          </div>
+
+          <!-- Card C -->
+          <div class="interactive-card" id="card-C" data-card="C" draggable="true" tabindex="0" role="button" aria-label="Card C: Decomposition">
+            <div class="card-top-row">
+              <span class="card-id-badge card-c-badge">C</span>
+              <span class="card-heading">Decomposition</span>
+              <span class="card-drag-hint">Drag / Click</span>
+            </div>
+            <ul class="card-bullets">
+              <li><strong>Waste & Mortality:</strong> Plants & animals die; animals excrete urea.</li>
+              <li><strong>Decomposers:</strong> Fungi & bacteria break down proteins into ammonia.</li>
+            </ul>
+          </div>
+
+          <!-- Card D -->
+          <div class="interactive-card" id="card-D" data-card="D" draggable="true" tabindex="0" role="button" aria-label="Card D: Nitrification and Denitrification">
+            <div class="card-top-row">
+              <span class="card-id-badge card-d-badge">D</span>
+              <span class="card-heading">Nitrification & Denitrification</span>
+              <span class="card-drag-hint">Drag / Click</span>
+            </div>
+            <ul class="card-bullets">
+              <li><strong>Nitrification:</strong> Nitrifying bacteria turn ammonia → nitrites → nitrates.</li>
+              <li><strong>Denitrification:</strong> Bacteria in waterlogged soil return nitrates as N₂ gas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== VIEW 2: STUDENT HANDOUT ==================== -->
+      <div class="sheet-viewer" id="viewHandout">
+        <div class="sheet-container">
+          <img class="sheet-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/assets/handouts/page-1.png" alt="Student Handout Page 1 Printable Worksheet" />
+        </div>
+      </div>
+
+      <!-- ==================== VIEW 3: TEACHER KEY ==================== -->
+      <div class="sheet-viewer" id="viewAnswers">
+        <div class="sheet-container">
+          <img class="sheet-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/assets/handouts/page-2.png" alt="Teacher Answer Key & Mark Scheme Page 2" />
+        </div>
+      </div>
+
+      <!-- ==================== VIEW 4: SPLIT VIEW ==================== -->
+      <div class="sheet-viewer" id="viewSplit">
+        <div class="split-container">
+          <div class="sheet-container">
+            <img class="sheet-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/assets/handouts/page-1.png" alt="Student Handout Worksheet" />
+          </div>
+          <div class="sheet-container">
+            <img class="sheet-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_04_Nitrogen_Cycle/assets/handouts/page-2.png" alt="Teacher Mark Scheme Key" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Celebration Modal -->
+      <div class="modal-overlay" id="celebrationModal">
+        <div class="celebration-box">
+          <div class="celebration-icon">🎉</div>
+          <h3 class="celebration-title">Outstanding Work!</h3>
+          <p class="celebration-text">You have correctly matched all 4 stages of the Nitrogen Cycle! You scored <strong>4 / 4 Marks</strong>.</p>
+          <div class="celebration-buttons">
+            <button class="btn-action btn-primary" id="btnModalClose">Continue</button>
+            <button class="btn-action" id="btnModalTeacherKey">View Teacher Key</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // State
+    const cardData = {
+      'A': { label: 'Card A: Fixation', correctTarget: '1' },
+      'B': { label: 'Card B: Assimilation', correctTarget: '2' },
+      'C': { label: 'Card C: Decomposition', correctTarget: '3' },
+      'D': { label: 'Card D: Nitrification & Denitrification', correctTarget: '4' }
+    };
+
+    let placements = { '1': null, '2': null, '3': null, '4': null };
+    let selectedCard = null;
+    let currentMode = 'matcher'; // 'matcher' | 'handout' | 'answers' | 'split'
+
+    // DOM Elements
+    const btnModeMatcher = document.getElementById('btnModeMatcher');
+    const btnModeHandout = document.getElementById('btnModeHandout');
+    const btnModeAnswers = document.getElementById('btnModeAnswers');
+    const btnModeSplit = document.getElementById('btnModeSplit');
+    const btnPrint = document.getElementById('btnPrint');
+
+    const viewMatcher = document.getElementById('viewMatcher');
+    const viewHandout = document.getElementById('viewHandout');
+    const viewAnswers = document.getElementById('viewAnswers');
+    const viewSplit = document.getElementById('viewSplit');
+
+    const cards = document.querySelectorAll('.interactive-card');
+    const dropZones = document.querySelectorAll('.drop-zone');
+    const scoreCount = document.getElementById('scoreCount');
+    const btnReset = document.getElementById('btnReset');
+    const btnReveal = document.getElementById('btnReveal');
+    const btnCheckAnswers = document.getElementById('btnCheckAnswers');
+    const btnHint = document.getElementById('btnHint');
+    const celebrationModal = document.getElementById('celebrationModal');
+    const btnModalClose = document.getElementById('btnModalClose');
+    const btnModalTeacherKey = document.getElementById('btnModalTeacherKey');
+
+    // Dynamic Scale Factor Calculation
+    function updateScale() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const scaleW = w / 1280;
+      const scaleH = h / 720;
+      const scale = Math.min(scaleW, scaleH, 1.4);
+      document.documentElement.style.setProperty('--scale', Math.max(0.75, scale));
+    }
+    window.addEventListener('resize', updateScale);
+    updateScale();
+
+    // Mode Switching
+    function setMode(mode) {
+      currentMode = mode;
+      btnModeMatcher.classList.toggle('active', mode === 'matcher');
+      btnModeHandout.classList.toggle('active', mode === 'handout');
+      btnModeAnswers.classList.toggle('active', mode === 'answers');
+      btnModeSplit.classList.toggle('active', mode === 'split');
+
+      btnModeMatcher.setAttribute('aria-selected', String(mode === 'matcher'));
+      btnModeHandout.setAttribute('aria-selected', String(mode === 'handout'));
+      btnModeAnswers.setAttribute('aria-selected', String(mode === 'answers'));
+      btnModeSplit.setAttribute('aria-selected', String(mode === 'split'));
+
+      viewMatcher.style.display = mode === 'matcher' ? 'flex' : 'none';
+      viewHandout.classList.toggle('active', mode === 'handout');
+      viewAnswers.classList.toggle('active', mode === 'answers');
+      viewSplit.classList.toggle('active', mode === 'split');
+    }
+
+    btnModeMatcher.addEventListener('click', () => setMode('matcher'));
+    btnModeHandout.addEventListener('click', () => setMode('handout'));
+    btnModeAnswers.addEventListener('click', () => setMode('answers'));
+    btnModeSplit.addEventListener('click', () => setMode('split'));
+
+    // Print Handling
+    btnPrint.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Keyboard navigation shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '1') setMode('matcher');
+      if (e.key === '2') setMode('handout');
+      if (e.key === '3') setMode('answers');
+      if (e.key === '4') setMode('split');
+    });
+
+    // Matcher Drag & Drop & Click-to-Place Logic
+    function refreshPlacements() {
+      let correctCount = 0;
+      let placedCount = 0;
+
+      for (let target = 1; target <= 4; target++) {
+        const slotEl = document.getElementById(`slot-${target}`);
+        const cardId = placements[target];
+        if (cardId) {
+          placedCount++;
+          const isCorrect = (cardId === dropZones[target - 1].dataset.correct);
+          if (isCorrect) correctCount++;
+
+          slotEl.className = 'zone-content-slot filled';
+          slotEl.innerHTML = `
+            <span>${cardData[cardId].label}</span>
+            <button class="btn-remove-match" title="Remove" onclick="removePlacement('${target}', event)">✕</button>
+          `;
+        } else {
+          slotEl.className = 'zone-content-slot';
+          slotEl.innerHTML = `Empty Slot (Drop Card)`;
+        }
+      }
+
+      // Update Cards in Dock
+      cards.forEach(card => {
+        const id = card.dataset.card;
+        const isPlaced = Object.values(placements).includes(id);
+        card.classList.toggle('placed', isPlaced);
+        if (isPlaced && selectedCard === id) {
+          selectedCard = null;
+          card.classList.remove('selected');
+        }
+      });
+
+      // Update Drop Zones active target state
+      dropZones.forEach(zone => {
+        zone.classList.toggle('active-target', Boolean(selectedCard));
+      });
+
+      scoreCount.textContent = `${correctCount} / 4`;
+
+      if (placedCount === 4 && correctCount === 4) {
+        setTimeout(() => {
+          celebrationModal.classList.add('active');
+        }, 300);
+      }
+    }
+
+    window.removePlacement = function(target, event) {
+      if (event) event.stopPropagation();
+      placements[target] = null;
+      refreshPlacements();
+    };
+
+    function placeCardOnTarget(cardId, targetNum) {
+      // If card already placed elsewhere, clear it
+      for (const [t, c] of Object.entries(placements)) {
+        if (c === cardId) placements[t] = null;
+      }
+      placements[targetNum] = cardId;
+      selectedCard = null;
+      cards.forEach(c => c.classList.remove('selected'));
+      refreshPlacements();
+    }
+
+    // Card Event Listeners (Click & Drag)
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.card;
+        if (Object.values(placements).includes(id)) {
+          // Card already placed, find where and unplace it
+          for (const [t, c] of Object.entries(placements)) {
+            if (c === id) placements[t] = null;
+          }
+          selectedCard = id;
+          card.classList.add('selected');
+          refreshPlacements();
+          return;
+        }
+
+        if (selectedCard === id) {
+          selectedCard = null;
+          card.classList.remove('selected');
+        } else {
+          selectedCard = id;
+          cards.forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+        }
+        refreshPlacements();
+      });
+
+      card.addEventListener('dragstart', (e) => {
+        selectedCard = card.dataset.card;
+        e.dataTransfer.setData('text/plain', card.dataset.card);
+        e.dataTransfer.effectAllowed = 'move';
+      });
+    });
+
+    // Drop Zone Event Listeners (Click & Drop)
+    dropZones.forEach(zone => {
+      const targetNum = zone.dataset.target;
+
+      zone.addEventListener('click', () => {
+        if (selectedCard) {
+          placeCardOnTarget(selectedCard, targetNum);
+        }
+      });
+
+      zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        zone.classList.add('drag-hover');
+        e.dataTransfer.dropEffect = 'move';
+      });
+
+      zone.addEventListener('dragleave', () => {
+        zone.classList.remove('drag-hover');
+      });
+
+      zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('drag-hover');
+        const cardId = e.dataTransfer.getData('text/plain') || selectedCard;
+        if (cardId) {
+          placeCardOnTarget(cardId, targetNum);
+        }
+      });
+    });
+
+    // Control Buttons
+    btnReset.addEventListener('click', () => {
+      placements = { '1': null, '2': null, '3': null, '4': null };
+      selectedCard = null;
+      cards.forEach(c => c.classList.remove('selected'));
+      refreshPlacements();
+    });
+
+    btnReveal.addEventListener('click', () => {
+      placements = { '1': 'A', '2': 'B', '3': 'C', '4': 'D' };
+      selectedCard = null;
+      refreshPlacements();
+    });
+
+    btnCheckAnswers.addEventListener('click', () => {
+      let correct = 0;
+      let total = 0;
+      for (let t = 1; t <= 4; t++) {
+        if (placements[t]) {
+          total++;
+          if (placements[t] === dropZones[t-1].dataset.correct) correct++;
+        }
+      }
+      if (total < 4) {
+        alert(`You have placed ${total} of 4 cards. ${correct} are correct! Place all cards to complete the cycle.`);
+      } else if (correct === 4) {
+        celebrationModal.classList.add('active');
+      } else {
+        alert(`You got ${correct} of 4 correct! Review the positions and try adjusting your matches.`);
+      }
+    });
+
+    btnHint.addEventListener('click', () => {
+      alert("💡 Helpful Hints:\n• Target 1 (Fixation): Look for lightning and legumes on the left!\n• Target 2 (Assimilation & Feeding): Look for crops taking in nitrates and the cow grazing!\n• Target 3 (Decomposition): Look for animal waste, dung, and mushroom decomposers!\n• Target 4 (Nitrification & Denitrification): Follow ammonia converting to nitrates, and Pseudomonas bacteria returning N₂ to the air!");
+    });
+
+    btnModalClose.addEventListener('click', () => {
+      celebrationModal.classList.remove('active');
+    });
+
+    btnModalTeacherKey.addEventListener('click', () => {
+      celebrationModal.classList.remove('active');
+      setMode('answers');
+    });
+
+    // Handle postMessage communication from Vibe Deck Agent presenter
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (!data) return;
+      if (data.type === 'SET_MODE' && data.mode) {
+        setMode(data.mode);
+      }
+    });
+
+    // Default to interactive matcher
+    setMode('matcher');
+    refreshPlacements();
+  </script>
+</body>
+</html>
