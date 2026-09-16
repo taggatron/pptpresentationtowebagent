@@ -34,16 +34,47 @@ function frame(now){const delta=last?Math.min(.1,(now-last)/1000):0;last=now;if(
 // Vibe Deck's public embed bridge uses these exact message names.
 // Accept only the actual parent window on a known host; never follow arbitrary origins.
 const allowedParents=new Set(['https://pptpresentationtowebagent.vercel.app',location.origin]);
-const embedded=window.parent!==window;let parentOrigin='https://pptpresentationtowebagent.vercel.app';
+const embedded=window.parent!==window;let parentOrigin=location.origin||'https://pptpresentationtowebagent.vercel.app';
 const activityUrl=new URL(location.href);activityUrl.searchParams.delete('presentation');
-const interactiveUrl=activityUrl.href;
+const interactiveUrl=activityUrl.pathname;
+const syncChannel=typeof BroadcastChannel!=='undefined'?new BroadcastChannel('slideshow_interactive_sync'):null;
 // The audience display mirrors snapshots instead of running a second random simulation.
 if(embedded&&new URL(location.href).searchParams.get('presentation')==='1')remote=true;
 try{const o=new URL(document.referrer).origin;if(allowedParents.has(o))parentOrigin=o}catch(_){}
 function state(){return{simulation:sim.snapshot(),running,speed,view,explained}}
-function publish(action){if(!embedded||remote)return;window.parent.postMessage({type:'INTERACTIVE_STATE_UPDATE',interactiveId:'natural-dynamics',interactiveUrl,state:state(),action,timestamp:Date.now()},parentOrigin)}
-window.addEventListener('message',event=>{if(event.source!==window.parent||!allowedParents.has(event.origin))return;const data=event.data;if(!data||typeof data!=='object')return;parentOrigin=event.origin;if(data.type==='REQUEST_INTERACTIVE_STATE'){publish('state_reply');return}if(data.type!=='APPLY_INTERACTIVE_STATE')return;if(data.interactiveId&&data.interactiveId!=='natural-dynamics')return;const s=data.state;if(!s||typeof s.running!=='boolean'||![1,2,4].includes(s.speed)||!['timeline','phase'].includes(s.view)||typeof s.explained!=='boolean')return;if(!sim.apply(s.simulation))return;remote=true;running=s.running;speed=s.speed;view=s.view;explained=s.explained;accumulator=0;last=0;updateSettings();update();redraw=true});
+function publish(action){
+  if(!embedded||remote)return;
+  const payload={type:'INTERACTIVE_STATE_UPDATE',interactiveId:'natural-dynamics',interactiveUrl,state:state(),action,timestamp:Date.now()};
+  try{window.parent.postMessage(payload,'*')}catch(_){}
+  if(syncChannel){try{syncChannel.postMessage(payload)}catch(_){}}
+}
+function applyPayload(data){
+  if(!data||typeof data!=='object')return;
+  if(data.type==='REQUEST_INTERACTIVE_STATE'){publish('state_reply');return}
+  if(data.type!=='APPLY_INTERACTIVE_STATE'&&data.type!=='INTERACTIVE_STATE_UPDATE'&&data.type!=='INTERACTIVE_SYNC')return;
+  if(data.interactiveId&&data.interactiveId!=='natural-dynamics')return;
+  const s=data.state;
+  if(!s||typeof s.running!=='boolean'||![1,2,4].includes(s.speed)||!['timeline','phase'].includes(s.view)||typeof s.explained!=='boolean')return;
+  if(!sim.apply(s.simulation))return;
+  remote=true;running=s.running;speed=s.speed;view=s.view;explained=s.explained;accumulator=0;last=0;updateSettings();update();redraw=true;
+}
+window.addEventListener('message',event=>{
+  if(event.source!==window.parent&&!allowedParents.has(event.origin))return;
+  applyPayload(event.data);
+});
+if(syncChannel){
+  syncChannel.onmessage=event=>{applyPayload(event.data)};
+}
 setInterval(()=>{if(running&&!remote)publish('tick')},500);
 document.addEventListener('visibilitychange',()=>{last=0;accumulator=0;if(!document.hidden)redraw=true});
-updateSettings();update();requestAnimationFrame(frame);if(embedded){window.parent.postMessage({type:'REQUEST_INTERACTIVE_STATE',interactiveId:'natural-dynamics',interactiveUrl},parentOrigin)}
+document.addEventListener('keydown',event=>{
+  if(event.key==='PageDown'||event.key==='PageUp'){
+    try{window.parent.postMessage({type:'NAVIGATE',direction:event.key==='PageDown'?1:-1},'*')}catch(_){}
+  }
+});
+updateSettings();update();requestAnimationFrame(frame);if(embedded){
+  const req={type:'REQUEST_INTERACTIVE_STATE',interactiveId:'natural-dynamics',interactiveUrl};
+  try{window.parent.postMessage(req,'*')}catch(_){}
+  if(syncChannel){try{syncChannel.postMessage(req)}catch(_){}}
+}
 })();

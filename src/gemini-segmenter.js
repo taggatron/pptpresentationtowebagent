@@ -83,33 +83,36 @@ function isLegacyLessonOneStarterGrid(cells) {
 
 async function loadGeminiSlideAnalysis(targetDir, slide) {
   const slideNumber = Number(slide?.number);
-  if (!Number.isFinite(slideNumber)) return null;
-  const analysisPath = path.join(
-    targetDir,
-    "analysis",
-    `slide_${String(slideNumber).padStart(2, "0")}.json`
+  const sourceFileName = path.basename(
+    String(slide?.imageUrl || slide?.imageFileName || "")
   );
-
-  try {
-    const sidecar = JSON.parse(await fs.readFile(analysisPath, "utf8"));
-    if (!sidecar?.analysis || !sidecar?.sourceHash) return null;
-    const sourceFileName = path.basename(
-      String(slide.imageUrl || slide.imageFileName || "")
-    );
-    if (!sourceFileName) return null;
-    const sourceBuffer = await fs.readFile(path.join(targetDir, "slides", sourceFileName));
-    const sourceHash = crypto.createHash("sha256").update(sourceBuffer).digest("hex");
-    if (sourceHash !== sidecar.sourceHash) return null;
-    return {
-      schemaVersion: Number(sidecar.schemaVersion) || 1,
-      provider: sidecar.provider || "Google Gemini",
-      analyzedAt: sidecar.analyzedAt || null,
-      sourceHash,
-      analysis: sidecar.analysis
-    };
-  } catch {
-    return null;
+  const baseName = sourceFileName ? path.basename(sourceFileName, path.extname(sourceFileName)) : null;
+  const candidatePaths = [];
+  if (baseName) {
+    candidatePaths.push(path.join(targetDir, "analysis", `${baseName}.json`));
   }
+  if (Number.isFinite(slideNumber)) {
+    candidatePaths.push(path.join(targetDir, "analysis", `slide_${String(slideNumber).padStart(2, "0")}.json`));
+  }
+
+  for (const analysisPath of candidatePaths) {
+    try {
+      const sidecar = JSON.parse(await fs.readFile(analysisPath, "utf8"));
+      if (!sidecar?.analysis || !sidecar?.sourceHash) continue;
+      if (!sourceFileName) continue;
+      const sourceBuffer = await fs.readFile(path.join(targetDir, "slides", sourceFileName));
+      const sourceHash = crypto.createHash("sha256").update(sourceBuffer).digest("hex");
+      if (sourceHash !== sidecar.sourceHash) continue;
+      return {
+        schemaVersion: Number(sidecar.schemaVersion) || 1,
+        provider: sidecar.provider || "Google Gemini",
+        analyzedAt: sidecar.analyzedAt || null,
+        sourceHash,
+        analysis: sidecar.analysis
+      };
+    } catch {}
+  }
+  return null;
 }
 
 async function resolveDeckDirectory(outputBaseDir, deckId) {

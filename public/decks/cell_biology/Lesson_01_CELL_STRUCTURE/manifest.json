@@ -1077,11 +1077,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first comparison component",
+          "label": "Build 1: Show category header",
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"The Grand Divide: Two Types of Cells\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"The Grand Divide: Two Types of Cells\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: slide_title at top-centre with exact source wording: “The Grand Divide: Two Types of Cells”; root_category at top-centre with exact source wording: “All Living Cells”\nTemporarily omit: eukaryotic_header at top-left with exact source wording: “Eukaryotic Cells”; eukaryotic_diagrams at centre-left; eukaryotic_description at bottom-left with exact source wording: “Complex cells containing a true nucleus that encloses their genetic material. • Examples: Animal cells and Plant cells.”; prokaryotic_header at top-right with exact source wording: “Prokaryotic Cells”; prokaryotic_diagram at centre-right with exact source wording: “Cell wall Pili Pili Plasma membrane Ribosomes”; prokaryotic_description at bottom-right with exact source wording: “Smaller, simpler cells that do not have a true nucleus. Their genetic material is free in the cytoplasm. • Example: Bacterial cells.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Educational slide categorizing all living cells into Eukaryotic Cells (with 3D illustrations of an animal cell and a plant cell) and Prokaryotic Cells (with a labeled 3D illustration of a bacterial cell) against a grid background. Spatial layout: Main title centered at top; below it is a boxed root header 'All Living Cells' with branching hierarchy lines leading down to two side-by-side bordered container panels (left for Eukaryotic Cells, right for Prokaryotic Cells), each containing a header, cell diagrams, and descriptive bullet text.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1093,11 +1093,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Add the second comparison component",
+          "label": "Build 2: Introduce Eukaryotic Cells",
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"The Grand Divide: Two Types of Cells\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"The Grand Divide: Two Types of Cells\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: slide_title at top-centre with exact source wording: “The Grand Divide: Two Types of Cells”; root_category at top-centre with exact source wording: “All Living Cells”; eukaryotic_header at top-left with exact source wording: “Eukaryotic Cells”; eukaryotic_diagrams at centre-left; eukaryotic_description at bottom-left with exact source wording: “Complex cells containing a true nucleus that encloses their genetic material. • Examples: Animal cells and Plant cells.”\nTemporarily omit: prokaryotic_header at top-right with exact source wording: “Prokaryotic Cells”; prokaryotic_diagram at centre-right with exact source wording: “Cell wall Pili Pili Plasma membrane Ribosomes”; prokaryotic_description at bottom-right with exact source wording: “Smaller, simpler cells that do not have a true nucleus. Their genetic material is free in the cytoplasm. • Example: Bacterial cells.”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Educational slide categorizing all living cells into Eukaryotic Cells (with 3D illustrations of an animal cell and a plant cell) and Prokaryotic Cells (with a labeled 3D illustration of a bacterial cell) against a grid background. Spatial layout: Main title centered at top; below it is a boxed root header 'All Living Cells' with branching hierarchy lines leading down to two side-by-side bordered container panels (left for Eukaryotic Cells, right for Prokaryotic Cells), each containing a header, cell diagrams, and descriptive bullet text.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1109,11 +1109,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 3: Add the comparison insight",
+          "label": "Build 3: Compare with Prokaryotic Cells",
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"The Grand Divide: Two Types of Cells\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"The Grand Divide: Two Types of Cells\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: slide_title at top-centre with exact source wording: “The Grand Divide: Two Types of Cells”; root_category at top-centre with exact source wording: “All Living Cells”; eukaryotic_header at top-left with exact source wording: “Eukaryotic Cells”; eukaryotic_diagrams at centre-left; eukaryotic_description at bottom-left with exact source wording: “Complex cells containing a true nucleus that encloses their genetic material. • Examples: Animal cells and Plant cells.”; prokaryotic_header at top-right with exact source wording: “Prokaryotic Cells”; prokaryotic_diagram at centre-right with exact source wording: “Cell wall Pili Pili Plasma membrane Ribosomes”; prokaryotic_description at bottom-right with exact source wording: “Smaller, simpler cells that do not have a true nucleus. Their genetic material is free in the cytoplasm. • Example: Bacterial cells.”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Educational slide categorizing all living cells into Eukaryotic Cells (with 3D illustrations of an animal cell and a plant cell) and Prokaryotic Cells (with a labeled 3D illustration of a bacterial cell) against a grid background. Spatial layout: Main title centered at top; below it is a boxed root header 'All Living Cells' with branching hierarchy lines leading down to two side-by-side bordered container panels (left for Eukaryotic Cells, right for Prokaryotic Cells), each containing a header, cell diagrams, and descriptive bullet text.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1126,8 +1126,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 8,
         "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -1138,7 +1138,133 @@
       "agentAnalysis": {
         "pathway": "gemini-image-chat",
         "segmentationSource": "gemini-multimodal-slide-analysis",
-        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence.",
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-01T11:03:29.476Z",
+          "sourceHash": "ccd0cc495a6e68bc9ff7d729a8e925e9748330b8baf0accef349c3b8155b7492",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "The Grand Divide: Two Types of Cells",
+            "description": "Educational slide categorizing all living cells into Eukaryotic Cells (with 3D illustrations of an animal cell and a plant cell) and Prokaryotic Cells (with a labeled 3D illustration of a bacterial cell) against a grid background.",
+            "layout": "Main title centered at top; below it is a boxed root header 'All Living Cells' with branching hierarchy lines leading down to two side-by-side bordered container panels (left for Eukaryotic Cells, right for Prokaryotic Cells), each containing a header, cell diagrams, and descriptive bullet text.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-centre",
+                "visibleText": "The Grand Divide: Two Types of Cells",
+                "dependencies": []
+              },
+              {
+                "id": "root_category",
+                "role": "header",
+                "position": "top-centre",
+                "visibleText": "All Living Cells",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "eukaryotic_header",
+                "role": "header",
+                "position": "top-left",
+                "visibleText": "Eukaryotic Cells",
+                "dependencies": [
+                  "root_category"
+                ]
+              },
+              {
+                "id": "eukaryotic_diagrams",
+                "role": "diagram",
+                "position": "centre-left",
+                "visibleText": "",
+                "dependencies": [
+                  "eukaryotic_header"
+                ]
+              },
+              {
+                "id": "eukaryotic_description",
+                "role": "body",
+                "position": "bottom-left",
+                "visibleText": "Complex cells containing a true nucleus that encloses their genetic material.\n• Examples: Animal cells and Plant cells.",
+                "dependencies": [
+                  "eukaryotic_header",
+                  "eukaryotic_diagrams"
+                ]
+              },
+              {
+                "id": "prokaryotic_header",
+                "role": "header",
+                "position": "top-right",
+                "visibleText": "Prokaryotic Cells",
+                "dependencies": [
+                  "root_category"
+                ]
+              },
+              {
+                "id": "prokaryotic_diagram",
+                "role": "diagram",
+                "position": "centre-right",
+                "visibleText": "Cell wall\nPili\nPili\nPlasma membrane\nRibosomes",
+                "dependencies": [
+                  "prokaryotic_header"
+                ]
+              },
+              {
+                "id": "prokaryotic_description",
+                "role": "body",
+                "position": "bottom-right",
+                "visibleText": "Smaller, simpler cells that do not have a true nucleus. Their genetic material is free in the cytoplasm.\n• Example: Bacterial cells.",
+                "dependencies": [
+                  "prokaryotic_header",
+                  "prokaryotic_diagram"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "comparison",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Show category header",
+                "componentIds": [
+                  "slide_title",
+                  "root_category"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Introduce Eukaryotic Cells",
+                "componentIds": [
+                  "slide_title",
+                  "root_category",
+                  "eukaryotic_header",
+                  "eukaryotic_diagrams",
+                  "eukaryotic_description"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_3",
+                "label": "Compare with Prokaryotic Cells",
+                "componentIds": [
+                  "slide_title",
+                  "root_category",
+                  "eukaryotic_header",
+                  "eukaryotic_diagrams",
+                  "eukaryotic_description",
+                  "prokaryotic_header",
+                  "prokaryotic_diagram",
+                  "prokaryotic_description"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        }
       }
     },
     {
@@ -1202,8 +1328,8 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
-        "planningSource": "reviewed-current-animation-plan-catalog",
-        "analyzedComponentCount": 0,
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 8,
         "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
@@ -1222,7 +1348,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 8: \"Eukaryote Blueprint 1: Animal Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The exact source title 'Eukaryote Blueprint 1: Animal Cell' and the complete 3D cutaway animal cell illustration in the centre, on the light-blue graph paper grid background. Do not show any organelle labels or leader lines.\nTemporarily omit: All organelle callouts, leader lines, and labels (Nucleus, Cell Membrane, Mitochondria, Ribosomes, Cytoplasm). Leave the surrounding graph paper clean.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nAnimal cell guard: This is strictly an animal cell slide ('Eukaryote Blueprint 1: Animal Cell'). Do not show or mention plant-specific structures (never include chloroplasts, cell wall, or a permanent vacuole).\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 8: \"Eukaryote Blueprint 1: Animal Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-left with exact source wording: “Eukaryote Blueprint 1: Animal Cell”; animal_cell_diagram at centre; logo at bottom-right with exact source wording: “NotebookLM”\nTemporarily omit: label_nucleus at centre-left with exact source wording: “Nucleus”; label_cell_membrane at bottom-left with exact source wording: “Cell Membrane”; label_mitochondria at top-right with exact source wording: “Mitochondria”; label_ribosomes at centre-right with exact source wording: “Ribosomes”; label_cytoplasm at bottom-right with exact source wording: “Cytoplasm (Base jelly holding it all)”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nAnimal cell guard: This is strictly an animal cell slide ('Eukaryote Blueprint 1: Animal Cell'). Do not show or mention plant-specific structures (never include chloroplasts, cell wall, or a permanent vacuole).\nSource-content reference: A 3D cross-sectional diagram of an animal cell on a light blue grid background, highlighting eukaryotic organelles (Nucleus, Cell Membrane, Mitochondria, Ribosomes, Cytoplasm) with leader lines and callout labels. Spatial layout: Title at top-left; central 3D spherical animal cell cutaway; left side labels 'Nucleus' and 'Cell Membrane'; right side lists organelles vertically ('Mitochondria', 'Ribosomes', 'Cytoplasm (Base jelly holding it all)'); NotebookLM logo in bottom right corner.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1238,7 +1364,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 8: \"Eukaryote Blueprint 1: Animal Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from build 1 plus all animal cell organelle labels and pointer lines: Nucleus and Cell Membrane on the left; Mitochondria, Ribosomes, and Cytoplasm (Base jelly holding it all) on the right.\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state. Never show plant-specific structures (no chloroplasts, no cell wall, no permanent vacuole).\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nAnimal cell guard: This is strictly an animal cell slide ('Eukaryote Blueprint 1: Animal Cell'). Do not show or mention plant-specific structures (never include chloroplasts, cell wall, or a permanent vacuole).\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 8: \"Eukaryote Blueprint 1: Animal Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-left with exact source wording: “Eukaryote Blueprint 1: Animal Cell”; animal_cell_diagram at centre; label_nucleus at centre-left with exact source wording: “Nucleus”; label_cell_membrane at bottom-left with exact source wording: “Cell Membrane”; label_mitochondria at top-right with exact source wording: “Mitochondria”; label_ribosomes at centre-right with exact source wording: “Ribosomes”; label_cytoplasm at bottom-right with exact source wording: “Cytoplasm (Base jelly holding it all)”; logo at bottom-right with exact source wording: “NotebookLM”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nAnimal cell guard: This is strictly an animal cell slide ('Eukaryote Blueprint 1: Animal Cell'). Do not show or mention plant-specific structures (never include chloroplasts, cell wall, or a permanent vacuole).\nSource-content reference: A 3D cross-sectional diagram of an animal cell on a light blue grid background, highlighting eukaryotic organelles (Nucleus, Cell Membrane, Mitochondria, Ribosomes, Cytoplasm) with leader lines and callout labels. Spatial layout: Title at top-left; central 3D spherical animal cell cutaway; left side labels 'Nucleus' and 'Cell Membrane'; right side lists organelles vertically ('Mitochondria', 'Ribosomes', 'Cytoplasm (Base jelly holding it all)'); NotebookLM logo in bottom right corner.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1248,7 +1374,118 @@
       "agentAnalysis": {
         "pathway": "gemini-image-chat",
         "segmentationSource": "gemini-multimodal-slide-analysis",
-        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence.",
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-06T21:25:00.000Z",
+          "sourceHash": "0794f584e528038126db49b2a03fcada9021be31c0a62e69ce94547c3beced1c",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Eukaryote Blueprint 1: Animal Cell",
+            "description": "A 3D cross-sectional diagram of an animal cell on a light blue grid background, highlighting eukaryotic organelles (Nucleus, Cell Membrane, Mitochondria, Ribosomes, Cytoplasm) with leader lines and callout labels.",
+            "layout": "Title at top-left; central 3D spherical animal cell cutaway; left side labels 'Nucleus' and 'Cell Membrane'; right side lists organelles vertically ('Mitochondria', 'Ribosomes', 'Cytoplasm (Base jelly holding it all)'); NotebookLM logo in bottom right corner.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Eukaryote Blueprint 1: Animal Cell",
+                "dependencies": []
+              },
+              {
+                "id": "animal_cell_diagram",
+                "role": "diagram",
+                "position": "centre",
+                "visibleText": "",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "label_nucleus",
+                "role": "label",
+                "position": "centre-left",
+                "visibleText": "Nucleus",
+                "dependencies": [
+                  "animal_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_cell_membrane",
+                "role": "label",
+                "position": "bottom-left",
+                "visibleText": "Cell Membrane",
+                "dependencies": [
+                  "animal_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_mitochondria",
+                "role": "label",
+                "position": "top-right",
+                "visibleText": "Mitochondria",
+                "dependencies": [
+                  "animal_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_ribosomes",
+                "role": "label",
+                "position": "centre-right",
+                "visibleText": "Ribosomes",
+                "dependencies": [
+                  "animal_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_cytoplasm",
+                "role": "label",
+                "position": "bottom-right",
+                "visibleText": "Cytoplasm\n(Base jelly\nholding it all)",
+                "dependencies": [
+                  "animal_cell_diagram"
+                ]
+              },
+              {
+                "id": "logo",
+                "role": "watermark",
+                "position": "bottom-right",
+                "visibleText": "NotebookLM",
+                "dependencies": []
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "component-reveal",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Animal cell structure overview",
+                "componentIds": [
+                  "slide_title",
+                  "animal_cell_diagram",
+                  "logo"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Reveal animal cell organelle labels",
+                "componentIds": [
+                  "slide_title",
+                  "animal_cell_diagram",
+                  "label_nucleus",
+                  "label_cell_membrane",
+                  "label_mitochondria",
+                  "label_ribosomes",
+                  "label_cytoplasm",
+                  "logo"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        }
       }
     },
     {
@@ -1308,48 +1545,32 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_9_1_comparison",
+          "id": "gemini_slide_9_1_component_reveal",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first comparison component",
-          "strategy": "comparison",
+          "label": "Build 1: Plant cell overview and shared organelles",
+          "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"Eukaryote Blueprint 2: Plant Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 9: \"Eukaryote Blueprint 2: Plant Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-left with exact source wording: “Eukaryote Blueprint 2: Plant Cell”; slide_subtitle at top-left with exact source wording: “Contains all animal organelles, plus specific additions for a plant’s lifestyle.”; plant_cell_diagram at centre; label_shared_organelles at centre-right with exact source wording: “Nucleus Mitochondria Ribosomes Cell Membrane”\nTemporarily omit: label_chloroplasts at centre-left with exact source wording: “Chloroplasts”; label_cell_wall at bottom-left with exact source wording: “Cell Wall”; label_permanent_vacuole at bottom-right with exact source wording: “Permanent Vacuole”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A 3D cross-sectional diagram of a plant cell on a grid background, highlighting both shared eukaryotic organelles on the right and plant-specific structures (Chloroplasts, Cell Wall, Permanent Vacuole) in prominent green text. Spatial layout: Title and subtitle positioned top-left over a grid background. A centered 3D plant cell cutaway diagram is flanked by bold green plant-specific labels on the left and lower-right, and four standard organelle labels on the right.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
           "sourceImageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_07.png"
         },
         {
-          "id": "gemini_slide_9_2_comparison",
+          "id": "gemini_slide_9_2_component_reveal",
           "order": 2,
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Add the second comparison component",
-          "strategy": "comparison",
+          "label": "Build 2: Reveal plant-specific additions",
+          "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"Eukaryote Blueprint 2: Plant Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_07.png"
-        },
-        {
-          "id": "gemini_slide_9_3_comparison",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Add the comparison insight",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"Eukaryote Blueprint 2: Plant Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 9: \"Eukaryote Blueprint 2: Plant Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-left with exact source wording: “Eukaryote Blueprint 2: Plant Cell”; slide_subtitle at top-left with exact source wording: “Contains all animal organelles, plus specific additions for a plant’s lifestyle.”; plant_cell_diagram at centre; label_shared_organelles at centre-right with exact source wording: “Nucleus Mitochondria Ribosomes Cell Membrane”; label_chloroplasts at centre-left with exact source wording: “Chloroplasts”; label_cell_wall at bottom-left with exact source wording: “Cell Wall”; label_permanent_vacuole at bottom-right with exact source wording: “Permanent Vacuole”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: A 3D cross-sectional diagram of a plant cell on a grid background, highlighting both shared eukaryotic organelles on the right and plant-specific structures (Chloroplasts, Cell Wall, Permanent Vacuole) in prominent green text. Spatial layout: Title and subtitle positioned top-left over a grid background. A centered 3D plant cell cutaway diagram is flanked by bold green plant-specific labels on the left and lower-right, and four standard organelle labels on the right.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1361,10 +1582,10 @@
         "version": 2,
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
+        "strategy": "component-reveal",
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 7,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1374,7 +1595,111 @@
       "agentAnalysis": {
         "pathway": "gemini-image-chat",
         "segmentationSource": "gemini-multimodal-slide-analysis",
-        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence.",
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-01T11:03:29.441Z",
+          "sourceHash": "6da265152e7e59c1e13ddf3a0d6a6d6d59dd1d3029c0daf898a1a4e547424f01",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Eukaryote Blueprint 2: Plant Cell",
+            "description": "A 3D cross-sectional diagram of a plant cell on a grid background, highlighting both shared eukaryotic organelles on the right and plant-specific structures (Chloroplasts, Cell Wall, Permanent Vacuole) in prominent green text.",
+            "layout": "Title and subtitle positioned top-left over a grid background. A centered 3D plant cell cutaway diagram is flanked by bold green plant-specific labels on the left and lower-right, and four standard organelle labels on the right.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Eukaryote Blueprint 2: Plant Cell",
+                "dependencies": []
+              },
+              {
+                "id": "slide_subtitle",
+                "role": "subtitle",
+                "position": "top-left",
+                "visibleText": "Contains all animal organelles, plus specific additions for a plant’s lifestyle.",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "plant_cell_diagram",
+                "role": "diagram",
+                "position": "centre",
+                "visibleText": "",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "label_shared_organelles",
+                "role": "annotation",
+                "position": "centre-right",
+                "visibleText": "Nucleus\nMitochondria\nRibosomes\nCell Membrane",
+                "dependencies": [
+                  "plant_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_chloroplasts",
+                "role": "annotation",
+                "position": "centre-left",
+                "visibleText": "Chloroplasts",
+                "dependencies": [
+                  "plant_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_cell_wall",
+                "role": "annotation",
+                "position": "bottom-left",
+                "visibleText": "Cell Wall",
+                "dependencies": [
+                  "plant_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_permanent_vacuole",
+                "role": "annotation",
+                "position": "bottom-right",
+                "visibleText": "Permanent\nVacuole",
+                "dependencies": [
+                  "plant_cell_diagram"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "component-reveal",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Plant cell overview and shared organelles",
+                "componentIds": [
+                  "slide_title",
+                  "slide_subtitle",
+                  "plant_cell_diagram",
+                  "label_shared_organelles"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Reveal plant-specific additions",
+                "componentIds": [
+                  "slide_title",
+                  "slide_subtitle",
+                  "plant_cell_diagram",
+                  "label_shared_organelles",
+                  "label_chloroplasts",
+                  "label_cell_wall",
+                  "label_permanent_vacuole"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        }
       }
     },
     {
@@ -1751,11 +2076,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first component",
+          "label": "Build 1: Header and Cell Structure Diagram",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 11: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Prokaryote Blueprint: Bacterial Cell. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 11: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-left with exact source wording: “Prokaryote Blueprint: Bacterial Cell”; slide_subtitle at top-left with exact source wording: “Significantly smaller and simpler than eukaryotes. No true nucleus.”; bacterial_cell_diagram at centre\nTemporarily omit: label_cell_wall_membrane at bottom-left with exact source wording: “Cell Membrane & Cell Wall”; label_free_genetic_material at top-right with exact source wording: “Free Genetic Material (Single loop of chromosomal DNA)”; label_plasmids at middle-right with exact source wording: “Plasmids (Small DNA rings)”; label_ribosomes at bottom-right with exact source wording: “Ribosomes”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nSource-content reference: A biology diagram slide on a light graph paper background featuring an illustrated cutaway 3D diagram of a bacterial cell with annotated callouts detailing cell membrane and wall, free genetic material, plasmids, and ribosomes. Spatial layout: Title and subtitle placed at the top-left. A large angled cross-sectional illustration of a bacterial cell occupies the center across the lower half. Label callouts with pointer lines appear on the bottom-left and right side of the illustration.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1767,27 +2092,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Add the next component",
+          "label": "Build 2: Reveal All Cell Organelle Labels",
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 11: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Prokaryote Blueprint: Bacterial Cell. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_08.png"
-        },
-        {
-          "id": "gemini_slide_11_3_component_reveal",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 11: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Prokaryote Blueprint: Bacterial Cell. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 11: \"Prokaryote Blueprint: Bacterial Cell\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: slide_title at top-left with exact source wording: “Prokaryote Blueprint: Bacterial Cell”; slide_subtitle at top-left with exact source wording: “Significantly smaller and simpler than eukaryotes. No true nucleus.”; bacterial_cell_diagram at centre; label_cell_wall_membrane at bottom-left with exact source wording: “Cell Membrane & Cell Wall”; label_free_genetic_material at top-right with exact source wording: “Free Genetic Material (Single loop of chromosomal DNA)”; label_plasmids at middle-right with exact source wording: “Plasmids (Small DNA rings)”; label_ribosomes at bottom-right with exact source wording: “Ribosomes”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Prokaryote Blueprint: Bacterial Cell\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nSource-content reference: A biology diagram slide on a light graph paper background featuring an illustrated cutaway 3D diagram of a bacterial cell with annotated callouts detailing cell membrane and wall, free genetic material, plasmids, and ribosomes. Spatial layout: Title and subtitle placed at the top-left. A large angled cross-sectional illustration of a bacterial cell occupies the center across the lower half. Label callouts with pointer lines appear on the bottom-left and right side of the illustration.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1800,9 +2109,9 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 7,
+        "plannedCellCount": 2,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -1812,7 +2121,110 @@
       "agentAnalysis": {
         "pathway": "gemini-image-chat",
         "segmentationSource": "gemini-multimodal-slide-analysis",
-        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence.",
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-01T15:34:19.185Z",
+          "sourceHash": "9a445f8a0b55365c35a4cb41e85747349586af6b68daa4791a2452da54d66fb1",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Prokaryote Blueprint: Bacterial Cell",
+            "description": "A biology diagram slide on a light graph paper background featuring an illustrated cutaway 3D diagram of a bacterial cell with annotated callouts detailing cell membrane and wall, free genetic material, plasmids, and ribosomes.",
+            "layout": "Title and subtitle placed at the top-left. A large angled cross-sectional illustration of a bacterial cell occupies the center across the lower half. Label callouts with pointer lines appear on the bottom-left and right side of the illustration.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Prokaryote Blueprint: Bacterial Cell",
+                "dependencies": []
+              },
+              {
+                "id": "slide_subtitle",
+                "role": "subtitle",
+                "position": "top-left",
+                "visibleText": "Significantly smaller and simpler than eukaryotes. No true nucleus.",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "bacterial_cell_diagram",
+                "role": "diagram",
+                "position": "centre",
+                "visibleText": "",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "label_cell_wall_membrane",
+                "role": "callout",
+                "position": "bottom-left",
+                "visibleText": "Cell Membrane\n& Cell Wall",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_free_genetic_material",
+                "role": "callout",
+                "position": "top-right",
+                "visibleText": "Free Genetic Material\n(Single loop of chromosomal DNA)",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_plasmids",
+                "role": "callout",
+                "position": "middle-right",
+                "visibleText": "Plasmids\n(Small DNA rings)",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              },
+              {
+                "id": "label_ribosomes",
+                "role": "callout",
+                "position": "bottom-right",
+                "visibleText": "Ribosomes",
+                "dependencies": [
+                  "bacterial_cell_diagram"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "component-reveal",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Header and Cell Structure Diagram",
+                "componentIds": [
+                  "slide_title",
+                  "slide_subtitle",
+                  "bacterial_cell_diagram"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Reveal All Cell Organelle Labels",
+                "componentIds": [
+                  "slide_title",
+                  "slide_subtitle",
+                  "bacterial_cell_diagram",
+                  "label_cell_wall_membrane",
+                  "label_free_genetic_material",
+                  "label_plasmids",
+                  "label_ribosomes"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        }
       }
     },
     {
@@ -2346,9 +2758,9 @@
         "mode": "gemini-image-cells",
         "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
         "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 2,
+        "planningSource": "gemini-multimodal-slide-analysis",
+        "analyzedComponentCount": 10,
+        "plannedCellCount": 3,
         "approvedCellCount": 0,
         "qaRequired": true,
         "questionReveal": false,
@@ -2368,11 +2780,11 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first comparison component",
+          "label": "Build 1: Mitochondria",
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 2 for slide 15: \"The Organelle Matrix: Compare & Contrast\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 15: \"Organelle Functions: The Chemical Factories\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: slide_title at top-left with exact source wording: “Organelle Functions: The Chemical Factories”; mitochondria_header at mid-left-top with exact source wording: “Mitochondria (Eukaryotes)”; mitochondria_diagram at mid-left with exact source wording: “ATP / Energy”; mitochondria_function at bottom-left with exact source wording: “Function: Contain enzymes for cellular respiration, releasing energy for the cell to use.”\nTemporarily omit: chloroplasts_header at mid-center-top with exact source wording: “Chloroplasts (Plant Cells)”; chloroplasts_diagram at center; chloroplasts_function at bottom-center with exact source wording: “Function: Contain chlorophyll, which absorbs light energy to drive photosynthesis.”; ribosomes_header at mid-right-top with exact source wording: “Ribosomes (All Cells)”; ribosomes_diagram at mid-right; ribosomes_function at bottom-right with exact source wording: “Function: The site of protein synthesis (where new proteins are manufactured).”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Educational presentation slide set on a light grid background featuring three boxed vertical panels explaining the metabolic organelle functions: Mitochondria (Eukaryotes) on the left producing ATP/Energy, Chloroplasts (Plant Cells) in the middle capturing sunlight, and Ribosomes (All Cells) on the right performing protein synthesis. Spatial layout: Main title running along the top header above a three-column horizontal comparison card layout spanning left to right: Mitochondria (left), Chloroplasts (center), and Ribosomes (right). Each card features a top heading, a central 3D diagram with callout graphics, and a bottom function description.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -2384,17 +2796,186 @@
           "kind": "image",
           "mediaType": "image",
           "source": "gemini-image-chat",
-          "label": "Build 2: Add the comparison insight",
+          "label": "Build 2: Chloroplasts",
           "strategy": "comparison",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 2 for slide 15: \"The Organelle Matrix: Compare & Contrast\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 1. Cell Structure. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 15: \"Organelle Functions: The Chemical Factories\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: slide_title at top-left with exact source wording: “Organelle Functions: The Chemical Factories”; mitochondria_header at mid-left-top with exact source wording: “Mitochondria (Eukaryotes)”; mitochondria_diagram at mid-left with exact source wording: “ATP / Energy”; mitochondria_function at bottom-left with exact source wording: “Function: Contain enzymes for cellular respiration, releasing energy for the cell to use.”; chloroplasts_header at mid-center-top with exact source wording: “Chloroplasts (Plant Cells)”; chloroplasts_diagram at center; chloroplasts_function at bottom-center with exact source wording: “Function: Contain chlorophyll, which absorbs light energy to drive photosynthesis.”\nTemporarily omit: ribosomes_header at mid-right-top with exact source wording: “Ribosomes (All Cells)”; ribosomes_diagram at mid-right; ribosomes_function at bottom-right with exact source wording: “Function: The site of protein synthesis (where new proteins are manufactured).”\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Educational presentation slide set on a light grid background featuring three boxed vertical panels explaining the metabolic organelle functions: Mitochondria (Eukaryotes) on the left producing ATP/Energy, Chloroplasts (Plant Cells) in the middle capturing sunlight, and Ribosomes (All Cells) on the right performing protein synthesis. Spatial layout: Main title running along the top header above a three-column horizontal comparison card layout spanning left to right: Mitochondria (left), Chloroplasts (center), and Ribosomes (right). Each card features a top heading, a central 3D diagram with callout graphics, and a bottom function description.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_11.png"
+        },
+        {
+          "id": "gemini_slide_15_3_comparison",
+          "order": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 3: Ribosomes",
+          "strategy": "comparison",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 15: \"Organelle Functions: The Chemical Factories\".\nDeck context: 1. Cell Structure.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: slide_title at top-left with exact source wording: “Organelle Functions: The Chemical Factories”; mitochondria_header at mid-left-top with exact source wording: “Mitochondria (Eukaryotes)”; mitochondria_diagram at mid-left with exact source wording: “ATP / Energy”; mitochondria_function at bottom-left with exact source wording: “Function: Contain enzymes for cellular respiration, releasing energy for the cell to use.”; chloroplasts_header at mid-center-top with exact source wording: “Chloroplasts (Plant Cells)”; chloroplasts_diagram at center; chloroplasts_function at bottom-center with exact source wording: “Function: Contain chlorophyll, which absorbs light energy to drive photosynthesis.”; ribosomes_header at mid-right-top with exact source wording: “Ribosomes (All Cells)”; ribosomes_diagram at mid-right; ribosomes_function at bottom-right with exact source wording: “Function: The site of protein synthesis (where new proteins are manufactured).”\nTemporarily omit: Nothing instructional; this is the complete cumulative source-slide state.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Educational presentation slide set on a light grid background featuring three boxed vertical panels explaining the metabolic organelle functions: Mitochondria (Eukaryotes) on the left producing ATP/Energy, Chloroplasts (Plant Cells) in the middle capturing sunlight, and Ribosomes (All Cells) on the right performing protein synthesis. Spatial layout: Main title running along the top header above a three-column horizontal comparison card layout spanning left to right: Mitochondria (left), Chloroplasts (center), and Ribosomes (right). Each card features a top heading, a central 3D diagram with callout graphics, and a bottom function description.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
           "sourceImageUrl": "/decks/cell_biology/Lesson_01_CELL_STRUCTURE/slides/slide_11.png"
         }
-      ]
+      ],
+      "agentAnalysis": {
+        "slideDecomposition": {
+          "schemaVersion": 1,
+          "provider": "google-gemini",
+          "analyzedAt": "2026-09-01T15:34:19.271Z",
+          "sourceHash": "543ae585cdafc995eecb9697dbff6f41818f0cc5e9b82b68685f6e688de3efba",
+          "analysis": {
+            "schemaVersion": 1,
+            "title": "Organelle Functions: The Chemical Factories",
+            "description": "Educational presentation slide set on a light grid background featuring three boxed vertical panels explaining the metabolic organelle functions: Mitochondria (Eukaryotes) on the left producing ATP/Energy, Chloroplasts (Plant Cells) in the middle capturing sunlight, and Ribosomes (All Cells) on the right performing protein synthesis.",
+            "layout": "Main title running along the top header above a three-column horizontal comparison card layout spanning left to right: Mitochondria (left), Chloroplasts (center), and Ribosomes (right). Each card features a top heading, a central 3D diagram with callout graphics, and a bottom function description.",
+            "components": [
+              {
+                "id": "slide_title",
+                "role": "title",
+                "position": "top-left",
+                "visibleText": "Organelle Functions: The Chemical Factories",
+                "dependencies": []
+              },
+              {
+                "id": "mitochondria_header",
+                "role": "column_header",
+                "position": "mid-left-top",
+                "visibleText": "Mitochondria (Eukaryotes)",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "mitochondria_diagram",
+                "role": "diagram",
+                "position": "mid-left",
+                "visibleText": "ATP /\nEnergy",
+                "dependencies": [
+                  "mitochondria_header"
+                ]
+              },
+              {
+                "id": "mitochondria_function",
+                "role": "body_text",
+                "position": "bottom-left",
+                "visibleText": "Function: Contain enzymes for cellular respiration, releasing energy for the cell to use.",
+                "dependencies": [
+                  "mitochondria_diagram"
+                ]
+              },
+              {
+                "id": "chloroplasts_header",
+                "role": "column_header",
+                "position": "mid-center-top",
+                "visibleText": "Chloroplasts (Plant Cells)",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "chloroplasts_diagram",
+                "role": "diagram",
+                "position": "center",
+                "visibleText": "",
+                "dependencies": [
+                  "chloroplasts_header"
+                ]
+              },
+              {
+                "id": "chloroplasts_function",
+                "role": "body_text",
+                "position": "bottom-center",
+                "visibleText": "Function: Contain chlorophyll, which absorbs light energy to drive photosynthesis.",
+                "dependencies": [
+                  "chloroplasts_diagram"
+                ]
+              },
+              {
+                "id": "ribosomes_header",
+                "role": "column_header",
+                "position": "mid-right-top",
+                "visibleText": "Ribosomes (All Cells)",
+                "dependencies": [
+                  "slide_title"
+                ]
+              },
+              {
+                "id": "ribosomes_diagram",
+                "role": "diagram",
+                "position": "mid-right",
+                "visibleText": "",
+                "dependencies": [
+                  "ribosomes_header"
+                ]
+              },
+              {
+                "id": "ribosomes_function",
+                "role": "body_text",
+                "position": "bottom-right",
+                "visibleText": "Function: The site of protein synthesis (where new proteins are manufactured).",
+                "dependencies": [
+                  "ribosomes_diagram"
+                ]
+              }
+            ],
+            "isQuestionSlide": false,
+            "recommendedStrategy": "comparison",
+            "recommendedBuilds": [
+              {
+                "id": "build_1",
+                "label": "Mitochondria",
+                "componentIds": [
+                  "slide_title",
+                  "mitochondria_header",
+                  "mitochondria_diagram",
+                  "mitochondria_function"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_2",
+                "label": "Chloroplasts",
+                "componentIds": [
+                  "slide_title",
+                  "mitochondria_header",
+                  "mitochondria_diagram",
+                  "mitochondria_function",
+                  "chloroplasts_header",
+                  "chloroplasts_diagram",
+                  "chloroplasts_function"
+                ],
+                "cumulative": true
+              },
+              {
+                "id": "build_3",
+                "label": "Ribosomes",
+                "componentIds": [
+                  "slide_title",
+                  "mitochondria_header",
+                  "mitochondria_diagram",
+                  "mitochondria_function",
+                  "chloroplasts_header",
+                  "chloroplasts_diagram",
+                  "chloroplasts_function",
+                  "ribosomes_header",
+                  "ribosomes_diagram",
+                  "ribosomes_function"
+                ],
+                "cumulative": true
+              }
+            ]
+          }
+        },
+        "pathway": "gemini-image-chat",
+        "segmentationSource": "gemini-multimodal-slide-analysis",
+        "status": "Gemini described the slide, identified its components, and proposed a cumulative click sequence."
+      }
     },
     {
       "number": 16,
@@ -2770,7 +3351,7 @@
     "selectedPathway": "gemini-image-chat",
     "imageChatProvider": "Google Gemini",
     "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-16T00:20:34.408Z"
+    "updatedAt": "2026-09-16T00:23:04.116Z"
   },
   "slideSet": "cell_biology"
 }
