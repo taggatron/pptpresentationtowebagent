@@ -241,7 +241,7 @@ async function buildHandoutHtml() {
     }
 
     .target-title {
-      font-size: 7.2pt;
+      font-size: 8.2pt;
       font-weight: 700;
       color: #0f172a;
       line-height: 1.15;
@@ -575,28 +575,28 @@ async function buildHandoutHtml() {
         <!-- Target Zone 1: Fixation -->
         <div class="target-slot target-pos-1">
           <div class="target-num">1</div>
-          <div class="target-title">Target 1<br><span style="font-size:6.2pt;color:#64748b;">Air to Soil</span></div>
+          <div class="target-title">Target 1</div>
           <div class="target-answer-slot"></div>
         </div>
 
         <!-- Target Zone 2: Assimilation & Feeding -->
         <div class="target-slot target-pos-2">
           <div class="target-num">2</div>
-          <div class="target-title">Target 2<br><span style="font-size:6.2pt;color:#64748b;">Soil to Life</span></div>
+          <div class="target-title">Target 2</div>
           <div class="target-answer-slot"></div>
         </div>
 
         <!-- Target Zone 3: Decomposition -->
         <div class="target-slot target-pos-3">
           <div class="target-num">3</div>
-          <div class="target-title">Target 3<br><span style="font-size:6.2pt;color:#64748b;">Death to Ammonia</span></div>
+          <div class="target-title">Target 3</div>
           <div class="target-answer-slot"></div>
         </div>
 
         <!-- Target Zone 4: Nitrification & Denitrification -->
         <div class="target-slot target-pos-4">
           <div class="target-num">4</div>
-          <div class="target-title">Target 4<br><span style="font-size:6.2pt;color:#64748b;">Recycling & Loss</span></div>
+          <div class="target-title">Target 4</div>
           <div class="target-answer-slot"></div>
         </div>
       </div>
@@ -708,7 +708,7 @@ async function buildHandoutHtml() {
         <!-- Target 1: Card A -->
         <div class="solved-badge" style="top: 30%; left: 12%;">
           <span class="match-pill">TARGET 1 = CARD A</span>
-          <span>Fixation (Air to Soil)</span>
+          <span>Fixation</span>
         </div>
 
         <!-- Target 2: Card B -->
@@ -720,7 +720,7 @@ async function buildHandoutHtml() {
         <!-- Target 3: Card C -->
         <div class="solved-badge" style="top: 56%; left: 63%;">
           <span class="match-pill">TARGET 3 = CARD C</span>
-          <span>Decomposition (Death to Ammonia)</span>
+          <span>Decomposition</span>
         </div>
 
         <!-- Target 4: Card D -->
