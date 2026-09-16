@@ -728,10 +728,10 @@ test("animation planning is idempotent across every current slide", async () => 
     }
   }
 
-  assert.equal(checkedSlides, 152);
+  assert.equal(checkedSlides, 153);
 });
 
-test("global routing covers 137 slides with only videos and six-box starters excluded", async () => {
+test("global routing covers 138 slides with only videos and six-box starters excluded", async () => {
   let total = 0;
   let videos = 0;
   let starters = 0;
@@ -776,11 +776,11 @@ test("global routing covers 137 slides with only videos and six-box starters exc
   }
 
   assert.deepEqual({ total, videos, starters, statics, eligible, webEmbeds }, {
-    total: 152,
+    total: 153,
     videos: 3,
     starters: 11,
     statics: 1,
-    eligible: 137,
+    eligible: 138,
     webEmbeds: 2
   });
 });

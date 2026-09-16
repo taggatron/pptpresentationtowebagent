@@ -63,15 +63,22 @@ const STARTER_CONTENT = {
     ]
   },
   Lesson_04_DNA: {
-    title: "Starter Activity: Retrieval",
-    layout: STANDARD_GRID,
+    title: "Starter Activity: Retrieval Grid",
+    layout: [
+      { row: 0, col: 0, bounds: { x: 4.8, y: 7.8, w: 43.8, h: 25 }, answerBounds: { x: 7.2, y: 24, w: 38, h: 6.5 } },
+      { row: 0, col: 1, bounds: { x: 51.4, y: 7.8, w: 43.8, h: 25 }, answerBounds: { x: 53.8, y: 24, w: 38, h: 6.5 } },
+      { row: 1, col: 0, bounds: { x: 4.8, y: 37.5, w: 43.8, h: 25 }, answerBounds: { x: 7.2, y: 53.8, w: 38, h: 6.5 } },
+      { row: 1, col: 1, bounds: { x: 51.4, y: 37.5, w: 43.8, h: 25 }, answerBounds: { x: 53.8, y: 53.8, w: 38, h: 6.5 } },
+      { row: 2, col: 0, bounds: { x: 4.8, y: 67.2, w: 43.8, h: 25 }, answerBounds: { x: 7.2, y: 83.5, w: 38, h: 6.5 } },
+      { row: 2, col: 1, bounds: { x: 51.4, y: 67.2, w: 43.8, h: 25 }, answerBounds: { x: 53.8, y: 83.5, w: 38, h: 6.5 } }
+    ],
     cells: [
-      ["What is the main function of the nucleus in a eukaryotic cell?", "It contains genetic material and controls the cell's activities."],
-      ["Name the fundamental building block of all living organisms.", "The cell."],
-      ["What type of microscope is needed to see fine detail inside sub-cellular structures?", "An electron microscope."],
-      ["Where in the cell are proteins synthesised?", "Ribosomes."],
-      ["What term describes a large molecule made of many repeating smaller units?", "Polymer."],
-      ["What must happen to genetic material just before a cell divides by mitosis?", "It must be copied or replicated."]
+      ["Where is genetic material kept in an animal cell?", "The nucleus"],
+      ["Name the two main types of cell.", "Eukaryotic and Prokaryotic"],
+      ["Are all enzymes made of proteins?", "Yes, they are biological catalysts"],
+      ["What are the basic building blocks of proteins?", "Amino acids"],
+      ["Which type of cell division is used for growth?", "Mitosis"],
+      ["Which microscope offers the highest resolution?", "Electron microscope"]
     ]
   },
   Lesson_05_ENZYMES: {

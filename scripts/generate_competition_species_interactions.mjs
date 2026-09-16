@@ -28,7 +28,7 @@ export async function verifyLesson03Slides() {
   console.log(`Reported Total Slides: ${manifest.totalSlides}`);
   console.log(`Slides in Array: ${manifest.slides.length}`);
 
-  const targetSlides = [8, 9, 10, 11, 12];
+  const targetSlides = [8, 9, 10, 11, 12, 13];
   for (const num of targetSlides) {
     const slideDef = manifest.slides.find((s) => s.number === num);
     if (!slideDef) {
@@ -41,7 +41,7 @@ export async function verifyLesson03Slides() {
     console.log(`    File: ${slideDef.imageFileName} (${(stat.size / 1024 / 1024).toFixed(2)} MB)`);
   }
 
-  console.log("\nAll 5 species interaction slides successfully verified in manifest and filesystem!");
+  console.log("\nAll species interaction and simulator slides successfully verified in manifest and filesystem!");
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
