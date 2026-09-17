@@ -2,12 +2,12 @@
  * Firebase Configuration & Authorized User Credentials
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyA1KCz5UdkBMRf8rY68vGR9BqCuzc68SSM",
-  authDomain: "aaq-bio-arranger-2627.firebaseapp.com",
-  projectId: "aaq-bio-arranger-2627",
-  storageBucket: "aaq-bio-arranger-2627.firebasestorage.app",
-  messagingSenderId: "79390374495",
-  appId: "1:79390374495:web:f769ea498e883b9f0db9ea"
+  apiKey: "AIzaSyB_-d0-mlHb4iOIUO2qB91WZcf8rADP2tk",
+  authDomain: "ppttowebagent-analytics.firebaseapp.com",
+  projectId: "ppttowebagent-analytics",
+  storageBucket: "ppttowebagent-analytics.firebasestorage.app",
+  messagingSenderId: "845437628234",
+  appId: "1:845437628234:web:71038b8e545de032165bb3"
 };
 
 export const AUTHORIZED_EMAILS = [
