@@ -370,13 +370,48 @@ export function getTimetableWeeks() {
 export const TIMETABLE_WEEKS = getTimetableWeeks();
 
 /**
+ * Extract day-of-week (0=Sun..6=Sat) and minute-of-day in Europe/London timezone
+ * to ensure scheduled lesson evaluation is accurate whether running locally or on Vercel (UTC).
+ */
+export function getLondonTimeDetails(date = new Date()) {
+  const d = date instanceof Date ? date : new Date(date);
+  let day = d.getDay();
+  let hours = d.getHours();
+  let minutes = d.getMinutes();
+
+  try {
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/London",
+      weekday: "short",
+      hour: "numeric",
+      minute: "numeric",
+      hourCycle: "h23"
+    });
+    const parts = formatter.formatToParts(d);
+    const getPart = (type) => parts.find((p) => p.type === type)?.value;
+    const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    const weekdayStr = getPart("weekday");
+    if (weekdayStr && dayMap[weekdayStr] !== undefined) {
+      day = dayMap[weekdayStr];
+    }
+    const h = parseInt(getPart("hour"), 10);
+    const m = parseInt(getPart("minute"), 10);
+    if (!isNaN(h) && !isNaN(m)) {
+      hours = h;
+      minutes = m;
+    }
+  } catch {}
+
+  return { day, hours, minutes, currentMinutes: hours * 60 + minutes };
+}
+
+/**
  * Check if the given date / timestamp falls strictly within one of the scheduled lesson windows.
  * Returns the matching lesson slot or null.
  */
 export function getCurrentLessonSlot(date = new Date()) {
   const d = date instanceof Date ? date : new Date(date);
-  const day = d.getDay(); // 0 = Sun, 1 = Mon, ..., 5 = Fri, 6 = Sat
-  const currentMinutes = d.getHours() * 60 + d.getMinutes();
+  const { day, currentMinutes } = getLondonTimeDetails(d);
 
   const slot = LESSON_SCHEDULE.find((s) => {
     return s.dayOfWeek === day &&
@@ -418,8 +453,7 @@ export function isWithinLessonTime(date = new Date()) {
  */
 export function getNextScheduledLesson(date = new Date()) {
   const d = date instanceof Date ? date : new Date(date);
-  const currentDay = d.getDay();
-  const currentMinutes = d.getHours() * 60 + d.getMinutes();
+  const { day: currentDay, currentMinutes } = getLondonTimeDetails(d);
 
   // Find next lesson later today
   const todayLessons = LESSON_SCHEDULE

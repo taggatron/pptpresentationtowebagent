@@ -64,10 +64,98 @@ export function resolveDbPath() {
   }
 }
 
+export function seedDatabaseFromJson(db, jsonFilePath) {
+  try {
+    if (!fs.existsSync(jsonFilePath)) return;
+    const raw = fs.readFileSync(jsonFilePath, "utf8");
+    const data = JSON.parse(raw);
+    if (!data || !Array.isArray(data.sessions) || data.sessions.length === 0) return;
+
+    const insertSession = db.prepare(`
+      INSERT OR IGNORE INTO sessions (
+        id, deck_id, deck_title, start_time, end_time,
+        total_duration_seconds, is_active, created_at,
+        lesson_id, lesson_group, lesson_period, lesson_topic, week_id
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    for (const s of data.sessions) {
+      insertSession.run(
+        s.id,
+        s.deck_id,
+        s.deck_title || "",
+        s.start_time,
+        s.end_time || null,
+        s.total_duration_seconds || 0,
+        s.is_active || 0,
+        s.created_at || s.start_time,
+        s.lesson_id || null,
+        s.lesson_group || null,
+        s.lesson_period || null,
+        s.lesson_topic || null,
+        s.week_id || null
+      );
+    }
+
+    if (Array.isArray(data.dwells)) {
+      const insertDwell = db.prepare(`
+        INSERT OR IGNORE INTO slide_dwells (
+          session_id, slide_number, slide_title, lesson_phase, duration_seconds, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?)
+      `);
+      for (const d of data.dwells) {
+        insertDwell.run(
+          d.session_id,
+          d.slide_number,
+          d.slide_title || `Slide ${d.slide_number}`,
+          d.lesson_phase || "direct_instruction",
+          d.duration_seconds || 0,
+          d.updated_at || new Date().toISOString()
+        );
+      }
+    }
+
+    if (Array.isArray(data.phaseSummaries)) {
+      const insertPhase = db.prepare(`
+        INSERT OR IGNORE INTO phase_summaries (
+          session_id, phase_key, total_seconds, percentage
+        ) VALUES (?, ?, ?, ?)
+      `);
+      for (const p of data.phaseSummaries) {
+        insertPhase.run(
+          p.session_id,
+          p.phase_key,
+          p.total_seconds || 0,
+          p.percentage || 0
+        );
+      }
+    }
+
+    console.info(`[Analytics DB] Successfully seeded ${data.sessions.length} sessions from ${path.basename(jsonFilePath)}`);
+  } catch (err) {
+    console.warn("[Analytics DB] Could not seed database from JSON:", err.message);
+  }
+}
+
 export function getAnalyticsDb() {
   if (dbInstance) return dbInstance;
 
   const paths = resolveDbPath();
+  const sourceDb = path.resolve(process.cwd(), "data", "analytics.db");
+  const sourceJson = path.resolve(process.cwd(), "data", "analytics_sessions.json");
+
+  // If running in temporary directory (e.g. Vercel Serverless) and /tmp DB doesn't exist yet, copy bundled seed DB
+  if (paths.isTmp && paths.dbFile !== ":memory:" && !fs.existsSync(paths.dbFile)) {
+    if (fs.existsSync(sourceDb)) {
+      try {
+        fs.copyFileSync(sourceDb, paths.dbFile);
+        console.info("[Analytics DB] Seeded SQLite database from bundled data/analytics.db to", paths.dbFile);
+      } catch (copyErr) {
+        console.warn("[Analytics DB] Failed copying seed DB to /tmp:", copyErr.message);
+      }
+    }
+  }
+
   try {
     if (paths.dataDir && paths.dbFile !== ":memory:" && !fs.existsSync(paths.dataDir)) {
       fs.mkdirSync(paths.dataDir, { recursive: true });
@@ -142,6 +230,16 @@ export function getAnalyticsDb() {
     } catch (_) {
       // Column already exists
     }
+  }
+
+  // If sessions table is empty (e.g. freshly created in /tmp or in-memory) and sourceJson exists, seed it!
+  try {
+    const row = dbInstance.prepare("SELECT count(*) as count FROM sessions").get();
+    if ((!row || row.count === 0) && fs.existsSync(sourceJson)) {
+      seedDatabaseFromJson(dbInstance, sourceJson);
+    }
+  } catch (seedErr) {
+    console.warn("[Analytics DB] Notice: JSON seeding check:", seedErr.message);
   }
 
   return dbInstance;

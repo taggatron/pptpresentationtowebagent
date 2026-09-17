@@ -3508,17 +3508,28 @@ async function startSlideshowTracking() {
   if (!currentDeck?.id) return;
 
   // Strict Lesson Schedule Check: Automatically prevent recording outside scheduled teaching periods
+  // (unless preview/testing bypass is requested via query param ?bypassSchedule=1 or ?testSchedule=1)
+  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const isBypassRequested = urlParams?.get("bypassSchedule") === "1" || urlParams?.get("testSchedule") === "1";
+
   const currentSlot = getCurrentLessonSlot();
-  if (!currentSlot) {
+  if (!currentSlot && !isBypassRequested) {
     analyticsTracker.active = false;
     updateAnalyticsButtonStatus(false);
     if (analyticsStatusBadge) {
       analyticsStatusBadge.textContent = "Outside Lesson Times";
       analyticsStatusBadge.className = "analytics-status-pill idle";
     }
-    setAnalyticsNotice("ℹ️ Analytics recording standby: You are currently outside your scheduled teaching timetable hours.", "info");
+    setAnalyticsNotice("ℹ️ Analytics recording standby: You are currently outside your scheduled teaching timetable hours. (Add ?bypassSchedule=1 to URL to test live recording)", "info");
     return;
   }
+
+  const effectiveSlot = currentSlot || {
+    id: "preview-test-slot",
+    group: "Preview",
+    periodLabel: "Test Period",
+    topic: currentDeck.title || currentDeck.id
+  };
 
   analyticsTracker.deckId = currentDeck.id;
   analyticsTracker.currentSlideIndex = currentSlideIndex;
@@ -3533,11 +3544,12 @@ async function startSlideshowTracking() {
       body: JSON.stringify({
         deckId: currentDeck.id,
         totalSlides: currentDeck.slides ? currentDeck.slides.length : 0,
-        lessonId: currentSlot.id,
-        lessonGroup: currentSlot.group,
-        lessonPeriod: currentSlot.periodLabel,
-        lessonTopic: currentSlot.topic,
-        weekId: analyticsTracker.selectedWeekId || "year11-week-4"
+        lessonId: effectiveSlot.id,
+        lessonGroup: effectiveSlot.group,
+        lessonPeriod: effectiveSlot.periodLabel,
+        lessonTopic: effectiveSlot.topic,
+        weekId: analyticsTracker.selectedWeekId || "year11-week-4",
+        bypassSchedule: isBypassRequested
       })
     });
     if (res.ok) {
@@ -3686,9 +3698,12 @@ async function sendSlideDwell(slideNumber, dwellMs) {
 async function sendAnalyticsHeartbeat() {
   if (!analyticsTracker.active || !analyticsTracker.slideEnterTime) return;
 
+  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const isBypassRequested = urlParams?.get("bypassSchedule") === "1" || urlParams?.get("testSchedule") === "1";
+
   // Auto-stop if lesson time has concluded
   const currentSlot = getCurrentLessonSlot();
-  if (!currentSlot) {
+  if (!currentSlot && !isBypassRequested) {
     await stopSlideshowTracking({ finishSession: true });
     setAnalyticsNotice("⏱️ Lesson period ended. Slideshow analytics automatically stopped recording.", "info");
     if (analyticsStatusBadge) {
@@ -4279,8 +4294,7 @@ async function openAnalyticsModal() {
 
   const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
   if (bridge && !bridge.isUserAuthorized()) {
-    bridge.openAuthModal("Please sign in with danielptagg@googlemail.com to access cloud analytics.");
-    return;
+    setAnalyticsNotice("ℹ️ Viewing server analytics. Sign in with Google in the top bar to enable live Cloud Firestore sync across devices.", "info");
   }
 
   if (analyticsModal) analyticsModal.classList.remove("hidden");

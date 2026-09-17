@@ -61,7 +61,12 @@ export async function loginWithGoogle() {
   } catch (error) {
     console.warn("[Firebase Auth] Sign in error:", error);
     if (noticeEl && error.code !== "auth/popup-closed-by-user") {
-      noticeEl.textContent = error.message || "Failed to sign in with Google.";
+      if (error.code === "auth/unauthorized-domain") {
+        const hostname = window.location.hostname;
+        noticeEl.innerHTML = `<strong>Domain not authorized in Firebase:</strong><br>Please add <code>${hostname}</code> to <em>Authorized domains</em> in the <a href="https://console.firebase.google.com/project/aaq-bio-arranger-2627/authentication/settings" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">Firebase Console</a> (Authentication &gt; Settings &gt; Authorized domains).`;
+      } else {
+        noticeEl.textContent = error.message || "Failed to sign in with Google.";
+      }
       noticeEl.className = "auth-notice error";
       noticeEl.classList.remove("hidden");
     }

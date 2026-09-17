@@ -5,6 +5,9 @@
   "type": "module",
   "description": "Agent and web application that converts whole-slide image PPTX presentations into interactive web slide decks.",
   "main": "src/server.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "scripts": {
     "start": "node src/server.js",
     "convert": "node src/convert-deck.js",
