@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Carbon Cycle: Interactive Ecosystem Simulator & Student Activity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --panel-bg: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.85);
+      --border: rgba(148, 163, 184, 0.18);
+      --border-highlight: rgba(56, 189, 248, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --cyan: #38bdf8;
+      --cyan-light: #e0f2fe;
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --amber: #f59e0b;
+      --purple: #a855f7;
+      --rose: #f43f5e;
+      --blue: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .app-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(circle at 50% 20%, #172554 0%, #090d16 80%);
+      position: relative;
+    }
+
+    /* Top Bar */
+    header.header-bar {
+      min-height: 56px;
+      height: clamp(56px, 7vh, 64px);
+      padding: 0 clamp(12px, 2vw, 24px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 20;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #10b981, #0284c7);
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .brand-text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: clamp(14px, 1.35vw, 17px);
+      color: #fff;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: clamp(10px, 0.85vw, 11.5px);
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      margin-top: 2px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* Tab Controls */
+    .tab-nav {
+      display: flex;
+      gap: clamp(4px, 0.6vw, 8px);
+      background: rgba(30, 41, 59, 0.7);
+      padding: 3px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      flex-shrink: 1;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: clamp(11px, 0.95vw, 13px);
+      padding: 6px clamp(8px, 1vw, 14px);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      color: #fff;
+      background: var(--blue);
+      box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: clamp(6px, 1vw, 12px);
+      flex-shrink: 0;
+    }
+
+    .score-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(11px, 0.9vw, 13px);
+      font-weight: 700;
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px clamp(8px, 0.9vw, 12px);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .reset-btn {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 4px clamp(8px, 0.9vw, 12px);
+      border-radius: 8px;
+      font-size: clamp(11px, 0.85vw, 12px);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .reset-btn:hover {
+      background: rgba(244, 63, 94, 0.3);
+    }
+
+    /* Main Workspace */
+    .workspace {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Left Stage / Diagram Canvas */
+    .stage-container {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(8px, 1.2vw, 16px);
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .diagram-svg-wrap {
+      width: 100%;
+      max-width: 960px;
+      height: 100%;
+      max-height: 560px;
+      position: relative;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg#cycleCanvas {
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      display: block;
+    }
+
+    /* SVG Elements Styling */
+    .node-box {
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    .node-box:hover {
+      filter: brightness(1.2) drop-shadow(0 0 12px rgba(56, 189, 248, 0.4));
+    }
+
+    .node-box.selected rect {
+      stroke: var(--cyan);
+      stroke-width: 3;
+      filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.6));
+    }
+
+    .flux-arrow {
+      fill: none;
+      stroke-width: 3.5;
+      cursor: pointer;
+      transition: stroke-width 0.2s, filter 0.2s;
+    }
+
+    .flux-arrow:hover {
+      stroke-width: 6;
+      filter: drop-shadow(0 0 8px currentColor);
+    }
+
+    .flux-arrow.active-journey {
+      stroke: #facc15 !important;
+      stroke-width: 6;
+      stroke-dasharray: 8, 4;
+      animation: dashFlow 1s linear infinite;
+    }
+
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -24;
+      }
+    }
+
+    .drop-target {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .drop-target rect {
+      stroke-dasharray: 6, 4;
+      transition: all 0.2s;
+    }
+
+    .drop-target:hover rect {
+      stroke: var(--cyan);
+      fill: rgba(56, 189, 248, 0.2);
+    }
+
+    .drop-target.correct rect {
+      stroke: var(--emerald);
+      fill: rgba(16, 185, 129, 0.25);
+      stroke-dasharray: none;
+    }
+
+    /* Particle Animation Layer */
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #38bdf8 20%, transparent 80%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: drop-shadow(0 0 6px #38bdf8);
+    }
+
+    /* Right Sidebar Panel */
+    .sidebar-panel {
+      width: clamp(280px, 30vw, 400px);
+      max-width: 400px;
+      min-width: 260px;
+      background: rgba(15, 23, 42, 0.95);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: clamp(12px, 1.4vw, 20px);
+      gap: clamp(10px, 1.2vw, 16px);
+      backdrop-filter: blur(16px);
+      z-index: 10;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .panel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: clamp(10px, 1.2vw, 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-sizing: border-box;
+      min-width: 0;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .panel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(13px, 1.1vw, 15px);
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-icon {
+      font-size: 16px;
+    }
+
+    /* Card Matching Section (Mode 2) */
+    .matching-tray {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+    }
+
+    .draggable-card {
+      background: #1e293b;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: clamp(6px, 0.8vw, 10px) 8px;
+      border-radius: 8px;
+      font-size: clamp(10.5px, 0.85vw, 12px);
+      font-weight: 600;
+      text-align: center;
+      cursor: grab;
+      color: #f1f5f9;
+      transition: all 0.2s;
+      user-select: none;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .draggable-card:hover {
+      background: #334155;
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    .draggable-card.selected {
+      background: var(--blue);
+      border-color: #60a5fa;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    }
+
+    .draggable-card.matched {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--emerald);
+      color: #6ee7b7;
+      cursor: default;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    /* Info / Dossier Display (Mode 1) */
+    .dossier-box {
+      font-size: clamp(11.5px, 0.9vw, 13px);
+      line-height: 1.5;
+      color: #cbd5e1;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .dossier-heading {
+      font-weight: 700;
+      font-size: clamp(14px, 1.2vw, 16px);
+      color: var(--cyan);
+      margin-bottom: 4px;
+      line-height: 1.3;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .dossier-meta {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pill-bio { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .pill-chem { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; }
+    .pill-sink { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+    .pill-human { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
+
+    .dossier-desc {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .formula-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(10px, 0.82vw, 12px);
+      background: #090d16;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: #fbbf24;
+      margin-bottom: 10px;
+      display: block;
+      line-height: 1.45;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+    }
+
+    .exam-tip-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid var(--amber);
+      padding: 8px 10px;
+      border-radius: 0 6px 6px 0;
+      font-size: clamp(10.5px, 0.82vw, 12px);
+      color: #fde68a;
+      line-height: 1.45;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Journey Stepper (Mode 3) */
+    .journey-stepper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .step-item:hover {
+      background: rgba(30, 41, 59, 0.9);
+    }
+
+    .step-item.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--cyan);
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #334155;
+      font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-item.active .step-num {
+      background: var(--cyan);
+      color: #0f172a;
+    }
+
+    .step-text h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .step-text p {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    /* Quiz Container (Mode 4) */
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .question-prompt {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f8fafc;
+      line-height: 1.4;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .quiz-opt-btn {
+      background: #1e293b;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quiz-opt-btn:hover {
+      background: #334155;
+      color: #fff;
+    }
+
+    .quiz-opt-btn.correct {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: var(--emerald);
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    .quiz-opt-btn.wrong {
+      background: rgba(244, 63, 94, 0.25);
+      border-color: var(--rose);
+      color: #fda4af;
+    }
+
+    .quiz-feedback {
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      display: none;
+      line-height: 1.4;
+    }
+
+    .quiz-feedback.show {
+      display: block;
+    }
+
+    .quiz-feedback.pass {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .quiz-feedback.fail {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    /* Container & Viewport Rescaling */
+    @media (max-width: 1080px) {
+      .brand-subtitle {
+        display: none !important;
+      }
+      .tab-btn {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 840px) {
+      .workspace {
+        flex-direction: column;
+      }
+      .sidebar-panel {
+        width: 100%;
+        max-width: none;
+        height: 250px;
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+      header.header-bar {
+        padding: 0 8px;
+      }
+      .score-pill {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header-bar">
+      <div class="brand-section">
+        <div class="brand-badge">C</div>
+        <div class="brand-text-block">
+          <span class="brand-title">The Carbon Cycle</span>
+          <span class="brand-subtitle">GCSE Combined Science · Ecology & Resources</span>
+        </div>
+      </div>
+
+      <nav class="tab-nav">
+        <button class="tab-btn active" id="tabExplore" onclick="switchMode('explore')">
+          <span>🔍</span> Explore Reservoirs
+        </button>
+        <button class="tab-btn" id="tabMatcher" onclick="switchMode('matcher')">
+          <span>🧩</span> Card Matcher
+        </button>
+        <button class="tab-btn" id="tabJourney" onclick="switchMode('journey')">
+          <span>⚡</span> Carbon Journey
+        </button>
+        <button class="tab-btn" id="tabQuiz" onclick="switchMode('quiz')">
+          <span>🎯</span> Diagnostic Quiz
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <div class="score-pill" id="scoreDisplay">
+          <span>⭐</span> <span id="scoreText">Activity Ready</span>
+        </div>
+        <button class="reset-btn" onclick="resetActivity()">Reset</button>
+      </div>
+    </header>
+
+    <!-- Workspace -->
+    <main class="workspace">
+      <!-- Diagram View -->
+      <section class="stage-container">
+        <div class="diagram-svg-wrap">
+          <svg id="cycleCanvas" viewBox="0 0 960 560">
+            <defs>
+              <linearGradient id="gradAtmosphere" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1e3a8a" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+              <linearGradient id="gradProducers" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#065f46" />
+                <stop offset="100%" stop-color="#10b981" />
+              </linearGradient>
+              <linearGradient id="gradConsumers" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#78350f" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+              <linearGradient id="gradDecomposers" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#581c87" />
+                <stop offset="100%" stop-color="#9333ea" />
+              </linearGradient>
+              <linearGradient id="gradFossil" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#18181b" />
+                <stop offset="100%" stop-color="#3f3f46" />
+              </linearGradient>
+              <linearGradient id="gradOceans" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0c4a6e" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+              <linearGradient id="gradPeat" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#365314" />
+                <stop offset="100%" stop-color="#65a30d" />
+              </linearGradient>
+
+              <!-- Arrow Markers -->
+              <marker id="arrowPhotosynthesis" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+              </marker>
+              <marker id="arrowRespiration" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+              </marker>
+              <marker id="arrowCombustion" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e" />
+              </marker>
+              <marker id="arrowDecomp" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+              </marker>
+              <marker id="arrowGeneral" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+              </marker>
+            </defs>
+
+            <!-- Background Aesthetic Grid -->
+            <line x1="480" y1="0" x2="480" y2="560" stroke="rgba(255,255,255,0.03)" stroke-dasharray="4,4" />
+            <line x1="0" y1="280" x2="960" y2="280" stroke="rgba(255,255,255,0.03)" stroke-dasharray="4,4" />
+
+            <!-- FLUX PATHS & ARROWS -->
+            <!-- 1. Photosynthesis: Atmosphere -> Producers -->
+            <path id="pathPhotosynthesis" class="flux-arrow" d="M 420,110 C 320,130 240,160 210,210" stroke="#10b981" marker-end="url(#arrowPhotosynthesis)" onclick="inspectFlux('photosynthesis')" />
+            
+            <!-- 2. Plant Respiration: Producers -> Atmosphere -->
+            <path id="pathPlantRespiration" class="flux-arrow" d="M 230,210 C 270,160 360,130 430,110" stroke="#38bdf8" marker-end="url(#arrowRespiration)" onclick="inspectFlux('respiration_plant')" />
+
+            <!-- 3. Feeding: Producers -> Consumers -->
+            <path id="pathFeeding" class="flux-arrow" d="M 270,250 L 410,250" stroke="#fbbf24" marker-end="url(#arrowGeneral)" onclick="inspectFlux('feeding')" />
+
+            <!-- 4. Animal Respiration: Consumers -> Atmosphere -->
+            <path id="pathAnimalRespiration" class="flux-arrow" d="M 480,210 L 480,120" stroke="#38bdf8" marker-end="url(#arrowRespiration)" onclick="inspectFlux('respiration_animal')" />
+
+            <!-- 5. Death / Waste: Producers -> Decomposers -->
+            <path id="pathDeathPlant" class="flux-arrow" d="M 200,290 C 210,360 290,400 370,420" stroke="#c084fc" marker-end="url(#arrowDecomp)" onclick="inspectFlux('death_plants')" />
+
+            <!-- 6. Death / Waste: Consumers -> Decomposers -->
+            <path id="pathDeathAnimal" class="flux-arrow" d="M 460,290 L 430,390" stroke="#c084fc" marker-end="url(#arrowDecomp)" onclick="inspectFlux('death_animals')" />
+
+            <!-- 7. Microbial Respiration: Decomposers -> Atmosphere -->
+            <path id="pathMicrobialRespiration" class="flux-arrow" d="M 500,410 C 580,380 540,200 520,120" stroke="#38bdf8" marker-end="url(#arrowRespiration)" onclick="inspectFlux('respiration_microbial')" />
+
+            <!-- 8. Fossilisation: Decomposers/Waste -> Fossil Fuels -->
+            <path id="pathFossilisation" class="flux-arrow" d="M 490,440 L 670,460" stroke="#a1a1aa" marker-end="url(#arrowGeneral)" onclick="inspectFlux('fossilisation')" />
+
+            <!-- 9. Combustion: Fossil Fuels -> Atmosphere -->
+            <path id="pathCombustion" class="flux-arrow" d="M 750,420 C 820,320 780,180 550,90" stroke="#f43f5e" marker-end="url(#arrowCombustion)" onclick="inspectFlux('combustion')" />
+
+            <!-- 10. Ocean Dissolution & Carbonate Formation -->
+            <path id="pathOceanIn" class="flux-arrow" d="M 540,80 C 650,80 730,120 760,180" stroke="#0284c7" marker-end="url(#arrowGeneral)" onclick="inspectFlux('ocean_sink')" />
+
+            <!-- 11. Peat Bog Formation -->
+            <path id="pathPeat" class="flux-arrow" d="M 170,290 C 140,360 140,430 170,460" stroke="#65a30d" marker-end="url(#arrowGeneral)" onclick="inspectFlux('peat_bog')" />
+
+            <!-- RESERVOIR NODES -->
+            <!-- ATMOSPHERE (Top Center) -->
+            <g id="nodeAtmosphere" class="node-box" transform="translate(380, 40)" onclick="inspectReservoir('atmosphere')">
+              <rect width="200" height="70" rx="12" fill="url(#gradAtmosphere)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5" />
+              <text x="100" y="28" fill="#e0f2fe" font-size="14" font-weight="700" text-anchor="middle" font-family="'Outfit', sans-serif">ATMOSPHERE</text>
+              <text x="100" y="50" fill="#bae6fd" font-size="12" font-weight="600" text-anchor="middle">Carbon Dioxide (CO₂ Gas)</text>
+            </g>
+
+            <!-- PRODUCERS (Middle Left) -->
+            <g id="nodeProducers" class="node-box" transform="translate(110, 210)" onclick="inspectReservoir('producers')">
+              <rect width="160" height="75" rx="12" fill="url(#gradProducers)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" />
+              <text x="80" y="30" fill="#d1fae5" font-size="14" font-weight="700" text-anchor="middle" font-family="'Outfit', sans-serif">PRODUCERS</text>
+              <text x="80" y="52" fill="#a7f3d0" font-size="11" text-anchor="middle">Green Plants & Algae</text>
+            </g>
+
+            <!-- CONSUMERS (Middle Center) -->
+            <g id="nodeConsumers" class="node-box" transform="translate(410, 215)" onclick="inspectReservoir('consumers')">
+              <rect width="150" height="75" rx="12" fill="url(#gradConsumers)" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1.5" />
+              <text x="75" y="30" fill="#fef3c7" font-size="14" font-weight="700" text-anchor="middle" font-family="'Outfit', sans-serif">CONSUMERS</text>
+              <text x="75" y="52" fill="#fde68a" font-size="11" text-anchor="middle">Animals & Humans</text>
+            </g>
+
+            <!-- DECOMPOSERS (Bottom Center) -->
+            <g id="nodeDecomposers" class="node-box" transform="translate(350, 400)" onclick="inspectReservoir('decomposers')">
+              <rect width="170" height="75" rx="12" fill="url(#gradDecomposers)" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1.5" />
+              <text x="85" y="30" fill="#f3e8ff" font-size="14" font-weight="700" text-anchor="middle" font-family="'Outfit', sans-serif">DECOMPOSERS</text>
+              <text x="85" y="52" fill="#e9d5ff" font-size="11" text-anchor="middle">Bacteria & Fungi in Soil</text>
+            </g>
+
+            <!-- FOSSIL FUELS (Bottom Right) -->
+            <g id="nodeFossil" class="node-box" transform="translate(680, 410)" onclick="inspectReservoir('fossil')">
+              <rect width="170" height="75" rx="12" fill="url(#gradFossil)" stroke="rgba(148, 163, 184, 0.4)" stroke-width="1.5" />
+              <text x="85" y="30" fill="#f4f4f5" font-size="14" font-weight="700" text-anchor="middle" font-family="'Outfit', sans-serif">FOSSIL FUELS</text>
+              <text x="85" y="52" fill="#d4d4d8" font-size="11" text-anchor="middle">Coal, Oil & Gas</text>
+            </g>
+
+            <!-- OCEANS SINK (Middle Right) -->
+            <g id="nodeOceans" class="node-box" transform="translate(710, 190)" onclick="inspectReservoir('oceans')">
+              <rect width="160" height="70" rx="12" fill="url(#gradOceans)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5" />
+              <text x="80" y="28" fill="#e0f2fe" font-size="13" font-weight="700" text-anchor="middle" font-family="'Outfit', sans-serif">OCEAN SINK</text>
+              <text x="80" y="48" fill="#bae6fd" font-size="11" text-anchor="middle">Dissolved CO₂ & Shells</text>
+            </g>
+
+            <!-- PEAT BOGS SINK (Bottom Left) -->
+            <g id="nodePeat" class="node-box" transform="translate(90, 440)" onclick="inspectReservoir('peat')">
+              <rect width="150" height="65" rx="12" fill="url(#gradPeat)" stroke="rgba(132, 204, 22, 0.4)" stroke-width="1.5" />
+              <text x="75" y="26" fill="#ecfccb" font-size="13" font-weight="700" text-anchor="middle" font-family="'Outfit', sans-serif">PEAT BOGS</text>
+              <text x="75" y="46" fill="#d9f99d" font-size="11" text-anchor="middle">Acidic, Anaerobic Sink</text>
+            </g>
+
+            <!-- DROP TARGETS FOR MATCHER MODE (Overlaid on arrows) -->
+            <g id="dropTargetsGroup" style="display: none;">
+              <!-- Photosynthesis Slot -->
+              <g id="drop_photosynthesis" class="drop-target" transform="translate(240, 140)" onclick="handleSlotClick('photosynthesis')">
+                <rect width="120" height="30" rx="6" fill="rgba(15,23,42,0.8)" stroke="#10b981" stroke-width="2" />
+                <text id="label_photosynthesis" x="60" y="20" fill="#94a3b8" font-size="10" font-weight="700" text-anchor="middle">Target 1 (?)</text>
+              </g>
+
+              <!-- Respiration Slot (Plant) -->
+              <g id="drop_respiration_plant" class="drop-target" transform="translate(310, 175)" onclick="handleSlotClick('respiration_plant')">
+                <rect width="120" height="30" rx="6" fill="rgba(15,23,42,0.8)" stroke="#38bdf8" stroke-width="2" />
+                <text id="label_respiration_plant" x="60" y="20" fill="#94a3b8" font-size="10" font-weight="700" text-anchor="middle">Target 2 (?)</text>
+              </g>
+
+              <!-- Feeding Slot -->
+              <g id="drop_feeding" class="drop-target" transform="translate(285, 235)" onclick="handleSlotClick('feeding')">
+                <rect width="110" height="28" rx="6" fill="rgba(15,23,42,0.8)" stroke="#fbbf24" stroke-width="2" />
+                <text id="label_feeding" x="55" y="18" fill="#94a3b8" font-size="10" font-weight="700" text-anchor="middle">Target 3 (?)</text>
+              </g>
+
+              <!-- Microbial Respiration Slot -->
+              <g id="drop_respiration_microbial" class="drop-target" transform="translate(520, 310)" onclick="handleSlotClick('respiration_microbial')">
+                <rect width="130" height="30" rx="6" fill="rgba(15,23,42,0.8)" stroke="#38bdf8" stroke-width="2" />
+                <text id="label_respiration_microbial" x="65" y="20" fill="#94a3b8" font-size="10" font-weight="700" text-anchor="middle">Target 4 (?)</text>
+              </g>
+
+              <!-- Combustion Slot -->
+              <g id="drop_combustion" class="drop-target" transform="translate(680, 140)" onclick="handleSlotClick('combustion')">
+                <rect width="120" height="30" rx="6" fill="rgba(15,23,42,0.8)" stroke="#f43f5e" stroke-width="2" />
+                <text id="label_combustion" x="60" y="20" fill="#94a3b8" font-size="10" font-weight="700" text-anchor="middle">Target 5 (?)</text>
+              </g>
+
+              <!-- Fossilisation Slot -->
+              <g id="drop_fossilisation" class="drop-target" transform="translate(535, 435)" onclick="handleSlotClick('fossilisation')">
+                <rect width="120" height="28" rx="6" fill="rgba(15,23,42,0.8)" stroke="#a1a1aa" stroke-width="2" />
+                <text id="label_fossilisation" x="60" y="18" fill="#94a3b8" font-size="10" font-weight="700" text-anchor="middle">Target 6 (?)</text>
+              </g>
+
+              <!-- Decomposition Slot -->
+              <g id="drop_decomposition" class="drop-target" transform="translate(230, 360)" onclick="handleSlotClick('decomposition')">
+                <rect width="120" height="30" rx="6" fill="rgba(15,23,42,0.8)" stroke="#c084fc" stroke-width="2" />
+                <text id="label_decomposition" x="60" y="20" fill="#94a3b8" font-size="10" font-weight="700" text-anchor="middle">Target 7 (?)</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Right Panel / Interactive Content -->
+      <aside class="sidebar-panel" id="sidePanel">
+        <!-- MODE 1: EXPLORE VIEW -->
+        <div id="exploreView" class="panel-card">
+          <div class="panel-title">
+            <span class="badge-icon">🔬</span>
+            <span>Reservoir & Process Dossier</span>
+          </div>
+          <div class="dossier-box" id="dossierContent">
+            <div class="dossier-heading">The Carbon Cycle Overview</div>
+            <div class="dossier-meta">
+              <span class="pill-tag pill-bio">Biological</span>
+              <span class="pill-tag pill-chem">Chemical</span>
+            </div>
+            <p class="dossier-desc">
+              Carbon is the fundamental backbone of all organic molecules (carbohydrates, fats, proteins, and DNA). Because the Earth is a closed system with finite carbon, it must be continuously recycled between the atmosphere, living organisms, and long-term geological reservoirs.
+            </p>
+            <div class="formula-badge">
+              Key Rule: Photosynthesis takes CO₂ OUT.<br>
+              Respiration, Decomposition & Combustion put it IN.
+            </div>
+            <div class="exam-tip-box">
+              💡 <strong>Examiner Tip:</strong> Click on any reservoir card or arrow in the diagram to inspect its exact biological mechanism, chemical equations, and GCSE exam mark criteria!
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 2: MATCHER VIEW -->
+        <div id="matcherView" class="panel-card" style="display: none;">
+          <div class="panel-title">
+            <span class="badge-icon">🧩</span>
+            <span>Process Card Matcher</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            Select a process badge below, then click the matching target slot on the diagram arrows:
+          </p>
+
+          <div class="matching-tray" id="matchingTray">
+            <div class="draggable-card" id="card_photosynthesis" onclick="selectCard('photosynthesis')">
+              Photosynthesis
+            </div>
+            <div class="draggable-card" id="card_respiration_plant" onclick="selectCard('respiration_plant')">
+              Plant Respiration
+            </div>
+            <div class="draggable-card" id="card_feeding" onclick="selectCard('feeding')">
+              Feeding
+            </div>
+            <div class="draggable-card" id="card_respiration_microbial" onclick="selectCard('respiration_microbial')">
+              Microbial Respiration
+            </div>
+            <div class="draggable-card" id="card_combustion" onclick="selectCard('combustion')">
+              Combustion
+            </div>
+            <div class="draggable-card" id="card_fossilisation" onclick="selectCard('fossilisation')">
+              Fossilisation
+            </div>
+            <div class="draggable-card" id="card_decomposition" onclick="selectCard('decomposition')">
+              Decomposition
+            </div>
+          </div>
+
+          <div id="matcherFeedback" style="font-size: 12px; font-weight: 600; color: var(--cyan); margin-top: 8px;">
+            Select a badge above to start matching.
+          </div>
+        </div>
+
+        <!-- MODE 3: CARBON JOURNEY VIEW -->
+        <div id="journeyView" class="panel-card" style="display: none;">
+          <div class="panel-title">
+            <span class="badge-icon">⚡</span>
+            <span>Trace the Carbon Atom</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            Follow a single carbon atom through its journey over 300 million years:
+          </p>
+
+          <div class="journey-stepper">
+            <div class="step-item active" id="jStep1" onclick="jumpJourneyStep(1)">
+              <div class="step-num">1</div>
+              <div class="step-text">
+                <h4>Atmosphere: CO₂ Gas</h4>
+                <p>Floating in air, trapped by chlorophyll.</p>
+              </div>
+            </div>
+            <div class="step-item" id="jStep2" onclick="jumpJourneyStep(2)">
+              <div class="step-num">2</div>
+              <div class="step-text">
+                <h4>Producer: Oak Leaf Glucose</h4>
+                <p>Converted by light energy during photosynthesis.</p>
+              </div>
+            </div>
+            <div class="step-item" id="jStep3" onclick="jumpJourneyStep(3)">
+              <div class="step-num">3</div>
+              <div class="step-text">
+                <h4>Consumer: Caterpillar Muscle</h4>
+                <p>Leaf eaten; carbon built into insect protein.</p>
+              </div>
+            </div>
+            <div class="step-item" id="jStep4" onclick="jumpJourneyStep(4)">
+              <div class="step-num">4</div>
+              <div class="step-text">
+                <h4>Soil: Decomposition</h4>
+                <p>Insect dies; fungi respire releasing some CO₂.</p>
+              </div>
+            </div>
+            <div class="step-item" id="jStep5" onclick="jumpJourneyStep(5)">
+              <div class="step-num">5</div>
+              <div class="step-text">
+                <h4>Fossil Fuel: Compressed Coal</h4>
+                <p>Buried biomass trapped under heat & pressure.</p>
+              </div>
+            </div>
+            <div class="step-item" id="jStep6" onclick="jumpJourneyStep(6)">
+              <div class="step-num">6</div>
+              <div class="step-text">
+                <h4>Combustion: Power Station</h4>
+                <p>Burned with oxygen, roaring back into the air!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 4: DIAGNOSTIC QUIZ VIEW -->
+        <div id="quizView" class="panel-card" style="display: none;">
+          <div class="panel-title">
+            <span class="badge-icon">🎯</span>
+            <span>Diagnostic Checkpoint</span>
+          </div>
+
+          <div class="quiz-container" id="quizBox">
+            <div class="question-prompt" id="quizQuestion">
+              Loading question...
+            </div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-feedback" id="quizFeedback"></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // State management
+    let currentMode = 'explore';
+    let selectedCard = null;
+    let matchedCount = 0;
+    const TOTAL_MATCHES = 7;
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+
+    // Reservoirs Dossier Data
+    const RESERVOIRS = {
+      atmosphere: {
+        title: "Atmospheric Carbon Reservoir",
+        pills: ["chemical", "global-pool"],
+        desc: "Contains carbon primarily in the form of carbon dioxide (CO₂) gas, currently approx. 0.04% (420 ppm) of air. It is the immediate carbon source for all photosynthetic life on Earth.",
+        formula: "Atmospheric Pool: ~750 Gigatonnes Carbon (GtC)",
+        tip: "Remember: CO₂ is an invisible greenhouse gas that traps thermal infrared radiation re-radiated from Earth's surface."
+      },
+      producers: {
+        title: "Producers: Green Plants & Algae",
+        pills: ["biological", "autotrophs"],
+        desc: "Producers are the only biological organisms that take carbon OUT of the atmosphere. Inside chloroplasts, light energy and chlorophyll drive the synthesis of glucose.",
+        formula: "Equation: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
+        tip: "GCSE Crucial Point: Plants do NOT just photosynthesise; they also respire 24/7, returning some CO₂ back into the atmosphere!"
+      },
+      consumers: {
+        title: "Consumers: Herbivores & Carnivores",
+        pills: ["biological", "heterotrophs"],
+        desc: "Consumers cannot fix carbon dioxide from the air. They must ingest biomass (eating plants or other animals) to obtain carbon for building cell walls, muscle proteins, fats, and glycogen.",
+        formula: "Transfer: Plant Biomass → Animal Biomass + Waste",
+        tip: "Consumers respire aerobic glucose in mitochondria to release ATP energy, exhaling CO₂ as a waste product."
+      },
+      decomposers: {
+        title: "Decomposers: Soil Microorganisms",
+        pills: ["biological", "microbial"],
+        desc: "Bacteria and microscopic fungi secrete digestive enzymes into dead plant matter, animal carcasses, and faeces (extracellular digestion), absorbing the soluble products.",
+        formula: "Respiration: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ATP",
+        tip: "Common Misconception Buster: Decomposers do NOT make matter 'disappear'! Carbon is returned to the air because the microorganisms RESPIRE as they feed."
+      },
+      fossil: {
+        title: "Fossil Fuel Geological Reservoirs",
+        pills: ["geological", "ancient-sink"],
+        desc: "When ancient swamp forests and marine plankton died hundreds of millions of years ago, they were rapidly buried in anaerobic mud where decay could not occur. Over millions of years of intense heat and pressure, they formed coal, oil, and natural gas.",
+        formula: "Storage: Millions of years of locked chemical energy",
+        tip: "Combustion of fossil fuels short-circuits the natural slow cycle, releasing hundreds of millions of years of locked carbon in just two centuries."
+      },
+      oceans: {
+        title: "Oceanic Carbon Sink (The Blue Sink)",
+        pills: ["chemical", "marine"],
+        desc: "Oceans are Earth's largest active carbon sink. Atmospheric CO₂ dissolves directly into cold surface water. Marine phytoplankton photosynthesise, and molluscs/corals build calcium carbonate (CaCO₃) shells, which eventually settle onto the seafloor to form limestone.",
+        formula: "Reaction: CO₂ + H₂O ⇌ H₂CO₃ (Carbonic acid) → CaCO₃",
+        tip: "As ocean temperatures rise, warm water holds LESS dissolved gas, which reduces the ocean's capacity to absorb excess atmospheric CO₂."
+      },
+      peat: {
+        title: "Peat Bogs (The Green Lockbox)",
+        pills: ["biological", "wetland-sink"],
+        desc: "Peat bogs are waterlogged, acidic, cold wetland environments. The lack of dissolved oxygen (anaerobic conditions) and high acidity severely inhibits decomposing bacteria and fungi, preventing dead sphagnum moss from decaying.",
+        formula: "Condition: Anaerobic + Acidic = Arrested Decay",
+        tip: "Warning: Draining peat bogs for agriculture introduces oxygen, allowing decomposers to rapidly decay the peat and unleash massive pulses of CO₂!"
+      }
+    };
+
+    // Fluxes Dossier Data
+    const FLUXES = {
+      photosynthesis: {
+        title: "Photosynthesis (CO₂ Removal)",
+        desc: "The fundamental process by which autotrophs fix inorganic CO₂ into organic carbon (glucose).",
+        formula: "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂"
+      },
+      respiration_plant: {
+        title: "Plant Respiration (CO₂ Return)",
+        desc: "Plants respire day and night to produce ATP for active transport and cell division.",
+        formula: "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O"
+      },
+      feeding: {
+        title: "Feeding & Trophic Transfer",
+        desc: "Organic carbon passes along the food chain from producer to primary consumer.",
+        formula: "Carbohydrates, lipids, proteins assimilated"
+      },
+      respiration_animal: {
+        title: "Animal Respiration",
+        desc: "Animals break down digested food with oxygen, exhaling carbon dioxide.",
+        formula: "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O"
+      },
+      respiration_microbial: {
+        title: "Microbial Respiration",
+        desc: "Microscopic decomposers feed on dead matter and respire, returning carbon to air.",
+        formula: "Aerobic microbial respiration releases CO₂"
+      },
+      fossilisation: {
+        title: "Fossilisation (Millions of Years)",
+        desc: "Dead biomass trapped under anaerobic sediment subjected to high heat and tectonic pressure.",
+        formula: "Organic Matter → Coal, Oil, Natural Gas"
+      },
+      combustion: {
+        title: "Combustion of Fossil Fuels",
+        desc: "Burning hydrocarbons in oxygen rapidly releases trapped carbon as CO₂.",
+        formula: "Hydrocarbon + O₂ → CO₂ + H₂O (+ Heat Energy)"
+      },
+      ocean_sink: {
+        title: "Oceanic Dissolution",
+        desc: "Direct physical dissolution of atmospheric CO₂ gas into surface ocean waters.",
+        formula: "CO₂ (gas) ⇌ CO₂ (aqueous)"
+      },
+      peat_bog: {
+        title: "Peat Bog Storage",
+        desc: "Incomplete decay in waterlogged peat locks carbon away for thousands of years.",
+        formula: "Undecayed plant biomass preserved"
+      }
+    };
+
+    // Quiz Questions Data
+    const QUIZ_DATA = [
+      {
+        question: "1. Which process is the ONLY natural biological pathway that removes carbon dioxide directly from the atmosphere?",
+        options: [
+          "Aerobic respiration",
+          "Photosynthesis in plants and algae",
+          "Microbial decomposition",
+          "Combustion of biomass"
+        ],
+        correctIndex: 1,
+        explanation: "Correct! Photosynthesis by green plants and phytoplankton is the only biological process that fixes inorganic carbon dioxide into organic glucose."
+      },
+      {
+        question: "2. When an animal dies, why does its carbon eventually return to the atmosphere as carbon dioxide?",
+        options: [
+          "The body spontaneously combusts",
+          "Decomposers break down the dead matter and respire aerobically",
+          "Sunlight dissolves the carbon into vapour",
+          "Carbon atoms decay into nitrogen"
+        ],
+        correctIndex: 1,
+        explanation: "Correct! Decomposers (bacteria and fungi) digest the dead tissue and respire aerobically, releasing CO₂ gas back into the atmosphere."
+      },
+      {
+        question: "3. Why does draining a peat bog for farming accelerate global climate change?",
+        options: [
+          "It causes the water to evaporate into greenhouse steam",
+          "Oxygen enters the bog, allowing microorganisms to rapidly decay the peat and release CO₂",
+          "Peat immediately catches fire when dried",
+          "It destroys the ozone layer"
+        ],
+        correctIndex: 1,
+        explanation: "Correct! Peat bogs preserve undecayed matter because they are waterlogged (anaerobic). Draining lets oxygen in, allowing decomposers to rapidly respire."
+      },
+      {
+        question: "4. Over hundreds of millions of years, what conditions were required to transform buried dead biomass into coal and crude oil?",
+        options: [
+          "Abundant oxygen, dry soil, and direct sunlight",
+          "Anaerobic conditions, high heat, and immense geological pressure",
+          "Intense freezing and high microbial activity",
+          "Constant acid rain and volcanic magma"
+        ],
+        correctIndex: 1,
+        explanation: "Correct! Fossil fuels form strictly in anaerobic environments without decomposer oxygen, under millions of years of heat and tectonic pressure."
+      }
+    ];
+
+    // Mode Switching
+    function switchMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('exploreView').style.display = 'none';
+      document.getElementById('matcherView').style.display = 'none';
+      document.getElementById('journeyView').style.display = 'none';
+      document.getElementById('quizView').style.display = 'none';
+      document.getElementById('dropTargetsGroup').style.display = 'none';
+
+      // Reset flux highlights
+      document.querySelectorAll('.flux-arrow').forEach(a => a.classList.remove('active-journey'));
+
+      if (mode === 'explore') {
+        document.getElementById('tabExplore').classList.add('active');
+        document.getElementById('exploreView').style.display = 'flex';
+        document.getElementById('scoreText').innerText = 'Explore Mode Active';
+      } else if (mode === 'matcher') {
+        document.getElementById('tabMatcher').classList.add('active');
+        document.getElementById('matcherView').style.display = 'flex';
+        document.getElementById('dropTargetsGroup').style.display = 'inline';
+        updateMatcherStatus();
+      } else if (mode === 'journey') {
+        document.getElementById('tabJourney').classList.add('active');
+        document.getElementById('journeyView').style.display = 'flex';
+        document.getElementById('scoreText').innerText = 'Step-by-Step Story';
+        jumpJourneyStep(1);
+      } else if (mode === 'quiz') {
+        document.getElementById('tabQuiz').classList.add('active');
+        document.getElementById('quizView').style.display = 'flex';
+        currentQuizIndex = 0;
+        quizScore = 0;
+        loadQuizQuestion();
+      }
+    }
+
+    // Inspect Reservoir (Mode 1)
+    function inspectReservoir(id) {
+      if (currentMode !== 'explore') return;
+      const data = RESERVOIRS[id];
+      if (!data) return;
+
+      document.querySelectorAll('.node-box').forEach(b => b.classList.remove('selected'));
+      const el = document.getElementById(`node${id.charAt(0).toUpperCase() + id.slice(1)}`);
+      if (el) el.classList.add('selected');
+
+      const html = `
+        <div class="dossier-heading">${data.title}</div>
+        <div class="dossier-meta">
+          ${data.pills.map(p => `<span class="pill-tag pill-${p.includes('bio') ? 'bio' : p.includes('chem') ? 'chem' : p.includes('sink') ? 'sink' : 'human'}">${p}</span>`).join('')}
+        </div>
+        <p class="dossier-desc">${data.desc}</p>
+        <div class="formula-badge">${data.formula}</div>
+        <div class="exam-tip-box">💡 ${data.tip}</div>
+      `;
+      document.getElementById('dossierContent').innerHTML = html;
+    }
+
+    // Inspect Flux Arrow (Mode 1)
+    function inspectFlux(fluxKey) {
+      if (currentMode !== 'explore') return;
+      const data = FLUXES[fluxKey];
+      if (!data) return;
+
+      const html = `
+        <div class="dossier-heading">${data.title}</div>
+        <div class="dossier-meta">
+          <span class="pill-tag pill-bio">Carbon Flux Pathway</span>
+        </div>
+        <p class="dossier-desc">${data.desc}</p>
+        <div class="formula-badge">${data.formula}</div>
+        <div class="exam-tip-box">
+          💡 <strong>GCSE Focus:</strong> Be ready to explain whether this step increases or decreases atmospheric CO₂!
+        </div>
+      `;
+      document.getElementById('dossierContent').innerHTML = html;
+    }
+
+    // Card Matcher Logic (Mode 2)
+    function selectCard(cardKey) {
+      if (document.getElementById(`card_${cardKey}`).classList.contains('matched')) return;
+      selectedCard = cardKey;
+      document.querySelectorAll('.draggable-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById(`card_${cardKey}`).classList.add('selected');
+      document.getElementById('matcherFeedback').innerText = `Selected: "${formatLabel(cardKey)}". Now click its target slot on the cycle diagram!`;
+    }
+
+    function handleSlotClick(slotKey) {
+      if (!selectedCard) {
+        document.getElementById('matcherFeedback').innerText = `Select a badge from the right panel first!`;
+        return;
+      }
+
+      const targetEl = document.getElementById(`drop_${slotKey}`);
+      const labelEl = document.getElementById(`label_${slotKey}`);
+
+      if (selectedCard === slotKey) {
+        // Correct match
+        targetEl.classList.add('correct');
+        labelEl.textContent = `✔ ${formatLabel(slotKey)}`;
+        labelEl.setAttribute('fill', '#10b981');
+        document.getElementById(`card_${selectedCard}`).classList.remove('selected');
+        document.getElementById(`card_${selectedCard}`).classList.add('matched');
+
+        matchedCount++;
+        selectedCard = null;
+        updateMatcherStatus();
+
+        if (matchedCount >= TOTAL_MATCHES) {
+          document.getElementById('matcherFeedback').innerHTML = `<span style="color:#10b981; font-weight:800;">🎉 Masterclass! All 7 carbon pathways correctly placed!</span>`;
+        } else {
+          document.getElementById('matcherFeedback').innerText = `Spot on! Pick the next badge.`;
+        }
+      } else {
+        // Incorrect
+        targetEl.style.transform = 'scale(1.05)';
+        setTimeout(() => targetEl.style.transform = 'scale(1)', 250);
+        document.getElementById('matcherFeedback').innerHTML = `<span style="color:#f43f5e;">Incorrect slot for "${formatLabel(selectedCard)}". Try another target arrow!</span>`;
+      }
+    }
+
+    function formatLabel(key) {
+      const map = {
+        photosynthesis: "Photosynthesis",
+        respiration_plant: "Plant Respiration",
+        feeding: "Feeding",
+        respiration_microbial: "Microbial Respiration",
+        combustion: "Combustion",
+        fossilisation: "Fossilisation",
+        decomposition: "Decomposition"
+      };
+      return map[key] || key;
+    }
+
+    function updateMatcherStatus() {
+      document.getElementById('scoreText').innerText = `Matched ${matchedCount} / ${TOTAL_MATCHES}`;
+    }
+
+    // Journey Stepper Logic (Mode 3)
+    function jumpJourneyStep(stepNum) {
+      document.querySelectorAll('.step-item').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.flux-arrow').forEach(a => a.classList.remove('active-journey'));
+      document.querySelectorAll('.node-box').forEach(b => b.classList.remove('selected'));
+
+      const activeStepEl = document.getElementById(`jStep${stepNum}`);
+      if (activeStepEl) activeStepEl.classList.add('active');
+
+      if (stepNum === 1) {
+        document.getElementById('nodeAtmosphere').classList.add('selected');
+        document.getElementById('scoreText').innerText = 'Step 1: Carbon in Atmosphere';
+      } else if (stepNum === 2) {
+        document.getElementById('pathPhotosynthesis').classList.add('active-journey');
+        document.getElementById('nodeProducers').classList.add('selected');
+        document.getElementById('scoreText').innerText = 'Step 2: Absorbed by Plant';
+      } else if (stepNum === 3) {
+        document.getElementById('pathFeeding').classList.add('active-journey');
+        document.getElementById('nodeConsumers').classList.add('selected');
+        document.getElementById('scoreText').innerText = 'Step 3: Ingested by Herbivore';
+      } else if (stepNum === 4) {
+        document.getElementById('pathDeathAnimal').classList.add('active-journey');
+        document.getElementById('pathMicrobialRespiration').classList.add('active-journey');
+        document.getElementById('nodeDecomposers').classList.add('selected');
+        document.getElementById('scoreText').innerText = 'Step 4: Decomposed in Soil';
+      } else if (stepNum === 5) {
+        document.getElementById('pathFossilisation').classList.add('active-journey');
+        document.getElementById('nodeFossil').classList.add('selected');
+        document.getElementById('scoreText').innerText = 'Step 5: Compressed into Coal';
+      } else if (stepNum === 6) {
+        document.getElementById('pathCombustion').classList.add('active-journey');
+        document.getElementById('nodeAtmosphere').classList.add('selected');
+        document.getElementById('scoreText').innerText = 'Step 6: Burned back to Air';
+      }
+    }
+
+    // Diagnostic Quiz Logic (Mode 4)
+    function loadQuizQuestion() {
+      if (currentQuizIndex >= QUIZ_DATA.length) {
+        // Quiz completed
+        document.getElementById('quizQuestion').innerHTML = `<h3 style="color:#10b981;">Quiz Completed!</h3><p style="margin-top:8px;">You scored ${quizScore} out of ${QUIZ_DATA.length}!</p>`;
+        document.getElementById('quizOptions').innerHTML = '';
+        document.getElementById('quizFeedback').className = 'quiz-feedback show pass';
+        document.getElementById('quizFeedback').innerHTML = `Excellent work mastering the fundamental carbon cycle mechanisms.`;
+        document.getElementById('scoreText').innerText = `Score: ${quizScore}/${QUIZ_DATA.length}`;
+        return;
+      }
+
+      const q = QUIZ_DATA[currentQuizIndex];
+      document.getElementById('quizQuestion').innerText = q.question;
+      document.getElementById('quizFeedback').className = 'quiz-feedback';
+      document.getElementById('scoreText').innerText = `Q${currentQuizIndex + 1} of ${QUIZ_DATA.length}`;
+
+      const optionsHtml = q.options.map((opt, idx) => `
+        <button class="quiz-opt-btn" onclick="checkQuizAnswer(${idx})">${opt}</button>
+      `).join('');
+      document.getElementById('quizOptions').innerHTML = optionsHtml;
+    }
+
+    function checkQuizAnswer(selectedIdx) {
+      const q = QUIZ_DATA[currentQuizIndex];
+      const buttons = document.querySelectorAll('.quiz-opt-btn');
+      buttons.forEach(b => b.disabled = true);
+
+      const feedbackEl = document.getElementById('quizFeedback');
+
+      if (selectedIdx === q.correctIndex) {
+        buttons[selectedIdx].classList.add('correct');
+        feedbackEl.className = 'quiz-feedback show pass';
+        feedbackEl.innerText = q.explanation;
+        quizScore++;
+      } else {
+        buttons[selectedIdx].classList.add('wrong');
+        buttons[q.correctIndex].classList.add('correct');
+        feedbackEl.className = 'quiz-feedback show fail';
+        feedbackEl.innerText = `Not quite. ${q.explanation}`;
+      }
+
+      setTimeout(() => {
+        currentQuizIndex++;
+        loadQuizQuestion();
+      }, 2500);
+    }
+
+    function resetActivity() {
+      matchedCount = 0;
+      selectedCard = null;
+      document.querySelectorAll('.draggable-card').forEach(c => c.className = 'draggable-card');
+      document.querySelectorAll('.drop-target').forEach(t => t.classList.remove('correct'));
+      document.querySelectorAll('.drop-target text').forEach(t => {
+        t.textContent = 'Target (?)';
+        t.setAttribute('fill', '#94a3b8');
+      });
+      document.querySelectorAll('.node-box').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.flux-arrow').forEach(a => a.classList.remove('active-journey'));
+      document.getElementById('matcherFeedback').innerText = 'Select a badge above to start matching.';
+      switchMode(currentMode);
+    }
+  </script>
+</body>
+</html>

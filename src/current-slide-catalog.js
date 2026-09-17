@@ -25,6 +25,15 @@ const PHOTOSYNTHESIS_GRID = [
   { row: 1, col: 2, bounds: { x: 73.5, y: 59, w: 22.5, h: 34 }, answerBounds: { x: 74.5, y: 83, w: 20.5, h: 8 } }
 ];
 
+const CARBON_STARTER_GRID = [
+  { row: 0, col: 0, bounds: { x: 3.3, y: 17.0, w: 29.5, h: 36.0 }, answerBounds: { x: 4.5, y: 35.0, w: 27.0, h: 16.0 } },
+  { row: 0, col: 1, bounds: { x: 35.3, y: 17.0, w: 29.5, h: 36.0 }, answerBounds: { x: 36.5, y: 35.0, w: 27.0, h: 16.0 } },
+  { row: 0, col: 2, bounds: { x: 67.2, y: 17.0, w: 29.5, h: 36.0 }, answerBounds: { x: 68.5, y: 35.0, w: 27.0, h: 16.0 } },
+  { row: 1, col: 0, bounds: { x: 3.3, y: 57.5, w: 29.5, h: 36.0 }, answerBounds: { x: 4.5, y: 75.5, w: 27.0, h: 16.0 } },
+  { row: 1, col: 1, bounds: { x: 35.3, y: 57.5, w: 29.5, h: 36.0 }, answerBounds: { x: 36.5, y: 75.5, w: 27.0, h: 16.0 } },
+  { row: 1, col: 2, bounds: { x: 67.2, y: 57.5, w: 29.5, h: 36.0 }, answerBounds: { x: 68.5, y: 75.5, w: 27.0, h: 16.0 } }
+];
+
 const STARTER_CONTENT = {
   Lesson_01_CELL_STRUCTURE: {
     title: "Starter Activity: Knowledge Retrieval",
@@ -164,6 +173,30 @@ const STARTER_CONTENT = {
       ["Name three factors that can limit the rate of photosynthesis.", "Light intensity, temperature, and carbon dioxide concentration."],
       ["What does the resolution of a measuring instrument mean?", "The smallest change or unit that it can detect."]
     ]
+  },
+  Classic_Lesson_05_Carbon_and_Water_Cycle: {
+    title: "Starter: Retrieval Grid",
+    layout: CARBON_STARTER_GRID,
+    cells: [
+      ["Is aerobic respiration an exothermic or endothermic reaction?", "Exothermic (releases thermal energy and ATP to surroundings)."],
+      ["What cellular pigment is required to absorb solar energy?", "Chlorophyll (contained within chloroplasts)."],
+      ["Name two types of microorganisms that cause biomass decay.", "Bacteria and fungi."],
+      ["What molecule acts as the immediate energy supply for living cells?", "ATP (Adenosine Triphosphate)."],
+      ["What are the two primary chemical products of photosynthesis?", "Glucose (C₆H₁₂O₆) and Oxygen (O₂)."],
+      ["Name one location where carbon is naturally stored on Earth.", "Atmosphere (as CO₂), oceans, living biomass, peat bogs / soil, or limestone rock."]
+    ]
+  },
+  Classic_Lesson_05_Carbon_Cycle: {
+    title: "Starter: Retrieval Grid",
+    layout: CARBON_STARTER_GRID,
+    cells: [
+      ["Is aerobic respiration an exothermic or endothermic reaction?", "Exothermic (releases thermal energy and ATP to surroundings)."],
+      ["What cellular pigment is required to absorb solar energy?", "Chlorophyll (contained within chloroplasts)."],
+      ["Name two types of microorganisms that cause biomass decay.", "Bacteria and fungi."],
+      ["What molecule acts as the immediate energy supply for living cells?", "ATP (Adenosine Triphosphate)."],
+      ["What are the two primary chemical products of photosynthesis?", "Glucose (C₆H₁₂O₆) and Oxygen (O₂)."],
+      ["Name one location where carbon is naturally stored on Earth.", "Atmosphere (as CO₂), oceans, living biomass, peat bogs / soil, or limestone rock."]
+    ]
   }
 };
 
@@ -185,4 +218,6 @@ export function getCurrentStarterGrid(deckId) {
   };
 }
 
-export const CURRENT_STARTER_DECK_IDS = Object.freeze(Object.keys(STARTER_CONTENT));
+export const CURRENT_STARTER_DECK_IDS = Object.freeze(
+  Object.keys(STARTER_CONTENT).filter((id) => id.startsWith("Lesson_"))
+);

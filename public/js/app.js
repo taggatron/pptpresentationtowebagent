@@ -1479,9 +1479,6 @@ function renderMediaBuild(slide, build) {
 
 function normalizeRevealMode(cell) {
   const explicitMode = String(cell?.revealMode || cell?.answerRevealMode || "").toLowerCase();
-  if (explicitMode === "blur") {
-    return "blur";
-  }
   if (
     explicitMode === "overlay" ||
     cell?.overlayAnswer === true ||
@@ -1489,7 +1486,7 @@ function normalizeRevealMode(cell) {
   ) {
     return "overlay";
   }
-  return "unmask";
+  return "blur";
 }
 
 function appendInteractiveGrid(slide) {
@@ -1503,17 +1500,17 @@ function appendInteractiveGrid(slide) {
     renderedCount++;
     const revealed = isAnswerRevealed(slide, cell);
     const revealMode = isGeneratedQuestionAnswerSequence(slide)
-      ? "unmask"
+      ? "blur"
       : normalizeRevealMode(cell);
     const regions = getAnswerRegionSet(cell);
     const bounds = regions.primary;
     if (!bounds) return;
 
-    if (!revealed && revealMode === "unmask") {
+    if (!revealed && (revealMode === "unmask" || revealMode === "blur")) {
       regions.secondary.forEach((secondaryBounds, regionIndex) => {
         const secondaryMask = document.createElement("div");
         secondaryMask.id = `qa_region_${cell.id}_${regionIndex + 2}`;
-        secondaryMask.className = "qa-card-overlay qa-secondary-region masked";
+        secondaryMask.className = `qa-card-overlay qa-secondary-region ${revealMode === "blur" ? "masked masked-blur" : "masked"}`;
         secondaryMask.setAttribute("aria-hidden", "true");
         secondaryMask.style.left = `${secondaryBounds.x}%`;
         secondaryMask.style.top = `${secondaryBounds.y}%`;
@@ -1529,7 +1526,7 @@ function appendInteractiveGrid(slide) {
 
     card.type = "button";
     card.id = `qa_card_${cell.id}`;
-    card.className = `qa-card-overlay ${revealed ? `revealed reveal-${revealMode}` : revealMode === "blur" ? "masked masked-blur" : revealMode === "overlay" ? "masked masked-overlay" : "masked"}`;
+    card.className = `qa-card-overlay ${revealed ? `revealed reveal-${revealMode}` : revealMode === "blur" ? "masked masked-blur" : revealMode === "overlay" ? "masked masked-overlay" : "masked masked-blur"}`;
     card.style.left = `${bounds.x}%`;
     card.style.top = `${bounds.y}%`;
     card.style.width = `${bounds.w}%`;
