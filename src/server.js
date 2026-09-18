@@ -1437,6 +1437,11 @@ export function createApp({
           if (!slide.interactiveType) {
             slide.interactiveType = "question_reveal";
           }
+        } else {
+          delete slide.interactiveCells;
+          slide.isInteractive = false;
+          slide.interactiveType = null;
+          delete slide.serialAnimation;
         }
       } else if (req.body.cellId && req.body.bounds && slide.interactiveCells) {
         const cell = slide.interactiveCells.find(

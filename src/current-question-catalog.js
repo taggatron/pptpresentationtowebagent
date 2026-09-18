@@ -209,45 +209,7 @@ const CURRENT_QUESTION_REVEALS = {
         ["DNA", { x: 62.4, y: 42.4, w: 13.8, h: 14.7 }],
         ["Gene", { x: 80.8, y: 42.4, w: 13.7, h: 14.7 }]
       ]
-    ),
-    "slide_12.png": [
-      groupedRevealCell(
-        "DNA is a type of protein: true or false?",
-        "False — DNA is a polymer that codes for proteins; it is not a protein.",
-        { x: 5.5, y: 20.2, w: 39.2, h: 6.2 },
-        [
-          { x: 45.5, y: 16.8, w: 16.2, h: 14.4 },
-          { x: 9.4, y: 26.1, w: 84, h: 6.8 }
-        ]
-      ),
-      groupedRevealCell(
-        "A gene is larger than a chromosome: true or false?",
-        "False — a chromosome contains hundreds or thousands of genes.",
-        { x: 5.5, y: 37.2, w: 55.8, h: 6.4 },
-        [
-          { x: 60.4, y: 32.7, w: 16.6, h: 14 },
-          { x: 9.5, y: 42.7, w: 78.5, h: 10 }
-        ]
-      ),
-      groupedRevealCell(
-        "DNA is a polymer shaped as a double helix: true or false?",
-        "True.",
-        { x: 5.5, y: 58.1, w: 62.6, h: 6.2 },
-        [
-          { x: 68.3, y: 52.3, w: 14.8, h: 13.7 },
-          { x: 9.6, y: 63.8, w: 73.5, h: 6.8 }
-        ]
-      ),
-      groupedRevealCell(
-        "All genetic variants (alleles) arise from mutations: true or false?",
-        "True — mutations are the ultimate source of new alleles.",
-        { x: 5.5, y: 74.1, w: 75, h: 6.2 },
-        [
-          { x: 80.3, y: 69.1, w: 14.6, h: 12.8 },
-          { x: 9.6, y: 79.8, w: 72, h: 10.6 }
-        ]
-      )
-    ]
+    )
   },
   Lesson_05_ENZYMES: {
     "slide_09.png": repeatedAnswers(

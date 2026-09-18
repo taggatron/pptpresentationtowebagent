@@ -252,6 +252,30 @@ export async function generateSlideInteractivity(
         status: "ready",
         questionCount: slide.interactiveCells.length
       };
+    } else if (
+      slide.interactiveType === "question_reveal" &&
+      !slide.interactiveCells?.some((cell) => cell.locked)
+    ) {
+      delete slide.interactiveCells;
+      slide.isInteractive = false;
+      slide.interactiveType = null;
+      delete slide.serialAnimation;
+      if (slide.contentAnalysis?.source === "reviewed-current-slide-catalog") {
+        slide.contentAnalysis = {
+          ...(slide.contentAnalysis || {}),
+          source: "local-ocr-fallback",
+          questionCount: 0,
+          questions: []
+        };
+      }
+      if (slide.questionAnalysis?.detectionSource === "reviewed-current-slide-catalog") {
+        slide.questionAnalysis = {
+          detected: false,
+          confidence: "low",
+          questionCount: 0,
+          detectionSource: "local-ocr-fallback"
+        };
+      }
     }
 
     // Older conversions copied Lesson 1's answer text onto slide 2 of every

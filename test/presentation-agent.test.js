@@ -314,11 +314,6 @@ test("grouped multi-region answers survive catalog cloning and manifest planning
       deckId: "Lesson_03_MAGNIFICATION_CALCULATIONS",
       imageFileName: "slide_10.png",
       expectedCellCount: 1
-    },
-    {
-      deckId: "Lesson_04_DNA",
-      imageFileName: "slide_12.png",
-      expectedCellCount: 4
     }
   ];
 
@@ -350,6 +345,20 @@ test("grouped multi-region answers survive catalog cloning and manifest planning
       assert.deepEqual(appliedCell.answerBounds, appliedCell.answerRegions[0]);
     }
   }
+});
+
+test("Lesson_04_DNA slide 12 has no click-to-reveals or interactive cells", async () => {
+  const catalogCells = getCurrentQuestionReveal("Lesson_04_DNA", "slide_12.png");
+  assert.equal(catalogCells, null);
+
+  const manifest = await readDeckManifest("Lesson_04_DNA");
+  const slide12 = manifest.slides.find((slide) => slide.number === 12);
+  assert.ok(slide12, "slide 12 exists in Lesson_04_DNA manifest");
+  assert.equal(slide12.isInteractive, false);
+  assert.equal(slide12.interactiveType, null);
+  assert.equal(slide12.interactiveCells, undefined);
+  assert.equal(slide12.serialAnimation, undefined);
+  assert.equal(slide12.animationPlan?.questionReveal, false);
 });
 
 test("dense slides receive cumulative full-canvas Gemini cells gated by QA", () => {
