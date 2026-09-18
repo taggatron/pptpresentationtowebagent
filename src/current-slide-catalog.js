@@ -185,23 +185,12 @@ const STARTER_CONTENT = {
       ["What are the two primary chemical products of photosynthesis?", "Glucose (C₆H₁₂O₆) and Oxygen (O₂)."],
       ["Name one location where carbon is naturally stored on Earth.", "Atmosphere (as CO₂), oceans, living biomass, peat bogs / soil, or limestone rock."]
     ]
-  },
-  Classic_Lesson_05_Carbon_Cycle: {
-    title: "Starter: Retrieval Grid",
-    layout: CARBON_STARTER_GRID,
-    cells: [
-      ["Is aerobic respiration an exothermic or endothermic reaction?", "Exothermic (releases thermal energy and ATP to surroundings)."],
-      ["What cellular pigment is required to absorb solar energy?", "Chlorophyll (contained within chloroplasts)."],
-      ["Name two types of microorganisms that cause biomass decay.", "Bacteria and fungi."],
-      ["What molecule acts as the immediate energy supply for living cells?", "ATP (Adenosine Triphosphate)."],
-      ["What are the two primary chemical products of photosynthesis?", "Glucose (C₆H₁₂O₆) and Oxygen (O₂)."],
-      ["Name one location where carbon is naturally stored on Earth.", "Atmosphere (as CO₂), oceans, living biomass, peat bogs / soil, or limestone rock."]
-    ]
   }
 };
 
 export function getCurrentStarterGrid(deckId) {
-  const config = STARTER_CONTENT[deckId];
+  const resolvedDeckId = deckId === "Classic_Lesson_05_Carbon_Cycle" ? "Classic_Lesson_05_Carbon_and_Water_Cycle" : deckId;
+  const config = STARTER_CONTENT[resolvedDeckId];
   if (!config) return null;
   return {
     title: config.title,

@@ -352,45 +352,12 @@ const CURRENT_QUESTION_REVEALS = {
         { x: 12.8, y: 55.0, w: 74.4, h: 27.6 }
       )
     ]
-  },
-  Classic_Lesson_05_Carbon_Cycle: {
-    "slide_08.png": [
-      revealCell(
-        "Myth 1: Decomposers just melt things away passively.",
-        "Fact 1: Decomposers are living microbes that respire and release CO₂.",
-        { x: 5.6, y: 35.0, w: 43.0, h: 22.0 },
-        { x: 53.0, y: 35.0, w: 39.5, h: 22.0 }
-      ),
-      revealCell(
-        "Myth 2: Decay happens automatically everywhere on Earth.",
-        "Fact 2: Peat bogs prevent decay due to cold, acidic, anaerobic conditions.",
-        { x: 5.6, y: 60.0, w: 43.0, h: 25.0 },
-        { x: 53.0, y: 60.0, w: 39.5, h: 25.0 }
-      )
-    ],
-    "slide_14.png": repeatedAnswers(
-      "Explain how a carbon atom in a dead leaf is returned to the atmosphere (4 marks).",
-      { x: 5.6, y: 19.0, w: 88.8, h: 11.5 },
-      [
-        ["Step 1: Name the specific organisms (microorganisms / decomposers).", { x: 5.6, y: 34.6, w: 78.8, h: 11.5 }],
-        ["Step 2: Identify the overall process (decomposition / decay).", { x: 10.6, y: 50.6, w: 76.8, h: 11.5 }],
-        ["Step 3: Explain the cellular mechanism (aerobic respiration).", { x: 15.6, y: 66.6, w: 74.8, h: 11.5 }],
-        ["Step 4: State the final chemical product (CO₂ is released).", { x: 21.0, y: 82.6, w: 73.4, h: 11.5 }]
-      ]
-    ),
-    "slide_16.png": [
-      revealCell(
-        "Identify ONE biological process that removes carbon from the atmosphere, and TWO processes that return it.",
-        "Removes: Photosynthesis. Returns: Aerobic respiration and decomposition (microbial respiration). Also combustion.",
-        { x: 12.8, y: 19.0, w: 74.4, h: 63.6 },
-        { x: 12.8, y: 55.0, w: 74.4, h: 27.6 }
-      )
-    ]
   }
 };
 
 export function getCurrentQuestionReveal(deckId, imageFileName) {
-  const cells = CURRENT_QUESTION_REVEALS[deckId]?.[imageFileName];
+  const resolvedDeckId = deckId === "Classic_Lesson_05_Carbon_Cycle" ? "Classic_Lesson_05_Carbon_and_Water_Cycle" : deckId;
+  const cells = CURRENT_QUESTION_REVEALS[resolvedDeckId]?.[imageFileName];
   if (!cells) return null;
   return cells.map((cell, index) => ({
     ...cell,

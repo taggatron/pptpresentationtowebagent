@@ -77,8 +77,13 @@ function assertSafeDeckId(deckId) {
   return deckId;
 }
 
+export const DECK_ALIASES = {
+  Classic_Lesson_05_Carbon_Cycle: "Classic_Lesson_05_Carbon_and_Water_Cycle"
+};
+
 export async function findDeckLocation(decksDir, deckId) {
-  const safeDeckId = assertSafeDeckId(deckId);
+  const resolvedDeckId = DECK_ALIASES[deckId] || deckId;
+  const safeDeckId = assertSafeDeckId(resolvedDeckId);
   const directPath = path.join(decksDir, safeDeckId, "manifest.json");
   try {
     const stat = await fs.stat(directPath);
@@ -879,17 +884,27 @@ export function createApp({
 
   app.use(express.json({ limit: "2mb" }));
 
-  // Legacy URL fallback: if /decks/:deckId/... is requested without unit prefix,
-  // rewrite to /decks/:unitId/:deckId/... if found in a unit directory.
+  // Legacy URL fallback: if /decks/:deckId/... is requested without unit prefix or uses an alias,
+  // rewrite to canonical /decks/:unitId/:deckId/...
   app.use("/decks", async (req, res, next) => {
     const parts = req.url.split("/").filter(Boolean);
-    if (parts.length >= 2) {
-      const potentialDeckId = parts[0];
-      const isKnownUnit = KNOWN_SLIDE_SETS.some((s) => s.id === potentialDeckId);
-      if (!isKnownUnit) {
-        const loc = await findDeckLocation(decksDir, potentialDeckId);
-        if (loc && loc.unitId) {
-          req.url = `/${loc.unitId}${req.url}`;
+    if (parts.length >= 1) {
+      if (DECK_ALIASES[parts[0]]) {
+        const targetId = DECK_ALIASES[parts[0]];
+        const loc = await findDeckLocation(decksDir, targetId);
+        const rest = parts.slice(1).join("/");
+        req.url = loc && loc.unitId ? `/${loc.unitId}/${targetId}/${rest}` : `/${targetId}/${rest}`;
+      } else if (parts.length >= 2 && DECK_ALIASES[parts[1]]) {
+        parts[1] = DECK_ALIASES[parts[1]];
+        req.url = `/${parts.join("/")}`;
+      } else if (parts.length >= 2) {
+        const potentialDeckId = parts[0];
+        const isKnownUnit = KNOWN_SLIDE_SETS.some((s) => s.id === potentialDeckId);
+        if (!isKnownUnit) {
+          const loc = await findDeckLocation(decksDir, potentialDeckId);
+          if (loc && loc.unitId) {
+            req.url = `/${loc.unitId}${req.url}`;
+          }
         }
       }
     }
