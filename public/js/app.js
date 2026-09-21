@@ -1479,6 +1479,9 @@ function renderMediaBuild(slide, build) {
 
 function normalizeRevealMode(cell) {
   const explicitMode = String(cell?.revealMode || cell?.answerRevealMode || "").toLowerCase();
+  if (explicitMode === "blur" || explicitMode === "unmask") {
+    return explicitMode;
+  }
   if (
     explicitMode === "overlay" ||
     cell?.overlayAnswer === true ||
@@ -1543,10 +1546,12 @@ function appendInteractiveGrid(slide) {
     const content = document.createElement("span");
     content.className = "qa-card-content";
     if (!revealed) {
-      const prompt = document.createElement("span");
-      prompt.className = "qa-prompt-badge";
-      prompt.textContent = "Click to reveal";
-      content.appendChild(prompt);
+      if (revealMode !== "blur" && revealMode !== "unmask") {
+        const prompt = document.createElement("span");
+        prompt.className = "qa-prompt-badge";
+        prompt.textContent = "Click to reveal";
+        content.appendChild(prompt);
+      }
     } else if (revealMode === "overlay") {
       const tag = document.createElement("span");
       tag.className = "qa-answer-tag";

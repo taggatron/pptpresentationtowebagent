@@ -3294,36 +3294,7 @@ body:not(.theme-dark) .qa-card-overlay.masked-blur:hover {
 }
 
 .qa-card-overlay.masked-blur .qa-prompt-badge {
-  opacity: 0.85;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  background: rgba(15, 23, 42, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  color: #38bdf8;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-body:not(.theme-dark) .qa-card-overlay.masked-blur .qa-prompt-badge {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(99, 102, 241, 0.4);
-  color: #4f46e5;
-}
-
-.qa-card-overlay.masked-blur:hover .qa-prompt-badge,
-.qa-card-overlay.masked-blur:focus-visible .qa-prompt-badge {
-  opacity: 1;
-  transform: scale(1.04);
-}
-
-body.theme-dark .qa-card-overlay.masked-blur .qa-prompt-badge {
-  background: rgba(15, 23, 42, 0.8);
-  color: #7dd3fc;
-  border-color: rgba(56, 189, 248, 0.4);
+  display: none !important;
 }
 
 /* Feathered Blur Reveal Mode — revealed state (blur dissolves away completely) */
