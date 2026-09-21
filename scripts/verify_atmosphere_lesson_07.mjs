@@ -36,6 +36,42 @@ async function testAtmosphereLesson() {
     await page.waitForTimeout(800);
   }
 
+  // --- TEST SLIDE 1: Title Slide & Video Intro Build ---
+  console.log("\nTesting Slide 1 (Title Slide & Animated Video Intro)...");
+  await goToSlide(1);
+  const slide1Initial = await page.evaluate(() => {
+    return {
+      badge: document.getElementById('serialStepBadge')?.textContent,
+      slideImg: document.getElementById('slideImage')?.src,
+      videoHidden: document.getElementById('slideVideo')?.classList.contains('hidden')
+    };
+  });
+  console.log('Slide 1 Build 1 state:', slide1Initial);
+  if (!slide1Initial.badge.includes('Build 1')) {
+    throw new Error(`Expected Build 1 on Slide 1, got: ${slide1Initial.badge}`);
+  }
+
+  // Advance to Build 2 (Video)
+  await page.click('#nextBuildStepBtn');
+  await page.waitForTimeout(800);
+  const slide1Video = await page.evaluate(() => {
+    const video = document.getElementById('slideVideo');
+    return {
+      badge: document.getElementById('serialStepBadge')?.textContent,
+      videoHidden: video?.classList.contains('hidden'),
+      videoSrc: video?.src,
+      videoDuration: video?.duration,
+      videoPaused: video?.paused
+    };
+  });
+  console.log('Slide 1 Build 2 (Video) state:', slide1Video);
+  if (!slide1Video.videoSrc.includes('Please_produce_another_version.mp4')) {
+    throw new Error(`Expected videoSrc to include Please_produce_another_version.mp4, got: ${slide1Video.videoSrc}`);
+  }
+  if (slide1Video.videoHidden) {
+    throw new Error("Slide 1 video element is unexpectedly hidden on Build 2");
+  }
+
   // --- TEST SLIDE 2: Starter Activity Blur Cells ---
   console.log("\nTesting Slide 2 (Starter Retrieval Grid)...");
   await goToSlide(2);
