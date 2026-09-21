@@ -408,7 +408,7 @@ export const lessons = [
     plenary: [
       "Evidence-based medicine demands peer-reviewed scrutiny over media sensationalism: always audit trial sample size, controls, and sponsor disclosures.",
       "Master Harvard referencing and AI software attribution protocols to maintain flawless academic integrity in your Level 3 portfolio.",
-      "Next Lesson: Interpreting Clinical Data & Mock NEA Drafting — comparing COVID-19 vs oncology mRNA clinical datasets."
+      "Next Lesson: F172 Genetics Mini Mock NEA — mRNA Vaccines: Gene Expression & Clinical Trial Evidence."
     ]
   },
   {
@@ -416,83 +416,87 @@ export const lessons = [
     part: 2,
     teacher: "Dan",
     deckId: "Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA",
-    title: "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study)",
-    focus: "Clinical Data Interpretation (COVID-19 vs Oncology mRNA) & Mock NEA Drafting",
-    deliverable: "Draft the Literature Review and Methodology Evaluation of the mock NEA, synthesizing mRNA clinical datasets with Harvard citations.",
-    details: "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Lead: Dan. Context & Clinical History Focus: Contextualise mRNA technology: establish that mRNA platforms were not originally conceived for infectious respiratory viruses, but were developed through early-phase oncology trials (therapeutic cancer vaccines targeting patient-specific tumour neoantigens, such as melanoma and colorectal cancers). Address the clinical trial trajectory: examine how the COVID-19 pandemic necessitated a rapid pivot—deploying the technology into massive Phase I–III infectious disease trials (with tens of thousands of participants ran under compressed, overlapping timelines) before broader clinical trial success had been achieved in oncology. Data Interpretation Activity: Learners analyse clinical trial datasets comparing: Phase III COVID-19 mRNA trial data (primary endpoints: symptom prevention, antibody titres, efficacy percentages across age cohorts, adverse event profiles) vs Early-phase mRNA oncology clinical data (endpoints: T-cell mediated response, tumour regression, progression-free survival). Critical evaluation: discuss why surrogate endpoints (immune markers) in oncology differ from public health endpoints in infectious disease trials. Mock NEA Writing Session: Learners begin drafting the Literature Review & Methodology Evaluation of their mock NEA based on this clinical data. Writing targets: Synthesise the physiological mechanism and clinical justification of mRNA platforms; Critically evaluate trial methodology (e.g., accelerated overlapping phases, trial cohort demographics, primary vs. secondary endpoints); Embed at least two peer-reviewed sources using correct Harvard referencing conventions. Exit Task: Submission of the working draft into the shared learning folder ahead of peer review.",
+    title: "Communicating like a Human Biologist: F172 Genetics Mini Mock NEA (mRNA Vaccines)",
+    focus: "F172 Genetics Mini Mock NEA Scaffold: Gene Expression, Lipid Nanoparticle Delivery & Clinical Trial Evidence",
+    deliverable: "Complete the F172 Genetics Mini Mock NEA scaffold: draft Side 1 (Gene Expression & LNP Delivery without altering genomic DNA) and Side 2 (Clinical Trial Evidence & 2-Sided Evaluation) with independent Harvard citations.",
+    details: "F172 Genetics Mini Mock NEA: mRNA Vaccines: Gene Expression and Clinical Trials. Lead: Dan. Purpose & Referencing Requirements: Prepare learners for the research, explanation, analysis, and evaluation skills required in the F172 Genetics NEA, with independent Harvard referencing for all sources (Pardi et al., Fullick et al. OCR textbook, Polack et al., Hou et al., Baden et al.). SIDE 1 — GENES, mRNA AND PROTEIN PRODUCTION: Task 1 (From Genetic Information to Protein): Pathway DNA → transcription → mRNA → translation → protein. Core concepts: what a gene is, the role of DNA base sequence, transcription, role of mRNA, ribosomes, translation, and how nucleotide triplets determine amino-acid sequences. Apply knowledge: how an mRNA vaccine uses this host pathway to make a human cell temporarily produce a viral spike protein. VITAL SCIENTIFIC REQUIREMENT: Learners must explain why mRNA vaccination uses genetic information but does not alter the recipient's genomic DNA (mRNA functions solely in the cytoplasm, lacks reverse transcriptase and integrase, and is rapidly broken down by cellular ribonucleases). Task 2 (Delivering mRNA into Cells): Explain why injecting unprotected naked mRNA presents severe biochemical barriers (rapid enzymatic degradation by RNases, negative phosphate backbone charge preventing passage across hydrophobic cell membranes). Solution: Lipid nanoparticles (LNPs) (Hou et al.). Complete pathway: Lipid nanoparticle containing mRNA → endocytosis/membrane fusion → cytoplasm → ribosomal translation → viral protein. Technology trade-offs: Analyse 3 advantages and 3 challenges across temporary expression, mRNA stability, delivery efficiency, speed of redesign, immune response, and storage (ultra-cold chain). Mini-judgement framework: Evidence → explanation → consequence → judgement. SIDE 2 — CLINICAL TRIAL EVIDENCE: Task 3 (Can the Vaccine Work?): Landmark Phase III clinical trial: Polack et al. (2020) NEJM (Safety and Efficacy of the BNT162b2 mRNA Covid-19 Vaccine, N=43,448). Methodological strengths: Explain why each feature strengthens a clinical trial: Large sample (statistical power), Randomisation (eliminates confounding bias), Placebo group (controls for background infection rates and placebo effects), Blinding (prevents observer/reporting bias), Defined binary outcome (laboratory PCR-confirmed COVID-19 ≥7 days post-dose 2), and Adverse-event monitoring. Quantitative Data Interpretation: Vaccine group: 8 COVID-19 cases vs Placebo group: 162 COVID-19 cases. Analytical reasoning chain: comparison → size of difference (95.0% vaccine efficacy, 154 fewer cases) → what it suggests → strength of evidence. Important Scientific Reasoning (Correlation vs Causation): 'Can we conclude that every medical problem occurring after vaccination was caused by the vaccine?' Distinguish between something happening AFTER vaccination (temporal coincidence) versus happening BECAUSE OF vaccination (true causal adverse reaction), grounded in placebo group comparison, population background incidence rates, coincidence, biological plausibility, and sample size. Task 4 (Evaluate the Evidence): Structured two-sided critique of the statement: 'The clinical trial proves that the mRNA vaccine is safe and effective.' Contrast trial strengths (large multi-centre RCT, blinding, 95% efficacy) against trial limitations (median 2-month follow-up, rare adverse events undetectable in N=20,000, excluded demographic groups like children and pregnant individuals, waning immunity, emerging viral variants). Suggested writing scaffold: Evidence suggests that... This evidence is strong because... However, a limitation is... This matters because... Overall, I would conclude that... Exit Task: Upload completed Side 1 & Side 2 Mini Mock NEA scaffold into the shared learning folder ahead of Lesson 7 peer review.",
     starterQuestions: [
-      { q: "What was the original clinical disease target of mRNA platform technology prior to COVID-19?", a: "Therapeutic oncology vaccines targeting patient-specific tumour neoantigens (e.g., metastatic melanoma, colorectal cancers)." },
-      { q: "How did the trial trajectory of COVID-19 mRNA vaccines differ from conventional drug development?", a: "Accelerated overlapping clinical trial phases (Phase I/II/III run concurrently) under pandemic public health emergency authorisations." },
-      { q: "What is the distinction between a 'surrogate endpoint' and a 'clinical primary endpoint'?", a: "Surrogate endpoints are measurable biomarkers (e.g. antibody titres or T-cell counts); clinical primary endpoints measure direct patient health outcomes (e.g. disease prevention, overall survival)." },
-      { q: "Why are surrogate endpoints (like CD8+ T-cell expansion) heavily relied upon in early-phase oncology trials?", a: "Tumour regression and progression-free survival require years to evaluate, so immune activation biomarkers provide immediate proof-of-mechanism." },
-      { q: "What are the core sections required in the Mock NEA drafted in this lesson?", a: "Literature Review (mechanism and justification) and Methodology Evaluation (trial design critique and endpoint comparison)." },
-      { q: "State two mandatory criteria for embedding citations into the Mock NEA draft.", a: "Include at least two peer-reviewed sources, cited using author-date Harvard in-text format and matched to a complete reference list." }
+      { q: "What is the biological pathway from genetic code to functional protein?", a: "DNA → transcription → mRNA → translation → protein." },
+      { q: "Why can an mRNA vaccine NOT alter or integrate into human genomic DNA?", a: "mRNA operates exclusively in the cytoplasm, cannot cross into the nucleus, lacks reverse transcriptase/integrase enzymes, and is rapidly degraded by cellular ribonucleases." },
+      { q: "Why would injecting unprotected 'naked' mRNA directly into a patient fail?", a: "It is rapidly degraded by ubiquitous extracellular ribonucleases (RNases) and its negative phosphate charge prevents crossing hydrophobic cell membranes." },
+      { q: "What role do lipid nanoparticles (LNPs) play in mRNA delivery?", a: "LNPs encapsulate and protect mRNA from enzymatic breakdown and facilitate cellular entry via endocytosis and endosomal release into the cytoplasm." },
+      { q: "In the Polack et al. (2020) Phase III trial, how many COVID-19 cases occurred in the vaccine vs placebo groups?", a: "Vaccine group: 8 cases; Placebo group: 162 cases (demonstrating ~95.0% vaccine efficacy)." },
+      { q: "Why must clinical researchers distinguish between an adverse event happening 'after' vaccination vs 'because of' vaccination?", a: "Temporal succession does not establish causation; background illness rates in large populations mean medical events occur coincidentally regardless of vaccination, requiring placebo comparison." }
     ],
     objectives: {
-      knowledge: "Trace mRNA technology from personalized cancer neoantigen trials to rapid-scale Phase III pandemic infectious disease trials.",
-      application: "Compare quantitative clinical datasets: Phase III COVID-19 vaccine endpoints vs early-phase oncology surrogate endpoints.",
-      evaluation: "Draft a Level 3 Mock NEA Literature Review & Methodology Evaluation with peer-reviewed Harvard citations."
+      knowledge: "Master the gene expression pathway (DNA → mRNA → protein), LNP delivery mechanisms, and why mRNA cannot alter genomic DNA.",
+      application: "Interpret Polack et al. Phase III clinical trial data (8 vs 162 cases) and distinguish post-vaccination correlation from causation.",
+      evaluation: "Draft the F172 Genetics Mini Mock NEA scaffold evaluating trial strengths, limitations, and LNP trade-offs with independent Harvard referencing."
     },
     terminology: [
-      { term: "Tumour Neoantigen", def: "A mutated peptide antigen uniquely expressed on cancer cells, targeted by personalized therapeutic mRNA vaccines." },
-      { term: "Surrogate Endpoint", def: "A biological marker (e.g., neutralising antibody titre, CD8+ T-cell count) used as a proxy for clinical efficacy." },
-      { term: "Overlapping Trial Phases", def: "Compressing clinical pipelines by running Phase I, II, and III concurrently to accelerate therapeutic availability during public health crises." },
-      { term: "Mock NEA (Literature & Methodology)", def: "An extended biomedical investigation drafting session evaluating research background, trial methodology, and evidence synthesis." }
+      { term: "Central Dogma Pathway", def: "DNA → transcription → mRNA → translation → protein: the directional flow of genetic information inside eukaryotic cells." },
+      { term: "Genomic Non-Alteration Principle", def: "Exogenous mRNA cannot alter recipient DNA because it acts strictly in the cytoplasm, lacks reverse transcriptase, and is rapidly hydrolysed." },
+      { term: "Lipid Nanoparticles (LNPs)", def: "Submicroscopic lipid vesicles that encapsulate fragile mRNA, shielding it from RNases and facilitating cellular endocytosis." },
+      { term: "Double-Blind Placebo RCT", def: "A clinical trial where neither subjects nor researchers know who receives active vaccine or inert placebo, eliminating confounding and bias." },
+      { term: "Post Hoc Fallacy (Association vs Causation)", def: "The logical fallacy of assuming an event occurring after vaccination was caused by the vaccine, ignoring background incidence rates." }
     ],
     theoryPoints: [
-      "The mRNA Oncology Origin Story: Karikó, Weissman, Sahin and Türeci pioneered modified mRNA platforms originally for therapeutic cancer immunotherapies targeting somatic mutations.",
-      "Pandemic Pivot: COVID-19 required immediate pivot from niche personalized cancer cohorts (n=20–50) to global preventative trials (n=30,000–44,000) under overlapping phases.",
-      "Dataset Comparison: COVID-19 trials measured infection rate, symptom prevention (95% efficacy), and antibody titres; oncology trials measure progression-free survival (PFS) and T-cell response.",
-      "Methodological Critique in NEA: Evaluate cohort demographic representation, surrogate marker limitations, follow-up durations, and accelerated phase trade-offs."
+      "Protein Synthesis Pathway: DNA is transcribed into mRNA in the nucleus (or delivered synthetically into cytoplasm); ribosomes translate codon triplets into polypeptides.",
+      "Biological Non-Alteration Rule: mRNA has zero access to the nuclear genome; it lacks viral reverse transcriptase and integrase, making genomic integration biologically impossible.",
+      "LNP Delivery Kinetics: Synthetic mRNA is encapsulated in ionizable lipid nanoparticles to bypass RNases, cross the anionic lipid bilayer via endocytosis, and release into the cytosol.",
+      "Clinical Evidence (Polack et al., 2020): N=43,448 randomized participants demonstrated 8 COVID-19 cases in the BNT162b2 group vs 162 in the placebo group (95.0% efficacy).",
+      "Scientific Reasoning on Safety: Rare adverse events must be judged against placebo event rates and population background incidence to distinguish coincidence from drug-induced causality."
     ],
     workedExample: {
-      title: "Mock NEA Writing Exemplar: Literature Review & Methodology Evaluation",
-      subtitle: "Model paragraph integrating mechanism, dataset critique, and Harvard citation",
+      title: "F172 Mini Mock NEA Scaffold: Side 1 Mechanism & Side 2 Trial Evidence Evaluation",
+      subtitle: "Step-by-step model integrating biological cause-and-effect with quantitative trial critique",
       steps: [
-        { label: "Mechanism & Clinical Context", detail: "Synthetic nucleoside-modified mRNA encapsulated in lipid nanoparticles (LNPs) directs ribosomal translation of target antigens while evading toll-like receptor (TLR) degradation (Karikó et al., 2020)." },
-        { label: "Clinical Trajectory Pivot", detail: "Originally engineered for personalized tumour neoantigen therapy in melanoma, the platform was rapidly adapted in response to SARS-CoV-2, transitioning from boutique oncology trials to global cohorts exceeding 40,000 participants (Polack et al., 2020)." },
-        { label: "Endpoint Comparison (Public Health vs Oncology)", detail: "While Phase III vaccine trials evaluated definitive public health endpoints (symptomatic COVID-19 prevention, yielding 95% efficacy), oncology trials rely primarily on surrogate immunogenicity markers such as IFN-γ CD8+ T-cell induction." },
-        { label: "Methodological Evaluation", detail: "The accelerated overlapping phase design enabled unprecedented deployment speed; however, median 2-month safety follow-ups in initial trials limited longitudinal detection of rare adverse events, necessitating ongoing Phase IV pharmacovigilance." },
-        { label: "NEA Standard Checklist", detail: "Third-person academic tone, quantitative data cited, mechanism clearly linked to outcome, two peer-reviewed Harvard citations embedded." }
+        { label: "Side 1, Task 1: Gene Expression & Non-Alteration of DNA", detail: "Explain DNA → transcription → mRNA → translation → protein. Apply to vaccine: mRNA directs host ribosomes to translate viral spike protein. Must clarify: mRNA functions strictly in cytoplasm, cannot enter nucleus, and lacks reverse transcriptase, so cannot alter host genomic DNA." },
+        { label: "Side 1, Task 2: LNP Delivery & Trade-Offs", detail: "Delivery pathway: LNP containing mRNA → endocytosis/fusion → cytoplasm → ribosomes → protein. Analyse 3 advantages (temporary expression, modular redesign, no live pathogen) vs 3 challenges (RNase instability, formulation complexity, ultra-cold storage)." },
+        { label: "Side 2, Task 3: Quantitative Trial Analysis (Polack et al.)", detail: "Framework: comparison → size of difference → suggestion → strength. Vaccine (8 cases) vs Placebo (162 cases) = 95.0% efficacy in N=43,448. Evidence is exceptionally robust due to large sample, randomisation, and double-blinding." },
+        { label: "Side 2, Task 3: Reasoning on Adverse Events", detail: "Distinguish 'after' vs 'because of' vaccination. Background incidence rates of stroke or heart attack occur spontaneously; if rates in vaccine arm match placebo, the event is coincidental, not causally drug-induced." },
+        { label: "Side 2, Task 4: Structured Evidence Evaluation", detail: "Draft using: 'Evidence suggests that... This evidence is strong because... However, a limitation is... This matters because... Overall, I would conclude that...' Evaluate claim that trial 'proves' safety and efficacy." }
       ]
     },
     hingeQuestions: [
       {
-        question: "Why was the pivot from oncology to COVID-19 vaccines for mRNA technology considered unprecedented in clinical trial history?",
+        question: "A patient expresses concern that an mRNA vaccine will permanently alter their genome. Which biological explanation correctly addresses this concern?",
         options: [
-          "mRNA vaccines were abandoned entirely in oncology",
-          "A platform undergoing small early-phase therapeutic oncology trials was rapidly scaled into massive Phase III preventative trials under compressed overlapping timelines",
-          "COVID-19 trials did not require any regulatory approvals",
-          "Oncology trials require no immune response"
+          "mRNA is converted into a bacterial plasmid",
+          "mRNA operates exclusively in the cytoplasm, cannot cross into the nucleus, lacks reverse transcriptase/integrase enzymes, and is rapidly broken down by cellular RNases",
+          "The vaccine contains antibodies that destroy all host DNA",
+          "mRNA permanently integrates into mitochondrial DNA only"
         ],
         correctIndex: 1,
-        explanation: "mRNA had only been tested in small therapeutic oncology cohorts before being deployed in global Phase III preventative trials with >40,000 patients."
+        explanation: "Exogenous mRNA remains in the cytosol, has no reverse transcriptase to form DNA, cannot enter the nucleus, and is quickly degraded by intracellular ribonucleases."
       },
       {
-        question: "In a mock NEA methodology critique, why is it critical to distinguish between antibody titres and symptom prevention?",
+        question: "During a Phase III vaccine trial of 40,000 individuals, 12 participants in the vaccine arm and 13 participants in the placebo arm experience appendicitis. What does this scientific evidence suggest?",
         options: [
-          "Antibody titres are irrelevant to immunology",
-          "Antibody titres are surrogate markers; high titres do not guarantee sterilising immunity or complete protection against symptomatic disease in all age cohorts",
-          "Symptom prevention can only be measured in animal models",
-          "Antibody titres cannot be measured quantitatively"
+          "The vaccine causes appendicitis in 12 patients",
+          "Appendicitis occurred at expected background population rates independent of vaccination (temporal coincidence, not causation)",
+          "The placebo was contaminated with appendicitis bacteria",
+          "The trial was unblinded and invalid"
         ],
         correctIndex: 1,
-        explanation: "Surrogate biomarkers estimate biological response, whereas clinical disease prevention represents the true primary patient outcome."
+        explanation: "Equal incidence in both active and placebo arms indicates the condition reflects natural background population rates, proving temporal association without causation."
       }
     ],
     examQuestion: {
-      question: "A student is writing their Mock NEA on mRNA platform technology. (a) Explain why mRNA platforms were rapidly adapted for COVID-19 despite earlier focus on oncology. (b) Critically evaluate two methodological challenges of evaluating surrogate endpoints in oncology compared to definitive endpoints in infectious disease. [6 marks]",
+      question: "A student is completing their F172 Genetics Mini Mock NEA on mRNA vaccines. (a) Explain why mRNA vaccines require a delivery system such as lipid nanoparticles, and why they cannot alter the recipient's genomic DNA. (b) Evaluate the statement: 'The Polack et al. (2020) clinical trial proves that the BNT162b2 vaccine is safe and effective.' [6 marks]",
       marks: "6 marks",
       guidance: [
-        "(a) Modular synthesis allowed rapid coding of the spike sequence once genomic data was published, leveraging pre-existing lipid nanoparticle delivery systems. [2 marks]",
-        "(b) Challenge 1: Surrogate endpoints (e.g. T-cell activation) do not directly prove tumour regression or extended progression-free survival. [2 marks]",
-        "(b) Challenge 2: Infectious disease trials use clear binary clinical endpoints (symptomatic infection: yes/no) across large populations, whereas tumour progression is heterogeneous and confounded by prior treatments. [2 marks]"
+        "(a) Unprotected mRNA is rapidly degraded by extracellular RNases and its negative charge blocks plasma membrane transit; LNPs enable endocytosis. [1 mark]",
+        "(a) mRNA functions exclusively in cytoplasm, lacks reverse transcriptase, cannot enter nucleus, and cannot integrate into genomic DNA. [1 mark]",
+        "(b) Strengths: Large sample size (N=43,448), double-blind RCT design, massive infection rate reduction (8 vs 162 cases, 95% efficacy). [2 marks]",
+        "(b) Limitations: Median 2-month follow-up precludes detection of rare long-term adverse events; excludes paediatric/pregnant cohorts; cannot assess durability against future variant mutations. [1 mark]",
+        "(b) Epistemological nuance: Distinguish evidence from absolute proof; ongoing Phase IV real-world pharmacovigilance is required. [1 mark]"
       ]
     },
     plenary: [
-      "mRNA platforms represent a modular biotechnology paradigm: from personalized neoantigen oncology to global preventative public health.",
-      "Ensure your Mock NEA draft integrates: 1) Mechanism, 2) Dataset comparison, 3) Methodological critique, and 4) At least two peer-reviewed Harvard citations.",
-      "Exit Task: Upload your working draft to the shared learning folder ahead of Lesson 7 Peer Review Workshop."
+      "Side 1 mastery: mRNA expresses viral protein via ribosomes but CANNOT alter or enter recipient genomic DNA.",
+      "Side 2 mastery: Polack et al. proves 95% short-term efficacy (8 vs 162 cases), but scientific evaluation demands distinguishing correlation from causation and recognising trial duration limits.",
+      "Next Lesson: Introductory Unit Synthesis — Standardisation Exemplars, Diagnostic Peer Review & Individual Competency Profiling."
     ]
   },
   {

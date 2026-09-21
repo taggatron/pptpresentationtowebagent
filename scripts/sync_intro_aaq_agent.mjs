@@ -66,13 +66,19 @@ async function updateAgent() {
     if (num === 8 && (text.includes("transition") || text.includes("biomedical") || text.includes("genetics"))) return true;`;
 
   const newCardMatching = `    if (num === 5 && (text.includes("source") || text.includes("reliability") || text.includes("referencing") || text.includes("goldacre") || text.includes("academic") || text.includes("craap") || text.includes("prompt") || text.includes("bad science") || text.includes("communicating") || text.includes("evaluating"))) return true;
-    if (num === 6 && (text.includes("mrna") || text.includes("clinical") || text.includes("data") || text.includes("mock") || text.includes("nea") || text.includes("oncology") || text.includes("trial") || text.includes("covid") || text.includes("vaccine") || text.includes("communicating") || text.includes("interpreting"))) return true;
+    if (num === 6 && (text.includes("mrna") || text.includes("clinical") || text.includes("data") || text.includes("mock") || text.includes("nea") || text.includes("f172") || text.includes("genetics") || text.includes("vaccine") || text.includes("oncology") || text.includes("trial") || text.includes("covid") || text.includes("communicating") || text.includes("interpreting"))) return true;
     if (num === 7 && (text.includes("peer") || text.includes("review") || text.includes("diagnostic") || text.includes("profile") || text.includes("workshop") || text.includes("exemplar") || text.includes("rubric") || text.includes("synthesis") || text.includes("standardisation"))) return true;
     if (num === 8 && (text.includes("finalisation") || text.includes("refinement") || text.includes("transition") || text.includes("biomedical") || text.includes("genetics") || text.includes("tlr") || text.includes("molecular") || text.includes("bridge"))) return true;`;
 
   if (content.includes(oldCardMatching)) {
     content = content.replace(oldCardMatching, newCardMatching);
     console.log("[Update Agent] Updated cardMatchesLesson keywords for Lessons 5–8.");
+  } else {
+    // If oldCardMatching was already updated previously, update existing
+    content = content.replace(
+      /if \(num === 6 && \(text\.includes\("mrna"\)[^)]+\)\) return true;/,
+      `if (num === 6 && (text.includes("mrna") || text.includes("clinical") || text.includes("data") || text.includes("mock") || text.includes("nea") || text.includes("f172") || text.includes("genetics") || text.includes("vaccine") || text.includes("oncology") || text.includes("trial") || text.includes("covid") || text.includes("communicating") || text.includes("interpreting"))) return true;`
+    );
   }
 
   // Update PPTX download matching
@@ -82,13 +88,18 @@ async function updateAgent() {
             else if (lesson.number === 8) matches = fLower.includes("transition") || fLower.includes("biomedical") || fLower.includes("genetics");`;
 
   const newDownloadMatching = `            else if (lesson.number === 5) matches = fLower.includes("source") || fLower.includes("reliability") || fLower.includes("referencing") || fLower.includes("communicating") || fLower.includes("goldacre") || fLower.includes("academic");
-            else if (lesson.number === 6) matches = fLower.includes("mrna") || fLower.includes("clinical") || fLower.includes("mock") || fLower.includes("nea") || fLower.includes("data") || fLower.includes("oncology") || fLower.includes("communicating");
+            else if (lesson.number === 6) matches = fLower.includes("mrna") || fLower.includes("clinical") || fLower.includes("mock") || fLower.includes("nea") || fLower.includes("f172") || fLower.includes("genetics") || fLower.includes("vaccine") || fLower.includes("data") || fLower.includes("oncology") || fLower.includes("communicating");
             else if (lesson.number === 7) matches = fLower.includes("peer") || fLower.includes("review") || fLower.includes("diagnostic") || fLower.includes("profile") || fLower.includes("workshop") || fLower.includes("synthesis");
             else if (lesson.number === 8) matches = fLower.includes("finalisation") || fLower.includes("transition") || fLower.includes("biomedical") || fLower.includes("genetics") || fLower.includes("refinement");`;
 
   if (content.includes(oldDownloadMatching)) {
     content = content.replace(oldDownloadMatching, newDownloadMatching);
     console.log("[Update Agent] Updated PPTX download file matching logic for Lessons 5–8.");
+  } else {
+    content = content.replace(
+      /else if \(lesson\.number === 6\) matches = fLower\.includes\("mrna"\)[^;]+;/,
+      `else if (lesson.number === 6) matches = fLower.includes("mrna") || fLower.includes("clinical") || fLower.includes("mock") || fLower.includes("nea") || fLower.includes("f172") || fLower.includes("genetics") || fLower.includes("vaccine") || fLower.includes("data") || fLower.includes("oncology") || fLower.includes("communicating");`
+    );
   }
 
   await fs.writeFile(agentPath, content, "utf8");
