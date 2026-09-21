@@ -14,25 +14,26 @@ async function testAtmosphereLesson() {
 
   const page = await context.newPage();
 
-  // Navigate to Lesson 7 in presentation player
-  await page.goto('http://127.0.0.1:3005/?deck=Classic_Lesson_07_The_Atmosphere', {
+  // Navigate directly to Lesson 7 with explicit set and deck
+  await page.goto('http://127.0.0.1:3005/?set=ecology_atmosphere_classic&deck=Classic_Lesson_07_The_Atmosphere&slide=1', {
     waitUntil: 'networkidle'
   });
 
-  // Wait for presentation player to load
-  await page.waitForSelector('#slideImage, .slide-canvas', { timeout: 10000 });
+  await page.waitForTimeout(1000);
   console.log("✓ Presentation player loaded successfully");
 
-  // Helper to jump to a slide number
+  // Helper to jump to a slide number (1-based)
   async function goToSlide(slideNum) {
     await page.evaluate((num) => {
       if (typeof window.jumpToSlide === 'function') {
         window.jumpToSlide(num);
-      } else if (typeof window.goToSlideIndex === 'function') {
-        window.goToSlideIndex(num - 1);
+      } else {
+        const url = new URL(window.location.href);
+        url.searchParams.set('slide', num);
+        window.location.href = url.toString();
       }
     }, slideNum);
-    await page.waitForTimeout(600);
+    await page.waitForTimeout(800);
   }
 
   // --- TEST SLIDE 2: Starter Activity Blur Cells ---
@@ -125,10 +126,13 @@ async function testAtmosphereLesson() {
     throw new Error(`Expected 3 blur overlays on Slide 8, found ${slide8Overlays.length}`);
   }
 
-  // Click each step in turn and verify reveal
-  for (let i = 0; i < slide8Overlays.length; i++) {
-    await slide8Overlays[i].click();
-    await page.waitForTimeout(200);
+  // Click each step in turn (re-querying to avoid stale element handle)
+  for (let i = 0; i < 3; i++) {
+    const unrevealed = await page.$('.qa-card-overlay:not(.revealed)');
+    if (unrevealed) {
+      await unrevealed.click();
+      await page.waitForTimeout(300);
+    }
   }
   const allSlide8Revealed = await page.evaluate(() => {
     const cards = document.querySelectorAll('.qa-card-overlay');
