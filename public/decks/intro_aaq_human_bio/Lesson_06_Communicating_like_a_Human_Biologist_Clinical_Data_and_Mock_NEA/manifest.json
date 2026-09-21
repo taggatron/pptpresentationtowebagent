@@ -14,86 +14,36 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "38–52s",
-        "vciScore": "7.1",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 20,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "4.0",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 35250,
-          "semanticProcessingMs": 8500,
-          "wordCount": 100,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "low",
+        "confidence": "high",
         "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
+        "source": "gemini-slide-generation-agent",
         "role": "title",
-        "transcript": "LESSON 6 OF 8 - INDUCTION PROGRAMME\n: . a . . 7. =e\nCommunicating like a Human Biologist: Interpreting Clinical\n.\nData & Mock NEA Drafting (mRNA Case Study)\nFocus: Clinical Data Interpretation (COVID-19 vs Oncology mRNA) & Mock NEA Drafting\n¢ KEY LEARNING DELIVERABLE\nDraft the Literature Review and Methodology Evaluation of the mock NEA, synthesizing mRNA clinical datasets with Harvard citations.\n© OCR Specification Level 3 Cambridge Advanced National _* Diagnostic Benchmark & Skills Profiling © Academic Year 2026-2027",
-        "sourceHash": "260593ebc4c6b324d3bb40e490733d33b2359c25b64ecf0d80aa1ab0b0432873",
-        "questions": [],
-        "questionCount": 0
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Welcome & Induction: Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study)"
       },
-      "hasProgressiveBuilds": false,
-      "text": "LESSON 6 OF 8 - INDUCTION PROGRAMME\n: . a . . 7. =e\nCommunicating like a Human Biologist: Interpreting Clinical\n.\nData & Mock NEA Drafting (mRNA Case Study)\nFocus: Clinical Data Interpretation (COVID-19 vs Oncology mRNA) & Mock NEA Drafting\n¢ KEY LEARNING DELIVERABLE\nDraft the Literature Review and Methodology Evaluation of the mock NEA, synthesizing mRNA clinical datasets with Harvard citations.\n© OCR Specification Level 3 Cambridge Advanced National _* Diagnostic Benchmark & Skills Profiling © Academic Year 2026-2027",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_1_1_comparison",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Add the comparison insight",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 1: \"6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study)\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is the title slide for \"6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study)\". Preserve every visible source title word, including the final word, fully opaque and unattenuated; never shorten the deck title.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_01.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 2,
@@ -104,70 +54,34 @@
       "isInteractive": true,
       "interactiveType": "qa_grid",
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 216,
-        "timeGuideDisplay": "183–249s",
-        "vciScore": "10.0",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "30–60s",
+        "vciScore": "3.2",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 7938,
-          "readingMs": 141000,
-          "semanticProcessingMs": 66800,
-          "wordCount": 394,
-          "visualElementsCount": 18
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 14500,
+          "semanticProcessingMs": 6500,
+          "wordCount": 80,
+          "visualElementsCount": 6
+        }
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 12,
+        "questionCount": 6,
         "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "learner-question",
-        "transcript": "| STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\n‘What was the original clinical disease target of mRNA platform technology prior to How did the trial trajectory of COVID-19 mRNA vaccines differ from conventional drug\nCOVID-19? development?\nTherapeutic oncology vaccines targeting patient-specific tumour neoantigens (e.g., metastatic Accelerated overlapping clinical trial phases (Phase //II/III run concurrently) under pandemic\nmelanoma, colorectal cancers). public health emergency authorisations.\nwnt Is we distinction between a ‘surrogate endpoint’ and a ‘clinical primary Why are surrogate endpoints (like CD8+ T-cell expansion) heavily relied upon in early-\nendpoint’? phase oncology trials?\nSurrogate endpoints are measurable biomarkers (e.g. antibody titres or T-cell counts); clinical EXPECTED ANSWER / SUCCESS CUE:\nprimary endpoints measure direct patient health outcomes (e.g. disease prevention, overall Tumour regression and progression-free survival require years to evaluate, so immune.\nsurvival) activation biomarkers provide immediate proof-of-mechanism.\nWhat are the core sections required in the Mock NEA drafted in this lesson? ‘State two mandatory criteria for embedding citations into the Mock NEA draft.\nLiterature Review (mechanism and justification) and Methodology Evaluation (trial design Include at least two peer-reviewed sources, cited using author-date Harvard in-text format and\ncritique and endpoint comparison). matched to a complete reference list.",
-        "sourceHash": "5c22fc1b8cfe3410f9e873ab33430ae91912bbbbd07f8ac8920f72ac4d6a6ea8",
-        "questions": [
-          {
-            "id": "ocr_question_1",
-            "question": "What was the original clinical disease target of mRNA platform technology prior to How did the trial trajectory of COVID-19 mRNA vaccines differ from conventional drug COVID-19?",
-            "confidence": "candidate",
-            "status": "needs-gemini-bounds-or-review"
-          },
-          {
-            "id": "ocr_question_2",
-            "question": "Is we distinction between a ‘surrogate endpoint’ and a ‘clinical primary Why are surrogate endpoints (like CD8+ T-cell expansion) heavily relied upon in early- endpoint’?",
-            "confidence": "candidate",
-            "status": "needs-gemini-bounds-or-review"
-          },
-          {
-            "id": "ocr_question_3",
-            "question": "evaluate, so immune. survival) activation biomarkers provide immediate proof-of-mechanism. What are the core sections required in the Mock NEA drafted in this lesson?",
-            "confidence": "candidate",
-            "status": "needs-gemini-bounds-or-review"
-          }
-        ],
-        "questionCount": 3
+        "source": "gemini-slide-generation-agent",
+        "role": "starter_grid",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Starter Activity: Knowledge Retrieval Grid"
       },
       "hasProgressiveBuilds": false,
       "interactiveCells": [
@@ -189,11 +103,9 @@
           },
           "question": "What was the original clinical disease target of mRNA platform technology prior to COVID-19?",
           "expectedAnswer": "Therapeutic oncology vaccines targeting patient-specific tumour neoantigens (e.g., metastatic melanoma, colorectal cancers).",
-          "revealMode": "overlay",
+          "revealMode": "toggle",
           "confidence": 1,
-          "provenance": "gemini-agent",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "provenance": "gemini-agent"
         },
         {
           "id": "cell_2",
@@ -213,11 +125,9 @@
           },
           "question": "How did the trial trajectory of COVID-19 mRNA vaccines differ from conventional drug development?",
           "expectedAnswer": "Accelerated overlapping clinical trial phases (Phase I/II/III run concurrently) under pandemic public health emergency authorisations.",
-          "revealMode": "overlay",
+          "revealMode": "toggle",
           "confidence": 1,
-          "provenance": "gemini-agent",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "provenance": "gemini-agent"
         },
         {
           "id": "cell_3",
@@ -237,11 +147,9 @@
           },
           "question": "What is the distinction between a 'surrogate endpoint' and a 'clinical primary endpoint'?",
           "expectedAnswer": "Surrogate endpoints are measurable biomarkers (e.g. antibody titres or T-cell counts); clinical primary endpoints measure direct patient health outcomes (e.g. disease prevention, overall survival).",
-          "revealMode": "overlay",
+          "revealMode": "toggle",
           "confidence": 1,
-          "provenance": "gemini-agent",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "provenance": "gemini-agent"
         },
         {
           "id": "cell_4",
@@ -261,11 +169,9 @@
           },
           "question": "Why are surrogate endpoints (like CD8+ T-cell expansion) heavily relied upon in early-phase oncology trials?",
           "expectedAnswer": "Tumour regression and progression-free survival require years to evaluate, so immune activation biomarkers provide immediate proof-of-mechanism.",
-          "revealMode": "overlay",
+          "revealMode": "toggle",
           "confidence": 1,
-          "provenance": "gemini-agent",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "provenance": "gemini-agent"
         },
         {
           "id": "cell_5",
@@ -285,11 +191,9 @@
           },
           "question": "What are the core sections required in the Mock NEA drafted in this lesson?",
           "expectedAnswer": "Literature Review (mechanism and justification) and Methodology Evaluation (trial design critique and endpoint comparison).",
-          "revealMode": "overlay",
+          "revealMode": "toggle",
           "confidence": 1,
-          "provenance": "gemini-agent",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "provenance": "gemini-agent"
         },
         {
           "id": "cell_6",
@@ -309,141 +213,11 @@
           },
           "question": "State two mandatory criteria for embedding citations into the Mock NEA draft.",
           "expectedAnswer": "Include at least two peer-reviewed sources, cited using author-date Harvard in-text format and matched to a complete reference list.",
-          "revealMode": "overlay",
+          "revealMode": "toggle",
           "confidence": 1,
-          "provenance": "gemini-agent",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "provenance": "gemini-agent"
         }
-      ],
-      "text": "| STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\nStarter Activity: Prior Knowledge Retrieval Grid Activate baseline prerequisite concepts\n‘What was the original clinical disease target of mRNA platform technology prior to How did the trial trajectory of COVID-19 mRNA vaccines differ from conventional drug\nCOVID-19? development?\nTherapeutic oncology vaccines targeting patient-specific tumour neoantigens (e.g., metastatic Accelerated overlapping clinical trial phases (Phase //II/III run concurrently) under pandemic\nmelanoma, colorectal cancers). public health emergency authorisations.\nwnt Is we distinction between a ‘surrogate endpoint’ and a ‘clinical primary Why are surrogate endpoints (like CD8+ T-cell expansion) heavily relied upon in early-\nendpoint’? phase oncology trials?\nSurrogate endpoints are measurable biomarkers (e.g. antibody titres or T-cell counts); clinical EXPECTED ANSWER / SUCCESS CUE:\nprimary endpoints measure direct patient health outcomes (e.g. disease prevention, overall Tumour regression and progression-free survival require years to evaluate, so immune.\nsurvival) activation biomarkers provide immediate proof-of-mechanism.\nWhat are the core sections required in the Mock NEA drafted in this lesson? ‘State two mandatory criteria for embedding citations into the Mock NEA draft.\nLiterature Review (mechanism and justification) and Methodology Evaluation (trial design Include at least two peer-reviewed sources, cited using author-date Harvard in-text format and\ncritique and endpoint comparison). matched to a complete reference list.",
-      "agentAnalysis": {
-        "pathway": "gemini-image-chat",
-        "segmentationSource": "local-ocr-fallback",
-        "status": "Question and answer targets are ready for reveal."
-      },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_2_1_question_base_overlay",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Prepare the unanswered questions",
-          "strategy": "question-base-overlay",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"STARTER ACTIVITY | S-TOMINUTES CLICK TO REVEAL ANSWERS\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_02.png"
-        }
-      ],
-      "serialAnimation": {
-        "totalBuildSteps": 6,
-        "autoAdvanceDelayMs": 3200,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Reveal: What was the original clinical disease target of mRNA platform technology prior to COVID-19?",
-            "componentIds": [
-              "cell_1"
-            ],
-            "targetBounds": {
-              "x": 4.5,
-              "y": 28,
-              "w": 43,
-              "h": 8.5
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 2,
-            "title": "Reveal: How did the trial trajectory of COVID-19 mRNA vaccines differ from conventional drug development?",
-            "componentIds": [
-              "cell_2"
-            ],
-            "targetBounds": {
-              "x": 52.5,
-              "y": 28,
-              "w": 43,
-              "h": 8.5
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 3,
-            "title": "Reveal: What is the distinction between a 'surrogate endpoint' and a 'clinical primary endpoint'?",
-            "componentIds": [
-              "cell_3"
-            ],
-            "targetBounds": {
-              "x": 4.5,
-              "y": 52.5,
-              "w": 43,
-              "h": 8.5
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 4,
-            "title": "Reveal: Why are surrogate endpoints (like CD8+ T-cell expansion) heavily relied upon in early-phase oncology trials?",
-            "componentIds": [
-              "cell_4"
-            ],
-            "targetBounds": {
-              "x": 52.5,
-              "y": 52.5,
-              "w": 43,
-              "h": 8.5
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 5,
-            "title": "Reveal: What are the core sections required in the Mock NEA drafted in this lesson?",
-            "componentIds": [
-              "cell_5"
-            ],
-            "targetBounds": {
-              "x": 4.5,
-              "y": 77,
-              "w": 43,
-              "h": 8.5
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 6,
-            "title": "Reveal: State two mandatory criteria for embedding citations into the Mock NEA draft.",
-            "componentIds": [
-              "cell_6"
-            ],
-            "targetBounds": {
-              "x": 52.5,
-              "y": 77,
-              "w": 43,
-              "h": 8.5
-            },
-            "revealType": "answer-overlay"
-          }
-        ]
-      },
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "question-base-overlay",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": true,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      ]
     },
     {
       "number": 3,
@@ -454,118 +228,36 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 79,
-        "timeGuideDisplay": "67–91s",
-        "vciScore": "7.6",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 39600,
-          "semanticProcessingMs": 37800,
-          "wordCount": 106,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "low",
+        "confidence": "high",
         "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "learner-question",
-        "transcript": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: DAN\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nTrace mRNA technology from personalized cancer Compare quantitative clinical datasets: Phase III Draft a Level 3 Mock NEA Literature Review &\nneoantigen trials to rapid-scale Phase III pandemic COVID-19 vaccine endpoints vs early-phase Methodology Evaluation with peer-reviewed\ninfectious disease trials. oncology surrogate endpoints. Harvard citations.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
-        "sourceHash": "06937e722d4070898419e23a3ab8fe7c9b837b1d3d81014a204eca590235938a",
-        "questions": [],
-        "questionCount": 0
+        "source": "gemini-slide-generation-agent",
+        "role": "objectives",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Learning Objectives & Success Criteria"
       },
-      "hasProgressiveBuilds": false,
-      "text": "“LESSON OBJECTIVES | OCRAAQFRAMEWORK TEACHER: DAN\nLearning Objectives & Success Criteria Tripartite Cognitive Mastery Tiers\nTHER 1 KNOWLEDGE RECALL Tee APPLICATION TieR 3 EVALUATION\nCore Principles Clinical Practice Critical Synthesis\nTrace mRNA technology from personalized cancer Compare quantitative clinical datasets: Phase III Draft a Level 3 Mock NEA Literature Review &\nneoantigen trials to rapid-scale Phase III pandemic COVID-19 vaccine endpoints vs early-phase Methodology Evaluation with peer-reviewed\ninfectious disease trials. oncology surrogate endpoints. Harvard citations.\nTarget: All learners demonstrate secure foundational Target: Most learners execute calculations and diagnostic Target: Some learners evaluate experimental validity and\nterminology. protocols accurately. propose clinical refinements.",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_3_1_comparison",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first comparison component",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_03.png"
-        },
-        {
-          "id": "gemini_slide_3_2_comparison",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add the second comparison component",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_03.png"
-        },
-        {
-          "id": "gemini_slide_3_3_comparison",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Add the comparison insight",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 3: \"Learning Objectives & Success Criteria\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Learning Objectives & Success Criteria\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Learning Objectives & Success Criteria. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_03.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 4,
@@ -576,118 +268,36 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 73,
-        "timeGuideDisplay": "62–84s",
-        "vciScore": "8.2",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 45900,
-          "semanticProcessingMs": 26000,
-          "wordCount": 128,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "low",
+        "confidence": "high",
         "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "process",
-        "transcript": "(CORE VOCABULARY | CLINICALTERMINOLOGY TEACHER: DAN\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nTumour Neoantigen Surrogate Endpoint\nA mutated peptide antigen uniquely expressed on cancer cells, targeted by Abiological marker (e.g., neutralising antibody titre, CD8+ T-cell count) used as a\npersonalized therapeutic mRNA vaccines. proxy for clinical efficacy.\nTERM 03 TERM 04\nOverlapping Trial Phases Mock NEA (Literature & Methodology)\nCompressing clinical pipelines by running Phase |, II, and Ill concurrently to An extended biomedical investigation drafting session evaluating research\naccelerate therapeutic availability during public health crises. background, trial methodology, and evidence synthesis.\nLesson 6: Communicating ike a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) Slide 4 of 10",
-        "sourceHash": "01db528bc31b29b231600d09fa111d41c1be21e6d6e1996187ff96be744d8d95",
-        "questions": [],
-        "questionCount": 0
+        "source": "gemini-slide-generation-agent",
+        "role": "terminology",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Essential Scientific & Clinical Vocabulary"
       },
-      "hasProgressiveBuilds": false,
-      "text": "(CORE VOCABULARY | CLINICALTERMINOLOGY TEACHER: DAN\nKey Scientific & Clinical Vocabulary High-leverage terms for Level 3 AAQ assessments\nTERM 01 TERM 02\nTumour Neoantigen Surrogate Endpoint\nA mutated peptide antigen uniquely expressed on cancer cells, targeted by Abiological marker (e.g., neutralising antibody titre, CD8+ T-cell count) used as a\npersonalized therapeutic mRNA vaccines. proxy for clinical efficacy.\nTERM 03 TERM 04\nOverlapping Trial Phases Mock NEA (Literature & Methodology)\nCompressing clinical pipelines by running Phase |, II, and Ill concurrently to An extended biomedical investigation drafting session evaluating research\naccelerate therapeutic availability during public health crises. background, trial methodology, and evidence synthesis.\nLesson 6: Communicating ike a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) Slide 4 of 10",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_4_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first component",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 4: \"Tumour Neoantigen Surrogate Endpoint\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_04.png"
-        },
-        {
-          "id": "gemini_slide_4_2_component_reveal",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add the next component",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 4: \"Tumour Neoantigen Surrogate Endpoint\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_04.png"
-        },
-        {
-          "id": "gemini_slide_4_3_component_reveal",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 4: \"Tumour Neoantigen Surrogate Endpoint\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_04.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 5,
@@ -698,362 +308,116 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 71,
-        "timeGuideDisplay": "60–82s",
-        "vciScore": "7.5",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 38100,
-          "semanticProcessingMs": 31200,
-          "wordCount": 103,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "low",
+        "confidence": "high",
         "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "data",
-        "transcript": "| MECHANISTICTHEORY FOUNDATIONAL SCIENCE TEACHER: DAN\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nThe mRNA Oncology Origin Story: Kariké, Weissman, Sahin and Tiireci pioneered Pandemic Pivot: COVID-19 required immediate pivot from niche personalized cancer\nmodified mRNA platforms originally for therapeutic cancer immunotherapies cohorts (n=20-50) to global preventative trials (n=30,000-44,000) under\ntargeting somatic mutations. overlapping phases.\nDataset Comparison: COVID-19 trials measured infection rate, symptom prevention Methodological Critique in NEA: Evaluate cohort demographic representation,\n(95% efficacy), and antibody titres; oncology trials measure progression-free surrogate marker limitations, follow-up durations, and accelerated phase trade-offs.\nsurvival (PFS) and T-cell response.",
-        "sourceHash": "022258d28c9f2ebe0bfd2069d9484ce62ae71064a95a647d888f8e7105d1a60a",
-        "questions": [],
-        "questionCount": 0
+        "source": "gemini-slide-generation-agent",
+        "role": "theory",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Core Biological Theory & Mechanisms"
       },
-      "hasProgressiveBuilds": false,
-      "text": "| MECHANISTICTHEORY FOUNDATIONAL SCIENCE TEACHER: DAN\nCore Biological Theory & Mechanisms Scientific principles and systemic coordination\nThe mRNA Oncology Origin Story: Kariké, Weissman, Sahin and Tiireci pioneered Pandemic Pivot: COVID-19 required immediate pivot from niche personalized cancer\nmodified mRNA platforms originally for therapeutic cancer immunotherapies cohorts (n=20-50) to global preventative trials (n=30,000-44,000) under\ntargeting somatic mutations. overlapping phases.\nDataset Comparison: COVID-19 trials measured infection rate, symptom prevention Methodological Critique in NEA: Evaluate cohort demographic representation,\n(95% efficacy), and antibody titres; oncology trials measure progression-free surrogate marker limitations, follow-up durations, and accelerated phase trade-offs.\nsurvival (PFS) and T-cell response.",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_5_1_comparison",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first comparison component",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_05.png"
-        },
-        {
-          "id": "gemini_slide_5_2_comparison",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add the second comparison component",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_05.png"
-        },
-        {
-          "id": "gemini_slide_5_3_comparison",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Add the comparison insight",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 5: \"Core Biological Theory & Mechanisms\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Core Biological Theory & Mechanisms\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Core Biological Theory & Mechanisms. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_05.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 6,
-      "title": "Worked Demonstration & Practical Protocol",
+      "title": "Worked Demonstration & Mock NEA Exemplar",
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_06.png",
       "sourceMediaPath": "ppt/media/image6.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 125,
-        "timeGuideDisplay": "106–144s",
-        "vciScore": "10.0",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 74400,
-          "semanticProcessingMs": 49000,
-          "wordCount": 208,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "low",
+        "confidence": "high",
         "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "worked-example",
-        "transcript": "PRACTICAL PROTOCOL | WORKEDDEMONSTRATION TEACHER: DAN\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nMock NEA Writing Exemplar: Literature Review & Methodology Evaluation\nModel paragraph integrating mechanism, dataset critique, and Harvard citation\n‘Synthetic nucleoside-modified MRNA encapsulated in lipid nanoparticles (LNPs) directs ribosomal translation of target antigens while evading\ntoll-like receptor (TLR) degradation (Kariké et al., 2020).\nOriginally engineered for personalized tumour neoantigen therapy in melanoma, the platform was rapidly adapted in response to SARS-CoV-2,\ntransitioning from boutique oncology trials to global cohorts exceeding 40,000 participants (Polack et al., 2020).\nWhile Phase Ill vaccine trials evaluated definitive public health endpoints (symptomatic COVID~19 prevention, yielding 95%\nefficacy), oncology trials rely primarily on surrogate immunogenicity markers such as IFN-y CD8+ T-cell induction.\nThe accelerated overlapping phase design enabled unprecedented deployment speed; however, median 2-month safety follow-ups in initial trials\nlimited longitudinal detection of rare adverse events, necessitating ongoing Phase IV pharmacovigilance.\nThird-person academic tone, quantitative data cited, mechanism clearly linked to outcome, two peer-reviewed Harvard citations embedded.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 6: Communicating lke a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) Slide 6 of 10",
-        "sourceHash": "4845c2edc9c764f29ab0de0ca55fdde9bd8622bbfa52681a0eb9343e1485fab7",
-        "questions": [],
-        "questionCount": 0
+        "source": "gemini-slide-generation-agent",
+        "role": "worked_example",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Worked Demonstration & Mock NEA Exemplar"
       },
-      "hasProgressiveBuilds": false,
-      "text": "PRACTICAL PROTOCOL | WORKEDDEMONSTRATION TEACHER: DAN\nWorked Example & Practical Methodology Step-by-step rigorous scientific execution\nMock NEA Writing Exemplar: Literature Review & Methodology Evaluation\nModel paragraph integrating mechanism, dataset critique, and Harvard citation\n‘Synthetic nucleoside-modified MRNA encapsulated in lipid nanoparticles (LNPs) directs ribosomal translation of target antigens while evading\ntoll-like receptor (TLR) degradation (Kariké et al., 2020).\nOriginally engineered for personalized tumour neoantigen therapy in melanoma, the platform was rapidly adapted in response to SARS-CoV-2,\ntransitioning from boutique oncology trials to global cohorts exceeding 40,000 participants (Polack et al., 2020).\nWhile Phase Ill vaccine trials evaluated definitive public health endpoints (symptomatic COVID~19 prevention, yielding 95%\nefficacy), oncology trials rely primarily on surrogate immunogenicity markers such as IFN-y CD8+ T-cell induction.\nThe accelerated overlapping phase design enabled unprecedented deployment speed; however, median 2-month safety follow-ups in initial trials\nlimited longitudinal detection of rare adverse events, necessitating ongoing Phase IV pharmacovigilance.\nThird-person academic tone, quantitative data cited, mechanism clearly linked to outcome, two peer-reviewed Harvard citations embedded.\n|) Key Exam Tip: Always write down the general formula and conversion factors before writing numerical substitutions.\nLesson 6: Communicating lke a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) Slide 6 of 10",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_6_1_worked_example",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the problem and known values",
-          "strategy": "worked-example",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 6: \"PRACTICAL PROTOCOL | WORKEDDEMONSTRATION TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: worked-example.\nShow now: The title, problem statement, known values, and the required formula only.\nTemporarily omit: Substitution, arithmetic, and final answer.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_06.png"
-        },
-        {
-          "id": "gemini_slide_6_2_worked_example",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add substitution and reasoning",
-          "strategy": "worked-example",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 6: \"PRACTICAL PROTOCOL | WORKEDDEMONSTRATION TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier build plus the substitution and one clearly ordered calculation path.\nTemporarily omit: The final answer and concluding interpretation.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_06.png"
-        },
-        {
-          "id": "gemini_slide_6_3_worked_example",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Reveal the final answer",
-          "strategy": "worked-example",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 6: \"PRACTICAL PROTOCOL | WORKEDDEMONSTRATION TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: worked-example.\nShow now: Everything from the earlier builds plus the final answer, units, and concluding interpretation from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_06.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "worked-example",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 7,
-      "title": "Clinical Application & Stimulus Evidence",
+      "title": "Clinical Application: Comparative Trial Datasets (COVID-19 vs Oncology mRNA)",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_07.png",
       "sourceMediaPath": "ppt/media/image7.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 94,
-        "timeGuideDisplay": "79–109s",
-        "vciScore": "9.3",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 57750,
-          "semanticProcessingMs": 35200,
-          "wordCount": 156,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
         "detected": false,
-        "confidence": "low",
+        "confidence": "high",
         "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "process",
-        "transcript": "“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
-        "sourceHash": "1b7f4667e8ae2625fa9ba68ea3edbca7e537d8940bb9b261cf56c8cdd40f6cb6",
-        "questions": [],
-        "questionCount": 0
+        "source": "gemini-slide-generation-agent",
+        "role": "case_study",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Clinical Application: Comparative Trial Datasets (COVID-19 vs Oncology mRNA)"
       },
-      "hasProgressiveBuilds": false,
-      "text": "“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\nClinical Application: Unfamiliar Biological Stimulus Evidence extraction and applied clinical reasoning\nEvaluating Patient Diagnostic Indicators The Tripartite Explanatory Model\nIn clinical human biology, practitioners frequently encounter novel physiological data, trial 1. EMPIRICAL FACT (WHAT THE DATA SHOWS)\n‘outcomes, or diagnostic panels that require systematic decomposition: ‘State the exact quantitative finding with units and statistical significance.\n+ Independent Variable: Therapeutic intervention or physiological stressor. 2. BIOLOGICAL MECHANISM (WHY IT OCCURS)\n+ Dependent Biomarkers: Observable clinical measurements (e.g. heart rate bpm, serum Explain the underlying cellular or blochemical process driving the response.\ncreatinine, antibody titres).\n+ Controlled Parameters: Patient age, baseline health status, environmental temperature, and 3. CLINICAL IMPACT (WHAT IT MEANS FOR PATIENTS)\ntest timing. ‘Synthesize the prognostic outcome, therapeutic efficacy, or safety risk.\nx Always identify whether observed variations represent genuine clinical effects or random sampling\nnoise. ‘Standard writing model for AQ extended responses >",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_7_1_process",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal inputs and the first stage",
-          "strategy": "process",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 7: \"“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_07.png"
-        },
-        {
-          "id": "gemini_slide_7_2_process",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add the remaining pathway",
-          "strategy": "process",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 7: \"“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_07.png"
-        },
-        {
-          "id": "gemini_slide_7_3_process",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Add the process insight",
-          "strategy": "process",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 7: \"“ CASESTUDY CLINICAL STIMULUS TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_07.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "process",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 8,
@@ -1064,247 +428,76 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 68,
-        "timeGuideDisplay": "57–79s",
-        "vciScore": "7.9",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 43050,
-          "semanticProcessingMs": 23200,
-          "wordCount": 122,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
         "questionCount": 2,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "learner-question",
-        "transcript": "“HINGE QUESTIONS | TEACHER: DAN\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhy was the pivot from oncology to COVID-19 vaccines for mRNA technology In amock NEA methodology critique, why is it critical to distinguish between\nconsidered unprecedented in clinical trial history? antibody titres and symptom prevention?\nA mRNA vaccines were abandoned entirely in oncology A Antibody ites are irrelevant o immunology\nA platform undergoing small early-phase therapeutic oncology trials was Antibody titres are surrogate markers; high titres do not guarantee sterilising\n0 Re CO 0 Gee ae ne CS VEIT\noverlapping timelines cohorts\n© COVID-19 tras eid not require any regulatory approvals © symptom prevention can only be measured in arimal models",
-        "sourceHash": "97a1a44f9fe5e9777137c250da330478b14817e251500e85f8b6799326eba5d0",
-        "questions": [
-          {
-            "id": "ocr_question_1",
-            "question": "Why was the pivot from oncology to COVID-19 vaccines for mRNA technology In amock NEA methodology critique, why is it critical to distinguish between considered unprecedented in clinical trial history?",
-            "confidence": "candidate",
-            "status": "needs-gemini-bounds-or-review"
-          }
-        ],
-        "questionCount": 1
+        "source": "gemini-slide-generation-agent",
+        "role": "hinge_questions",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Diagnostic Check for Understanding (Hinge Questions)"
       },
-      "hasProgressiveBuilds": false,
-      "text": "“HINGE QUESTIONS | TEACHER: DAN\nDiagnostic Check for Understanding Identify and resolve common misconception patterns\nWhy was the pivot from oncology to COVID-19 vaccines for mRNA technology In amock NEA methodology critique, why is it critical to distinguish between\nconsidered unprecedented in clinical trial history? antibody titres and symptom prevention?\nA mRNA vaccines were abandoned entirely in oncology A Antibody ites are irrelevant o immunology\nA platform undergoing small early-phase therapeutic oncology trials was Antibody titres are surrogate markers; high titres do not guarantee sterilising\n0 Re CO 0 Gee ae ne CS VEIT\noverlapping timelines cohorts\n© COVID-19 tras eid not require any regulatory approvals © symptom prevention can only be measured in arimal models",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_8_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first component",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 8: \"“HINGE QUESTIONS | TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: component-reveal.\nShow now: The title and the first meaningful content component with only its directly supporting visual or labels.\nTemporarily omit: All later components, examples, conclusions, and key-insight containers.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_08.png"
-        },
-        {
-          "id": "gemini_slide_8_2_component_reveal",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add the next component",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 8: \"“HINGE QUESTIONS | TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier build plus the next meaningful component, relationship, or example.\nTemporarily omit: Later components and the final conclusion or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_08.png"
-        },
-        {
-          "id": "gemini_slide_8_3_component_reveal",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 8: \"“HINGE QUESTIONS | TEACHER: DAN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_08.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 9,
-      "title": "OCR Level 3 Exam-Style Application",
+      "title": "OCR Level 3 Exam-Style Application & Mark Scheme",
       "imageFileName": "slide_09.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_09.png",
       "sourceMediaPath": "ppt/media/image9.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 97,
-        "timeGuideDisplay": "82–112s",
-        "vciScore": "9.5",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 59850,
-          "semanticProcessingMs": 35400,
-          "wordCount": 169,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 1,
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "process",
-        "transcript": "[EXAM TECHNIQUE | OCRAAG ASSESSMENT TEACHER: DAN\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 6 marks\nA student is writing their Mock NEA on mRNA platform technology. (a) Explain why mRNA platforms were rapidly adapted for COVID-19 despite earlier focus on\noncology. (b) Critically evaluate two methodological challenges of evaluating surrogate endpoints in oncology compared to definitive endpoints in infectious\ndisease. [6 marks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol_ (a) Modular synthesis allowed rapid coding of the spike sequence once genomic data was published, leveraging pre-existing lipid nanoparticle delivery systems. [2 marks]\nPointoz _(b) Challenge 1: Surrogate endpoints (e.g. T-cell activation) do not directly prove tumour regression or extended progression-free survival. [2 marks]\npointos (0) Challenge 2: Infectious disease trials use clear binary clinical endpoints (symptomatic infection: yes/no) across large populations, whereas tumour progression is\nheterogeneous and confounded by prior treatments. [2 marks]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
-        "sourceHash": "880e40e66c94f766898930f0c6e789b9f3547656b92ec6ff6aa1c992cf4c631b",
-        "questions": [],
-        "questionCount": 0
+        "source": "gemini-slide-generation-agent",
+        "role": "exam_practice",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · OCR Level 3 Exam-Style Application & Mark Scheme"
       },
-      "hasProgressiveBuilds": false,
-      "text": "[EXAM TECHNIQUE | OCRAAG ASSESSMENT TEACHER: DAN\nLevel 3 Exam-Style Application & Mark Scheme Mastering marking criteria and command words\nEXAMINATION TASK 6 marks\nA student is writing their Mock NEA on mRNA platform technology. (a) Explain why mRNA platforms were rapidly adapted for COVID-19 despite earlier focus on\noncology. (b) Critically evaluate two methodological challenges of evaluating surrogate endpoints in oncology compared to definitive endpoints in infectious\ndisease. [6 marks]\nOCR STANDARD MARK SCHEME BREAKDOWN\nPointol_ (a) Modular synthesis allowed rapid coding of the spike sequence once genomic data was published, leveraging pre-existing lipid nanoparticle delivery systems. [2 marks]\nPointoz _(b) Challenge 1: Surrogate endpoints (e.g. T-cell activation) do not directly prove tumour regression or extended progression-free survival. [2 marks]\npointos (0) Challenge 2: Infectious disease trials use clear binary clinical endpoints (symptomatic infection: yes/no) across large populations, whereas tumour progression is\nheterogeneous and confounded by prior treatments. [2 marks]\ns¢ Command Word ‘Evaluate’: Requires both supportive evidence and critical limitations/counter-arguments before concluding.",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_9_1_process",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal inputs and the first stage",
-          "strategy": "process",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: process.\nShow now: The title, inputs, and first stage of the process with one clear directional cue.\nTemporarily omit: Later stages, outcomes, and secondary annotations.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_09.png"
-        },
-        {
-          "id": "gemini_slide_9_2_process",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add the remaining pathway",
-          "strategy": "process",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier build plus the next essential stages through the main outcome.\nTemporarily omit: The final interpretation, summary, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_09.png"
-        },
-        {
-          "id": "gemini_slide_9_3_process",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Add the process insight",
-          "strategy": "process",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 9: \"OCR STANDARD MARK SCHEME BREAKDOWN\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: process.\nShow now: Everything from the earlier builds plus the final interpretation, summary, or key-insight container from the source.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nContent orientation: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study). Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_09.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "process",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     },
     {
       "number": 10,
@@ -1315,129 +508,40 @@
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 50,
-        "timeGuideDisplay": "42–58s",
-        "vciScore": "6.7",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 35,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Medium",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Optimal Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 32250,
-          "semanticProcessingMs": 16000,
-          "wordCount": 95,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
+          "visualScanMs": 1100,
+          "readingMs": 9000,
+          "semanticProcessingMs": 4500,
+          "wordCount": 55,
+          "visualElementsCount": 4
+        }
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "medium",
+        "detected": false,
+        "confidence": "high",
         "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detectionSource": "manifest-structured"
       },
       "contentAnalysis": {
         "schemaVersion": 1,
         "status": "ready",
-        "source": "local-ocr-fallback",
-        "role": "process",
-        "transcript": "{ ussson consouparion J reachen: aN\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n@ mRNA platforms represent a modular biotechnology paradigm: from personalized neoantigen oncology to global preventative public health.\n@ Ensure your Mock NEA draft integrates: 1) Mechanism, 2) Dataset comparison, 3) Methodological critique, and 4) At least two peer-reviewed Harvard\ncitations.\n8 Exit Task: Upload your working draft to the shared learning folder ahead of Lesson 7 Peer Review Workshop.\nProgression Target: Next: Lesson 7 (Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop)",
-        "sourceHash": "e27cc546dcb09bd01880d3bb3ed33e05df7d78cbd7b37b87b6f6fa3aa21ca5d0",
-        "questions": [],
-        "questionCount": 0
+        "source": "gemini-slide-generation-agent",
+        "role": "plenary",
+        "transcript": "Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study) · Plenary Summary & Target Setting"
       },
-      "hasProgressiveBuilds": false,
-      "text": "{ ussson consouparion J reachen: aN\nPlenary Summary & Target Setting Reflect, consolidate, and review next milestones\n@ mRNA platforms represent a modular biotechnology paradigm: from personalized neoantigen oncology to global preventative public health.\n@ Ensure your Mock NEA draft integrates: 1) Mechanism, 2) Dataset comparison, 3) Methodological critique, and 4) At least two peer-reviewed Harvard\ncitations.\n8 Exit Task: Upload your working draft to the shared learning folder ahead of Lesson 7 Peer Review Workshop.\nProgression Target: Next: Lesson 7 (Introductory Unit Synthesis: Diagnostic Profile & Peer Review Workshop)",
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_10_1_comparison",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Reveal the first comparison component",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the first build: retain the source background and title styling, then show only the first requested instructional component fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nInstructional build strategy: comparison.\nShow now: The title and the first comparison category with its essential labels and evidence.\nTemporarily omit: The second category and the final synthesis or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_10.png"
-        },
-        {
-          "id": "gemini_slide_10_2_comparison",
-          "order": 2,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 2: Add the second comparison component",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 2 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPARTIAL-BUILD CONSTRUCTION RULE: do not edit or preserve the complete source as one flattened layer. Start from a clean source-style background and reconstruct only the items named under Show now. Every item under Temporarily omit must be entirely absent, leaving clean background in its place.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Both comparison categories, aligned consistently, with only the facts needed to contrast them.\nTemporarily omit: The final synthesis, conclusion, or key-insight container.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_10.png"
-        },
-        {
-          "id": "gemini_slide_10_3_comparison",
-          "order": 3,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 3: Add the comparison insight",
-          "strategy": "comparison",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 3 of 3 for slide 10: \"Plenary Summary & Target Setting\".\nDeck context: 6. Communicating like a Human Biologist: Interpreting Clinical Data & Mock NEA Drafting (mRNA Case Study).\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not crop, zoom, or add arbitrary external focus boxes around any region.\nThis build is cumulative with previous-step attenuation: reproduce every element shown in all earlier builds in the exact same position, but render previously animated in slide body elements and diagrams as translucent and greyed out (semi-transparent with reduced opacity and desaturated monochrome grey tones). Slide titles and main headings must NEVER be attenuated; keep the slide title fully opaque, sharp, and in full original colour in every build. Then render only the newly requested component for this build fully opaque, sharp, and in full vibrant colour.\nPREVIOUSLY ANIMATED ELEMENTS RULE: Slide body image elements, diagrams, text cards, and labels that animated in during previous builds must be rendered translucent and greyed out (attenuated with reduced opacity and monochrome greyscale). Crucially, slide titles, subtitles, and header text must NEVER be attenuated, dimmed, or greyed out—always keep the slide title 100% fully opaque, sharp, and in its full normal colour. Only the newly animated body element(s) for this step must be rendered with full opacity and vibrant colour so the learner's attention is immediately drawn to the new content.\nInstructional build strategy: comparison.\nShow now: Everything from the earlier builds plus the source slide's final synthesis, conclusion, or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThe exact visible source title is: \"Plenary Summary & Target Setting\". Keep it verbatim, 100% fully opaque, and completely unattenuated in every build.\nContent orientation: Plenary Summary & Target Setting. Read every fact and label directly from the attached original; do not reproduce OCR artefacts.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/intro_aaq_human_bio/Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA/slides/slide_10.png"
-        }
-      ],
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
+      "hasProgressiveBuilds": false
     }
   ],
   "unit": "Intro to Human Biology",
   "teacher": "Dan",
   "academicYear": "2026–27",
-  "generatedAt": "2026-09-15T21:56:44.212Z",
-  "agent": {
-    "defaultPathway": "gemini-image-chat",
-    "selectedPathway": "gemini-image-chat",
-    "imageChatProvider": "Google Gemini",
-    "offlineFallback": "local-grid-segmentation",
-    "updatedAt": "2026-09-16T00:20:34.616Z"
-  }
+  "generatedAt": "2026-09-21T16:19:30.273Z"
 }

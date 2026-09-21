@@ -333,81 +333,81 @@ export const lessons = [
     teacher: "Dan",
     deckId: "Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing",
     title: "Communicating like a Human Biologist: Source Reliability & Academic Referencing",
-    focus: "Source Credibility, Critical Appraisal (CRAAP/PROMPT) & Harvard Referencing",
-    deliverable: "Evaluate biomedical source reliability using CRAAP/PROMPT, critique sensationalised trial reporting, and construct compliant Harvard references.",
-    details: "Communicating like a Human Biologist: Source Reliability & Academic Referencing. Lead: Dan. Starter & Hook (Ben Goldacre’s Bad Science): Play an excerpt from Ben Goldacre’s TED Talk ('Battling Bad Science'), specifically examining publication bias, industry trial distortion, and how negative or unpromising data is frequently withheld from medical literature. Structured oracy prompt: 'How can a published claim appear robust on the surface while masking methodological bias or missing data?' Evaluating Biomedical Sources: Framework for critical appraisal (CRAAP/PROMPT adapted for biosciences): peer-review status, sample size, blinding, control selection, and funding declarations/conflicts of interest. Activity: Compare a sensationalised tabloid headline regarding vaccine mechanisms against an extract from a peer-reviewed trial paper (e.g., The Lancet or NEJM). Academic Conventions & Referencing: Mechanics of Harvard referencing for biomedical contexts: citing clinical registries, meta-analyses, and journal papers (in-text author-date citations vs. reference lists). Synthesising evidence without plagiarising: distinguishing direct citation from critical paraphrase. Formative Check: Quick-fire referencing repair task correcting deliberately malformed in-text citations and reference list entries.",
+    focus: "Source Credibility, Critical Appraisal (CRAAP/PROMPT), COVID-19 ARDS NSAID Case Study & Harvard Referencing",
+    deliverable: "Evaluate biomedical source reliability using CRAAP/PROMPT, critique sensationalised trial reporting in COVID-19 ARDS NSAID therapies, construct compliant Harvard references, and complete the interactive referencing challenge.",
+    details: "Communicating like a Human Biologist: Source Reliability & Academic Referencing. Lead: Dan. Clinical Case Study & Starter Hook: A severe COVID-19 patient presents with Acute Respiratory Distress Syndrome (ARDS), severe dyspnea, bilateral pulmonary infiltrates, and hyper-inflammatory cytokine storm (elevated CRP, IL-6, ferritin). Administration of an NSAID (ibuprofen) produces marked symptom alleviation and inflammatory biomarker reduction. The Media vs Science Conflict: In March 2020, unvetted ministerial statements and sensationalized media headlines triggered global panic claiming NSAIDs exacerbated COVID-19 mortality. Contrast this tabloid panic against subsequent peer-reviewed observational and randomized trial evidence (e.g., openSAFELY, Lancet Rheumatology cohorts) proving NSAIDs did not worsen ARDS or mortality. Bridge to mRNA Vaccine Debate: Connect this trial controversy to the accelerated COVID-19 mRNA vaccine pipeline—evaluating the initial absence of longitudinal Phase III trial data, rolling regulatory reviews, emergency authorizations, and reliance on surrogate immunogenicity biomarkers (neutralizing antibodies) before broad clinical effectiveness was established. This directly underpins the Mock NEA in Lesson 6. Classroom Movement & Ranking Activity ('Can we always trust what we read?'): Learners move around the classroom using post-it notes to rank 6 biomedical information sources (Academic Journals, Medical Textbooks, Health Authority Guidelines, TV/Radio Documentaries, Daily Newspapers, and Reddit/Social Media) from #1 (most trustworthy) to #6 (least trustworthy) with scientific justifications. Critical Appraisal Framework (CRAAP/PROMPT adapted for biosciences): Scrutinize peer-review status, sample power (n numbers), blinding, control selection, and funding declarations/conflicts of interest. Bad Science & Publication Bias (Dr Ben Goldacre): Deconstruct how negative or unpromising trial data is suppressed by commercial sponsors, skewing meta-analyses. Database Search Strategies: Formulate Boolean search strings in PubMed (>30 million records, [tiab] field tags, MeSH headings, open-access filters) and Google Scholar (date filters, 'Cited by' citation chaining). AI Research Tools: Natural-language literature discovery, summarization, and citation management, balanced against critical risks (hallucinations, hidden paywalls, black-box algorithms, reproducibility, mandatory primary source verification). Academic Conventions & Referencing: Mechanics of Harvard referencing (in-text author-date citations vs alphabetized reference list with DOIs; rules for single, dual, and 4+ authors becoming et al.). AI Referencing Protocol: Treat AI as software, do not cite as an author, describe methodology and prompts in an appendix. Interactive Lab: Live digital practice via the RefMaster Referencing Game (https://taggatron.github.io/Referencinggame/).",
     starterQuestions: [
-      { q: "Why is publication bias (withholding negative/unpromising trial data) dangerous in clinical medicine?", a: "It distorts the published evidence base, leading physicians to overestimate drug efficacy and underestimate adverse risks." },
-      { q: "What is the core question in Ben Goldacre's 'Battling Bad Science' oracy prompt?", a: "How a published claim can appear robust on the surface while masking methodological bias, selective reporting, or missing data." },
-      { q: "What biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework?", a: "Peer-review status, sample size power, blinding protocols, control group selection, and commercial funding/conflicts of interest." },
-      { q: "How do sensationalised media headlines typically distort clinical trial papers?", a: "They conflate correlation with causation, omit sample limitations/confounding variables, and report relative risk rather than absolute risk." },
-      { q: "In biomedical Harvard referencing, how do you format an in-text citation for three or more authors?", a: "(LeadAuthor et al., Year) — e.g., (Goldacre et al., 2024)." },
-      { q: "What is the academic distinction between direct quotation and critical paraphrase?", a: "Direct quotation reproduces exact wording in quotation marks; critical paraphrase synthesises, evaluates, and integrates evidence in the researcher's own words with citation." }
+      { q: "Why did early pandemic media claims about NSAIDs worsening COVID-19 ARDS lack scientific validity?", a: "They relied on anecdotal ministerial speculation and unreviewed hypotheses rather than peer-reviewed observational cohorts or controlled trial data." },
+      { q: "How did subsequent peer-reviewed trials (e.g. openSAFELY) evaluate NSAID safety in COVID-19 patients?", a: "By analyzing large cohorts (>17 million patient records), demonstrating no increased risk of hospitalization, severe ARDS, or 30-day mortality." },
+      { q: "What biomedical appraisal factors are evaluated in the CRAAP/PROMPT framework?", a: "Currency, Relevance, Authority (peer review & affiliations), Accuracy (sample power & controls), and Purpose/Funding conflict of interest." },
+      { q: "Why was the initial absence of longitudinal clinical trial data a major critique during early mRNA vaccine rollouts?", a: "Accelerated emergency deployment relied initially on short-term surrogate antibody titres rather than multi-year safety and durability outcomes." },
+      { q: "In Harvard referencing, how is an in-text citation formatted for four or more authors?", a: "(LeadAuthor et al., Year) — e.g. (Goldacre et al., 2021) or Goldacre et al. (2021)." },
+      { q: "What is the academic rule regarding the citation of generative AI tools in bioscience research?", a: "Generative AI cannot be listed as an author; it must be cited as software, detailing prompt instructions and model version in the methodology." }
     ],
     objectives: {
-      knowledge: "Understand publication bias, industry trial distortion, and the CRAAP/PROMPT critical appraisal criteria in biosciences.",
-      application: "Deconstruct sensationalised tabloid reporting against peer-reviewed trial papers (Lancet/NEJM) and repair malformed Harvard citations.",
-      evaluation: "Critically appraise trial validity based on blinding, sample size, control selection, and commercial conflict of interest declarations."
+      knowledge: "Understand peer-review hierarchies, publication bias (Goldacre), and CRAAP/PROMPT critical appraisal criteria in biosciences.",
+      application: "Deconstruct media sensationalism (COVID-19 ARDS NSAID controversy) against peer-reviewed trial literature using PubMed and Harvard referencing.",
+      evaluation: "Critically appraise trial validity, sample power, and surrogate endpoints, linking accelerated pandemic trials to the mRNA Mock NEA."
     },
     terminology: [
-      { term: "Publication Bias", def: "The selective publication of studies with positive outcomes, while trials showing negative or equivocal results remain unpublished." },
+      { term: "ARDS & Cytokine Storm", def: "Acute Respiratory Distress Syndrome: severe alveolar inflammation and fluid accumulation driven by systemic hyper-cytokinemia." },
+      { term: "Publication Bias", def: "Selective suppression or withholding of negative or unpromising trial data, skewing published medical meta-analyses toward false-positive efficacy." },
       { term: "CRAAP / PROMPT Framework", def: "Systematic critical appraisal tool adapted for biosciences: Currency, Relevance, Authority, Accuracy, and Purpose/Funding bias." },
-      { term: "Harvard Biomedical Referencing", def: "Standard author-date citation system linking parenthetical in-text citations to a comprehensive alphabetised bibliography." },
-      { term: "Critical Paraphrase", def: "Synthesising and evaluating findings in your own academic voice without plagiarising original phrasing, supported by proper citation." }
+      { term: "Surrogate vs Clinical Endpoint", def: "Surrogate biomarkers (e.g. antibody titres, CRP levels) serve as indirect proxies; clinical primary endpoints measure survival or disease prevention." }
     ],
     theoryPoints: [
-      "Publication Bias & Trial Distortion: Up to 50% of clinical trials conducted by pharmaceutical sponsors have historically gone unpublished, skewing meta-analyses toward false-positive efficacy.",
-      "The CRAAP/PROMPT Appraisal Framework: Scrutinise peer-review status, sample power (n numbers), randomisation, double-blinding, appropriate controls, and author financial disclosures.",
-      "Sensationalised Media vs Peer-Reviewed Trials: Tabloid media often extrapolates in vitro/animal findings to humans or conflates surrogate biomarkers with clinical survival.",
-      "Referencing Mechanics: In-text author-date citation requires (Author, Year) or Author (Year). Reference lists must contain full authors, year, article title, journal, volume, and DOI."
+      "Evidence Hierarchy: Unfiltered web/social media opinions < Case reports < Retrospective observational cohorts < Randomized Controlled Trials (RCTs) < Systematic Reviews & Meta-Analyses.",
+      "Ben Goldacre's 'Bad Science' & Publication Bias: Up to 50% of industry-sponsored clinical trials have historically gone unpublished, concealing adverse events and distorting clinical practice guidelines.",
+      "Biomedical Database Search Strategies: Utilize PubMed ([tiab] title/abstract field tags, Boolean AND/OR/NOT, MeSH indexing) and Google Scholar (date filtering, 'Cited by' citation tracking, paywall awareness).",
+      "AI in Research & Academic Integrity: AI tools accelerate literature scoping and summarization, but carry severe risks of hallucinated citations and black-box opacity; primary source verification is mandatory."
     ],
     workedExample: {
       title: "Referencing Repair Clinic: Correcting Malformed Biomedical Citations",
       subtitle: "Transforming flawed citations into publication-ready Harvard format",
       steps: [
-        { label: "Flawed In-Text Citation", detail: "Malformed: 'mRNA vaccines are effective (Dan, Goldacre, and others in Lancet 2021).' Error: Lists first names, lacks year parentheses, includes journal in-text." },
-        { label: "Repaired In-Text Citation", detail: "Corrected: 'mRNA platforms elicit robust humoral and cellular immunogenicity (Goldacre et al., 2021).' Follows standard author-date format." },
-        { label: "Flawed Reference List Entry", detail: "Malformed: 'Goldacre B. 2021. Lancet paper on trial data. www.google.com.' Error: Missing article title, journal volume, pagination, and persistent DOI." },
-        { label: "Repaired Reference List Entry", detail: "Corrected: Goldacre, B., Smeeth, L. and Perry, R. (2021) 'Methodological bias and publication deficit in modern clinical trials', The Lancet, 398(10302), pp. 789–796. doi:10.1016/S0140-6736(21)01452-9." },
+        { label: "Flawed In-Text Citation", detail: "Malformed: 'Ibuprofen reduces ARDS inflammation (Dan, Goldacre, and others in Lancet 2021).' Error: Lists first names, lacks year parentheses, includes journal name in-text." },
+        { label: "Repaired In-Text Citation", detail: "Corrected: 'NSAID administration was not associated with increased mortality or ARDS severity in hospitalized cohorts (Goldacre et al., 2021).' Follows standard author-date format." },
+        { label: "Flawed Reference List Entry", detail: "Malformed: 'Goldacre B. 2021. Lancet paper on COVID trial data. www.google.com.' Error: Missing article title, journal volume, pagination, and persistent DOI." },
+        { label: "Repaired Reference List Entry", detail: "Corrected: Goldacre, B., Smeeth, L. and Perry, R. (2021) 'Safety of non-steroidal anti-inflammatory drugs in patients with viral respiratory infections: a retrospective cohort study', The Lancet Rheumatology, 3(6), pp. e420–e428. doi:10.1016/S2665-9913(21)00093-5." },
         { label: "Critical Appraisal Takeaway", detail: "Consistent Harvard citation allows readers to independently audit source authority and verify raw experimental evidence." }
       ]
     },
     hingeQuestions: [
       {
-        question: "Which scenario best illustrates publication bias in biomedical research?",
+        question: "In March 2020, news reports warned that NSAIDs worsen COVID-19 ARDS based on a tweet. What was the primary methodological flaw in accepting this claim?",
         options: [
-          "A researcher publishes an open-access study in The Lancet",
-          "A pharmaceutical sponsor funds 10 trials of an antidepressant; only the 4 positive trials are submitted for publication while 6 neutral trials remain sealed",
-          "A peer reviewer rejects a paper due to inadequate sample size",
-          "A clinical registry records adverse events during Phase I trials"
+          "The tweet was not translated into Latin",
+          "It relied on anecdotal speculation without peer-reviewed empirical evidence, controlled trials, or adjusted confounding variables",
+          "NSAIDs are not chemical molecules",
+          "The author did not use Harvard referencing in the tweet"
         ],
         correctIndex: 1,
-        explanation: "Publication bias occurs when research with unpromising or negative results is deliberately withheld, biasing clinical perceptions."
+        explanation: "Clinical guidance requires peer-reviewed trial cohorts with statistical power and confounder adjustment, not unvetted anecdotal statements."
       },
       {
-        question: "A news headline claims: 'Breakthrough Miracle Drug Cures All Cancers!' What should a Human Biologist check FIRST?",
+        question: "Why was the rapid rollout of COVID-19 mRNA vaccines subjected to critical academic scrutiny regarding initial clinical trial data?",
         options: [
-          "The font style of the headline",
-          "Whether the underlying trial is in peer-reviewed literature, sample size (n), human vs animal model, and funding declarations",
-          "How many likes the headline has on social media",
-          "The price of the drug in pharmacies"
+          "mRNA cannot enter eukaryotic cells",
+          "Accelerated emergency authorization meant initial trials evaluated short-term surrogate immunogenicity (antibody titres) with limited longitudinal follow-up",
+          "The vaccines were tested only on bacteria",
+          "No clinical trials were ever conducted"
         ],
         correctIndex: 1,
-        explanation: "Evaluating peer-review status, model organism, sample size, and conflicts of interest is central to CRAAP/PROMPT appraisal."
+        explanation: "The accelerated pipeline compressed phases, requiring regulatory review based on surrogate immune markers before years of longitudinal safety data were available."
       }
     ],
     examQuestion: {
-      question: "A popular news outlet reported that a new synthetic therapeutic molecule 'completely halts viral infection with zero side effects'. The article cited a pilot study of 8 healthy volunteers funded by the drug manufacturer. Critically evaluate this report, identifying three methodological and reporting flaws. [6 marks]",
+      question: "A popular health website reported that a novel synthetic molecule 'completely halts viral pulmonary inflammation with zero side effects'. The article cited a pilot trial of 10 healthy volunteers funded entirely by the drug manufacturer. Critically evaluate this report, identifying three methodological and reporting flaws according to OCR Level 3 criteria. [6 marks]",
       marks: "6 marks",
       guidance: [
-        "Critique 1: Sample size is critically underpowered (n=8), introducing severe sampling error and precluding detection of uncommon adverse events. [2 marks]",
-        "Critique 2: High risk of commercial conflict of interest / funding bias from manufacturer sponsorship without independent replication. [2 marks]",
-        "Critique 3: Tabloid claim 'zero side effects' ignores Phase I safety limits and confuses early tolerance with confirmed clinical efficacy. [2 marks]"
+        "Critique 1: Sample size is critically underpowered (n=10), introducing high risk of random sampling error and precluding detection of uncommon adverse drug reactions. [2 marks]",
+        "Critique 2: High risk of commercial conflict of interest / funding bias from manufacturer sponsorship without independent multi-centre replication. [2 marks]",
+        "Critique 3: The media claim 'zero side effects' ignores Phase I dosage limitations and conflates early tolerance in healthy subjects with confirmed clinical efficacy in diseased patients. [2 marks]"
       ]
     },
     plenary: [
-      "Goldacre's principle: Clinical practice must be grounded in transparent, fully reported trial registries, not selective publication.",
-      "Always apply CRAAP/PROMPT to distinguish sensationalised claims from robust peer-reviewed evidence in The Lancet and NEJM.",
+      "Evidence-based medicine demands peer-reviewed scrutiny over media sensationalism: always audit trial sample size, controls, and sponsor disclosures.",
+      "Master Harvard referencing and AI software attribution protocols to maintain flawless academic integrity in your Level 3 portfolio.",
       "Next Lesson: Interpreting Clinical Data & Mock NEA Drafting — comparing COVID-19 vs oncology mRNA clinical datasets."
     ]
   },

@@ -5322,7 +5322,7 @@ function renderWebEmbed(slide, { preserveSequenceControls = false } = {}) {
     try {
       const u = new URL(embed.url, window.location.href);
       u.searchParams.set("presentation", "1");
-      targetSrc = u.pathname + u.search;
+      targetSrc = (u.origin === window.location.origin) ? (u.pathname + u.search) : u.href;
     } catch (_) {
       targetSrc += (targetSrc.includes("?") ? "&" : "?") + "presentation=1";
     }
