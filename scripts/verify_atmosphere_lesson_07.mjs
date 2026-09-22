@@ -4,7 +4,7 @@ async function testAtmosphereLesson() {
   console.log("Starting verification of Lesson 7 Atmosphere...");
 
   const browser = await chromium.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    channel: 'chrome',
     headless: true
   });
 
@@ -16,24 +16,18 @@ async function testAtmosphereLesson() {
 
   // Navigate directly to Lesson 7 with explicit set and deck
   await page.goto('http://127.0.0.1:3005/?set=ecology_atmosphere_classic&deck=Classic_Lesson_07_The_Atmosphere&slide=1', {
-    waitUntil: 'networkidle'
+    waitUntil: 'domcontentloaded'
   });
 
   await page.waitForTimeout(1000);
   console.log("✓ Presentation player loaded successfully");
 
-  // Helper to jump to a slide number (1-based)
+  // Helper to jump to a slide number (1-based) via thumbnail click (no full page reload)
   async function goToSlide(slideNum) {
-    await page.evaluate((num) => {
-      if (typeof window.jumpToSlide === 'function') {
-        window.jumpToSlide(num);
-      } else {
-        const url = new URL(window.location.href);
-        url.searchParams.set('slide', num);
-        window.location.href = url.toString();
-      }
-    }, slideNum);
-    await page.waitForTimeout(800);
+    const selector = `.thumb-item[data-slide-index="${slideNum - 1}"]`;
+    await page.waitForSelector(selector, { timeout: 5000 });
+    await page.click(selector);
+    await page.waitForTimeout(600);
   }
 
   // --- TEST SLIDE 1: Title Slide & Video Intro Build ---
@@ -138,82 +132,96 @@ async function testAtmosphereLesson() {
     throw new Error(`Expected Step 2 / 3 on Slide 3, got: ${slide3Build2.badge}`);
   }
 
-  // --- TEST SLIDE 4: Earth A World Becoming Interactive Embed ---
-  console.log("\nTesting Slide 4 (Earth A World Becoming Embed)...");
+  // --- TEST SLIDE 4: Atmospheric Changes Overview Slide (slide_04_atmospheric_changes.png) ---
+  console.log("\nTesting Slide 4 (Atmospheric Changes Overview Slide)...");
   await goToSlide(4);
-  await page.waitForSelector('iframe', { timeout: 8000 });
-  const slide4IframeSrc = await page.evaluate(() => {
-    const f = document.querySelector('iframe');
-    return f ? f.src : '';
-  });
-  console.log(`Slide 4 iframe src: ${slide4IframeSrc}`);
-  if (!slide4IframeSrc.includes('earth-a-world-becoming')) {
-    throw new Error(`Slide 4 expected earth-a-world-becoming iframe, got ${slide4IframeSrc}`);
-  }
-
-  // --- TEST SLIDE 6: Organic Laboratory Miller-Urey Interactive Embed ---
-  console.log("\nTesting Slide 6 (Organic Laboratory Miller-Urey Embed)...");
-  await goToSlide(6);
-  await page.waitForSelector('iframe', { timeout: 8000 });
-  const slide6IframeSrc = await page.evaluate(() => {
-    const f = document.querySelector('iframe');
-    return f ? f.src : '';
-  });
-  console.log(`Slide 6 iframe src: ${slide6IframeSrc}`);
-  if (!slide6IframeSrc.includes('organic-laboratory')) {
-    throw new Error(`Slide 6 expected organic-laboratory iframe, got ${slide6IframeSrc}`);
-  }
-
-  // --- TEST SLIDE 8: Misconception Buster ---
-  console.log("\nTesting Slide 8 (Misconception Buster)...");
-  await goToSlide(8);
-  const slide8Overlays = await page.$$('.qa-card-overlay.masked-blur');
-  console.log(`Found ${slide8Overlays.length} blur overlays on Slide 8 (expected 1)`);
-  if (slide8Overlays.length !== 1) {
-    throw new Error(`Expected 1 blur overlay on Slide 8, found ${slide8Overlays.length}`);
-  }
-  await slide8Overlays[0].click();
-  await page.waitForTimeout(300);
-  const slide8Revealed = await page.evaluate(() => {
-    return document.querySelector('.qa-card-overlay').classList.contains('revealed');
-  });
-  console.log(`Slide 8 cell unmasked/revealed: ${slide8Revealed}`);
-  if (!slide8Revealed) {
-    throw new Error("Slide 8 cell failed to reveal on click");
-  }
-
-  // --- TEST SLIDE 9: Task & Data Investigation Only (slide_07.png) ---
-  console.log("\nTesting Slide 9 (Task & Data Investigation Only)...");
-  await goToSlide(9);
-  const slide9Src = await page.evaluate(() => {
+  await page.waitForTimeout(800);
+  await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/09c2a99e-c553-47cf-8031-186c29d41b00/verify_slide_04_atmospheric_changes.png' });
+  const slide4Src = await page.evaluate(() => {
     const img = document.querySelector('#slideImage');
     return img ? img.src : '';
   });
-  console.log(`Slide 9 image src: ${slide9Src}`);
-  if (!slide9Src.includes('slide_07.png')) {
-    throw new Error(`Slide 9 image expected to be slide_07.png, got: ${slide9Src}`);
-  }
-  const slide9Overlays = await page.$$('.qa-card-overlay');
-  console.log(`Slide 9 interactive overlays: ${slide9Overlays.length} (expected 0)`);
-  if (slide9Overlays.length !== 0) {
-    throw new Error(`Expected 0 overlays on Slide 9, found ${slide9Overlays.length}`);
+  console.log(`Slide 4 image src: ${slide4Src}`);
+  if (!slide4Src.includes('slide_04_atmospheric_changes.png')) {
+    throw new Error(`Slide 4 image expected to be slide_04_atmospheric_changes.png, got: ${slide4Src}`);
   }
 
-  // --- TEST SLIDE 10: Step-by-Step Model Answers with 3 Blurs (slide_08.png) ---
-  console.log("\nTesting Slide 10 (Step-by-Step Model Answers with 3 Blurs)...");
+  // --- TEST SLIDE 5: Earth A World Becoming Interactive Embed ---
+  console.log("\nTesting Slide 5 (Earth A World Becoming Embed)...");
+  await goToSlide(5);
+  await page.waitForSelector('iframe', { timeout: 8000 });
+  const slide5IframeSrc = await page.evaluate(() => {
+    const f = document.querySelector('iframe');
+    return f ? f.src : '';
+  });
+  console.log(`Slide 5 iframe src: ${slide5IframeSrc}`);
+  if (!slide5IframeSrc.includes('earth-a-world-becoming')) {
+    throw new Error(`Slide 5 expected earth-a-world-becoming iframe, got ${slide5IframeSrc}`);
+  }
+
+  // --- TEST SLIDE 7: Organic Laboratory Miller-Urey Interactive Embed ---
+  console.log("\nTesting Slide 7 (Organic Laboratory Miller-Urey Embed)...");
+  await goToSlide(7);
+  await page.waitForSelector('iframe', { timeout: 8000 });
+  const slide7IframeSrc = await page.evaluate(() => {
+    const f = document.querySelector('iframe');
+    return f ? f.src : '';
+  });
+  console.log(`Slide 7 iframe src: ${slide7IframeSrc}`);
+  if (!slide7IframeSrc.includes('organic-laboratory')) {
+    throw new Error(`Slide 7 expected organic-laboratory iframe, got ${slide7IframeSrc}`);
+  }
+
+  // --- TEST SLIDE 9: Misconception Buster ---
+  console.log("\nTesting Slide 9 (Misconception Buster)...");
+  await goToSlide(9);
+  const slide9Overlays = await page.$$('.qa-card-overlay.masked-blur');
+  console.log(`Found ${slide9Overlays.length} blur overlays on Slide 9 (expected 1)`);
+  if (slide9Overlays.length !== 1) {
+    throw new Error(`Expected 1 blur overlay on Slide 9, found ${slide9Overlays.length}`);
+  }
+  await slide9Overlays[0].click();
+  await page.waitForTimeout(300);
+  const slide9Revealed = await page.evaluate(() => {
+    return document.querySelector('.qa-card-overlay').classList.contains('revealed');
+  });
+  console.log(`Slide 9 cell unmasked/revealed: ${slide9Revealed}`);
+  if (!slide9Revealed) {
+    throw new Error("Slide 9 cell failed to reveal on click");
+  }
+
+  // --- TEST SLIDE 10: Task & Data Investigation Only (slide_07.png) ---
+  console.log("\nTesting Slide 10 (Task & Data Investigation Only)...");
   await goToSlide(10);
   const slide10Src = await page.evaluate(() => {
     const img = document.querySelector('#slideImage');
     return img ? img.src : '';
   });
   console.log(`Slide 10 image src: ${slide10Src}`);
-  if (!slide10Src.includes('slide_08.png')) {
-    throw new Error(`Slide 10 image expected to be slide_08.png, got: ${slide10Src}`);
+  if (!slide10Src.includes('slide_07.png')) {
+    throw new Error(`Slide 10 image expected to be slide_07.png, got: ${slide10Src}`);
   }
-  const slide10Overlays = await page.$$('.qa-card-overlay.masked-blur');
-  console.log(`Found ${slide10Overlays.length} blur overlays on Slide 10 (expected 3)`);
-  if (slide10Overlays.length !== 3) {
-    throw new Error(`Expected 3 blur overlays on Slide 10, found ${slide10Overlays.length}`);
+  const slide10Overlays = await page.$$('.qa-card-overlay');
+  console.log(`Slide 10 interactive overlays: ${slide10Overlays.length} (expected 0)`);
+  if (slide10Overlays.length !== 0) {
+    throw new Error(`Expected 0 overlays on Slide 10, found ${slide10Overlays.length}`);
+  }
+
+  // --- TEST SLIDE 11: Step-by-Step Model Answers with 3 Blurs (slide_08.png) ---
+  console.log("\nTesting Slide 11 (Step-by-Step Model Answers with 3 Blurs)...");
+  await goToSlide(11);
+  const slide11Src = await page.evaluate(() => {
+    const img = document.querySelector('#slideImage');
+    return img ? img.src : '';
+  });
+  console.log(`Slide 11 image src: ${slide11Src}`);
+  if (!slide11Src.includes('slide_08.png')) {
+    throw new Error(`Slide 11 image expected to be slide_08.png, got: ${slide11Src}`);
+  }
+  const slide11Overlays = await page.$$('.qa-card-overlay.masked-blur');
+  console.log(`Found ${slide11Overlays.length} blur overlays on Slide 11 (expected 3)`);
+  if (slide11Overlays.length !== 3) {
+    throw new Error(`Expected 3 blur overlays on Slide 11, found ${slide11Overlays.length}`);
   }
 
   // Click each step in turn (re-querying to avoid stale element handle)
@@ -224,18 +232,18 @@ async function testAtmosphereLesson() {
       await page.waitForTimeout(300);
     }
   }
-  const allSlide10Revealed = await page.evaluate(() => {
+  const allSlide11Revealed = await page.evaluate(() => {
     const cards = document.querySelectorAll('.qa-card-overlay');
     return Array.from(cards).every(c => c.classList.contains('revealed'));
   });
-  console.log(`All 3 steps on Slide 10 revealed on click: ${allSlide10Revealed}`);
-  if (!allSlide10Revealed) {
+  console.log(`All 3 steps on Slide 11 revealed on click: ${allSlide11Revealed}`);
+  if (!allSlide11Revealed) {
     throw new Error("Not all 3 step blur cells revealed on click");
   }
 
-  // --- TEST SLIDE 11: OCR Exam Checkpoint & Mark Scheme Interactive Viewer (slide_09_exam_checkpoint.png) ---
-  console.log("\nTesting Slide 11 / Exam Checkpoint (OCR Exam PDF Interactive Viewer)...");
-  await goToSlide(11);
+  // --- TEST SLIDE 12: OCR Exam Checkpoint & Mark Scheme Interactive Viewer (slide_09_exam_checkpoint.png) ---
+  console.log("\nTesting Slide 12 / Exam Checkpoint (OCR Exam PDF Interactive Viewer)...");
+  await goToSlide(12);
   await page.waitForSelector('iframe', { timeout: 8000 });
   const iframeSrc = await page.evaluate(() => {
     const f = document.querySelector('iframe');
@@ -332,16 +340,16 @@ async function testAtmosphereLesson() {
     throw new Error("Failed to return to Questions Only mode");
   }
 
-  // --- TEST SLIDE 12: Plenary Summary & Exit-Ticket (slide_10.png) ---
-  console.log("\nTesting Slide 12 (Plenary Summary & Exit-Ticket)...");
-  await goToSlide(12);
-  const slide12Src = await page.evaluate(() => {
+  // --- TEST SLIDE 13: Plenary Summary & Exit-Ticket (slide_10.png) ---
+  console.log("\nTesting Slide 13 (Plenary Summary & Exit-Ticket)...");
+  await goToSlide(13);
+  const slide13Src = await page.evaluate(() => {
     const img = document.querySelector('#slideImage');
     return img ? img.src : '';
   });
-  console.log(`Slide 12 image src: ${slide12Src}`);
-  if (!slide12Src.includes('slide_10.png')) {
-    throw new Error(`Slide 12 image expected to be slide_10.png, got: ${slide12Src}`);
+  console.log(`Slide 13 image src: ${slide13Src}`);
+  if (!slide13Src.includes('slide_10.png')) {
+    throw new Error(`Slide 13 image expected to be slide_10.png, got: ${slide13Src}`);
   }
 
   console.log("\n🎉 ALL TESTS PASSED SUCCESSFULLY! Everything is working cleanly and seamlessly.");
