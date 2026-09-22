@@ -1,496 +1,525 @@
 {
   "id": "Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing",
-  "title": "Communicating like a Human Biologist: Source Reliability & Academic Referencing",
-  "slideSet": "intro_aaq_human_bio",
+  "unitId": "intro_aaq_human_bio",
+  "title": "Lesson 5: Communicating like a Human Biologist: Source Reliability & Academic Referencing",
   "filename": "Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_Academic_Referencing.pptx",
-  "totalSlides": 14,
+  "totalSlides": 17,
+  "lessonNumber": 5,
+  "courseName": "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology",
+  "teacher": "Dan",
+  "objectives": {
+    "knowledge": "Differentiate reliable peer-reviewed clinical evidence from non-scientific claims using the PROMT appraisal framework.",
+    "application": "Apply strict Harvard referencing conventions (author-date in-text citations and full bibliography entries) to biomedical sources.",
+    "evaluation": "Critically evaluate clinical data claims, detect methodological flaws and publication bias, and paraphrase complex bioscience findings without plagiarism."
+  },
+  "terminology": [
+    {
+      "term": "PROMT Framework",
+      "def": "Critical evaluation tool assessing Provenance, Relevance, Objectivity, Methodology, and Timeliness of scientific literature."
+    },
+    {
+      "term": "Publication Bias",
+      "def": "The selective publication of positive/favourable clinical results while burying negative or inconclusive trial findings."
+    },
+    {
+      "term": "Double-Blind RCT",
+      "def": "Randomised Controlled Trial where neither participants nor researchers know who receives the experimental treatment vs placebo."
+    },
+    {
+      "term": "Harvard Referencing",
+      "def": "Author-date academic citation system requiring matching in-text signposts and an alphabetically ordered bibliography."
+    },
+    {
+      "term": "Critical Paraphrase",
+      "def": "Re-articulating the core scientific meaning and findings in original structure and terminology rather than direct copying."
+    }
+  ],
   "slides": [
     {
       "number": 1,
-      "title": "Welcome & Induction: Communicating like a Human Biologist: Source Reliability & Academic Referencing",
+      "title": "Lesson 5: Communicating like a Human Biologist: Source Reliability & Academic Referencing",
       "imageFileName": "slide_01.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_01.png",
-      "sourceMediaPath": "ppt/media/image1.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 20,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "4.0",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
+      "metadata": {
         "role": "title",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Welcome & Induction: Communicating like a Human Biologist: Source Reliability & Academic Referencing"
-      },
-      "hasProgressiveBuilds": false
+        "lead": "Dan",
+        "level": "OCR Level 3 Cambridge Advanced National in Human Biology"
+      }
     },
     {
       "number": 2,
-      "title": "Clinical Case Study: Hyper-Inflammatory Presentation (COVID-19 ARDS & NSAID Response)",
+      "title": "Starter Activity: 6-Cell Knowledge Retrieval",
       "imageFileName": "slide_02.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_02.png",
-      "sourceMediaPath": "ppt/media/image2.png",
-      "isInteractive": false,
-      "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 45,
-        "timeGuideDisplay": "30–60s",
-        "vciScore": "3.2",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 14500,
-          "semanticProcessingMs": 6500,
-          "wordCount": 80,
-          "visualElementsCount": 6
+      "isInteractive": true,
+      "interactiveType": "six_cell_grid",
+      "starterQuestions": [
+        {
+          "q": "What is the primary purpose of a clinical trial control group?",
+          "a": "To establish a baseline comparison to isolate the specific pharmacological effect of the experimental variable from placebo effect or natural disease progression."
+        },
+        {
+          "q": "Name two variables that must be controlled in a blood test analysis.",
+          "a": "E.g., incubation temperature, sample storage time before centrifugation, anticoagulant type (e.g. EDTA vs heparin), or reagent concentration."
+        },
+        {
+          "q": "Why is a large sample size critical in biomedical research?",
+          "a": "It maximizes statistical power, minimizes the distortion of random anomalies/biological variance, and narrows confidence intervals."
+        },
+        {
+          "q": "Define quantitative data in the context of urinalysis.",
+          "a": "Numerical, measurable data with defined clinical units (e.g., glucose concentration in mmol/L or protein mg/dL) rather than descriptive/qualitative observations."
+        },
+        {
+          "q": "What is the risk of using a biased sample in a drug trial?",
+          "a": "Produces unrepresentative results and skewed conclusions that fail to reflect the target patient population, risking ineffective treatment or hidden toxicity."
+        },
+        {
+          "q": "How does peer review improve the reliability of scientific claims?",
+          "a": "Subjecting research methodology, statistical calculations, and data interpretation to scrutiny by independent experts (Review -> Feedback -> Correction) before publication."
         }
-      },
-      "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 6,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "starter_grid",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Starter Activity: Knowledge Retrieval Grid"
-      },
-      "hasProgressiveBuilds": false
+      ],
+      "interactiveCells": [
+        {
+          "id": "cell_1",
+          "row": 0,
+          "col": 0,
+          "bounds": {
+            "x": 2.8,
+            "y": 3.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "What is the primary purpose of a clinical trial control group?",
+          "expectedAnswer": "To establish a baseline comparison to isolate the specific pharmacological effect of the experimental variable from placebo effect or natural disease progression.",
+          "answer": "To establish a baseline comparison to isolate the specific pharmacological effect of the experimental variable from placebo effect or natural disease progression.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerBounds": {
+            "x": 4.1,
+            "y": 28.2,
+            "w": 43,
+            "h": 9.6
+          },
+          "locked": true,
+          "provenance": "user-adjusted"
+        },
+        {
+          "id": "cell_2",
+          "row": 0,
+          "col": 1,
+          "bounds": {
+            "x": 50.8,
+            "y": 3.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "Name two variables that must be controlled in a blood test analysis.",
+          "expectedAnswer": "E.g., incubation temperature, sample storage time before centrifugation, anticoagulant type (e.g. EDTA vs heparin), or reagent concentration.",
+          "answer": "E.g., incubation temperature, sample storage time before centrifugation, anticoagulant type (e.g. EDTA vs heparin), or reagent concentration.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerBounds": {
+            "x": 62.9,
+            "y": 26.7,
+            "w": 36.1,
+            "h": 8.3
+          },
+          "locked": true,
+          "provenance": "user-adjusted"
+        },
+        {
+          "id": "cell_3",
+          "row": 1,
+          "col": 0,
+          "bounds": {
+            "x": 2.8,
+            "y": 34.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "Why is a large sample size critical in biomedical research?",
+          "expectedAnswer": "It maximizes statistical power, minimizes the distortion of random anomalies/biological variance, and narrows confidence intervals.",
+          "answer": "It maximizes statistical power, minimizes the distortion of random anomalies/biological variance, and narrows confidence intervals.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerBounds": {
+            "x": 4.1,
+            "y": 57.5,
+            "w": 43.1,
+            "h": 9.5
+          },
+          "locked": true,
+          "provenance": "user-adjusted"
+        },
+        {
+          "id": "cell_4",
+          "row": 1,
+          "col": 1,
+          "bounds": {
+            "x": 50.8,
+            "y": 34.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "Define quantitative data in the context of urinalysis.",
+          "expectedAnswer": "Numerical, measurable data with defined clinical units (e.g., glucose concentration in mmol/L or protein mg/dL) rather than descriptive/qualitative observations.",
+          "answer": "Numerical, measurable data with defined clinical units (e.g., glucose concentration in mmol/L or protein mg/dL) rather than descriptive/qualitative observations.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerBounds": {
+            "x": 52.1,
+            "y": 57.3,
+            "w": 46.3,
+            "h": 8.6
+          },
+          "locked": true,
+          "provenance": "user-adjusted"
+        },
+        {
+          "id": "cell_5",
+          "row": 2,
+          "col": 0,
+          "bounds": {
+            "x": 2.8,
+            "y": 65.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "What is the risk of using a biased sample in a drug trial?",
+          "expectedAnswer": "Produces unrepresentative results and skewed conclusions that fail to reflect the target patient population, risking ineffective treatment or hidden toxicity.",
+          "answer": "Produces unrepresentative results and skewed conclusions that fail to reflect the target patient population, risking ineffective treatment or hidden toxicity.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerBounds": {
+            "x": 5.9,
+            "y": 88.4,
+            "w": 43.8,
+            "h": 6.1
+          },
+          "locked": true,
+          "provenance": "user-adjusted"
+        },
+        {
+          "id": "cell_6",
+          "row": 2,
+          "col": 1,
+          "bounds": {
+            "x": 50.8,
+            "y": 65.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "How does peer review improve the reliability of scientific claims?",
+          "expectedAnswer": "Subjecting research methodology, statistical calculations, and data interpretation to scrutiny by independent experts (Review -> Feedback -> Correction) before publication.",
+          "answer": "Subjecting research methodology, statistical calculations, and data interpretation to scrutiny by independent experts (Review -> Feedback -> Correction) before publication.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1,
+          "answerBounds": {
+            "x": 56.2,
+            "y": 87.9,
+            "w": 40.7,
+            "h": 8.3
+          },
+          "locked": true,
+          "provenance": "user-adjusted"
+        }
+      ],
+      "cells": [
+        {
+          "id": "cell_1",
+          "row": 0,
+          "col": 0,
+          "bounds": {
+            "x": 2.8,
+            "y": 3.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "What is the primary purpose of a clinical trial control group?",
+          "expectedAnswer": "To establish a baseline comparison to isolate the specific pharmacological effect of the experimental variable from placebo effect or natural disease progression.",
+          "answer": "To establish a baseline comparison to isolate the specific pharmacological effect of the experimental variable from placebo effect or natural disease progression.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_2",
+          "row": 0,
+          "col": 1,
+          "bounds": {
+            "x": 50.8,
+            "y": 3.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "Name two variables that must be controlled in a blood test analysis.",
+          "expectedAnswer": "E.g., incubation temperature, sample storage time before centrifugation, anticoagulant type (e.g. EDTA vs heparin), or reagent concentration.",
+          "answer": "E.g., incubation temperature, sample storage time before centrifugation, anticoagulant type (e.g. EDTA vs heparin), or reagent concentration.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_3",
+          "row": 1,
+          "col": 0,
+          "bounds": {
+            "x": 2.8,
+            "y": 34.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "Why is a large sample size critical in biomedical research?",
+          "expectedAnswer": "It maximizes statistical power, minimizes the distortion of random anomalies/biological variance, and narrows confidence intervals.",
+          "answer": "It maximizes statistical power, minimizes the distortion of random anomalies/biological variance, and narrows confidence intervals.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_4",
+          "row": 1,
+          "col": 1,
+          "bounds": {
+            "x": 50.8,
+            "y": 34.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "Define quantitative data in the context of urinalysis.",
+          "expectedAnswer": "Numerical, measurable data with defined clinical units (e.g., glucose concentration in mmol/L or protein mg/dL) rather than descriptive/qualitative observations.",
+          "answer": "Numerical, measurable data with defined clinical units (e.g., glucose concentration in mmol/L or protein mg/dL) rather than descriptive/qualitative observations.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_5",
+          "row": 2,
+          "col": 0,
+          "bounds": {
+            "x": 2.8,
+            "y": 65.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "What is the risk of using a biased sample in a drug trial?",
+          "expectedAnswer": "Produces unrepresentative results and skewed conclusions that fail to reflect the target patient population, risking ineffective treatment or hidden toxicity.",
+          "answer": "Produces unrepresentative results and skewed conclusions that fail to reflect the target patient population, risking ineffective treatment or hidden toxicity.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        },
+        {
+          "id": "cell_6",
+          "row": 2,
+          "col": 1,
+          "bounds": {
+            "x": 50.8,
+            "y": 65.5,
+            "w": 46.2,
+            "h": 28.5
+          },
+          "question": "How does peer review improve the reliability of scientific claims?",
+          "expectedAnswer": "Subjecting research methodology, statistical calculations, and data interpretation to scrutiny by independent experts (Review -> Feedback -> Correction) before publication.",
+          "answer": "Subjecting research methodology, statistical calculations, and data interpretation to scrutiny by independent experts (Review -> Feedback -> Correction) before publication.",
+          "overlayAnswer": true,
+          "revealMode": "overlay",
+          "confidence": 1
+        }
+      ],
+      "metadata": {
+        "role": "starter",
+        "instructions": "Click any cell to reveal its model scientific answer. Self-assess against Level 3 standards."
+      }
     },
     {
       "number": 3,
-      "title": "Learning Objectives & Critical Appraisal Standards",
+      "title": "The Illusion of Evidence (Battling Bad Science)",
       "imageFileName": "slide_03.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_03.png",
-      "sourceMediaPath": "ppt/media/image3.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "objectives",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Learning Objectives & Success Criteria"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "case_study",
+        "caseStudy": "Ben Goldacre - Battling Bad Science (Publication Bias & Withheld Data)"
+      }
     },
     {
       "number": 4,
-      "title": "The Media vs Science Conflict: Sensationalism in Pandemic Reporting",
+      "title": "Structured Oracy Task: Masking Methodological Bias",
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_04.png",
-      "sourceMediaPath": "ppt/media/image4.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "terminology",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Essential Scientific & Clinical Vocabulary"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "oracy",
+        "protocol": "Think (30s) -> Pair (discuss with desk partner) -> Share (room feedback)"
+      }
     },
     {
       "number": 5,
-      "title": "Biomedical Source Trustfulness & The CRAAP / PROMPT Framework",
+      "title": "Active Learning: Can we always trust what we read?",
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_05.png",
-      "sourceMediaPath": "ppt/media/image5.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "theory",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Core Biological Theory & Critical Appraisal"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "active_learning",
+        "activity": "Move around the classroom and rank six sources with scientific justifications (#1 Most Trustworthy to #6 Least Trustworthy)."
+      }
     },
     {
       "number": 6,
-      "title": "Classroom Ranking Activity: Evaluating 6 Biomedical Information Channels",
+      "title": "Framework for Bioscience Appraisal: PROMT",
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_06.png",
-      "sourceMediaPath": "ppt/media/image6.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "activity",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Active Learning Task: Source Trustfulness Post-It Ranking Activity"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "theory",
+        "framework": "PROMT (Provenance, Relevance, Objectivity, Methodology, Timeliness)"
+      }
     },
     {
       "number": 7,
-      "title": "Dr Ben Goldacre: Publication Bias & The Bad Science Problem",
+      "title": "Spotting Methodological Flaws",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_07.png",
-      "sourceMediaPath": "ppt/media/image7.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "case_study",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Clinical Case Study: COVID-19 ARDS & NSAID Trial Evidence"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "theory",
+        "keyPillars": [
+          "Sample Size",
+          "Blinding",
+          "Control Selection"
+        ]
+      }
     },
     {
       "number": 8,
-      "title": "Biomedical Literature Discovery: PubMed & Boolean Search Architecture",
+      "title": "Evaluate the Source: S1 Pharmaceuticals",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_08.png",
-      "sourceMediaPath": "ppt/media/image8.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "worked_example",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Harvard Referencing Mechanics & AI Citing Protocol"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "critical_evaluation",
+        "task": "Identify three CRAAP/PROMPT failures in the tabloid headline compared to the double-blind RCT."
+      }
     },
     {
       "number": 9,
-      "title": "Citation Chaining & Literature Discovery (Anchor Node & Forward/Backward Tracking)",
+      "title": "Synthesising Evidence Correctly: Citation vs Paraphrase",
       "imageFileName": "slide_09.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_09.png",
-      "sourceMediaPath": "ppt/media/image9.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 60,
-        "timeGuideDisplay": "60–120s",
-        "vciScore": "5.0",
-        "complexityCategory": "High",
-        "ragLevel": "amber",
-        "ragColor": "amber",
-        "ragLabel": "Active Workshop Lab",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 40,
-          "visualElementsCount": 8
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "interactive_lab",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Interactive Workshop: RefMaster Academic Referencing Game"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "academic_writing",
+        "rule": "Both direct quotation and critical paraphrase require formal academic referencing."
+      }
     },
     {
       "number": 10,
-      "title": "AI Research Tools: Capabilities, Epistemic Risks & Verification Protocols",
+      "title": "Step-by-Step: Critical Paraphrasing",
       "imageFileName": "slide_10.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_10.png",
-      "sourceMediaPath": "ppt/media/image10.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 2,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "hinge_questions",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Diagnostic Check for Understanding (Hinge Questions)"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "academic_writing_technique",
+        "steps": [
+          "Step 1: Extract Data",
+          "Step 2: Change Structure",
+          "Step 3: Paraphrase"
+        ]
+      }
     },
     {
       "number": 11,
-      "title": "Harvard Referencing Mechanics: Author-Date Systems & DOI Tracking",
+      "title": "The Mechanics of Harvard Referencing",
       "imageFileName": "slide_11.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_11.png",
-      "sourceMediaPath": "ppt/media/image11.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "exam_practice",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · OCR Level 3 Exam-Style Application & Mark Scheme"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "referencing_mechanics",
+        "coreRule": "If it is in the text, it must be in the list."
+      }
     },
     {
       "number": 12,
-      "title": "Referencing Repair Clinic: Fixing Malformed Biomedical Citations",
+      "title": "Formatting In-Text Citations",
       "imageFileName": "slide_12.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_12.png",
-      "sourceMediaPath": "ppt/media/image12.png",
       "isInteractive": false,
       "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 35,
-        "timeGuideDisplay": "20–40s",
-        "vciScore": "3.5",
-        "complexityCategory": "Medium",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Optimal Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1100,
-          "readingMs": 9000,
-          "semanticProcessingMs": 4500,
-          "wordCount": 55,
-          "visualElementsCount": 4
-        }
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "high",
-        "questionCount": 0,
-        "detectionSource": "manifest-structured"
-      },
-      "contentAnalysis": {
-        "schemaVersion": 1,
-        "status": "ready",
-        "source": "gemini-slide-generation-agent",
-        "role": "plenary",
-        "transcript": "Communicating like a Human Biologist: Source Reliability & Academic Referencing · Plenary Summary & Target Setting"
-      },
-      "hasProgressiveBuilds": false
+      "metadata": {
+        "role": "referencing_conventions",
+        "cases": [
+          "One Author",
+          "Two Authors",
+          "Three+ Authors (et al.)",
+          "Direct Quote (page number)"
+        ]
+      }
     },
     {
       "number": 13,
-      "title": "Interactive Lab: RefMaster Citation Practice",
+      "title": "Formatting the Reference List (Journal Paper)",
       "imageFileName": "slide_13.png",
       "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_13.png",
-      "sourceMediaPath": "ppt/media/image13.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "metadata": {
+        "role": "bibliography_standards",
+        "order": "Author & Year -> Article Title -> Journal Title (Italics) -> Volume & Issue -> Page Range"
+      }
+    },
+    {
+      "number": 14,
+      "title": "Quick-Fire: Repair the Reference",
+      "imageFileName": "slide_14.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_14.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "metadata": {
+        "role": "formative_check",
+        "task": "Spot the formatting errors and rewrite correctly on your whiteboards."
+      }
+    },
+    {
+      "number": 15,
+      "title": "Repair Solutions & Explanations",
+      "imageFileName": "slide_15.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_15.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "metadata": {
+        "role": "formative_feedback",
+        "rulesChecked": [
+          "Only surname and year needed",
+          "Author, Year, Title, Journal order",
+          "Use et al. for 3+ authors"
+        ]
+      }
+    },
+    {
+      "number": 16,
+      "title": "Interactive Lab: RefMaster Citation Practice",
+      "imageFileName": "slide_16.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_16.png",
       "isInteractive": true,
       "interactiveType": "web_embed",
       "webEmbed": {
@@ -498,117 +527,27 @@
         "title": "RefMaster Harvard Referencing Interactive Game",
         "label": "Interactive Referencing Challenge",
         "instructions": "Complete the interactive Harvard referencing challenges. Master in-text citation conventions and reference list construction."
+      },
+      "metadata": {
+        "role": "gamified_practice",
+        "gameUrl": "https://taggatron.github.io/Referencinggame/"
       }
     },
     {
-      "number": 14,
-      "title": "Essential Standards for Your Unit F173 NEA",
-      "imageFileName": "slide_14.png",
-      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_14.png",
-      "sourceMediaPath": "ppt/media/image14.png",
+      "number": 17,
+      "title": "Lesson Summary: The Investigator's Toolkit",
+      "imageFileName": "slide_17.png",
+      "imageUrl": "/decks/intro_aaq_human_bio/Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing/slides/slide_17.png",
       "isInteractive": false,
-      "interactiveType": null
-    }
-  ],
-  "unit": "Intro to Human Biology",
-  "teacher": "Dan",
-  "academicYear": "2026–27",
-  "generatedAt": "2026-09-21T16:19:24.732Z",
-  "lessonNumber": 5,
-  "courseName": "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology",
-  "focus": "Source Credibility, Critical Appraisal (CRAAP/PROMPT), COVID-19 ARDS NSAID Case Study & Harvard Referencing",
-  "deliverable": "Evaluate biomedical source reliability using CRAAP/PROMPT, critique sensationalised trial reporting in COVID-19 ARDS NSAID therapies, construct compliant Harvard references, and complete the interactive referencing challenge.",
-  "objectives": {
-    "knowledge": "Understand peer-review hierarchies, publication bias (Goldacre), and CRAAP/PROMPT critical appraisal criteria in biosciences.",
-    "application": "Deconstruct media sensationalism (COVID-19 ARDS NSAID controversy) against peer-reviewed trial literature using PubMed and Harvard referencing.",
-    "evaluation": "Critically appraise trial validity, sample power, and surrogate endpoints, linking accelerated pandemic trials to the mRNA Mock NEA."
-  },
-  "terminology": [
-    {
-      "term": "ARDS & Cytokine Storm",
-      "def": "Acute Respiratory Distress Syndrome: severe alveolar inflammation and fluid accumulation driven by systemic hyper-cytokinemia."
-    },
-    {
-      "term": "Publication Bias",
-      "def": "Selective suppression or withholding of negative or unpromising trial data, skewing published medical meta-analyses toward false-positive efficacy."
-    },
-    {
-      "term": "CRAAP / PROMPT Framework",
-      "def": "Systematic critical appraisal tool adapted for biosciences: Currency, Relevance, Authority, Accuracy, and Purpose/Funding bias."
-    },
-    {
-      "term": "Surrogate vs Clinical Endpoint",
-      "def": "Surrogate biomarkers (e.g. antibody titres, CRP levels) serve as indirect proxies; clinical primary endpoints measure survival or disease prevention."
-    }
-  ],
-  "theoryPoints": [
-    "Evidence Hierarchy: Unfiltered web/social media opinions < Case reports < Retrospective observational cohorts < Randomized Controlled Trials (RCTs) < Systematic Reviews & Meta-Analyses.",
-    "Ben Goldacre's 'Bad Science' & Publication Bias: Up to 50% of industry-sponsored clinical trials have historically gone unpublished, concealing adverse events and distorting clinical practice guidelines.",
-    "Biomedical Database Search Strategies: Utilize PubMed ([tiab] title/abstract field tags, Boolean AND/OR/NOT, MeSH indexing) and Google Scholar (date filtering, 'Cited by' citation tracking, paywall awareness).",
-    "AI in Research & Academic Integrity: AI tools accelerate literature scoping and summarization, but carry severe risks of hallucinated citations and black-box opacity; primary source verification is mandatory."
-  ],
-  "workedExample": {
-    "title": "Referencing Repair Clinic: Correcting Malformed Biomedical Citations",
-    "subtitle": "Transforming flawed citations into publication-ready Harvard format",
-    "steps": [
-      {
-        "label": "Flawed In-Text Citation",
-        "detail": "Malformed: 'Ibuprofen reduces ARDS inflammation (Dan, Goldacre, and others in Lancet 2021).' Error: Lists first names, lacks year parentheses, includes journal name in-text."
-      },
-      {
-        "label": "Repaired In-Text Citation",
-        "detail": "Corrected: 'NSAID administration was not associated with increased mortality or ARDS severity in hospitalized cohorts (Goldacre et al., 2021).' Follows standard author-date format."
-      },
-      {
-        "label": "Flawed Reference List Entry",
-        "detail": "Malformed: 'Goldacre B. 2021. Lancet paper on COVID trial data. www.google.com.' Error: Missing article title, journal volume, pagination, and persistent DOI."
-      },
-      {
-        "label": "Repaired Reference List Entry",
-        "detail": "Corrected: Goldacre, B., Smeeth, L. and Perry, R. (2021) 'Safety of non-steroidal anti-inflammatory drugs in patients with viral respiratory infections: a retrospective cohort study', The Lancet Rheumatology, 3(6), pp. e420–e428. doi:10.1016/S2665-9913(21)00093-5."
-      },
-      {
-        "label": "Critical Appraisal Takeaway",
-        "detail": "Consistent Harvard citation allows readers to independently audit source authority and verify raw experimental evidence."
+      "interactiveType": null,
+      "metadata": {
+        "role": "plenary",
+        "keyTakeaways": [
+          "Evaluate Rigor (PROMT)",
+          "Synthesise Safely (Critical Paraphrase)",
+          "Cite Accurately (Harvard)"
+        ]
       }
-    ]
-  },
-  "hingeQuestions": [
-    {
-      "question": "In March 2020, news reports warned that NSAIDs worsen COVID-19 ARDS based on a tweet. What was the primary methodological flaw in accepting this claim?",
-      "options": [
-        "The tweet was not translated into Latin",
-        "It relied on anecdotal speculation without peer-reviewed empirical evidence, controlled trials, or adjusted confounding variables",
-        "NSAIDs are not chemical molecules",
-        "The author did not use Harvard referencing in the tweet"
-      ],
-      "correctIndex": 1,
-      "explanation": "Clinical guidance requires peer-reviewed trial cohorts with statistical power and confounder adjustment, not unvetted anecdotal statements."
-    },
-    {
-      "question": "Why was the rapid rollout of COVID-19 mRNA vaccines subjected to critical academic scrutiny regarding initial clinical trial data?",
-      "options": [
-        "mRNA cannot enter eukaryotic cells",
-        "Accelerated emergency authorization meant initial trials evaluated short-term surrogate immunogenicity (antibody titres) with limited longitudinal follow-up",
-        "The vaccines were tested only on bacteria",
-        "No clinical trials were ever conducted"
-      ],
-      "correctIndex": 1,
-      "explanation": "The accelerated pipeline compressed phases, requiring regulatory review based on surrogate immune markers before years of longitudinal safety data were available."
     }
-  ],
-  "examQuestion": {
-    "question": "A popular health website reported that a novel synthetic molecule 'completely halts viral pulmonary inflammation with zero side effects'. The article cited a pilot trial of 10 healthy volunteers funded entirely by the drug manufacturer. Critically evaluate this report, identifying three methodological and reporting flaws according to OCR Level 3 criteria. [6 marks]",
-    "marks": "6 marks",
-    "guidance": [
-      "Critique 1: Sample size is critically underpowered (n=10), introducing high risk of random sampling error and precluding detection of uncommon adverse drug reactions. [2 marks]",
-      "Critique 2: High risk of commercial conflict of interest / funding bias from manufacturer sponsorship without independent multi-centre replication. [2 marks]",
-      "Critique 3: The media claim 'zero side effects' ignores Phase I dosage limitations and conflates early tolerance in healthy subjects with confirmed clinical efficacy in diseased patients. [2 marks]"
-    ]
-  },
-  "plenary": [
-    "Evidence-based medicine demands peer-reviewed scrutiny over media sensationalism: always audit trial sample size, controls, and sponsor disclosures.",
-    "Master Harvard referencing and AI software attribution protocols to maintain flawless academic integrity in your Level 3 portfolio.",
-    "Next Lesson: F172 Genetics Mini Mock NEA — mRNA Vaccines: Gene Expression & Clinical Trial Evidence."
   ]
 }

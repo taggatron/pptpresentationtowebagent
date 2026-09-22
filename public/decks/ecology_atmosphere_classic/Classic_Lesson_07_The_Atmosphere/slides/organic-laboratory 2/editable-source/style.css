@@ -1,0 +1,74 @@
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080705;display:grid;place-items:center;color:#fff7e9;font-family:Arial,Helvetica,sans-serif}button{-webkit-tap-highlight-color:transparent;font:inherit}#laboratory{position:relative;width:min(100vw,183.333333dvh);height:min(54.545455vw,100dvh);overflow:hidden;isolation:isolate}#photograph,#atmosphere,#dust,#particles,.vignette{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}#photograph{object-fit:cover}#atmosphere{opacity:0;transition:opacity 1s}#atmosphere.ready{opacity:1}.vignette{background:radial-gradient(ellipse at 49% 43%,transparent 38%,#09060255 100%);z-index:1}#dust{z-index:2}#particles{z-index:3}#compounds{position:absolute;inset:0;z-index:4}.compound{--drift:6s;position:absolute;width:180px;height:135px;transform:translate(-50%,-50%) scale(var(--birth-scale,1));border:0;border-radius:48% 45% 43% 47% / 39% 43% 46% 47%;padding:0;color:#fff8e9;background:none;cursor:pointer;outline-offset:8px;will-change:transform,left,top}.glass{display:flex;align-items:center;justify-content:center;flex-direction:column;width:100%;height:100%;border-radius:inherit;border:1px solid #fff2ce72;background:linear-gradient(135deg,#fffbe22b 0%,#f5e6d304 29%,#18120d64 58%,#b0d1c017 90%,#fffbe23b);box-shadow:inset 2px 3px 3px #ffffef38,inset -3px -4px 8px #140d0699,inset 0 0 20px #f2eedb12,0 15px 28px #08050240,0 0 2px #ffeedc94;backdrop-filter:blur(3px) brightness(1.15);-webkit-backdrop-filter:blur(3px) brightness(1.15);position:relative;animation:suspend var(--drift) ease-in-out infinite;transition:box-shadow .4s,border-color .4s,background .4s}.glass:before{content:"";position:absolute;left:17%;top:8%;width:42%;height:13%;border-top:2px solid #fffff79c;border-radius:50%;transform:rotate(-12deg);filter:blur(.5px)}.glass:after{content:"";position:absolute;right:8%;bottom:21%;height:22%;width:5%;border-right:2px solid #f9eed375;border-radius:50%;transform:rotate(16deg)}.compound:hover .glass,.compound:focus-visible .glass{border-color:#fff7ccca;background:linear-gradient(135deg,#fff5ca42,#34281742 65%,#e4d9a92b);box-shadow:inset 2px 3px 4px #ffffef66,inset -3px -4px 8px #140d0677,0 0 35px #f8d58d25,0 20px 38px #08050260}.compound:focus-visible{outline:2px solid #f6e1b9}.formula{font-family:Georgia,'Times New Roman',serif;font-size:2.05rem;letter-spacing:.045em;line-height:1.3;text-shadow:0 2px 8px #000b}.formula sub{font-size:.56em;vertical-align:-.23em}.compound-name{font-size:.875rem;letter-spacing:.065em;margin-top:7px;color:#eee2cdd9;text-shadow:0 1px 5px #000}.compound.reacting{pointer-events:none;animation:none}.compound.reacting .glass{animation:evaporate .85s ease-out forwards}.compound.reacting.inorganic .glass{animation:shatter .4s ease-out forwards}.invitation{position:absolute;top:9%;left:50%;transform:translateX(-50%);width:max-content;max-width:92%;text-align:center;z-index:5;pointer-events:none;text-shadow:0 2px 15px #000,0 1px 4px #000;transition:opacity 1.3s}.eyebrow{font-size:.75rem;letter-spacing:.23em;color:#ddceb6c9}.invitation p{font-family:Georgia,serif;font-weight:normal;font-size:clamp(1.1rem,1.6vw,1.4rem);letter-spacing:.015em;margin:10px 0}.invitation>span:last-child{font-size:.875rem;color:#e1d5c2c7}.invitation.dismissed{opacity:0}#feedback{position:absolute;left:50%;bottom:13%;transform:translate(-50%,12px);width:min(490px,86%);text-align:center;z-index:6;pointer-events:none;opacity:0;transition:opacity .35s,transform .35s;text-shadow:0 2px 9px #000,0 0 20px #000}#feedback.visible{opacity:1;transform:translate(-50%,0)}#feedback strong{display:block;font-family:Georgia,serif;font-size:1.5rem;font-weight:normal;margin-bottom:7px;color:#def2da}#feedback.inorganic strong{color:#ffd2a5}#feedback span{font-size:.9375rem;line-height:1.5;color:#eee4d5}.instruments{position:absolute;right:max(26px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:10px;z-index:8}#collected{font-size:.8125rem;letter-spacing:.06em;margin-right:10px;color:#e0d3bd;text-shadow:0 1px 5px #000}.instruments button{background:#18140f55;backdrop-filter:blur(8px);border:1px solid #ead9b629;border-radius:50%;width:38px;height:38px;color:#e2d5c0;display:grid;place-items:center;cursor:pointer;transition:background .2s}.instruments button:hover{background:#75634780}.instruments svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.paused .glass{animation-play-state:paused}.paused .compound{animation-duration:0s}.compound.emerging .glass{animation:none}.compound.emerging .formula,.compound.emerging .compound-name{opacity:var(--label-opacity,0)}@keyframes suspend{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}@keyframes arrival{from{opacity:0;filter:blur(8px);scale:.82}to{opacity:1;filter:blur(0);scale:1}}@keyframes evaporate{25%{filter:brightness(1.8);transform:scale(1.06)}100%{opacity:0;filter:blur(10px);transform:translateY(-24px) scale(1.18)}}@keyframes shatter{30%{filter:brightness(2.5);transform:scale(1.04) rotate(2deg)}100%{opacity:0;filter:blur(5px);transform:scale(.84) rotate(-3deg)}}@media(max-width:600px){.compound{width:142px;height:115px}.formula{font-size:1.75rem}.compound-name{font-size:.875rem;letter-spacing:.025em}.invitation{top:8%}.eyebrow{font-size:.75rem;letter-spacing:.11em}.instruments{right:16px;bottom:18px;gap:8px}#collected{margin-right:5px;font-size:.75rem}#feedback{bottom:15%}#feedback strong{font-size:1.3rem}#feedback span{font-size:.875rem}}@media(prefers-reduced-motion:reduce){.compound,.glass{animation:none}.compound.reacting .glass{animation:none;opacity:0}.invitation,#feedback{transition:none}}
+
+/* The complete photograph always stays in its original landscape proportions. */
+#laboratory{container-type:inline-size}
+.compound{width:clamp(88px,12.5cqw,190px);height:clamp(70px,9.5cqw,145px)}
+.formula{font-size:clamp(1rem,2.3cqw,2.1rem)}
+.compound-name{font-size:clamp(.75rem,1.05cqw,.9375rem);letter-spacing:.025em}
+.invitation{top:6%}.invitation p{margin:4px 0}
+#feedback{bottom:11%;max-width:50%;padding:8px 14px;border-radius:12px;background:#100e0870;backdrop-filter:blur(7px)}
+.instruments{bottom:12px;right:16px}
+@media(max-width:600px){
+ .invitation p{font-size:.9375rem}.invitation>span:last-child{display:none}
+ .compound-name{font-size:.75rem;margin-top:3px}
+ .instruments{right:7px;bottom:5px;gap:5px}.instruments button{width:30px;height:30px}
+ #collected{font-size:.75rem}#feedback{max-width:90%;bottom:20%;padding:6px 9px}
+ #feedback strong{font-size:1rem;margin-bottom:3px}#feedback span{font-size:.75rem;line-height:1.2}
+}
+@media(orientation:portrait){body:after{content:"Turn your device sideways for the full laboratory";position:fixed;bottom:max(24px,env(safe-area-inset-bottom));left:24px;right:24px;text-align:center;font-size:.875rem;line-height:1.5;color:#c7bda9}}
+
+/* Incoming feed molecules travel independently of the clickable compounds. */
+#reactants{position:absolute;inset:0;z-index:4;pointer-events:none}
+.reactant{position:absolute;width:clamp(96px,10.4cqw,150px);height:clamp(76px,8cqw,114px);border-radius:47% 49% 45% 48%;transform:translate(-50%,-50%);will-change:transform,left,top,opacity;pointer-events:none;text-align:center}
+.reactant .glass{animation:none;border-color:#d5eaff83;background:linear-gradient(135deg,#e7f6ff35,#24373d25 38%,#151e2577 70%,#bddefc30);box-shadow:inset 2px 3px 4px #f0f9ff55,inset -3px -5px 10px #0a17256b,0 0 19px #b2dbf814,0 10px 23px #0004}
+.reactant .formula{font-size:clamp(1.1rem,1.9cqw,1.8rem);color:#edf7ff}
+.reactant .compound-name{font-size:clamp(.75rem,.95cqw,.875rem);color:#e3ecf3;margin-top:3px}
+.reactant-kind{font-size:.75rem;color:#bfd4dd;line-height:1.1;margin-top:5px}
+.reactant.alternative .glass{border-color:#e4d5a586}
+.reactant.alternative .reactant-kind{color:#ead9ab}
+@media(max-width:600px){.reactant{width:80px;height:65px}.reactant .formula{font-size:1rem}.reactant .compound-name{font-size:.75rem}.reactant-kind{display:none}}
+
+/* The illustrated field journal occupies the clear upper-right wall. */
+#journal{position:absolute;z-index:6;right:1.8%;top:1.6%;width:30%;border:0;padding:0;background:transparent;cursor:zoom-in;filter:drop-shadow(0 12px 13px #0009);transform:rotate(1deg);transition:filter .25s,transform .25s}
+#journal img{display:block;width:100%;height:auto}
+#journal:hover{filter:drop-shadow(0 14px 17px #000a) brightness(1.06);transform:rotate(0)}
+#journal:focus-visible{outline:2px solid #f2dba5;outline-offset:5px;border-radius:10px}
+#journal-dialog{max-width:min(1040px,95vw);max-height:95dvh;border:1px solid #b2986670;border-radius:12px;padding:22px;background:#17130eed;color:#eadcc4;box-shadow:0 25px 90px #000b}
+#journal-dialog::backdrop{background:#070503c9;backdrop-filter:blur(7px)}
+#journal-dialog figure{margin:0}
+#journal-dialog img{display:block;width:100%;max-height:73dvh;object-fit:contain}
+#journal-dialog figcaption{max-width:740px;margin:8px auto 0;font-size:.9375rem;line-height:1.5;text-align:center}
+#journal-dialog a{color:#ead09a}
+#journal-close{position:sticky;float:right;top:0;z-index:1;border:1px solid #e7d2af60;border-radius:50%;background:#201b13;color:#fff3dd;width:36px;height:36px;font-size:1.4rem;cursor:pointer}
+@media(max-width:600px){#journal{width:31%;right:1%;top:2%}#journal-dialog{padding:12px}#journal-dialog figcaption{font-size:.875rem}}
+@media(prefers-reduced-motion:reduce){#journal{transition:none}}
+
+/* The live journal shares the same writing and highlights at both sizes. */
+#journal{transform:none;width:32%;right:1%;top:1.2%}
+#journal:hover{transform:none}
+.journal-sheet{display:block;position:relative;container-type:inline-size;width:100%;aspect-ratio:4/3;text-align:left;color:#302016}
+#journal .journal-paper,#journal-dialog .journal-paper{width:100%;height:auto;max-height:none;display:block}
+.journal-paper{clip-path:polygon(1.6% 10%,3% 8%,46.5% 8%,51% 10%,56% 8%,97% 8%,98.4% 10%,98.9% 89%,99.3% 91.5%,98.5% 92.5%,53% 92.5%,50% 93%,46% 92.4%,2% 92.4%,.8% 91%)}
+.cell-highlights{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.cell-glow{opacity:0;transition:opacity .4s;filter:drop-shadow(0 0 9px var(--compound-color));stroke:var(--compound-color);fill:var(--compound-color)}
+.has-arrived .cytoplasm-glow{opacity:.45;stroke-width:4}
+.membrane-glow{fill:none;stroke-width:11;stroke-linecap:round}
+.has-arrived[data-feature="membrane"] .membrane-glow{opacity:1}
+.has-arrived[data-feature="mitochondrion"] .mitochondrion-glow{opacity:.87;stroke-width:8}
+.has-arrived[data-feature="protein"] .protein-glow{opacity:1;stroke-width:4}
+.journal-copy{position:absolute;left:54.5%;top:16%;width:39%;height:70%;font-family:Georgia,'Times New Roman',serif;font-size:2.5cqw;line-height:1.3;display:flex;flex-direction:column;gap:.95cqw;overflow:hidden}
+.journal-kicker{font-family:Arial,sans-serif;font-size:2.15cqw;letter-spacing:.11em;color:#624a32}
+.journal-name{font-size:5.3cqw;line-height:1.05;font-weight:normal;color:#2d2018}
+.journal-formula{font-size:3.4cqw;line-height:1.1}
+.journal-formula sub{font-size:.7em}
+.journal-location{font-size:2.4cqw;font-weight:bold;padding-bottom:1.1cqw;border-bottom:1px solid #6b4c3060}
+.journal-copy p{margin:0}
+.journal-copy small{font-size:2.05cqw;font-style:italic;margin-top:auto}
+.journal-route{font-weight:bold;font-size:2.6cqw;color:#594021}
+.journal-caption{position:absolute;left:7%;bottom:13%;width:39%;font-family:Arial,sans-serif;font-size:1.65cqw;line-height:1.2;text-align:center;letter-spacing:.04em;color:#5e482f}
+#journal-dialog{width:min(1040px,94vw)}
+#journal-dialog .journal-sheet{max-width:min(100%,95dvh);margin:auto}
+#compound-transfers{position:absolute;inset:0;z-index:9;pointer-events:none}
+.compound.transferring{pointer-events:none;outline:0}
+.compound.transferring .glass{animation:none;border-color:var(--transfer-color);box-shadow:inset 0 0 24px color-mix(in srgb,var(--transfer-color),transparent 70%),0 0 20px var(--transfer-color)}
+@media(prefers-reduced-motion:reduce){.cell-glow{transition:none}}

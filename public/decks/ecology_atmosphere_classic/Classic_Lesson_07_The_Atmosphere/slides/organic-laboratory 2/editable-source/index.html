@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Organic · The living laboratory</title>
+<meta name="description" content="Explore a living laboratory. Discover organic compounds in an atmospheric, interactive chemistry scene.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2315120e'/%3E%3Cpath d='M12 5h8m-6 0v10L7 25q-1 3 3 3h12q4 0 3-3l-7-10V5M11 21h10' fill='none' stroke='%23e6c899' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="laboratory" aria-label="Interactive organic chemistry laboratory">
+  <img id="photograph" src="assets/laboratory.jpeg" alt="Sunlight entering an old laboratory with glass flasks and a distillation apparatus.">
+  <canvas id="atmosphere" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div id="reactants" role="img" aria-label="Incoming reactants from the original Miller–Urey experiment: water vapour, methane, ammonia and hydrogen."></div>
+  <div id="compounds" aria-label="Compounds to investigate"></div>
+  <div class="invitation" id="invitation"><p>First, the four reactants.</p><span>Watch them enter the reaction vessel.</span></div>
+  <div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="compound-transfers" aria-hidden="true"></div>
+  <button id="journal" aria-label="Open field journal: how organic molecules are used in cells" title="Open the field journal">
+    <span class="journal-sheet" aria-hidden="true">
+      <img class="journal-paper" src="assets/journal-interactive.png" alt="">
+      <svg class="cell-highlights" viewBox="0 0 1448 1086" aria-hidden="true">
+        <path class="cell-glow cytoplasm-glow" fill-rule="evenodd" d="M420 235 C352 224 300 264 258 299 C195 356 181 414 153 478 C117 554 155 645 214 711 C250 748 282 748 327 775 C414 825 513 810 566 773 C632 728 662 654 674 591 C691 521 642 429 643 393 C620 304 526 258 459 246 C442 239 432 236 420 235 Z M424 407 A108 106 0 1 0 424 619 A108 106 0 1 0 424 407 Z"/>
+        <path class="cell-glow membrane-glow" d="M420 235 C352 224 300 264 258 299 C195 356 181 414 153 478 C117 554 155 645 214 711 C250 748 282 748 327 775 C414 825 513 810 566 773 C632 728 662 654 674 591 C691 521 642 429 643 393 C620 304 526 258 459 246 C442 239 432 236 420 235 Z"/>
+        <ellipse class="cell-glow mitochondrion-glow" cx="556" cy="678" rx="32" ry="67" transform="rotate(41 556 678)"/>
+      </svg>
+      <span class="journal-copy"></span>
+      <span class="journal-caption">CELLULAR USE · NOT STRUCTURES MADE IN THE FLASK</span>
+    </span>
+  </button>
+  <dialog id="journal-dialog" aria-label="Interactive journal: organic molecules and cells">
+    <button id="journal-close" aria-label="Close journal">×</button>
+    <figure id="journal-figure"><figcaption><span id="journal-detail">Select a correct organic compound. The journal will show where it is found in a modern cell and what cells can do with it.</span> <a href="https://image.sciencenet.cn/olddata/kexue.com.cn/upload/blog/file/2008/9/2008922131449638394.pdf" target="_blank" rel="noopener noreferrer">Miller’s 1955 results</a> · <a href="https://www.ncbi.nlm.nih.gov/books/NBK26883/" target="_blank" rel="noopener noreferrer">Cell building blocks</a></figcaption></figure>
+  </dialog>
+  <div class="instruments">
+    <span id="collected" aria-label="Organic compounds discovered">0 / 4 discovered</span>
+    <button id="motion" aria-label="Pause animations" title="Pause animations"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12M16 6v12"/></svg></button>
+    <button id="sound" aria-label="Enable sound" aria-pressed="false" title="Enable sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4ZM16 9l5 6m0-6-5 6"/></svg></button>
+    <button id="fullscreen" aria-label="Enter full screen" title="Full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button>
+  </div>
+</main>
+<script src="scene.js"></script>
+</body></html>

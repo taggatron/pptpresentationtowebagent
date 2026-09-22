@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OCR Combined Science: The Earth's Atmosphere Checkpoint & Mark Scheme</title>
+  <title>OCR Combined Science: Mars &amp; Earth Atmospheres Checkpoint &amp; Mark Scheme</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -202,15 +202,15 @@
     .btn-zoom {
       border: none;
       background: transparent;
+      color: #475569;
       width: calc(28px * var(--scale));
       height: calc(28px * var(--scale));
-      font-size: calc(14px * var(--scale));
-      font-weight: 700;
-      color: #475569;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      font-size: calc(14px * var(--scale));
+      font-weight: 700;
       transition: background 0.12s;
     }
 
@@ -221,70 +221,55 @@
 
     .zoom-text {
       font-size: calc(11px * var(--scale));
-      font-weight: 700;
+      font-weight: 600;
       color: #475569;
       padding: 0 calc(6px * var(--scale));
       min-width: calc(44px * var(--scale));
       text-align: center;
     }
 
-    /* Main Split Viewing Arena */
+    /* Main Viewport Splitter Layout */
     .viewport-arena {
       flex: 1;
       display: flex;
+      width: 100%;
+      height: calc(100vh - 56px * var(--scale));
       overflow: hidden;
       position: relative;
-      background: #cbd5e1;
     }
 
-    /* Pane Container (Split or Full) */
     .viewer-pane {
       display: flex;
       flex-direction: column;
       height: 100%;
       overflow: hidden;
+      background: #f8fafc;
       position: relative;
-      transition: flex 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.05s ease;
     }
 
-    .viewer-pane.pane-left {
-      flex: 1 1 50%;
-      width: 50%;
-      border-right: calc(2px * var(--scale)) solid #cbd5e1;
-      background: #e2e8f0;
+    .pane-left {
+      border-right: calc(1px * var(--scale)) solid var(--border-color);
     }
 
-    .viewer-pane.pane-right {
-      flex: 1 1 50%;
-      width: 50%;
-      background: #e2e8f0;
-    }
-
-    /* Pane Sub-header Toolbar */
     .pane-toolbar {
-      height: calc(40px * var(--scale));
-      min-height: calc(40px * var(--scale));
+      height: calc(38px * var(--scale));
+      min-height: calc(38px * var(--scale));
       background: #ffffff;
       border-bottom: calc(1px * var(--scale)) solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 calc(14px * var(--scale));
-      box-shadow: 0 calc(1px * var(--scale)) calc(2px * var(--scale)) rgba(0,0,0,0.04);
-      z-index: 10;
-    }
-
-    .pane-title {
       font-size: calc(12px * var(--scale));
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: calc(6px * var(--scale));
       color: #334155;
     }
 
-    .pane-title .icon {
-      font-size: calc(14px * var(--scale));
+    .pane-title {
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
     }
 
     .pane-controls {
@@ -295,8 +280,8 @@
 
     .btn-pill-small {
       border: calc(1px * var(--scale)) solid #cbd5e1;
-      background: #f8fafc;
-      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      background: #ffffff;
+      padding: calc(2px * var(--scale)) calc(8px * var(--scale));
       border-radius: calc(6px * var(--scale));
       font-size: calc(11px * var(--scale));
       font-weight: 600;
@@ -309,13 +294,6 @@
     .btn-pill-small:hover {
       background: #f1f5f9;
       color: #0f172a;
-    }
-
-    .btn-pill-small.active {
-      background: #e0f2fe;
-      border-color: #7dd3fc;
-      color: #0369a1;
-      font-weight: 700;
     }
 
     /* Scrollable Document Canvas Area */
@@ -361,7 +339,7 @@
       image-rendering: -webkit-optimize-contrast;
     }
 
-    /* Interactive Answer & Mark Scheme Overlay Layers */
+    /* Interactive Model Answer Overlay */
     .answer-overlay-layer {
       position: absolute;
       top: 0;
@@ -370,7 +348,7 @@
       height: 100%;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.22s ease;
     }
 
     .answer-overlay-layer.visible {
@@ -378,77 +356,103 @@
       pointer-events: auto;
     }
 
-    .answer-badge {
+    .answer-card-full {
       position: absolute;
-      background: rgba(16, 185, 129, 0.96);
-      color: #ffffff;
-      border: calc(1.5px * var(--scale)) solid #047857;
-      border-radius: calc(6px * var(--scale));
-      box-shadow: 0 calc(4px * var(--scale)) calc(12px * var(--scale)) rgba(16, 185, 129, 0.4);
-      padding: calc(4px * var(--scale)) calc(10px * var(--scale));
-      font-size: calc(12px * var(--scale));
-      font-weight: 800;
+      left: 6.5%;
+      top: 61.2%;
+      width: 87%;
+      height: 31%;
+      background: rgba(240, 253, 244, 0.98);
+      border: calc(2px * var(--scale)) solid #10b981;
+      border-radius: calc(8px * var(--scale));
+      box-shadow: 0 calc(8px * var(--scale)) calc(24px * var(--scale)) rgba(16, 185, 129, 0.25);
+      padding: calc(10px * var(--scale)) calc(14px * var(--scale));
       display: flex;
-      align-items: center;
-      gap: calc(5px * var(--scale));
+      flex-direction: column;
+      justify-content: space-between;
       animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .answer-text-fill {
-      position: absolute;
-      font-family: "Courier New", Courier, monospace;
-      font-weight: 700;
-      color: #065f46;
-      font-size: calc(13.5px * var(--scale));
-      background: rgba(236, 253, 245, 0.94);
-      border: calc(1.5px * var(--scale)) solid #34d399;
-      padding: calc(4px * var(--scale)) calc(8px * var(--scale));
-      border-radius: calc(6px * var(--scale));
-      display: flex;
-      align-items: center;
-      gap: calc(6px * var(--scale));
-      box-shadow: 0 calc(2px * var(--scale)) calc(6px * var(--scale)) rgba(16, 185, 129, 0.15);
-      animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .answer-block-fill {
-      position: absolute;
-      font-family: 'Inter', -apple-system, sans-serif;
-      font-size: calc(11.5px * var(--scale));
-      line-height: 1.45;
+      font-size: calc(11px * var(--scale));
+      line-height: 1.35;
       color: #064e3b;
-      background: rgba(236, 253, 245, 0.96);
-      border: calc(1.5px * var(--scale)) solid #10b981;
-      padding: calc(8px * var(--scale)) calc(10px * var(--scale));
-      border-radius: calc(6px * var(--scale));
-      box-shadow: 0 calc(4px * var(--scale)) calc(12px * var(--scale)) rgba(16, 185, 129, 0.2);
-      animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow-y: auto;
     }
 
-    .answer-block-fill .mark-tag {
-      display: inline-flex;
+    .model-header {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: calc(3px * var(--scale));
+      border-bottom: calc(1px * var(--scale)) solid #a7f3d0;
+      padding-bottom: calc(5px * var(--scale));
+      margin-bottom: calc(6px * var(--scale));
+    }
+
+    .model-badge {
       background: #10b981;
       color: #ffffff;
       font-weight: 800;
-      padding: calc(1px * var(--scale)) calc(6px * var(--scale));
+      padding: calc(2px * var(--scale)) calc(8px * var(--scale));
       border-radius: calc(4px * var(--scale));
-      font-size: calc(10.5px * var(--scale));
-      margin-top: calc(4px * var(--scale));
+      font-size: calc(11px * var(--scale));
+      display: flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
     }
 
-    .guidance-box {
-      position: absolute;
-      background: rgba(254, 243, 199, 0.95);
-      border: calc(1.5px * var(--scale)) solid #f59e0b;
-      color: #92400e;
+    .model-columns {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: calc(12px * var(--scale));
+      flex: 1;
+    }
+
+    .model-col {
+      background: #ffffff;
+      border: calc(1px * var(--scale)) solid #bbf7d0;
       border-radius: calc(6px * var(--scale));
-      padding: calc(5px * var(--scale)) calc(9px * var(--scale));
-      font-size: calc(11px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(10px * var(--scale));
+    }
+
+    .model-col-title {
+      font-weight: 800;
+      color: #047857;
+      font-size: calc(10.5px * var(--scale));
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: calc(4px * var(--scale));
+      display: flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
+    }
+
+    .model-list {
+      list-style: none;
+    }
+
+    .model-list li {
+      position: relative;
+      padding-left: calc(12px * var(--scale));
+      margin-bottom: calc(3px * var(--scale));
+    }
+
+    .model-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 800;
+      font-size: calc(10px * var(--scale));
+    }
+
+    .model-footer-note {
+      margin-top: calc(5px * var(--scale));
+      background: #ecfdf5;
+      border-top: calc(1px * var(--scale)) solid #a7f3d0;
+      padding-top: calc(4px * var(--scale));
+      font-size: calc(9.5px * var(--scale));
+      color: #047857;
+      display: flex;
+      justify-content: space-between;
       font-weight: 600;
-      line-height: 1.35;
-      box-shadow: 0 calc(3px * var(--scale)) calc(8px * var(--scale)) rgba(245, 158, 11, 0.25);
     }
 
     /* Interactive Mark Scheme Guidance Callout on Right Pane */
@@ -552,14 +556,6 @@
       display: none !important;
     }
 
-    /* Page Visibility Filtering */
-    .show-page-1 .sheet-page-2 {
-      display: none !important;
-    }
-    .show-page-2 .sheet-page-1 {
-      display: none !important;
-    }
-
     /* Animations */
     @keyframes popIn {
       0% { transform: scale(0.92); opacity: 0; }
@@ -570,6 +566,23 @@
       0% { transform: translateY(15px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
     }
+
+    /* Print Styles */
+    @media print {
+      body, html, .slide-wrapper, .viewport-arena {
+        background: #ffffff !important;
+        overflow: visible !important;
+        height: auto !important;
+      }
+      .top-bar, .pane-toolbar, .splitter-divider, .examiner-callout-card {
+        display: none !important;
+      }
+      .page-sheet-card {
+        box-shadow: none !important;
+        border: none !important;
+        page-break-after: always;
+      }
+    }
   </style>
 </head>
 <body>
@@ -578,8 +591,8 @@
     <header class="top-bar">
       <div class="title-group">
         <span class="badge-ocr">OCR Combined Science</span>
-        <h1 class="slide-heading">The Earth's Atmosphere Checkpoint & Mark Scheme</h1>
-        <span class="mark-pill">13 Marks Total</span>
+        <h1 class="slide-heading">Mars &amp; Earth Atmospheres: Comparative Evolution</h1>
+        <span class="mark-pill">6 Marks · Extended Response</span>
       </div>
 
       <!-- Segmented View Mode Switcher -->
@@ -602,7 +615,7 @@
       <div class="utility-group">
         <button id="btnToggleAnswers" class="btn-action" title="Toggle Model Answers on Question Paper (Key A)">
           <span class="icon">💡</span>
-          <span id="btnAnswersText">Reveal Answers</span>
+          <span id="btnAnswersText">Reveal Model Answer</span>
         </button>
 
         <div class="zoom-group">
@@ -612,7 +625,12 @@
           <button id="btnZoomReset" class="btn-zoom" title="Reset Zoom (0)" style="font-size: calc(11px * var(--scale)); width: auto; padding: 0 calc(6px * var(--scale));">Reset</button>
         </div>
 
-        <a id="btnDownloadPdf" class="btn-action" href="/decks/ecology_atmosphere_classic/Classic_Lesson_07_The_Atmosphere/assets/exam_pdf/ocr_atmosphere_checkpoint.pdf" target="_blank" download="ocr_atmosphere_checkpoint.pdf" title="Open or Download Original OCR PDF">
+        <button id="btnPrint" class="btn-action" title="Print Examination Paper &amp; Mark Scheme">
+          <span class="icon">🖨️</span>
+          <span>Print</span>
+        </button>
+
+        <a id="btnDownloadPdf" class="btn-action" href="../assets/exam_pdf/ocr_atmosphere_checkpoint.pdf" target="_blank" download="ocr_atmosphere_checkpoint.pdf" title="Open or Download Original OCR PDF">
           <span class="icon">📥</span>
           <span>PDF</span>
         </a>
@@ -621,18 +639,15 @@
 
     <!-- Main Viewport Arena -->
     <main class="viewport-arena view-mode-questions" id="viewportArena">
-      <!-- Left Pane: Question Paper (Pages 1 & 2) -->
+      <!-- Left Pane: Question Paper (Page 1) -->
       <section class="viewer-pane pane-left" id="paneQuestions" aria-label="Question Paper">
         <div class="pane-toolbar">
           <div class="pane-title">
             <span class="icon">📋</span>
-            <span>Question Paper (Pages 1 & 2)</span>
+            <span>Question Paper: Mars &amp; Earth Atmospheric Evolution</span>
           </div>
           <div class="pane-controls">
-            <span style="font-size: calc(11px * var(--scale)); color: #64748b; font-weight: 600;">View:</span>
-            <button id="btnPageAll" class="btn-pill-small active">All (1 & 2)</button>
-            <button id="btnPage1" class="btn-pill-small">Page 1 (Q1 a–c)</button>
-            <button id="btnPage2" class="btn-pill-small">Page 2 (Q1 d–e)</button>
+            <span class="badge-ocr" style="background:#f1f5f9; border-color:#cbd5e1; color:#334155;">Page 1 of 2</span>
           </div>
         </div>
 
@@ -640,61 +655,54 @@
           <!-- Page 1 Sheet -->
           <article class="page-sheet-card sheet-page-1" id="sheetPage1">
             <div class="page-img-wrapper">
-              <img class="page-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_07_The_Atmosphere/assets/exam_pdf/page-1.png" alt="OCR Question Paper Page 1: The Earth's Atmosphere Questions a to c" loading="eager" />
+              <img class="page-img" src="../assets/exam_pdf/page-1.png" alt="OCR Question Paper Page 1: Planetary Atmospheric Evolution" loading="eager" />
               
               <!-- Interactive Answer Overlay for Page 1 -->
               <div class="answer-overlay-layer" id="answerLayerPage1">
-                <!-- Q1 (a) Percentage Point Decrease -->
-                <div class="answer-text-fill" style="left: 20%; top: 57.5%;">
-                  <span>95.00 − 0.04 = <strong>94.96</strong></span>
-                  <span style="color:#047857; font-weight:800; margin-left: 4px;">✓ [2 Marks]</span>
-                </div>
-                <div class="guidance-box" style="left: 48%; top: 56.5%; width: 42%;">
-                  <strong>Marking:</strong> 1 mark for correct subtraction working (95.00 − 0.04); 1 mark for 94.96.
-                </div>
-
-                <!-- Q1 (b) Percentage Decrease Calculation -->
-                <div class="answer-text-fill" style="left: 20%; top: 69.8%;">
-                  <span>((95.00 − 0.04) / 95.00) × 100 = <strong>100%</strong> (or 99.96%)</span>
-                  <span style="color:#047857; font-weight:800; margin-left: 4px;">✓ [2 Marks]</span>
-                </div>
-                <div class="guidance-box" style="left: 55%; top: 68.8%; width: 35%;">
-                  <strong>Guidance:</strong> 1 mark for formula substitution; 1 mark for 100% (to 3 s.f.).
-                </div>
-
-                <!-- Q1 (c) Increase in Oxygen & Photosynthesis -->
-                <div class="answer-block-fill" style="left: 13.5%; top: 78.5%; width: 75%;">
-                  <div><strong>Model Answer:</strong> Early photosynthetic organisms (such as <strong>algae</strong> and later <strong>green plants</strong>) carried out <strong>photosynthesis</strong>, which took in / removed carbon dioxide from the atmosphere and <strong>released oxygen (O₂)</strong>.</div>
-                  <div class="mark-tag">✓ [3 Marks: photosynthesis [1] + algae/green plants [1] + oxygen released / CO₂ removed [1]]</div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Page 2 Sheet -->
-          <article class="page-sheet-card sheet-page-2" id="sheetPage2">
-            <div class="page-img-wrapper">
-              <img class="page-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_07_The_Atmosphere/assets/exam_pdf/page-2.png" alt="OCR Question Paper Page 2: The Earth's Atmosphere Questions d and e" loading="eager" />
-              
-              <!-- Interactive Answer Overlay for Page 2 -->
-              <div class="answer-overlay-layer" id="answerLayerPage2">
-                <!-- Q1 (d) Two processes decreasing CO2 -->
-                <div class="answer-block-fill" style="left: 13.5%; top: 18.2%; width: 75%;">
-                  <div style="margin-bottom: 5px;">
-                    <strong>Process 1 — Oceans & Carbonate Rocks:</strong> As the early Earth cooled, water vapour condensed to form oceans. Carbon dioxide dissolved into the oceans and reacted to form insoluble <strong>carbonate sediments and sedimentary rocks</strong> (e.g. limestone) and marine organism shells.
+                <div class="answer-card-full">
+                  <div class="model-header">
+                    <div class="model-badge">
+                      <span>✓</span>
+                      <span>Level 3 Exemplar Model Answer [6/6 Marks]</span>
+                    </div>
+                    <span style="font-size:10px; font-weight:700; color:#047857;">Scoris Criteria: L3 Awarded</span>
                   </div>
-                  <div>
-                    <strong>Process 2 — Photosynthesis & Fossil Fuels:</strong> Photosynthetic organisms (algae and plants) absorbed CO₂ from the atmosphere. Over millions of years, dead organic matter was buried under heat and pressure, locking carbon away in <strong>fossil fuels</strong> (coal, crude oil, natural gas).
-                  </div>
-                  <div class="mark-tag">✓ [4 Marks: 2 marks per fully explained process (max 2 if only one process given)]</div>
-                </div>
 
-                <!-- Q1 (e) Nitrogen build-up -->
-                <div class="answer-block-fill" style="left: 13.5%; top: 45.0%; width: 75%;">
-                  <div>
-                    <strong>Model Answer:</strong> Nitrogen gas (N₂) is chemically <strong>very unreactive / inert</strong> (due to its strong triple covalent bond). Once released into the atmosphere by volcanic activity, it was <strong>not readily removed</strong> by living organisms or geological reactions, so it gradually accumulated / built up over time to 78%.
+                  <div class="model-columns">
+                    <!-- Column 1: Mars Changes -->
+                    <div class="model-col">
+                      <div class="model-col-title">
+                        <span>🔴</span>
+                        <span>1. Changes on Mars</span>
+                      </div>
+                      <ul class="model-list">
+                        <li><strong>Carbon Dioxide:</strong> Increased proportion to become <strong>95%</strong> of the modern atmosphere.</li>
+                        <li><strong>Water Vapour:</strong> Decreased dramatically to trace levels.</li>
+                        <li><strong>Oxygen:</strong> Small trace amounts have appeared.</li>
+                        <li><strong>Reason / Mechanism:</strong> Mars cooled drastically to an average of <strong>-55 °C</strong>; water vapour condensed and froze into polar ice caps and underground permafrost.</li>
+                      </ul>
+                    </div>
+
+                    <!-- Column 2: Comparison with Earth & Scientific Reasons -->
+                    <div class="model-col">
+                      <div class="model-col-title">
+                        <span>🌍</span>
+                        <span>2. Comparison with Earth &amp; Scientific Reasons</span>
+                      </div>
+                      <ul class="model-list">
+                        <li><strong>Carbon Dioxide:</strong> Decreased drastically on Earth from ~95% to <strong>0.04%</strong>.</li>
+                        <li><strong>Oceans Formed:</strong> As Earth cooled, water vapour condensed into liquid oceans.</li>
+                        <li><strong>CO₂ Dissolved:</strong> Vast amounts of CO₂ dissolved into oceans and reacted to form insoluble <strong>carbonate precipitates &amp; sedimentary rocks</strong> (e.g. limestone).</li>
+                        <li><strong>Photosynthesis:</strong> Algae and green plants evolved, performing photosynthesis (6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂), absorbing CO₂ and releasing <strong>oxygen up to 21%</strong>.</li>
+                        <li><strong>Nitrogen:</strong> Accumulated to <strong>78%</strong> because N₂ is chemically inert and unreactive.</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="mark-tag">✓ [2 Marks: 1 mark for low reactivity / unreactive + 1 mark for not readily removed / gradual accumulation]</div>
+
+                  <div class="model-footer-note">
+                    <span>Examiner: Both planetary changes clearly compared with full scientific mechanisms explained.</span>
+                    <span>Scoris Annotation: L3 (5–6 marks)</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -707,24 +715,24 @@
         <div class="splitter-handle"></div>
       </div>
 
-      <!-- Right Pane: Mark Scheme (Page 3) -->
+      <!-- Right Pane: Mark Scheme (Page 2) -->
       <section class="viewer-pane pane-right" id="paneMarkScheme" aria-label="Mark Scheme">
         <div class="pane-toolbar">
           <div class="pane-title">
             <span class="icon">✅</span>
-            <span>Official Mark Scheme (Page 3 of 3)</span>
+            <span>Official Teacher Mark Scheme &amp; Scoris Criteria</span>
           </div>
           <div class="pane-controls">
-            <span class="badge-ocr" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">AO1, AO2 & AO3</span>
+            <span class="badge-ocr" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">Page 2 of 2</span>
             <button id="btnScrollToTop" class="btn-pill-small" title="Top of Mark Scheme">Top</button>
           </div>
         </div>
 
         <div class="doc-canvas-container" id="containerMarkScheme">
-          <!-- Page 3 Sheet -->
-          <article class="page-sheet-card sheet-page-3" id="sheetPage3">
+          <!-- Page 2 Sheet -->
+          <article class="page-sheet-card sheet-page-2" id="sheetPage2">
             <div class="page-img-wrapper">
-              <img class="page-img" src="/decks/ecology_atmosphere_classic/Classic_Lesson_07_The_Atmosphere/assets/exam_pdf/page-3.png" alt="OCR Mark Scheme Page 3" loading="eager" />
+              <img class="page-img" src="../assets/exam_pdf/page-2.png" alt="OCR Mark Scheme Page 2" loading="eager" />
             </div>
           </article>
         </div>
@@ -737,8 +745,9 @@
             <span>Examiner Guidance Insights</span>
           </div>
           <div class="callout-tip">
-            <p><strong>Percentage Points vs %:</strong> In (a), 94.96 is a <em>percentage point</em> difference. In (b), 99.96% or 100% (to 3 s.f.) is the <em>percentage decrease</em> of the original gas volume. Make sure students state both correctly!</p>
-            <p><strong>Common Nitrogen Trap (e):</strong> Students often say nitrogen was "produced in large amounts" instead of explaining that its <em>low chemical reactivity</em> prevented it from being removed.</p>
+            <p><strong>Scoris Annotation Rules:</strong> Use the <strong>L1, L2, L3</strong> annotations in Scoris; <strong>do not use ticks</strong>.</p>
+            <p><strong>Level 3 Requirement (5–6 Marks):</strong> Compares atmospheric changes on <em>both Mars and Earth</em>, and gives correct scientific reasons for changes on Earth (oceans condensing, CO₂ dissolving/rocks, photosynthesis).</p>
+            <p><strong>Acceptable alternative:</strong> Accept statement that atmosphere on Mars is <em>very small / thin</em> compared to that on Earth.</p>
           </div>
         </div>
       </section>
@@ -757,19 +766,15 @@
       const modeBtnQuestions = document.getElementById("modeBtnQuestions");
       const modeBtnMarkScheme = document.getElementById("modeBtnMarkScheme");
 
-      const btnPageAll = document.getElementById("btnPageAll");
-      const btnPage1 = document.getElementById("btnPage1");
-      const btnPage2 = document.getElementById("btnPage2");
-
       const btnZoomIn = document.getElementById("btnZoomIn");
       const btnZoomOut = document.getElementById("btnZoomOut");
       const btnZoomReset = document.getElementById("btnZoomReset");
       const zoomLabel = document.getElementById("zoomLabel");
+      const btnPrint = document.getElementById("btnPrint");
 
       const btnToggleAnswers = document.getElementById("btnToggleAnswers");
       const btnAnswersText = document.getElementById("btnAnswersText");
       const answerLayerPage1 = document.getElementById("answerLayerPage1");
-      const answerLayerPage2 = document.getElementById("answerLayerPage2");
       const examinerCallout = document.getElementById("examinerCallout");
       const btnCloseCallout = document.getElementById("btnCloseCallout");
       const btnScrollToTop = document.getElementById("btnScrollToTop");
@@ -777,7 +782,6 @@
 
       const sheetPage1 = document.getElementById("sheetPage1");
       const sheetPage2 = document.getElementById("sheetPage2");
-      const sheetPage3 = document.getElementById("sheetPage3");
 
       let currentMode = "questions";
       let currentZoom = 1.0;
@@ -804,9 +808,8 @@
         const effectiveWidth = (currentMode === "split") ? baseWidthSplit : baseWidthFull;
         const targetWidth = Math.max(340, effectiveWidth * currentZoom);
 
-        sheetPage1.style.width = targetWidth + "px";
-        sheetPage2.style.width = targetWidth + "px";
-        sheetPage3.style.width = targetWidth + "px";
+        if (sheetPage1) sheetPage1.style.width = targetWidth + "px";
+        if (sheetPage2) sheetPage2.style.width = targetWidth + "px";
 
         zoomLabel.textContent = Math.round(currentZoom * 100) + "%";
       }
@@ -826,7 +829,6 @@
       function getInteractiveSyncState() {
         return {
           mode: currentMode,
-          filter: paneQuestions.classList.contains("show-page-1") ? "1" : (paneQuestions.classList.contains("show-page-2") ? "2" : "all"),
           answersVisible: answersVisible,
           zoom: currentZoom,
           splitterPct: currentSplitterPct,
@@ -861,9 +863,6 @@
           const s = data.state;
           if (s.mode && s.mode !== currentMode) {
             setMode(s.mode, false);
-          }
-          if (s.filter) {
-            setPageFilter(s.filter, false);
           }
           if (typeof s.answersVisible === "boolean" && s.answersVisible !== answersVisible) {
             setAnswersVisible(s.answersVisible, false);
@@ -928,6 +927,12 @@
         broadcastState("zoom_reset");
       });
 
+      if (btnPrint) {
+        btnPrint.addEventListener("click", () => {
+          window.print();
+        });
+      }
+
       function setMode(mode, broadcast = true) {
         currentMode = mode;
         viewportArena.classList.remove("view-mode-questions", "view-mode-markscheme");
@@ -942,8 +947,10 @@
         if (mode === "split") {
           modeBtnSplit.classList.add("active");
           modeBtnSplit.setAttribute("aria-selected", "true");
+          paneQuestions.style.display = "flex";
           paneQuestions.style.flex = `0 0 ${currentSplitterPct}%`;
           paneQuestions.style.width = `${currentSplitterPct}%`;
+          paneMarkScheme.style.display = "flex";
           paneMarkScheme.style.flex = `0 0 ${100 - currentSplitterPct}%`;
           paneMarkScheme.style.width = `${100 - currentSplitterPct}%`;
           splitterDivider.style.display = "flex";
@@ -951,14 +958,27 @@
           modeBtnQuestions.classList.add("active");
           modeBtnQuestions.setAttribute("aria-selected", "true");
           viewportArena.classList.add("view-mode-questions");
+          paneQuestions.style.display = "flex";
+          paneQuestions.style.flex = "1 1 100%";
+          paneQuestions.style.width = "100%";
+          paneMarkScheme.style.display = "none";
+          paneMarkScheme.style.flex = "0 0 0%";
+          paneMarkScheme.style.width = "0%";
           splitterDivider.style.display = "none";
         } else if (mode === "markscheme") {
           modeBtnMarkScheme.classList.add("active");
           modeBtnMarkScheme.setAttribute("aria-selected", "true");
           viewportArena.classList.add("view-mode-markscheme");
+          paneQuestions.style.display = "none";
+          paneQuestions.style.flex = "0 0 0%";
+          paneQuestions.style.width = "0%";
+          paneMarkScheme.style.display = "flex";
+          paneMarkScheme.style.flex = "1 1 100%";
+          paneMarkScheme.style.width = "100%";
           splitterDivider.style.display = "none";
         }
 
+        applyZoom();
         setTimeout(applyZoom, 50);
         setTimeout(applyZoom, 260);
         if (broadcast) broadcastState("set_mode");
@@ -971,40 +991,24 @@
       // Initialize explicitly in Questions Only mode
       setMode("questions", false);
 
-      function setPageFilter(filter, broadcast = true) {
-        btnPageAll.classList.remove("active");
-        btnPage1.classList.remove("active");
-        btnPage2.classList.remove("active");
-        paneQuestions.classList.remove("show-page-1", "show-page-2");
-
-        if (filter === "all") {
-          btnPageAll.classList.add("active");
-        } else if (filter === "1") {
-          btnPage1.classList.add("active");
-          paneQuestions.classList.add("show-page-1");
-        } else if (filter === "2") {
-          btnPage2.classList.add("active");
-          paneQuestions.classList.add("show-page-2");
-        }
-        if (broadcast) broadcastState("set_page_filter");
-      }
-
-      btnPageAll.addEventListener("click", () => setPageFilter("all"));
-      btnPage1.addEventListener("click", () => setPageFilter("1"));
-      btnPage2.addEventListener("click", () => setPageFilter("2"));
-
       function setAnswersVisible(visible, broadcast = true) {
         answersVisible = Boolean(visible);
         if (answersVisible) {
           answerLayerPage1.classList.add("visible");
-          answerLayerPage2.classList.add("visible");
           btnToggleAnswers.classList.add("active");
-          btnAnswersText.textContent = "Hide Answers";
+          btnAnswersText.textContent = "Hide Model Answer";
+          const container = document.getElementById("containerQuestions");
+          if (container) {
+            const answerEl = document.querySelector(".answer-card-full");
+            if (answerEl) {
+              const targetTop = answerEl.offsetTop - 80;
+              container.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+            }
+          }
         } else {
           answerLayerPage1.classList.remove("visible");
-          answerLayerPage2.classList.remove("visible");
           btnToggleAnswers.classList.remove("active");
-          btnAnswersText.textContent = "Reveal Answers";
+          btnAnswersText.textContent = "Reveal Model Answer";
         }
         if (broadcast) broadcastState("toggle_answers");
       }
@@ -1054,53 +1058,55 @@
           isDragging = false;
           splitterDivider.classList.remove("active");
           document.body.style.cursor = "";
-          broadcastState("splitter_move");
+          broadcastState("splitter_moved");
         }
       });
 
-      // Listen on BroadcastChannel
+      // Keyboard shortcuts
+      window.addEventListener("keydown", (e) => {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+        if (e.key === "1") {
+          setMode("questions");
+        } else if (e.key === "2") {
+          setMode("split");
+        } else if (e.key === "3") {
+          setMode("markscheme");
+        } else if (e.key.toLowerCase() === "a") {
+          setAnswersVisible(!answersVisible);
+        } else if (e.key === "+" || e.key === "=") {
+          btnZoomIn.click();
+        } else if (e.key === "-") {
+          btnZoomOut.click();
+        } else if (e.key === "0") {
+          btnZoomReset.click();
+        }
+      });
+
+      // Listen for incoming sync messages
       if (syncChannel) {
         syncChannel.onmessage = (event) => {
-          const data = event.data;
-          if (!data || typeof data !== "object") return;
-          if (data.interactiveId === "exam_pdf_viewer_atmosphere" || !data.interactiveId) {
-            if (data.type === "INTERACTIVE_STATE_UPDATE") {
-              applyRemoteState(data);
-            } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
-              broadcastState("state_reply");
-            }
+          const msg = event.data;
+          if (!msg) return;
+          if (msg.type === "INTERACTIVE_STATE_UPDATE" && msg.interactiveId === "exam_pdf_viewer_atmosphere") {
+            applyRemoteState(msg);
+          } else if (msg.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+            broadcastState("sync_response");
           }
         };
       }
 
-      // Listen on window message (from parent app.js or opener)
       window.addEventListener("message", (event) => {
-        const data = event.data;
-        if (!data || typeof data !== "object") return;
-        if (data.type === "APPLY_INTERACTIVE_STATE" || (data.type === "INTERACTIVE_STATE_UPDATE" && (!data.interactiveId || data.interactiveId === "exam_pdf_viewer_atmosphere"))) {
-          applyRemoteState(data);
-        } else if (data.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
-          broadcastState("state_reply");
+        const msg = event.data;
+        if (!msg) return;
+        if (msg.type === "INTERACTIVE_STATE_UPDATE" && msg.interactiveId === "exam_pdf_viewer_atmosphere") {
+          applyRemoteState(msg);
+        } else if (msg.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
+          broadcastState("sync_response");
         }
       });
 
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "1") setMode("questions");
-        else if (e.key === "2") setMode("split");
-        else if (e.key === "3") setMode("markscheme");
-        else if (e.key === "+" || e.key === "=") btnZoomIn.click();
-        else if (e.key === "-") btnZoomOut.click();
-        else if (e.key === "0") btnZoomReset.click();
-        else if (e.key.toLowerCase() === "a") btnToggleAnswers.click();
-      });
-
-      setTimeout(applyZoom, 100);
-
-      // Initial sync connection
       if (isPresentationMode) {
         requestMasterState();
-      } else {
-        broadcastState("initial_load");
       }
     })();
   </script>

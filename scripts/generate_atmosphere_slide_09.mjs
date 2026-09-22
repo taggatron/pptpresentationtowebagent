@@ -15,13 +15,12 @@ async function imageToBase64(filePath) {
 async function run() {
   const page1B64 = await imageToBase64(path.join(examPdfDir, 'page-1.png'));
   const page2B64 = await imageToBase64(path.join(examPdfDir, 'page-2.png'));
-  const page3B64 = await imageToBase64(path.join(examPdfDir, 'page-3.png'));
 
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Slide 09 Poster</title>
+  <title>Slide 09 Poster - Mars & Earth Atmosphere Exam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -43,7 +42,7 @@ async function run() {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 38px 48px 34px 48px;
+      padding: 36px 48px 30px 48px;
     }
 
     /* Ambient glow elements */
@@ -79,13 +78,13 @@ async function run() {
     }
 
     .header-left {
-      max-width: 900px;
+      max-width: 960px;
     }
 
     .pill-group {
       display: flex;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .badge {
@@ -126,11 +125,11 @@ async function run() {
       background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .subtitle {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 500;
       color: #94a3b8;
       line-height: 1.4;
@@ -142,27 +141,27 @@ async function run() {
       z-index: 2;
       display: flex;
       justify-content: center;
-      gap: 32px;
-      margin: 18px 0;
+      gap: 48px;
+      margin: 12px 0;
     }
 
     .preview-card {
-      width: 255px;
+      width: 360px;
       background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
       transition: transform 0.2s ease;
     }
 
     .card-top {
-      padding: 8px 12px;
-      background: rgba(30, 41, 59, 0.8);
+      padding: 8px 14px;
+      background: rgba(30, 41, 59, 0.85);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
@@ -170,18 +169,18 @@ async function run() {
     }
 
     .card-title {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #e2e8f0;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .card-tag {
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 700;
-      padding: 2px 6px;
+      padding: 2px 8px;
       border-radius: 4px;
       background: rgba(56, 189, 248, 0.15);
       color: #7dd3fc;
@@ -189,7 +188,7 @@ async function run() {
 
     .card-img-wrap {
       width: 100%;
-      height: 350px;
+      height: 360px;
       overflow: hidden;
       background: #ffffff;
       display: flex;
@@ -212,7 +211,7 @@ async function run() {
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 14px;
-      padding: 14px 24px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -226,26 +225,26 @@ async function run() {
     }
 
     .icon-bubble {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
       background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 19px;
       box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
     }
 
     .dock-text-title {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 2px;
     }
 
     .dock-text-sub {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #94a3b8;
     }
 
@@ -255,7 +254,7 @@ async function run() {
     }
 
     .dock-pill {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       padding: 6px 12px;
       border-radius: 8px;
@@ -282,47 +281,36 @@ async function run() {
   <header class="header">
     <div class="header-left">
       <div class="pill-group">
-        <span class="badge badge-ocr">OCR GCSE Combined Science</span>
-        <span class="badge badge-marks">13 Marks Total</span>
+        <span class="badge badge-ocr">OCR Combined Science</span>
+        <span class="badge badge-marks">6 Marks Extended Response</span>
         <span class="badge badge-interactive">Interactive PDF Viewer</span>
       </div>
-      <h1 class="title">The Earth's Atmosphere: Exam Practice & Mark Scheme</h1>
-      <p class="subtitle">Complete question paper covering early vs. modern atmosphere data, calculation of percentage decrease, photosynthesis oxygenation, and carbon sinks.</p>
+      <h1 class="title">Mars &amp; Earth Atmospheres: Exam Practice &amp; Mark Scheme</h1>
+      <p class="subtitle">Comparative planetary atmosphere analysis: table evaluation, early vs. modern composition, condensation into oceans, carbonate precipitation, and biological photosynthesis.</p>
     </div>
   </header>
 
   <!-- Cards Row -->
   <main class="cards-row">
-    <!-- Card 1: Page 1 -->
+    <!-- Card 1: Question Paper -->
     <div class="preview-card">
       <div class="card-top">
-        <span class="card-title">📄 Page 1 • Questions (a)–(c)</span>
-        <span class="card-tag">7 Marks</span>
+        <span class="card-title">📄 Page 1 • Question Paper (Mars Data)</span>
+        <span class="card-tag">6 Marks</span>
       </div>
       <div class="card-img-wrap">
         <img src="${page1B64}" alt="Page 1 Preview" />
       </div>
     </div>
 
-    <!-- Card 2: Page 2 -->
+    <!-- Card 2: Official Mark Scheme -->
     <div class="preview-card">
       <div class="card-top">
-        <span class="card-title">📄 Page 2 • Questions (d)–(e)</span>
-        <span class="card-tag">6 Marks</span>
+        <span class="card-title">✅ Page 2 • Official Mark Scheme</span>
+        <span class="card-tag" style="background:rgba(16, 185, 129, 0.2); color:#6ee7b7;">Grades up to A / A*</span>
       </div>
       <div class="card-img-wrap">
         <img src="${page2B64}" alt="Page 2 Preview" />
-      </div>
-    </div>
-
-    <!-- Card 3: Page 3 (Mark Scheme) -->
-    <div class="preview-card">
-      <div class="card-top">
-        <span class="card-title">✅ Page 3 • Official Mark Scheme</span>
-        <span class="card-tag" style="background:rgba(16, 185, 129, 0.2); color:#6ee7b7;">Guidance</span>
-      </div>
-      <div class="card-img-wrap">
-        <img src="${page3B64}" alt="Page 3 Preview" />
       </div>
     </div>
   </main>
@@ -333,7 +321,7 @@ async function run() {
       <div class="icon-bubble">⚡</div>
       <div>
         <div class="dock-text-title">Interactive Split-Screen Viewer Active</div>
-        <div class="dock-text-sub">Seamlessly examine the student questions and teacher mark scheme simultaneously side-by-side</div>
+        <div class="dock-text-sub">Seamlessly examine the student question paper and teacher mark scheme side-by-side</div>
       </div>
     </div>
     <div class="dock-pills">
@@ -343,7 +331,7 @@ async function run() {
       </div>
       <div class="dock-pill">
         <span>💡</span>
-        <span>Model Answer Overlays</span>
+        <span>Level 3 Model Answer</span>
       </div>
       <div class="dock-pill">
         <span>🔍</span>
@@ -358,10 +346,7 @@ async function run() {
 </body>
 </html>`;
 
-  const browser = await chromium.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    headless: true
-  });
+  const browser = await chromium.launch({ channel: 'chrome' });
 
   const page = await browser.newPage({
     viewport: { width: 1376, height: 768 },

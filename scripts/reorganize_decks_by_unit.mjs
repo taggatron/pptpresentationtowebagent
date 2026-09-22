@@ -23,8 +23,8 @@ const DECK_MAPPING = {
     "Lesson_02_Working_like_a_Human_Biologist",
     "Lesson_03_Thinking_like_a_Human_Biologist_Heart_Rate_Practical",
     "Lesson_04_Working_like_a_Scientist_Continued",
-    "Lesson_05_Communicating_like_a_Human_Biologist_Interpreting_Data_Clinical_Trials",
-    "Lesson_06_Communicating_like_a_Human_Biologist_Academic_Writing_and_Application",
+    "Lesson_05_Communicating_like_a_Human_Biologist_Source_Reliability_and_Referencing",
+    "Lesson_06_Communicating_like_a_Human_Biologist_Clinical_Data_and_Mock_NEA",
     "Lesson_07_Introductory_Unit_Synthesis_Diagnostic_Profile_and_Target_Setting",
     "Lesson_08_Transition_to_Biomedical_Science_and_Genetics"
   ],
