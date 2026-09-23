@@ -5359,6 +5359,12 @@ body.vi-spacing strong {
   overflow: hidden;
 }
 
+/* Hide floating zoom and slide controls on PDF interactive slides to prevent overlap with PDF top-bar */
+body.is-pdf-mode .slide-zoom-bar,
+.slide-stage.is-pdf-mode .slide-zoom-bar {
+  display: none !important;
+}
+
 .slide-zoom-bar {
   position: absolute;
   top: 14px;

@@ -3032,6 +3032,34 @@ async function requestPresentationFullscreen() {
   return false;
 }
 
+function syncPlayerStateToFrame() {
+  if (!webEmbedFrame?.contentWindow) return;
+  const isFS = Boolean(
+    document.fullscreenElement ||
+    document.webkitIsFullScreen ||
+    document.body.classList.contains("is-fullscreen")
+  );
+  const isPlaying = Boolean(startSlideshowBtn?.classList.contains("is-active"));
+  const total = currentDeck?.slides?.length || 0;
+  const num = currentSlideIndex + 1;
+  const hasPrev = currentSlideIndex > 0;
+  const hasNext = currentSlideIndex < total - 1;
+  try {
+    webEmbedFrame.contentWindow.postMessage(
+      {
+        type: "PLAYER_STATE_SYNC",
+        isFullscreen: isFS,
+        isSlideshowActive: isPlaying,
+        slideNumber: num,
+        totalSlides: total,
+        hasPrev,
+        hasNext
+      },
+      "*"
+    );
+  } catch (_) {}
+}
+
 function initSlideshowSync() {
   if (typeof BroadcastChannel === "function") {
     try {
@@ -3056,7 +3084,29 @@ function initSlideshowSync() {
   // Cross-window postMessage listener
   window.addEventListener("message", (event) => {
     if (event.data && typeof event.data === "object" && event.data.type) {
-      if (
+      if (event.data.type === "TOGGLE_SLIDESHOW") {
+        handleSlideshowToggle();
+      } else if (event.data.type === "TOGGLE_FULLSCREEN") {
+        if (!document.fullscreenElement && !document.webkitIsFullScreen) {
+          if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
+      } else if (event.data.type === "PREV_SLIDE") {
+        goToPreviousSlide();
+      } else if (event.data.type === "NEXT_SLIDE") {
+        goToNextSlide();
+      } else if (event.data.type === "REQUEST_PLAYER_STATE") {
+        syncPlayerStateToFrame();
+      } else if (
         event.data.type === "INTERACTIVE_STATE_UPDATE" ||
         event.data.type === "REQUEST_INTERACTIVE_STATE"
       ) {
@@ -3411,6 +3461,7 @@ function setSlideshowButtonActive(active) {
     stopSvg.innerHTML = '<rect x="6" y="6" width="12" height="12" rx="2" />';
     iconWrap.appendChild(stopSvg);
   }
+  syncPlayerStateToFrame();
 }
 
 /* ==========================================================================
@@ -5300,6 +5351,8 @@ function restoreSavedBoundsForSlide(slide) {
 }
 
 function hideWebEmbed() {
+  document.body.classList.remove("is-pdf-mode");
+  slideStage?.classList.remove("is-pdf-mode");
   if (!webEmbedLayer) return;
   webEmbedLayer.classList.add("hidden");
   if (webEmbedFrame && webEmbedFrame.src !== "about:blank") {
@@ -5310,6 +5363,14 @@ function hideWebEmbed() {
 function renderWebEmbed(slide, { preserveSequenceControls = false } = {}) {
   const embed = slide?.webEmbed;
   if (!embed?.url || !webEmbedLayer || !webEmbedFrame) return false;
+
+  const isPdf = Boolean(
+    embed.url?.includes("exam_pdf") ||
+    slide?.sourceMediaPath?.includes("exam_pdf") ||
+    embed.url?.includes(".pdf")
+  );
+  document.body.classList.toggle("is-pdf-mode", isPdf);
+  slideStage?.classList.toggle("is-pdf-mode", isPdf);
 
   hideSlideVideo();
   slideImage.classList.add("hidden");
@@ -5332,6 +5393,11 @@ function renderWebEmbed(slide, { preserveSequenceControls = false } = {}) {
   if (currentSrc !== targetSrc) {
     webEmbedFrame.src = targetSrc;
   }
+
+  webEmbedFrame.onload = () => {
+    syncPlayerStateToFrame();
+  };
+  setTimeout(() => syncPlayerStateToFrame(), 100);
 
   webEmbedLayer.classList.remove("hidden");
   return true;
@@ -7340,6 +7406,7 @@ function setupEventListeners() {
         setSlideshowButtonActive(true);
       }
     }
+    syncPlayerStateToFrame();
   };
 
   fullscreenBtn?.addEventListener("click", () => {

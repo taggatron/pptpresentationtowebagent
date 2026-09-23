@@ -228,6 +228,118 @@
       text-align: center;
     }
 
+    /* Slide Deck Controls integrated in PDF viewer top bar */
+    .slide-control-divider {
+      width: calc(1px * var(--scale));
+      height: calc(24px * var(--scale));
+      background: #cbd5e1;
+      margin: 0 calc(2px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .slide-player-group {
+      display: flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
+      background: #ffffff;
+      padding: calc(3px * var(--scale)) calc(5px * var(--scale));
+      border-radius: calc(9px * var(--scale));
+      border: calc(1.5px * var(--scale)) solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
+
+    .btn-slide-nav {
+      border: none;
+      background: #f1f5f9;
+      color: #334155;
+      width: calc(26px * var(--scale));
+      height: calc(26px * var(--scale));
+      border-radius: calc(6px * var(--scale));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-size: calc(12px * var(--scale));
+      padding: 0;
+    }
+
+    .btn-slide-nav:hover:not(:disabled) {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .btn-slide-nav:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .slide-counter-badge {
+      font-size: calc(11px * var(--scale));
+      font-weight: 700;
+      color: #334155;
+      padding: 0 calc(6px * var(--scale));
+      min-width: calc(46px * var(--scale));
+      text-align: center;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .btn-slide-action {
+      border: calc(1.5px * var(--scale)) solid var(--border-color);
+      background: #ffffff;
+      color: #475569;
+      width: calc(28px * var(--scale));
+      height: calc(28px * var(--scale));
+      border-radius: calc(7px * var(--scale));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      padding: 0;
+    }
+
+    .btn-slide-action:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .btn-slide-action.btn-slideshow {
+      border-radius: 999px;
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+      color: #059669;
+    }
+
+    .btn-slide-action.btn-slideshow:hover {
+      background: #d1fae5;
+      border-color: #6ee7b7;
+      color: #047857;
+      transform: scale(1.05);
+    }
+
+    .btn-slide-action.btn-slideshow.is-active {
+      background: #059669;
+      border-color: #047857;
+      color: #ffffff;
+      box-shadow: 0 0 calc(8px * var(--scale)) rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-slide-action.btn-fullscreen:hover {
+      border-color: #818cf8;
+      color: #4f46e5;
+      background: #eef2ff;
+    }
+
+    .btn-slide-action.btn-fullscreen.is-active {
+      background: #eef2ff;
+      border-color: #6366f1;
+      color: #4f46e5;
+    }
+
     /* Main Viewport Splitter Layout */
     .viewport-arena {
       flex: 1;
@@ -634,6 +746,43 @@
           <span class="icon">📥</span>
           <span>PDF</span>
         </a>
+
+        <span class="slide-control-divider" aria-hidden="true"></span>
+
+        <div class="slide-player-group" role="group" aria-label="Slide Deck Controls">
+          <button id="btnPrevSlide" class="btn-slide-nav" type="button" title="Previous Slide (← / Page Up)" aria-label="Previous Slide">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <span id="slideCounterText" class="slide-counter-badge" title="Current Slide">12 / 12</span>
+          <button id="btnNextSlide" class="btn-slide-nav" type="button" title="Next Slide (→ / Page Down / Space)" aria-label="Next Slide">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <button id="btnSlideshow" class="btn-slide-action btn-slideshow" type="button" title="Start slideshow (F5 / Presents on external display)" aria-label="Start slideshow">
+            <span class="slideshow-icon-wrap" aria-hidden="true">
+              <svg class="slideshow-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="slideshow-ring-svg" cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="60" stroke-linecap="round" opacity="0.35" />
+                <path class="slideshow-triangle-svg" d="M9.5 7.5 C 9.5 6.7, 10.3 6.2, 11 6.6 L 17.5 10.8 C 18.2 11.2, 18.2 12.8, 17.5 13.2 L 11 17.4 C 10.3 17.8, 9.5 17.3, 9.5 16.5 Z" fill="#10b981" />
+                <rect class="slideshow-stop-svg" x="7.5" y="7.5" width="9" height="9" rx="2" fill="#ef4444" style="display: none;" />
+              </svg>
+            </span>
+          </button>
+          <button id="btnFullscreen" class="btn-slide-action btn-fullscreen" type="button" title="Toggle Fullscreen (F)" aria-label="Toggle Fullscreen">
+            <svg class="fullscreen-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <g id="fsCornersExpand" class="fs-corners-expand">
+                <path d="M9 4H6a2 2 0 0 0-2 2v3" />
+                <path d="M15 4h3a2 2 0 0 1 2 2v3" />
+                <path d="M9 20H6a2 2 0 0 1-2-2v-3" />
+                <path d="M15 20h3a2 2 0 0 0 2-2v-3" />
+              </g>
+              <g id="fsCornersContract" class="fs-corners-contract" style="display: none;">
+                <path d="M4 9h3a2 2 0 0 0 2-2V4" />
+                <path d="M20 9h-3a2 2 0 0 1-2-2V4" />
+                <path d="M4 15h3a2 2 0 0 1 2 2v3" />
+                <path d="M20 15h-3a2 2 0 0 0-2 2v3" />
+              </g>
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -1062,6 +1211,74 @@
         }
       });
 
+      // Slide deck bridge controls
+      const btnPrevSlide = document.getElementById("btnPrevSlide");
+      const btnNextSlide = document.getElementById("btnNextSlide");
+      const slideCounterText = document.getElementById("slideCounterText");
+      const btnSlideshow = document.getElementById("btnSlideshow");
+      const btnFullscreen = document.getElementById("btnFullscreen");
+      const fsCornersExpand = document.getElementById("fsCornersExpand");
+      const fsCornersContract = document.getElementById("fsCornersContract");
+      const stopIcon = btnSlideshow ? btnSlideshow.querySelector(".slideshow-stop-svg") : null;
+      const playIcon = btnSlideshow ? btnSlideshow.querySelector(".slideshow-triangle-svg") : null;
+
+      if (btnPrevSlide) {
+        btnPrevSlide.addEventListener("click", () => {
+          window.parent.postMessage({ type: "PREV_SLIDE" }, "*");
+        });
+      }
+      if (btnNextSlide) {
+        btnNextSlide.addEventListener("click", () => {
+          window.parent.postMessage({ type: "NEXT_SLIDE" }, "*");
+        });
+      }
+      if (btnSlideshow) {
+        btnSlideshow.addEventListener("click", () => {
+          window.parent.postMessage({ type: "TOGGLE_SLIDESHOW" }, "*");
+        });
+      }
+      if (btnFullscreen) {
+        btnFullscreen.addEventListener("click", () => {
+          window.parent.postMessage({ type: "TOGGLE_FULLSCREEN" }, "*");
+        });
+      }
+
+      function updatePlayerUI(state) {
+        if (!state) return;
+        if (slideCounterText && state.slideNumber && state.totalSlides) {
+          slideCounterText.textContent = `${state.slideNumber} / ${state.totalSlides}`;
+        }
+        if (btnPrevSlide && typeof state.hasPrev === "boolean") {
+          btnPrevSlide.disabled = !state.hasPrev;
+        }
+        if (btnNextSlide && typeof state.hasNext === "boolean") {
+          btnNextSlide.disabled = !state.hasNext;
+        }
+        if (btnSlideshow && typeof state.isSlideshowActive === "boolean") {
+          btnSlideshow.classList.toggle("is-active", state.isSlideshowActive);
+          btnSlideshow.title = state.isSlideshowActive ? "Stop Slideshow (F5)" : "Start Slideshow (F5)";
+          btnSlideshow.setAttribute("aria-label", state.isSlideshowActive ? "Stop Slideshow" : "Start Slideshow");
+          if (stopIcon) stopIcon.style.display = state.isSlideshowActive ? "block" : "none";
+          if (playIcon) playIcon.style.display = state.isSlideshowActive ? "none" : "block";
+        }
+        if (btnFullscreen && typeof state.isFullscreen === "boolean") {
+          btnFullscreen.classList.toggle("is-active", state.isFullscreen);
+          btnFullscreen.title = state.isFullscreen ? "Exit Fullscreen (F)" : "Toggle Fullscreen (F)";
+          btnFullscreen.setAttribute("aria-label", state.isFullscreen ? "Exit Fullscreen" : "Toggle Fullscreen");
+          if (fsCornersExpand) fsCornersExpand.style.display = state.isFullscreen ? "none" : "block";
+          if (fsCornersContract) fsCornersContract.style.display = state.isFullscreen ? "block" : "none";
+        }
+      }
+
+      document.addEventListener("fullscreenchange", () => {
+        const isFS = Boolean(document.fullscreenElement || document.webkitIsFullScreen);
+        if (btnFullscreen) {
+          btnFullscreen.classList.toggle("is-active", isFS);
+          if (fsCornersExpand) fsCornersExpand.style.display = isFS ? "none" : "block";
+          if (fsCornersContract) fsCornersContract.style.display = isFS ? "block" : "none";
+        }
+      });
+
       // Keyboard shortcuts
       window.addEventListener("keydown", (e) => {
         if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
@@ -1079,6 +1296,15 @@
           btnZoomOut.click();
         } else if (e.key === "0") {
           btnZoomReset.click();
+        } else if (e.key.toLowerCase() === "f") {
+          window.parent.postMessage({ type: "TOGGLE_FULLSCREEN" }, "*");
+        } else if (e.key === "F5") {
+          e.preventDefault();
+          window.parent.postMessage({ type: "TOGGLE_SLIDESHOW" }, "*");
+        } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          window.parent.postMessage({ type: "PREV_SLIDE" }, "*");
+        } else if (e.key === "ArrowRight" || e.key === "PageDown") {
+          window.parent.postMessage({ type: "NEXT_SLIDE" }, "*");
         }
       });
 
@@ -1098,12 +1324,19 @@
       window.addEventListener("message", (event) => {
         const msg = event.data;
         if (!msg) return;
-        if (msg.type === "INTERACTIVE_STATE_UPDATE" && msg.interactiveId === "exam_pdf_viewer_atmosphere") {
+        if (msg.type === "PLAYER_STATE_SYNC") {
+          updatePlayerUI(msg);
+        } else if (msg.type === "INTERACTIVE_STATE_UPDATE" && msg.interactiveId === "exam_pdf_viewer_atmosphere") {
           applyRemoteState(msg);
         } else if (msg.type === "REQUEST_INTERACTIVE_STATE" && !isPresentationMode) {
           broadcastState("sync_response");
         }
       });
+
+      // Request initial player state from parent
+      try {
+        window.parent.postMessage({ type: "REQUEST_PLAYER_STATE" }, "*");
+      } catch (_) {}
 
       if (isPresentationMode) {
         requestMasterState();
