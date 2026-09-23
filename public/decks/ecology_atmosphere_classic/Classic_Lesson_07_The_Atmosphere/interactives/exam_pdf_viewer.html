@@ -129,33 +129,43 @@
     .mode-btn {
       border: none;
       background: transparent;
-      padding: calc(6px * var(--scale)) calc(12px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(10px * var(--scale));
       border-radius: calc(7px * var(--scale));
-      font-size: calc(12px * var(--scale));
+      font-size: calc(13px * var(--scale));
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: calc(6px * var(--scale));
+      justify-content: center;
       transition: all 0.15s ease;
-      white-space: nowrap;
       font-family: inherit;
     }
 
     .mode-btn:hover {
       color: var(--text-main);
+      background: rgba(255, 255, 255, 0.5);
     }
 
     .mode-btn.active {
       background: #ffffff;
       color: var(--primary);
-      box-shadow: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.1);
+      box-shadow: 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(0,0,0,0.12);
       font-weight: 700;
     }
 
     .mode-btn .icon {
-      font-size: calc(13px * var(--scale));
+      font-size: calc(15px * var(--scale));
+      line-height: 1;
+    }
+
+    .mode-btn .btn-label {
+      display: none !important;
+    }
+
+    .btn-action#btnPrint .btn-label,
+    .btn-action#btnDownloadPdf .btn-label {
+      display: none !important;
     }
 
     /* Right Utility Controls */
