@@ -70,8 +70,10 @@
     .title-group {
       display: flex;
       align-items: center;
-      gap: calc(10px * var(--scale));
-      flex-shrink: 0;
+      gap: calc(8px * var(--scale));
+      flex-shrink: 1;
+      min-width: 0;
+      overflow: hidden;
     }
 
     .badge-ocr {
@@ -87,13 +89,18 @@
       display: flex;
       align-items: center;
       gap: calc(4px * var(--scale));
+      flex-shrink: 0;
     }
 
     .slide-heading {
-      font-size: calc(15px * var(--scale));
+      font-size: calc(14px * var(--scale));
       font-weight: 700;
       color: #1e293b;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      flex-shrink: 1;
     }
 
     .mark-pill {
@@ -105,6 +112,7 @@
       padding: calc(3px * var(--scale)) calc(8px * var(--scale));
       border-radius: 999px;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* Center Segmented Mode Switcher */
@@ -346,6 +354,33 @@
       background: #eef2ff;
       border-color: #6366f1;
       color: #4f46e5;
+    }
+
+    @media (max-width: 1550px) {
+      .badge-ocr {
+        display: none !important;
+      }
+      .mark-pill {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 1250px) {
+      .btn-action .btn-label {
+        display: none !important;
+      }
+      .mode-btn .btn-label {
+        display: none !important;
+      }
+      .mode-btn {
+        padding: calc(6px * var(--scale)) calc(8px * var(--scale));
+      }
+      .btn-action {
+        padding: calc(5px * var(--scale)) calc(8px * var(--scale));
+      }
+      .slide-heading {
+        font-size: calc(13px * var(--scale));
+      }
     }
 
     /* Main Split Viewing Arena */
@@ -694,15 +729,15 @@
       <div class="mode-switcher" role="tablist" aria-label="Viewing layout switcher">
         <button id="modeBtnQuestions" class="mode-btn active" role="tab" aria-selected="true" title="Questions Only Full Width (Key 1)">
           <span class="icon">📄</span>
-          <span>Questions Only</span>
+          <span class="btn-label">Questions Only</span>
         </button>
         <button id="modeBtnSplit" class="mode-btn" role="tab" aria-selected="false" title="Split Screen 50:50 (Questions Left, Mark Scheme Right) (Key 2)">
           <span class="icon">🔀</span>
-          <span>Split 50:50</span>
+          <span class="btn-label">Split 50:50</span>
         </button>
         <button id="modeBtnMarkScheme" class="mode-btn" role="tab" aria-selected="false" title="Mark Scheme Only Full Width (Key 3)">
           <span class="icon">✅</span>
-          <span>Mark Scheme Only</span>
+          <span class="btn-label">Mark Scheme Only</span>
         </button>
       </div>
 
@@ -710,7 +745,7 @@
       <div class="utility-group">
         <button id="btnToggleAnswers" class="btn-action" title="Toggle Model Answers on Question Paper (Key A)">
           <span class="icon">💡</span>
-          <span id="btnAnswersText">Reveal Answers</span>
+          <span id="btnAnswersText" class="btn-label">Reveal Answers</span>
         </button>
 
         <div class="zoom-group">
@@ -722,7 +757,7 @@
 
         <a id="btnDownloadPdf" class="btn-action" href="/decks/ecology_atmosphere_classic/Classic_Lesson_01_Ecosystems/assets/exam_pdf/ocr_ecosystems_checkpoint.pdf" target="_blank" download="ocr_ecosystems_checkpoint.pdf" title="Open or Download Original OCR PDF">
           <span class="icon">📥</span>
-          <span>PDF</span>
+          <span class="btn-label">PDF</span>
         </a>
 
         <span class="slide-control-divider" aria-hidden="true"></span>
