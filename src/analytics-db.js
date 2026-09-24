@@ -15,8 +15,29 @@ import { getWeekTimetable, getCurrentLessonSlot, LESSON_SCHEDULE } from "./lesso
 let dbInstance = null;
 let resolvedPaths = null;
 
+export function resetDbForTesting() {
+  if (dbInstance) {
+    try {
+      dbInstance.close();
+    } catch {}
+    dbInstance = null;
+  }
+  resolvedPaths = null;
+}
+
 export function resolveDbPath() {
   if (resolvedPaths) return resolvedPaths;
+
+  if (process.env.NODE_ENV === "test" && !process.env.ANALYTICS_TEST_PERSIST) {
+    resolvedPaths = {
+      dataDir: os.tmpdir(),
+      dbFile: ":memory:",
+      archiveDir: path.join(os.tmpdir(), "analytics_archive"),
+      jsonBackup: null,
+      isTmp: true
+    };
+    return resolvedPaths;
+  }
 
   const localDataDir = path.resolve(process.cwd(), "data");
   try {
@@ -234,9 +255,11 @@ export function getAnalyticsDb() {
 
   // If sessions table is empty (e.g. freshly created in /tmp or in-memory) and sourceJson exists, seed it!
   try {
-    const row = dbInstance.prepare("SELECT count(*) as count FROM sessions").get();
-    if ((!row || row.count === 0) && fs.existsSync(sourceJson)) {
-      seedDatabaseFromJson(dbInstance, sourceJson);
+    if (process.env.NODE_ENV !== "test") {
+      const row = dbInstance.prepare("SELECT count(*) as count FROM sessions").get();
+      if ((!row || row.count === 0) && fs.existsSync(sourceJson)) {
+        seedDatabaseFromJson(dbInstance, sourceJson);
+      }
     }
   } catch (seedErr) {
     console.warn("[Analytics DB] Notice: JSON seeding check:", seedErr.message);
@@ -745,7 +768,7 @@ export function deleteLatestSession(deckId) {
   const latest = db.prepare(`
     SELECT * FROM sessions
     WHERE deck_id = ?
-    ORDER BY created_at DESC
+    ORDER BY created_at DESC, rowid DESC
     LIMIT 1
   `).get(deckId);
 

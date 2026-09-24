@@ -3557,12 +3557,36 @@ function setAnalyticsNotice(msg, type = "info") {
   }, 6000);
 }
 
+function getAnalyticsRequestHeaders() {
+  const headers = { "Content-Type": "application/json" };
+  const isLocalHost = typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const isAllowedAgent = urlParams?.get("allowAgent") === "1" || urlParams?.get("antigravity") === "1" || Boolean(window?.__ANTIGRAVITY_AGENT__);
+
+  if (isLocalHost || isAllowedAgent) {
+    headers["X-Antigravity-Agent"] = "1";
+  }
+  return headers;
+}
+
 async function startSlideshowTracking() {
   if (!currentDeck?.id) return;
 
+  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const isWebDriver = typeof navigator !== "undefined" && Boolean(navigator.webdriver);
+  const isLocalHost = typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+  const isAllowedAgent = urlParams?.get("allowAgent") === "1" || urlParams?.get("antigravity") === "1" || Boolean(window?.__ANTIGRAVITY_AGENT__);
+
+  // If a headless browser / webdriver visits on a remote host (e.g. Vercel) without allowed agent flag, skip tracking
+  if (isWebDriver && !isLocalHost && !isAllowedAgent) {
+    console.info("[Analytics] Automated crawler/browser detected on remote host; recording ignored.");
+    analyticsTracker.active = false;
+    updateAnalyticsButtonStatus(false);
+    return;
+  }
+
   // Strict Lesson Schedule Check: Automatically prevent recording outside scheduled teaching periods
   // (unless preview/testing bypass is requested via query param ?bypassSchedule=1 or ?testSchedule=1)
-  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
   const isBypassRequested = urlParams?.get("bypassSchedule") === "1" || urlParams?.get("testSchedule") === "1";
 
   const currentSlot = getCurrentLessonSlot();
@@ -3593,7 +3617,7 @@ async function startSlideshowTracking() {
   try {
     const res = await fetch("/api/analytics/session/start", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: getAnalyticsRequestHeaders(),
       body: JSON.stringify({
         deckId: currentDeck.id,
         totalSlides: currentDeck.slides ? currentDeck.slides.length : 0,
@@ -3672,7 +3696,7 @@ async function stopSlideshowTracking({ finishSession = true } = {}) {
     try {
       await fetch("/api/analytics/session/finish", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAnalyticsRequestHeaders(),
         body: JSON.stringify({
           sessionId: analyticsTracker.sessionId,
           deckId: analyticsTracker.deckId
@@ -3720,7 +3744,7 @@ async function sendSlideDwell(slideNumber, dwellMs) {
   try {
     await fetch("/api/analytics/session/heartbeat", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: getAnalyticsRequestHeaders(),
       body: JSON.stringify({
         sessionId: analyticsTracker.sessionId,
         deckId: analyticsTracker.deckId,
@@ -5351,7 +5375,7 @@ function restoreSavedBoundsForSlide(slide) {
 }
 
 function hideWebEmbed() {
-  document.body.classList.remove("is-pdf-mode");
+  document.body?.classList.remove("is-pdf-mode");
   slideStage?.classList.remove("is-pdf-mode");
   if (!webEmbedLayer) return;
   webEmbedLayer.classList.add("hidden");

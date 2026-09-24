@@ -884,6 +884,12 @@ export function createApp({
 
   app.use(express.json({ limit: "2mb" }));
 
+  // Prevent crawlers from indexing, caching, or following any API endpoints
+  app.use("/api", (_req, res, next) => {
+    res.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive");
+    next();
+  });
+
   // Legacy URL fallback: if /decks/:deckId/... is requested without unit prefix or uses an alias,
   // rewrite to canonical /decks/:unitId/:deckId/...
   app.use("/decks", async (req, res, next) => {
@@ -1700,6 +1706,56 @@ export function createApp({
     }
   });
 
+  function isAllowedAnalyticsClient(req) {
+    const isSimulatedExternal = req.headers["x-test-simulate-external"] === "1";
+
+    // 1. Explicit Antigravity IDE agent or user-authorized automation
+    if (
+      req.headers["x-antigravity-agent"] === "1" ||
+      req.headers["x-allowed-bot"] === "1" ||
+      req.query?.allowAgent === "1" ||
+      req.body?.allowAgent === true
+    ) {
+      return true;
+    }
+
+    // 2. Test environments (unless testing external bot simulation)
+    if (
+      !isSimulatedExternal && (
+        process.env.NODE_ENV === "test" ||
+        process.env.npm_lifecycle_event === "test" ||
+        process.argv.some((arg) => arg.includes("test"))
+      )
+    ) {
+      return true;
+    }
+
+    // 3. Local development / IDE environment (localhost, 127.0.0.1, ::1)
+    if (!isSimulatedExternal) {
+      const ip = req.ip || req.connection?.remoteAddress || "";
+      const isLocalhost =
+        ip === "127.0.0.1" ||
+        ip === "::1" ||
+        ip === "::ffff:127.0.0.1" ||
+        req.hostname === "localhost" ||
+        req.headers.host?.startsWith("localhost") ||
+        req.headers.host?.startsWith("127.0.0.1");
+      if (isLocalhost) {
+        return true;
+      }
+    }
+
+    // 4. Check User-Agent for known search engine crawlers, scrapers, and headless bots
+    const ua = String(req.headers["user-agent"] || "").toLowerCase();
+    const isBot = /bot|crawl|spider|slurp|facebookexternalhit|twitterbot|baiduspider|ahrefs|semrush|petalbot|dotbot|yandex|bytespider|bingbot|googlebot|headlesschrome|lighthouse|inspect|curl|wget|python-requests/i.test(ua);
+
+    if (isBot) {
+      return false;
+    }
+
+    return true;
+  }
+
   function shouldEnforceSchedule(req) {
     if (req.body?.bypassSchedule || req.query?.bypassSchedule === "1" || req.headers["x-bypass-schedule"] === "1") {
       return false;
@@ -1715,6 +1771,13 @@ export function createApp({
 
   app.post("/api/analytics/session/start", async (req, res) => {
     try {
+      if (!isAllowedAnalyticsClient(req)) {
+        return res.status(403).json({
+          success: false,
+          error: "Automated crawler / bot traffic is excluded from slideshow analytics."
+        });
+      }
+
       const { deckId, totalSlides, lessonId, lessonGroup, lessonPeriod, lessonTopic, weekId } = req.body || {};
       const safeDeckId = assertSafeDeckId(deckId);
 
@@ -1745,6 +1808,13 @@ export function createApp({
 
   app.post("/api/analytics/session/heartbeat", async (req, res) => {
     try {
+      if (!isAllowedAnalyticsClient(req)) {
+        return res.status(403).json({
+          success: false,
+          error: "Automated crawler / bot traffic is excluded from slideshow analytics."
+        });
+      }
+
       const { sessionId, deckId, slideIndex, slideNumber, dwellMs, phaseKey } = req.body || {};
       const safeDeckId = assertSafeDeckId(deckId);
 
@@ -1772,6 +1842,13 @@ export function createApp({
 
   app.post("/api/analytics/session/finish", async (req, res) => {
     try {
+      if (!isAllowedAnalyticsClient(req)) {
+        return res.status(403).json({
+          success: false,
+          error: "Automated crawler / bot traffic is excluded from slideshow analytics."
+        });
+      }
+
       const { sessionId, deckId } = req.body || {};
       const safeDeckId = assertSafeDeckId(deckId);
       const summary = finishTrackingSession(sessionId, safeDeckId);

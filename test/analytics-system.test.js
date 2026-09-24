@@ -423,3 +423,65 @@ test("Clear Selection button, filter bar hidden styles, and index.html defaults 
   assert.ok(js.includes("activeLessonFilterBar.style.display = \"none\""), "clearTimetableLessonSelection explicitly sets display: none on activeLessonFilterBar");
 });
 
+test("Bot & Crawler Protections: robots.txt disallows /api/, X-Robots-Tag header is set, bots are blocked, and Antigravity IDE bots are permitted", async () => {
+  const fs = await import("node:fs/promises");
+  const path = await import("node:path");
+
+  // 1. Verify robots.txt exists and disallows /api/
+  const robotsPath = path.resolve("public", "robots.txt");
+  const robotsContent = await fs.readFile(robotsPath, "utf-8");
+  assert.ok(robotsContent.includes("Disallow: /api/"), "robots.txt must disallow /api/");
+
+  const app = createApp();
+  const server = http.createServer(app);
+  await new Promise((resolve) => server.listen(0, resolve));
+  const port = server.address().port;
+  const baseUrl = `http://127.0.0.1:${port}`;
+
+  try {
+    // 2. Verify X-Robots-Tag header is sent on API endpoints
+    const defRes = await fetch(`${baseUrl}/api/analytics/phase-definitions`);
+    assert.equal(defRes.headers.get("x-robots-tag"), "noindex, nofollow, noarchive");
+
+    // 3. Simulated external bot without Antigravity agent header is rejected with 403
+    const botRes = await fetch(`${baseUrl}/api/analytics/session/start`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
+        "X-Test-Simulate-External": "1"
+      },
+      body: JSON.stringify({
+        deckId: "Classic_Lesson_01_Ecosystems",
+        totalSlides: 17
+      })
+    });
+    assert.equal(botRes.status, 403, "External bot crawler must be blocked with 403");
+    const botData = await botRes.json();
+    assert.equal(botData.success, false);
+    assert.ok(botData.error.includes("Bot traffic") || botData.error.includes("excluded"));
+
+    // 4. Antigravity IDE Agent header (X-Antigravity-Agent: 1) is permitted through even with external simulation
+    const agentRes = await fetch(`${baseUrl}/api/analytics/session/start`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": "Playwright/1.44.0 AntigravityRunner",
+        "X-Test-Simulate-External": "1",
+        "X-Antigravity-Agent": "1"
+      },
+      body: JSON.stringify({
+        deckId: "Classic_Lesson_01_Ecosystems",
+        totalSlides: 17,
+        bypassSchedule: true
+      })
+    });
+    assert.equal(agentRes.status, 200, "Antigravity IDE bot with X-Antigravity-Agent must be allowed");
+    const agentData = await agentRes.json();
+    assert.equal(agentData.success, true);
+    assert.ok(agentData.session?.id);
+  } finally {
+    server.close();
+  }
+});
+
