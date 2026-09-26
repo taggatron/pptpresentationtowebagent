@@ -34,9 +34,8 @@ async function testDisintegrateSequence() {
   const stage1Data = await page.evaluate(() => {
     const slideImg = document.getElementById('slideImage');
     const slideVid = document.getElementById('slideVideo');
-    const buildBadge = document.getElementById('currentBuildBadge');
+    const buildBadge = document.getElementById('serialStepBadge');
     return {
-      currentStep: window.currentMediaBuildStep,
       imageVisible: slideImg ? !slideImg.classList.contains('hidden') : false,
       imageSrc: slideImg ? slideImg.src : null,
       videoHidden: slideVid ? slideVid.classList.contains('hidden') : true,
@@ -47,7 +46,7 @@ async function testDisintegrateSequence() {
   console.log("\n[Stage 1] Initial Image State:", JSON.stringify(stage1Data, null, 2));
 
   if (!stage1Data.imageVisible) throw new Error("FAIL: Stage 1 image should be visible!");
-  if (stage1Data.currentStep !== 1) throw new Error(`FAIL: Expected currentMediaBuildStep 1, got ${stage1Data.currentStep}`);
+  if (!stage1Data.videoHidden) throw new Error("FAIL: Stage 1 video should be hidden!");
 
   const stage1ScreenshotPath = path.join(artifactsDir, 'verify_stage_1_clean_poster.png');
   await page.screenshot({ path: stage1ScreenshotPath });
@@ -66,7 +65,6 @@ async function testDisintegrateSequence() {
     return {
       isDisintegrating: slideImg ? slideImg.classList.contains('is-disintegrating') : false,
       canvasExists: Boolean(canvas),
-      currentStep: window.currentMediaBuildStep,
       videoStarted: slideVid ? !slideVid.paused : false
     };
   });
@@ -81,9 +79,8 @@ async function testDisintegrateSequence() {
   const stage2Data = await page.evaluate(() => {
     const slideImg = document.getElementById('slideImage');
     const slideVid = document.getElementById('slideVideo');
-    const buildBadge = document.getElementById('currentBuildBadge');
+    const buildBadge = document.getElementById('serialStepBadge');
     return {
-      currentStep: window.currentMediaBuildStep,
       imageHidden: slideImg ? slideImg.classList.contains('hidden') : true,
       videoPlaying: slideVid ? !slideVid.paused : false,
       videoCurrentTime: slideVid ? slideVid.currentTime : 0,
@@ -107,16 +104,17 @@ async function testDisintegrateSequence() {
   const regressedData = await page.evaluate(() => {
     const slideImg = document.getElementById('slideImage');
     const slideVid = document.getElementById('slideVideo');
+    const buildBadge = document.getElementById('serialStepBadge');
     return {
-      currentStep: window.currentMediaBuildStep,
       imageVisible: slideImg ? !slideImg.classList.contains('hidden') : false,
       videoHidden: slideVid ? slideVid.classList.contains('hidden') : true,
-      videoPaused: slideVid ? slideVid.paused : true
+      videoPaused: slideVid ? slideVid.paused : true,
+      badgeText: buildBadge ? buildBadge.innerText : null
     };
   });
   console.log("[Regressed State]:", JSON.stringify(regressedData, null, 2));
 
-  if (regressedData.currentStep !== 1 || !regressedData.imageVisible || !regressedData.videoPaused) {
+  if (!regressedData.imageVisible || !regressedData.videoHidden || !regressedData.videoPaused) {
     throw new Error("FAIL: Regressing to Stage 1 should restore image and pause video!");
   }
   console.log("✓ Regression back to Stage 1 verified cleanly!");
