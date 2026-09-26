@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Simpsons: Homer Buys an Electric Car - Life Cycle Analysis Hook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 15%, #f0fdf4 0%, #e2fbe8 60%, #cbf2d5 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-wrapper {
+      width: 100%;
+      max-width: 1376px;
+      height: 100%;
+      max-height: 768px;
+      padding: 20px 48px 18px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding-top: 4px;
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      border: 1px solid #bbf7d0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .badge-yt {
+      background: #fee2e2;
+      color: #dc2626;
+      border-color: #fca5a5;
+    }
+
+    h1.title-question {
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.25;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    p.subtitle-prompt {
+      font-size: 13.5px;
+      color: #334155;
+      font-weight: 500;
+      max-width: 850px;
+    }
+
+    .video-container {
+      position: relative;
+      width: min(880px, 88vw);
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.22), 0 10px 15px -5px rgba(15, 23, 42, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      background: #020617;
+      margin: 6px 0;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .footer-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 12px;
+    }
+
+    .fallback-link {
+      font-size: 12px;
+      color: #475569;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      transition: color 0.15s ease;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .fallback-link:hover {
+      color: #16a34a;
+      background: #ffffff;
+      border-color: #86efac;
+    }
+
+    .prompt-box {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #166534;
+      background: rgba(220, 252, 231, 0.8);
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid #86efac;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-wrapper">
+    <header class="header">
+      <div class="badge-row">
+        <span class="badge">Inquiry Video Hook</span>
+        <span class="badge badge-yt">▶ YouTube Clip</span>
+      </div>
+      <h1 class="title-question">Simpsons: Homer Buys an Electric Car</h1>
+      <p class="subtitle-prompt">Does driving an electric car mean zero environmental footprint? Watch how the life cycle of materials and power generation still counts!</p>
+    </header>
+
+    <div class="video-container" id="videoContainer">
+      <iframe
+        id="simpsonsIframe"
+        src="https://www.youtube-nocookie.com/embed/k_kioopGJtY?enablejsapi=1&rel=0&modestbranding=1"
+        title="The Simpsons: Homer Buys an Electric Car"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <footer class="footer-bar">
+      <a class="fallback-link" href="https://www.youtube.com/watch?v=k_kioopGJtY" target="_blank" rel="noopener noreferrer">
+        <span>↗</span> <span>Open clip on YouTube (k_kioopGJtY)</span>
+      </a>
+      <div class="prompt-box">
+        <span>💭 Question: Which of the 4 LCA stages produces the biggest impact for an EV?</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Handle messages from host slide presentation
+    window.addEventListener("message", (event) => {
+      if (!event.data) return;
+      const iframe = document.getElementById("simpsonsIframe");
+      if (!iframe || !iframe.contentWindow) return;
+
+      // When slide navigates away, pause video
+      if (event.data.type === "SLIDE_CHANGED" || event.data.action === "pause") {
+        try {
+          iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        } catch (_) {}
+      }
+    });
+  </script>
+</body>
+</html>

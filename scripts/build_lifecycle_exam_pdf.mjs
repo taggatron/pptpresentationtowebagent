@@ -1,0 +1,726 @@
+import { chromium } from 'playwright';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+const projectRoot = path.resolve('.');
+const deckDir = path.join(projectRoot, 'public/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis');
+const examPdfDir = path.join(deckDir, 'assets/exam_pdf');
+const uploadedPage1Path = path.join(projectRoot, 'scratch/uploaded_pdf/page-1.png');
+
+async function imageToBase64(filePath) {
+  const data = await fs.readFile(filePath);
+  return `data:image/png;base64,${data.toString('base64')}`;
+}
+
+async function main() {
+  await fs.mkdir(examPdfDir, { recursive: true });
+
+  let page1ImgB64 = '';
+  try {
+    page1ImgB64 = await imageToBase64(uploadedPage1Path);
+  } catch (err) {
+    console.warn("Could not load uploaded page 1 png directly:", err.message);
+  }
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OCR GCSE Science - Life Cycle Assessment of Smartphones (6 Marks)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #111827;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 14mm 16mm 12mm 16mm;
+      position: relative;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    /* Page Header */
+    .exam-header {
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .exam-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .ocr-pill {
+      background: #1e3a8a;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .tier-pill {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .exam-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+
+    .exam-subtitle {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .mark-allocation {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      background: #f8fafc;
+      padding: 4px 10px;
+      border: 1.5px solid #0f172a;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .target-grade {
+      font-size: 10px;
+      font-weight: 700;
+      color: #0369a1;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Candidate info bar */
+    .candidate-bar {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 12px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .candidate-field {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #475569;
+    }
+
+    .field-line {
+      flex: 1;
+      border-bottom: 1px dotted #94a3b8;
+      height: 12px;
+    }
+
+    /* Question Box */
+    .question-box {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 16px;
+      background: #ffffff;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .q-number-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .q-num {
+      background: #0f172a;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .q-prompt-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .intro-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .activities-list-container {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 18px;
+      margin: 8px 0 10px 0;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 6px;
+      list-style-type: none;
+    }
+
+    .activity-item {
+      font-size: 12.5px;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bullet-dot {
+      width: 6px;
+      height: 6px;
+      background: #0284c7;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .prompt-highlight {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.45;
+      margin-top: 6px;
+      padding: 8px 12px;
+      background: #eff6ff;
+      border-left: 4px solid #0284c7;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* Answer Area */
+    .answer-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-top: 4px;
+    }
+
+    .answer-guidance-pill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #475569;
+      background: #f1f5f9;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+
+    .dotted-lines-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2px 0;
+    }
+
+    .answer-dotted-line {
+      width: 100%;
+      border-bottom: 1px dotted #94a3b8;
+      height: 20px;
+      position: relative;
+    }
+
+    .mark-tag-bottom {
+      text-align: right;
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      padding-top: 4px;
+    }
+
+    /* Page Footer */
+    .page-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 6px;
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    /* PAGE 2: MARK SCHEME */
+    .ms-header {
+      border-bottom: 2px solid #047857;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .ms-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #064e3b;
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+
+    .ms-tag {
+      background: #ecfdf5;
+      color: #047857;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #a7f3d0;
+      letter-spacing: 0.05em;
+    }
+
+    .levels-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .levels-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1.5px solid #cbd5e1;
+    }
+
+    .levels-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+      line-height: 1.35;
+    }
+
+    .lvl-badge {
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .lvl-3 { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+    .lvl-2 { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .lvl-1 { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+
+    .indicative-content-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .indicative-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stages-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .stage-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+
+    .stage-name {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #0369a1;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .stage-desc {
+      font-size: 10.5px;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    .stage-desc strong {
+      color: #0f172a;
+    }
+
+    .examiner-note-box {
+      background: #f0fdf4;
+      border-left: 4px solid #10b981;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: #064e3b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: EXAM QUESTION PAPER -->
+  <div class="page" id="page1">
+    <div>
+      <header class="exam-header">
+        <div>
+          <div class="exam-badge-group">
+            <span class="ocr-pill">OCR</span>
+            <span class="tier-pill">GCSE Science / Chemistry</span>
+            <span class="tier-pill">Higher Tier (HT)</span>
+          </div>
+          <h1 class="exam-title">Life Cycle Assessment (LCA): Smartphone</h1>
+          <p class="exam-subtitle">Topic C6 / B6: Environmental Chemistry &amp; Sustainable Resources</p>
+        </div>
+        <div class="header-right">
+          <span class="mark-allocation">6 Marks</span>
+          <div class="target-grade">Extended Response (QER)</div>
+        </div>
+      </header>
+
+      <div class="candidate-bar">
+        <div class="candidate-field">
+          <span>Candidate Name:</span>
+          <div class="field-line"></div>
+        </div>
+        <div class="candidate-field">
+          <span>Class / Set:</span>
+          <div class="field-line"></div>
+        </div>
+        <div class="candidate-field">
+          <span>Date:</span>
+          <div class="field-line"></div>
+        </div>
+      </div>
+
+      <main class="question-box">
+        <div class="q-number-bar">
+          <span class="q-num">1</span>
+          <span class="q-prompt-title">Life cycle assessment of consumer electronics</span>
+        </div>
+
+        <p class="intro-text">
+          A life cycle assessment assesses the environmental impact of products such as smartphones. Some activities in the life cycle of a smartphone are listed below.
+        </p>
+
+        <div class="activities-list-container">
+          <ul class="activities-grid">
+            <li class="activity-item"><span class="bullet-dot"></span><span>Extracting oil from oil wells</span></li>
+            <li class="activity-item"><span class="bullet-dot"></span><span>Packing the phone in a box</span></li>
+            <li class="activity-item"><span class="bullet-dot"></span><span>Making plastics from oil</span></li>
+            <li class="activity-item"><span class="bullet-dot"></span><span>Watching videos on the phone</span></li>
+            <li class="activity-item"><span class="bullet-dot"></span><span>Obtaining copper from copper ore</span></li>
+            <li class="activity-item"><span class="bullet-dot"></span><span>Taking apart the phone</span></li>
+            <li class="activity-item"><span class="bullet-dot"></span><span>Putting together all the components</span></li>
+            <li class="activity-item"><span class="bullet-dot"></span><span>Recycling the copper from some components</span></li>
+          </ul>
+        </div>
+
+        <div class="prompt-highlight">
+          Describe the four stages that are assessed in a life cycle assessment.<br>
+          In your answer, give at least one example from the list above for each stage.
+        </div>
+      </main>
+    </div>
+
+    <section class="answer-section">
+      <div class="answer-guidance-pill">
+        <span>✍️ Write your answer in continuous prose. Clearly identify each stage and link at least one activity from the list.</span>
+        <span style="color:#0284c7; font-weight:700;">[6 Marks]</span>
+      </div>
+
+      <div class="dotted-lines-area">
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
+      </div>
+
+      <div class="mark-tag-bottom">[Total: 6 marks]</div>
+    </section>
+
+    <footer class="page-footer">
+      <span>OCR Gateway Science / Chemistry Specification Reference C6.2 / B6.3</span>
+      <span>Page 1 of 2</span>
+      <span>Turn Over For Mark Scheme ➔</span>
+    </footer>
+  </div>
+
+  <!-- PAGE 2: MARK SCHEME -->
+  <div class="page" id="page2">
+    <div>
+      <header class="ms-header">
+        <div>
+          <div class="exam-badge-group">
+            <span class="ms-tag">MARK SCHEME</span>
+            <span class="tier-pill">OCR GCSE Science</span>
+            <span class="tier-pill">Higher Tier (HT)</span>
+          </div>
+          <h1 class="ms-title">Teacher Mark Scheme: 6-Mark Smartphone LCA</h1>
+          <p class="exam-subtitle">Assessment Objectives: AO1 (Demonstrate knowledge) &amp; AO2 (Application to context)</p>
+        </div>
+        <div class="header-right">
+          <span class="mark-allocation" style="border-color:#047857; color:#047857; background:#ecfdf5;">Max: 6</span>
+        </div>
+      </header>
+
+      <!-- Generic Level Descriptors Table -->
+      <table class="levels-table">
+        <thead>
+          <tr>
+            <th style="width: 18%;">Level (Marks)</th>
+            <th style="width: 47%;">Generic Description</th>
+            <th style="width: 35%;">Indicative Level Criteria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="lvl-badge lvl-3">Level 3 (5–6)</span></td>
+            <td>
+              A comprehensive and well-structured answer. All <strong>four stages</strong> of an LCA are correctly identified and clearly described. At least <strong>one correct activity</strong> from the list is matched to each of the four stages.
+            </td>
+            <td>
+              • 4 stages identified.<br>
+              • ≥ 1 valid example matched to each stage.<br>
+              • Coherent scientific terminology.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge lvl-2">Level 3 (3–4)</span></td>
+            <td>
+              A sound description of at least <strong>three stages</strong> with appropriate matching activities from the list, OR all four stages named with partially correct matching of activities.
+            </td>
+            <td>
+              • 3–4 stages named.<br>
+              • 2–3 stages correctly matched with activities.<br>
+              • Mostly organized structure.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge lvl-1">Level 1 (1–2)</span></td>
+            <td>
+              Identifies at least <strong>one or two stages</strong> of an LCA, or correctly assigns activities from the list to recognizable life cycle phases. Answer may be isolated or unstructured.
+            </td>
+            <td>
+              • 1–2 stages named or valid examples classified.<br>
+              • Basic recall without full synthesis.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge" style="background:#f1f5f9; color:#64748b; border:1px solid #cbd5e1;">0 marks</span></td>
+            <td>No creditworthy response or content completely irrelevant.</td>
+            <td>No relevant scientific content.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Indicative Scientific Content -->
+      <div class="indicative-content-card">
+        <div class="indicative-title">
+          <span>📋</span>
+          <span>Indicative Scientific Content (The 4 LCA Stages &amp; Examples)</span>
+        </div>
+
+        <div class="stages-grid">
+          <!-- Stage 1 -->
+          <div class="stage-item">
+            <div class="stage-name">
+              <span>⛏️</span>
+              <span>Stage 1: Extracting &amp; Processing Raw Materials</span>
+            </div>
+            <div class="stage-desc">
+              <strong>Matching examples from list:</strong><br>
+              • <em>Extracting oil from oil wells</em> (crude oil for polymers/plastics).<br>
+              • <em>Obtaining copper from copper ore</em> (mining, smelting, electrolysis).<br>
+              <strong>Impacts:</strong> Mining ores, drilling oil, quarrying; causes habitat destruction, deforestation, toxic runoff, heavy machinery fossil fuel use.
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="stage-item">
+            <div class="stage-name">
+              <span>🏭</span>
+              <span>Stage 2: Manufacturing &amp; Packaging</span>
+            </div>
+            <div class="stage-desc">
+              <strong>Matching examples from list:</strong><br>
+              • <em>Making plastics from oil</em> (refining and cracking).<br>
+              • <em>Putting together all the components</em> (assembling the smartphone).<br>
+              • <em>Packing the phone in a box</em> (cardboard/packaging).<br>
+              <strong>Impacts:</strong> High thermal and electrical energy consumption, industrial chemical emissions, wastewater, factory carbon emissions.
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="stage-item">
+            <div class="stage-name">
+              <span>📱</span>
+              <span>Stage 3: Use &amp; Operation Over Lifetime</span>
+            </div>
+            <div class="stage-desc">
+              <strong>Matching example from list:</strong><br>
+              • <em>Watching videos on the phone</em> (charging and powering the device).<br>
+              <strong>Impacts:</strong> Cumulative electricity drawn from the grid during recharging, battery life degradation, data-centre energy transmission.
+            </div>
+          </div>
+
+          <!-- Stage 4 -->
+          <div class="stage-item">
+            <div class="stage-name">
+              <span>♻️</span>
+              <span>Stage 4: Disposal &amp; End of Life</span>
+            </div>
+            <div class="stage-desc">
+              <strong>Matching examples from list:</strong><br>
+              • <em>Taking apart the phone</em> (dismantling, sorting parts).<br>
+              • <em>Recycling copper from phone components</em> (metal recovery).<br>
+              <strong>Impacts:</strong> Landfill space, non-biodegradable electronic waste, heavy metals leaching into groundwater, toxic emissions if incinerated.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Examiner Guidance Box -->
+      <div class="examiner-note-box">
+        <strong>Examiner Guidance &amp; Common Pitfalls:</strong><br>
+        • <strong>Transport:</strong> Transport and distribution occurs across <em>all</em> four stages (transporting crude oil, shipping parts, distributing to shops, hauling waste to landfill). <em>Do NOT accept transport as a distinct fifth stage</em>.<br>
+        • <strong>Recycling:</strong> Recycling the copper is a disposal/reprocessing activity that mitigates the need to extract fresh raw materials in Stage 1.<br>
+        • <strong>Scoris Annotations:</strong> Annotate with <strong>L1, L2, L3</strong> level descriptors and clear ticks on matched activity examples.
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      <span>OCR Gateway Science B (J257 / J247) · Specification Checkpoint</span>
+      <span>Page 2 of 2 (Mark Scheme)</span>
+      <span>Official Examination Material</span>
+    </footer>
+  </div>
+
+</body>
+</html>`;
+
+  const htmlPath = path.join(examPdfDir, 'lifecycle_assessment_exam_doc.html');
+  await fs.writeFile(htmlPath, html, 'utf8');
+  console.log('Saved exam document HTML to:', htmlPath);
+
+  // Generate PDF and PNGs via Playwright
+  console.log('Launching browser to render PDF and high-res images...');
+  const browser = await chromium.launch({ channel: 'chrome' });
+  const page = await browser.newPage();
+  await page.setContent(html, { waitUntil: 'networkidle' });
+
+  const pdfPath = path.join(examPdfDir, 'lifecycle_assessment_checkpoint.pdf');
+  await page.pdf({
+    path: pdfPath,
+    format: 'A4',
+    printBackground: true,
+    margin: { top: 0, right: 0, bottom: 0, left: 0 }
+  });
+  console.log('Generated PDF at:', pdfPath);
+
+  // Render Page 1 and Page 2 as ultra-high-resolution PNGs
+  const page1Element = await page.$('#page1');
+  const page2Element = await page.$('#page2');
+
+  await page1Element.screenshot({
+    path: path.join(examPdfDir, 'page-1.png'),
+    scale: 'device'
+  });
+  await page2Element.screenshot({
+    path: path.join(examPdfDir, 'page-2.png'),
+    scale: 'device'
+  });
+
+  console.log('Exported page-1.png and page-2.png at ultra-high resolution');
+  await browser.close();
+}
+
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
