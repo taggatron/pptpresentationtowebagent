@@ -484,7 +484,81 @@
       "title": "Inquiry: Environmental Cost of an iPhone",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_08.png",
-      "sourceMediaPath": "ppt/slides/slide8.xml",
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "protected-video",
+        "reason": "Inquiry prompt regarding environmental cost of an iPhone with video case study reveal.",
+        "protectedVideoCount": 1
+      },
+      "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/Please_remove_the_exploding_ip.mp4",
+      "originalImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_08.png",
+      "progressiveBuilds": [
+        {
+          "id": "slide_08_image_build_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Build 1: Inquiry Question (iPhone Environmental Damage)",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_08.png"
+        },
+        {
+          "id": "slide_08_video_build_2",
+          "version": 2,
+          "kind": "video",
+          "label": "Build 2: Video Case Study (Environmental Impact)",
+          "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/Please_remove_the_exploding_ip.mp4",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_08.png",
+          "posterUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_08.png",
+          "transition": "blur-disintegrate"
+        }
+      ],
+      "history": [
+        {
+          "id": "ver_orig",
+          "label": "Build 1: Inquiry Question (iPhone Environmental Damage)",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_08.png"
+        },
+        {
+          "id": "ver_video_case",
+          "label": "Build 2: Video Case Study (Environmental Impact)",
+          "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/Please_remove_the_exploding_ip.mp4",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_08.png"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "slide_08_image_build_1",
+            "title": "Build 1: Inquiry Question (iPhone Environmental Damage)",
+            "componentIds": [
+              "slide_08_image_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "step": 2,
+            "buildId": "slide_08_video_build_2",
+            "title": "Build 2: Video Case Study (Environmental Impact)",
+            "componentIds": [
+              "slide_08_video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          }
+        ]
+      },
       "isInteractive": false,
       "interactiveType": null,
       "text": "How much environmental damage does an iPhone do?",

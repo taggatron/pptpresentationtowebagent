@@ -232,10 +232,66 @@
     },
     {
       "number": 8,
-      "title": "Slide 8",
+      "title": "Inquiry: Environmental Cost of an iPhone",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/slide_08.png",
       "sourceMediaPath": "ppt/media/image8.png",
+      "hasProgressiveBuilds": true,
+      "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/Please_remove_the_exploding_ip.mp4",
+      "originalImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/slide_08.png",
+      "progressiveBuilds": [
+        {
+          "id": "slide_08_image_build_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Build 1: Inquiry Question (iPhone Environmental Damage)",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/slide_08.png"
+        },
+        {
+          "id": "slide_08_video_build_2",
+          "version": 2,
+          "kind": "video",
+          "label": "Build 2: Video Case Study (Environmental Impact)",
+          "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/Please_remove_the_exploding_ip.mp4",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/slide_08.png",
+          "posterUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/slide_08.png",
+          "transition": "blur-disintegrate"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "slide_08_image_build_1",
+            "title": "Build 1: Inquiry Question (iPhone Environmental Damage)",
+            "componentIds": [
+              "slide_08_image_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "step": 2,
+            "buildId": "slide_08_video_build_2",
+            "title": "Build 2: Video Case Study (Environmental Impact)",
+            "componentIds": [
+              "slide_08_video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          }
+        ]
+      },
       "isInteractive": false,
       "interactiveType": null
     }
