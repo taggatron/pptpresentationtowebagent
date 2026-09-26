@@ -6478,6 +6478,7 @@ function renderComponentEditorPanel() {
   interactiveCells.forEach((cell, index) => {
     const revealed = isAnswerRevealed(slide, cell);
     const bounds = getAnswerRegionSet(cell).primary || { x: 0, y: 0, w: 20, h: 20 };
+    const revealMode = normalizeRevealMode(cell);
     const card = document.createElement("div");
     const isSelected =
       selectedTarget?.type === "component" && selectedTarget.id === cell.id;
