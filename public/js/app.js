@@ -1310,6 +1310,15 @@ function showVideoBuild(slide, build) {
     build?.videoUrl?.includes("Please_take_the_attached_slide.mp4")
   );
 
+  const isClickToPlay = Boolean(
+    build?.clickToPlay ||
+    slide?.clickToPlay ||
+    build?.autoplay === false ||
+    slide?.autoplay === false ||
+    build?.requireClickToPlay ||
+    slide?.requireClickToPlay
+  );
+
   const token = videoPlaybackToken;
   const fullUrl = new URL(build.videoUrl, window.location.href).href;
   const posterUrl = build.posterUrl || build.imageUrl || slide.imageUrl || "";
@@ -1459,7 +1468,9 @@ function showVideoBuild(slide, build) {
       addVideoListener(slideVideo, "timeupdate", stopAtSegmentEnd);
     }
     updateVideoPlaybackStateUI(!slideVideo.paused);
-    attemptPlay();
+    if (!isClickToPlay) {
+      attemptPlay();
+    }
   };
 
   if (slideVideo.readyState >= HTMLMediaElement.HAVE_METADATA) beginSegment();
@@ -7014,6 +7025,11 @@ function setupEventListeners() {
   videoRestartBtn?.addEventListener("click", () => replaySlideVideo({ broadcast: true }));
   videoPlayFallback?.addEventListener("click", () => {
     playSlideVideo({ broadcast: true });
+  });
+  slideImage?.addEventListener("click", () => {
+    if (isCurrentSlideVideo()) {
+      toggleSlideVideoPlayback({ broadcast: true });
+    }
   });
   editComponentBtn?.addEventListener("click", () => switchSidebarTab("editor"));
   cancelRevisionBtn?.addEventListener("click", () => {
