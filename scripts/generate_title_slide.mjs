@@ -164,10 +164,12 @@ async function generateSlide() {
     }
 
     h1.hero-title span.highlight {
-      background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #a7f3d0 100%);
+      display: inline-block;
+      text-shadow: none !important;
+      background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #34d399 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 4px 30px rgba(45, 212, 191, 0.65));
+      filter: drop-shadow(0 4px 18px rgba(45, 212, 191, 0.42));
     }
 
     .hero-subtitle {
@@ -269,7 +271,7 @@ async function generateSlide() {
   });
   const page = await browser.newPage({
     viewport: { width: 1920, height: 1080 },
-    deviceScaleFactor: 1.5 // Produces crisp 2880x1620 resolution
+    deviceScaleFactor: 2.0 // Produces pristine 3840x2160 4K UHD resolution
   });
 
   await page.setContent(html, { waitUntil: 'networkidle' });
