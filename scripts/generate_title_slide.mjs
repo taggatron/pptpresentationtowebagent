@@ -42,7 +42,7 @@ async function generateSlide() {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 70px 100px;
+      padding: 55px 90px;
     }
 
     /* Dramatic cinematic scrim overlay: preserves rich landscape view while ensuring AAA text contrast */
@@ -51,10 +51,10 @@ async function generateSlide() {
       inset: 0;
       background: linear-gradient(
         135deg,
-        rgba(8, 14, 26, 0.88) 0%,
-        rgba(9, 23, 40, 0.72) 40%,
-        rgba(10, 38, 55, 0.35) 75%,
-        rgba(5, 18, 30, 0.65) 100%
+        rgba(8, 14, 26, 0.90) 0%,
+        rgba(9, 23, 40, 0.76) 42%,
+        rgba(10, 38, 55, 0.38) 78%,
+        rgba(5, 18, 30, 0.68) 100%
       );
       pointer-events: none;
     }
@@ -99,7 +99,7 @@ async function generateSlide() {
       background: rgba(15, 23, 42, 0.75);
       border: 1px solid rgba(56, 189, 248, 0.45);
       backdrop-filter: blur(12px);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -111,134 +111,112 @@ async function generateSlide() {
       color: #f1f5f9;
     }
     .curriculum-tag {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: rgba(226, 232, 240, 0.85);
       letter-spacing: 0.05em;
     }
 
-    /* Hero Main Section - Centered & Expansive without cluttered containers */
+    /* Hero Main Section - Dominates and fills the slide space */
     .hero-main {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 1300px;
+      width: 100%;
+      max-width: 1740px;
       margin-top: auto;
       margin-bottom: auto;
+      padding: 15px 0;
     }
 
     .topic-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
       font-family: 'Outfit', sans-serif;
-      font-size: 20px;
+      font-size: 28px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.22em;
       color: #06b6d4;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 12px rgba(6, 182, 212, 0.4);
+      margin-bottom: 24px;
+      text-shadow: 0 2px 16px rgba(6, 182, 212, 0.5);
     }
 
     .topic-eyebrow::before {
       content: '';
       display: inline-block;
-      width: 28px;
-      height: 3px;
+      width: 44px;
+      height: 4px;
       background: #06b6d4;
       border-radius: 2px;
     }
 
     h1.hero-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 88px;
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.025em;
+      font-size: 154px;
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
       color: #ffffff;
-      margin-bottom: 26px;
-      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.7);
+      margin-bottom: 28px;
+      text-shadow: 0 6px 44px rgba(0, 0, 0, 0.9);
     }
 
     h1.hero-title span.highlight {
       background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #a7f3d0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 16px rgba(45, 212, 191, 0.45));
+      filter: drop-shadow(0 4px 30px rgba(45, 212, 191, 0.65));
     }
 
     .hero-subtitle {
-      font-size: 26px;
-      line-height: 1.5;
+      font-size: 38px;
+      line-height: 1.46;
       font-weight: 400;
-      color: #cbd5e1;
-      max-width: 980px;
-      margin-bottom: 36px;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+      color: #e2e8f0;
+      max-width: 1700px;
+      margin-bottom: 44px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
     }
 
     .big-enquiry-box {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 18px;
-      padding: 16px 28px;
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(45, 212, 191, 0.4);
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
-      max-width: 860px;
+      gap: 32px;
+      padding: 28px 44px;
+      background: rgba(13, 22, 38, 0.88);
+      border: 2px solid rgba(45, 212, 191, 0.55);
+      border-radius: 26px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 18px 52px rgba(0, 0, 0, 0.5), 0 0 40px rgba(45, 212, 191, 0.18);
+      width: 100%;
+      max-width: 1720px;
     }
     .enquiry-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+      width: 82px;
+      height: 82px;
+      border-radius: 22px;
       background: linear-gradient(135deg, #0ea5e9, #10b981);
       color: #fff;
-      font-size: 22px;
+      font-size: 46px;
       font-weight: 800;
       flex-shrink: 0;
+      box-shadow: 0 4px 24px rgba(14, 165, 233, 0.45);
     }
     .enquiry-text {
-      font-size: 18px;
+      font-size: 34px;
       font-weight: 600;
-      color: #f1f5f9;
+      color: #f8fafc;
       line-height: 1.4;
+      letter-spacing: -0.015em;
     }
     .enquiry-text span {
       color: #38bdf8;
-    }
-
-    /* Clean subtle bottom bar */
-    .bottom-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.75);
-    }
-    .bottom-bar-left {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .stage-crumb {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 600;
-    }
-    .stage-crumb .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #38bdf8;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -252,7 +230,7 @@ async function generateSlide() {
       <div class="top-bar">
         <div class="badge-group">
           <div class="pill-badge">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
             </svg>
             GCSE Chemistry
@@ -278,19 +256,6 @@ async function generateSlide() {
           <div class="enquiry-text">
             Key Enquiry: <span>How do we quantify environmental cost from raw extraction to disposal?</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Clean Bottom Bar -->
-      <div class="bottom-bar">
-        <div class="bottom-bar-left">
-          <div class="stage-crumb"><span class="dot"></span> Raw Materials</div>
-          <div class="stage-crumb"><span class="dot"></span> Manufacturing</div>
-          <div class="stage-crumb"><span class="dot"></span> Product Use</div>
-          <div class="stage-crumb"><span class="dot"></span> Disposal & Recycling</div>
-        </div>
-        <div class="bottom-bar-right">
-          Cradle to Grave Impact Assessment
         </div>
       </div>
     </div>
