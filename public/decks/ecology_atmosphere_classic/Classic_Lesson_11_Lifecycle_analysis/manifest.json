@@ -18,41 +18,64 @@
         "reason": "Introductory video hook illustrating the four cradle-to-grave stages of a product lifecycle assessment.",
         "protectedVideoCount": 1
       },
-      "clickToPlay": true,
-      "autoplay": false,
       "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/Please_create_a_video_that_ill.mp4",
       "originalImageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_01.png",
       "progressiveBuilds": [
         {
-          "id": "video_build_1",
+          "id": "image_build_1",
           "version": 1,
+          "kind": "image",
+          "label": "Build 1: Product Lifecycle Analysis (Title)",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_01.png"
+        },
+        {
+          "id": "video_build_2",
+          "version": 2,
           "kind": "video",
-          "label": "Build 1: Product Lifecycle Analysis (Intro Video)",
-          "clickToPlay": true,
-          "autoplay": false,
+          "label": "Build 2: Video Case Study (Product Lifecycle)",
           "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/Please_create_a_video_that_ill.mp4",
           "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_01.png",
-          "posterUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_01.png"
+          "posterUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_01.png",
+          "transition": "blur-disintegrate"
         }
       ],
       "history": [
         {
+          "id": "ver_orig",
+          "label": "Build 1: Product Lifecycle Analysis (Title)",
+          "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_01.png"
+        },
+        {
           "id": "ver_video_intro",
-          "label": "Build 1: Product Lifecycle Analysis (Intro Video)",
+          "label": "Build 2: Video Case Study (Product Lifecycle)",
           "videoUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/Please_create_a_video_that_ill.mp4",
           "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_analysis/slides/slide_01.png"
         }
       ],
       "serialAnimation": {
-        "totalBuildSteps": 1,
+        "totalBuildSteps": 2,
         "autoAdvanceDelayMs": 3200,
         "serialSteps": [
           {
             "step": 1,
-            "buildId": "video_build_1",
-            "title": "Build 1: Product Lifecycle Analysis (Intro Video)",
+            "buildId": "image_build_1",
+            "title": "Build 1: Product Lifecycle Analysis (Title)",
             "componentIds": [
-              "video_build_1"
+              "image_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            }
+          },
+          {
+            "step": 2,
+            "buildId": "video_build_2",
+            "title": "Build 2: Video Case Study (Product Lifecycle)",
+            "componentIds": [
+              "video_build_2"
             ],
             "targetBounds": {
               "x": 0,
@@ -65,7 +88,7 @@
       },
       "isInteractive": false,
       "interactiveType": null,
-      "text": "Product Lifecycle Analysis\nGCSE Chemistry AQA 4.10.1.2\nUnit 10: Using Resources\nEvaluating the true cradle-to-grave environmental footprint: raw material extraction, manufacturing, product use, and disposal / e-waste.\nStage 1: Raw Materials (Lithium mining & brine ponds)\nStage 2: Manufacturing (Circuit boards & electronics)\nStage 3: Product Use (Device charging & operation)\nStage 4: Disposal (E-waste & recycling)",
+      "text": "Product Lifecycle Analysis\nGCSE Chemistry OCR Specification\nUnit 10: Using Resources · Quantitative Environmental Science & Sustainability\nEvaluating the true cradle-to-grave environmental footprint: raw material extraction, manufacturing, product use, and disposal / e-waste.\nStage 1: Raw Materials (Lithium mining & brine ponds)\nStage 2: Manufacturing (Circuit boards & electronics)\nStage 3: Product Use (Device charging & operation)\nStage 4: Disposal (E-waste & recycling)",
       "cognitiveGuide": {
         "estimatedTimeSeconds": 30,
         "timeGuideDisplay": "26–35s",

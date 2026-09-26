@@ -1477,15 +1477,121 @@ function showVideoBuild(slide, build) {
   else addVideoListener(slideVideo, "loadedmetadata", beginSegment, { once: true });
 }
 
-function renderMediaBuild(slide, build) {
-  slideImage?.classList.remove("hidden");
-  const imageUrl = build?.kind === "video"
-    ? build.posterUrl || build.imageUrl || slide.imageUrl
-    : build?.imageUrl || slide.imageUrl;
-  setSlideImageSource(imageUrl);
+function triggerDisintegrationEffect() {
+  const stage = document.getElementById("slideStage");
+  if (!stage) return;
 
-  if (build?.kind === "video") showVideoBuild(slide, build);
-  else hideSlideVideo();
+  let canvas = document.getElementById("disintegrateCanvas");
+  if (!canvas) {
+    canvas = document.createElement("canvas");
+    canvas.id = "disintegrateCanvas";
+    canvas.className = "disintegrate-canvas";
+    stage.appendChild(canvas);
+  }
+
+  const rect = stage.getBoundingClientRect();
+  canvas.width = rect.width || 1280;
+  canvas.height = rect.height || 720;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const particles = [];
+  const particleCount = 320;
+  const colors = ["#38bdf8", "#06b6d4", "#2dd4bf", "#a7f3d0", "#ffffff", "#0284c7"];
+
+  for (let i = 0; i < particleCount; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const angle = Math.atan2(y - canvas.height / 2, x - canvas.width / 2) + (Math.random() - 0.5) * 0.8;
+    const speed = 2.5 + Math.random() * 8.5;
+    particles.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed + (Math.random() - 0.5) * 4,
+      vy: Math.sin(angle) * speed + (Math.random() - 0.5) * 4 - 1.2,
+      size: 2.5 + Math.random() * 5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: 1,
+      decay: 0.016 + Math.random() * 0.02,
+      spin: (Math.random() - 0.5) * 0.25,
+      rotation: Math.random() * Math.PI * 2
+    });
+  }
+
+  const startTime = performance.now();
+  const duration = 750;
+
+  function animate(now) {
+    const elapsed = now - startTime;
+    if (elapsed > duration || particles.length === 0) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.remove();
+      return;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vx *= 0.96;
+      p.vy *= 0.96;
+      p.alpha -= p.decay;
+      p.rotation += p.spin;
+
+      if (p.alpha <= 0) {
+        particles.splice(i, 1);
+        continue;
+      }
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.globalAlpha = Math.max(0, p.alpha);
+      ctx.fillStyle = p.color;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = p.color;
+      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+      ctx.restore();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
+
+function renderMediaBuild(slide, build) {
+  const isDisintegrate = build?.kind === "video" && (build?.transition === "blur-disintegrate" || slide?.number === 1);
+  const wasImageVisible = Boolean(slideImage && !slideImage.classList.contains("hidden") && !slideImage.classList.contains("is-disintegrating"));
+
+  if (isDisintegrate && wasImageVisible) {
+    // Blur and disintegrate the poster image to reveal the video underneath
+    slideImage.classList.add("is-disintegrating");
+    slideImage.style.zIndex = "10";
+    triggerDisintegrationEffect();
+    showVideoBuild(slide, build);
+
+    setTimeout(() => {
+      slideImage.classList.add("hidden");
+      slideImage.classList.remove("is-disintegrating");
+      slideImage.style.zIndex = "";
+    }, 750);
+  } else {
+    slideImage?.classList.remove("is-disintegrating");
+    slideImage?.classList.remove("hidden");
+    if (slideImage) slideImage.style.zIndex = "";
+    const imageUrl = build?.kind === "video"
+      ? build.posterUrl || build.imageUrl || slide.imageUrl
+      : build?.imageUrl || slide.imageUrl;
+    setSlideImageSource(imageUrl);
+
+    if (build?.kind === "video") showVideoBuild(slide, build);
+    else hideSlideVideo();
+  }
+
+  const buildSteps = getStageBuildSteps(slide);
+  slideImage?.classList.toggle("is-clickable", currentMediaBuildStep < buildSteps.length);
 }
 
 function normalizeRevealMode(cell) {
@@ -7027,6 +7133,12 @@ function setupEventListeners() {
     playSlideVideo({ broadcast: true });
   });
   slideImage?.addEventListener("click", () => {
+    const slide = currentDeck?.slides[currentSlideIndex];
+    const buildSteps = getStageBuildSteps(slide);
+    if (currentMediaBuildStep < buildSteps.length) {
+      advanceMediaBuildStep();
+      return;
+    }
     if (isCurrentSlideVideo()) {
       toggleSlideVideoPlayback({ broadcast: true });
     }
