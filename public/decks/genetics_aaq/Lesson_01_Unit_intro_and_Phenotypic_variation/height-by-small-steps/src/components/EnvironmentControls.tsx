@@ -1,0 +1,11 @@
+import { PanelViewButton } from './PanelView';
+import { Leaf, RotateCcw } from 'lucide-react';
+import { factors, factorMetadata, neutralEnvironment } from '../data/environment';
+import type { Environment, EnvironmentalPolarity } from '../data/environment';
+export function EnvironmentControls({polarity,environment,onChange,onSelect}:{polarity:EnvironmentalPolarity;environment:Environment;onChange:(e:Environment)=>void;onSelect:(id:string)=>void}) {
+ return <section className="panel environment-panel" aria-labelledby="environment-title"><div className="panel-heading"><h2 id="environment-title"><Leaf size={17}/> Shape the environment</h2><div className="panel-actions"><button className="icon-button" title="Restore neutral environment" aria-label="Restore neutral environment" onClick={()=>onChange({...neutralEnvironment})}><RotateCcw size={15}/></button><PanelViewButton panel="environment" label="environment controls"/></div></div>
+ <div className="environment-content"><div className="slider-label"><button className="factor-link overall" onClick={()=>onSelect('overall')}>Overall environment</button><output>{environment.overall>0?'+':''}{environment.overall}</output></div>
+ <input aria-label="Overall environment" type="range" min="-100" max="100" value={environment.overall} onChange={e=>onChange({...environment,overall:Number(e.target.value)})}/><div className="range-ends"><span>Adverse</span><span>Neutral</span><span>Supportive</span></div>
+ <div className="factor-sliders">{factors.map(base=>{const f=factorMetadata(base,polarity);const smoking=f.id==='prenatal'&&polarity==='negative';return <div className="factor-slider" key={f.id}><div className="slider-label"><button className="factor-link" onClick={()=>onSelect(f.id)}>{f.name}</button><output>{smoking?100-environment[f.id]:environment[f.id]}</output></div><input type="range" aria-label={f.name} min="0" max="100" value={smoking?100-environment[f.id]:environment[f.id]} onChange={e=>onChange({...environment,[f.id]:smoking?100-Number(e.target.value):Number(e.target.value)})}/><div className="range-ends"><span>{f.low}</span><span>{f.high}</span></div></div>;})}</div>
+ <p className="environment-tip">Changing a condition starts a new population. Save a comparison first to see the shift.</p></div></section>;
+}
