@@ -282,6 +282,14 @@ export const KNOWN_SLIDE_SETS = [
     description: "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology · Biomedical Techniques and Induction."
   },
   {
+    id: "genetics_aaq",
+    title: "AAQ Human Bio · Genetics",
+    category: "Human Biology",
+    icon: "🧬",
+    folder: "powerpoints_aaq_genetics",
+    description: "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology · Unit F172: Genetics & Complex Traits."
+  },
+  {
     id: "ecology_atmosphere_classic",
     title: "GCSE Science · Ecology & Atmosphere (Classic)",
     category: "Biology & Chemistry",
