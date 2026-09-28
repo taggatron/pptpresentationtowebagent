@@ -25,77 +25,79 @@ export const lessons = [
     teacher: "Dan",
     deckId: "Lesson_01_Unit_intro_and_Phenotypic_variation",
     title: "Unit intro & Phenotypic variation",
-    focus: "Unit Induction, Phenotypic Variance & Environmental Modifiers",
-    deliverable: "Construct biometric variation curves, calculate standard deviation and phenotypic variance (Vp = Vg + Ve), and differentiate continuous vs discontinuous phenotypes.",
-    details: "Unit Induction into OCR Cambridge Advanced National (AAQ) Human Biology Unit F172: Genetics. Biological mechanisms governing phenotypic variation: polygenic inheritance involving multiple additive gene loci vs monogenic Mendelian discrete traits. Construction and interpretation of normal distribution Gaussian curves for continuous biometric traits (mean, median, mode, standard deviation, and variance). The fundamental quantitative genetics partitioning equation Vp = Vg + Ve (where total phenotypic variance Vp equals genetic variance Vg plus environmental variance Ve). Environmental influences on gene expression (nutrition, UV exposure, physical stress, epigenetic modifications) leading to phenotypic plasticity. Diagnostic clarification: discrete categories (ABO blood groups, PTC tasting) are determined by single gene loci unaffected by environmental variance, whereas continuous polygenic traits (height, skin pigmentation, systolic blood pressure, forced expiratory volume FEV1) show unbroken gradations shaped by multifactorial interactions.",
+    focus: "Phenotypic Variation, Origins of Genetic Diversity & Biometric Analysis",
+    deliverable: "Construct biometric plots (bar charts for discontinuous vs histograms for continuous traits), calculate and interpret standard deviation, and analyze blood-group genetics alongside the variance equation Vp = Vg + Ve.",
+    details: "Unit Induction into OCR Cambridge Advanced National (AAQ) Human Biology Unit F172: Genetics. 1. Phenotypic variation reflects genetic, environmental, and combined influences (Vp = Vg + Ve). It manifests as interspecific variation (differences between different species) and intraspecific variation (differences between individuals of the same species). Traits are classified into continuous variation (quantitative, unbroken numerical spectrum, polygenic inheritance interacting with environmental factors, forming a Gaussian normal distribution) versus discontinuous variation (qualitative, distinct discrete non-overlapping categories, monogenic with zero or negligible environmental influence). 2. Origins of genetic diversity (overview): Meiosis (independent assortment of homologous chromosomes in Metaphase I and crossing over/chiasmata formation in Prophase I yielding recombinant chromatids), random fertilisation of gametes generating unique diploid zygotes, and gene/chromosomal mutations providing the ultimate raw source of novel alleles. 3. Clinical application & statistical analysis: Blood-group genetics (ABO system: IA, IB, IO codominant/recessive single-locus inheritance) as an exemplar of purely genetic discontinuous variation. Teaching appropriate graphical and statistical analysis: plotting discrete discontinuous data as bar charts (with spaces between distinct categories) versus continuous data grouped into class intervals as histograms (contiguous bars with no gaps); calculating and interpreting the arithmetic mean, variance, and standard deviation (evaluating dispersion around the mean and the 68-95-99.7 empirical rule for normal distributions).",
     starterQuestions: [
-      { q: "What distinguishes continuous from discontinuous phenotypic variation?", a: "Discontinuous variation falls into distinct non-overlapping categories (monogenic); continuous variation shows a smooth numerical spectrum (polygenic + environmental)." },
-      { q: "Define phenotypic variance in the equation Vp = Vg + Ve.", a: "Total observed variation (Vp) equals the sum of genetic variance (Vg) and environmental variance (Ve)." },
-      { q: "Give one clinical example of a continuous and one of a discontinuous trait in humans.", a: "Continuous: systolic blood pressure, height, or FEV1. Discontinuous: ABO blood group or PTC tasting ability." },
-      { q: "What does the standard deviation measure in a biometric dataset?", a: "The spread or dispersion of phenotypic values around the calculated arithmetic mean." },
-      { q: "How does polygenic inheritance produce a bell-shaped Gaussian normal distribution?", a: "Multiple gene loci have small, additive effects on the phenotype, producing many intermediate phenotypes and few extreme phenotypes." },
-      { q: "Why cannot environmental factors alter an individual's ABO blood group phenotype?", a: "ABO blood group is determined entirely by single-locus Mendelian alleles (IA, IB, IO) with zero environmental variance contribution (Ve = 0)." }
+      { q: "What is the difference between interspecific and intraspecific variation?", a: "Interspecific is variation between distinct species; intraspecific is variation among individuals of the same species." },
+      { q: "What three primary biological processes generate genetic diversity in sexually reproducing organisms?", a: "Meiosis (crossing over and independent assortment), random fertilisation of gametes, and DNA mutations." },
+      { q: "Define phenotypic variance in the quantitative equation Vp = Vg + Ve.", a: "Total observable phenotypic variance (Vp) equals genetic variance (Vg) plus environmental variance (Ve)." },
+      { q: "Why must ABO blood group data be plotted on a bar chart rather than a histogram?", a: "ABO blood groups are discrete, discontinuous qualitative categories, so bars must have distinct spaces between them." },
+      { q: "When is a histogram used instead of a bar chart for biological data?", a: "For continuous quantitative variables grouped into contiguous class intervals/bins (with no spaces between bars)." },
+      { q: "What does the standard deviation measure in a biometric dataset?", a: "The spread or dispersion of individual continuous phenotypic values around the calculated arithmetic mean." }
     ],
     objectives: {
-      knowledge: "Distinguish between continuous and discontinuous phenotypic variation and explain polygenic inheritance.",
-      application: "Apply the variance equation Vp = Vg + Ve to evaluate the relative contributions of genotype and environment to human traits.",
-      evaluation: "Evaluate biometric datasets using mean, variance, and standard deviation to assess normal distribution compliance."
+      knowledge: "Explain how phenotypic variation reflects genetic, environmental, and combined influences, distinguishing interspecific vs intraspecific and continuous vs discontinuous variation.",
+      application: "Outline how genetic diversity arises via meiosis, random fertilisation, and mutation, applying these principles to ABO blood-group genetics.",
+      evaluation: "Select and construct appropriate graphical representations (bar charts vs histograms) and evaluate datasets using mean and standard deviation."
     },
     terminology: [
-      { term: "Phenotypic Variance (Vp)", def: "The total observable variation of a specific biological trait across a population: Vp = Vg + Ve." },
-      { term: "Polygenic Inheritance", def: "A phenotypic characteristic controlled by the additive effects of two or more independent gene loci." },
-      { term: "Normal Distribution", def: "A symmetrical bell-shaped probability distribution where mean, median, and mode coincide, typical of continuous traits." },
-      { term: "Phenotypic Plasticity", def: "The capacity of a single genotype to produce different phenotypes in response to varying environmental conditions." }
+      { term: "Interspecific vs Intraspecific", def: "Interspecific: phenotypic variation between different species. Intraspecific: phenotypic variation between individuals of the same species." },
+      { term: "Continuous Variation", def: "A quantitative phenotypic spectrum controlled polygenically with environmental modifiers, plotted as a histogram." },
+      { term: "Discontinuous Variation", def: "Discrete, non-overlapping phenotypic categories determined by single-gene loci (e.g. ABO blood group), plotted as a bar chart." },
+      { term: "Standard Deviation (s)", def: "A statistical metric quantifying the spread of continuous phenotypic measurements around the arithmetic mean: s = sqrt(sum(x - mean)^2 / (n - 1))." },
+      { term: "ABO Blood-Group Genetics", def: "Monogenic codominant/recessive single-locus system (alleles IA, IB, IO) showing strictly discontinuous genetic inheritance." }
     ],
     theoryPoints: [
-      "Genetics Distinctive: Unit F172 bridges molecular nucleic acid architecture directly to clinical pathophysiological outcomes and population genomics.",
-      "Quantitative Variance Partitioning: Vp = Vg + Ve. Twin studies and heritability estimates (H^2 = Vg / Vp) benchmark how strongly clinical conditions are inherited.",
-      "Continuous vs Discontinuous Traits: Discontinuous traits are discrete, qualitative, and monogenic (e.g. ABO locus). Continuous traits are quantitative, metric, and polygenic.",
-      "Normal Distribution Metrics: In a standard normal distribution, ~68.2% of individuals lie within 1 standard deviation of the mean, and ~95.4% lie within 2 standard deviations."
+      "Variation Framework: Phenotypic variation (Vp = Vg + Ve) includes interspecific differences (between species) and intraspecific differences (within species).",
+      "Origins of Diversity: Meiosis (crossing over in Prophase I, independent assortment in Metaphase I), random fertilisation of gametes, and spontaneous mutations.",
+      "Graph Selection: Discontinuous traits (ABO blood groups) require separated bar charts; continuous traits (height, blood pressure) require contiguous histograms.",
+      "Standard Deviation: In a standard normal biometric distribution, 68.2% of individuals lie within 1 standard deviation (mean +/- 1 SD), and 95.4% lie within 2 standard deviations."
     ],
     workedExample: {
-      title: "Biometric Variance Decomposition",
-      subtitle: "Partitioning phenotypic variance in human systolic blood pressure",
+      title: "Biometric & Blood-Group Statistical Analysis",
+      subtitle: "Comparing discontinuous ABO phenotypes and continuous biometric parameters",
       steps: [
-        { label: "Step 1: Population Sampling", detail: "Measure systolic blood pressure across 1,000 adult subjects under resting baseline conditions." },
-        { label: "Step 2: Descriptive Statistics", detail: "Calculate the sample mean (120 mmHg) and standard deviation (s = 12 mmHg, variance s^2 = 144 mmHg^2)." },
-        { label: "Step 3: Variance Component Analysis", detail: "Monozygotic and dizygotic twin modeling establishes heritability at 0.50 (Vg = 72 mmHg^2, Ve = 72 mmHg^2)." },
-        { label: "Step 4: Clinical Interpretation", detail: "50% of population blood pressure variance is attributable to polygenic risk alleles; 50% is modulated by lifestyle (sodium intake, aerobic exercise, psychological stress)." }
+        { label: "Step 1: Categorising the Trait", detail: "ABO blood group is discontinuous (categories A, B, AB, O; monogenic IA, IB, IO; Ve = 0). Height or FEV1 is continuous (polygenic + environmental; Vp = Vg + Ve)." },
+        { label: "Step 2: Graphical Selection", detail: "Plot ABO frequencies on a bar chart with spaces between categories. Plot height or blood pressure on a histogram with contiguous class intervals (e.g. 150-154 cm, 155-159 cm)." },
+        { label: "Step 3: Calculating Central Tendency & Spread", detail: "For continuous data, calculate the arithmetic mean (e.g. 170 cm) and standard deviation s = 8 cm (variance s^2 = 64 cm^2)." },
+        { label: "Step 4: Statistical Interpretation", detail: "Approximately 68% of the cohort falls between 162 cm and 178 cm (mean +/- 1 SD), and 95% falls between 154 cm and 186 cm (mean +/- 2 SD)." }
       ]
     },
     hingeQuestions: [
       {
-        question: "Which of the following human traits exhibits purely discontinuous variation with zero environmental contribution (Ve = 0)?",
-        options: ["Systolic blood pressure", "Resting heart rate", "ABO blood group antigens", "Adult standing height"],
+        question: "Which biological mechanism generates new, novel alleles rather than simply reshuffling existing parental alleles?",
+        options: ["Independent assortment in Metaphase I", "Crossing over in Prophase I", "DNA and chromosome mutations", "Random fertilisation of gametes"],
         correctIndex: 2,
-        explanation: "ABO blood group is determined strictly by the single ABO gene locus on chromosome 9, with no environmental influence on antigenic expression."
+        explanation: "Mutations are the only source of novel alleles. Meiosis (crossing over and independent assortment) and random fertilisation reshuffle existing alleles into new combinations."
       },
       {
-        question: "In a population study of adult human height, what accounts for the smooth bell-shaped normal distribution curve?",
-        options: ["A single gene locus undergoing rapid somatic mutation", "Multiple additive gene loci interacting with environmental factors", "Dietary protein intake being the sole determinant of height", "Mitotic nondisjunction during embryonic development"],
+        question: "A student records the blood groups (A, B, AB, O) of 200 students. How should this data be displayed graphically?",
+        options: ["A line graph connecting the data points", "A bar chart with spaces between distinct qualitative categories", "A histogram with contiguous bins and no spaces", "A scatter plot with a line of best fit"],
         correctIndex: 1,
-        explanation: "Continuous phenotypic variation arises because multiple independent gene loci exert small, additive effects on the phenotype alongside environmental nutrition."
+        explanation: "ABO blood group is discontinuous qualitative data with distinct discrete categories, which must be displayed as a bar chart with spaces between bars."
       },
       {
-        question: "If a biometric trait has a calculated heritability (H^2 = Vg / Vp) of 0.80, what does this indicate?",
-        options: ["80% of an individual's trait value comes from genes and 20% from environment", "80% of the population phenotypic variance is attributable to genetic differences", "The trait will be inherited by exactly 80% of offspring", "Environmental interventions can only ever alter 20% of an individual's lifespan"],
+        question: "In a biometric cohort of adult standing height (mean = 175 cm, standard deviation = 10 cm), what percentage of individuals is expected between 165 cm and 185 cm in a normal distribution?",
+        options: ["Approximately 50%", "Approximately 68%", "Approximately 95%", "Approximately 99.7%"],
         correctIndex: 1,
-        explanation: "Heritability measures the proportion of total phenotypic variance across a population that is attributable to genetic variance (Vg / Vp)."
+        explanation: "In a normal distribution, approximately 68.2% of the population lies within 1 standard deviation of the mean (175 +/- 10 cm)."
       }
     ],
     examQuestion: {
-      question: "A clinical team measures the Forced Expiratory Volume in 1 second (FEV1) across 500 adult patients. The data shows a continuous normal distribution with a mean of 3.2 L and standard deviation of 0.4 L. Explain why FEV1 exhibits continuous rather than discontinuous variation, and describe how the variance equation Vp = Vg + Ve applies to this respiratory parameter. [6 marks]",
+      question: "Distinguish between continuous and discontinuous variation in humans, using blood groups and height as examples. In your answer, explain how genetic diversity arises during sexual reproduction and describe how standard deviation and appropriate graphical presentations (bar charts vs histograms) are used to analyze biometric datasets. [6 marks]",
       marks: "6 marks",
       guidance: [
-        "Continuous Variation Architecture: FEV1 is a quantitative physiological metric controlled by polygenic inheritance (multiple gene loci affecting airway calibre and lung compliance) [2 marks].",
-        "Environmental Contribution: Environmental variance (Ve) such as tobacco smoke exposure, airborne particulate pollution, and childhood respiratory infections directly modifies lung capacity [2 marks].",
-        "Variance Equation Application: Vp = Vg + Ve partitions observed variance; 68% of the cohort lies between 2.8 L and 3.6 L (within 1 SD), illustrating how polygenic additive alleles and lifestyle interact [2 marks]."
+        "Continuous vs Discontinuous Distinctions: Discontinuous variation shows discrete categories with no intermediates (monogenic, e.g. ABO blood groups; Ve=0); continuous variation forms a smooth numerical continuum (polygenic, e.g. height, modulated by Vp = Vg + Ve) [2 marks].",
+        "Origins of Genetic Diversity: Explain that meiosis (crossing over in Prophase I, independent assortment in Metaphase I) and random fertilisation reshuffle alleles, while mutations create novel alleles [2 marks].",
+        "Graphical and Statistical Analysis: Discontinuous data is plotted on bar charts with spaces between bars; continuous data is grouped into class intervals and plotted on histograms. Standard deviation quantifies spread around the mean (68% within 1 SD in normal distribution) [2 marks]."
       ]
     },
     plenary: [
-      "Phenotypic variation is the outward manifestation of molecular genetics interacting with environmental exposures.",
-      "Master the distinction between discrete monogenic traits and continuous polygenic distributions.",
-      "Next Lesson: DNA structure, telomeres & replication — the chemical blueprint and the enzymatic choreography of nucleic acid duplication."
+      "Phenotypic variation reflects genetic, environmental, and combined influences, manifesting as interspecific and intraspecific diversity.",
+      "Genetic diversity is generated through meiosis, random fertilisation, and mutations.",
+      "Master graphical selection (bar charts for discontinuous vs histograms for continuous) and standard deviation analysis.",
+      "Next Lesson: DNA structure, telomeres & replication — the molecular machinery of genetic inheritance."
     ]
   },
   {
