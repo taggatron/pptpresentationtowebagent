@@ -3,7 +3,7 @@
   "title": "Lesson 1: Unit intro & Phenotypic variation",
   "slideSet": "genetics_aaq",
   "filename": "Lesson_01_Unit_intro_Phenotypic_variation.pptx",
-  "totalSlides": 15,
+  "totalSlides": 16,
   "slides": [
     {
       "number": 1,
@@ -86,148 +86,76 @@
     },
     {
       "number": 2,
-      "title": "Starter Activity: 6-Cell Knowledge Retrieval",
+      "title": "Starter Activity: Nature vs Nurture",
       "imageFileName": "slide_02.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_02.png",
+      "sourceMediaPath": "gemini/nature_vs_nurture_slide.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "text": "Starter Activity: Nature vs Nurture\nOn your whiteboards, write down whether you think each trait is more influenced by Nature (Genetics) or Nurture (Environment):\n1. Eye Colour\n2. Native Language\n3. ABO Blood Group\n4. Athletic Stamina\n5. Skin Tanning Response\n6. Height",
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "gemini-image-chat",
+        "sourceHash": "nature_vs_nurture_v1",
+        "transcript": "Starter Activity: Nature vs Nurture. On your whiteboards, write down whether you think each trait is more influenced by Nature (Genetics) or Nurture (Environment): 1. Eye Colour, 2. Native Language, 3. ABO Blood Group, 4. Athletic Stamina, 5. Skin Tanning Response, 6. Height.",
+        "role": "instructional-content",
+        "questions": [],
+        "questionCount": 0
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 30,
+        "timeGuideDisplay": "20–40s",
+        "vciScore": "3.5",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Whiteboard Starter",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 6500,
+          "semanticProcessingMs": 12000,
+          "wordCount": 26,
+          "visualElementsCount": 6
+        },
+        "academicReferences": [
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Activates student schema and diagnostic preconceptions regarding phenotypic variance prior to mathematical partitioning."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 1,
+        "detectionSource": "manifest-text"
+      },
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "static-overview",
+        "reason": "Whiteboard starter activation.",
+        "strategy": "static-overview",
+        "planningSource": "gemini-slide-sequencer",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 0,
+        "approvedCellCount": 0,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
+    },
+    {
+      "number": 3,
+      "title": "Clinical Case Study & Learning Objectives",
+      "imageFileName": "slide_03.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_03.png",
       "sourceMediaPath": "ppt/media/image2.png",
-      "isInteractive": true,
-      "interactiveType": "six_cell_grid",
-      "starterQuestions": [
-        {
-          "q": "What is the difference between interspecific and intraspecific variation?",
-          "a": "Interspecific is variation between distinct species; intraspecific is variation among individuals of the same species."
-        },
-        {
-          "q": "What three primary biological processes generate genetic diversity in sexually reproducing organisms?",
-          "a": "Meiosis (crossing over and independent assortment), random fertilisation of gametes, and DNA mutations."
-        },
-        {
-          "q": "Define phenotypic variance in the quantitative equation Vp = Vg + Ve.",
-          "a": "Total observable phenotypic variance (Vp) equals genetic variance (Vg) plus environmental variance (Ve)."
-        },
-        {
-          "q": "Why must ABO blood group data be plotted on a bar chart rather than a histogram?",
-          "a": "ABO blood groups are discrete, discontinuous qualitative categories, so bars must have distinct spaces between them."
-        },
-        {
-          "q": "When is a histogram used instead of a bar chart for biological data?",
-          "a": "For continuous quantitative variables grouped into contiguous class intervals/bins (with no spaces between bars)."
-        },
-        {
-          "q": "What does the standard deviation measure in a biometric dataset?",
-          "a": "The spread or dispersion of individual continuous phenotypic values around the calculated arithmetic mean."
-        }
-      ],
-      "interactiveCells": [
-        {
-          "id": "cell_1",
-          "row": 0,
-          "col": 0,
-          "bounds": {
-            "x": 6.8,
-            "y": 30.5,
-            "w": 41.5,
-            "h": 22
-          },
-          "question": "What is the difference between interspecific and intraspecific variation?",
-          "expectedAnswer": "Interspecific is variation between distinct species; intraspecific is variation among individuals of the same species.",
-          "answer": "Interspecific is variation between distinct species; intraspecific is variation among individuals of the same species.",
-          "overlayAnswer": true,
-          "revealMode": "overlay",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
-        },
-        {
-          "id": "cell_2",
-          "row": 0,
-          "col": 1,
-          "bounds": {
-            "x": 51.5,
-            "y": 30.5,
-            "w": 41.5,
-            "h": 22
-          },
-          "question": "What three primary biological processes generate genetic diversity in sexually reproducing organisms?",
-          "expectedAnswer": "Meiosis (crossing over and independent assortment), random fertilisation of gametes, and DNA mutations.",
-          "answer": "Meiosis (crossing over and independent assortment), random fertilisation of gametes, and DNA mutations.",
-          "overlayAnswer": true,
-          "revealMode": "overlay",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
-        },
-        {
-          "id": "cell_3",
-          "row": 1,
-          "col": 0,
-          "bounds": {
-            "x": 6.8,
-            "y": 55,
-            "w": 41.5,
-            "h": 22
-          },
-          "question": "Define phenotypic variance in the quantitative equation Vp = Vg + Ve.",
-          "expectedAnswer": "Total observable phenotypic variance (Vp) equals genetic variance (Vg) plus environmental variance (Ve).",
-          "answer": "Total observable phenotypic variance (Vp) equals genetic variance (Vg) plus environmental variance (Ve).",
-          "overlayAnswer": true,
-          "revealMode": "overlay",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
-        },
-        {
-          "id": "cell_4",
-          "row": 1,
-          "col": 1,
-          "bounds": {
-            "x": 51.5,
-            "y": 55,
-            "w": 41.5,
-            "h": 22
-          },
-          "question": "Why must ABO blood group data be plotted on a bar chart rather than a histogram?",
-          "expectedAnswer": "ABO blood groups are discrete, discontinuous qualitative categories, so bars must have distinct spaces between them.",
-          "answer": "ABO blood groups are discrete, discontinuous qualitative categories, so bars must have distinct spaces between them.",
-          "overlayAnswer": true,
-          "revealMode": "overlay",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
-        },
-        {
-          "id": "cell_5",
-          "row": 2,
-          "col": 0,
-          "bounds": {
-            "x": 6.8,
-            "y": 78.5,
-            "w": 41.5,
-            "h": 18.5
-          },
-          "question": "When is a histogram used instead of a bar chart for biological data?",
-          "expectedAnswer": "For continuous quantitative variables grouped into contiguous class intervals/bins (with no spaces between bars).",
-          "answer": "For continuous quantitative variables grouped into contiguous class intervals/bins (with no spaces between bars).",
-          "overlayAnswer": true,
-          "revealMode": "overlay",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
-        },
-        {
-          "id": "cell_6",
-          "row": 2,
-          "col": 1,
-          "bounds": {
-            "x": 51.5,
-            "y": 78.5,
-            "w": 41.5,
-            "h": 18.5
-          },
-          "question": "What does the standard deviation measure in a biometric dataset?",
-          "expectedAnswer": "The spread or dispersion of individual continuous phenotypic values around the calculated arithmetic mean.",
-          "answer": "The spread or dispersion of individual continuous phenotypic values around the calculated arithmetic mean.",
-          "overlayAnswer": true,
-          "revealMode": "overlay",
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
-        }
-      ],
+      "isInteractive": false,
+      "interactiveType": null,
       "agentAnalysis": {
         "pathway": "gemini-image-chat",
         "segmentationSource": "manifest-cells",
@@ -265,171 +193,60 @@
         ]
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 6,
-        "detectionSource": "manifest-cells"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
       },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_2_1_question_base_overlay",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Prepare the unanswered questions",
-          "strategy": "question-base-overlay",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 2: \"Starter Activity: 6-Cell Knowledge Retrieval\".\nDeck context: Lesson 1: Unit intro & Phenotypic variation.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nReconstruct a new unanswered slide from the source-style blank background. Preserve the question layout, but remove every visible answer from the pixels; the web player will reveal reviewed answers later as overlays.\nInstructional build strategy: question-base-overlay.\nShow now: Exactly the source-visible title, instructions, diagram, question text or number markers, leader lines, and 6 empty answer locations. Keep every answer location aligned to the source so the web player can place reviewed answer overlays precisely. Do not print catalog-only question descriptions unless those words are visibly printed in the attached source.\nTemporarily omit: Every answer word, value, diagram label that functions as an answer, worked solution, mark-scheme point, and explanatory conclusion. Leave each answer region as a clean source-style blank or empty answer box; do not move, swap, or reconnect question numbers or leader lines.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nThis is an unanswered base image. Do not show, infer, or hint at any answer; reviewed answers are revealed later by the web player.\nQuestion-slide source rule: read the title, question text, numbering, diagram, and connector layout from the attached pixels, but never transcribe text that occupies an answer region.\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_02.png"
-        }
-      ],
+      "geminiImageCells": [],
       "hasProgressiveBuilds": false,
-      "serialAnimation": {
-        "totalBuildSteps": 6,
-        "autoAdvanceDelayMs": 3200,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Reveal: What is the difference between interspecific and intraspecific variation?",
-            "componentIds": [
-              "cell_1"
-            ],
-            "targetBounds": {
-              "x": 6.8,
-              "y": 30.5,
-              "w": 41.5,
-              "h": 22
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 2,
-            "title": "Reveal: What three primary biological processes generate genetic diversity in sexually reproducing organisms?",
-            "componentIds": [
-              "cell_2"
-            ],
-            "targetBounds": {
-              "x": 51.5,
-              "y": 30.5,
-              "w": 41.5,
-              "h": 22
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 3,
-            "title": "Reveal: Define phenotypic variance in the quantitative equation Vp = Vg + Ve.",
-            "componentIds": [
-              "cell_3"
-            ],
-            "targetBounds": {
-              "x": 6.8,
-              "y": 55,
-              "w": 41.5,
-              "h": 22
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 4,
-            "title": "Reveal: Why must ABO blood group data be plotted on a bar chart rather than a histogram?",
-            "componentIds": [
-              "cell_4"
-            ],
-            "targetBounds": {
-              "x": 51.5,
-              "y": 55,
-              "w": 41.5,
-              "h": 22
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 5,
-            "title": "Reveal: When is a histogram used instead of a bar chart for biological data?",
-            "componentIds": [
-              "cell_5"
-            ],
-            "targetBounds": {
-              "x": 6.8,
-              "y": 78.5,
-              "w": 41.5,
-              "h": 18.5
-            },
-            "revealType": "answer-overlay"
-          },
-          {
-            "step": 6,
-            "title": "Reveal: What does the standard deviation measure in a biometric dataset?",
-            "componentIds": [
-              "cell_6"
-            ],
-            "targetBounds": {
-              "x": 51.5,
-              "y": 78.5,
-              "w": 41.5,
-              "h": 18.5
-            },
-            "revealType": "answer-overlay"
-          }
-        ]
-      },
       "animationPlan": {
         "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "question-base-overlay",
+        "mode": "static-overview",
+        "reason": "Clinical case study overview.",
+        "strategy": "static-overview",
         "planningSource": "local-slide-heuristics",
         "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
+        "plannedCellCount": 0,
         "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": true,
+        "qaRequired": false,
+        "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
       }
     },
     {
-      "number": 3,
-      "title": "Slide 3",
-      "imageFileName": "slide_03.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_03.png",
+      "number": 4,
+      "title": "The Phenotypic Equation: Vp = Vg + Ve + Vg×e",
+      "imageFileName": "slide_04.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_04.png",
       "sourceMediaPath": "ppt/media/image3.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "35–55s",
+        "vciScore": "4.2",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Moderate Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
-          "visualElementsCount": 3
+          "visualScanMs": 2400,
+          "readingMs": 16500,
+          "semanticProcessingMs": 18000,
+          "wordCount": 68,
+          "visualElementsCount": 5
         },
         "academicReferences": [
           {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+            "citation": "Falconer, D. S., & Mackay, T. F. (1996). Introduction to quantitative genetics (4th ed.). Longman.",
+            "relevance": "Defines the partitioning of phenotypic variance Vp into genetic, environmental, and gene-environment interaction components."
           },
           {
             "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+            "relevance": "Models schema acquisition for multi-component quantitative biological equations."
           }
         ]
       },
@@ -471,13 +288,14 @@
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
-      }
+      },
+      "text": "The Phenotypic Equation\nVp = Vg + Ve + Vg×e\n\nVp (Phenotypic Variation):\n- Observable traits: Physical manifestation of an organism.\n- Combined influences: Reflects genetics, lifestyle, and interactions.\n\nVg (Genotypic Variation):\n- Genetic foundation: Specific alleles inherited from parents.\n- Fixed variables: DNA sequence remains constant.\n\nVe (Environmental Variation):\n- External factors: Diet, climate, and lifestyle exposures.\n- Dynamic variables: Can alter gene expression over time.\n\nVg×e (Gene–Environment Interaction):\n- Differential response: Environmental impact differs depending on specific genotype.\n- Non-additive effects: Genetic predisposition modulates response to environment (e.g. UV exposure, PKU diet)."
     },
     {
-      "number": 4,
+      "number": 5,
       "title": "Slide 4",
-      "imageFileName": "slide_04.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_04.png",
+      "imageFileName": "slide_05.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_05.png",
       "sourceMediaPath": "ppt/media/image4.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -553,10 +371,10 @@
       }
     },
     {
-      "number": 5,
+      "number": 6,
       "title": "Slide 5",
-      "imageFileName": "slide_05.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_05.png",
+      "imageFileName": "slide_06.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_06.png",
       "sourceMediaPath": "ppt/media/image5.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -632,10 +450,10 @@
       }
     },
     {
-      "number": 6,
+      "number": 7,
       "title": "Slide 6",
-      "imageFileName": "slide_06.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_06.png",
+      "imageFileName": "slide_07.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_07.png",
       "sourceMediaPath": "ppt/media/image6.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -711,10 +529,10 @@
       }
     },
     {
-      "number": 7,
+      "number": 8,
       "title": "Slide 7",
-      "imageFileName": "slide_07.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_07.png",
+      "imageFileName": "slide_08.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_08.png",
       "sourceMediaPath": "ppt/media/image7.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -790,10 +608,10 @@
       }
     },
     {
-      "number": 8,
+      "number": 9,
       "title": "Slide 8",
-      "imageFileName": "slide_08.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_08.png",
+      "imageFileName": "slide_09.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_09.png",
       "sourceMediaPath": "ppt/media/image8.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -869,10 +687,10 @@
       }
     },
     {
-      "number": 9,
+      "number": 10,
       "title": "Slide 9",
-      "imageFileName": "slide_09.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_09.png",
+      "imageFileName": "slide_10.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_10.png",
       "sourceMediaPath": "ppt/media/image9.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -948,10 +766,10 @@
       }
     },
     {
-      "number": 10,
+      "number": 11,
       "title": "Slide 10",
-      "imageFileName": "slide_10.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_10.png",
+      "imageFileName": "slide_11.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_11.png",
       "sourceMediaPath": "ppt/media/image10.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1027,10 +845,10 @@
       }
     },
     {
-      "number": 11,
+      "number": 12,
       "title": "Slide 11",
-      "imageFileName": "slide_11.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_11.png",
+      "imageFileName": "slide_12.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_12.png",
       "sourceMediaPath": "ppt/media/image11.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1106,10 +924,10 @@
       }
     },
     {
-      "number": 12,
+      "number": 13,
       "title": "Slide 12",
-      "imageFileName": "slide_12.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_12.png",
+      "imageFileName": "slide_13.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_13.png",
       "sourceMediaPath": "ppt/media/image12.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1185,10 +1003,10 @@
       }
     },
     {
-      "number": 13,
+      "number": 14,
       "title": "Slide 13",
-      "imageFileName": "slide_13.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_13.png",
+      "imageFileName": "slide_14.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_14.png",
       "sourceMediaPath": "ppt/media/image13.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1264,10 +1082,10 @@
       }
     },
     {
-      "number": 14,
+      "number": 15,
       "title": "Slide 14",
-      "imageFileName": "slide_14.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_14.png",
+      "imageFileName": "slide_15.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_15.png",
       "sourceMediaPath": "ppt/media/image14.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1343,10 +1161,10 @@
       }
     },
     {
-      "number": 15,
+      "number": 16,
       "title": "Slide 15",
-      "imageFileName": "slide_15.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_15.png",
+      "imageFileName": "slide_16.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_01_Unit_intro_and_Phenotypic_variation/slides/slide_16.png",
       "sourceMediaPath": "ppt/media/image15.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1426,7 +1244,7 @@
   "courseName": "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology - Unit F172: Genetics",
   "teacher": "Dan",
   "focus": "Phenotypic Variation, Origins of Genetic Diversity & Biometric Analysis",
-  "deliverable": "Construct biometric plots (bar charts for discontinuous vs histograms for continuous traits), calculate and interpret standard deviation, and analyze blood-group genetics alongside the variance equation Vp = Vg + Ve.",
+  "deliverable": "Construct biometric plots (bar charts for discontinuous vs histograms for continuous traits), calculate and interpret standard deviation, and analyze blood-group genetics alongside the variance equation Vp = Vg + Ve + Vg×e.",
   "objectives": {
     "knowledge": "Explain how phenotypic variation reflects genetic, environmental, and combined influences, distinguishing interspecific vs intraspecific and continuous vs discontinuous variation.",
     "application": "Outline how genetic diversity arises via meiosis, random fertilisation, and mutation, applying these principles to ABO blood-group genetics.",
@@ -1452,10 +1270,14 @@
     {
       "term": "ABO Blood-Group Genetics",
       "def": "Monogenic codominant/recessive single-locus system (alleles IA, IB, IO) showing strictly discontinuous genetic inheritance."
+    },
+    {
+      "term": "Gene–Environment Interaction (Vg×e)",
+      "def": "The non-additive phenotypic variance resulting from different genotypes responding distinctively to environmental variations (e.g. phenylalanine diet in phenylketonuria, UV radiation in xeroderma pigmentosum)."
     }
   ],
   "theoryPoints": [
-    "Variation Framework: Phenotypic variation (Vp = Vg + Ve) includes interspecific differences (between species) and intraspecific differences (within species).",
+    "Variation Framework: Phenotypic variation (Vp = Vg + Ve + Vg×e) partitions total variance into genotypic variance (Vg), environmental variance (Ve), and gene-environment interactions (Vg×e), accounting for interspecific and intraspecific diversity.",
     "Origins of Diversity: Meiosis (crossing over in Prophase I, independent assortment in Metaphase I), random fertilisation of gametes, and spontaneous mutations.",
     "Graph Selection: Discontinuous traits (ABO blood groups) require separated bar charts; continuous traits (height, blood pressure) require contiguous histograms.",
     "Standard Deviation: In a standard normal biometric distribution, 68.2% of individuals lie within 1 standard deviation (mean +/- 1 SD), and 95.4% lie within 2 standard deviations."
@@ -1466,7 +1288,7 @@
     "steps": [
       {
         "label": "Step 1: Categorising the Trait",
-        "detail": "ABO blood group is discontinuous (categories A, B, AB, O; monogenic IA, IB, IO; Ve = 0). Height or FEV1 is continuous (polygenic + environmental; Vp = Vg + Ve)."
+        "detail": "ABO blood group is discontinuous (categories A, B, AB, O; monogenic IA, IB, IO; Ve = 0). Height or FEV1 is continuous (polygenic + environmental; Vp = Vg + Ve + Vg×e)."
       },
       {
         "label": "Step 2: Graphical Selection",
@@ -1521,7 +1343,7 @@
     "question": "Distinguish between continuous and discontinuous variation in humans, using blood groups and height as examples. In your answer, explain how genetic diversity arises during sexual reproduction and describe how standard deviation and appropriate graphical presentations (bar charts vs histograms) are used to analyze biometric datasets. [6 marks]",
     "marks": "6 marks",
     "guidance": [
-      "Continuous vs Discontinuous Distinctions: Discontinuous variation shows discrete categories with no intermediates (monogenic, e.g. ABO blood groups; Ve=0); continuous variation forms a smooth numerical continuum (polygenic, e.g. height, modulated by Vp = Vg + Ve) [2 marks].",
+      "Continuous vs Discontinuous Distinctions: Discontinuous variation shows discrete categories with no intermediates (monogenic, e.g. ABO blood groups; Ve=0); continuous variation forms a smooth numerical continuum (polygenic, e.g. height, modulated by Vp = Vg + Ve + Vg×e) [2 marks].",
       "Origins of Genetic Diversity: Explain that meiosis (crossing over in Prophase I, independent assortment in Metaphase I) and random fertilisation reshuffle alleles, while mutations create novel alleles [2 marks].",
       "Graphical and Statistical Analysis: Discontinuous data is plotted on bar charts with spaces between bars; continuous data is grouped into class intervals and plotted on histograms. Standard deviation quantifies spread around the mean (68% within 1 SD in normal distribution) [2 marks]."
     ]
