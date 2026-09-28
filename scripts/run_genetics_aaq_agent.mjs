@@ -62,24 +62,30 @@ export async function ingestDecks(startLesson = 1, endLesson = 8) {
 
     console.log(`\n--- Ingesting Lesson ${lessonNum}: ${lessonConfig.title} ---`);
 
-    // Match PPTX file
-    let matchingFiles = files.filter((f) => {
-      if (!f.endsWith(".pptx") || f.startsWith("~$")) return false;
-      const fLower = f.toLowerCase();
-      const numPrefix = `lesson_${String(lessonNum).padStart(2, "0")}`;
-      if (fLower.startsWith(numPrefix)) return true;
+    // Match PPTX file: First look for exact lesson number prefix
+    const numPrefix = `lesson_${String(lessonNum).padStart(2, "0")}`;
+    let matchingFiles = files.filter(
+      (f) => f.endsWith(".pptx") && !f.startsWith("~$") && f.toLowerCase().startsWith(numPrefix)
+    );
 
-      if (lessonNum === 1) return fLower.includes("phenotypic") || fLower.includes("variation") || fLower.includes("intro");
-      if (lessonNum === 2) return fLower.includes("dna") || fLower.includes("telomere") || fLower.includes("replication");
-      if (lessonNum === 3) return fLower.includes("central") || fLower.includes("dogma") || fLower.includes("transcription");
-      if (lessonNum === 4) return fLower.includes("expression") || fLower.includes("transcriptional") || fLower.includes("regulation");
-      if (lessonNum === 5) return fLower.includes("mutation") || fLower.includes("acquired") || fLower.includes("inherited");
-      if (lessonNum === 6) return fLower.includes("single") || fLower.includes("disorder") || fLower.includes("cystic") || fLower.includes("sickle");
-      if (lessonNum === 7) return fLower.includes("chromosomal") || fLower.includes("abnormalit") || fLower.includes("aneuploidy") || fLower.includes("karyotyp");
-      if (lessonNum === 8) return fLower.includes("polygenic") || fLower.includes("complex") || fLower.includes("traits") || fLower.includes("gwas");
+    // If not found by prefix, fallback to keyword matching only on non-prefixed files
+    if (matchingFiles.length === 0) {
+      matchingFiles = files.filter((f) => {
+        if (!f.endsWith(".pptx") || f.startsWith("~$") || f.toLowerCase().startsWith("lesson_")) return false;
+        const fLower = f.toLowerCase();
 
-      return false;
-    });
+        if (lessonNum === 1) return fLower.includes("phenotypic") || fLower.includes("variation") || fLower.includes("intro");
+        if (lessonNum === 2) return fLower.includes("dna") || fLower.includes("telomere") || fLower.includes("replication");
+        if (lessonNum === 3) return fLower.includes("central") || fLower.includes("dogma");
+        if (lessonNum === 4) return fLower.includes("expression") || fLower.includes("switchboard") || fLower.includes("regulation");
+        if (lessonNum === 5) return fLower.includes("mutation") || fLower.includes("acquired") || fLower.includes("clinical_molecular_pathology");
+        if (lessonNum === 6) return fLower.includes("single") || fLower.includes("cystic") || fLower.includes("sickle");
+        if (lessonNum === 7) return fLower.includes("chromosomal") || fLower.includes("abnormalit") || fLower.includes("aneuploidy") || fLower.includes("karyotyp");
+        if (lessonNum === 8) return fLower.includes("polygenic") || fLower.includes("complex") || fLower.includes("traits") || fLower.includes("gwas");
+
+        return false;
+      });
+    }
 
     if (matchingFiles.length === 0) {
       console.warn(`[Ingestion] Warning: No PPTX found for Lesson ${lessonNum} in ${PPTX_OUTPUT_DIR}`);
