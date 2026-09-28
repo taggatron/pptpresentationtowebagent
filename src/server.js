@@ -399,6 +399,12 @@ export function formatDisplayTitle(rawTitle, deckId = "") {
       .map((w) => {
         const lower = w.toLowerCase();
         if (["and", "on", "of"].includes(lower)) return lower;
+        if (lower === "dna") return "DNA";
+        if (lower === "rna") return "RNA";
+        if (lower === "mrna") return "mRNA";
+        if (lower === "pcr") return "PCR";
+        if (lower === "eeg") return "EEG";
+        if (lower === "gwas") return "GWAS";
         return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
       })
       .join(" ");
@@ -415,7 +421,14 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (/^Classic_/i.test(deckId) || /classic/i.test(deckId)) return "ecology_atmosphere_classic";
   if (deckId === "digital_literacy_conference_deck") return "digital_literacy";
   if (
-    /(?:Cell_cycle|Stem_cells|Differentiation|Mitosis|Reproduction|meiosis|Genetic_diagrams|inheritance|Selective_breeding|genetic_modification|Variation)/i.test(
+    /(?:genetics_aaq|Phenotypic_variation|telomeres|Central_Dogma|transcriptional_regulation|single_gene_disorders|Chromosomal_abnormalities|Polygenic_and_complex_traits)/i.test(
+      deckId
+    )
+  ) {
+    return "genetics_aaq";
+  }
+  if (
+    /(?:Cell_cycle|Stem_cells|Differentiation|Mitosis|Reproduction|meiosis|Genetic_diagrams|inheritance|Selective_breeding|genetic_modification)/i.test(
       deckId
     )
   ) {
@@ -985,6 +998,7 @@ export function createApp({
               isExtracted: true
             });
             usedDeckIds.add(dId);
+            usedDeckIds.add(manifest.id);
           }
         }
 
@@ -997,10 +1011,19 @@ export function createApp({
               const files = await fs.readdir(folderPath);
               for (const file of files) {
                 if (!file.endsWith(".pptx")) continue;
-                if (setCfg.id === "ecology_atmosphere_classic" && !file.startsWith("Lesson_")) continue;
+                if (!file.startsWith("Lesson_") && !file.startsWith("Classic_")) continue;
                 const baseId = path.basename(file, ".pptx");
                 const dId = setCfg.id === "ecology_atmosphere_classic" && !baseId.startsWith("Classic_") ? `Classic_${baseId}` : baseId;
-                if (!usedDeckIds.has(dId) && !setDecks.some((d) => d.id === dId)) {
+
+                // Check if this lesson number has already been extracted in this set
+                const lessonMatch = baseId.match(/Lesson_0?(\d+)/i);
+                const lessonNum = lessonMatch ? parseInt(lessonMatch[1], 10) : null;
+                const hasExistingLesson = lessonNum !== null && setDecks.some((d) => {
+                  const m = d.id.match(/Lesson_0?(\d+)/i) || d.title.match(/^0?(\d+)\./);
+                  return m && parseInt(m[1], 10) === lessonNum;
+                });
+
+                if (!hasExistingLesson && !usedDeckIds.has(dId) && !setDecks.some((d) => d.id === dId)) {
                   setDecks.push({
                     id: dId,
                     title: formatDisplayTitle(dId, dId),
