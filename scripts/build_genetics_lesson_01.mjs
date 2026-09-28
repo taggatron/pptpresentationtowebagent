@@ -9,7 +9,11 @@ const DECK_DIR = path.resolve("public/decks/genetics_aaq", DECK_ID);
 const SLIDES_DIR = path.join(DECK_DIR, "slides");
 const MANIFEST_PATH = path.join(DECK_DIR, "manifest.json");
 
-function getEquationSlideHtml(step = 4) {
+function getEquationSlideHtml(step = 4, isMaster = false) {
+  const isG1 = !isMaster && step > 1;
+  const isG2 = !isMaster && step > 2;
+  const isG3 = !isMaster && step > 3;
+
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +47,7 @@ function getEquationSlideHtml(step = 4) {
     letter-spacing: -0.02em;
   }
   
-  /* Central Equation - Fixed position elements so nothing ever shifts */
+  /* Central Equation */
   .equation-container {
     position: absolute;
     top: 348px;
@@ -81,6 +85,35 @@ function getEquationSlideHtml(step = 4) {
     opacity: 0 !important;
   }
 
+  /* Greyed-out state for components already animated in */
+  .card-greyed-out {
+    opacity: 0.38 !important;
+    filter: grayscale(100%) !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: none !important;
+    background: #f8fafc !important;
+  }
+  .card-greyed-out .card-pill {
+    background: #e2e8f0 !important;
+    color: #64748b !important;
+    border-color: #cbd5e1 !important;
+  }
+  .card-greyed-out .card-bullets li,
+  .card-greyed-out .card-bullets strong {
+    color: #94a3b8 !important;
+  }
+  .term-greyed-out {
+    opacity: 0.38 !important;
+    filter: grayscale(100%) !important;
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #64748b !important;
+  }
+  .connector-greyed-out {
+    stroke: #94a3b8 !important;
+    opacity: 0.35 !important;
+  }
+
   /* Callout Cards */
   .card {
     position: absolute;
@@ -91,6 +124,7 @@ function getEquationSlideHtml(step = 4) {
     box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
     border: 1.5px solid #cbd5e1;
     z-index: 5;
+    transition: all 0.3s ease;
   }
   
   .card-pill {
@@ -181,17 +215,17 @@ function getEquationSlideHtml(step = 4) {
 
   <!-- Equation -->
   <div class="equation-container" id="eqContainer">
-    <div class="eq-term term-vp" id="termVp">V<span class="sub">p</span></div>
-    <div class="eq-op ${step < 2 ? 'hidden-step' : ''}">=</div>
-    <div class="eq-term term-vg ${step < 2 ? 'hidden-step' : ''}" id="termVg">V<span class="sub">g</span></div>
-    <div class="eq-op ${step < 3 ? 'hidden-step' : ''}">+</div>
-    <div class="eq-term term-ve ${step < 3 ? 'hidden-step' : ''}" id="termVe">V<span class="sub">e</span></div>
+    <div class="eq-term term-vp ${isG1 ? 'term-greyed-out' : ''}" id="termVp">V<span class="sub">p</span></div>
+    <div class="eq-op ${step < 2 ? 'hidden-step' : (isG2 ? 'term-greyed-out' : '')}">=</div>
+    <div class="eq-term term-vg ${step < 2 ? 'hidden-step' : (isG2 ? 'term-greyed-out' : '')}" id="termVg">V<span class="sub">g</span></div>
+    <div class="eq-op ${step < 3 ? 'hidden-step' : (isG3 ? 'term-greyed-out' : '')}">+</div>
+    <div class="eq-term term-ve ${step < 3 ? 'hidden-step' : (isG3 ? 'term-greyed-out' : '')}" id="termVe">V<span class="sub">e</span></div>
     <div class="eq-op ${step < 4 ? 'hidden-step' : ''}">+</div>
     <div class="eq-term term-vgxe ${step < 4 ? 'hidden-step' : ''}" id="termVgxe">V<span class="sub">g×e</span></div>
   </div>
 
   <!-- Card 1: Vp (Top-Left) -->
-  <div class="card card-vp" id="cardVp">
+  <div class="card card-vp ${isG1 ? 'card-greyed-out' : ''}" id="cardVp">
     <div class="card-pill pill-vp">Vp (Phenotypic Variation)</div>
     <ul class="card-bullets">
       <li><strong>Observable traits</strong>: Physical manifestation of an organism.</li>
@@ -200,7 +234,7 @@ function getEquationSlideHtml(step = 4) {
   </div>
 
   <!-- Card 2: Vg (Bottom-Left) -->
-  <div class="card card-vg ${step < 2 ? 'hidden-step' : ''}" id="cardVg">
+  <div class="card card-vg ${step < 2 ? 'hidden-step' : (isG2 ? 'card-greyed-out' : '')}" id="cardVg">
     <div class="card-pill pill-vg">Vg (Genotypic Variation)</div>
     <ul class="card-bullets">
       <li><strong>Genetic foundation</strong>: Specific alleles inherited from parents.</li>
@@ -209,7 +243,7 @@ function getEquationSlideHtml(step = 4) {
   </div>
 
   <!-- Card 3: Ve (Top-Right) -->
-  <div class="card card-ve ${step < 3 ? 'hidden-step' : ''}" id="cardVe">
+  <div class="card card-ve ${step < 3 ? 'hidden-step' : (isG3 ? 'card-greyed-out' : '')}" id="cardVe">
     <div class="card-pill pill-ve">Ve (Environmental Variation)</div>
     <ul class="card-bullets">
       <li><strong>External factors</strong>: Diet, climate, and lifestyle exposures.</li>
@@ -226,22 +260,22 @@ function getEquationSlideHtml(step = 4) {
     </ul>
   </div>
 
-  <!-- SVG Connectors with Exact Geometric Anchor Points -->
+  <!-- SVG Connectors -->
   <svg class="connectors" id="svgConnectors">
     <!-- Connector 1: Card Vp (bottom) -> Term Vp (top) -->
-    <path d="M 450 233 L 450 342" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="450" cy="342" r="4" fill="#2563eb"/>
+    <path d="M 450 233 L 450 342" stroke="${isG1 ? '#94a3b8' : '#2563eb'}" stroke-width="2.5" stroke-linecap="round" class="${isG1 ? 'connector-greyed-out' : ''}"/>
+    <circle cx="450" cy="342" r="4" fill="${isG1 ? '#94a3b8' : '#2563eb'}"/>
 
     <!-- Connector 2: Card Vg (top) -> Term Vg (bottom) -->
     ${step >= 2 ? `
-    <path d="M 596 480 L 596 426" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="596" cy="426" r="4" fill="#059669"/>
+    <path d="M 596 480 L 596 426" stroke="${isG2 ? '#94a3b8' : '#059669'}" stroke-width="2.5" stroke-linecap="round" class="${isG2 ? 'connector-greyed-out' : ''}"/>
+    <circle cx="596" cy="426" r="4" fill="${isG2 ? '#94a3b8' : '#059669'}"/>
     ` : ""}
 
     <!-- Connector 3: Card Ve (bottom) -> Term Ve (top) -->
     ${step >= 3 ? `
-    <path d="M 760 233 C 760 290, 741 290, 741 342" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    <circle cx="741" cy="342" r="4" fill="#d97706"/>
+    <path d="M 760 233 C 760 290, 741 290, 741 342" stroke="${isG3 ? '#94a3b8' : '#d97706'}" stroke-width="2.5" stroke-linecap="round" fill="none" class="${isG3 ? 'connector-greyed-out' : ''}"/>
+    <circle cx="741" cy="342" r="4" fill="${isG3 ? '#94a3b8' : '#d97706'}"/>
     ` : ""}
 
     <!-- Connector 4: Card Vgxe (top) -> Term Vgxe (bottom) -->
@@ -277,16 +311,17 @@ async function registerBuilds({
   const count = buildBuffers.length;
   const cells = [];
   const reviewedAt = new Date().toISOString();
+  const filePrefix = sourceFileName.replace(/\.png$/, "");
 
   for (let i = 0; i < count; i++) {
     const buffer = buildBuffers[i];
-    const outFileName = `slide_${String(slideNumber).padStart(2, "0")}_build_${i + 1}.png`;
+    const outFileName = `${filePrefix}_build_${i + 1}.png`;
     const outputPath = path.join(SLIDES_DIR, outFileName);
 
     await fs.writeFile(outputPath, buffer);
     console.log(`  Saved ${outFileName} (${buffer.length} bytes)`);
 
-    const cellId = `gemini_slide_${slideNumber}_${i + 1}_${strategy}`;
+    const cellId = `gemini_${filePrefix}_${i + 1}_${strategy}`;
     cells.push({
       id: cellId,
       order: i + 1,
@@ -365,21 +400,25 @@ async function main() {
 
   // =========================================================================
   // SLIDE 4: The Phenotypic Equation (4 Progressive Builds)
+  // Completely hides unrevealed components + Greys out already animated components
   // =========================================================================
   console.log("\n--- Processing Slide 4: The Phenotypic Equation (4 builds) ---");
   const slide4Source = path.join(SLIDES_DIR, "slide_04.png");
   const slide4Buffers = [];
 
   for (let step = 1; step <= 4; step++) {
-    const html = getEquationSlideHtml(step);
+    const html = getEquationSlideHtml(step, false);
     await page.setContent(html);
     const buf = await page.screenshot({ type: "png" });
     slide4Buffers.push(buf);
   }
 
-  // Update master slide_04.png with step 4
-  await fs.writeFile(slide4Source, slide4Buffers[3]);
-  console.log("  Updated master slide_04.png with full equation and correct callout positions.");
+  // Update master slide_04.png with all active
+  const masterHtml = getEquationSlideHtml(4, true);
+  await page.setContent(masterHtml);
+  const masterBuf = await page.screenshot({ type: "png" });
+  await fs.writeFile(slide4Source, masterBuf);
+  console.log("  Updated master slide_04.png with full equation.");
 
   await registerBuilds({
     manifest,
@@ -390,68 +429,79 @@ async function main() {
     strategy: "component-reveal",
     labels: [
       "Build 1: Reveal Vp (Phenotypic Variation - observable physical characteristics)",
-      "Build 2: Add Vg (Genotypic Variation - fixed genetic foundation)",
-      "Build 3: Add Ve (Environmental Variation - dynamic external factors)",
-      "Build 4: Add Vg×e (Gene–Environment Interaction - differential response)"
+      "Build 2: Add Vg (Genotypic Variation - fixed genetic foundation; Vp greyed out)",
+      "Build 3: Add Ve (Environmental Variation - dynamic external factors; Vp, Vg greyed out)",
+      "Build 4: Add Vg×e (Gene–Environment Interaction - differential response; Vp, Vg, Ve greyed out)"
     ],
     prompts: [
       "Reveal Term 1 Vp and its callout card.",
-      "Add Term 2 Vg and its callout card.",
-      "Add Term 3 Ve and its callout card.",
-      "Add Term 4 Vg×e and its callout card, completing the phenotypic equation."
+      "Add Term 2 Vg and its callout card, greying out Vp.",
+      "Add Term 3 Ve and its callout card, greying out Vp and Vg.",
+      "Add Term 4 Vg×e and its callout card, completing the phenotypic equation while previous terms are greyed out."
     ]
   });
 
-  // Helper for dimming canvas-based builds
-  async function generateCanvasDimBuilds(sourceFileName, buildConfigs) {
-    const sourcePath = path.join(SLIDES_DIR, sourceFileName);
-    await page.goto("file://" + sourcePath);
-
-    return await page.evaluate(async (configs) => {
-      const img = document.querySelector("img");
-      const w = 1376;
-      const h = 768;
-      const results = [];
-
-      for (const config of configs) {
-        const canvas = document.createElement("canvas");
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-
-        if (config.dimRects) {
-          for (const rect of config.dimRects) {
-            ctx.fillStyle = "rgba(246, 251, 254, 0.88)";
-            ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-
-            ctx.save();
-            ctx.filter = "grayscale(100%) opacity(22%)";
-            ctx.drawImage(img, rect.x, rect.y, rect.w, rect.h, rect.x, rect.y, rect.w, rect.h);
-            ctx.restore();
-          }
-        }
-
-        results.push(canvas.toDataURL("image/png"));
-      }
-
-      return results;
-    }, buildConfigs);
-  }
-
   // =========================================================================
   // SLIDE 5: Levels of Variation (2 Builds: Interspecific -> Intraspecific)
+  // Completely hides right column in build 1 + Greys out left column in build 2
   // =========================================================================
   console.log("\n--- Processing Slide 5: Levels of Variation (2 builds) ---");
   const slide5Source = path.join(SLIDES_DIR, "slide_05.png");
-  const slide5Base64 = await generateCanvasDimBuilds("slide_05.png", [
-    // Build 1: Interspecific only (dim Intraspecific column x: 680 to 1350)
-    {
-      dimRects: [{ x: 680, y: 160, w: 660, h: 560 }]
-    },
-    // Build 2: Both revealed
-    {}
-  ]);
+  await page.goto("file://" + slide5Source);
+
+  const slide5Base64 = await page.evaluate(async () => {
+    const img = document.querySelector("img");
+    const w = 1376; const h = 768;
+
+    function makeCanvas() {
+      const c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      return { c, ctx };
+    }
+
+    function applyGreyedOutSmart(ctx, rect) {
+      const temp = document.createElement("canvas");
+      temp.width = rect.w; temp.height = rect.h;
+      const tCtx = temp.getContext("2d");
+      tCtx.drawImage(img, rect.x, rect.y, rect.w, rect.h, 0, 0, rect.w, rect.h);
+
+      const imgData = tCtx.getImageData(0, 0, rect.w, rect.h);
+      const d = imgData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i+1], b = d[i+2];
+        const isBg = (r > 236 && g > 242 && b > 246);
+        if (!isBg) {
+          const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+          d[i] = Math.round(gray * 0.45 + 238 * 0.55);
+          d[i+1] = Math.round(gray * 0.45 + 242 * 0.55);
+          d[i+2] = Math.round(gray * 0.45 + 246 * 0.55);
+        }
+      }
+      tCtx.putImageData(imgData, 0, 0);
+      ctx.drawImage(temp, rect.x, rect.y);
+    }
+
+    function hideRightCol(ctx) {
+      const grad = ctx.createLinearGradient(695, 150, 1360, 750);
+      grad.addColorStop(0, "#f2f9fd");
+      grad.addColorStop(1, "#f4fafc");
+      ctx.fillStyle = grad;
+      ctx.fillRect(695, 150, 665, 600);
+    }
+
+    // Build 1: Interspecific active, Intraspecific completely hidden
+    const { c: c1, ctx: ctx1 } = makeCanvas();
+    hideRightCol(ctx1);
+
+    // Build 2: Interspecific greyed out, Intraspecific active in full color
+    const { c: c2, ctx: ctx2 } = makeCanvas();
+    applyGreyedOutSmart(ctx2, { x: 40, y: 150, w: 645, h: 600 });
+
+    return [c1.toDataURL("image/png"), c2.toDataURL("image/png")];
+  });
+
   const slide5Buffers = slide5Base64.map(b => Buffer.from(b.replace(/^data:image\/png;base64,/, ""), "base64"));
   await registerBuilds({
     manifest,
@@ -461,28 +511,75 @@ async function main() {
     buildBuffers: slide5Buffers,
     strategy: "component-reveal",
     labels: [
-      "Build 1: Reveal Interspecific Variation (differences between distinct species)",
-      "Build 2: Reveal Intraspecific Variation (differences within NHS clinic donor population)"
+      "Build 1: Reveal Interspecific Variation (differences separating distinct species)",
+      "Build 2: Reveal Intraspecific Variation (within NHS clinic donor population; Interspecific greyed out)"
     ],
     prompts: [
       "Show left column Interspecific Variation.",
-      "Show both Interspecific and Intraspecific Variation."
+      "Show right column Intraspecific Variation with left column greyed out."
     ]
   });
 
   // =========================================================================
   // SLIDE 6: Categorising Phenotypes: The Variation Matrix (2 Builds)
+  // Completely hides Discontinuous column in build 1 + Greys out Continuous column in build 2
   // =========================================================================
   console.log("\n--- Processing Slide 6: The Variation Matrix (2 builds) ---");
   const slide6Source = path.join(SLIDES_DIR, "slide_06.png");
-  const slide6Base64 = await generateCanvasDimBuilds("slide_06.png", [
-    // Build 1: Continuous Variation column only (dim Discontinuous column x: 860 to 1320)
-    {
-      dimRects: [{ x: 855, y: 230, w: 470, h: 500 }]
-    },
-    // Build 2: Both columns revealed
-    {}
-  ]);
+  await page.goto("file://" + slide6Source);
+
+  const slide6Base64 = await page.evaluate(async () => {
+    const img = document.querySelector("img");
+    const w = 1376; const h = 768;
+
+    function makeCanvas() {
+      const c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      return { c, ctx };
+    }
+
+    function applyGreyedOut(ctx, rect) {
+      const temp = document.createElement("canvas");
+      temp.width = rect.w; temp.height = rect.h;
+      const tCtx = temp.getContext("2d");
+      tCtx.drawImage(img, rect.x, rect.y, rect.w, rect.h, 0, 0, rect.w, rect.h);
+
+      const imgData = tCtx.getImageData(0, 0, rect.w, rect.h);
+      const d = imgData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i+1], b = d[i+2];
+        const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+        d[i] = Math.round(gray * 0.45 + 242 * 0.55);
+        d[i+1] = Math.round(gray * 0.45 + 245 * 0.55);
+        d[i+2] = Math.round(gray * 0.45 + 248 * 0.55);
+      }
+      tCtx.putImageData(imgData, 0, 0);
+      ctx.drawImage(temp, rect.x, rect.y);
+    }
+
+    // Build 1: Continuous active, Discontinuous column COMPLETELY HIDDEN (zero ghost text)
+    const { c: c1, ctx: ctx1 } = makeCanvas();
+    const rx = 844, rw = 432;
+    ctx1.fillStyle = "#ffffff";
+    ctx1.fillRect(rx, 185, rw, 73); // Header area
+    ctx1.fillStyle = "#edf2f7";
+    ctx1.fillRect(rx, 258, rw, 105); // Row 1
+    ctx1.fillStyle = "#ffffff";
+    ctx1.fillRect(rx, 363, rw, 107); // Row 2
+    ctx1.fillStyle = "#edf2f7";
+    ctx1.fillRect(rx, 470, rw, 103); // Row 3
+    ctx1.fillStyle = "#ffffff";
+    ctx1.fillRect(rx, 573, rw, 105); // Row 4
+
+    // Build 2: Continuous column greyed out, Discontinuous column active in full color
+    const { c: c2, ctx: ctx2 } = makeCanvas();
+    applyGreyedOut(ctx2, { x: 409, y: 185, w: 432, h: 495 });
+
+    return [c1.toDataURL("image/png"), c2.toDataURL("image/png")];
+  });
+
   const slide6Buffers = slide6Base64.map(b => Buffer.from(b.replace(/^data:image\/png;base64,/, ""), "base64"));
   await registerBuilds({
     manifest,
@@ -493,36 +590,85 @@ async function main() {
     strategy: "component-reveal",
     labels: [
       "Build 1: Reveal Continuous Variation (quantitative spectrum, polygenic, high environmental impact)",
-      "Build 2: Reveal Discontinuous Variation (qualitative discrete categories, monogenic, negligible environmental impact)"
+      "Build 2: Reveal Discontinuous Variation (qualitative discrete categories; Continuous column greyed out)"
     ],
     prompts: [
       "Show Continuous Variation matrix column.",
-      "Show both Continuous and Discontinuous Variation matrix columns."
+      "Show Discontinuous Variation matrix column with Continuous column greyed out."
     ]
   });
 
   // =========================================================================
   // SLIDE 8: Origins of Genetic Diversity (3 Builds: Meiosis -> Fertilisation -> Mutations)
+  // Completely hides unrevealed cards + Greys out already animated cards
   // =========================================================================
   console.log("\n--- Processing Slide 8: Origins of Genetic Diversity (3 builds) ---");
   const slide8Source = path.join(SLIDES_DIR, "slide_08.png");
-  const slide8Base64 = await generateCanvasDimBuilds("slide_08.png", [
-    // Build 1: Meiosis only (dim Cards 2 & 3)
-    {
-      dimRects: [
-        { x: 480, y: 240, w: 415, h: 475 },
-        { x: 900, y: 240, w: 415, h: 475 }
-      ]
-    },
-    // Build 2: Meiosis + Fertilisation (dim Card 3)
-    {
-      dimRects: [
-        { x: 900, y: 240, w: 415, h: 475 }
-      ]
-    },
-    // Build 3: All 3 cards revealed
-    {}
-  ]);
+  await page.goto("file://" + slide8Source);
+
+  const slide8Base64 = await page.evaluate(async () => {
+    const img = document.querySelector("img");
+    const w = 1376; const h = 768;
+
+    function makeCanvas() {
+      const c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      return { c, ctx };
+    }
+
+    function applyGreyedOutSmart(ctx, rect) {
+      const temp = document.createElement("canvas");
+      temp.width = rect.w; temp.height = rect.h;
+      const tCtx = temp.getContext("2d");
+      tCtx.drawImage(img, rect.x, rect.y, rect.w, rect.h, 0, 0, rect.w, rect.h);
+
+      const imgData = tCtx.getImageData(0, 0, rect.w, rect.h);
+      const d = imgData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i+1], b = d[i+2];
+        const isBg = (r > 236 && g > 242 && b > 246);
+        if (!isBg) {
+          const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+          d[i] = Math.round(gray * 0.45 + 238 * 0.55);
+          d[i+1] = Math.round(gray * 0.45 + 242 * 0.55);
+          d[i+2] = Math.round(gray * 0.45 + 246 * 0.55);
+        }
+      }
+      tCtx.putImageData(imgData, 0, 0);
+      ctx.drawImage(temp, rect.x, rect.y);
+    }
+
+    function hideRegion(ctx, rect) {
+      const grad = ctx.createLinearGradient(rect.x, rect.y, rect.x + rect.w, rect.y + rect.h);
+      grad.addColorStop(0, "#f2f9fd");
+      grad.addColorStop(1, "#f4fafc");
+      ctx.fillStyle = grad;
+      ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+    }
+
+    const c1 = { x: 70, y: 185, w: 396, h: 515 };
+    const c2 = { x: 490, y: 185, w: 396, h: 515 };
+    const c3 = { x: 910, y: 185, w: 396, h: 515 };
+
+    // Build 1: Card 1 active, Cards 2 & 3 completely hidden
+    const { c: can1, ctx: ctx1 } = makeCanvas();
+    hideRegion(ctx1, { x: 485, y: 180, w: 840, h: 530 });
+
+    // Build 2: Card 1 greyed out, Card 2 active, Card 3 completely hidden
+    const { c: can2, ctx: ctx2 } = makeCanvas();
+    applyGreyedOutSmart(ctx2, c1);
+    hideRegion(ctx2, { x: 905, y: 180, w: 420, h: 530 });
+
+    // Build 3: Cards 1 & 2 greyed out, Card 3 active in full color
+    const { c: can3, ctx: ctx3 } = makeCanvas();
+    applyGreyedOutSmart(ctx3, c1);
+    applyGreyedOutSmart(ctx3, c2);
+
+    return [can1.toDataURL("image/png"), can2.toDataURL("image/png"), can3.toDataURL("image/png")];
+  });
+
   const slide8Buffers = slide8Base64.map(b => Buffer.from(b.replace(/^data:image\/png;base64,/, ""), "base64"));
   await registerBuilds({
     manifest,
@@ -533,91 +679,212 @@ async function main() {
     strategy: "process",
     labels: [
       "Build 1: Reveal 1. Meiosis (crossing over in Prophase I & independent assortment)",
-      "Build 2: Reveal 2. Random Fertilisation (millions of sperm combinations)",
-      "Build 3: Reveal 3. Mutations (the ultimate source of novel alleles)"
+      "Build 2: Reveal 2. Random Fertilisation (millions of sperm combinations; Meiosis greyed out)",
+      "Build 3: Reveal 3. Mutations (the ultimate source of novel alleles; Meiosis & Fertilisation greyed out)"
     ],
     prompts: [
       "Show Card 1 Meiosis.",
-      "Show Cards 1 and 2 Meiosis and Random Fertilisation.",
-      "Show all 3 cards: Meiosis, Random Fertilisation, and Mutations."
+      "Show Card 2 Random Fertilisation with Card 1 greyed out.",
+      "Show Card 3 Mutations with Cards 1 & 2 greyed out."
     ]
   });
 
   // =========================================================================
-  // SLIDE 13: Core Biometrics: Measuring Variation (3 Builds: Mean -> Variance -> Standard Deviation)
+  // SLIDE 14 (file slide_13.png): Core Biometrics: Measuring Variation
+  // 3 Builds: Mean -> Variance -> Standard Deviation
+  // Completely hides unrevealed rows + Greys out already animated rows
   // =========================================================================
-  console.log("\n--- Processing Slide 13: Core Biometrics (3 builds) ---");
+  console.log("\n--- Processing Slide 14: Core Biometrics (3 builds, slide_13.png) ---");
   const slide13Source = path.join(SLIDES_DIR, "slide_13.png");
-  const slide13Base64 = await generateCanvasDimBuilds("slide_13.png", [
-    // Build 1: Mean only (dim Rows 2 & 3)
-    {
-      dimRects: [{ x: 50, y: 340, w: 1270, h: 345 }]
-    },
-    // Build 2: Mean + Variance (dim Row 3)
-    {
-      dimRects: [{ x: 50, y: 510, w: 1270, h: 175 }]
-    },
-    // Build 3: Mean + Variance + Standard Deviation
-    {}
-  ]);
+  await page.goto("file://" + slide13Source);
+
+  const slide13Base64 = await page.evaluate(async () => {
+    const img = document.querySelector("img");
+    const w = 1376; const h = 768;
+
+    function makeCanvas() {
+      const c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      return { c, ctx };
+    }
+
+    function applyGreyedOutCard(ctx, rect) {
+      const temp = document.createElement("canvas");
+      temp.width = rect.w; temp.height = rect.h;
+      const tCtx = temp.getContext("2d");
+      tCtx.drawImage(img, rect.x, rect.y, rect.w, rect.h, 0, 0, rect.w, rect.h);
+
+      const imgData = tCtx.getImageData(0, 0, rect.w, rect.h);
+      const d = imgData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i+1], b = d[i+2];
+        const isBg = (r > 248 && g > 250 && b > 252);
+        if (!isBg) {
+          const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+          d[i] = Math.round(gray * 0.45 + 238 * 0.55);
+          d[i+1] = Math.round(gray * 0.45 + 242 * 0.55);
+          d[i+2] = Math.round(gray * 0.45 + 246 * 0.55);
+        }
+      }
+      tCtx.putImageData(imgData, 0, 0);
+      ctx.drawImage(temp, rect.x, rect.y);
+    }
+
+    function hideRegion(ctx, rect) {
+      const grad = ctx.createLinearGradient(rect.x, rect.y, rect.x + rect.w, rect.y + rect.h);
+      grad.addColorStop(0, "#f8fafc");
+      grad.addColorStop(1, "#f1f5f9");
+      ctx.fillStyle = grad;
+      ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+    }
+
+    const card1 = { x: 68, y: 138, w: 1238, h: 175 };
+    const card2 = { x: 68, y: 334, w: 1238, h: 175 };
+    const card3 = { x: 68, y: 531, w: 1238, h: 175 };
+
+    // Build 1: Card 1 active, Cards 2 & 3 completely hidden
+    const { c: can1, ctx: ctx1 } = makeCanvas();
+    hideRegion(ctx1, { x: 60, y: 330, w: 1295, h: 385 });
+
+    // Build 2: Card 1 greyed out, Card 2 active, Card 3 completely hidden
+    const { c: can2, ctx: ctx2 } = makeCanvas();
+    applyGreyedOutCard(ctx2, card1);
+    hideRegion(ctx2, { x: 60, y: 525, w: 1295, h: 190 });
+
+    // Build 3: Cards 1 & 2 greyed out, Card 3 active in full color
+    const { c: can3, ctx: ctx3 } = makeCanvas();
+    applyGreyedOutCard(ctx3, card1);
+    applyGreyedOutCard(ctx3, card2);
+
+    return [can1.toDataURL("image/png"), can2.toDataURL("image/png"), can3.toDataURL("image/png")];
+  });
+
   const slide13Buffers = slide13Base64.map(b => Buffer.from(b.replace(/^data:image\/png;base64,/, ""), "base64"));
   await registerBuilds({
     manifest,
-    slideNumber: 13,
+    slideNumber: 14,
     sourceImage: slide13Source,
     sourceFileName: "slide_13.png",
     buildBuffers: slide13Buffers,
     strategy: "process",
     labels: [
       "Build 1: Reveal Arithmetic Mean (baseline central tendency)",
-      "Build 2: Reveal Variance (s² - sum of squared differences from the mean)",
-      "Build 3: Reveal Standard Deviation (s - root variance, data spread around the mean)"
+      "Build 2: Reveal Variance (s² - sum of squared differences from the mean; Mean greyed out)",
+      "Build 3: Reveal Standard Deviation (s - root variance, data spread around the mean; Mean & Variance greyed out)"
     ],
     prompts: [
       "Show Row 1 Arithmetic Mean.",
-      "Show Rows 1 & 2 Arithmetic Mean and Variance.",
-      "Show all 3 biometric metrics: Mean, Variance, and Standard Deviation."
+      "Show Row 2 Variance with Row 1 greyed out.",
+      "Show Row 3 Standard Deviation with Rows 1 & 2 greyed out."
     ]
   });
 
   // =========================================================================
-  // SLIDE 14: Gaussian Normal Distribution (3 Builds: 68% -> 95% -> 99.7%)
+  // SLIDE 15 (file slide_14.png): Gaussian Normal Distribution
+  // 3 Builds: 68% -> 95% -> 99.7%
+  // Completely hides unrevealed callouts with aligned grid + Greys out already animated callouts
   // =========================================================================
-  console.log("\n--- Processing Slide 14: Gaussian Normal Distribution (3 builds) ---");
+  console.log("\n--- Processing Slide 15: Gaussian Normal Distribution (3 builds, slide_14.png) ---");
   const slide14Source = path.join(SLIDES_DIR, "slide_14.png");
-  const slide14Base64 = await generateCanvasDimBuilds("slide_14.png", [
-    // Build 1: 1 SD only (dim cards 2 & 3)
-    {
-      dimRects: [
-        { x: 870, y: 430, w: 450, h: 350 }
-      ]
-    },
-    // Build 2: 1 SD + 2 SD (dim card 3)
-    {
-      dimRects: [
-        { x: 980, y: 630, w: 350, h: 150 }
-      ]
-    },
-    // Build 3: 1 SD + 2 SD + 3 SD
-    {}
-  ]);
+  await page.goto("file://" + slide14Source);
+
+  const slide14Base64 = await page.evaluate(async () => {
+    const img = document.querySelector("img");
+    const w = 1376; const h = 768;
+
+    function makeCanvas() {
+      const c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      return { c, ctx };
+    }
+
+    // Sample 46x46 tile from x=1215, y=387 (aligned 23px grid)
+    const tile = document.createElement("canvas");
+    tile.width = 46; tile.height = 46;
+    tile.getContext("2d").drawImage(img, 1215, 387, 46, 46, 0, 0, 46, 46);
+
+    function getGridPattern(ctx) {
+      const p = ctx.createPattern(tile, "repeat");
+      p.setTransform(new DOMMatrix().translate(1215, 387));
+      return p;
+    }
+
+    function applyGreyedOutSmart(ctx, rect) {
+      const temp = document.createElement("canvas");
+      temp.width = rect.w; temp.height = rect.h;
+      const tCtx = temp.getContext("2d");
+      tCtx.drawImage(img, rect.x, rect.y, rect.w, rect.h, 0, 0, rect.w, rect.h);
+
+      const imgData = tCtx.getImageData(0, 0, rect.w, rect.h);
+      const d = imgData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i+1], b = d[i+2];
+        const isBg = (r > 235 && g > 244 && b > 248);
+        if (!isBg) {
+          const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+          d[i] = Math.round(gray * 0.45 + 238 * 0.55);
+          d[i+1] = Math.round(gray * 0.45 + 242 * 0.55);
+          d[i+2] = Math.round(gray * 0.45 + 246 * 0.55);
+        }
+      }
+      tCtx.putImageData(imgData, 0, 0);
+      ctx.drawImage(temp, rect.x, rect.y);
+    }
+
+    function hideCallout2(ctx) {
+      ctx.fillStyle = getGridPattern(ctx);
+      ctx.fillRect(880, 340, 320, 140); // Card 2 box
+      ctx.fillRect(712, 395, 175, 140); // Arrow 2
+    }
+
+    function hideCallout3(ctx) {
+      ctx.fillStyle = getGridPattern(ctx);
+      ctx.fillRect(995, 525, 320, 140); // Card 3 box
+      ctx.fillRect(825, 575, 180, 60);  // Arrow 3
+    }
+
+    const c1_region = { x: 618, y: 190, w: 450, h: 145 };
+    const c2_region = { x: 705, y: 340, w: 500, h: 150 };
+
+    // Build 1: Callout 1 active, Callouts 2 & 3 completely hidden
+    const { c: can1, ctx: ctx1 } = makeCanvas();
+    hideCallout2(ctx1);
+    hideCallout3(ctx1);
+
+    // Build 2: Callout 1 greyed out, Callout 2 active, Callout 3 completely hidden
+    const { c: can2, ctx: ctx2 } = makeCanvas();
+    applyGreyedOutSmart(ctx2, c1_region);
+    hideCallout3(ctx2);
+
+    // Build 3: Callouts 1 & 2 greyed out, Callout 3 active in full color
+    const { c: can3, ctx: ctx3 } = makeCanvas();
+    applyGreyedOutSmart(ctx3, c1_region);
+    applyGreyedOutSmart(ctx3, c2_region);
+
+    return [can1.toDataURL("image/png"), can2.toDataURL("image/png"), can3.toDataURL("image/png")];
+  });
+
   const slide14Buffers = slide14Base64.map(b => Buffer.from(b.replace(/^data:image\/png;base64,/, ""), "base64"));
   await registerBuilds({
     manifest,
-    slideNumber: 14,
+    slideNumber: 15,
     sourceImage: slide14Source,
     sourceFileName: "slide_14.png",
     buildBuffers: slide14Buffers,
     strategy: "process",
     labels: [
       "Build 1: Reveal ±1 Standard Deviation (contains exactly 68.2% of clinical population)",
-      "Build 2: Reveal ±2 Standard Deviations (contains exactly 95.4% of clinical population)",
-      "Build 3: Reveal ±3 Standard Deviations (contains exactly 99.7% of clinical population)"
+      "Build 2: Reveal ±2 Standard Deviations (contains exactly 95.4% of clinical population; ±1 SD greyed out)",
+      "Build 3: Reveal ±3 Standard Deviations (contains exactly 99.7% of clinical population; ±1 SD & ±2 SD greyed out)"
     ],
     prompts: [
       "Show Normal distribution curve with 1 Standard Deviation callout.",
-      "Show Normal distribution curve with 1 and 2 Standard Deviation callouts.",
-      "Show Normal distribution curve with all 3 Standard Deviation intervals."
+      "Show 2 Standard Deviations callout with 1 Standard Deviation greyed out.",
+      "Show 3 Standard Deviations callout with 1 and 2 Standard Deviations greyed out."
     ]
   });
 
