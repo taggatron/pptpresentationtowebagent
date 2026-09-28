@@ -838,7 +838,7 @@ async function main() {
     function hideCallout2(ctx) {
       ctx.fillStyle = getGridPattern(ctx);
       ctx.fillRect(880, 340, 320, 140); // Card 2 box
-      ctx.fillRect(712, 395, 175, 140); // Arrow 2
+      ctx.fillRect(702, 395, 185, 108); // Arrow 2 cleanly covered without clipping curve
     }
 
     function hideCallout3(ctx) {
@@ -848,7 +848,7 @@ async function main() {
     }
 
     const c1_region = { x: 618, y: 190, w: 450, h: 145 };
-    const c2_region = { x: 705, y: 340, w: 500, h: 150 };
+    const c2_region = { x: 702, y: 340, w: 500, h: 165 };
 
     // Build 1: Callout 1 active, Callouts 2 & 3 completely hidden
     const { c: can1, ctx: ctx1 } = makeCanvas();
