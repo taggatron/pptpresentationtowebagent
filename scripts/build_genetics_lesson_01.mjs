@@ -700,11 +700,11 @@ async function main() {
   });
 
   // =========================================================================
-  // SLIDE 14 (file slide_13.png): Core Biometrics: Measuring Variation
+  // SLIDE 15 (file slide_13.png): Core Biometrics: Measuring Variation
   // 3 Builds: Mean -> Variance -> Standard Deviation
   // Completely hides unrevealed rows + Greys out already animated rows
   // =========================================================================
-  console.log("\n--- Processing Slide 14: Core Biometrics (3 builds, slide_13.png) ---");
+  console.log("\n--- Processing Slide 15: Core Biometrics (3 builds, slide_13.png) ---");
   const slide13Source = path.join(SLIDES_DIR, "slide_13.png");
   await page.goto("file://" + slide13Source);
 
@@ -774,7 +774,7 @@ async function main() {
   const slide13Buffers = slide13Base64.map(b => Buffer.from(b.replace(/^data:image\/png;base64,/, ""), "base64"));
   await registerBuilds({
     manifest,
-    slideNumber: 14,
+    slideNumber: 15,
     sourceImage: slide13Source,
     sourceFileName: "slide_13.png",
     buildBuffers: slide13Buffers,
@@ -792,11 +792,11 @@ async function main() {
   });
 
   // =========================================================================
-  // SLIDE 15 (file slide_14.png): Gaussian Normal Distribution
+  // SLIDE 16 (file slide_14.png): Gaussian Normal Distribution
   // 3 Builds: 68% -> 95% -> 99.7%
   // Completely hides unrevealed callouts with aligned grid + Greys out already animated callouts
   // =========================================================================
-  console.log("\n--- Processing Slide 15: Gaussian Normal Distribution (3 builds, slide_14.png) ---");
+  console.log("\n--- Processing Slide 16: Gaussian Normal Distribution (3 builds, slide_14.png) ---");
   const slide14Source = path.join(SLIDES_DIR, "slide_14.png");
   await page.goto("file://" + slide14Source);
 
@@ -881,7 +881,7 @@ async function main() {
   const slide14Buffers = slide14Base64.map(b => Buffer.from(b.replace(/^data:image\/png;base64,/, ""), "base64"));
   await registerBuilds({
     manifest,
-    slideNumber: 15,
+    slideNumber: 16,
     sourceImage: slide14Source,
     sourceFileName: "slide_14.png",
     buildBuffers: slide14Buffers,

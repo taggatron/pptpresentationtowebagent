@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 
 async function verifyPlayer() {
-  console.log("=== Verifying Meselson-Stahl Embed in Presentation Player ===");
+  console.log("=== Verifying 3 Cell Cycle Checkpoint Slides + Meselson-Stahl in Player ===");
   const browser = await chromium.launch({ channel: "chrome", headless: true });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
@@ -9,16 +9,27 @@ async function verifyPlayer() {
     if (msg.type() === "error") console.log("BROWSER ERROR:", msg.text());
   });
 
-  // Navigate to player with the specific deck selected
-  await page.goto("http://127.0.0.1:3000/?deck=genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication&slide=7", { waitUntil: "networkidle" });
-  await page.waitForTimeout(1500);
+  // Navigate to player with Slide 7 (Stage 1)
+  await page.goto("http://127.0.0.1:3000/?set=genetics_aaq&deck=Lesson_02_DNA_structure_telomeres_and_replication&slide=7", { waitUntil: "networkidle" });
+  await page.waitForTimeout(2000);
 
-  // 1. Verify Slide 7 (Cell Cycle Checkpoints)
+  // 1. Verify Slide 7 (Stage 1 Emphasised)
   await page.screenshot({ path: "scratch/verify_deck_slide_07.png" });
-  console.log("✓ Captured Slide 7 screenshot");
+  console.log("✓ Captured Slide 7 screenshot (Stage 1 emphasised)");
 
-  // 2. Advance to Slide 8 (Meselson-Stahl interactive)
-  // Press Right arrow or click next button
+  // 2. Advance to Slide 8 (Stage 2 Emphasised)
+  await page.keyboard.press("ArrowRight");
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: "scratch/verify_deck_slide_08.png" });
+  console.log("✓ Captured Slide 8 screenshot (Stage 2 emphasised)");
+
+  // 3. Advance to Slide 9 (Stage 3 Emphasised)
+  await page.keyboard.press("ArrowRight");
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: "scratch/verify_deck_slide_09.png" });
+  console.log("✓ Captured Slide 9 screenshot (Stage 3 emphasised)");
+
+  // 4. Advance to Slide 10 (Meselson-Stahl interactive lab)
   await page.keyboard.press("ArrowRight");
   await page.waitForTimeout(2500);
 
@@ -33,7 +44,7 @@ async function verifyPlayer() {
       slideCounterText: slideNumberEl ? slideNumberEl.innerText : null
     };
   });
-  console.log("Slide 8 embed status:", embedStatus);
+  console.log("Slide 10 embed status:", embedStatus);
 
   // Verify inside iframe
   const frameElement = await page.$("#webEmbedFrame");
@@ -51,30 +62,16 @@ async function verifyPlayer() {
       };
     });
     console.log("Iframe internal state:", iframeState);
-  } else {
-    console.log("Could not access contentFrame directly");
   }
 
-  await page.screenshot({ path: "scratch/verify_deck_slide_08_embed.png" });
-  console.log("✓ Captured Slide 8 player screenshot");
+  await page.screenshot({ path: "scratch/verify_deck_slide_10_embed.png" });
+  console.log("✓ Captured Slide 10 player screenshot");
 
-  // 3. Test interaction inside iframe (click "LABEL THE PARENTAL DNA")
-  if (frame) {
-    const primaryBtn = await frame.$("#aaq-primary");
-    if (primaryBtn) {
-      console.log("Clicking primary button inside iframe...");
-      await primaryBtn.click();
-      await page.waitForTimeout(1500);
-      await page.screenshot({ path: "scratch/verify_deck_slide_08_interacted.png" });
-      console.log("✓ Captured Slide 8 interacted screenshot");
-    }
-  }
-
-  // 4. Advance to Slide 9
+  // 5. Advance to Slide 11
   await page.keyboard.press("ArrowRight");
   await page.waitForTimeout(1500);
 
-  const slide9Status = await page.evaluate(() => {
+  const slide11Status = await page.evaluate(() => {
     const layer = document.getElementById("webEmbedLayer");
     const img = document.getElementById("slideImage");
     return {
@@ -82,15 +79,15 @@ async function verifyPlayer() {
       imgSrc: img ? img.getAttribute("src") : null
     };
   });
-  console.log("Slide 9 status:", slide9Status);
-  await page.screenshot({ path: "scratch/verify_deck_slide_09.png" });
-  console.log("✓ Captured Slide 9 screenshot");
+  console.log("Slide 11 status:", slide11Status);
+  await page.screenshot({ path: "scratch/verify_deck_slide_11.png" });
+  console.log("✓ Captured Slide 11 screenshot");
 
-  // 5. Navigate back to Slide 8
+  // 6. Navigate back to Slide 10
   await page.keyboard.press("ArrowLeft");
   await page.waitForTimeout(2000);
-  await page.screenshot({ path: "scratch/verify_deck_slide_08_return.png" });
-  console.log("✓ Captured Slide 8 return screenshot");
+  await page.screenshot({ path: "scratch/verify_deck_slide_10_return.png" });
+  console.log("✓ Captured Slide 10 return screenshot");
 
   await browser.close();
   console.log("\n=== All Verification Steps Completed Successfully! ===");

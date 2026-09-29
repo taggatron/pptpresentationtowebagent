@@ -3,7 +3,7 @@
   "title": "Lesson 2: DNA structure, telomeres & replication",
   "slideSet": "genetics_aaq",
   "filename": "Lesson_02_DNA_structure_telomeres_replication.pptx",
-  "totalSlides": 18,
+  "totalSlides": 21,
   "slides": [
     {
       "number": 1,
@@ -557,8 +557,8 @@
       "imageFileName": "slide_05.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_05.png",
       "sourceMediaPath": "ppt/media/image4.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "cognitiveGuide": {
         "estimatedTimeSeconds": 8,
         "timeGuideDisplay": "6–10s",
@@ -628,7 +628,29 @@
         "questionReveal": false,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
-      }
+      },
+      "interactiveCells": [
+        {
+          "id": "reveal_5_mumpbflo",
+          "question": "Custom reveal",
+          "bounds": {
+            "x": 54.7,
+            "y": 8,
+            "w": 41.4,
+            "h": 85.2
+          },
+          "answerBounds": {
+            "x": 54.7,
+            "y": 8,
+            "w": 41.4,
+            "h": 85.2
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        }
+      ]
     },
     {
       "number": 6,
@@ -773,73 +795,29 @@
     },
     {
       "number": 7,
-      "title": "Cell Cycle Checkpoints: The Gatekeepers of Replication",
+      "title": "Cell Cycle Checkpoints: The G₁/S Restriction Gateway",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_07.png",
       "isInteractive": true,
       "interactiveType": "custom_reveals",
       "interactiveCells": [
         {
-          "id": "cp_cell_1",
+          "id": "cp_stage_1_cell",
           "bounds": {
-            "x": 44.91,
-            "y": 16.34,
-            "w": 51.89,
-            "h": 23.44
+            "x": 44.19,
+            "y": 16.47,
+            "w": 52.62,
+            "h": 38.28
           },
           "answerBounds": {
-            "x": 46.73,
-            "y": 27.93,
-            "w": 48.55,
-            "h": 10.16
+            "x": 45.93,
+            "y": 28.66,
+            "w": 49.42,
+            "h": 11.36
           },
           "question": "What is the surveillance focus and molecular control of the G1/S Restriction Point?",
-          "expectedAnswer": "Verifies DNA template integrity, cell volume, and energy stores. Double-strand breaks activate p53/p21 to halt CDK2/cyclin E and block replication fork initiation.",
-          "answer": "Verifies DNA template integrity, cell volume, and energy stores. Double-strand breaks activate p53/p21 to halt CDK2/cyclin E and block replication fork initiation.",
-          "answerVisibleInImage": true,
-          "answerIsBaked": true,
-          "revealMode": "unmask",
-          "confidence": 1
-        },
-        {
-          "id": "cp_cell_2",
-          "bounds": {
-            "x": 44.91,
-            "y": 42.38,
-            "w": 51.89,
-            "h": 23.44
-          },
-          "answerBounds": {
-            "x": 46.73,
-            "y": 53.97,
-            "w": 48.55,
-            "h": 10.16
-          },
-          "question": "How does the cell verify replication fidelity at the G2/M Checkpoint before mitosis?",
-          "expectedAnswer": "Confirms all 46 chromosomes are fully replicated without unresolved replication forks or Okazaki nicks, inhibiting CDK1/cyclin B (MPF) until repair is complete.",
-          "answer": "Confirms all 46 chromosomes are fully replicated without unresolved replication forks or Okazaki nicks, inhibiting CDK1/cyclin B (MPF) until repair is complete.",
-          "answerVisibleInImage": true,
-          "answerIsBaked": true,
-          "revealMode": "unmask",
-          "confidence": 1
-        },
-        {
-          "id": "cp_cell_3",
-          "bounds": {
-            "x": 44.91,
-            "y": 68.42,
-            "w": 51.89,
-            "h": 23.44
-          },
-          "answerBounds": {
-            "x": 46.73,
-            "y": 80.01,
-            "w": 48.55,
-            "h": 10.16
-          },
-          "question": "What does the Spindle Assembly Checkpoint (SAC) monitor during metaphase?",
-          "expectedAnswer": "Monitors bilateral kinetochore tension on spindle microtubules. Unattached kinetochores produce MCC to inhibit APC/C-Cdc20, preventing nondisjunction and aneuploidy.",
-          "answer": "Monitors bilateral kinetochore tension on spindle microtubules. Unattached kinetochores produce MCC to inhibit APC/C-Cdc20, preventing nondisjunction and aneuploidy.",
+          "expectedAnswer": "Verifies DNA template integrity, cell volume, and energy stores. Double-strand breaks trigger ATM/ATR kinase cascades that activate p53 transcription factor, upregulating p21 to arrest CDK2/cyclin E and block replication fork initiation.",
+          "answer": "Verifies DNA template integrity, cell volume, and energy stores. Double-strand breaks trigger ATM/ATR kinase cascades that activate p53 transcription factor, upregulating p21 to arrest CDK2/cyclin E and block replication fork initiation.",
           "answerVisibleInImage": true,
           "answerIsBaked": true,
           "revealMode": "unmask",
@@ -847,20 +825,20 @@
         }
       ],
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 63,
-        "timeGuideDisplay": "53–73s",
-        "vciScore": "9.4",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 32,
+        "timeGuideDisplay": "27–37s",
+        "vciScore": "5.9",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 3850,
-          "readingMs": 37200,
-          "semanticProcessingMs": 21200,
-          "wordCount": 105,
-          "visualElementsCount": 10
+          "visualScanMs": 1750,
+          "readingMs": 17700,
+          "semanticProcessingMs": 12400,
+          "wordCount": 51,
+          "visualElementsCount": 5
         },
         "academicReferences": [
           {
@@ -878,48 +856,20 @@
         ]
       },
       "serialAnimation": {
-        "totalBuildSteps": 3,
+        "totalBuildSteps": 1,
         "autoAdvanceDelayMs": 3400,
         "serialSteps": [
           {
             "step": 1,
-            "title": "Reveal: Checkpoint 1",
+            "title": "Reveal: Checkpoint 1 Mechanism",
             "componentIds": [
-              "cp_cell_1"
+              "cp_stage_1_cell"
             ],
             "targetBounds": {
-              "x": 46.73,
-              "y": 27.93,
-              "w": 48.55,
-              "h": 10.16
-            },
-            "revealType": "unmask"
-          },
-          {
-            "step": 2,
-            "title": "Reveal: Checkpoint 2",
-            "componentIds": [
-              "cp_cell_2"
-            ],
-            "targetBounds": {
-              "x": 46.73,
-              "y": 53.97,
-              "w": 48.55,
-              "h": 10.16
-            },
-            "revealType": "unmask"
-          },
-          {
-            "step": 3,
-            "title": "Reveal: Checkpoint 3",
-            "componentIds": [
-              "cp_cell_3"
-            ],
-            "targetBounds": {
-              "x": 46.73,
-              "y": 80.01,
-              "w": 48.55,
-              "h": 10.16
+              "x": 45.93,
+              "y": 28.66,
+              "w": 49.42,
+              "h": 11.36
             },
             "revealType": "unmask"
           }
@@ -928,21 +878,211 @@
       "animationPlan": {
         "version": 2,
         "mode": "question-reveal",
-        "reason": "Interactive unmasking for each cell cycle checkpoint mechanism.",
+        "reason": "Interactive unmasking for the G1/S Restriction Point molecular mechanism.",
         "protectedVideoCount": 0
       },
       "questionAnalysis": {
         "detected": true,
         "confidence": "high",
-        "questionCount": 3,
+        "questionCount": 1,
         "detectionSource": "manifest-cells"
       }
     },
     {
       "number": 8,
-      "title": "Practical Lab: Meselson–Stahl DNA Replication",
+      "title": "Cell Cycle Checkpoints: The G₂/M Replication Fidelity Gateway",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_08.png",
+      "isInteractive": true,
+      "interactiveType": "custom_reveals",
+      "interactiveCells": [
+        {
+          "id": "cp_stage_2_cell",
+          "bounds": {
+            "x": 44.19,
+            "y": 35.81,
+            "w": 52.62,
+            "h": 38.28
+          },
+          "answerBounds": {
+            "x": 45.93,
+            "y": 48,
+            "w": 49.42,
+            "h": 11.36
+          },
+          "question": "How does the cell verify replication fidelity at the G2/M Checkpoint before mitosis?",
+          "expectedAnswer": "Confirms that all 46 chromosomes have been fully and accurately duplicated in S phase without unresolved replication forks or unligated Okazaki fragments. Inhibits CDK1/cyclin B (MPF) until repair polymerases and ligases seal all gaps.",
+          "answer": "Confirms that all 46 chromosomes have been fully and accurately duplicated in S phase without unresolved replication forks or unligated Okazaki fragments. Inhibits CDK1/cyclin B (MPF) until repair polymerases and ligases seal all gaps.",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 34,
+        "timeGuideDisplay": "28–40s",
+        "vciScore": "6.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1750,
+          "readingMs": 19050,
+          "semanticProcessingMs": 12800,
+          "wordCount": 55,
+          "visualElementsCount": 5
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "serialAnimation": {
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3400,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Checkpoint 2 Mechanism",
+            "componentIds": [
+              "cp_stage_2_cell"
+            ],
+            "targetBounds": {
+              "x": 45.93,
+              "y": 48,
+              "w": 49.42,
+              "h": 11.36
+            },
+            "revealType": "unmask"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "question-reveal",
+        "reason": "Interactive unmasking for the G2/M Replication Fidelity Checkpoint molecular mechanism.",
+        "protectedVideoCount": 0
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 1,
+        "detectionSource": "manifest-cells"
+      }
+    },
+    {
+      "number": 9,
+      "title": "Cell Cycle Checkpoints: The Spindle Assembly Gateway (SAC)",
+      "imageFileName": "slide_09.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_09.png",
+      "isInteractive": true,
+      "interactiveType": "custom_reveals",
+      "interactiveCells": [
+        {
+          "id": "cp_stage_3_cell",
+          "bounds": {
+            "x": 44.19,
+            "y": 54.43,
+            "w": 52.62,
+            "h": 38.28
+          },
+          "answerBounds": {
+            "x": 45.93,
+            "y": 66.62,
+            "w": 49.42,
+            "h": 11.36
+          },
+          "question": "What does the Spindle Assembly Checkpoint (SAC) monitor during metaphase?",
+          "expectedAnswer": "Monitors mechanical tension and bilateral attachment of spindle microtubules to sister kinetochores. Unattached kinetochores generate the Mitotic Checkpoint Complex (MCC), inhibiting APC/C-Cdc20 to prevent nondisjunction and catastrophic aneuploidy.",
+          "answer": "Monitors mechanical tension and bilateral attachment of spindle microtubules to sister kinetochores. Unattached kinetochores generate the Mitotic Checkpoint Complex (MCC), inhibiting APC/C-Cdc20 to prevent nondisjunction and catastrophic aneuploidy.",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 38,
+        "timeGuideDisplay": "32–44s",
+        "vciScore": "6.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1750,
+          "readingMs": 16800,
+          "semanticProcessingMs": 19000,
+          "wordCount": 46,
+          "visualElementsCount": 5
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "serialAnimation": {
+        "totalBuildSteps": 1,
+        "autoAdvanceDelayMs": 3400,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: Checkpoint 3 Mechanism",
+            "componentIds": [
+              "cp_stage_3_cell"
+            ],
+            "targetBounds": {
+              "x": 45.93,
+              "y": 66.62,
+              "w": 49.42,
+              "h": 11.36
+            },
+            "revealType": "unmask"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "question-reveal",
+        "reason": "Interactive unmasking for the Spindle Assembly Checkpoint (SAC) molecular mechanism.",
+        "protectedVideoCount": 0
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 1,
+        "detectionSource": "manifest-cells"
+      }
+    },
+    {
+      "number": 10,
+      "title": "Practical Lab: Meselson–Stahl DNA Replication",
+      "imageFileName": "slide_10.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_10.png",
       "sourceMediaPath": "interactives/meselson-stahl/index.html",
       "isInteractive": true,
       "interactiveType": "web_embed",
@@ -1001,10 +1141,10 @@
       }
     },
     {
-      "number": 9,
-      "title": "Slide 6",
-      "imageFileName": "slide_09.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_09.png",
+      "number": 11,
+      "title": "Semiconservative Replication Concept",
+      "imageFileName": "slide_11.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_11.png",
       "sourceMediaPath": "ppt/media/image6.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1047,7 +1187,7 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_9_1_component_reveal",
+          "id": "gemini_slide_11_1_component_reveal",
           "order": 1,
           "kind": "image",
           "mediaType": "image",
@@ -1060,7 +1200,7 @@
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
-          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_09.png"
+          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_11.png"
         }
       ],
       "hasProgressiveBuilds": false,
@@ -1080,10 +1220,10 @@
       }
     },
     {
-      "number": 10,
-      "title": "Slide 7",
-      "imageFileName": "slide_10.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_10.png",
+      "number": 12,
+      "title": "Data Interpretation: Meselson-Stahl Density Gradients",
+      "imageFileName": "slide_12.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_12.png",
       "sourceMediaPath": "ppt/media/image7.png",
       "isInteractive": false,
       "interactiveType": null,
@@ -1126,164 +1266,6 @@
       },
       "geminiImageCells": [
         {
-          "id": "gemini_slide_10_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 7: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_10.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
-    },
-    {
-      "number": 11,
-      "title": "Slide 8",
-      "imageFileName": "slide_11.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_11.png",
-      "sourceMediaPath": "ppt/media/image8.png",
-      "isInteractive": false,
-      "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
-      },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_11_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_11.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
-      }
-    },
-    {
-      "number": 12,
-      "title": "Slide 9",
-      "imageFileName": "slide_12.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_12.png",
-      "sourceMediaPath": "ppt/media/image9.png",
-      "isInteractive": false,
-      "interactiveType": null,
-      "cognitiveGuide": {
-        "estimatedTimeSeconds": 13,
-        "timeGuideDisplay": "11–15s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
-        "ragLevel": "low",
-        "ragColor": "green",
-        "ragLabel": "Low Processing",
-        "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 11000,
-          "wordCount": 2,
-          "visualElementsCount": 3
-        },
-        "academicReferences": [
-          {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "manifest-text"
-      },
-      "geminiImageCells": [
-        {
           "id": "gemini_slide_12_1_component_reveal",
           "order": 1,
           "kind": "image",
@@ -1293,7 +1275,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 7: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1318,10 +1300,10 @@
     },
     {
       "number": 13,
-      "title": "Slide 10",
+      "title": "Coordinated Enzymatic Machinery: Unwinding & Priming",
       "imageFileName": "slide_13.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_13.png",
-      "sourceMediaPath": "ppt/media/image10.png",
+      "sourceMediaPath": "ppt/media/image8.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
@@ -1372,7 +1354,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 8: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1397,40 +1379,41 @@
     },
     {
       "number": 14,
-      "title": "Slide 11",
+      "title": "Mechanism of DNA Replication: 3D Molecular Animation",
       "imageFileName": "slide_14.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_14.png",
-      "sourceMediaPath": "ppt/media/image11.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "sourceMediaPath": "interactives/dna_replication_video.html",
+      "isInteractive": true,
+      "interactiveType": "web_embed",
+      "webEmbed": {
+        "url": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/interactives/dna_replication_video.html",
+        "title": "Mechanism of DNA Replication: 3D Molecular Animation",
+        "label": "Video Animation · DNA Replication (3D)"
+      },
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 8,
-        "timeGuideDisplay": "6–10s",
-        "vciScore": "2.8",
-        "complexityCategory": "Low",
+        "estimatedTimeSeconds": 180,
+        "timeGuideDisplay": "120–210s",
+        "vciScore": "4.2",
+        "complexityCategory": "Medium",
         "ragLevel": "low",
         "ragColor": "green",
-        "ragLabel": "Low Processing",
+        "ragLabel": "Video Animation",
         "breakdown": {
           "visualGistMs": 250,
-          "visualScanMs": 1050,
-          "readingMs": 600,
-          "semanticProcessingMs": 6000,
-          "wordCount": 2,
-          "visualElementsCount": 3
+          "visualScanMs": 950,
+          "readingMs": 5200,
+          "semanticProcessingMs": 35000,
+          "wordCount": 24,
+          "visualElementsCount": 5
         },
         "academicReferences": [
           {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+            "citation": "Mayer, R. E. (2002). Multimedia learning. Psychology of Learning and Motivation, 41, 85-139.",
+            "relevance": "Dynamic 3D representation scaffolds mental model formation of antiparallel strand coordination at the replication fork."
           },
           {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving. Cognitive Science, 12(2), 257.",
+            "relevance": "Visual animation integrates spatial and temporal enzymatic actions, reducing cognitive split-attention effect."
           }
         ]
       },
@@ -1438,48 +1421,24 @@
         "detected": false,
         "confidence": "low",
         "questionCount": 0,
-        "detectionSource": "manifest-text"
+        "detectionSource": "video-slide"
       },
-      "geminiImageCells": [
-        {
-          "id": "gemini_slide_14_1_component_reveal",
-          "order": 1,
-          "kind": "image",
-          "mediaType": "image",
-          "source": "gemini-image-chat",
-          "label": "Build 1: Complete the instructional build",
-          "strategy": "component-reveal",
-          "fullCanvas": true,
-          "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
-          "status": "planned",
-          "qaStatus": "not-started",
-          "outputImageUrl": null,
-          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_14.png"
-        }
-      ],
-      "hasProgressiveBuilds": false,
-      "animationPlan": {
-        "version": 2,
-        "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "component-reveal",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 1,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
-        "webEmbedPreserved": false,
-        "protectedVideoCount": 0
+      "contentAnalysis": {
+        "schemaVersion": 1,
+        "status": "ready",
+        "source": "youtube-video-3d-replication",
+        "transcript": "Mechanism of DNA Replication: 3D Molecular Animation (yourgenome • Wellcome Sanger Institute). Demonstrating unwinding by helicase, stabilization by SSBs, RNA primer synthesis by primase, continuous leading strand synthesis by DNA polymerase, discontinuous lagging strand Okazaki fragments, and ligation by DNA ligase.",
+        "role": "instructional-video",
+        "questions": [],
+        "questionCount": 0
       }
     },
     {
       "number": 15,
-      "title": "Slide 12",
+      "title": "Coordinated Enzymatic Machinery: Synthesis",
       "imageFileName": "slide_15.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_15.png",
-      "sourceMediaPath": "ppt/media/image12.png",
+      "sourceMediaPath": "ppt/media/image9.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
@@ -1530,7 +1489,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 9: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1555,10 +1514,10 @@
     },
     {
       "number": 16,
-      "title": "Slide 13",
+      "title": "Structural Comparison: Leading vs. Lagging Strand",
       "imageFileName": "slide_16.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_16.png",
-      "sourceMediaPath": "ppt/media/image13.png",
+      "sourceMediaPath": "ppt/media/image10.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
@@ -1609,7 +1568,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 10: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1634,10 +1593,10 @@
     },
     {
       "number": 17,
-      "title": "Slide 14",
+      "title": "Coordinated Enzymatic Machinery: Proofreading & Sealing",
       "imageFileName": "slide_17.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_17.png",
-      "sourceMediaPath": "ppt/media/image14.png",
+      "sourceMediaPath": "ppt/media/image11.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
@@ -1688,7 +1647,7 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 11: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
@@ -1713,10 +1672,10 @@
     },
     {
       "number": 18,
-      "title": "Slide 15",
+      "title": "The Eukaryotic End-Replication Problem",
       "imageFileName": "slide_18.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_18.png",
-      "sourceMediaPath": "ppt/media/image15.png",
+      "sourceMediaPath": "ppt/media/image12.png",
       "isInteractive": false,
       "interactiveType": null,
       "cognitiveGuide": {
@@ -1767,11 +1726,248 @@
           "strategy": "component-reveal",
           "fullCanvas": true,
           "cumulative": true,
-          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 12: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
           "status": "planned",
           "qaStatus": "not-started",
           "outputImageUrl": null,
           "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_18.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
+    },
+    {
+      "number": 19,
+      "title": "The Biological Clock: Telomeres & The Hayflick Limit",
+      "imageFileName": "slide_19.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_19.png",
+      "sourceMediaPath": "ppt/media/image13.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_19_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 13: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_19.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
+    },
+    {
+      "number": 20,
+      "title": "Clinical Application: Senescence vs. Immortalisation",
+      "imageFileName": "slide_20.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_20.png",
+      "sourceMediaPath": "ppt/media/image14.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 8,
+        "timeGuideDisplay": "6–10s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 6000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_20_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 14: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_20.png"
+        }
+      ],
+      "hasProgressiveBuilds": false,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
+        "strategy": "component-reveal",
+        "planningSource": "local-slide-heuristics",
+        "analyzedComponentCount": 0,
+        "plannedCellCount": 1,
+        "approvedCellCount": 0,
+        "qaRequired": true,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      }
+    },
+    {
+      "number": 21,
+      "title": "Plenary Summary",
+      "imageFileName": "slide_21.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_21.png",
+      "sourceMediaPath": "ppt/media/image15.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 13,
+        "timeGuideDisplay": "11–15s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 11000,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_21_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Complete the instructional build",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create cumulative full-slide still-image build 1 of 1 for slide 15: \"Lesson 2: DNA structure, telomeres & replication\".\nDeck context: Lesson 2: DNA structure, telomeres & replication.\nUse the attached original slide as the sole visual and factual source.\nReturn exactly one 16:9 presentation slide image; do not return commentary, a crop, an animation, or a video.\nPreserve the original theme, canvas dimensions, background, typography family, colour palette, illustration style, and spatial rhythm.\nRender the entire slide canvas at every build. Do not spotlight, dim, blur, outline, crop, zoom, or add focus boxes around any region.\nThis is the only build for this slide: reproduce every instructional element, visual, label, subtitle, and title word visible in the source. Do not omit, abbreviate, or rewrite any source content.\nInstructional build strategy: component-reveal.\nShow now: Everything from the earlier builds plus the remaining source content and final conclusion or key-insight container.\nTemporarily omit: Nothing instructional; retain only purposeful decoration from the source.\nTreat Show now and Temporarily omit as absolute. They override any noisy OCR-derived orientation hint.\nSource-content reference: Lesson 2: DNA structure, telomeres & replication\nEnsure the slide content is really clear and uncluttered, with generous whitespace, high visual hierarchy, clean readable layouts, legible typography, and no overcrowding or unnecessary visual clutter.\nKeep all retained scientific wording, equations, labels, units, and relationships factually unchanged and fully legible.\nDo not invent facts, redesign the deck, add watermarks, or modify any separate video asset.",
+          "status": "planned",
+          "qaStatus": "not-started",
+          "outputImageUrl": null,
+          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_21.png"
         }
       ],
       "hasProgressiveBuilds": false,
