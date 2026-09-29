@@ -128,8 +128,8 @@ export async function ingestDecks(startLesson = 1, endLesson = 8) {
     manifest.examQuestion = lessonConfig.examQuestion || null;
     manifest.plenary = lessonConfig.plenary || null;
 
-    // Slide 2: Interactive 6-cell starter retrieval grid
-    if (manifest.slides && manifest.slides.length >= 2 && lessonConfig.starterQuestions?.length > 0) {
+    // Slide 2: Interactive 6-cell starter retrieval grid (exclude non-grid slides like Lessons 1 & 2)
+    if (manifest.slides && manifest.slides.length >= 2 && lessonConfig.starterQuestions?.length > 0 && lessonConfig.number !== 1 && lessonConfig.number !== 2) {
       manifest.slides[1].isInteractive = true;
       manifest.slides[1].interactiveType = "six_cell_grid";
       manifest.slides[1].title = `Starter Activity: 6-Cell Knowledge Retrieval`;

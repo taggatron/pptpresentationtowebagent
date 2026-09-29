@@ -9,17 +9,18 @@ const DECK_DIR = path.resolve("public/decks/genetics_aaq", DECK_ID);
 const SLIDES_DIR = path.join(DECK_DIR, "slides");
 const MANIFEST_PATH = path.join(DECK_DIR, "manifest.json");
 
-function getEquationSlideHtml(step = 4, isMaster = false) {
-  const isG1 = !isMaster && step > 1;
-  const isG2 = !isMaster && step > 2;
-  const isG3 = !isMaster && step > 3;
+function getEquationSlideHtml(step = 5, isMaster = false) {
+  // step: 1 = Vp, 2 = Vg, 3 = Ve, 4 = Vgxe, 5 = Whole equation (all active)
+  const isG1 = !isMaster && step > 1 && step < 5;
+  const isG2 = !isMaster && step > 2 && step < 5;
+  const isG3 = !isMaster && step > 3 && step < 5;
 
   return `<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     width: 1376px;
@@ -37,34 +38,34 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
   
   .slide-header {
     position: absolute;
-    top: 36px;
-    left: 60px;
+    top: 32px;
+    left: 56px;
   }
   .slide-title {
-    font-size: 38px;
+    font-size: 42px;
     font-weight: 800;
-    color: #1e293b;
-    letter-spacing: -0.02em;
+    color: #0f172a;
+    letter-spacing: -0.025em;
   }
   
   /* Central Equation */
   .equation-container {
     position: absolute;
-    top: 348px;
+    top: 346px;
     left: 0;
     width: 1376px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    font-size: 46px;
+    gap: 20px;
+    font-size: 52px;
     font-weight: 800;
     font-family: "Inter", sans-serif;
     z-index: 10;
   }
   .eq-term {
-    padding: 6px 14px;
-    border-radius: 12px;
+    padding: 8px 18px;
+    border-radius: 14px;
     display: flex;
     align-items: baseline;
     transition: all 0.3s ease;
@@ -72,13 +73,13 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
   .eq-term .sub {
     font-size: 0.68em;
     font-weight: 700;
-    margin-left: 1px;
+    margin-left: 2px;
   }
-  .term-vp { color: #1d4ed8; background: rgba(219, 234, 254, 0.7); border: 2px solid #bfdbfe; }
-  .term-vg { color: #047857; background: rgba(209, 250, 229, 0.7); border: 2px solid #a7f3d0; }
-  .term-ve { color: #b45309; background: rgba(254, 243, 199, 0.7); border: 2px solid #fde68a; }
-  .term-vgxe { color: #6d28d9; background: rgba(237, 233, 254, 0.7); border: 2px solid #ddd6fe; }
-  .eq-op { color: #475569; font-weight: 600; font-size: 38px; }
+  .term-vp { color: #1d4ed8; background: rgba(219, 234, 254, 0.8); border: 2.5px solid #93c5fd; }
+  .term-vg { color: #047857; background: rgba(209, 250, 229, 0.8); border: 2.5px solid #6ee7b7; }
+  .term-ve { color: #b45309; background: rgba(254, 243, 199, 0.8); border: 2.5px solid #fcd34d; }
+  .term-vgxe { color: #6d28d9; background: rgba(237, 233, 254, 0.8); border: 2.5px solid #c4b5fd; }
+  .eq-op { color: #475569; font-weight: 700; font-size: 44px; }
 
   .hidden-step {
     visibility: hidden !important;
@@ -87,7 +88,7 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
 
   /* Greyed-out state for components already animated in */
   .card-greyed-out {
-    opacity: 0.38 !important;
+    opacity: 0.35 !important;
     filter: grayscale(100%) !important;
     border-color: #cbd5e1 !important;
     box-shadow: none !important;
@@ -103,7 +104,7 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
     color: #94a3b8 !important;
   }
   .term-greyed-out {
-    opacity: 0.38 !important;
+    opacity: 0.35 !important;
     filter: grayscale(100%) !important;
     background: #f1f5f9 !important;
     border-color: #cbd5e1 !important;
@@ -113,15 +114,19 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
     stroke: #94a3b8 !important;
     opacity: 0.35 !important;
   }
+  .circle-greyed-out {
+    fill: #94a3b8 !important;
+    opacity: 0.35 !important;
+  }
 
   /* Callout Cards */
   .card {
     position: absolute;
-    width: 580px;
+    width: 590px;
     background: #ffffff;
-    border-radius: 16px;
-    padding: 18px 24px;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+    border-radius: 18px;
+    padding: 20px 26px;
+    box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.09), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
     border: 1.5px solid #cbd5e1;
     z-index: 5;
     transition: all 0.3s ease;
@@ -129,35 +134,38 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
   
   .card-pill {
     display: inline-block;
-    padding: 5px 14px;
+    padding: 6px 16px;
     border-radius: 9999px;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-size: 18.5px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
   }
-  .pill-vp { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
-  .pill-vg { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
-  .pill-ve { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-  .pill-vgxe { background: #ede9fe; color: #5b21b6; border: 1px solid #ddd6fe; }
+  .pill-vp { background: #dbeafe; color: #1e40af; border: 1.5px solid #bfdbfe; }
+  .pill-vg { background: #d1fae5; color: #065f46; border: 1.5px solid #a7f3d0; }
+  .pill-ve { background: #fef3c7; color: #92400e; border: 1.5px solid #fde68a; }
+  .pill-vgxe { background: #ede9fe; color: #5b21b6; border: 1.5px solid #ddd6fe; }
   
   .card-bullets {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
   .card-bullets li {
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: 18px;
+    line-height: 1.45;
     color: #334155;
     position: relative;
-    padding-left: 18px;
+    padding-left: 22px;
   }
   .card-bullets li::before {
     content: "•";
     position: absolute;
     left: 4px;
-    font-weight: 800;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.2;
     color: #64748b;
   }
   .card-bullets strong {
@@ -167,20 +175,20 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
   
   /* Positioning Cards */
   .card-vp {
-    top: 105px;
-    left: 60px;
+    top: 96px;
+    left: 56px;
   }
   .card-vg {
-    top: 480px;
-    left: 60px;
+    top: 504px;
+    left: 56px;
   }
   .card-ve {
-    top: 105px;
-    right: 60px;
+    top: 96px;
+    right: 56px;
   }
   .card-vgxe {
-    top: 480px;
-    right: 60px;
+    top: 504px;
+    right: 56px;
   }
   
   /* SVG Connectors */
@@ -260,28 +268,28 @@ function getEquationSlideHtml(step = 4, isMaster = false) {
     </ul>
   </div>
 
-  <!-- SVG Connectors -->
+  <!-- SVG Connectors rendered directly into HTML -->
   <svg class="connectors" id="svgConnectors">
-    <!-- Connector 1: Card Vp (bottom) -> Term Vp (top) -->
-    <path d="M 450 233 L 450 342" stroke="${isG1 ? '#94a3b8' : '#2563eb'}" stroke-width="2.5" stroke-linecap="round" class="${isG1 ? 'connector-greyed-out' : ''}"/>
-    <circle cx="450" cy="342" r="4" fill="${isG1 ? '#94a3b8' : '#2563eb'}"/>
+    <!-- Connector 1: Card Vp (bottom at x=405, y=269) -> Term Vp (top at x=405, y=340) -->
+    <path d="M 405 269 L 405 340" stroke="${isG1 ? '#94a3b8' : '#2563eb'}" stroke-width="2.5" stroke-linecap="round" class="${isG1 ? 'connector-greyed-out' : ''}"/>
+    <circle cx="405" cy="340" r="4.5" fill="${isG1 ? '#94a3b8' : '#2563eb'}" class="${isG1 ? 'circle-greyed-out' : ''}"/>
 
-    <!-- Connector 2: Card Vg (top) -> Term Vg (bottom) -->
+    <!-- Connector 2: Card Vg (top at x=579, y=504) -> Term Vg (bottom at x=579, y=435) -->
     ${step >= 2 ? `
-    <path d="M 596 480 L 596 426" stroke="${isG2 ? '#94a3b8' : '#059669'}" stroke-width="2.5" stroke-linecap="round" class="${isG2 ? 'connector-greyed-out' : ''}"/>
-    <circle cx="596" cy="426" r="4" fill="${isG2 ? '#94a3b8' : '#059669'}"/>
+    <path d="M 579 504 L 579 435" stroke="${isG2 ? '#94a3b8' : '#059669'}" stroke-width="2.5" stroke-linecap="round" class="${isG2 ? 'connector-greyed-out' : ''}"/>
+    <circle cx="579" cy="435" r="4.5" fill="${isG2 ? '#94a3b8' : '#059669'}" class="${isG2 ? 'circle-greyed-out' : ''}"/>
     ` : ""}
 
-    <!-- Connector 3: Card Ve (bottom) -> Term Ve (top) -->
+    <!-- Connector 3: Card Ve (bottom at x=790, y=244) -> Term Ve (top at x=753, y=340) -->
     ${step >= 3 ? `
-    <path d="M 760 233 C 760 290, 741 290, 741 342" stroke="${isG3 ? '#94a3b8' : '#d97706'}" stroke-width="2.5" stroke-linecap="round" fill="none" class="${isG3 ? 'connector-greyed-out' : ''}"/>
-    <circle cx="741" cy="342" r="4" fill="${isG3 ? '#94a3b8' : '#d97706'}"/>
+    <path d="M 790 244 C 790 292, 753 292, 753 340" stroke="${isG3 ? '#94a3b8' : '#d97706'}" stroke-width="2.5" stroke-linecap="round" fill="none" class="${isG3 ? 'connector-greyed-out' : ''}"/>
+    <circle cx="753" cy="340" r="4.5" fill="${isG3 ? '#94a3b8' : '#d97706'}" class="${isG3 ? 'circle-greyed-out' : ''}"/>
     ` : ""}
 
-    <!-- Connector 4: Card Vgxe (top) -> Term Vgxe (bottom) -->
+    <!-- Connector 4: Card Vgxe (top at x=949, y=504) -> Term Vgxe (bottom at x=949, y=435) -->
     ${step >= 4 ? `
-    <path d="M 906 480 L 906 426" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="906" cy="426" r="4" fill="#7c3aed"/>
+    <path d="M 949 504 L 949 435" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="949" cy="435" r="4.5" fill="#7c3aed"/>
     ` : ""}
   </svg>
 
@@ -399,14 +407,14 @@ async function main() {
   const manifest = JSON.parse(await fs.readFile(MANIFEST_PATH, "utf8"));
 
   // =========================================================================
-  // SLIDE 4: The Phenotypic Equation (4 Progressive Builds)
-  // Completely hides unrevealed components + Greys out already animated components
+  // SLIDE 4: The Phenotypic Equation (5 Progressive Builds)
+  // Reveals individual terms sequentially, then displays the complete equation
   // =========================================================================
-  console.log("\n--- Processing Slide 4: The Phenotypic Equation (4 builds) ---");
+  console.log("\n--- Processing Slide 4: The Phenotypic Equation (5 builds) ---");
   const slide4Source = path.join(SLIDES_DIR, "slide_04.png");
   const slide4Buffers = [];
 
-  for (let step = 1; step <= 4; step++) {
+  for (let step = 1; step <= 5; step++) {
     const html = getEquationSlideHtml(step, false);
     await page.setContent(html);
     const buf = await page.screenshot({ type: "png" });
@@ -414,7 +422,7 @@ async function main() {
   }
 
   // Update master slide_04.png with all active
-  const masterHtml = getEquationSlideHtml(4, true);
+  const masterHtml = getEquationSlideHtml(5, true);
   await page.setContent(masterHtml);
   const masterBuf = await page.screenshot({ type: "png" });
   await fs.writeFile(slide4Source, masterBuf);
@@ -431,13 +439,15 @@ async function main() {
       "Build 1: Reveal Vp (Phenotypic Variation - observable physical characteristics)",
       "Build 2: Add Vg (Genotypic Variation - fixed genetic foundation; Vp greyed out)",
       "Build 3: Add Ve (Environmental Variation - dynamic external factors; Vp, Vg greyed out)",
-      "Build 4: Add Vg×e (Gene–Environment Interaction - differential response; Vp, Vg, Ve greyed out)"
+      "Build 4: Add Vg×e (Gene–Environment Interaction - differential response; Vp, Vg, Ve greyed out)",
+      "Build 5: Complete Phenotypic Equation (All components active: Vp, Vg, Ve, and Vg×e together)"
     ],
     prompts: [
       "Reveal Term 1 Vp and its callout card.",
       "Add Term 2 Vg and its callout card, greying out Vp.",
       "Add Term 3 Ve and its callout card, greying out Vp and Vg.",
-      "Add Term 4 Vg×e and its callout card, completing the phenotypic equation while previous terms are greyed out."
+      "Add Term 4 Vg×e and its callout card, completing the phenotypic equation while previous terms are greyed out.",
+      "Display the complete phenotypic equation with all four components and callout cards fully illuminated in color."
     ]
   });
 
