@@ -347,28 +347,28 @@ async function run() {
 
     <div class="criteria-card">
       <div class="prompt-box">
-        <div class="prompt-box-title">Examination Challenge</div>
+        <div class="prompt-box-title">Examination Challenge (Higher Tier QER)</div>
         <div class="prompt-box-text">
-          Describe the four stages that are assessed in a life cycle assessment. Give at least one matching example from the smartphone list for each stage.
+          Evaluate the costs and environmental impacts across each stage of a smartphone's life cycle. Compare energy used and CO₂ released using table data, evaluate disposal trade-offs, and justify which stage has the greatest overall impact.
         </div>
       </div>
 
       <div class="features-list">
         <div class="feature-item">
-          <div class="feature-icon">1</div>
-          <span><strong>Stage 1:</strong> Raw Materials (oil extraction, copper ore)</span>
+          <div class="feature-icon">📊</div>
+          <span><strong>Data Table:</strong> Relative energy (MJ), CO₂ (kg), and financial cost (£) across all 4 stages</span>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">2</div>
-          <span><strong>Stage 2:</strong> Manufacturing (making plastics, assembly, packaging)</span>
+          <div class="feature-icon">🏭</div>
+          <span><strong>Manufacturing Burden:</strong> Cleanroom chip fabrication generates ~58% of energy &amp; ~57% of CO₂</span>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">3</div>
-          <span><strong>Stage 3:</strong> Use &amp; Operation (watching videos, charging)</span>
+          <div class="feature-icon">⚖️</div>
+          <span><strong>Economic Trade-offs:</strong> Landfill is cheap (£5) but toxic; recycling costs £15 but conserves scarce ores</span>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">4</div>
-          <span><strong>Stage 4:</strong> Disposal &amp; End of Life (dismantling, recycling copper)</span>
+          <div class="feature-icon">💡</div>
+          <span><strong>Mitigation &amp; Conclusion:</strong> Extended phone lifespan, modular repairability, and renewable factory power</span>
         </div>
       </div>
 
