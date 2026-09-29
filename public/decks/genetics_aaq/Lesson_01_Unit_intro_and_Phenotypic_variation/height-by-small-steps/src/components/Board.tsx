@@ -23,7 +23,7 @@ export function Board({polarity,onPolarityChange,onFactorToggle,geneCount,select
  const TOP=geneCount===1?120:48,GAP=geneCount===1?95:24;
  const wrap=useRef<HTMLDivElement>(null);
  const [width,setWidth]=useState(760);
- useEffect(()=>{ const el=wrap.current!; const observer=new ResizeObserver(([entry])=>setWidth(Math.max(300,entry.contentRect.width))); observer.observe(el);return()=>observer.disconnect(); },[]);
+ useEffect(()=>{ const el=wrap.current!; const observer=new ResizeObserver(([entry])=>setWidth(Math.max(300,Math.min(860,entry.contentRect.width)))); observer.observe(el);return()=>observer.disconnect(); },[]);
  const CENTER=(width+140)/2, STEP=geneCount===1?genes[0].effectSize*Math.sqrt(20/allGenes.length)*(width-155)/10:(width-185)/(genes.length*2), floor=TOP+genes.length*GAP+30;
  const geometry={center:CENTER,step:STEP,floor,width,top:TOP,gap:GAP,single:geneCount===1};
  const {tilt}=environmentalInfluence(environment);

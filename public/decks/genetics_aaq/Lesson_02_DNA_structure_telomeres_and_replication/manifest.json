@@ -798,94 +798,128 @@
       "title": "Cell Cycle Checkpoints: The G₁/S Restriction Gateway",
       "imageFileName": "slide_07.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_07.png",
-      "isInteractive": true,
-      "interactiveType": "custom_reveals",
-      "interactiveCells": [
-        {
-          "id": "cp_stage_1_cell",
-          "bounds": {
-            "x": 44.19,
-            "y": 16.47,
-            "w": 52.62,
-            "h": 38.28
-          },
-          "answerBounds": {
-            "x": 45.93,
-            "y": 28.66,
-            "w": 49.42,
-            "h": 11.36
-          },
-          "question": "What is the surveillance focus and molecular control of the G1/S Restriction Point?",
-          "expectedAnswer": "Verifies DNA template integrity, cell volume, and energy stores. Double-strand breaks trigger ATM/ATR kinase cascades that activate p53 transcription factor, upregulating p21 to arrest CDK2/cyclin E and block replication fork initiation.",
-          "answer": "Verifies DNA template integrity, cell volume, and energy stores. Double-strand breaks trigger ATM/ATR kinase cascades that activate p53 transcription factor, upregulating p21 to arrest CDK2/cyclin E and block replication fork initiation.",
-          "answerVisibleInImage": true,
-          "answerIsBaked": true,
-          "revealMode": "unmask",
-          "confidence": 1
-        }
-      ],
+      "isInteractive": false,
+      "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 32,
-        "timeGuideDisplay": "27–37s",
-        "vciScore": "5.9",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 22,
+        "timeGuideDisplay": "15–25s",
+        "vciScore": "3.5",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Simplified Stage",
         "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 17700,
-          "semanticProcessingMs": 12400,
-          "wordCount": 51,
-          "visualElementsCount": 5
+          "visualGistMs": 200,
+          "visualScanMs": 700,
+          "readingMs": 5000,
+          "semanticProcessingMs": 12000,
+          "wordCount": 26,
+          "visualElementsCount": 4
         },
         "academicReferences": [
           {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "serialAnimation": {
-        "totalBuildSteps": 1,
-        "autoAdvanceDelayMs": 3400,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Reveal: Checkpoint 1 Mechanism",
-            "componentIds": [
-              "cp_stage_1_cell"
-            ],
-            "targetBounds": {
-              "x": 45.93,
-              "y": 28.66,
-              "w": 49.42,
-              "h": 11.36
-            },
-            "revealType": "unmask"
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving. Cognitive Science, 12(2), 257.",
+            "relevance": "Isolating a single checkpoint per slide eliminates split-attention extraneous load and enhances schema retention."
           }
         ]
       },
       "animationPlan": {
         "version": 2,
-        "mode": "question-reveal",
-        "reason": "Interactive unmasking for the G1/S Restriction Point molecular mechanism.",
+        "mode": "gemini-image-cells",
+        "reason": "Bright, simplified single-stage view generated via the Gemini image creation agentic pathway with upscaled 4K resolution.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "plannedCellCount": 1,
+        "approvedCellCount": 1,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
         "protectedVideoCount": 0
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "detectionSource": "manifest-cells"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "gemini-image-chat"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_7_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Stage 1 Focus — Cell Cycle Checkpoints: The G₁/S Restriction Gateway",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create bright, clean, upscaled 4K presentation slide for Cell Cycle Checkpoint Stage 1: The G₁/S Restriction Gateway. Left side shows eukaryotic cell cycle progression diagram with G₁/S highlighted. Right side dedicated exclusively to Stage 1 surveillance: Large core question on DNA intactness, key molecular gatekeepers (p53, p21, CDK2), bold PASS vs HALT decision outcomes, and oncology clinical link.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_07.png",
+          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_07.png",
+          "qa": {
+            "reviewedAt": "2026-09-29T14:49:17.834Z",
+            "reviewer": "Gemini_Agentic_Pathway",
+            "notes": "Bright, simplified, upscaled single-stage slide for Stage 1",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "3840×2160"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7778"
+                }
+              ]
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "progressiveBuilds": [
+        {
+          "id": "build_slide_7_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Stage 1 Focus — Cell Cycle Checkpoints: The G₁/S Restriction Gateway",
+          "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_07.png"
+        }
+      ],
+      "metadata": {
+        "role": "instructional-checkpoint",
+        "stage": 1,
+        "focus": "Cell Cycle Checkpoints: The G₁/S Restriction Gateway",
+        "density": "simplified-bright-upscaled",
+        "resolution": "3840x2160"
       }
     },
     {
@@ -893,94 +927,128 @@
       "title": "Cell Cycle Checkpoints: The G₂/M Replication Fidelity Gateway",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_08.png",
-      "isInteractive": true,
-      "interactiveType": "custom_reveals",
-      "interactiveCells": [
-        {
-          "id": "cp_stage_2_cell",
-          "bounds": {
-            "x": 44.19,
-            "y": 35.81,
-            "w": 52.62,
-            "h": 38.28
-          },
-          "answerBounds": {
-            "x": 45.93,
-            "y": 48,
-            "w": 49.42,
-            "h": 11.36
-          },
-          "question": "How does the cell verify replication fidelity at the G2/M Checkpoint before mitosis?",
-          "expectedAnswer": "Confirms that all 46 chromosomes have been fully and accurately duplicated in S phase without unresolved replication forks or unligated Okazaki fragments. Inhibits CDK1/cyclin B (MPF) until repair polymerases and ligases seal all gaps.",
-          "answer": "Confirms that all 46 chromosomes have been fully and accurately duplicated in S phase without unresolved replication forks or unligated Okazaki fragments. Inhibits CDK1/cyclin B (MPF) until repair polymerases and ligases seal all gaps.",
-          "answerVisibleInImage": true,
-          "answerIsBaked": true,
-          "revealMode": "unmask",
-          "confidence": 1
-        }
-      ],
+      "isInteractive": false,
+      "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 34,
-        "timeGuideDisplay": "28–40s",
-        "vciScore": "6.0",
-        "complexityCategory": "Moderate",
-        "ragLevel": "medium",
-        "ragColor": "amber",
-        "ragLabel": "Medium Processing",
+        "estimatedTimeSeconds": 22,
+        "timeGuideDisplay": "15–25s",
+        "vciScore": "3.5",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Simplified Stage",
         "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 19050,
-          "semanticProcessingMs": 12800,
-          "wordCount": 55,
-          "visualElementsCount": 5
+          "visualGistMs": 200,
+          "visualScanMs": 700,
+          "readingMs": 5000,
+          "semanticProcessingMs": 12000,
+          "wordCount": 26,
+          "visualElementsCount": 4
         },
         "academicReferences": [
           {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "serialAnimation": {
-        "totalBuildSteps": 1,
-        "autoAdvanceDelayMs": 3400,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Reveal: Checkpoint 2 Mechanism",
-            "componentIds": [
-              "cp_stage_2_cell"
-            ],
-            "targetBounds": {
-              "x": 45.93,
-              "y": 48,
-              "w": 49.42,
-              "h": 11.36
-            },
-            "revealType": "unmask"
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving. Cognitive Science, 12(2), 257.",
+            "relevance": "Isolating a single checkpoint per slide eliminates split-attention extraneous load and enhances schema retention."
           }
         ]
       },
       "animationPlan": {
         "version": 2,
-        "mode": "question-reveal",
-        "reason": "Interactive unmasking for the G2/M Replication Fidelity Checkpoint molecular mechanism.",
+        "mode": "gemini-image-cells",
+        "reason": "Bright, simplified single-stage view generated via the Gemini image creation agentic pathway with upscaled 4K resolution.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "plannedCellCount": 1,
+        "approvedCellCount": 1,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
         "protectedVideoCount": 0
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "detectionSource": "manifest-cells"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "gemini-image-chat"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_8_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Stage 2 Focus — Cell Cycle Checkpoints: The G₂/M Replication Fidelity Gateway",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create bright, clean, upscaled 4K presentation slide for Cell Cycle Checkpoint Stage 2: The G₂/M Replication Fidelity Gateway. Left side shows eukaryotic cell cycle progression diagram with G₂/M highlighted. Right side dedicated exclusively to Stage 2 surveillance: Large core question on complete DNA duplication, key molecular gatekeepers (ATM/ATR, Chk1/Chk2, CDK1), bold PASS vs HALT decision outcomes, and chemotherapy clinical link.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_08.png",
+          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_08.png",
+          "qa": {
+            "reviewedAt": "2026-09-29T14:49:18.926Z",
+            "reviewer": "Gemini_Agentic_Pathway",
+            "notes": "Bright, simplified, upscaled single-stage slide for Stage 2",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "3840×2160"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7778"
+                }
+              ]
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "progressiveBuilds": [
+        {
+          "id": "build_slide_8_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Stage 2 Focus — Cell Cycle Checkpoints: The G₂/M Replication Fidelity Gateway",
+          "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_08.png"
+        }
+      ],
+      "metadata": {
+        "role": "instructional-checkpoint",
+        "stage": 2,
+        "focus": "Cell Cycle Checkpoints: The G₂/M Replication Fidelity Gateway",
+        "density": "simplified-bright-upscaled",
+        "resolution": "3840x2160"
       }
     },
     {
@@ -988,94 +1056,128 @@
       "title": "Cell Cycle Checkpoints: The Spindle Assembly Gateway (SAC)",
       "imageFileName": "slide_09.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_09.png",
-      "isInteractive": true,
-      "interactiveType": "custom_reveals",
-      "interactiveCells": [
-        {
-          "id": "cp_stage_3_cell",
-          "bounds": {
-            "x": 44.19,
-            "y": 54.43,
-            "w": 52.62,
-            "h": 38.28
-          },
-          "answerBounds": {
-            "x": 45.93,
-            "y": 66.62,
-            "w": 49.42,
-            "h": 11.36
-          },
-          "question": "What does the Spindle Assembly Checkpoint (SAC) monitor during metaphase?",
-          "expectedAnswer": "Monitors mechanical tension and bilateral attachment of spindle microtubules to sister kinetochores. Unattached kinetochores generate the Mitotic Checkpoint Complex (MCC), inhibiting APC/C-Cdc20 to prevent nondisjunction and catastrophic aneuploidy.",
-          "answer": "Monitors mechanical tension and bilateral attachment of spindle microtubules to sister kinetochores. Unattached kinetochores generate the Mitotic Checkpoint Complex (MCC), inhibiting APC/C-Cdc20 to prevent nondisjunction and catastrophic aneuploidy.",
-          "answerVisibleInImage": true,
-          "answerIsBaked": true,
-          "revealMode": "unmask",
-          "confidence": 1
-        }
-      ],
+      "isInteractive": false,
+      "interactiveType": null,
       "cognitiveGuide": {
-        "estimatedTimeSeconds": 38,
-        "timeGuideDisplay": "32–44s",
-        "vciScore": "6.0",
-        "complexityCategory": "High",
-        "ragLevel": "high",
-        "ragColor": "red",
-        "ragLabel": "High Processing",
+        "estimatedTimeSeconds": 22,
+        "timeGuideDisplay": "15–25s",
+        "vciScore": "3.5",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Simplified Stage",
         "breakdown": {
-          "visualGistMs": 250,
-          "visualScanMs": 1750,
-          "readingMs": 16800,
-          "semanticProcessingMs": 19000,
-          "wordCount": 46,
-          "visualElementsCount": 5
+          "visualGistMs": 200,
+          "visualScanMs": 700,
+          "readingMs": 5000,
+          "semanticProcessingMs": 12000,
+          "wordCount": 26,
+          "visualElementsCount": 4
         },
         "academicReferences": [
           {
-            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
-            "relevance": "Quantifies visual feature congestion & visual search scanning time."
-          },
-          {
-            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
-            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
-          },
-          {
-            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
-            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
-          }
-        ]
-      },
-      "serialAnimation": {
-        "totalBuildSteps": 1,
-        "autoAdvanceDelayMs": 3400,
-        "serialSteps": [
-          {
-            "step": 1,
-            "title": "Reveal: Checkpoint 3 Mechanism",
-            "componentIds": [
-              "cp_stage_3_cell"
-            ],
-            "targetBounds": {
-              "x": 45.93,
-              "y": 66.62,
-              "w": 49.42,
-              "h": 11.36
-            },
-            "revealType": "unmask"
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving. Cognitive Science, 12(2), 257.",
+            "relevance": "Isolating a single checkpoint per slide eliminates split-attention extraneous load and enhances schema retention."
           }
         ]
       },
       "animationPlan": {
         "version": 2,
-        "mode": "question-reveal",
-        "reason": "Interactive unmasking for the Spindle Assembly Checkpoint (SAC) molecular mechanism.",
+        "mode": "gemini-image-cells",
+        "reason": "Bright, simplified single-stage view generated via the Gemini image creation agentic pathway with upscaled 4K resolution.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "plannedCellCount": 1,
+        "approvedCellCount": 1,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
         "protectedVideoCount": 0
       },
       "questionAnalysis": {
-        "detected": true,
-        "confidence": "high",
-        "questionCount": 1,
-        "detectionSource": "manifest-cells"
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "gemini-image-chat"
+      },
+      "geminiImageCells": [
+        {
+          "id": "gemini_slide_9_1_component_reveal",
+          "order": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "source": "gemini-image-chat",
+          "label": "Build 1: Stage 3 Focus — Cell Cycle Checkpoints: The Spindle Assembly Gateway (SAC)",
+          "strategy": "component-reveal",
+          "fullCanvas": true,
+          "cumulative": true,
+          "prompt": "Create bright, clean, upscaled 4K presentation slide for Cell Cycle Checkpoint Stage 3: The Spindle Assembly Gateway (SAC). Left side shows eukaryotic cell cycle progression diagram with SAC highlighted. Right side dedicated exclusively to Stage 3 surveillance: Large core question on spindle tension, key molecular gatekeepers (kinetochore sensor, Mad2/MCC brake, APC/C trigger), bold PASS vs HALT decision outcomes, and Taxol clinical link.",
+          "status": "ready",
+          "qaStatus": "approved",
+          "outputImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_09.png",
+          "sourceImageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_09.png",
+          "qa": {
+            "reviewedAt": "2026-09-29T14:49:20.021Z",
+            "reviewer": "Gemini_Agentic_Pathway",
+            "notes": "Bright, simplified, upscaled single-stage slide for Stage 3",
+            "technical": {
+              "passed": true,
+              "checks": [
+                {
+                  "id": "file-readable",
+                  "passed": true
+                },
+                {
+                  "id": "supported-image-signature",
+                  "passed": true,
+                  "detail": "png"
+                },
+                {
+                  "id": "minimum-file-size",
+                  "passed": true
+                },
+                {
+                  "id": "minimum-resolution",
+                  "passed": true,
+                  "detail": "3840×2160"
+                },
+                {
+                  "id": "sixteen-nine-canvas",
+                  "passed": true,
+                  "detail": "aspect 1.7778"
+                }
+              ]
+            },
+            "visual": {
+              "passed": true,
+              "missing": [],
+              "checks": {
+                "fullCanvas": true,
+                "styleMatch": true,
+                "cumulativeContent": true,
+                "legibleText": true,
+                "noFocusTreatment": true
+              }
+            }
+          }
+        }
+      ],
+      "hasProgressiveBuilds": true,
+      "progressiveBuilds": [
+        {
+          "id": "build_slide_9_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Stage 3 Focus — Cell Cycle Checkpoints: The Spindle Assembly Gateway (SAC)",
+          "imageUrl": "/decks/genetics_aaq/Lesson_02_DNA_structure_telomeres_and_replication/slides/slide_09.png"
+        }
+      ],
+      "metadata": {
+        "role": "instructional-checkpoint",
+        "stage": 3,
+        "focus": "Cell Cycle Checkpoints: The Spindle Assembly Gateway (SAC)",
+        "density": "simplified-bright-upscaled",
+        "resolution": "3840x2160"
       }
     },
     {
