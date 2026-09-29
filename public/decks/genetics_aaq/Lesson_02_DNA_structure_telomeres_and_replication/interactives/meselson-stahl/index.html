@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Meselson–Stahl DNA Replication — OCR AAQ Human Biology</title>
+  <meta name="description" content="Interactive Meselson–Stahl DNA replication simulation with CsCl density gradient ultracentrifugation and semi-conservative replication predictions." />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css?v=20260908-4" />
+  <link rel="stylesheet" href="aaq.css?v=20260928-2" />
+  <link rel="stylesheet" href="assessment-ui.css?v=20260916-1" />
+  <link rel="stylesheet" href="assessment-bench.css?v=20260916-1" />
+</head>
+<body>
+  <main>
+    <canvas id="lab" aria-label="Interactive virtual science laboratory controls"></canvas>
+    <canvas id="webgl" aria-label="WebGL laboratory workbench"></canvas>
+    <section id="orientation-prompt" class="orientation-prompt" role="status" aria-live="polite">
+      <div class="orientation-card">
+        <div class="orientation-brand"><span>PRACTICAL</span><strong>LAB</strong></div>
+        <div class="phone-rotate-icon" aria-hidden="true">
+          <span class="rotate-arrow">↻</span>
+          <span class="phone-shape"></span>
+        </div>
+        <h1>Rotate to landscape</h1>
+        <p>This interactive lab needs a wider view. Turn your phone sideways to see the practical, method and controls together.</p>
+        <div class="orientation-hint"><span aria-hidden="true">↔</span> Landscape works best</div>
+      </div>
+    </section>
+  </main>
+<script type="module" src="app.js?v=20260928-2"></script>
+</body>
+</html>
