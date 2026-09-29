@@ -349,7 +349,7 @@ async function run() {
       <div class="prompt-box">
         <div class="prompt-box-title">Examination Challenge (Higher Tier QER)</div>
         <div class="prompt-box-text">
-          Evaluate the costs and environmental impacts across each stage of a smartphone's life cycle. Compare energy used and CO₂ released using table data, evaluate disposal trade-offs, and justify which stage has the greatest overall impact.
+          Evaluate the costs and environmental impacts associated with each of the four stages in the life cycle of a smartphone.
         </div>
       </div>
 

@@ -706,13 +706,7 @@ async function main() {
         </div>
 
         <div class="prompt-highlight">
-          <strong>Evaluate the costs and environmental impacts associated with each of the four stages in the life cycle of a smartphone.</strong><br>
-          In your answer you should:
-          <ul>
-            <li>Use data from the table to compare the <strong>energy consumed</strong> and <strong>CO₂ released</strong> across each stage.</li>
-            <li>Evaluate the <strong>financial costs</strong> and <strong>environmental trade-offs</strong> at each stage, including disposal options.</li>
-            <li>Give a <strong>justified conclusion</strong> stating which stage has the greatest overall impact and suggest how this could be reduced.</li>
-          </ul>
+          <strong>Evaluate the costs and environmental impacts associated with each of the four stages in the life cycle of a smartphone.</strong>
         </div>
       </main>
     </div>
@@ -724,6 +718,8 @@ async function main() {
       </div>
 
       <div class="dotted-lines-area">
+        <div class="answer-dotted-line"></div>
+        <div class="answer-dotted-line"></div>
         <div class="answer-dotted-line"></div>
         <div class="answer-dotted-line"></div>
         <div class="answer-dotted-line"></div>
