@@ -386,7 +386,10 @@ async function run() {
 </html>`;
 
   const browser = await chromium.launch({ channel: 'chrome' });
-  const page = await browser.newPage({ viewport: { width: 1376, height: 768 } });
+  const page = await browser.newPage({
+    viewport: { width: 1376, height: 768 },
+    deviceScaleFactor: 2.0
+  });
   await page.setContent(html, { waitUntil: 'networkidle' });
 
   const posterPath = path.join(slidesDir, 'slide_23_exam_checkpoint.png');

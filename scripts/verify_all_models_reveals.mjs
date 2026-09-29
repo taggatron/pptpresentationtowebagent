@@ -51,15 +51,28 @@ async function main() {
         totalChecked++;
       }
     }
-    // Test clicking on phone mesh directly
-    const hotspot = await frame.$(`#hotspot-mesh-other`);
-    if (hotspot) {
-      await hotspot.click();
-      await page.waitForTimeout(100);
+    // Test clicking directly on the physical hotspot mesh part (e.g. coil path)
+    const coilPath = await frame.$(`#hotspot-mesh-other path, #hotspot-mesh-other rect, #hotspot-mesh-other circle`);
+    if (coilPath) {
+      await coilPath.click();
+      await page.waitForTimeout(150);
       const activeHref = await frame.getAttribute('#component-image', 'href');
       if (!activeHref || !activeHref.includes(`comp_${m}_other`)) {
         console.error(`Mesh click failed for ${m} other: href=${activeHref}`);
       }
+    }
+
+    // Save screenshot for key models
+    if (['xs', '11pro', '12pro', '13pro', '16pro', '18pro'].includes(m)) {
+      // Screenshot with Other (Coil & Taptic)
+      await frame.click(`[data-component="other"]`);
+      await page.waitForTimeout(300);
+      await page.screenshot({ path: `/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/reveal_${m}_other.png` });
+      
+      // Screenshot with Battery
+      await frame.click(`[data-component="battery"]`);
+      await page.waitForTimeout(300);
+      await page.screenshot({ path: `/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/reveal_${m}_battery.png` });
     }
 
     // Reset

@@ -909,10 +909,14 @@ async function main() {
   await fs.writeFile(htmlPath, html, 'utf8');
   console.log('Saved exam document HTML to:', htmlPath);
 
-  // Generate PDF and PNGs via Playwright
-  console.log('Launching browser to render PDF and high-res images...');
+  // Generate PDF and PNGs via Playwright with 3.5x device scale factor (ultra-high resolution 336 DPI)
+  console.log('Launching browser to render PDF and ultra-high-res images...');
   const browser = await chromium.launch({ channel: 'chrome' });
-  const page = await browser.newPage();
+  const context = await browser.newContext({
+    viewport: { width: 1200, height: 1600 },
+    deviceScaleFactor: 3.5
+  });
+  const page = await context.newPage();
   await page.setContent(html, { waitUntil: 'networkidle' });
 
   const pdfPath = path.join(examPdfDir, 'lifecycle_assessment_checkpoint.pdf');
@@ -937,7 +941,7 @@ async function main() {
     scale: 'device'
   });
 
-  console.log('Exported page-1.png and page-2.png at ultra-high resolution');
+  console.log('Exported page-1.png and page-2.png at ultra-high resolution (3.5x)');
   await browser.close();
 }
 
