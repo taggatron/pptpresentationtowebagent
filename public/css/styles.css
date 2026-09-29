@@ -203,7 +203,16 @@ body.is-fullscreen:not(.slideshow-display) .app-footer::before {
   right: 0 !important;
   height: 70px !important;
   pointer-events: auto !important;
-  z-index: 997 !important;
+  z-index: 996 !important;
+}
+
+:fullscreen .app-footer:hover::before,
+:-webkit-full-screen .app-footer:hover::before,
+body.is-fullscreen:not(.slideshow-display) .app-footer:hover::before,
+:fullscreen .app-footer.is-nav-approached::before,
+:-webkit-full-screen .app-footer.is-nav-approached::before,
+body.is-fullscreen:not(.slideshow-display) .app-footer.is-nav-approached::before {
+  pointer-events: none !important;
 }
 
 :fullscreen .progress-bar-container,
@@ -248,6 +257,7 @@ body.is-fullscreen .footer-controls {
   transform: translateY(100%) !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  z-index: 1002 !important;
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.25s ease !important;
 }
@@ -279,6 +289,7 @@ body.is-fullscreen .nav-buttons {
   align-items: center !important;
   justify-content: center !important;
   gap: 0.65rem !important;
+  pointer-events: auto !important;
 }
 
 :fullscreen .btn-nav,
@@ -293,6 +304,16 @@ body.is-fullscreen .btn-nav {
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   transition: all 0.2s ease !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+:fullscreen .btn-nav > *,
+:-webkit-full-screen .btn-nav > *,
+body.is-fullscreen .btn-nav > * {
+  pointer-events: none !important;
 }
 
 :fullscreen .btn-nav:hover,

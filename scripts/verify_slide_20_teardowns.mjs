@@ -25,35 +25,65 @@ async function main() {
   await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_xs_default.png' });
   console.log('Screenshot 1: verify_slide20_xs_default.png saved.');
   
-  // Click Battery
+  // Click Battery (XS)
   await frame.click('[data-component="battery"]');
   await page.waitForTimeout(600);
   await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_xs_battery.png' });
   console.log('Screenshot 2: verify_slide20_xs_battery.png saved.');
   
-  // Click Circuit Boards
-  await frame.click('[data-component="circuit_boards"]');
+  // Click Other (XS - Qi Coil & Taptic)
+  await frame.click('[data-component="other"]');
   await page.waitForTimeout(600);
-  await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_xs_circuit.png' });
-  console.log('Screenshot 3: verify_slide20_xs_circuit.png saved.');
-  
+  await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_xs_other.png' });
+  console.log('Screenshot 3: verify_slide20_xs_other.png saved.');
+
+  // Switch to iPhone 11 Pro
+  await frame.click('[data-model="11pro"]');
+  await page.waitForTimeout(600);
+  // Click Other (11 Pro - Taptic & Magnets)
+  await frame.click('[data-component="other"]');
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_11pro_taptic.png' });
+  console.log('Screenshot 4: verify_slide20_11pro_taptic.png saved.');
+
+  // Click Battery (11 Pro - L-shaped battery)
+  await frame.click('[data-component="battery"]');
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_11pro_battery.png' });
+  console.log('Screenshot 5: verify_slide20_11pro_battery.png saved.');
+
   // Switch to iPhone 12 Pro
   await frame.click('[data-model="12pro"]');
   await page.waitForTimeout(600);
-  // Click Other (MagSafe)
+  // Click Other (12 Pro - MagSafe Array & Taptic)
   await frame.click('[data-component="other"]');
   await page.waitForTimeout(600);
   await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_12pro_magsafe.png' });
-  console.log('Screenshot 4: verify_slide20_12pro_magsafe.png saved.');
+  console.log('Screenshot 6: verify_slide20_12pro_magsafe.png saved.');
   
   // Switch to iPhone 16 Pro
   await frame.click('[data-model="16pro"]');
   await page.waitForTimeout(600);
-  // Click Battery
+  // Click Battery (16 Pro - Laser-welded steel battery)
   await frame.click('[data-component="battery"]');
   await page.waitForTimeout(600);
   await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_16pro_battery.png' });
-  console.log('Screenshot 5: verify_slide20_16pro_battery.png saved.');
+  console.log('Screenshot 7: verify_slide20_16pro_battery.png saved.');
+
+  // Switch to iPhone 18 Pro
+  await frame.click('[data-model="18pro"]');
+  await page.waitForTimeout(600);
+  // Click Circuit Boards (18 Pro - Central A20 SoC)
+  await frame.click('[data-component="circuit_boards"]');
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_18pro_soc.png' });
+  console.log('Screenshot 8: verify_slide20_18pro_soc.png saved.');
+
+  // Click Other (18 Pro - Lower MagSafe & Taptic)
+  await frame.click('[data-component="other"]');
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: '/Users/danieltagg/.gemini/antigravity-ide/brain/c32477f3-9029-492d-8b17-31f00ac6f924/verify_slide20_18pro_other.png' });
+  console.log('Screenshot 9: verify_slide20_18pro_other.png saved.');
 
   await browser.close();
   console.log('All verification screenshots captured!');
