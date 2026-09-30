@@ -264,41 +264,63 @@ export async function runAgentFlow() {
   // Ensure output directory exists
   await fs.mkdir(PPTX_OUTPUT_DIR, { recursive: true });
 
+  // Configure CDP download behavior
+  try {
+    const client = await browser.contexts()[0].newCDPSession(viewerPage);
+    await client.send("Page.setDownloadBehavior", {
+      behavior: "allow",
+      downloadPath: PPTX_OUTPUT_DIR,
+    });
+    log(`Configured CDP Page.setDownloadBehavior to ${PPTX_OUTPUT_DIR}`);
+  } catch (err) {
+    log(`CDP setDownloadBehavior notice: ${err.message}`);
+  }
+
   // Setup download handler
   log("Triggering PowerPoint (.pptx) download...");
-  const moreBtn = viewerPage.locator('button[aria-label*="More" i], button:has-text("More options"), button[mattooltip*="More" i]').first();
+  const moreBtn = viewerPage.getByRole("button", { name: "More options", exact: true }).first();
   await moreBtn.waitFor({ state: "visible", timeout: 15000 });
   await moreBtn.click();
   await viewerPage.waitForTimeout(1000);
 
-  const pptxOptionLabels = [
-    "Download PowerPoint (.pptx)",
-    "Download as PowerPoint (.pptx)",
-    "PowerPoint (.pptx)",
-    "Download PowerPoint",
-    "Export to PowerPoint",
-  ];
+  const pptxMenuItem = viewerPage.getByRole("menuitem", { name: /PowerPoint/i }).first();
+  await pptxMenuItem.waitFor({ state: "visible", timeout: 10000 });
 
-  let pptxMenuItem = null;
-  for (const label of pptxOptionLabels) {
-    const candidate = viewerPage.getByText(label, { exact: true });
-    if ((await candidate.count()) > 0 && (await candidate.first().isVisible().catch(() => false))) {
-      pptxMenuItem = candidate.first();
-      break;
+  const startTime = Date.now();
+  const downloadPromise = viewerPage.waitForEvent("download", { timeout: 30000 }).then(async (download) => {
+    log(`Download initiated: ${download.suggestedFilename()}`);
+    await download.saveAs(PPTX_TARGET_FILE);
+    return PPTX_TARGET_FILE;
+  }).catch(() => null);
+
+  await pptxMenuItem.click();
+
+  const dlResult = await downloadPromise;
+  if (!dlResult) {
+    log("Download event bypassed; polling output directory for downloaded PPTX...");
+    const deadlineDl = Date.now() + 60000;
+    let foundFile = false;
+    while (Date.now() < deadlineDl) {
+      await new Promise(r => setTimeout(r, 1000));
+      const outFiles = await fs.readdir(PPTX_OUTPUT_DIR).catch(() => []);
+      for (const f of outFiles) {
+        if (f.endsWith(".pptx")) {
+          const fullPath = path.join(PPTX_OUTPUT_DIR, f);
+          const stat = await fs.stat(fullPath).catch(() => null);
+          if (stat && stat.size > 0 && stat.mtimeMs >= startTime - 2000) {
+            if (fullPath !== PPTX_TARGET_FILE) {
+              log(`Found downloaded PPTX ${f} (${stat.size} bytes). Moving to target...`);
+              await fs.copyFile(fullPath, PPTX_TARGET_FILE);
+            }
+            foundFile = true;
+            break;
+          }
+        }
+      }
+      if (foundFile) break;
     }
   }
 
-  if (!pptxMenuItem) {
-    pptxMenuItem = viewerPage.locator('[role="menuitem"]:has-text("PowerPoint"), button:has-text("PowerPoint")').first();
-  }
-
-  const [download] = await Promise.all([
-    viewerPage.waitForEvent("download", { timeout: 60000 }),
-    pptxMenuItem.click(),
-  ]);
-
-  log(`Download initiated: ${download.suggestedFilename()}`);
-  await download.saveAs(PPTX_TARGET_FILE);
   const stat = await fs.stat(PPTX_TARGET_FILE);
   log(`Saved PPTX to ${PPTX_TARGET_FILE} (${stat.size} bytes).`);
 
