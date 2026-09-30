@@ -570,12 +570,12 @@
     },
     {
       "number": 4,
-      "title": "Slide 4",
+      "title": "Identify the Missing Products: Word Equations",
       "imageFileName": "slide_04.png",
       "imageUrl": "/decks/ecology_atmosphere_classic/Classic_Lesson_10_Pollutants/slides/slide_04.png",
       "sourceMediaPath": "ppt/media/image4.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
       "text": "The Combustion Matrix: Oxygen Supply Determines the Output\nComplete Combustion @ Incomplete Combustion nN ]\nI (The Ideal) i | (The Reality) i\n| Condition: Occurs with an abundant si Condition: Occurs when there is =\n| » supply of oxygen. restricted oxygen starvation. “\nProducts: Produces only carbon dioxide Rogue Products: Produces carbon monoxi- |\n(CO,) and water (H,0). de (CO) and soot (carbon particulates).\nEnergy: Maximum energy release. :|| | Energy: Less energy released. A\n» | >» : ili |",
       "contentAnalysis": {
         "schemaVersion": 1,
@@ -619,10 +619,10 @@
         ]
       },
       "questionAnalysis": {
-        "detected": false,
-        "confidence": "low",
-        "questionCount": 0,
-        "detectionSource": "local-ocr-fallback"
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "user-configured"
       },
       "geminiImageCells": [
         {
@@ -678,17 +678,65 @@
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
-        "reason": "Every non-video, non-starter slide receives cumulative full-canvas Gemini still-image builds.",
-        "strategy": "comparison",
-        "planningSource": "local-slide-heuristics",
-        "analyzedComponentCount": 0,
-        "plannedCellCount": 3,
-        "approvedCellCount": 0,
-        "qaRequired": true,
-        "questionReveal": false,
+        "reason": "Interactive question reveal with blurred answer cards.",
+        "strategy": "question-base-overlay",
+        "planningSource": "user-adjusted",
+        "analyzedComponentCount": 2,
+        "plannedCellCount": 2,
+        "approvedCellCount": 2,
+        "qaRequired": false,
+        "questionReveal": true,
         "webEmbedPreserved": false,
         "protectedVideoCount": 0
-      }
+      },
+      "interactiveCells": [
+        {
+          "id": "reveal_4_cell_1",
+          "question": "What are the products of complete combustion of methane?",
+          "expectedAnswer": "Carbon dioxide + Water",
+          "bounds": {
+            "x": 11.5,
+            "y": 69.5,
+            "w": 32.5,
+            "h": 9.5
+          },
+          "answerBounds": {
+            "x": 11.5,
+            "y": 69.5,
+            "w": 32.5,
+            "h": 9.5
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_4_cell_2",
+          "question": "What are the products of incomplete combustion of methane?",
+          "expectedAnswer": "Carbon monoxide + Soot / Carbon",
+          "bounds": {
+            "x": 50.5,
+            "y": 69.5,
+            "w": 43.5,
+            "h": 9.5
+          },
+          "answerBounds": {
+            "x": 50.5,
+            "y": 69.5,
+            "w": 43.5,
+            "h": 9.5
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        }
+      ]
     },
     {
       "number": 5,
