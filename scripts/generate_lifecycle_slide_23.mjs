@@ -323,8 +323,8 @@ async function run() {
         <span class="badge badge-target">Higher Tier (HT)</span>
         <span class="badge badge-qer">6-Mark QER Checkpoint</span>
       </div>
-      <h1 class="slide-title">Life Cycle Assessment (LCA): Smartphone</h1>
-      <p class="slide-subtitle">Evaluate the environmental impact from cradle to grave: Raw Materials, Manufacturing, Use, Disposal</p>
+      <h1 class="slide-title">Life Cycle Assessment: Cat Food Packaging</h1>
+      <p class="slide-subtitle">Evaluate whether plastic packets or metal cans have the smallest lifetime environmental impact</p>
     </div>
 
     <div class="header-right">
@@ -347,28 +347,28 @@ async function run() {
 
     <div class="criteria-card">
       <div class="prompt-box">
-        <div class="prompt-box-title">Examination Challenge (Higher Tier QER)</div>
+        <div class="prompt-box-title">Examination Challenge (OCR Higher Tier · 6 Marks)</div>
         <div class="prompt-box-text">
-          Evaluate the costs and environmental impacts associated with each of the four stages in the life cycle of a smartphone.
+          Evaluate which type of container has the smallest environmental impact over its lifetime. Use the information in the table, and your own scientific knowledge.
         </div>
       </div>
 
       <div class="features-list">
         <div class="feature-item">
-          <div class="feature-icon">📊</div>
-          <span><strong>Data Table:</strong> Relative energy (MJ), CO₂ (kg), and financial cost (£) across all 4 stages</span>
+          <div class="feature-icon">⛏️</div>
+          <span><strong>Raw Materials:</strong> Non-renewable crude oil vs mined aluminium ore (bauxite)</span>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🏭</div>
-          <span><strong>Manufacturing Burden:</strong> Cleanroom chip fabrication generates ~58% of energy &amp; ~57% of CO₂</span>
+          <div class="feature-icon">⚡</div>
+          <span><strong>Manufacture:</strong> Cracking &amp; polymerisation vs high-energy aluminium electrolysis</span>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">⚖️</div>
-          <span><strong>Economic Trade-offs:</strong> Landfill is cheap (£5) but toxic; recycling costs £15 but conserves scarce ores</span>
+          <div class="feature-icon">🥫</div>
+          <span><strong>Product Use:</strong> Both single use, but metal cans can be easily repurposed or upcycled</span>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">💡</div>
-          <span><strong>Mitigation &amp; Conclusion:</strong> Extended phone lifespan, modular repairability, and renewable factory power</span>
+          <div class="feature-icon">♻️</div>
+          <span><strong>Disposal &amp; Recycling:</strong> Both non-biodegradable; cans save 95% recycling energy vs 90% for packets</span>
         </div>
       </div>
 

@@ -34,7 +34,7 @@ const slideTitles = [
   "Comparative Analysis: Materials & Energy",                     // 20
   "Data Table: Life Cycle Figures (Energy, Water, Emissions)",    // 21
   "Data Evaluation: Interpreting Numerical Impact",               // 22
-  "OCR Exam Checkpoint: 6-Mark Smartphone LCA (PDF Viewer)",      // 23
+  "OCR Exam Checkpoint: 6-Mark LCA Evaluation (Plastic Packet vs Metal Can)", // 23
   "Model Answer & Mark Scheme Review",                            // 24
   "Plenary: Lesson Objectives & Key Insights",                   // 25
   "Summary Diagram: Cradle-to-Grave Life Cycle & Recycling"       // 26
