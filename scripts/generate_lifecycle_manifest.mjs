@@ -13,7 +13,7 @@ const activeIndices = [
 
 const slideTitles = [
   "Life Cycle Analysis – How Can We Sustain Our Quality of Life?", // 1
-  "Starter / Retrieval: Fossil Fuel Pollutants & Acid Rain",       // 2
+  "Life cycle analysis - should I buy a new iphone?",            // 2
   "Notice: Upcoming End of Topic Assessment",                    // 3
   "Previously... Crude Oil & Fractional Distillation",            // 4
   "Previously... Combustion & Greenhouse Emissions",              // 5

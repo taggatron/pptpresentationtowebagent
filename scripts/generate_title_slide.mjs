@@ -256,7 +256,7 @@ async function generateSlide() {
         <div class="big-enquiry-box">
           <div class="enquiry-icon">?</div>
           <div class="enquiry-text">
-            Key Enquiry: <span>How do we quantify environmental cost from raw extraction to disposal?</span>
+            Key Enquiry: <span>Should I buy a new iPhone?</span>
           </div>
         </div>
       </div>
@@ -283,9 +283,11 @@ async function generateSlide() {
   const destPath2 = path.join(projectRoot, 'public/decks/ecology_atmosphere_classic/Classic_Lesson_11_Lifecycle_Assessments/slides/slide_01.png');
 
   await page.screenshot({ path: destPath1, type: 'png' });
-  fs.copyFileSync(destPath1, destPath2);
+  if (fs.existsSync(path.dirname(destPath2))) {
+    fs.copyFileSync(destPath1, destPath2);
+  }
 
-  console.log(`Generated clean slide image at:\n${destPath1}\n${destPath2}`);
+  console.log(`Generated clean slide image at:\n${destPath1}`);
   await browser.close();
 }
 
