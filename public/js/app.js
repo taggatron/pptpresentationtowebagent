@@ -1085,9 +1085,16 @@ function playSlideVideo({ broadcast = true, currentTime = null } = {}) {
     slideVideo.muted = false;
   }
 
+  const activeStartTime = Math.max(0, build?.startTime || 0);
+  const activeEndTime = build?.endTime !== null && build?.endTime > activeStartTime ? build.endTime : null;
+
   if (Number.isFinite(currentTime) && Math.abs(slideVideo.currentTime - currentTime) > 0.3) {
     try {
       slideVideo.currentTime = currentTime;
+    } catch (_) {}
+  } else if (!Number.isFinite(currentTime) && activeEndTime !== null && slideVideo.currentTime >= activeEndTime - 0.05) {
+    try {
+      slideVideo.currentTime = activeStartTime;
     } catch (_) {}
   }
 
@@ -1456,16 +1463,47 @@ function showVideoBuild(slide, build) {
     }
 
     if (endTime !== null) {
+      let segmentAnimFrame = null;
+      const checkSegmentEnd = () => {
+        if (token !== videoPlaybackToken) return;
+        if (slideVideo.currentTime >= endTime) {
+          slideVideo.pause();
+          try {
+            slideVideo.currentTime = endTime;
+          } catch (error) {}
+          updateVideoPlaybackStateUI(false);
+          if (isPresentationWindow) broadcastVideoStateFromPresentation();
+          return;
+        }
+        if (!slideVideo.paused) {
+          segmentAnimFrame = requestAnimationFrame(checkSegmentEnd);
+        }
+      };
       const stopAtSegmentEnd = () => {
-        if (token !== videoPlaybackToken || slideVideo.currentTime < endTime) return;
-        slideVideo.pause();
-        try {
-          slideVideo.currentTime = endTime;
-        } catch (error) {}
-        updateVideoPlaybackStateUI(false);
-        if (isPresentationWindow) broadcastVideoStateFromPresentation();
+        if (token !== videoPlaybackToken) return;
+        if (slideVideo.currentTime >= endTime) {
+          slideVideo.pause();
+          try {
+            slideVideo.currentTime = endTime;
+          } catch (error) {}
+          updateVideoPlaybackStateUI(false);
+          if (isPresentationWindow) broadcastVideoStateFromPresentation();
+        } else if (!slideVideo.paused && !segmentAnimFrame) {
+          segmentAnimFrame = requestAnimationFrame(checkSegmentEnd);
+        }
       };
       addVideoListener(slideVideo, "timeupdate", stopAtSegmentEnd);
+      addVideoListener(slideVideo, "play", () => {
+        if (segmentAnimFrame) cancelAnimationFrame(segmentAnimFrame);
+        segmentAnimFrame = requestAnimationFrame(checkSegmentEnd);
+      });
+      addVideoListener(slideVideo, "pause", () => {
+        if (segmentAnimFrame) cancelAnimationFrame(segmentAnimFrame);
+        segmentAnimFrame = null;
+      });
+      videoCleanupCallbacks.push(() => {
+        if (segmentAnimFrame) cancelAnimationFrame(segmentAnimFrame);
+      });
     }
     updateVideoPlaybackStateUI(!slideVideo.paused);
     if (!isClickToPlay) {

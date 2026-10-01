@@ -35,6 +35,83 @@ async function main() {
     }
   }
 
+  // Configure Slide 1 Video Build
+  if (manifest.slides.length >= 1) {
+    const slide1 = manifest.slides[0];
+    slide1.title = "12. Recycling";
+    slide1.hasProgressiveBuilds = true;
+    slide1.animationPlan = {
+      version: 2,
+      mode: "protected-video",
+      reason: "Introductory video hook illustrating recycling concepts and material circularity.",
+      protectedVideoCount: 1
+    };
+    slide1.videoUrl = "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/gemini_generated_video_55869289.mp4";
+    slide1.originalImageUrl = "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/slide_01.png";
+    slide1.startTime = 0;
+    slide1.endTime = 3;
+    delete slide1.geminiImageCells;
+
+    slide1.progressiveBuilds = [
+      {
+        id: "image_build_1",
+        version: 1,
+        kind: "image",
+        label: "Build 1: 12. Recycling (Title)",
+        imageUrl: "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/slide_01.png"
+      },
+      {
+        id: "video_build_2",
+        version: 2,
+        kind: "video",
+        label: "Build 2: Video Intro (Recycling)",
+        videoUrl: "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/gemini_generated_video_55869289.mp4",
+        imageUrl: "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/slide_01.png",
+        posterUrl: "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/slide_01.png",
+        startTime: 0,
+        endTime: 3,
+        transition: "blur-disintegrate"
+      }
+    ];
+
+    slide1.history = [
+      {
+        id: "ver_orig",
+        label: "Build 1: 12. Recycling (Title)",
+        imageUrl: "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/slide_01.png"
+      },
+      {
+        id: "ver_video_intro",
+        label: "Build 2: Video Intro (Recycling)",
+        videoUrl: "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/gemini_generated_video_55869289.mp4",
+        imageUrl: "/decks/ecology_atmosphere_classic/Classic_Lesson_12_Recycling/slides/slide_01.png",
+        startTime: 0,
+        endTime: 3
+      }
+    ];
+
+    slide1.serialAnimation = {
+      totalBuildSteps: 2,
+      autoAdvanceDelayMs: 3200,
+      serialSteps: [
+        {
+          step: 1,
+          buildId: "image_build_1",
+          title: "Build 1: 12. Recycling (Title)",
+          componentIds: ["image_build_1"],
+          targetBounds: { x: 0, y: 0, w: 100, h: 100 }
+        },
+        {
+          step: 2,
+          buildId: "video_build_2",
+          title: "Build 2: Video Intro (Recycling)",
+          componentIds: ["video_build_2"],
+          targetBounds: { x: 0, y: 0, w: 100, h: 100 }
+        }
+      ]
+    };
+  }
+
   // Configure Slide 2 Starter Grid
   if (manifest.slides.length >= 2) {
     const slide2 = manifest.slides[1];
