@@ -367,6 +367,14 @@ export const KNOWN_SLIDE_SETS = [
     icon: "🧠",
     folder: "powerpoints_tbi",
     description: "Brain anatomy, spinal cord, nerve anatomy, and action potentials."
+  },
+  {
+    id: "essential_skills",
+    title: "Essential Skills Training",
+    category: "Professional Development",
+    icon: "🎯",
+    folder: "essential_skills",
+    description: "Core professional competencies, Starting Stronger, and instructional excellence."
   }
 ];
 
@@ -412,6 +420,10 @@ export function formatDisplayTitle(rawTitle, deckId = "") {
     return `${num}. ${finalRest}`;
   }
 
+  if (/^Essential_Skills_Training_1/i.test(deckId) || /^Essential_Skills/i.test(title)) {
+    return "Essential Skills Training 1: Starting Stronger";
+  }
+
   title = title.replace(/^Classic[\s_]+/i, "").replace(/_/g, " ").trim();
   return title.charAt(0).toUpperCase() + title.slice(1);
 }
@@ -420,6 +432,7 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (manifest?.slideSet) return manifest.slideSet;
   if (/^Classic_/i.test(deckId) || /classic/i.test(deckId)) return "ecology_atmosphere_classic";
   if (deckId === "digital_literacy_conference_deck") return "digital_literacy";
+  if (/(?:Essential_Skills|Starting_Strong)/i.test(deckId)) return "essential_skills";
   if (
     /(?:genetics_aaq|Phenotypic_variation|telomeres|Central_Dogma|transcriptional_regulation|single_gene_disorders|Chromosomal_abnormalities|Polygenic_and_complex_traits)/i.test(
       deckId

@@ -228,56 +228,53 @@ function parseSlideTimingXml(slideXml) {
  */
 export async function renderSlidesWithPowerPoint(pptxPath, slidesDir, { scale = 2.0 } = {}) {
   await fs.mkdir(slidesDir, { recursive: true });
-  await fs.mkdir(PPT_CONTAINER_DATA, { recursive: true });
 
   const sessionHash = crypto.randomBytes(6).toString("hex");
-  const tempPptxName = `agent_input_${sessionHash}.pptx`;
-  const tempPdfName = `agent_output_${sessionHash}.pdf`;
-  const containerPptxPath = path.join(PPT_CONTAINER_DATA, tempPptxName);
-  const containerPdfPath = path.join(PPT_CONTAINER_DATA, tempPdfName);
-
-  // Copy presentation to PowerPoint container
-  await fs.copyFile(pptxPath, containerPptxPath);
-
-  // Strip macOS quarantine attribute to prevent modal alert
-  try {
-    await execFileAsync("xattr", ["-c", containerPptxPath], { timeout: 3000 });
-  } catch {
-    // Ignore if no attributes
-  }
+  const scratchDir = path.join(ROOT_DIR, "scratch");
+  await fs.mkdir(scratchDir, { recursive: true });
+  const containerPdfPath = path.resolve(scratchDir, `agent_output_${sessionHash}.pdf`);
+  const resolvedPptx = path.resolve(pptxPath);
 
   let printSteps = [];
+  let hiddenFlags = [];
   let slideCount = 0;
 
   try {
+    await execFileAsync("open", ["-a", "Microsoft PowerPoint", resolvedPptx], { timeout: 10000 });
+    await new Promise((r) => setTimeout(r, 2000));
+
     const appleScript = `
-set targetPath to "${containerPptxPath}"
 set pdfPath to "${containerPdfPath}"
 tell application "Microsoft PowerPoint"
-    open (POSIX file targetPath)
     set thePres to active presentation
     set sCount to count of slides of thePres
     set psList to {}
     try
         set psList to print steps of every slide of thePres
     end try
+    set hiddenStates to {}
+    repeat with s from 1 to sCount
+        set isH to (hidden of slide show transition of slide s of thePres)
+        set end of hiddenStates to isH
+        if isH is true then
+            set (hidden of slide show transition of slide s of thePres) to false
+        end if
+    end repeat
     save thePres in (POSIX file pdfPath) as save as PDF
     close thePres saving no
-    return {sCount, psList}
+    return {sCount, hiddenStates}
 end tell
 `;
 
     const { stdout } = await execFileAsync("osascript", ["-e", appleScript], {
-      timeout: 30000
+      timeout: 60000
     });
 
     const parts = stdout.trim().split(",").map((s) => s.trim());
     if (parts.length > 0) {
       slideCount = parseInt(parts[0], 10) || 0;
-      if (parts.length > 1) {
-        printSteps = parts.slice(1).map((val) => parseInt(val, 10) || 1);
-      }
     }
+    hiddenFlags = parts.filter((s) => s === "true" || s === "false").map((s) => s === "true");
 
     // Ensure PDF was created
     const pdfStat = await fs.stat(containerPdfPath);
@@ -295,11 +292,10 @@ end tell
       containerPdfPath,
       slidesDir,
       String(scale)
-    ], { timeout: 60000 });
+    ], { timeout: 120000 });
 
   } finally {
-    // Clean up temporary container files
-    await fs.unlink(containerPptxPath).catch(() => {});
+    // Clean up temporary exported PDF
     await fs.unlink(containerPdfPath).catch(() => {});
   }
 
@@ -313,6 +309,7 @@ end tell
     success: slideImages.length > 0,
     slideCount: slideImages.length || slideCount,
     printSteps,
+    hiddenFlags,
     slideImages
   };
 }
@@ -385,12 +382,13 @@ export async function ingestPowerPointDeck(pptxPath, outputBaseDir, options = {}
     throw new Error(`Invalid PowerPoint presentation file: ${resolvedPptx}`);
   }
 
+  const unitId = options.slideSet || (path.basename(outputBaseDir) !== "decks" ? path.basename(outputBaseDir) : null);
   const deckId = options.deckId || sanitizeDeckId(resolvedPptx);
-  const targetDir = path.join(outputBaseDir, deckId);
+  const targetDir = options.targetDir || (unitId ? path.join(outputBaseDir, unitId, deckId) : path.join(outputBaseDir, deckId));
   const slidesDir = path.join(targetDir, "slides");
   await fs.mkdir(slidesDir, { recursive: true });
 
-  console.log(`[PowerPoint Agent] Starting ingestion for: ${deckId}`);
+  console.log(`[PowerPoint Agent] Starting ingestion for: ${deckId} (unit: ${unitId || 'none'})`);
 
   // 1. Parse OpenXML structure, text, and native animations
   const xmlData = await parseOpenXmlPresentation(resolvedPptx);
@@ -403,6 +401,7 @@ export async function ingestPowerPointDeck(pptxPath, outputBaseDir, options = {}
 
   let slideImages = [];
   let printSteps = [];
+  let hiddenFlags = [];
 
   if (allHaveEmbeddedImages && options.forcePowerPointRender !== true) {
     console.log(`[PowerPoint Agent] Found pre-rendered whole-slide media inside archive.`);
@@ -441,6 +440,7 @@ export async function ingestPowerPointDeck(pptxPath, outputBaseDir, options = {}
 
     slideImages = renderResult.slideImages;
     printSteps = renderResult.printSteps;
+    hiddenFlags = renderResult.hiddenFlags || [];
     console.log(`[PowerPoint Agent] Successfully rendered ${slideImages.length} slide images.`);
   }
 
@@ -459,7 +459,9 @@ export async function ingestPowerPointDeck(pptxPath, outputBaseDir, options = {}
     const slideMeta = xmlData.slides[i];
     const slideNum = slideMeta.number;
     const imageFileName = slideImages[i] || `slide_${String(slideNum).padStart(2, "0")}.png`;
-    const imageUrl = `/decks/${deckId}/slides/${imageFileName}`;
+    const imageUrl = unitId
+      ? `/decks/${unitId}/${deckId}/slides/${imageFileName}`
+      : `/decks/${deckId}/slides/${imageFileName}`;
     const nativeSteps = printSteps[i] || (slideMeta.animationInfo?.hasAnimations ? slideMeta.animationInfo.clickCount + 1 : 1);
 
     const baseSlide = {
@@ -468,10 +470,11 @@ export async function ingestPowerPointDeck(pptxPath, outputBaseDir, options = {}
       imageFileName,
       imageUrl,
       deckId,
-      deckTitle: xmlData.title,
-      lessonTitle: xmlData.title,
+      deckTitle: options.title || xmlData.title,
+      lessonTitle: options.title || xmlData.title,
       textContent: slideMeta.textContent,
       notes: "",
+      isHidden: Boolean(hiddenFlags[i]),
       isInteractive: false,
       interactiveType: null,
       powerPointAnimation: {
@@ -565,7 +568,8 @@ export async function ingestPowerPointDeck(pptxPath, outputBaseDir, options = {}
   const manifest = {
     ...(previousManifest || {}),
     id: deckId,
-    title: previousManifest?.title || xmlData.title,
+    title: options.title || previousManifest?.title || xmlData.title,
+    slideSet: unitId || previousManifest?.slideSet,
     filename: path.basename(resolvedPptx),
     totalSlides: slides.length,
     agent: {
