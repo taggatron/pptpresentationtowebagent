@@ -29,6 +29,7 @@ export async function runAgent(startLesson = 1, endLesson = 8) {
         UNIT: "genetics_aaq",
         START_LESSON: String(startLesson),
         END_LESSON: String(endLesson),
+        FORCE: "true",
       },
       stdio: "inherit",
     });
@@ -78,8 +79,8 @@ export async function ingestDecks(startLesson = 1, endLesson = 8) {
         if (lessonNum === 2) return fLower.includes("dna") || fLower.includes("telomere") || fLower.includes("replication");
         if (lessonNum === 3) return fLower.includes("central") || fLower.includes("dogma");
         if (lessonNum === 4) return fLower.includes("expression") || fLower.includes("switchboard") || fLower.includes("regulation");
-        if (lessonNum === 5) return fLower.includes("mutation") || fLower.includes("acquired") || fLower.includes("clinical_molecular_pathology");
-        if (lessonNum === 6) return fLower.includes("single") || fLower.includes("cystic") || fLower.includes("sickle");
+        if (lessonNum === 5) return fLower.includes("mutation") || fLower.includes("acquired") || fLower.includes("huntington") || fLower.includes("cag") || fLower.includes("clinical_molecular_pathology");
+        if (lessonNum === 6) return fLower.includes("pedigree") || fLower.includes("monohybrid") || fLower.includes("cross") || fLower.includes("risk") || fLower.includes("single") || fLower.includes("cystic") || fLower.includes("sickle");
         if (lessonNum === 7) return fLower.includes("chromosomal") || fLower.includes("abnormalit") || fLower.includes("aneuploidy") || fLower.includes("karyotyp");
         if (lessonNum === 8) return fLower.includes("polygenic") || fLower.includes("complex") || fLower.includes("traits") || fLower.includes("gwas");
 

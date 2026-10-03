@@ -5,7 +5,7 @@ export const OUTPUT_DIR_NAME = "powerpoints_aaq_genetics";
 export const CHECKPOINT_FILE_NAME = "checkpoint_aaq_genetics.json";
 export const END_LESSON_DEFAULT = 8;
 export const DRIVE_FOLDER_NAME = "AAQ Human Biology Genetics";
-export const LESSON_LEVEL = "OCR Level 3 Cambridge Advanced National (AAQ) learners";
+export const LESSON_LEVEL = "OCR Level 3 Cambridge Advanced National (AAQ) and A Level Biology learners";
 export const INCLUDE_LESSON1_COURSE_OUTLINE = true;
 export const REQUIRE_CONTINUING_CASE_STUDY = true;
 export const SELF_CONTAINED_LESSONS = false;
@@ -343,77 +343,79 @@ export const lessons = [
     teacher: "Dan",
     deckId: "Lesson_05_Gene_mutations_acquired_and_inherited",
     title: "Gene mutations: acquired and inherited",
-    focus: "Mutational Mechanisms, Mutagenic Carcinogens & DNA Repair Pathology",
-    deliverable: "Classify DNA sequence alterations by molecular type and functional consequence, evaluate endogenous vs exogenous mutagens, and contrast somatic oncogenic mutations with inherited germline transmission.",
-    details: "Molecular taxonomy of DNA mutations: Point mutations / Single Nucleotide Variations (SNVs) categorized as transitions (purine <-> purine or pyrimidine <-> pyrimidine) vs transversions (purine <-> pyrimidine). Functional coding consequences: Silent mutations (synonymous codon change due to genetic code degeneracy), Missense mutations (amino acid substitution, conservative vs non-conservative altering active site stereochemistry or charge), Nonsense mutations (premature termination codon UAA/UAG/UGA causing truncated non-functional proteins and nonsense-mediated mRNA decay). Indels (insertions or deletions) of non-triplet base counts causing catastrophically disruptive frameshift mutations downstream. Etiology of mutations: endogenous errors (tautomeric shifts, oxidative stress from reactive oxygen species ROS, spontaneous cytosine deamination to uracil, depurination) vs exogenous mutagenic agents. Physical mutagens: ultraviolet radiation (UV-B inducing covalent cyclobutane pyrimidine dimers and 6-4 photoproducts) and ionizing radiation (alpha, beta, gamma, X-rays generating double-strand breaks). Chemical mutagens: intercalating agents (ethidium bromide), alkylating agents (nitrosamines), and reactive metabolites (benzo[a]pyrene in cigarette smoke forming bulky guanine adducts). Surveillance and DNA repair pathways: Base Excision Repair (BER via DNA glycosylases), Nucleotide Excision Repair (NER via endonuclease excision), and Mismatch Repair (MMR via MSH2/MLH1). Disease pathology of repair failure: Xeroderma Pigmentosum (NER defect causing extreme skin cancer vulnerability) and Lynch syndrome (MMR defect causing hereditary non-polyposis colorectal cancer). Critical clinical distinction: Germline mutations occurring in gametes/meiotic germ cells (present in every zygotic descendant cell, inherited across generations) vs Somatic acquired mutations occurring in differentiated somatic cells (confined to tissue lineage, not heritable to offspring, driving neoplastic transformation).",
+    focus: "Acquired vs Inherited Mutations, Mutational Mechanisms & Huntington's CAG Repeat Pathology",
+    deliverable: "Classify somatic acquired vs germline inherited mutations with concrete examples, contrast molecular mutation types (missense, nonsense, frameshift), and analyze the molecular pathology, CAG repeat thresholds, anticipation, and autosomal dominant transmission of Huntington's disease.",
+    details: "1. Acquired (somatic) vs Inherited (germline) mutations: Somatic acquired mutations occur in non-reproductive body tissues (e.g. skin keratinocytes damaged by UV-B pyrimidine dimers, bronchial epithelium exposed to tobacco benzo[a]pyrene, or spontaneous DNA replication errors). They are confined to the individual's tissue lineage, cannot be transmitted to biological offspring via gametes, and are the primary drivers of oncogenesis and multistep carcinogenesis (accumulation of driver mutations in TP53, KRAS, APC). In contrast, germline inherited mutations occur in meiotic germ cells or gametes (spermatozoa, ova), are incorporated into the diploid zygote, exist in every cell of the offspring, and are heritable across generations according to Mendelian laws. 2. Molecular taxonomy and examples of gene mutations: Single nucleotide substitutions (transitions vs transversions) resulting in silent mutations (synonymous codon due to genetic code degeneracy), missense mutations (altering a single amino acid, e.g. sickle cell anaemia HBB GAG->GTG / Glu->Val causing hydrophobic HbS polymerisation; conservative vs non-conservative altering active site geometry), and nonsense mutations (premature stop codons UAA/UAG/UGA causing truncated non-functional proteins and nonsense-mediated mRNA decay, e.g. beta-thalassaemia codon 39). Insertion and deletion (indel) mutations causing reading frame shifts (frameshift mutations) unless occurring in multiples of 3 (in-frame indel, e.g. CFTR Delta F508). 3. Deep clinical & molecular focus — Huntington's disease (HD) and the CAG repeat expansion mutation: Located on chromosome 4p16.3 in the HTT gene, which encodes the huntingtin protein (essential for neurogenesis, vesicle trafficking, and BDNF transcription). Molecular pathology: an unstable trinucleotide / triplet repeat expansion of cytosine-adenine-guanine (CAG) in exon 1, encoding an elongated polyglutamine (polyQ) tract. Mechanism: replication slippage during meiosis causing hairpin loop structures and progressive repeat expansion. Diagnostic CAG repeat thresholds: Normal alleles (<=26 CAG repeats; stable transmission, unaffected); Intermediate alleles (27–35 CAG repeats; unaffected individual, but meiotically unstable and prone to expansion during spermatogenesis, posing risk to offspring); Reduced penetrance alleles (36–39 CAG repeats; variable or late-onset disease); Full penetrance alleles (>=40 CAG repeats; 100% lifetime risk of developing HD; inverse correlation between repeat number and age of symptom onset; juvenile HD >60 repeats). Genetic anticipation: phenomenon where symptoms manifest at an earlier age and with greater clinical severity in successive generations, driven by meiotic repeat expansion particularly through paternal transmission (spermatogenesis). Cellular pathophysiology: toxic gain-of-function mutant huntingtin (mHTT) misfolds into insoluble beta-sheet oligomers and intranuclear inclusions, disrupting axonal transport, impairing mitochondrial function, and sequestering transcription coactivators (CBP), leading to selective apoptotic neurodegeneration of striatal GABAergic medium spiny neurons in the caudate nucleus and putamen of the basal ganglia. Clinical phenotype: motor chorea (involuntary jerky movements), dystonia, rigidity, executive cognitive decline, and psychiatric disturbances. Inheritance: Autosomal dominant (50% risk for offspring of an affected parent). Presentation styling: Bright, high-contrast, luminous slides with clear colorful diagrams and generous whitespace.",
     starterQuestions: [
-      { q: "What is the difference between a missense mutation and a nonsense mutation?", a: "A missense mutation substitutes one amino acid for another; a nonsense mutation introduces a premature stop codon, terminating translation." },
-      { q: "Why does an insertion of 2 base pairs cause more severe disruption than an insertion of 3 base pairs?", a: "2 bp disrupts the triplet reading frame (frameshift) altering all downstream amino acids; 3 bp adds exactly one amino acid without shifting the frame." },
-      { q: "Name the specific lesion induced in DNA by ultraviolet (UV-B) radiation.", a: "Covalent cyclobutane pyrimidine dimers (e.g. thymine-thymine dimers)." },
-      { q: "What repair pathway recognizes and repairs bulky helix-distorting DNA adducts?", a: "Nucleotide Excision Repair (NER)." },
-      { q: "Explain the difference in transmission between a germline and a somatic mutation.", a: "Germline mutations occur in gametes and are inherited by offspring; somatic mutations occur in body tissues, are not heritable, and drive cancer." },
-      { q: "Which clinical condition results from inherited defects in Nucleotide Excision Repair (NER)?", a: "Xeroderma Pigmentosum (extreme UV sensitivity and severe skin cancer predisposition)." }
+      { q: "What is the key difference in transmission between an acquired somatic mutation and an inherited germline mutation?", a: "Acquired somatic mutations occur in body tissues and cannot be passed to offspring; germline mutations occur in gametes and are heritable across generations." },
+      { q: "Which molecular type of mutation introduces a premature stop codon into mRNA, truncating the polypeptide?", a: "A nonsense mutation." },
+      { q: "Which specific trinucleotide triplet is expanded in Huntington's disease, and which amino acid does it encode?", a: "The CAG repeat, which encodes the amino acid glutamine (forming an expanded polyglutamine / polyQ tract)." },
+      { q: "What is the threshold number of CAG repeats in the HTT gene required for full penetrance of Huntington's disease?", a: "40 or more CAG repeats (>=40 CAG repeats)." },
+      { q: "Define the genetic phenomenon of 'anticipation' observed in Huntington's disease pedigrees.", a: "The onset of symptoms occurs at progressively earlier ages and with greater severity in successive generations due to intergenerational repeat expansion." },
+      { q: "Which parent's germline is most prone to massive CAG repeat expansion during gametogenesis in Huntington's families?", a: "The father's germline (paternal transmission during spermatogenesis)." }
     ],
     objectives: {
-      knowledge: "Classify point mutations (silent, missense, nonsense) and frameshift insertions/deletions.",
-      application: "Differentiate endogenous vs exogenous mutagenic mechanisms and their corresponding cellular repair pathways.",
-      evaluation: "Evaluate the clinical and evolutionary implications of somatic mutations in oncogenesis versus germline mutations in inherited disorders."
+      knowledge: "Distinguish between acquired (somatic) and inherited (germline) mutations, classifying point mutations (missense, nonsense, silent) and indels.",
+      application: "Explain the molecular mechanism of CAG triplet repeat expansion in the HTT gene on chromosome 4p16.3 and interpret clinical repeat thresholds (<26, 27-35, 36-39, >=40).",
+      evaluation: "Evaluate the relationship between polyglutamine tract length, genetic anticipation (especially paternal transmission), striatal neurodegeneration, and autosomal dominant inheritance."
     },
     terminology: [
-      { term: "Missense Mutation", def: "A single nucleotide substitution that changes a codon to encode a different amino acid." },
-      { term: "Frameshift Mutation", def: "An insertion or deletion of nucleotides not divisible by 3, altering the triplet reading frame for all downstream codons." },
-      { term: "Nucleotide Excision Repair (NER)", def: "Enzymatic pathway that excises and resynthesizes oligonucleotides containing bulky helix-distorting DNA lesions." },
-      { term: "Germline vs Somatic", def: "Germline mutations occur in gamete-producing cells and pass to offspring; somatic mutations are confined to non-reproductive tissues." }
+      { term: "Somatic vs Germline Mutation", def: "Somatic: acquired non-heritable mutations in body tissues driving cancer. Germline: mutations in sperm/egg passed to offspring." },
+      { term: "Trinucleotide CAG Repeat", def: "A tandem repetition of Cytosine-Adenine-Guanine in exon 1 of the HTT gene encoding an expanded polyglutamine (polyQ) tract." },
+      { term: "Full Penetrance Threshold (>=40)", def: "Alleles with 40 or more CAG repeats confer a 100% lifetime probability of developing Huntington's disease." },
+      { term: "Genetic Anticipation", def: "Progression towards earlier age of onset and increased symptom severity across generations due to meiotic repeat expansion during gametogenesis." },
+      { term: "Toxic Gain-of-Function", def: "Misfolded mutant huntingtin protein aggregating into toxic inclusion bodies that destroy striatal GABAergic neurons in the basal ganglia." }
     ],
     theoryPoints: [
-      "Codon Vulnerability: Because the genetic code is triplet-based, non-multiple-of-three indels completely change the downstream peptide sequence and almost always introduce premature stop codons.",
-      "Mutagen Signatures: Different mutagens leave distinct genomic signatures (e.g. UV causes C->T transitions at dipyrimidine sites; tobacco carcinogens cause G->T transversions).",
-      "DNA Repair Fidelity: Cells possess specialised repair systems: BER fixes damaged individual bases, NER removes bulky adducts, and MMR corrects post-replication mismatches.",
-      "Cancer Driver Mutations: Somatic accumulation of mutations in proto-oncogenes (gain of function) and tumour suppressor genes (loss of function) drives multistep carcinogenesis."
+      "Inheritance Boundary: Somatic mutations (e.g. UV skin damage) cannot be inherited because somatic lineages do not contribute genetic material to gametes.",
+      "CAG Repeat Expansion Scale: Normal <=26; Intermediate 27–35 (unaffected, but mutable); Reduced penetrance 36–39; Full penetrance >=40 (inverse correlation with age of onset).",
+      "Paternal Anticipation Bias: Instability and slippage of DNA polymerase during the thousands of mitotic/meiotic divisions of spermatogenesis cause greater repeat expansion through paternal transmission.",
+      "Autosomal Dominant Risk: A single mutant HTT allele is sufficient to cause pathology; each child of an affected heterozygous parent faces a 50% risk."
     ],
     workedExample: {
-      title: "Mutational Consequence Analysis",
-      subtitle: "Tracing the impact of different point mutations in the beta-globin gene",
+      title: "Huntington's Diagnostic CAG Repeat & Pedigree Anticipation",
+      subtitle: "Analyzing triplet repeat lengths and inheritance risk across three generations",
       steps: [
-        { label: "Step 1: Wild-type Sequence", detail: "Codon 6: GAG encodes hydrophilic Glutamic Acid on the surface of the beta-globin subunit." },
-        { label: "Step 2: Missense Mutation (Sickle Cell)", detail: "GAG -> GTG transversion substitutes non-polar, hydrophobic Valine, creating a hydrophobic patch that polymerises under deoxygenation." },
-        { label: "Step 3: Nonsense Mutation (beta-Thalassaemia)", detail: "AAG -> UAG substitution at codon 39 introduces a premature stop codon, terminating translation and eliminating beta-globin production." },
-        { label: "Step 4: Clinical Contrast", detail: "The missense mutation produces a defective structural protein (HbS); the nonsense mutation causes complete absence of the protein chain." }
+        { label: "Step 1: Paternal Grandfather", detail: "Carried an intermediate allele of 33 CAG repeats (unaffected, normal lifespan). During spermatogenesis, DNA replication slippage expanded the repeat tract." },
+        { label: "Step 2: Affected Father", detail: "Inherited 42 CAG repeats (full penetrance). Developed classic motor chorea and cognitive changes at age 48 (autosomal dominant Hh)." },
+        { label: "Step 3: Offspring Transmission", detail: "During father's spermatogenesis, further expansion occurred to 54 CAG repeats in his child." },
+        { label: "Step 4: Clinical Anticipation Outcome", detail: "The child experiences onset of juvenile Huntington's disease in their late teens (~18 years), demonstrating genetic anticipation with earlier onset and increased severity." }
       ]
     },
     hingeQuestions: [
       {
-        question: "A single nucleotide substitution changes a codon from UAC (Tyrosine) to UAA. What type of mutation has occurred and what is the likely functional outcome?",
-        options: ["Silent mutation; normal functional enzyme is produced", "Missense mutation; enzyme has slightly reduced substrate affinity", "Nonsense mutation; translation terminates prematurely producing a non-functional truncated polypeptide", "Frameshift mutation; reading frame is completely scrambled"],
+        question: "A 32-year-old individual undergoes predictive genetic testing for Huntington's disease and is found to have 44 CAG repeats on one allele of the HTT gene. How should this result be interpreted?",
+        options: ["Normal allele; the individual will never develop the condition", "Intermediate carrier; individual is unaffected but offspring are at risk", "Full penetrance allele; the individual will develop Huntington's disease if they live a normal lifespan, and each child has a 50% risk", "Recessive carrier; disease will only develop if the spouse also carries the allele"],
         correctIndex: 2,
-        explanation: "UAA is a stop codon. A substitution generating a stop codon is a nonsense mutation, causing premature termination and severe loss of protein function."
+        explanation: "Alleles with >=40 CAG repeats have 100% full penetrance for Huntington's disease, and as an autosomal dominant trait, each child has a 50% risk of inheritance."
       },
       {
-        question: "Why do somatic mutations acquired in epidermal keratinocytes never pass to an individual's biological children?",
-        options: ["Epidermal mutations are automatically repaired during meiosis", "Somatic cells do not contribute genetic material to gametes (sperm or ova)", "UV light cannot penetrate into cellular DNA", "Mitochondrial DNA replaces nuclear DNA in reproductive cells"],
+        question: "Why do somatic mutations in the TP53 gene in skin cancer cells fail to pass to the patient's biological children?",
+        options: ["Somatic mutations are automatically repaired during embryonic development", "Somatic cells do not form gametes; only germline mutations in sperm or ova are transmissible to offspring", "TP53 is only present in somatic tissue", "Maternal mitochondrial DNA suppresses paternal mutations"],
         correctIndex: 1,
-        explanation: "Only mutations present in meiotic germline cells (sperm and ova) can be transmitted to offspring; somatic mutations remain confined to the individual's body tissues."
+        explanation: "Somatic mutations are confined to non-reproductive differentiated cell lineages and never enter meiotic germ cells or gametes."
       },
       {
-        question: "Patients with Xeroderma Pigmentosum possess a hereditary deficiency in Nucleotide Excision Repair (NER). Which environmental mutagen poses the greatest clinical threat to these individuals?",
-        options: ["Dietary trans-saturated fats", "Solar ultraviolet radiation (UV-B)", "Cosmic microwave background radiation", "Diagnostic ultrasound scans"],
+        question: "What molecular mechanism is directly responsible for genetic anticipation in Huntington's disease families?",
+        options: ["Progressive methylation of the promoter over time", "DNA polymerase replication slippage during gametogenesis (especially spermatogenesis) adding further CAG repeats across generations", "Telomere shortening in successive generations", "Accumulation of point mutations in mitochondrial DNA"],
         correctIndex: 1,
-        explanation: "NER is the sole human pathway that repairs UV-induced cyclobutane pyrimidine dimers; without functional NER, UV exposure leads to catastrophic mutational loads and early skin cancer."
+        explanation: "Replication slippage during meiosis expands the unstable CAG repeat sequence, leading to longer polyglutamine tracts and earlier onset in successive generations."
       }
     ],
     examQuestion: {
-      question: "Differentiate between point mutations and frameshift mutations at the molecular level, and evaluate why inherited germline mutations in DNA repair genes (such as MSH2 in Lynch syndrome) dramatically elevate lifetime cancer risk. [6 marks]",
+      question: "Explain the difference between acquired somatic mutations and inherited germline mutations, and analyze how a CAG trinucleotide repeat expansion in the HTT gene causes Huntington's disease, explaining the phenomenon of genetic anticipation. [6 marks]",
       marks: "6 marks",
       guidance: [
-        "Point vs Frameshift Molecular Contrast: Point mutations involve a single base substitution (silent, missense, nonsense); frameshifts involve indels not divisible by 3, altering every downstream codon reading frame and causing premature truncation [3 marks].",
-        "DNA Repair Gene Failure: In Lynch syndrome, an inherited germline defect in Mismatch Repair (e.g. MSH2, MLH1) compromises post-replication proofreading [1 mark].",
-        "Cancer Cascade: Loss of the second normal allele in somatic cells leads to hypermutation ('mutator phenotype'), accelerating the accumulation of driver mutations in oncogenes and tumour suppressors (APC, TP53), leading to early-onset colorectal carcinoma [2 marks]."
+        "Somatic vs Germline Distinction: Somatic mutations occur in non-gamete body tissues and cannot be passed to offspring (driving cancer); germline mutations arise in gametes and are inherited by all cells of offspring [2 marks].",
+        "CAG Repeat Molecular Pathology: Unstable CAG expansion in HTT gene (exon 1, chromosome 4p16.3) encodes an elongated polyglutamine tract; >=40 repeats confers full penetrance; toxic gain-of-function mutant protein aggregates and causes selective neurodegeneration in striatal medium spiny neurons of the basal ganglia [2 marks].",
+        "Genetic Anticipation Mechanism: DNA replication slippage during meiosis (particularly paternal transmission during spermatogenesis) further expands repeat length, resulting in earlier age of onset and increased symptom severity across generations [2 marks]."
       ]
     },
     plenary: [
-      "Mutations are the raw material of evolution but the direct driver of genetic disease and cancer.",
-      "The consequences of a mutation depend strictly on its molecular class, reading frame impact, and whether it arises in the germline or soma.",
-      "Next Lesson: Genetic disorders: single gene disorders — in-depth clinical pathology of Cystic Fibrosis and Sickle Cell Anaemia."
+      "Mutations are classified by origin (somatic vs germline) and molecular type (substitutions vs frameshifts).",
+      "Huntington's disease is an exemplar triplet repeat disorder (CAG >=40 causes full-penetrance neurodegeneration).",
+      "Genetic anticipation is driven by meiotic repeat expansion during gametogenesis.",
+      "Next Lesson: Pedigree chart analysis & inheritance risk calculations — decoding family trees and computing precise genetic probabilities."
     ]
   },
   {
@@ -421,78 +423,81 @@ export const lessons = [
     part: 2,
     teacher: "Dan",
     deckId: "Lesson_06_Genetic_disorders_single_gene_disorders",
-    title: "Genetic disorders: single gene disorders",
-    focus: "Monogenic Mendelian Inheritance, Pathophysiology of CFTR & Haemoglobinopathy",
-    deliverable: "Construct clinical pedigree trees with Bayesian risk probabilities, and map the molecular-to-clinical pathophysiological cascades of Cystic Fibrosis (Delta F508) and Sickle Cell Anaemia (HbS).",
-    details: "Principles of Monogenic Mendelian inheritance in clinical genetics: autosomal recessive, autosomal dominant (e.g. Huntington's chorea, Marfan syndrome), and X-linked recessive (e.g. Duchenne muscular dystrophy, Haemophilia A). Pedigree chart analysis, Punnett squares, and carrier risk probability calculations. In-depth clinical pathology case study 1 — Cystic Fibrosis: Autosomal recessive disorder located on chromosome 7q31.2. The CFTR gene encodes an ATP-binding cassette (ABC) transporter functioning as a cAMP-regulated chloride and thiocyanate ion channel across apical epithelial membranes. Molecular pathology of the predominant Delta F508 mutation: in-frame deletion of 3 base pairs (CTT) encoding phenylalanine at position 508, leading to misfolded CFTR protein trapped in the endoplasmic reticulum and degraded by the ubiquitin-proteasome system (class II defect). Downstream systemic pathophysiology: impaired chloride and water secretion with hyper-absorption of sodium via ENaC channels; accumulation of dehydrated, hyper-viscous mucus in the respiratory tract (impaired mucociliary clearance, chronic endobronchial infection with Pseudomonas aeruginosa, bronchiectasis); exocrine pancreatic duct obstruction (malabsorption of fat-soluble vitamins A, D, E, K, pancreatic insufficiency); and congenital bilateral absence of vas deferens (CBAVD) causing male infertility. Diagnostic testing: immunoreactive trypsinogen (IRT) newborn blood spot screening, quantitative pilocarpine iontophoresis sweat test (Cl- > 60 mmol/L), and targeted CFTR mutation panel PCR. In-depth clinical pathology case study 2 — Sickle Cell Anaemia: Autosomal recessive haemoglobinopathy located on chromosome 11p15.5. The HBB gene single point mutation GAG -> GTG at codon 6 substitutes hydrophilic glutamic acid with hydrophobic valine (beta-S chain). Molecular pathology: in deoxygenated states, hydrophobic valine fits into a complementary hydrophobic pocket on an adjacent deoxyhaemoglobin tetramer, triggering non-covalent HbS polymerisation into rigid 14-strand helical fibrous polymers. Downstream pathophysiology: erythrocyte distortion into rigid, non-deformable sickle crescents, membrane fragility, chronic extravascular/intravascular haemolytic anaemia (shortened red blood cell lifespan 10-20 days vs 120 days), and microvascular vaso-occlusion leading to acute painful crises, acute chest syndrome, splenic infarction (functional asplenia predisposing to encapsulated bacterial sepsis), and end-organ ischemic damage. Heterozygote advantage: balanced polymorphism against severe Plasmodium falciparum malaria.",
+    title: "Monohybrid crosses, pedigree chart analysis & inheritance risk calculations",
+    focus: "Monohybrid Crosses (Punnett Squares), Pedigree Chart Analysis & Inheritance Risk Calculations",
+    deliverable: "Construct and solve monohybrid crosses using 2x2 Punnett squares, interpret clinical pedigree charts across multiple generations to deduce inheritance modes (autosomal dominant, autosomal recessive, X-linked recessive), and calculate conditional inheritance risk probabilities using the product and sum rules.",
+    details: "1. Principles of Monohybrid Genetic Crosses: Single-gene inheritance involving two contrasting alleles (dominant vs recessive, e.g. A vs a, or H vs h). Genotypes: homozygous dominant (AA), heterozygous (Aa), homozygous recessive (aa). Meiotic segregation of alleles (Mendel's First Law) during gamete formation. Standard conventions for setting up a monohybrid cross: identifying parental phenotypes, assigning parental genotypes, determining haploid gametes, constructing a 2x2 Punnett square, determining offspring genotypic ratios (1 AA : 2 Aa : 1 aa for a carrier cross Aa x Aa) and phenotypic ratios (3 unaffected : 1 affected for recessive traits; 1:1 for testcross Aa x aa). Testcross / backcross utility: crossing an organism displaying the dominant phenotype with a homozygous recessive (aa) mate to reveal whether the unknown genotype is homozygous (AA) or heterozygous (Aa). 2. Standard clinical pedigree chart nomenclature and symbols: International standardized pedigree conventions: Squares (males), Circles (females), Diamonds (unspecified sex), Shaded/filled symbols (affected individuals displaying the clinical phenotype), Unshaded/open symbols (unaffected individuals), Half-shaded or centered dot symbols (unaffected heterozygous carriers), Slashed symbols (deceased individuals), Double horizontal mating lines (consanguinity — mating between blood relatives), Roman numerals (I, II, III, IV) designating generational rows, Arabic numerals (1, 2, 3...) designating individuals within a generation, and an arrow indicating the proband (consultand / index case). 3. Deducing modes of inheritance from pedigree architecture: (a) Autosomal Recessive (e.g. Cystic Fibrosis, Sickle Cell Anaemia): Trait typically skips generations (horizontal pedigree distribution); affected offspring frequently born to unaffected asymptomatic carrier parents (Aa x Aa); equal ratio of affected males and females; consanguinity significantly increases frequency; unaffected parents of an affected child are obligate carriers. (b) Autosomal Dominant (e.g. Huntington's disease, Achondroplasia): Trait appears in every consecutive generation without skipping (vertical pedigree pattern); every affected individual has at least one affected parent; unaffected individuals (aa) do not transmit the condition to offspring; equal sex distribution; heterozygous affected parent (Aa) mated with unaffected spouse (aa) confers a 50% (1 in 2) recurrence risk per pregnancy. (c) X-Linked Recessive (e.g. Haemophilia A, Duchenne Muscular Dystrophy, Red-Green Colour Blindness): Distinctly higher incidence in males (hemizygous XY expressing disease with single mutant allele); strictly no male-to-male (father-to-son) transmission (fathers pass Y chromosome to sons); 100% of daughters of affected males are obligate carriers; carrier females (XAXa) transmit mutant allele to 50% of sons (affected) and 50% of daughters (carriers). 4. Integrating Monohybrid Crosses with Pedigree Analysis & Risk Calculations: Translating pedigree relationships into monohybrid Punnett square crosses. Product rule for independent events: P(A and B) = P(A) x P(B). Sum rule for mutually exclusive events: P(A or B) = P(A) + P(B). Conditional probability and the 2/3 carrier risk principle: An unaffected sibling of an individual with an autosomal recessive condition whose parents are carriers (Aa x Aa). Because the sibling is confirmed unaffected, the homozygous recessive genotype (aa) is excluded; the remaining possible genotypes are AA (1/3) and Aa (2/3). Therefore, the probability of being a carrier is 2/3, NOT 1/2! Multi-step genetic counseling risk calculation: Calculating the probability of a future child being affected = P(Parent 1 is carrier) x P(Parent 2 is carrier from general population) x P(both transmit mutant allele = 1/4). Punnett square verification and probability tree construction. Presentation styling: Bright, high-contrast, luminous slides with crisp black/white symbols, colorful highlighting, clear 2x2 Punnett square grids, and generous whitespace.",
     starterQuestions: [
-      { q: "What mode of inheritance governs both Cystic Fibrosis and Sickle Cell Anaemia?", a: "Autosomal recessive inheritance." },
-      { q: "What specific molecular mutation accounts for ~70% of Cystic Fibrosis alleles in the UK?", a: "Delta F508: an in-frame deletion of 3 base pairs (CTT) causing the loss of phenylalanine at position 508 in the CFTR protein." },
-      { q: "Explain the biochemical basis of the pilocarpine sweat test in Cystic Fibrosis diagnosis.", a: "Defective CFTR channels cannot reabsorb chloride ions from ductal sweat, resulting in elevated sweat chloride concentration (> 60 mmol/L)." },
-      { q: "What amino acid substitution causes Sickle Cell Anaemia, and at which codon?", a: "Glutamic acid is replaced by valine at codon 6 of the beta-globin (HBB) chain." },
-      { q: "Why do HbS molecules polymerise only under deoxygenated conditions?", a: "Deoxygenation exposes a hydrophobic binding pocket on the beta subunit that accommodates the mutant hydrophobic valine residue." },
-      { q: "What evolutionary phenomenon explains the high carrier frequency of the sickle cell allele in equatorial regions?", a: "Heterozygote advantage (balanced polymorphism) conferring resistance against severe Plasmodium falciparum malaria." }
+      { q: "In a monohybrid cross between two heterozygous carriers (Aa x Aa), what are the expected genotypic and phenotypic ratios?", a: "Genotypic ratio is 1 AA : 2 Aa : 1 aa (1:2:1); phenotypic ratio is 3 dominant : 1 recessive (3:1)." },
+      { q: "What geometric shapes represent males and females in standard clinical pedigree charts?", a: "Squares represent males; circles represent females." },
+      { q: "What pedigree observation definitively disproves an X-linked recessive mode of inheritance?", a: "Father-to-son (male-to-male) transmission of the trait (fathers pass only their Y chromosome to sons)." },
+      { q: "Why is a testcross performed with a homozygous recessive individual (aa)?", a: "To determine whether an individual showing the dominant phenotype is homozygous dominant (AA) or heterozygous (Aa)." },
+      { q: "What is the probability that a healthy, unaffected sibling of a child with an autosomal recessive condition is a carrier?", a: "2 in 3 (2/3 or ~66.7%), because the homozygous recessive genotype (aa) is excluded from the surviving outcomes." },
+      { q: "State the mathematical rule used to calculate the joint probability of two independent genetic events occurring together.", a: "The Product Rule (multiplication rule: P(A and B) = P(A) x P(B))." }
     ],
     objectives: {
-      knowledge: "Explain the inheritance patterns and molecular aetiologies of Cystic Fibrosis and Sickle Cell Anaemia.",
-      application: "Trace the pathophysiological cascade from primary gene mutation to multisystem clinical manifestations.",
-      evaluation: "Evaluate diagnostic testing methodologies (newborn IRT screening, sweat test, haemoglobin electrophoresis) and risk probabilities."
+      knowledge: "Construct 2x2 Punnett squares for monohybrid crosses and identify standard clinical pedigree chart symbols.",
+      application: "Decode multi-generational pedigrees to deduce autosomal dominant, autosomal recessive, and X-linked recessive inheritance modes.",
+      evaluation: "Combine monohybrid Punnett square probabilities with conditional pedigree analysis to calculate precise disease transmission and carrier risk probabilities."
     },
     terminology: [
-      { term: "CFTR Channel", def: "Cystic Fibrosis Transmembrane Conductance Regulator: an ABC-class cAMP-gated chloride ion channel on epithelial apical membranes." },
-      { term: "HbS Polymerisation", def: "Aggregation of deoxygenated sickle haemoglobin tetramers into rigid paracrystalline helical fibers that deform erythrocytes." },
-      { term: "Vaso-occlusive Crisis", def: "Microvascular obstruction by rigid sickle erythrocytes causing acute severe tissue ischemia, infarction, and pain." },
-      { term: "Heterozygote Advantage", def: "Higher biological fitness of heterozygous individuals (HbAS) relative to homozygotes in malaria-endemic regions." }
+      { term: "Monohybrid Cross", def: "A genetic mating analyzing the inheritance of a single gene locus with two alleles (yielding 3:1 phenotypic ratio for Aa x Aa)." },
+      { term: "Punnett Square", def: "A 2x2 grid representing the meiotic segregation of parental alleles into gametes and all possible fertilization genotypes." },
+      { term: "Pedigree Nomenclature", def: "Standardized genealogical symbols: squares (males), circles (females), Roman numerals (generations), and Arabic numbers (individuals)." },
+      { term: "Conditional 2/3 Carrier Risk", def: "The probability that an unaffected sibling of an autosomal recessive patient is a carrier: 2/3 (sample space restricted to AA and Aa)." },
+      { term: "Testcross", def: "Mating an individual with dominant phenotype to a homozygous recessive mate (aa) to deduce their genotype (1:1 ratio if heterozygous)." }
     ],
     theoryPoints: [
-      "Autosomal Recessive Risk: Two carrier parents (Aa x Aa) face a 25% risk of affected offspring, a 50% carrier probability, and a 25% wild-type outcome per pregnancy.",
-      "CFTR Class II Pathology: Delta F508 does not prevent transcription or translation; the protein is misfolded, retained in the ER, and prematurely degraded by proteasomes.",
-      "Systemic CF Consequences: Defective chloride efflux causes unchecked ENaC sodium influx, desiccating mucosal secretions across lungs, pancreas, liver, and vas deferens.",
-      "Sickle Vaso-Occlusion vs Haemolysis: Sickled RBCs cause both chronic extravascular haemolysis (anaemia, jaundice) and acute microvascular blockage (ischemic crisis, acute chest syndrome)."
+      "Monohybrid Segregation: Mendel's First Law ensures each gamete carries only one allele per gene locus, producing equal proportions of dominant and recessive gametes in heterozygotes.",
+      "Pedigree Diagnostics: Look first for generational skipping (recessive) vs vertical continuity (dominant), and check sex ratios and father-son transmission (autosomal vs X-linked).",
+      "Obligate Carrier Identification: In autosomal recessive pedigrees, both parents of an affected child must be carriers (Aa). In X-linked recessive, all daughters of an affected father must be carriers (XAXa).",
+      "The 2/3 Sibling Rule: Phenotypically normal offspring of Aa x Aa crosses have genotypes 1 AA : 2 Aa, so carrier probability is 2/3.",
+      "Compound Risk Product Rule: P(affected child) = P(Mother is carrier) x P(Father is carrier) x P(both transmit recessive allele = 1/4)."
     ],
     workedExample: {
-      title: "Multisystem Pathophysiological Mapping",
-      subtitle: "From CFTR Delta F508 gene defect to clinical end-stage bronchiectasis",
+      title: "Monohybrid Cross & Pedigree Risk Calculation",
+      subtitle: "Combining a 2x2 Punnett square with a 3-generation clinical pedigree tree for Cystic Fibrosis",
       steps: [
-        { label: "Step 1: Gene Mutation", detail: "Deletion of CTT at codon 508 in CFTR gene on chromosome 7q31.2." },
-        { label: "Step 2: Post-Translational Degradation", detail: "Misfolded CFTR is recognized by ER chaperone Hsp70 and degraded by the ubiquitin-proteasome system; zero CFTR reaches apical membrane." },
-        { label: "Step 3: Epithelial Surface Dehydration", detail: "Absence of chloride export + hyperactive sodium reabsorption (ENaC) draws water out of airway surface liquid." },
-        { label: "Step 4: Clinical Cascade", detail: "Dehydrated mucus collapses cilia; chronic colonization by Pseudomonas aeruginosa triggers neutrophilic inflammation, elastase release, and bronchiectasis." }
+        { label: "Step 1: Constructing the Monohybrid Punnett Square", detail: "Parental carrier cross: Aa x Aa. Gametes: A and a from each parent. 2x2 Punnett square yields genotypes: 1 AA (healthy non-carrier), 2 Aa (healthy carrier), 1 aa (affected CF). Phenotypic ratio: 3 healthy : 1 affected." },
+        { label: "Step 2: Deducing Sarah's Conditional Carrier Probability", detail: "Pedigree shows Sarah is the unaffected sister of an affected brother (aa). Since Sarah is healthy, the aa genotype is ruled out. Her genotype must be AA (1/3) or Aa (2/3). Sarah's carrier risk is 2/3." },
+        { label: "Step 3: Determining Partner's Population Carrier Probability", detail: "Her partner David has no family history of CF. In the UK population, the carrier frequency for CF is approximately 1 in 25 (1/25)." },
+        { label: "Step 4: Applying the Product Rule for Total Offspring Risk", detail: "Risk of child having CF = P(Sarah is carrier = 2/3) x P(David is carrier = 1/25) x P(both transmit 'a' = 1/4) = 2/300 = 1/150 (~0.67%)." }
       ]
     },
     hingeQuestions: [
       {
-        question: "Two healthy parents who are both confirmed carriers of the CFTR Delta F508 mutation have one child with Cystic Fibrosis. What is the probability that their next child will be a healthy non-carrier (homozygous wild-type)?",
-        options: ["1 in 2 (50%)", "1 in 4 (25%)", "3 in 4 (75%)", "0% (all subsequent children are affected)"],
+        question: "In a pedigree, two unaffected parents have a son and a daughter with a rare metabolic disorder. What is the definitive mode of inheritance?",
+        options: ["Autosomal dominant", "Autosomal recessive", "X-linked recessive", "Mitochondrial maternal"],
         correctIndex: 1,
-        explanation: "In an autosomal recessive cross (Aa x Aa), the Mendelian ratio is 1 AA (25% non-carrier healthy) : 2 Aa (50% carrier healthy) : 1 aa (25% affected)."
+        explanation: "Unaffected parents having affected children indicates recessive inheritance; both a male and female offspring are affected, confirming autosomal rather than X-linked or Y-linked."
       },
       {
-        question: "Why does the substitution of valine for glutamic acid at codon 6 of beta-globin cause haemoglobin molecules to aggregate only when deoxygenated?",
-        options: ["Valine is positively charged and repels oxygen molecules", "Oxygen binding alters haemoglobin quaternary structure, burying the complementary hydrophobic acceptor pocket", "Valine is converted into cysteine when oxygen levels drop", "Deoxygenated haemoglobin is transported into lysosomes"],
-        correctIndex: 1,
-        explanation: "Oxygenation maintains the R (relaxed) state where the hydrophobic pocket is concealed; deoxygenation shifts to the T (tense) state, exposing the pocket to accommodate mutant valine."
+        question: "A healthy man's brother died of Cystic Fibrosis. He marries a woman whose carrier status is unknown (general population carrier risk = 1/25). What is the probability that their first child will have Cystic Fibrosis?",
+        options: ["1 in 50", "1 in 100", "1 in 150", "1 in 300"],
+        correctIndex: 2,
+        explanation: "Risk = P(Man is carrier = 2/3) x P(Woman is carrier = 1/25) x P(Both transmit mutant allele = 1/4) = 2/300 = 1/150."
       },
       {
-        question: "Which clinical screening finding provides the earliest biochemical indicator of Cystic Fibrosis during newborn blood-spot testing?",
-        options: ["Elevated sweat chloride concentration", "Elevated immunoreactive trypsinogen (IRT) in serum due to blocked pancreatic ducts", "Complete absence of red blood cells", "Direct visualisation of lung bronchiectasis on chest X-ray"],
+        question: "A father affected with X-linked hypophosphataemic rickets (dominant) has children with an unaffected mother. What proportion of their children will inherit the condition?",
+        options: ["50% of sons and 50% of daughters", "All daughters and no sons", "All sons and no daughters", "Zero children (condition requires two mutant alleles)"],
         correctIndex: 1,
-        explanation: "Obstruction of fetal pancreatic ducts causes pancreatic pro-enzymes (including IRT) to leak into the fetal bloodstream, detected as elevated serum IRT on Guthrie cards."
+        explanation: "An affected father passes his single affected X chromosome to 100% of his daughters, who will be affected because the trait is dominant. He passes his normal Y chromosome to all sons."
       }
     ],
     examQuestion: {
-      question: "Explain how a 3-base-pair deletion in the CFTR gene results in chronic respiratory failure and pancreatic insufficiency in Cystic Fibrosis patients, and evaluate the diagnostic validity of the pilocarpine sweat test. [6 marks]",
+      question: "Analyze the inheritance pattern of an autosomal recessive condition in a three-generation pedigree, explain why unaffected siblings of affected individuals have a 2/3 carrier risk rather than 1/2, and calculate the overall risk of an affected child if an unaffected sibling marries an unrelated partner from a population where carrier frequency is 1 in 30. [6 marks]",
       marks: "6 marks",
       guidance: [
-        "Molecular Defect: Delta F508 deletes phenylalanine 508, causing protein misfolding and targeted destruction in the endoplasmic reticulum; no functional chloride channels reach epithelial apical membranes [2 marks].",
-        "Respiratory & Pancreatic Pathology: Impaired chloride export with sodium hyper-absorption desiccates mucus; thick mucus obstructs airways (bacterial infection, bronchiectasis) and occludes pancreatic ducts, preventing enzyme delivery and causing malabsorption [2 marks].",
-        "Diagnostic Sweat Test: Defective CFTR in sweat gland ducts prevents chloride reabsorption from primary sweat, resulting in abnormally high sweat chloride (> 60 mmol/L), providing a definitive gold-standard diagnostic metric [2 marks]."
+        "Pedigree Diagnostic Criteria: Autosomal recessive disorders skip generations (horizontal pattern); unaffected parents of affected offspring are obligate carriers (Aa); equal sex incidence [2 marks].",
+        "Conditional 2/3 Carrier Probability: In an Aa x Aa cross, expected offspring genotypes are 1 AA : 2 Aa : 1 aa. Because an unaffected sibling cannot be 'aa', the denominator is restricted to 3 outcomes (1 AA and 2 Aa); therefore, 2 out of 3 possible genotypes are carriers (2/3 probability) [2 marks].",
+        "Risk Calculation: Apply the product rule: P(affected child) = P(sibling is carrier = 2/3) x P(partner is carrier = 1/30) x P(both transmit 'a' = 1/4) = 2/360 = 1/180 (~0.56%) [2 marks]."
       ]
     },
     plenary: [
-      "Single-gene disorders illustrate molecular causality: an alteration of three base pairs can disrupt multi-organ human physiology.",
-      "Precision diagnostics (Guthrie card IRT, sweat test, genetic sequencing) enable targeted clinical interventions before irreversible organ damage occurs.",
-      "Next Lesson: Genetic disorders: Chromosomal abnormalities — nondisjunction mechanisms and cytogenetic karyotyping of aneuploidies."
+      "Pedigree charts provide a visual blueprint of genetic transmission across generations.",
+      "Recognize key diagnostic flags: generation skipping (recessive), vertical continuity (dominant), and male bias / lack of father-to-son transmission (X-linked).",
+      "Master conditional probability: unaffected siblings of autosomal recessive individuals are 2/3 carriers.",
+      "Next Lesson: Genetic disorders: Chromosomal abnormalities — nondisjunction mechanisms and karyotyping of aneuploidies."
     ]
   },
   {
