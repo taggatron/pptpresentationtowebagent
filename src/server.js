@@ -375,6 +375,14 @@ export const KNOWN_SLIDE_SETS = [
     icon: "🎯",
     folder: "essential_skills",
     description: "Core professional competencies, Starting Stronger, and instructional excellence."
+  },
+  {
+    id: "physics_electricity_magnetism",
+    title: "GCSE Physics · Electricity & Magnetism",
+    category: "Physics",
+    icon: "⚡",
+    folder: "powerpoints_physics_electricity_magnetism",
+    description: "Static electricity, DC circuits, Ohm's law, series vs parallel, electromagnets, and electric motors with interactive simulations."
   }
 ];
 

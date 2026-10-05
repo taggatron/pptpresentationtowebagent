@@ -358,9 +358,36 @@ export async function generateAndIngestLesson(browser, lesson) {
     await page.waitForTimeout(3000);
   }
 
+  // Ensure download behavior allows writing to PPTX_OUTPUT_DIR
+  await fs.mkdir(PPTX_OUTPUT_DIR, { recursive: true });
+  try {
+    const client = await browser.contexts()[0].newCDPSession(page);
+    await client.send("Page.setDownloadBehavior", {
+      behavior: "allow",
+      downloadPath: PPTX_OUTPUT_DIR,
+    });
+  } catch (err) {
+    log(`CDP setDownloadBehavior notice: ${err.message}`);
+  }
+
+  // Close slide deck viewer if currently open in Studio
+  const openCloseBtn = page.locator('.studio-panel button[aria-label="Close slide deck"], button[aria-label="Close slide deck"]').first();
+  if ((await openCloseBtn.count()) > 0 && (await openCloseBtn.isVisible().catch(() => false))) {
+    log("Closing previously open slide deck viewer...");
+    await openCloseBtn.click().catch(() => {});
+    await page.waitForTimeout(1000);
+  }
+
   await dismissTransientDialogs(page);
 
-  const getCards = () => page.locator('artifact-library-item, div:has(button[aria-description="Slide deck"])');
+  // If Studio panel is collapsed, expand it
+  const studioHeader = page.locator('.panel-header-clickable:has-text("Studio"), .panel-header-content:has-text("Studio")').first();
+  if ((await studioHeader.count()) > 0 && !(await page.locator('div.create-artifact-button-container[aria-label="Slide deck"]').isVisible().catch(() => false))) {
+    await studioHeader.click().catch(() => {});
+    await page.waitForTimeout(1000);
+  }
+
+  const getCards = () => page.locator("artifact-library-item");
   let prevTopCardText = "";
   const initialCardsCount = await getCards().count();
   if (initialCardsCount > 0) {
@@ -379,6 +406,7 @@ export async function generateAndIngestLesson(browser, lesson) {
   // Open "Slide deck" dialog
   log(`Opening 'Slide deck' creator for Lesson ${lesson.number}...`);
   const slideDeckBtn = page.locator('div.create-artifact-button-container[aria-label="Slide deck"], [aria-label="Slide deck"]').first();
+  await slideDeckBtn.waitFor({ state: "visible", timeout: 20000 });
   await slideDeckBtn.click();
   await page.waitForTimeout(1500);
 
@@ -408,13 +436,17 @@ export async function generateAndIngestLesson(browser, lesson) {
 
   const deadline = Date.now() + 15 * 60 * 1000;
   let settledChecks = 0;
-  let newestCard = null;
   await page.waitForTimeout(6000);
 
-  // Match words from lesson title
   const titleKeywords = lesson.title.toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length >= 4);
 
   while (Date.now() < deadline) {
+    const isViewerOpen = (await page.locator('.studio-panel button[aria-label="More options"]').count()) > 0;
+    if (isViewerOpen) {
+      log(`Slide deck viewer opened for Lesson ${lesson.number}! Generation is finished.`);
+      break;
+    }
+
     const isGenerating = await isGenerationVisible(page);
     const cards = getCards();
     const currentCount = await cards.count();
@@ -425,123 +457,79 @@ export async function generateAndIngestLesson(browser, lesson) {
 
     const isTopCardGenerating = /generating|sync\b/i.test(currentTopText);
     const matchesTitle = titleKeywords.some(kw => currentTopText.toLowerCase().includes(kw));
-    const isNewCard = currentTopText !== prevTopCardText || currentCount > initialCardsCount || /just now|\b[1-5]m ago/i.test(currentTopText);
 
     if (isGenerating || isTopCardGenerating) {
       settledChecks = 0;
-      log(`NotebookLM is generating slide deck for Lesson ${lesson.number} (${currentTopText || "Generating..."})...`);
-    } else if (isNewCard && (matchesTitle || /just now/i.test(currentTopText))) {
+      log(`NotebookLM is generating slide deck for Lesson ${lesson.number} (${currentTopText.slice(0, 60)}...)...`);
+    } else if (matchesTitle || /just now/i.test(currentTopText)) {
       settledChecks += 1;
-      log(`Detected completed new artifact card: "${currentTopText}" (settled check ${settledChecks}/2)`);
+      log(`Detected completed artifact card: "${currentTopText.slice(0, 60)}" (settled check ${settledChecks}/2)`);
       if (settledChecks >= 2) {
-        newestCard = cards.first();
-        log(`Slide deck generation complete! Card: "${currentTopText}"`);
+        log(`Slide deck generation complete for Lesson ${lesson.number}!`);
         break;
       }
-    } else {
-      for (let i = 0; i < Math.min(currentCount, 4); i++) {
-        const text = (await cards.nth(i).innerText().catch(() => "")).replace(/\s+/g, " ").trim();
-        if (titleKeywords.some(kw => text.toLowerCase().includes(kw)) && !/generating/i.test(text)) {
-          settledChecks += 1;
-          if (settledChecks >= 2) {
-            newestCard = cards.nth(i);
-            log(`Found completed card [${i}]: "${text}"`);
-            break;
-          }
-        }
-      }
-      if (newestCard) break;
     }
 
     await page.waitForTimeout(5000);
   }
 
-  if (!newestCard) {
-    throw new Error(`Timed out waiting for Lesson ${lesson.number} (${lesson.title}) slide deck generation.`);
-  }
-
-  // Open the newly generated slide deck
-  log("Opening slide deck artifact in Notebook viewer...");
-  const cardButton = newestCard.locator('button.artifact-stretched-button, [role="button"]').first();
-  await cardButton.click();
   await page.waitForTimeout(3000);
 
-  // Locate viewer page
-  let viewerPage = page;
-  for (const p of browser.contexts()[0].pages()) {
-    const hasViewerControls = await p.locator('button[mattooltip="Revise"], button[aria-label="Revise"], button[aria-label*="More" i]').count();
-    if (hasViewerControls > 0) {
-      viewerPage = p;
-      break;
-    }
-  }
-  log(`Viewer tab found: "${await viewerPage.title()}"`);
+  // Trigger PowerPoint download
+  const pptxTargetFile = path.join(PPTX_OUTPUT_DIR, `${lesson.deckId}.pptx`);
+  const downloadStartTime = Date.now();
+  log(`Triggering PowerPoint (.pptx) download for Lesson ${lesson.number}...`);
 
-  await fs.mkdir(PPTX_OUTPUT_DIR, { recursive: true });
-  const pptxFileName = `Lesson_${String(lesson.number).padStart(2, "0")}_${lesson.deckId}.pptx`;
-  const pptxTargetFile = path.join(PPTX_OUTPUT_DIR, pptxFileName);
-
-  try {
-    const client = await browser.contexts()[0].newCDPSession(viewerPage);
-    await client.send("Page.setDownloadBehavior", {
-      behavior: "allow",
-      downloadPath: PPTX_OUTPUT_DIR,
-    });
-  } catch (err) {
-    log(`CDP setDownloadBehavior: ${err.message}`);
+  const viewerMoreBtn = page.locator('.studio-panel button[aria-label="More options"]').first();
+  if ((await viewerMoreBtn.count()) > 0 && (await viewerMoreBtn.isVisible().catch(() => false))) {
+    log("Opening More options menu from Studio viewer...");
+    await viewerMoreBtn.click();
+  } else {
+    log("Opening More menu from top artifact card in list...");
+    const cardMoreBtn = page.locator('artifact-library-item button[aria-label="More"]').first();
+    await cardMoreBtn.waitFor({ state: "visible", timeout: 10000 });
+    await cardMoreBtn.click();
   }
 
-  log("Triggering PowerPoint (.pptx) download...");
-  const moreBtn = viewerPage.getByRole("button", { name: "More options", exact: true }).first();
-  await moreBtn.waitFor({ state: "visible", timeout: 15000 });
-  await moreBtn.click();
-  await viewerPage.waitForTimeout(1000);
-
-  const pptxMenuItem = viewerPage.getByRole("menuitem", { name: /PowerPoint/i }).first();
+  await page.waitForTimeout(1000);
+  const pptxMenuItem = page.locator('[role="menuitem"]:has-text("Download PowerPoint")').first();
   await pptxMenuItem.waitFor({ state: "visible", timeout: 10000 });
-
-  const startTime = Date.now();
-  const downloadPromise = viewerPage.waitForEvent("download", { timeout: 30000 }).then(async (download) => {
-    log(`Download initiated: ${download.suggestedFilename()}`);
-    await download.saveAs(pptxTargetFile);
-    return pptxTargetFile;
-  }).catch(() => null);
-
   await pptxMenuItem.click();
+  log("Clicked 'Download PowerPoint (.pptx)'. Awaiting file on disk...");
 
-  const dlResult = await downloadPromise;
-  if (!dlResult) {
-    log("Polling output directory for downloaded PPTX...");
-    const deadlineDl = Date.now() + 60000;
-    let foundFile = false;
-    while (Date.now() < deadlineDl) {
-      await new Promise(r => setTimeout(r, 1000));
-      const outFiles = await fs.readdir(PPTX_OUTPUT_DIR).catch(() => []);
-      for (const f of outFiles) {
-        if (f.endsWith(".pptx")) {
-          const fullPath = path.join(PPTX_OUTPUT_DIR, f);
-          const stat = await fs.stat(fullPath).catch(() => null);
-          if (stat && stat.size > 0 && stat.mtimeMs >= startTime - 2000) {
-            if (fullPath !== pptxTargetFile) {
-              log(`Found downloaded PPTX ${f} (${stat.size} bytes). Moving to target...`);
-              await fs.copyFile(fullPath, pptxTargetFile);
-            }
-            foundFile = true;
-            break;
-          }
+  // Poll for downloaded file
+  let downloadedPptx = null;
+  const pollDeadline = Date.now() + 60000;
+  while (Date.now() < pollDeadline) {
+    await new Promise(r => setTimeout(r, 1000));
+    const files = await fs.readdir(PPTX_OUTPUT_DIR).catch(() => []);
+    for (const f of files) {
+      if (f.endsWith(".pptx")) {
+        const fullPath = path.join(PPTX_OUTPUT_DIR, f);
+        const stat = await fs.stat(fullPath).catch(() => null);
+        if (stat && stat.size > 100000 && stat.mtimeMs >= downloadStartTime - 5000) {
+          downloadedPptx = fullPath;
+          log(`Found downloaded PowerPoint file: ${f} (${stat.size} bytes).`);
+          break;
         }
       }
-      if (foundFile) break;
     }
+    if (downloadedPptx) break;
   }
 
-  const stat = await fs.stat(pptxTargetFile);
-  log(`Successfully saved PPTX to ${pptxTargetFile} (${stat.size} bytes).`);
+  if (!downloadedPptx) {
+    throw new Error(`Failed to find downloaded PPTX for Lesson ${lesson.number} in ${PPTX_OUTPUT_DIR}`);
+  }
 
-  // Close viewer
-  const closeBtn = viewerPage.getByRole("button", { name: /Close slide deck|Close/ });
-  if ((await closeBtn.count()) > 0 && (await closeBtn.first().isVisible().catch(() => false))) {
-    await closeBtn.first().click().catch(() => {});
+  if (downloadedPptx !== pptxTargetFile) {
+    await fs.copyFile(downloadedPptx, pptxTargetFile);
+  }
+
+  // Close viewer if open to return to studio root
+  const closeViewerBtn = page.locator('.studio-panel button[aria-label="Close slide deck"]').first();
+  if ((await closeViewerBtn.count()) > 0 && (await closeViewerBtn.isVisible().catch(() => false))) {
+    await closeViewerBtn.click().catch(() => {});
+    await page.waitForTimeout(1500);
   }
 
   // Now extract PPTX and generate web deck
@@ -552,7 +540,7 @@ export async function ingestAndEnhanceDeck(pptxTargetFile, lesson) {
   log(`Ingesting PPTX into web decks for Lesson ${lesson.number}...`);
   await fs.mkdir(PUBLIC_DECKS_DIR, { recursive: true });
 
-  const deckFolder = `Lesson_${String(lesson.number).padStart(2, "0")}_${lesson.deckId}`;
+  const deckFolder = lesson.deckId;
   const deckTargetDir = path.join(PUBLIC_DECKS_DIR, deckFolder);
 
   const manifest = await extractPptxDeck(pptxTargetFile, PUBLIC_DECKS_DIR, deckFolder, {
@@ -668,7 +656,17 @@ export async function runAgent(startLesson = 1, endLesson = 8) {
   for (let lNum = startLesson; lNum <= endLesson; lNum++) {
     const lesson = PHYSICS_LESSONS.find(l => l.number === lNum);
     if (!lesson) continue;
-    await generateAndIngestLesson(browser, lesson);
+    try {
+      await generateAndIngestLesson(browser, lesson);
+    } catch (err) {
+      log(`Error processing Lesson ${lesson.number} (${lesson.title}): ${err.message}. Retrying once after 5s...`);
+      await new Promise(r => setTimeout(r, 5000));
+      try {
+        await generateAndIngestLesson(browser, lesson);
+      } catch (retryErr) {
+        log(`Retry also failed for Lesson ${lesson.number}: ${retryErr.message}. Proceeding to next lesson.`);
+      }
+    }
   }
 
   log("\n✦ ALL SPECIFIED LESSONS GENERATED AND IMPORTED SUCCESSFULLY! ✦");
