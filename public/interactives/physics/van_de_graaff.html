@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Lab — Van de Graaff Generator & Static Electricity</title>
+  <style>
+    :root {
+      --bg: #0b131e;
+      --panel: #132235;
+      --card: #1b2d44;
+      --border: #233b59;
+      --text: #e6f1f8;
+      --muted: #8ea7c2;
+      --accent: #00d2ff;
+      --accent-glow: rgba(0, 210, 255, 0.35);
+      --danger: #ff4757;
+      --success: #2ed573;
+      --spark: #fffa65;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+    
+    /* Top Bar */
+    header {
+      background: #091018;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; background: #00d2ff; color: #091018; padding: 4px 8px; border-radius: 4px; }
+    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .badge { background: #1e3a5f; color: #00d2ff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 12px; text-transform: uppercase; }
+    .mode-pills { display: flex; gap: 8px; }
+    .mode-btn {
+      background: var(--card); color: var(--muted); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .mode-btn.active { background: #00d2ff; color: #091018; border-color: #00d2ff; font-weight: 700; box-shadow: 0 0 12px var(--accent-glow); }
+    
+    /* Workspace Layout */
+    .lab-container { display: flex; flex: 1; height: calc(100vh - 56px); }
+    
+    /* Left Sidebar: Controls */
+    .sidebar-left {
+      width: 280px;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .card-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    .ctrl-group { margin-bottom: 12px; }
+    .ctrl-label { font-size: 12px; color: var(--text); margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .ctrl-val { color: var(--accent); font-weight: 700; }
+    input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+    .btn-row { display: flex; gap: 8px; }
+    .action-btn {
+      flex: 1; background: #00d2ff; color: #091018; border: none; padding: 10px; border-radius: 8px;
+      font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .action-btn:hover { background: #38e1ff; transform: translateY(-1px); }
+    .action-btn.secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    .action-btn.secondary:hover { background: var(--panel); }
+    .action-btn.danger { background: var(--danger); color: #fff; }
+    
+    .accessory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .acc-btn {
+      background: var(--panel); border: 1px solid var(--border); color: var(--muted);
+      padding: 8px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; text-align: center;
+    }
+    .acc-btn.selected { border-color: var(--accent); color: var(--accent); background: rgba(0,210,255,0.1); }
+    
+    /* Center Stage Viewport */
+    .viewport {
+      flex: 1;
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, #15273d 0%, #080f18 100%);
+      display: flex;
+      flex-direction: column;
+    }
+    canvas#stage { width: 100%; height: 100%; display: block; cursor: crosshair; }
+    
+    .hud-overlay {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      pointer-events: none;
+    }
+    .hud-voltage {
+      font-size: 38px;
+      font-weight: 900;
+      color: #00d2ff;
+      text-shadow: 0 0 15px var(--accent-glow);
+      letter-spacing: -1px;
+    }
+    .hud-label { font-size: 12px; color: var(--muted); font-weight: 600; }
+    
+    .safety-toast {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(19, 34, 53, 0.92);
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .safety-toast .icon { font-size: 18px; }
+
+    /* Right Sidebar: Method & Theory */
+    .sidebar-right {
+      width: 320px;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-y: auto;
+    }
+    .method-step {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .step-num {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #091018;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; flex-shrink: 0;
+    }
+    .formula-box {
+      background: #091018;
+      border-left: 3px solid var(--accent);
+      padding: 10px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+    }
+    .formula-box code { color: #00d2ff; font-weight: 700; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-logo">PRACTICAL LAB</span>
+    <span class="brand-title">Lesson 1: Static Electricity & Van de Graaff</span>
+    <span class="badge">OCR GCSE Physics</span>
+  </div>
+  <div class="mode-pills">
+    <button class="mode-btn active" id="btnModeVdg" onclick="setMode('vdg')">⚡ Van de Graaff Generator</button>
+    <button class="mode-btn" id="btnModeFriction" onclick="setMode('friction')">🧣 Friction & Rods</button>
+  </div>
+</header>
+
+<div class="lab-container">
+  <!-- Left Controls -->
+  <aside class="sidebar-left">
+    <div class="card">
+      <div class="card-title">Motor & Generator Controls</div>
+      <div class="ctrl-group">
+        <div class="ctrl-label"><span>Motor Belt Speed</span><span id="speedVal" class="ctrl-val">0 RPM</span></div>
+        <input type="range" id="sliderSpeed" min="0" max="100" value="0" oninput="updateSpeed(this.value)">
+      </div>
+      <div class="btn-row">
+        <button class="action-btn" id="btnRun" onclick="toggleMotor()">▶ Start Motor</button>
+        <button class="action-btn secondary" onclick="discharge()">⚡ Discharge</button>
+      </div>
+    </div>
+
+    <div class="card" id="cardAccessories">
+      <div class="card-title">Dome Accessories</div>
+      <div class="accessory-grid">
+        <button class="acc-btn selected" id="accBare" onclick="setAccessory('bare')">Bare Dome</button>
+        <button class="acc-btn" id="accPieTins" onclick="setAccessory('pietins')">🥧 Pie Tins</button>
+        <button class="acc-btn" id="accHair" onclick="setAccessory('hair')">👩 Hair Strands</button>
+        <button class="acc-btn" id="accLamp" onclick="setAccessory('lamp')">💡 Neon Lamp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Earthing Discharge Wand</div>
+      <div class="ctrl-group">
+        <div class="ctrl-label"><span>Wand Distance</span><span id="distVal" class="ctrl-val">25 cm</span></div>
+        <input type="range" id="sliderDist" min="3" max="50" value="25" oninput="updateWandDist(this.value)">
+      </div>
+      <button class="action-btn danger" onclick="triggerSpark()">⚡ Trigger Spark Now</button>
+    </div>
+  </aside>
+
+  <!-- Canvas Viewport -->
+  <main class="viewport">
+    <div class="hud-overlay">
+      <div class="hud-voltage" id="hudVoltage">0 kV</div>
+      <div class="hud-label">ELECTROSTATIC POTENTIAL DIFFERENCE</div>
+    </div>
+
+    <canvas id="stage"></canvas>
+
+    <div class="safety-toast" id="toast">
+      <span class="icon">ℹ️</span>
+      <span id="toastMsg">Drag the earthing wand close to the dome to cause electrostatic dielectric breakdown (spark).</span>
+    </div>
+  </main>
+
+  <!-- Right Theory / Steps -->
+  <aside class="sidebar-right">
+    <div class="card">
+      <div class="card-title">GCSE Method & Observations</div>
+      <div class="method-step">
+        <div class="step-num">1</div>
+        <div>Turn on motor. Rubber belt carries electrons down, leaving dome with high net positive charge.</div>
+      </div>
+      <div class="method-step">
+        <div class="step-num">2</div>
+        <div>Electric field strength increases until potential difference exceeds <strong>30 kV/cm</strong>.</div>
+      </div>
+      <div class="method-step">
+        <div class="step-num">3</div>
+        <div>Air molecules ionise into conductive plasma; spark jumps to earthed sphere, equalising charge.</div>
+      </div>
+      <div class="method-step">
+        <div class="step-num">4</div>
+        <div>With pie tins: Like charges repel each other, launching tins off the dome sequentially!</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Core Physics Equations</div>
+      <div class="formula-box">
+        <code>Q = I × t</code><br>
+        <small style="color:var(--muted)">Charge (C) = Current (A) × Time (s)</small>
+      </div>
+      <div class="formula-box" style="margin-top:8px;">
+        <code>Law of Charges</code><br>
+        <small style="color:var(--muted)">Like charges repel (+ and +, - and -)<br>Unlike charges attract (+ and -)</small>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Safety Considerations</div>
+      <p style="font-size:12px; color:var(--muted); line-height:1.4;">
+        Always keep earthing lead connected to mains earth or generator base. People with pacemakers or cardiac conditions must remain 3m clear.
+      </p>
+    </div>
+  </aside>
+</div>
+
+<script>
+  const canvas = document.getElementById("stage");
+  const ctx = canvas.getContext("2d");
+  let width, height;
+
+  let mode = "vdg"; // "vdg" or "friction"
+  let running = false;
+  let speed = 0;
+  let voltage = 0; // in kV
+  let maxVoltage = 300;
+  let wandDist = 25; // cm
+  let accessory = "bare";
+  let pieTinsCount = 4;
+  let sparks = [];
+
+  function resize() {
+    width = canvas.width = canvas.clientWidth;
+    height = canvas.height = canvas.clientHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  function setMode(newMode) {
+    mode = newMode;
+    document.getElementById("btnModeVdg").classList.toggle("active", mode === "vdg");
+    document.getElementById("btnModeFriction").classList.toggle("active", mode === "friction");
+    document.getElementById("cardAccessories").style.display = mode === "vdg" ? "block" : "none";
+  }
+
+  function setAccessory(acc) {
+    accessory = acc;
+    pieTinsCount = 4;
+    document.querySelectorAll(".acc-btn").forEach(b => b.classList.remove("selected"));
+    const idMap = { bare: "accBare", pietins: "accPieTins", hair: "accHair", lamp: "accLamp" };
+    if (idMap[acc]) document.getElementById(idMap[acc]).classList.add("selected");
+  }
+
+  function toggleMotor() {
+    running = !running;
+    const btn = document.getElementById("btnRun");
+    if (running) {
+      btn.innerText = "⏸ Stop Motor";
+      btn.classList.add("danger");
+      if (speed === 0) updateSpeed(50);
+    } else {
+      btn.innerText = "▶ Start Motor";
+      btn.classList.remove("danger");
+    }
+  }
+
+  function updateSpeed(val) {
+    speed = Number(val);
+    document.getElementById("sliderSpeed").value = speed;
+    document.getElementById("speedVal").innerText = `${speed * 30} RPM`;
+    if (speed > 0 && !running) toggleMotor();
+  }
+
+  function updateWandDist(val) {
+    wandDist = Number(val);
+    document.getElementById("distVal").innerText = `${wandDist} cm`;
+  }
+
+  function discharge() {
+    voltage = 0;
+    sparks = [];
+    document.getElementById("hudVoltage").innerText = "0 kV";
+  }
+
+  function triggerSpark() {
+    if (voltage < 10) voltage = 120;
+    createSpark();
+  }
+
+  function createSpark() {
+    const domeX = width * 0.42;
+    const domeY = height * 0.42;
+    const domeRadius = 75;
+
+    const wandX = domeX + domeRadius + (wandDist * 6.5);
+    const wandY = domeY + 10;
+
+    sparks.push({
+      x1: domeX + domeRadius,
+      y1: domeY,
+      x2: wandX - 25,
+      y2: wandY,
+      life: 1.0,
+      branches: Math.floor(Math.random() * 4) + 3
+    });
+
+    voltage = Math.max(0, voltage - (wandDist < 10 ? 80 : 35));
+  }
+
+  // Animation Loop
+  function loop() {
+    ctx.clearRect(0, 0, width, height);
+
+    if (mode === "vdg") {
+      drawVdgScene();
+    } else {
+      drawFrictionScene();
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  function drawVdgScene() {
+    const cx = width * 0.42;
+    const baseWidth = 140;
+    const baseHeight = 65;
+    const baseY = height * 0.82;
+    const columnTop = height * 0.45;
+    const domeRadius = 80;
+    const domeY = columnTop;
+
+    // Charge accumulation physics
+    if (running && speed > 0) {
+      voltage = Math.min(maxVoltage, voltage + (speed * 0.04));
+      
+      // Auto-spark if breakdown distance reached
+      const breakdownDist = voltage / 10; // ~10 kV per cm
+      if (wandDist <= breakdownDist && Math.random() < 0.25) {
+        createSpark();
+      }
+
+      // Pie tins flying off at thresholds
+      if (accessory === "pietins" && pieTinsCount > 0) {
+        const threshold = (5 - pieTinsCount) * 50;
+        if (voltage > threshold) {
+          pieTinsCount--;
+        }
+      }
+    } else {
+      voltage = Math.max(0, voltage - 0.05); // slight leakage
+    }
+
+    document.getElementById("hudVoltage").innerText = `${Math.round(voltage)} kV`;
+
+    // 1. Draw Field Glow around dome
+    if (voltage > 10) {
+      const glowGrad = ctx.createRadialGradient(cx, domeY, domeRadius * 0.8, cx, domeY, domeRadius + (voltage * 0.6));
+      glowGrad.addColorStop(0, "rgba(0, 210, 255, 0.4)");
+      glowGrad.addColorStop(1, "rgba(0, 210, 255, 0)");
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(cx, domeY, domeRadius + (voltage * 0.6), 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // 2. Draw Table Bench
+    ctx.fillStyle = "#1e334d";
+    ctx.fillRect(cx - 300, baseY + baseHeight, 600, 18);
+    ctx.fillStyle = "#142233";
+    ctx.fillRect(cx - 290, baseY + baseHeight + 18, 580, 12);
+
+    // 3. Draw Base Motor Housing
+    ctx.fillStyle = "#2c3e50";
+    ctx.fillRect(cx - baseWidth/2, baseY, baseWidth, baseHeight);
+    ctx.fillStyle = "#34495e";
+    ctx.fillRect(cx - baseWidth/2 + 6, baseY + 6, baseWidth - 12, 16);
+    ctx.fillStyle = "#00d2ff";
+    ctx.font = "bold 10px monospace";
+    ctx.fillText("HIGH VOLTAGE DC", cx - 44, baseY + 18);
+
+    // 4. Draw Clear Column & Moving Belt
+    ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+    ctx.lineWidth = 2;
+    ctx.fillRect(cx - 24, columnTop + 20, 48, baseY - columnTop - 20);
+    ctx.strokeRect(cx - 24, columnTop + 20, 48, baseY - columnTop - 20);
+
+    // Belt
+    ctx.fillStyle = "#d35400";
+    ctx.fillRect(cx - 14, columnTop + 20, 28, baseY - columnTop - 20);
+
+    // Moving belt particles
+    if (running && speed > 0) {
+      ctx.fillStyle = "#f39c12";
+      const t = Date.now() * 0.005 * speed;
+      for (let y = columnTop + 25; y < baseY - 10; y += 22) {
+        const py = ((y + t) % (baseY - columnTop - 30)) + columnTop + 20;
+        ctx.fillRect(cx - 10, py, 20, 4);
+      }
+    }
+
+    // 5. Draw Stainless Dome
+    const domeGrad = ctx.createRadialGradient(cx - 25, domeY - 25, 10, cx, domeY, domeRadius);
+    domeGrad.addColorStop(0, "#ffffff");
+    domeGrad.addColorStop(0.3, "#e0f2fe");
+    domeGrad.addColorStop(0.7, "#94a3b8");
+    domeGrad.addColorStop(1, "#334155");
+    ctx.fillStyle = domeGrad;
+    ctx.beginPath();
+    ctx.arc(cx, domeY, domeRadius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#cbd5e1";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // 6. Draw Charges on dome surface
+    if (voltage > 15) {
+      ctx.fillStyle = "#ff4757";
+      ctx.font = "bold 13px monospace";
+      const chargeCount = Math.min(24, Math.floor(voltage / 12));
+      for (let i = 0; i < chargeCount; i++) {
+        const angle = (i / chargeCount) * Math.PI * 2 + (Date.now() * 0.0005);
+        const qx = cx + Math.cos(angle) * (domeRadius + 14);
+        const qy = domeY + Math.sin(angle) * (domeRadius + 14);
+        ctx.fillText("+", qx - 4, qy + 5);
+      }
+    }
+
+    // 7. Draw Accessories
+    if (accessory === "hair") {
+      ctx.strokeStyle = "#fef08a";
+      ctx.lineWidth = 3;
+      const strandCount = 18;
+      for (let i = 0; i < strandCount; i++) {
+        const angle = -Math.PI * 0.85 + (i / (strandCount - 1)) * Math.PI * 0.7;
+        const lift = Math.min(1, voltage / 100);
+        const hairLen = 50 + lift * 45;
+        const hx1 = cx + Math.cos(angle) * domeRadius;
+        const hy1 = domeY + Math.sin(angle) * domeRadius;
+        const hx2 = cx + Math.cos(angle) * (domeRadius + hairLen);
+        const hy2 = domeY + Math.sin(angle) * (domeRadius + hairLen) - (lift * 20);
+        ctx.beginPath();
+        ctx.moveTo(hx1, hy1);
+        ctx.quadraticCurveTo((hx1+hx2)/2, (hy1+hy2)/2 - 10, hx2, hy2);
+        ctx.stroke();
+      }
+    } else if (accessory === "pietins") {
+      for (let t = 0; t < pieTinsCount; t++) {
+        ctx.fillStyle = "#cbd5e1";
+        ctx.strokeStyle = "#94a3b8";
+        ctx.lineWidth = 2;
+        const tinY = domeY - domeRadius - 6 - (t * 8);
+        ctx.beginPath();
+        ctx.ellipse(cx, tinY, 50, 10, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      }
+    } else if (accessory === "lamp") {
+      const lampDist = wandDist;
+      const lampX = cx + domeRadius + 40;
+      const lampY = domeY;
+      ctx.fillStyle = voltage > 60 && wandDist < 25 ? "rgba(255, 100, 200, 0.9)" : "rgba(255, 255, 255, 0.2)";
+      ctx.fillRect(lampX, lampY - 45, 14, 90);
+      ctx.strokeStyle = "#fff";
+      ctx.strokeRect(lampX, lampY - 45, 14, 90);
+    }
+
+    // 8. Draw Earthing Discharge Wand
+    const wandX = cx + domeRadius + (wandDist * 6.5);
+    const wandY = domeY + 10;
+    const wandRadius = 26;
+
+    // Wand handle and rod
+    ctx.strokeStyle = "#475569";
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.moveTo(wandX + 180, baseY + 60);
+    ctx.lineTo(wandX, wandY);
+    ctx.stroke();
+
+    // Wand sphere
+    const wandGrad = ctx.createRadialGradient(wandX - 8, wandY - 8, 4, wandX, wandY, wandRadius);
+    wandGrad.addColorStop(0, "#ffffff");
+    wandGrad.addColorStop(0.4, "#cbd5e1");
+    wandGrad.addColorStop(1, "#334155");
+    ctx.fillStyle = wandGrad;
+    ctx.beginPath();
+    ctx.arc(wandX, wandY, wandRadius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#94a3b8";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Earthing wire to ground
+    ctx.strokeStyle = "#2ed573";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(wandX + 80, baseY + 10);
+    ctx.quadraticCurveTo(wandX + 100, baseY + 70, cx - 200, baseY + 70);
+    ctx.stroke();
+    ctx.fillStyle = "#2ed573";
+    ctx.font = "bold 10px sans-serif";
+    ctx.fillText("EARTH", cx - 240, baseY + 74);
+
+    // 9. Draw Sparks
+    for (let s = sparks.length - 1; s >= 0; s--) {
+      const sp = sparks[s];
+      ctx.strokeStyle = "#ffffff";
+      ctx.shadowColor = "#00d2ff";
+      ctx.shadowBlur = 20;
+      ctx.lineWidth = 3 * sp.life;
+
+      ctx.beginPath();
+      ctx.moveTo(sp.x1, sp.y1);
+      
+      let currX = sp.x1;
+      let currY = sp.y1;
+      const segs = 8;
+      const dx = (sp.x2 - sp.x1) / segs;
+      const dy = (sp.y2 - sp.y1) / segs;
+
+      for (let i = 1; i < segs; i++) {
+        const jitterX = (Math.random() - 0.5) * 25;
+        const jitterY = (Math.random() - 0.5) * 25;
+        currX += dx;
+        currY += dy;
+        ctx.lineTo(currX + jitterX, currY + jitterY);
+      }
+      ctx.lineTo(sp.x2, sp.y2);
+      ctx.stroke();
+
+      ctx.shadowBlur = 0; // reset
+      sp.life -= 0.12;
+      if (sp.life <= 0) sparks.splice(s, 1);
+    }
+  }
+
+  function drawFrictionScene() {
+    ctx.fillStyle = "#e2e8f0";
+    ctx.font = "bold 20px sans-serif";
+    ctx.fillText("Charging by Friction: Polythene & Acetate Rods", 40, 50);
+
+    ctx.font = "14px sans-serif";
+    ctx.fillStyle = "#94a3b8";
+    ctx.fillText("Rubbing transfers negative electrons between insulator surfaces.", 40, 78);
+
+    // Draw Rod 1: Polythene (gains electrons -> negative)
+    const rx1 = width * 0.25;
+    const ry1 = height * 0.45;
+    ctx.fillStyle = "#38bdf8";
+    ctx.fillRect(rx1, ry1, 260, 28);
+    ctx.strokeStyle = "#bae6fd";
+    ctx.strokeRect(rx1, ry1, 260, 28);
+    ctx.fillStyle = "#0c4a6e";
+    ctx.font = "bold 13px sans-serif";
+    ctx.fillText("Polythene Rod (- Net Charge)", rx1 + 14, ry1 + 19);
+
+    // Draw negative charges
+    ctx.fillStyle = "#38bdf8";
+    ctx.font = "bold 16px monospace";
+    for (let x = rx1 + 20; x < rx1 + 240; x += 22) {
+      ctx.fillText("-", x, ry1 - 10);
+    }
+
+    // Draw Rod 2: Acetate (loses electrons -> positive)
+    const rx2 = width * 0.60;
+    const ry2 = height * 0.45;
+    ctx.fillStyle = "#f59e0b";
+    ctx.fillRect(rx2, ry2, 260, 28);
+    ctx.strokeStyle = "#fde68a";
+    ctx.strokeRect(rx2, ry2, 260, 28);
+    ctx.fillStyle = "#78350f";
+    ctx.font = "bold 13px sans-serif";
+    ctx.fillText("Acetate Rod (+ Net Charge)", rx2 + 14, ry2 + 19);
+
+    // Draw positive charges
+    ctx.fillStyle = "#f59e0b";
+    for (let x = rx2 + 20; x < rx2 + 240; x += 22) {
+      ctx.fillText("+", x, ry2 - 10);
+    }
+
+    // Interaction hint
+    ctx.fillStyle = "#e2e8f0";
+    ctx.font = "bold 15px sans-serif";
+    ctx.fillText("Repulsion Test: Two charged Polythene rods REPEL", rx1, ry1 + 80);
+    ctx.fillText("Attraction Test: Polythene (-) and Acetate (+) ATTRACT", rx1, ry1 + 115);
+  }
+
+  loop();
+</script>
+
+</body>
+</html>

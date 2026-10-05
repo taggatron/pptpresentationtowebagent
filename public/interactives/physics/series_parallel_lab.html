@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Lab — Series vs Parallel Circuits Investigation</title>
+  <style>
+    :root {
+      --bg: #0b131e;
+      --panel: #132235;
+      --card: #1b2d44;
+      --border: #233b59;
+      --text: #e6f1f8;
+      --muted: #8ea7c2;
+      --accent: #00d2ff;
+      --accent-glow: rgba(0, 210, 255, 0.35);
+      --danger: #ff4757;
+      --success: #2ed573;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+    header {
+      background: #091018; border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; background: #00d2ff; color: #091018; padding: 4px 8px; border-radius: 4px; }
+    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .badge { background: #1e3a5f; color: #00d2ff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 12px; text-transform: uppercase; }
+
+    .lab-container { display: flex; flex: 1; height: calc(100vh - 56px); }
+
+    .viewport {
+      flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px;
+      background: radial-gradient(circle at 50% 50%, #15273d 0%, #080f18 100%);
+    }
+
+    .circuit-panel {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      display: flex; flex-direction: column; padding: 16px; position: relative;
+    }
+    .panel-hdr {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
+    }
+    .panel-title { font-size: 16px; font-weight: 800; color: #fff; }
+    .canvas-box { flex: 1; position: relative; min-height: 280px; }
+    canvas { width: 100%; height: 100%; display: block; }
+
+    .metrics-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;
+    }
+    .mini-metric {
+      background: var(--card); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; text-align: center;
+    }
+    .mm-val { font-size: 18px; font-weight: 800; color: #00d2ff; }
+    .mm-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; }
+
+    .btn-row { display: flex; gap: 8px; margin-top: 12px; }
+    .action-btn {
+      flex: 1; background: var(--card); border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 6px;
+      font-weight: 700; font-size: 12px; cursor: pointer; transition: 0.2s;
+    }
+    .action-btn:hover { border-color: var(--accent); }
+    .action-btn.active { background: var(--danger); border-color: var(--danger); }
+
+    .sidebar-right {
+      width: 320px; background: var(--panel); border-left: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto;
+    }
+    .rule-card {
+      background: var(--card); border-left: 3px solid var(--accent); padding: 12px; border-radius: 0 8px 8px 0; margin-bottom: 8px;
+    }
+    .rule-title { font-size: 13px; font-weight: 800; color: #00d2ff; margin-bottom: 6px; }
+    .rule-text { font-size: 12px; color: var(--text); line-height: 1.45; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-logo">PRACTICAL LAB</span>
+    <span class="brand-title">Lesson 6: Series vs Parallel Circuits Investigation</span>
+    <span class="badge">OCR GCSE Physics</span>
+  </div>
+</header>
+
+<div class="lab-container">
+  <main class="viewport">
+    <!-- Series Panel -->
+    <div class="circuit-panel">
+      <div class="panel-hdr">
+        <span class="panel-title">1. Series Circuit Investigation</span>
+        <span style="font-size:11px; color:var(--muted)">One single conductive path</span>
+      </div>
+      <div class="canvas-box">
+        <canvas id="stageSeries"></canvas>
+      </div>
+      <div class="metrics-row">
+        <div class="mini-metric"><div class="mm-val" id="sCurrent">0.60 A</div><div class="mm-lbl">Current (I_total = I₁ = I₂)</div></div>
+        <div class="mini-metric"><div class="mm-val" id="sV1">6.0 V</div><div class="mm-lbl">Lamp 1 Voltage (V₁)</div></div>
+        <div class="mini-metric"><div class="mm-val" id="sV2">6.0 V</div><div class="mm-lbl">Lamp 2 Voltage (V₂)</div></div>
+      </div>
+      <div class="btn-row">
+        <button class="action-btn" id="btnUnscrewSeries" onclick="toggleUnscrewSeries()">💡 Unscrew Lamp 1</button>
+      </div>
+    </div>
+
+    <!-- Parallel Panel -->
+    <div class="circuit-panel">
+      <div class="panel-hdr">
+        <span class="panel-title">2. Parallel Circuit Investigation</span>
+        <span style="font-size:11px; color:var(--muted)">Separate parallel branches</span>
+      </div>
+      <div class="canvas-box">
+        <canvas id="stageParallel"></canvas>
+      </div>
+      <div class="metrics-row">
+        <div class="mini-metric"><div class="mm-val" id="pCurrentTotal">2.40 A</div><div class="mm-lbl">Total Current (I₁ + I₂)</div></div>
+        <div class="mini-metric"><div class="mm-val" id="pVBranch">12.0 V</div><div class="mm-lbl">Branch Voltage (V₁ = V₂)</div></div>
+        <div class="mini-metric"><div class="mm-val" id="pTotalR">5.0 Ω</div><div class="mm-lbl">Combined Resistance (R_p)</div></div>
+      </div>
+      <div class="btn-row">
+        <button class="action-btn" id="btnUnscrewParallel" onclick="toggleUnscrewParallel()">💡 Unscrew Lamp 1</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="rule-card">
+      <div class="rule-title">Series Circuit Rules</div>
+      <div class="rule-text">
+        • <strong>Current</strong> is the same everywhere:<br><code>I_total = I₁ = I₂ = I₃</code><br>
+        • <strong>Potential Difference</strong> is shared:<br><code>V_total = V₁ + V₂</code><br>
+        • <strong>Resistance</strong> adds up:<br><code>R_total = R₁ + R₂</code><br>
+        • If one lamp breaks, the circuit opens and <strong>all lamps go out</strong>.
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">Parallel Circuit Rules</div>
+      <div class="rule-text">
+        • <strong>Current</strong> splits across branches:<br><code>I_total = I₁ + I₂</code><br>
+        • <strong>Potential Difference</strong> is equal across every branch:<br><code>V_total = V₁ = V₂</code><br>
+        • <strong>Total Resistance</strong> decreases as more branches are added.<br>
+        • If one lamp breaks, <strong>other branches stay lit</strong> at full brightness!
+      </div>
+    </div>
+
+    <div class="rule-card" style="border-left-color:#2ed573;">
+      <div class="rule-title">Domestic Application</div>
+      <div class="rule-text">
+        Household sockets and lights are wired in <strong>parallel</strong> so each appliance receives the full mains 230 V and can be switched independently.
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script>
+  let seriesUnscrewed = false;
+  let parallelUnscrewed = false;
+
+  const cSeries = document.getElementById("stageSeries");
+  const ctxS = cSeries.getContext("2d");
+  const cParallel = document.getElementById("stageParallel");
+  const ctxP = cParallel.getContext("2d");
+
+  function resizeAll() {
+    cSeries.width = cSeries.clientWidth;
+    cSeries.height = cSeries.clientHeight;
+    cParallel.width = cParallel.clientWidth;
+    cParallel.height = cParallel.clientHeight;
+  }
+  window.addEventListener("resize", resizeAll);
+  resizeAll();
+
+  function toggleUnscrewSeries() {
+    seriesUnscrewed = !seriesUnscrewed;
+    const b = document.getElementById("btnUnscrewSeries");
+    b.innerText = seriesUnscrewed ? "🔧 Screw Lamp 1 Back In" : "💡 Unscrew Lamp 1";
+    b.classList.toggle("active", seriesUnscrewed);
+  }
+
+  function toggleUnscrewParallel() {
+    parallelUnscrewed = !parallelUnscrewed;
+    const b = document.getElementById("btnUnscrewParallel");
+    b.innerText = parallelUnscrewed ? "🔧 Screw Lamp 1 Back In" : "💡 Unscrew Lamp 1";
+    b.classList.toggle("active", parallelUnscrewed);
+  }
+
+  function loop() {
+    drawSeries();
+    drawParallel();
+    requestAnimationFrame(loop);
+  }
+
+  function drawSeries() {
+    const w = cSeries.width, h = cSeries.height;
+    ctxS.clearRect(0, 0, w, h);
+
+    const I = seriesUnscrewed ? 0 : 0.60;
+    const V1 = seriesUnscrewed ? 0 : 6.0;
+    const V2 = seriesUnscrewed ? 0 : 6.0;
+
+    document.getElementById("sCurrent").innerText = `${I.toFixed(2)} A`;
+    document.getElementById("sV1").innerText = `${V1.toFixed(1)} V`;
+    document.getElementById("sV2").innerText = `${V2.toFixed(1)} V`;
+
+    const cx = w / 2, cy = h / 2;
+    const rectW = w * 0.75, rectH = h * 0.65;
+    const left = cx - rectW/2, right = cx + rectW/2, top = cy - rectH/2, bottom = cy + rectH/2;
+
+    // Wire
+    ctxS.strokeStyle = I > 0 ? "#00d2ff" : "#334155";
+    ctxS.lineWidth = 3;
+    ctxS.strokeRect(left, top, rectW, rectH);
+
+    // Battery (Top center)
+    ctxS.fillStyle = "#091018";
+    ctxS.fillRect(cx - 35, top - 15, 70, 30);
+    ctxS.strokeStyle = "#00d2ff";
+    ctxS.strokeRect(cx - 35, top - 15, 70, 30);
+    ctxS.fillStyle = "#fff";
+    ctxS.font = "bold 11px sans-serif";
+    ctxS.fillText("12V DC", cx - 18, top + 5);
+
+    // Lamp 1 (Bottom left)
+    drawBulb(ctxS, cx - rectW/4, bottom, !seriesUnscrewed, "Lamp 1");
+    // Lamp 2 (Bottom right)
+    drawBulb(ctxS, cx + rectW/4, bottom, !seriesUnscrewed, "Lamp 2");
+  }
+
+  function drawParallel() {
+    const w = cParallel.width, h = cParallel.height;
+    ctxP.clearRect(0, 0, w, h);
+
+    const I1 = parallelUnscrewed ? 0 : 1.20;
+    const I2 = 1.20;
+    const ITotal = I1 + I2;
+    const RTotal = parallelUnscrewed ? 10.0 : 5.0;
+
+    document.getElementById("pCurrentTotal").innerText = `${ITotal.toFixed(2)} A`;
+    document.getElementById("pVBranch").innerText = `12.0 V`;
+    document.getElementById("pTotalR").innerText = `${RTotal.toFixed(1)} Ω`;
+
+    const cx = w / 2, cy = h / 2;
+    const rectW = w * 0.75, rectH = h * 0.75;
+    const left = cx - rectW/2, right = cx + rectW/2, top = cy - rectH/2, bottom = cy + rectH/2;
+    const midY = cy + 10;
+
+    // Outer Loop
+    ctxP.strokeStyle = "#00d2ff";
+    ctxP.lineWidth = 3;
+    ctxP.strokeRect(left, top, rectW, rectH);
+
+    // Middle Branch
+    ctxP.beginPath();
+    ctxP.moveTo(left, midY);
+    ctxP.lineTo(right, midY);
+    ctxP.stroke();
+
+    // Battery (Top center)
+    ctxP.fillStyle = "#091018";
+    ctxP.fillRect(cx - 35, top - 15, 70, 30);
+    ctxP.strokeStyle = "#00d2ff";
+    ctxP.strokeRect(cx - 35, top - 15, 70, 30);
+    ctxP.fillStyle = "#fff";
+    ctxP.font = "bold 11px sans-serif";
+    ctxP.fillText("12V DC", cx - 18, top + 5);
+
+    // Branch 1 Lamp (Middle wire center)
+    drawBulb(ctxP, cx, midY, !parallelUnscrewed, "Branch 1");
+    // Branch 2 Lamp (Bottom wire center)
+    drawBulb(ctxP, cx, bottom, true, "Branch 2");
+  }
+
+  function drawBulb(ctx, x, y, lit, label) {
+    if (lit) {
+      const glow = ctx.createRadialGradient(x, y, 4, x, y, 35);
+      glow.addColorStop(0, "rgba(255, 230, 80, 0.9)");
+      glow.addColorStop(1, "rgba(255, 200, 0, 0)");
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(x, y, 35, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.fillStyle = "#091018";
+    ctx.beginPath();
+    ctx.arc(x, y, 16, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = lit ? "#facc15" : "#64748b";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Cross in circle
+    ctx.beginPath();
+    ctx.moveTo(x - 11, y - 11);
+    ctx.lineTo(x + 11, y + 11);
+    ctx.moveTo(x + 11, y - 11);
+    ctx.lineTo(x - 11, y + 11);
+    ctx.stroke();
+
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "10px sans-serif";
+    ctx.fillText(label, x - 18, y + 30);
+  }
+
+  loop();
+</script>
+
+</body>
+</html>

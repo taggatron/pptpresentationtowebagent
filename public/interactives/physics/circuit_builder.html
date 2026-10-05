@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Lab — DC Circuit Construction & Analysis</title>
+  <style>
+    :root {
+      --bg: #0b131e;
+      --panel: #132235;
+      --card: #1b2d44;
+      --border: #233b59;
+      --text: #e6f1f8;
+      --muted: #8ea7c2;
+      --accent: #00d2ff;
+      --accent-glow: rgba(0, 210, 255, 0.35);
+      --danger: #ff4757;
+      --success: #2ed573;
+      --gold: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+    
+    /* Top Bar */
+    header {
+      background: #091018; border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; background: #00d2ff; color: #091018; padding: 4px 8px; border-radius: 4px; }
+    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .badge { background: #1e3a5f; color: #00d2ff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 12px; text-transform: uppercase; }
+
+    .lab-container { display: flex; flex: 1; height: calc(100vh - 56px); }
+
+    /* Left Sidebar: Toolbox & Presets */
+    .sidebar-left {
+      width: 300px; background: var(--panel); border-right: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;
+    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .card-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+    
+    .preset-list { display: flex; flex-direction: column; gap: 8px; }
+    .preset-btn {
+      background: var(--panel); border: 1px solid var(--border); color: var(--text);
+      padding: 10px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; transition: all 0.2s;
+    }
+    .preset-btn:hover { border-color: var(--accent); background: rgba(0, 210, 255, 0.08); }
+    .preset-btn.active { border-color: var(--accent); background: rgba(0, 210, 255, 0.15); color: #fff; }
+
+    .ctrl-row { margin-bottom: 12px; }
+    .ctrl-label { font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .ctrl-val { color: var(--accent); font-weight: 700; }
+    input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+
+    .action-btn {
+      width: 100%; background: #00d2ff; color: #091018; border: none; padding: 10px; border-radius: 8px;
+      font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;
+    }
+    .action-btn:hover { background: #38e1ff; }
+
+    /* Center Viewport */
+    .viewport {
+      flex: 1; position: relative; background: radial-gradient(circle at 50% 50%, #15273d 0%, #080f18 100%);
+      display: flex; flex-direction: column;
+    }
+    canvas#stage { width: 100%; height: 100%; display: block; cursor: default; }
+
+    .hud-metrics {
+      position: absolute; top: 16px; left: 20px; display: flex; gap: 24px; pointer-events: none;
+    }
+    .metric-card {
+      background: rgba(19, 34, 53, 0.85); border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; backdrop-filter: blur(6px);
+    }
+    .metric-val { font-size: 26px; font-weight: 900; color: #00d2ff; }
+    .metric-lbl { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+
+    /* Right Sidebar */
+    .sidebar-right {
+      width: 320px; background: var(--panel); border-left: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto;
+    }
+    .step-box { display: flex; gap: 10px; font-size: 12px; line-height: 1.45; margin-bottom: 12px; }
+    .step-num {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #091018;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; flex-shrink: 0;
+    }
+    .formula-box {
+      background: #091018; border-left: 3px solid var(--accent); padding: 10px; border-radius: 0 6px 6px 0; font-size: 12px;
+    }
+    .formula-box code { color: #00d2ff; font-weight: 700; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-logo">PRACTICAL LAB</span>
+    <span class="brand-title">Lesson 2: Standard Electrical Circuits</span>
+    <span class="badge">OCR GCSE Physics</span>
+  </div>
+</header>
+
+<div class="lab-container">
+  <aside class="sidebar-left">
+    <div class="card">
+      <div class="card-title">Circuit Presets</div>
+      <div class="preset-list">
+        <button class="preset-btn active" onclick="loadPreset('standard')">1. Standard Series Test Circuit</button>
+        <button class="preset-btn" onclick="loadPreset('variable')">2. Variable Resistor Dimmer</button>
+        <button class="preset-btn" onclick="loadPreset('resistor')">3. Fixed Resistor Test Circuit</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Component Adjustments</div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Supply Voltage (V)</span><span id="txtSupply" class="ctrl-val">6.0 V</span></div>
+        <input type="range" id="sliderSupply" min="1.5" max="12.0" step="0.5" value="6.0" oninput="updateSupply(this.value)">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Variable Resistor (R_v)</span><span id="txtRVar" class="ctrl-val">10 Ω</span></div>
+        <input type="range" id="sliderRVar" min="1" max="50" step="1" value="10" oninput="updateRVar(this.value)">
+      </div>
+      <button class="action-btn" id="btnSwitch" onclick="toggleSwitch()">⚡ Toggle Switch (CLOSED)</button>
+    </div>
+  </aside>
+
+  <main class="viewport">
+    <div class="hud-metrics">
+      <div class="metric-card">
+        <div class="metric-val" id="hudCurrent">0.40 A</div>
+        <div class="metric-lbl">Ammeter Current (I)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val" id="hudVoltage">4.00 V</div>
+        <div class="metric-lbl">Voltmeter Potential Difference (V)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val" id="hudPower">1.60 W</div>
+        <div class="metric-lbl">Bulb Dissipated Power (P)</div>
+      </div>
+    </div>
+
+    <canvas id="stage"></canvas>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="card">
+      <div class="card-title">GCSE Method Instructions</div>
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <div>Connect the DC power supply, switch, lamp, and ammeter in one continuous <strong>series loop</strong>.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <div>Connect the digital voltmeter in <strong>parallel</strong> across the lamp terminals.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <div>Close switch; record current <em>I</em> (A) and potential difference <em>V</em> (V).</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">4</div>
+        <div>Adjust variable resistor to vary resistance and observe effect on lamp brightness.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Formulas & Definitions</div>
+      <div class="formula-box">
+        <code>Q = I × t</code><br>
+        <small style="color:var(--muted)">Charge (C) = Current (A) × Time (s)</small>
+      </div>
+      <div class="formula-box" style="margin-top:8px;">
+        <code>V = E / Q</code><br>
+        <small style="color:var(--muted)">Potential Difference (V) = Energy (J) / Charge (C)</small>
+      </div>
+      <div class="formula-box" style="margin-top:8px;">
+        <code>P = V × I</code><br>
+        <small style="color:var(--muted)">Power (W) = Voltage (V) × Current (A)</small>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script>
+  const canvas = document.getElementById("stage");
+  const ctx = canvas.getContext("2d");
+  let width, height;
+
+  let supplyVoltage = 6.0;
+  let switchClosed = true;
+  let rLamp = 10.0;
+  let rVar = 5.0;
+  let preset = "standard";
+
+  function resize() {
+    width = canvas.width = canvas.clientWidth;
+    height = canvas.height = canvas.clientHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  function toggleSwitch() {
+    switchClosed = !switchClosed;
+    const btn = document.getElementById("btnSwitch");
+    btn.innerText = switchClosed ? "⚡ Toggle Switch (CLOSED)" : "⭕ Toggle Switch (OPEN)";
+    btn.style.background = switchClosed ? "#00d2ff" : "#ff4757";
+  }
+
+  function updateSupply(val) {
+    supplyVoltage = parseFloat(val);
+    document.getElementById("txtSupply").innerText = `${supplyVoltage.toFixed(1)} V`;
+  }
+
+  function updateRVar(val) {
+    rVar = parseFloat(val);
+    document.getElementById("txtRVar").innerText = `${rVar} Ω`;
+  }
+
+  function loadPreset(p) {
+    preset = p;
+    document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
+    event.target.classList.add("active");
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Physics calculations
+    const totalR = rLamp + (preset === "variable" ? rVar : 0);
+    const current = switchClosed ? (supplyVoltage / totalR) : 0;
+    const vLamp = current * rLamp;
+    const pLamp = vLamp * current;
+
+    document.getElementById("hudCurrent").innerText = `${current.toFixed(2)} A`;
+    document.getElementById("hudVoltage").innerText = `${vLamp.toFixed(2)} V`;
+    document.getElementById("hudPower").innerText = `${pLamp.toFixed(2)} W`;
+
+    // Draw Circuit Loop
+    const cx = width / 2;
+    const cy = height / 2;
+    const w = 540;
+    const h = 320;
+    const left = cx - w/2;
+    const right = cx + w/2;
+    const top = cy - h/2;
+    const bottom = cy + h/2;
+
+    // Outer wire track
+    ctx.strokeStyle = switchClosed && current > 0 ? "#00d2ff" : "#334155";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.rect(left, top, w, h);
+    ctx.stroke();
+
+    // Moving electron particles if current > 0
+    if (switchClosed && current > 0) {
+      ctx.fillStyle = "#fffa65";
+      const perimeter = (w + h) * 2;
+      const speed = current * 60;
+      const t = (Date.now() * 0.05 * current) % perimeter;
+
+      const particleCount = 28;
+      for (let i = 0; i < particleCount; i++) {
+        const dist = (t + (i * (perimeter / particleCount))) % perimeter;
+        let px, py;
+        if (dist < w) { // Top edge (left to right)
+          px = left + dist; py = top;
+        } else if (dist < w + h) { // Right edge (top to bottom)
+          px = right; py = top + (dist - w);
+        } else if (dist < 2 * w + h) { // Bottom edge (right to left)
+          px = right - (dist - (w + h)); py = bottom;
+        } else { // Left edge (bottom to top)
+          px = left; py = bottom - (dist - (2 * w + h));
+        }
+        ctx.beginPath();
+        ctx.arc(px, py, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // 1. DC Power Supply (Top wire center)
+    ctx.fillStyle = "#091018";
+    ctx.fillRect(cx - 50, top - 25, 100, 50);
+    ctx.strokeStyle = "#00d2ff";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(cx - 50, top - 25, 100, 50);
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 13px sans-serif";
+    ctx.fillText(`DC ${supplyVoltage.toFixed(1)}V`, cx - 26, top + 5);
+
+    // 2. Switch (Right wire center)
+    ctx.fillStyle = "#091018";
+    ctx.fillRect(right - 25, cy - 35, 50, 70);
+    ctx.strokeStyle = "#38bdf8";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(right - 25, cy - 35, 50, 70);
+    // Switch contact arm
+    ctx.strokeStyle = switchClosed ? "#2ed573" : "#ff4757";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(right, cy - 20, 4, 0, Math.PI * 2);
+    ctx.arc(right, cy + 20, 4, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(right, cy + 20);
+    if (switchClosed) {
+      ctx.lineTo(right, cy - 18);
+    } else {
+      ctx.lineTo(right + 22, cy - 8);
+    }
+    ctx.stroke();
+
+    // 3. Lamp / Bulb (Bottom wire center)
+    ctx.fillStyle = "#091018";
+    ctx.fillRect(cx - 35, bottom - 35, 70, 70);
+    
+    // Bulb glow if active
+    if (switchClosed && pLamp > 0) {
+      const glowRad = Math.min(90, 20 + pLamp * 12);
+      const bGrad = ctx.createRadialGradient(cx, bottom, 5, cx, bottom, glowRad);
+      bGrad.addColorStop(0, "rgba(255, 230, 100, 0.9)");
+      bGrad.addColorStop(1, "rgba(255, 200, 0, 0)");
+      ctx.fillStyle = bGrad;
+      ctx.beginPath();
+      ctx.arc(cx, bottom, glowRad, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Bulb circle with cross
+    ctx.strokeStyle = "#fde047";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(cx, bottom, 25, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx - 17, bottom - 17);
+    ctx.lineTo(cx + 17, bottom + 17);
+    ctx.moveTo(cx + 17, bottom - 17);
+    ctx.lineTo(cx - 17, bottom + 17);
+    ctx.stroke();
+
+    // 4. Voltmeter in Parallel across lamp
+    ctx.strokeStyle = "#94a3b8";
+    ctx.lineWidth = 2;
+    ctx.setLineDash([5, 5]);
+    ctx.beginPath();
+    ctx.moveTo(cx - 70, bottom);
+    ctx.lineTo(cx - 70, bottom + 70);
+    ctx.lineTo(cx + 70, bottom + 70);
+    ctx.lineTo(cx + 70, bottom);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Voltmeter meter body
+    ctx.fillStyle = "#091018";
+    ctx.fillRect(cx - 30, bottom + 50, 60, 40);
+    ctx.strokeStyle = "#38bdf8";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(cx - 30, bottom + 50, 60, 40);
+    ctx.fillStyle = "#00d2ff";
+    ctx.font = "bold 13px sans-serif";
+    ctx.fillText("V", cx - 6, bottom + 75);
+
+    // 5. Ammeter in Series (Left wire center)
+    ctx.fillStyle = "#091018";
+    ctx.fillRect(left - 30, cy - 30, 60, 60);
+    ctx.strokeStyle = "#e2e8f0";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(left, cy, 25, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 18px sans-serif";
+    ctx.fillText("A", left - 7, cy + 6);
+
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+</script>
+
+</body>
+</html>

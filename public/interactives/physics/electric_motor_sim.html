@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Lab — The Motor Effect & Fleming's Left Hand Rule</title>
+  <style>
+    :root {
+      --bg: #0b131e;
+      --panel: #132235;
+      --card: #1b2d44;
+      --border: #233b59;
+      --text: #e6f1f8;
+      --muted: #8ea7c2;
+      --accent: #00d2ff;
+      --accent-glow: rgba(0, 210, 255, 0.35);
+      --danger: #ff4757;
+      --success: #2ed573;
+      --field: #22c55e;
+      --current: #f59e0b;
+      --force: #00d2ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+    header {
+      background: #091018; border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; background: #00d2ff; color: #091018; padding: 4px 8px; border-radius: 4px; }
+    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .badge { background: #1e3a5f; color: #00d2ff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 12px; text-transform: uppercase; }
+
+    .mode-pills { display: flex; gap: 8px; }
+    .mode-btn {
+      background: var(--card); color: var(--muted); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .mode-btn.active { background: #00d2ff; color: #091018; border-color: #00d2ff; font-weight: 700; }
+
+    .lab-container { display: flex; flex: 1; height: calc(100vh - 56px); }
+
+    .sidebar-left {
+      width: 300px; background: var(--panel); border-right: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;
+    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .card-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+
+    .ctrl-row { margin-bottom: 12px; }
+    .ctrl-label { font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .ctrl-val { color: var(--accent); font-weight: 700; }
+    input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+
+    .btn-row { display: flex; gap: 8px; }
+    .action-btn {
+      flex: 1; background: var(--panel); border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 6px;
+      font-weight: 700; font-size: 12px; cursor: pointer; transition: 0.2s;
+    }
+    .action-btn:hover { border-color: var(--accent); }
+    .action-btn.active { background: var(--accent); color: #091018; border-color: var(--accent); }
+
+    .viewport {
+      flex: 1; position: relative; background: radial-gradient(circle at 50% 50%, #15273d 0%, #080f18 100%);
+      display: flex; flex-direction: column;
+    }
+    canvas#stage { width: 100%; height: 100%; display: block; }
+
+    .hud-metrics {
+      position: absolute; top: 16px; left: 20px; display: flex; gap: 16px; pointer-events: none;
+    }
+    .metric-card {
+      background: rgba(19, 34, 53, 0.85); border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; backdrop-filter: blur(6px);
+    }
+    .metric-val { font-size: 24px; font-weight: 900; }
+    .metric-lbl { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+
+    .sidebar-right {
+      width: 320px; background: var(--panel); border-left: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto;
+    }
+    .hand-rule-box {
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px;
+    }
+    .rule-item {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; font-weight: 600;
+    }
+    .finger-tag {
+      padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 800; min-width: 80px; text-align: center;
+    }
+    .formula-box {
+      background: #091018; border-left: 3px solid var(--accent); padding: 10px; border-radius: 0 6px 6px 0; font-size: 12px;
+    }
+    .formula-box code { color: #00d2ff; font-weight: 700; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-logo">PRACTICAL LAB</span>
+    <span class="brand-title">Lesson 8: Motor Effect & Fleming's Left Hand Rule</span>
+    <span class="badge">OCR GCSE Physics</span>
+  </div>
+  <div class="mode-pills">
+    <button class="mode-btn active" id="btnModeWire" onclick="setMode('wire')">⚡ Deflecting Wire</button>
+    <button class="mode-btn" id="btnModeMotor" onclick="setMode('motor')">⚙️ DC Electric Motor</button>
+  </div>
+</header>
+
+<div class="lab-container">
+  <aside class="sidebar-left">
+    <div class="card">
+      <div class="card-title">Current Controls (I)</div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Current Magnitude</span><span id="txtI" class="ctrl-val">4.0 A</span></div>
+        <input type="range" id="sliderI" min="0" max="10" step="0.5" value="4.0" oninput="updateI(this.value)">
+      </div>
+      <div class="btn-row">
+        <button class="action-btn active" id="btnDirFwd" onclick="setDirection(1)">▶ Forward</button>
+        <button class="action-btn" id="btnDirRev" onclick="setDirection(-1)">◀ Reverse</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Magnetic Field Controls (B)</div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Magnetic Flux Density (B)</span><span id="txtB" class="ctrl-val">0.60 T</span></div>
+        <input type="range" id="sliderB" min="0.1" max="1.5" step="0.05" value="0.60" oninput="updateB(this.value)">
+      </div>
+      <button class="action-btn" id="btnFlipPoles" style="width:100%" onclick="flipPoles()">🔄 Flip Magnetic Poles (N ⟷ S)</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Conductor Length (L)</div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Active Wire Length</span><span id="txtL" class="ctrl-val">0.15 m</span></div>
+        <input type="range" id="sliderL" min="0.05" max="0.30" step="0.01" value="0.15" oninput="updateL(this.value)">
+      </div>
+    </div>
+  </aside>
+
+  <main class="viewport">
+    <div class="hud-metrics">
+      <div class="metric-card">
+        <div class="metric-val" style="color:var(--force)" id="hudForce">0.36 N</div>
+        <div class="metric-lbl">Resultant Force (F = B × I × L)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val" style="color:var(--current)" id="hudCurrent">4.0 A</div>
+        <div class="metric-lbl">Current Direction</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val" style="color:var(--field)" id="hudField">0.60 T</div>
+        <div class="metric-lbl">Magnetic Flux Density</div>
+      </div>
+    </div>
+
+    <canvas id="stage"></canvas>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="card">
+      <div class="card-title">Fleming's Left Hand Rule</div>
+      <div class="hand-rule-box">
+        <div class="rule-item">
+          <span class="finger-tag" style="background:#00d2ff; color:#091018;">ThuMb</span>
+          <span><strong>M</strong>otion / Force (F)</span>
+        </div>
+        <div class="rule-item">
+          <span class="finger-tag" style="background:#22c55e; color:#091018;">First Finger</span>
+          <span><strong>F</strong>ield (N → S)</span>
+        </div>
+        <div class="rule-item">
+          <span class="finger-tag" style="background:#f59e0b; color:#091018;">seCond Finger</span>
+          <span><strong>C</strong>urrent (+ → -)</span>
+        </div>
+      </div>
+      <p style="font-size:11px; color:var(--muted); margin-top:8px; line-height:1.4;">
+        Hold thumb, first finger, and second finger mutually at 90° right angles to each other.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">The Force Equation</div>
+      <div class="formula-box">
+        <code>F = B × I × L</code><br>
+        <small style="color:var(--muted)">
+          Force (N) = Flux Density (T) × Current (A) × Length (m)
+        </small>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Split-Ring Commutator</div>
+      <p style="font-size:12px; color:var(--muted); line-height:1.45;">
+        In a DC electric motor, the <strong>split-ring commutator</strong> swaps electrical contacts every half-turn (180°), reversing current direction through the coil to keep forces rotating in the <strong>same continuous direction</strong>.
+      </p>
+    </div>
+  </aside>
+</div>
+
+<script>
+  const canvas = document.getElementById("stage");
+  const ctx = canvas.getContext("2d");
+  let width, height;
+
+  let mode = "wire"; // "wire" or "motor"
+  let I = 4.0;
+  let direction = 1; // +1 forward, -1 reverse
+  let B = 0.60;
+  let polesFlipped = false; // false = N on left, S on right
+  let L = 0.15;
+  let motorAngle = 0;
+
+  function resize() {
+    width = canvas.width = canvas.clientWidth;
+    height = canvas.height = canvas.clientHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById("btnModeWire").classList.toggle("active", m === "wire");
+    document.getElementById("btnModeMotor").classList.toggle("active", m === "motor");
+  }
+
+  function updateI(val) {
+    I = parseFloat(val);
+    document.getElementById("txtI").innerText = `${I.toFixed(1)} A`;
+  }
+
+  function updateB(val) {
+    B = parseFloat(val);
+    document.getElementById("txtB").innerText = `${B.toFixed(2)} T`;
+  }
+
+  function updateL(val) {
+    L = parseFloat(val);
+    document.getElementById("txtL").innerText = `${L.toFixed(2)} m`;
+  }
+
+  function setDirection(d) {
+    direction = d;
+    document.getElementById("btnDirFwd").classList.toggle("active", d === 1);
+    document.getElementById("btnDirRev").classList.toggle("active", d === -1);
+  }
+
+  function flipPoles() {
+    polesFlipped = !polesFlipped;
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, width, height);
+
+    const actualI = I * direction;
+    const forceMag = B * Math.abs(actualI) * L;
+    // Left hand rule force direction:
+    // If N on left (field -> right) and I > 0 (towards viewer -> out of page), Force is UP.
+    // If poles flipped (field -> left), force reverses.
+    // If current reverses, force reverses.
+    let forceSign = 1;
+    if (polesFlipped) forceSign *= -1;
+    if (actualI < 0) forceSign *= -1;
+
+    document.getElementById("hudForce").innerText = `${(forceMag * forceSign).toFixed(2)} N`;
+    document.getElementById("hudCurrent").innerText = actualI === 0 ? "0 A" : actualI > 0 ? "+ Flow" : "- Flow";
+    document.getElementById("hudField").innerText = `${B.toFixed(2)} T (${polesFlipped ? "S ➔ N" : "N ➔ S"})`;
+
+    const cx = width / 2;
+    const cy = height / 2;
+
+    if (mode === "wire") {
+      drawWireScene(cx, cy, forceMag, forceSign, actualI);
+    } else {
+      drawMotorScene(cx, cy, forceMag, forceSign, actualI);
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  function drawWireScene(cx, cy, forceMag, forceSign, actualI) {
+    // 1. Draw Permanent Magnets
+    const poleWidth = 110;
+    const poleHeight = 220;
+    const gap = 340;
+    const leftPoleX = cx - gap/2 - poleWidth;
+    const rightPoleX = cx + gap/2;
+
+    // Left Pole
+    ctx.fillStyle = polesFlipped ? "#1e40af" : "#dc2626";
+    ctx.fillRect(leftPoleX, cy - poleHeight/2, poleWidth, poleHeight);
+    ctx.strokeStyle = "#fff";
+    ctx.strokeRect(leftPoleX, cy - poleHeight/2, poleWidth, poleHeight);
+    ctx.fillStyle = "#fff";
+    ctx.font = "900 36px sans-serif";
+    ctx.fillText(polesFlipped ? "S" : "N", leftPoleX + 42, cy + 12);
+
+    // Right Pole
+    ctx.fillStyle = polesFlipped ? "#dc2626" : "#1e40af";
+    ctx.fillRect(rightPoleX, cy - poleHeight/2, poleWidth, poleHeight);
+    ctx.strokeRect(rightPoleX, cy - poleHeight/2, poleWidth, poleHeight);
+    ctx.fillStyle = "#fff";
+    ctx.fillText(polesFlipped ? "N" : "S", rightPoleX + 42, cy + 12);
+
+    // 2. Draw Magnetic Field Lines (N to S)
+    const fieldDir = polesFlipped ? -1 : 1;
+    ctx.strokeStyle = "rgba(34, 197, 94, 0.4)";
+    ctx.lineWidth = 2;
+    for (let y = cy - 80; y <= cy + 80; y += 32) {
+      ctx.beginPath();
+      ctx.moveTo(cx - gap/2, y);
+      ctx.lineTo(cx + gap/2, y);
+      ctx.stroke();
+
+      // Arrow heads
+      const arrowX = cx + (fieldDir * 20);
+      ctx.fillStyle = "#22c55e";
+      ctx.beginPath();
+      ctx.moveTo(arrowX + (fieldDir * 8), y);
+      ctx.lineTo(arrowX - (fieldDir * 6), y - 5);
+      ctx.lineTo(arrowX - (fieldDir * 6), y + 5);
+      ctx.fill();
+    }
+
+    // 3. Suspended Conductor Wire with deflection
+    const maxDeflection = 75;
+    const deflection = forceMag > 0 ? (forceSign * Math.min(maxDeflection, forceMag * 140)) : 0;
+    const wireY = cy - deflection;
+
+    // Rigid support frame
+    ctx.strokeStyle = "#64748b";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(cx - 20, cy - 140);
+    ctx.lineTo(cx - 20, wireY);
+    ctx.moveTo(cx + 20, cy - 140);
+    ctx.lineTo(cx + 20, wireY);
+    ctx.stroke();
+
+    // Wire conductor (cross-section circle)
+    ctx.fillStyle = "#f59e0b";
+    ctx.beginPath();
+    ctx.arc(cx, wireY, 22, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#fbbf24";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // Current symbol (Dot for out of screen, Cross for into screen)
+    ctx.fillStyle = "#091018";
+    if (actualI > 0) {
+      // Dot (Current out of page towards user)
+      ctx.beginPath();
+      ctx.arc(cx, wireY, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#f59e0b";
+      ctx.font = "bold 12px sans-serif";
+      ctx.fillText("I (OUT ⊙)", cx - 26, wireY + 40);
+    } else if (actualI < 0) {
+      // Cross (Current into page away from user)
+      ctx.strokeStyle = "#091018";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(cx - 8, wireY - 8); ctx.lineTo(cx + 8, wireY + 8);
+      ctx.moveTo(cx + 8, wireY - 8); ctx.lineTo(cx - 8, wireY + 8);
+      ctx.stroke();
+      ctx.fillStyle = "#f59e0b";
+      ctx.font = "bold 12px sans-serif";
+      ctx.fillText("I (IN ⊗)", cx - 22, wireY + 40);
+    }
+
+    // 4. Force Vector Arrow (Cyan)
+    if (forceMag > 0.01) {
+      const arrowLen = Math.min(90, 25 + forceMag * 100) * forceSign;
+      ctx.strokeStyle = "#00d2ff";
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.moveTo(cx, wireY);
+      ctx.lineTo(cx, wireY - arrowLen);
+      ctx.stroke();
+
+      // Arrow tip
+      ctx.fillStyle = "#00d2ff";
+      ctx.beginPath();
+      ctx.moveTo(cx, wireY - arrowLen - (forceSign * 8));
+      ctx.lineTo(cx - 8, wireY - arrowLen + (forceSign * 4));
+      ctx.lineTo(cx + 8, wireY - arrowLen + (forceSign * 4));
+      ctx.fill();
+
+      ctx.font = "900 14px sans-serif";
+      ctx.fillText(`FORCE ${(forceMag * forceSign).toFixed(2)}N`, cx + 14, wireY - arrowLen/2);
+    }
+  }
+
+  function drawMotorScene(cx, cy, forceMag, forceSign, actualI) {
+    // Motor continuous rotation
+    if (actualI !== 0) {
+      motorAngle += 0.03 * actualI * (polesFlipped ? -1 : 1);
+    }
+
+    // Magnets
+    const poleWidth = 90, poleHeight = 200, gap = 280;
+    ctx.fillStyle = polesFlipped ? "#1e40af" : "#dc2626";
+    ctx.fillRect(cx - gap/2 - poleWidth, cy - poleHeight/2, poleWidth, poleHeight);
+    ctx.fillStyle = polesFlipped ? "#dc2626" : "#1e40af";
+    ctx.fillRect(cx + gap/2, cy - poleHeight/2, poleWidth, poleHeight);
+
+    // Rotating rectangular coil in perspective
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(motorAngle);
+
+    ctx.strokeStyle = "#f59e0b";
+    ctx.lineWidth = 6;
+    ctx.strokeRect(-90, -50, 180, 100);
+
+    // Split-ring commutator
+    ctx.strokeStyle = "#fde047";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(0, 0, 18, 0.2, Math.PI - 0.2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, 18, Math.PI + 0.2, Math.PI * 2 - 0.2);
+    ctx.stroke();
+
+    ctx.restore();
+
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 15px sans-serif";
+    ctx.fillText("DC Motor Continuous Rotation with Split-Ring Commutator", cx - 200, cy + 140);
+  }
+
+  loop();
+</script>
+
+</body>
+</html>

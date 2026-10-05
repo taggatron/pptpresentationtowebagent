@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Lab — Circuit Calculations & Electrical Power</title>
+  <style>
+    :root {
+      --bg: #0b131e;
+      --panel: #132235;
+      --card: #1b2d44;
+      --border: #233b59;
+      --text: #e6f1f8;
+      --muted: #8ea7c2;
+      --accent: #00d2ff;
+      --accent-glow: rgba(0, 210, 255, 0.35);
+      --danger: #ff4757;
+      --success: #2ed573;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+    header {
+      background: #091018; border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; background: #00d2ff; color: #091018; padding: 4px 8px; border-radius: 4px; }
+    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .badge { background: #1e3a5f; color: #00d2ff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 12px; text-transform: uppercase; }
+
+    .lab-container { display: flex; flex: 1; height: calc(100vh - 56px); }
+
+    .sidebar-left {
+      width: 320px; background: var(--panel); border-right: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;
+    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .card-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+
+    .ctrl-row { margin-bottom: 12px; }
+    .ctrl-label { font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .ctrl-val { color: var(--accent); font-weight: 700; }
+    input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+
+    .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .appliance-btn {
+      background: var(--panel); border: 1px solid var(--border); color: var(--muted);
+      padding: 8px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; text-align: center;
+    }
+    .appliance-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(0, 210, 255, 0.1); }
+
+    .viewport {
+      flex: 1; position: relative; background: radial-gradient(circle at 50% 50%, #15273d 0%, #080f18 100%);
+      display: flex; flex-direction: column; padding: 24px; gap: 20px; overflow-y: auto;
+    }
+
+    .meter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .meter-box {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center;
+    }
+    .meter-val { font-size: 32px; font-weight: 900; color: #00d2ff; }
+    .meter-lbl { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-top: 4px; }
+
+    .quiz-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+    }
+    .quiz-q { font-size: 16px; font-weight: 700; margin-bottom: 14px; line-height: 1.4; color: #fff; }
+    .quiz-input-row { display: flex; gap: 12px; margin-bottom: 14px; }
+    .quiz-input {
+      flex: 1; background: #091018; border: 1px solid var(--border); color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 14px;
+    }
+    .quiz-btn {
+      background: var(--accent); color: #091018; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 700; cursor: pointer;
+    }
+    .feedback-box {
+      padding: 12px; border-radius: 6px; font-size: 13px; line-height: 1.5; display: none;
+    }
+    .feedback-box.correct { background: rgba(46, 213, 115, 0.15); border: 1px solid var(--success); color: var(--success); }
+    .feedback-box.incorrect { background: rgba(255, 71, 87, 0.15); border: 1px solid var(--danger); color: var(--danger); }
+
+    .sidebar-right {
+      width: 320px; background: var(--panel); border-left: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto;
+    }
+    .formula-box {
+      background: #091018; border-left: 3px solid var(--accent); padding: 10px; border-radius: 0 6px 6px 0; font-size: 12px; margin-bottom: 8px;
+    }
+    .formula-box code { color: #00d2ff; font-weight: 700; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-logo">PRACTICAL LAB</span>
+    <span class="brand-title">Lesson 5: Circuit Calculations & Power</span>
+    <span class="badge">OCR GCSE Physics</span>
+  </div>
+</header>
+
+<div class="lab-container">
+  <aside class="sidebar-left">
+    <div class="card">
+      <div class="card-title">Select Test Appliance</div>
+      <div class="btn-grid">
+        <button class="appliance-btn active" onclick="setAppliance('lamp')">💡 60W Lamp</button>
+        <button class="appliance-btn" onclick="setAppliance('led')">⚡ 12W LED</button>
+        <button class="appliance-btn" onclick="setAppliance('kettle')">☕ 2.4kW Kettle</button>
+        <button class="appliance-btn" onclick="setAppliance('motor')">⚙️ 500W Motor</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Circuit Variable Controls</div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Potential Difference (V)</span><span id="txtV" class="ctrl-val">230 V</span></div>
+        <input type="range" id="sliderV" min="0" max="240" step="5" value="230" oninput="updateV(this.value)">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Component Resistance (R)</span><span id="txtR" class="ctrl-val">882 Ω</span></div>
+        <input type="range" id="sliderR" min="10" max="1200" step="10" value="882" oninput="updateR(this.value)">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-label"><span>Runtime Timer (t)</span><span id="txtT" class="ctrl-val">60 s</span></div>
+        <input type="range" id="sliderT" min="5" max="300" step="5" value="60" oninput="updateT(this.value)">
+      </div>
+    </div>
+  </aside>
+
+  <main class="viewport">
+    <div class="meter-grid">
+      <div class="meter-box">
+        <div class="meter-val" id="meterI">0.26 A</div>
+        <div class="meter-lbl">Current (I = V / R)</div>
+      </div>
+      <div class="meter-box">
+        <div class="meter-val" id="meterP">60.0 W</div>
+        <div class="meter-lbl">Power (P = V × I)</div>
+      </div>
+      <div class="meter-box">
+        <div class="meter-val" id="meterQ">15.6 C</div>
+        <div class="meter-lbl">Charge Flow (Q = I × t)</div>
+      </div>
+      <div class="meter-box">
+        <div class="meter-val" id="meterE">3.60 kJ</div>
+        <div class="meter-lbl">Energy (E = P × t)</div>
+      </div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="card-title">GCSE 3-Mark Calculation Challenge</div>
+      <div class="quiz-q" id="quizQuestion">Loading question...</div>
+      <div class="quiz-input-row">
+        <input type="number" step="any" class="quiz-input" id="quizInput" placeholder="Enter calculated numerical value...">
+        <button class="quiz-btn" onclick="checkAnswer()">Submit Solution</button>
+        <button class="quiz-btn" style="background:#1e3a5f; color:#00d2ff;" onclick="nextQuestion()">Next Challenge</button>
+      </div>
+      <div class="feedback-box" id="feedback"></div>
+    </div>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="card">
+      <div class="card-title">GCSE Electrical Formulas</div>
+      <div class="formula-box">
+        <code>V = I × R</code><br>
+        <small style="color:var(--muted)">Voltage (V) = Current (A) × Resistance (Ω)</small>
+      </div>
+      <div class="formula-box">
+        <code>P = V × I</code><br>
+        <small style="color:var(--muted)">Power (W) = Voltage (V) × Current (A)</small>
+      </div>
+      <div class="formula-box">
+        <code>P = I² × R</code><br>
+        <small style="color:var(--muted)">Power (W) = Current² (A²) × Resistance (Ω)</small>
+      </div>
+      <div class="formula-box">
+        <code>E = P × t</code><br>
+        <small style="color:var(--muted)">Energy (J) = Power (W) × Time (s)</small>
+      </div>
+      <div class="formula-box">
+        <code>E = Q × V</code><br>
+        <small style="color:var(--muted)">Energy (J) = Charge (C) × Voltage (V)</small>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Worked Example Guide</div>
+      <p style="font-size:12px; color:var(--muted); line-height:1.5;">
+        1. <strong>State Formula:</strong> Write down equation clearly.<br>
+        2. <strong>Substitute Values:</strong> Convert minutes to seconds (× 60) and kW to W (× 1000).<br>
+        3. <strong>Calculate:</strong> Give numerical answer with correct SI units.
+      </p>
+    </div>
+  </aside>
+</div>
+
+<script>
+  let V = 230;
+  let R = 882;
+  let t = 60;
+
+  function updateMeters() {
+    const I = V / R;
+    const P = V * I;
+    const Q = I * t;
+    const E = P * t;
+
+    document.getElementById("meterI").innerText = `${I.toFixed(2)} A`;
+    document.getElementById("meterP").innerText = P >= 1000 ? `${(P/1000).toFixed(2)} kW` : `${P.toFixed(1)} W`;
+    document.getElementById("meterQ").innerText = `${Q.toFixed(1)} C`;
+    document.getElementById("meterE").innerText = E >= 1000 ? `${(E/1000).toFixed(2)} kJ` : `${E.toFixed(0)} J`;
+  }
+
+  function updateV(val) {
+    V = parseFloat(val);
+    document.getElementById("txtV").innerText = `${V} V`;
+    updateMeters();
+  }
+
+  function updateR(val) {
+    R = parseFloat(val);
+    document.getElementById("txtR").innerText = `${R} Ω`;
+    updateMeters();
+  }
+
+  function updateT(val) {
+    t = parseFloat(val);
+    document.getElementById("txtT").innerText = `${t} s`;
+    updateMeters();
+  }
+
+  function setAppliance(app) {
+    document.querySelectorAll(".appliance-btn").forEach(b => b.classList.remove("active"));
+    event.target.classList.add("active");
+    if (app === "lamp") { V = 230; R = 882; }
+    else if (app === "led") { V = 12; R = 12; }
+    else if (app === "kettle") { V = 230; R = 22; }
+    else if (app === "motor") { V = 230; R = 105; }
+    document.getElementById("sliderV").value = V;
+    document.getElementById("sliderR").value = R;
+    document.getElementById("txtV").innerText = `${V} V`;
+    document.getElementById("txtR").innerText = `${R} Ω`;
+    updateMeters();
+  }
+
+  const questions = [
+    { q: "An electric kettle operates at 230 V and draws a current of 10 A. Calculate its power in Watts (W).", a: 2300, unit: "W", method: "P = V × I = 230 × 10 = 2300 W" },
+    { q: "A 60 W lamp is connected across a 12 V battery. Calculate the current flowing through the lamp in Amperes (A).", a: 5, unit: "A", method: "I = P / V = 60 / 12 = 5 A" },
+    { q: "A current of 2 A flows through a 5 Ω resistor for 30 seconds. Calculate the energy transferred in Joules (J).", a: 600, unit: "J", method: "P = I²R = 2² × 5 = 20 W. Then E = P × t = 20 × 30 = 600 J" },
+    { q: "A microwave transfers 180,000 J of energy in 3 minutes (180 s). Calculate its power output in Watts (W).", a: 1000, unit: "W", method: "P = E / t = 180,000 / 180 = 1000 W" }
+  ];
+  let curQ = 0;
+
+  function loadQuestion() {
+    document.getElementById("quizQuestion").innerText = questions[curQ].q;
+    document.getElementById("quizInput").value = "";
+    document.getElementById("feedback").style.display = "none";
+  }
+
+  function checkAnswer() {
+    const userVal = parseFloat(document.getElementById("quizInput").value);
+    const fb = document.getElementById("feedback");
+    const q = questions[curQ];
+    fb.style.display = "block";
+    if (Math.abs(userVal - q.a) < 0.1) {
+      fb.className = "feedback-box correct";
+      fb.innerHTML = `<strong>✓ Correct! (3/3 Marks)</strong><br>Working: ${q.method}`;
+    } else {
+      fb.className = "feedback-box incorrect";
+      fb.innerHTML = `<strong>✗ Incorrect. Expected: ${q.a} ${q.unit}</strong><br>Worked solution: ${q.method}`;
+    }
+  }
+
+  function nextQuestion() {
+    curQ = (curQ + 1) % questions.length;
+    loadQuestion();
+  }
+
+  updateMeters();
+  loadQuestion();
+</script>
+
+</body>
+</html>
