@@ -35,6 +35,11 @@ Practical 2 (Van de Graaff Generator): Metal dome charge accumulation, intense e
         title: "Interactive Practical: Van de Graaff Generator Simulation",
         url: "/interactives/physics/van_de_graaff.html",
         label: "Live Van de Graaff Lab"
+      },
+      {
+        title: "Video Case Study: Stop Static – Refuelling Fire at Gas Pump",
+        url: "/decks/physics_electricity_magnetism/Lesson_01_Static_Electricity/interactives/gas_pump_static_fire_video.html",
+        label: "Video Case Study · Static Hazard & Earthing"
       }
     ]
   },
