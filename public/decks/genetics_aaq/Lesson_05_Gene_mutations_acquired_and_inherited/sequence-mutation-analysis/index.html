@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Checkpoint: Sequence Analysis</title>
+  <meta name="description" content="Interactive DNA sequence mutation analysis lab. Identify mutation classes (SNV vs Indel) and predict functional consequences (Missense, Nonsense, Silent, Frameshift) using the codon table.">
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top Navigation & Controls Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand-badge">
+        <svg class="dna-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 15c6.667-6 13.333 0 20-6"></path>
+          <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"></path>
+          <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"></path>
+          <path d="M17 6l-2.5-2.5"></path>
+          <path d="M14 8l-1-1"></path>
+          <path d="M7 18l2.5 2.5"></path>
+          <path d="M3.5 14.5L5 16"></path>
+          <path d="M20 9.5L18.5 8"></path>
+        </svg>
+        <span>Genetics Lab Module</span>
+      </div>
+      <div class="mode-tabs" role="tablist" aria-label="Learning Modes">
+        <button id="tab-checkpoint" class="tab-btn active" role="tab" aria-selected="true" aria-controls="view-checkpoint" tabindex="0">
+          🎯 Checkpoints
+        </button>
+        <button id="tab-studio" class="tab-btn" role="tab" aria-selected="false" aria-controls="view-studio" tabindex="-1">
+          🧪 Mutation Studio
+        </button>
+        <button id="tab-drill" class="tab-btn" role="tab" aria-selected="false" aria-controls="view-drill" tabindex="-1">
+          ⚡ Speed Drill
+        </button>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button id="btn-open-codon-table" class="tool-btn" aria-haspopup="dialog" aria-expanded="false" title="Open Interactive Codon Table">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+          <path d="M2 12h20"></path>
+        </svg>
+        <span>Codon Table</span>
+      </button>
+
+      <button id="btn-open-guide" class="tool-btn" aria-haspopup="dialog" aria-expanded="false" title="Mutation Classification Guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <span>Guide</span>
+      </button>
+
+      <div class="header-divider" aria-hidden="true"></div>
+
+      <button id="btn-toggle-sound" class="icon-btn" aria-label="Toggle Sound Effects" title="Sound Effects">
+        <svg id="icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <svg id="icon-sound-off" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </button>
+
+      <button id="btn-toggle-theme" class="icon-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg id="icon-moon" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Live Announcer for Screen Readers -->
+  <div id="live-announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Main App Shell -->
+  <main class="main-container">
+    <!-- Main Title matching image -->
+    <div class="page-title-banner">
+      <h1 class="main-heading">
+        Knowledge Checkpoint: <span class="sub-heading">Sequence Analysis</span>
+      </h1>
+      <div class="level-selector-strip" id="checkpoint-nav-strip">
+        <span class="level-label">Checkpoints:</span>
+        <div class="level-pills" id="checkpoint-pills-container">
+          <!-- Dynamically populated buttons -->
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: Main Knowledge Checkpoint Lab (Matches Attached Image) -->
+    <section id="view-checkpoint" class="checkpoint-view active" aria-labelledby="checkpoint-view-title">
+      <h2 id="checkpoint-view-title" class="sr-only">Interactive Checkpoint Exercise</h2>
+      
+      <div class="lab-grid">
+        <!-- Left Panel: Task & Guidance Card (Identical to Image) -->
+        <article class="card task-card" aria-label="Task Instructions">
+          <div class="task-section">
+            <h3 class="task-title">Task</h3>
+            <p class="task-description" id="task-description-text">
+              Compare the wild-type DNA sequence to Mutants X and Y.
+            </p>
+          </div>
+
+          <div class="step-section">
+            <div class="step-badge">
+              <span class="step-number-tag">Step 1</span>
+            </div>
+            <p class="step-text">
+              Identify the mutation class (SNV vs Indel).
+            </p>
+          </div>
+
+          <div class="step-section">
+            <div class="step-badge">
+              <span class="step-number-tag">Step 2</span>
+            </div>
+            <p class="step-text">
+              Predict the functional consequence using the codon table.
+            </p>
+          </div>
+
+          <!-- Interactive Learning Helpers -->
+          <div class="task-helpers">
+            <div class="strand-indicator-box">
+              <div class="strand-badge-header">
+                <span class="pulse-dot"></span>
+                <strong>Strand Orientation</strong>
+              </div>
+              <p class="strand-info-text">
+                DNA sequence represents the <strong>3' &rarr; 5' Template Strand</strong>, transcribed into mRNA (5' &rarr; 3') and translated into amino acids.
+              </p>
+            </div>
+
+            <div class="quick-tools-row">
+              <button id="btn-show-hint" class="helper-btn" aria-label="Show contextual hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                </svg>
+                <span>Get Hint</span>
+              </button>
+              <button id="btn-toggle-mrna-view" class="helper-btn" aria-pressed="false" aria-label="Toggle mRNA Codon Display">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+                <span id="mrna-toggle-text">Show mRNA</span>
+              </button>
+            </div>
+
+            <div id="hint-box" class="hint-box hidden" role="region" aria-label="Hint">
+              <span class="hint-icon">💡</span>
+              <p id="hint-text">Compare codon by codon. Look for missing or added letters (Indels) versus single letter substitutions (SNVs).</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Right Panel: Lab Workspace Card (Identical to Image) -->
+        <article class="card workspace-card" aria-label="Lab Workspace">
+          <div class="workspace-header">
+            <h3 class="workspace-title">Lab Workspace</h3>
+            <div class="workspace-meta-tags">
+              <span class="meta-tag" id="workspace-level-indicator">Level 1 of 4</span>
+              <button id="btn-alignment-view" class="meta-tag-interactive" title="Inspect Base-by-Base Alignment">
+                🔍 Compare Bases
+              </button>
+            </div>
+          </div>
+
+          <!-- Sequences Container -->
+          <div class="sequences-table" id="sequences-container">
+            <!-- Wild-Type Row (Matches Image in color and style) -->
+            <div class="sequence-row wild-type-row" id="wild-type-row">
+              <div class="seq-content-group">
+                <span class="seq-label wild-type-label">Wild-type:</span>
+                <div class="sequence-codons-wrapper" id="wt-codons-display">
+                  <code class="dna-code wt-code">TAC-TTC-AAA-ATC</code>
+                </div>
+                <span class="seq-arrow" aria-hidden="true">&rarr;</span>
+                <span class="peptide-chain wt-peptide" id="wt-peptide-display">
+                  Met-Lys-Phe-Stop
+                </span>
+              </div>
+              <div class="wt-sub-annotation hidden" id="wt-mrna-row">
+                <span class="sub-label">mRNA:</span>
+                <code class="mrna-code">AUG-AAG-UUU-UAG</code>
+              </div>
+            </div>
+
+            <div class="seq-divider" aria-hidden="true"></div>
+
+            <!-- Interactive Mutant Rows Container -->
+            <div id="mutant-rows-container" class="mutant-rows-list">
+              <!-- Dynamically rendered mutant rows matching screenshot -->
+            </div>
+          </div>
+
+          <!-- Base Alignment Inspector (Collapsible Interactive Tool) -->
+          <div id="alignment-inspector-panel" class="alignment-panel hidden" aria-label="Nucleotide Alignment Inspector">
+            <div class="alignment-header">
+              <h4>Nucleotide Alignment & Reading Frame</h4>
+              <button id="btn-close-alignment" class="close-text-btn" aria-label="Close alignment inspector">&times;</button>
+            </div>
+            <div id="alignment-visualization" class="alignment-grid">
+              <!-- Rendered alignment grid -->
+            </div>
+          </div>
+
+          <!-- Bottom Workspace Actions -->
+          <div class="workspace-actions">
+            <div class="left-actions">
+              <button id="btn-check-answers" class="btn btn-primary" title="Check your classifications">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Check Answers</span>
+              </button>
+              <button id="btn-reset-answers" class="btn btn-secondary" title="Reset your selections">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2.5 2v6h6M21.5 22v-6h-6"></path>
+                  <path d="M22 11.5A10 10 0 0 0 3.2 7.2L2.5 8M2 12.5a10 10 0 0 0 18.8 4.2l.7-.7"></path>
+                </svg>
+                <span>Reset</span>
+              </button>
+            </div>
+
+            <div class="right-actions">
+              <button id="btn-show-solution" class="btn btn-ghost" title="Reveal complete step-by-step solution">
+                <span>Show Solution</span>
+              </button>
+              <button id="btn-next-checkpoint" class="btn btn-accent hidden" title="Proceed to next checkpoint">
+                <span>Next Checkpoint &rarr;</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback & Detailed Explanation Drawer -->
+          <div id="feedback-panel" class="feedback-panel hidden" role="region" aria-label="Results and Explanation">
+            <div class="feedback-header">
+              <div class="feedback-title-group">
+                <span id="feedback-status-badge" class="badge-success">All Correct!</span>
+                <h4 id="feedback-headline">Excellent Sequence Analysis!</h4>
+              </div>
+              <button id="btn-close-feedback" class="icon-close-btn" aria-label="Close Feedback Panel">&times;</button>
+            </div>
+            <div id="feedback-body" class="feedback-body">
+              <!-- Dynamically populated explanations -->
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- VIEW 2: Interactive DNA Mutation Studio / Sandbox -->
+    <section id="view-studio" class="studio-view hidden" aria-labelledby="studio-view-title">
+      <div class="studio-header">
+        <h2 id="studio-view-title" class="studio-title">DNA Sequence Mutation Studio</h2>
+        <p class="studio-subtitle">Edit any nucleotide, insert or delete bases, and observe real-time mRNA transcription, protein translation, and automated mutation classification.</p>
+      </div>
+
+      <div class="studio-card card">
+        <div class="studio-controls-bar">
+          <div class="preset-group">
+            <label for="studio-preset-select">Load Sequence Template:</label>
+            <select id="studio-preset-select" class="form-select">
+              <option value="checkpoint1">Original Checkpoint (TAC-TTC-AAA-ATC)</option>
+              <option value="globin">Beta-Globin Exon Fragment</option>
+              <option value="insulin">Insulin Start Motif</option>
+              <option value="custom">Custom Sequence</option>
+            </select>
+          </div>
+
+          <div class="mutation-action-buttons">
+            <button id="btn-studio-snv" class="studio-action-btn">
+              ⚡ Apply Random SNV
+            </button>
+            <button id="btn-studio-del" class="studio-action-btn">
+              ✂️ Delete Base (Indel)
+            </button>
+            <button id="btn-studio-ins" class="studio-action-btn">
+              ➕ Insert Base (Indel)
+            </button>
+            <button id="btn-studio-reset" class="studio-action-btn secondary">
+              ↺ Reset to Wild-Type
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Sequence Editor -->
+        <div class="interactive-editor-section">
+          <div class="editor-row">
+            <div class="editor-label-col">
+              <span class="editor-label">Template DNA (3'&rarr;5')</span>
+              <span class="editor-hint">Click any letter to mutate</span>
+            </div>
+            <div class="interactive-bases-strip" id="studio-dna-strip">
+              <!-- Dynamically populated editable base buttons -->
+            </div>
+          </div>
+
+          <div class="editor-row transcription-row">
+            <div class="editor-label-col">
+              <span class="editor-label">Transcribed mRNA (5'&rarr;3')</span>
+            </div>
+            <div class="mrna-bases-strip" id="studio-mrna-strip">
+              <!-- Dynamically transcribed mRNA -->
+            </div>
+          </div>
+
+          <div class="editor-row translation-row">
+            <div class="editor-label-col">
+              <span class="editor-label">Translated Polypeptide</span>
+            </div>
+            <div class="peptide-strip" id="studio-peptide-strip">
+              <!-- Dynamically translated amino acids -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-time Classifier Result Card -->
+        <div class="studio-classification-card" id="studio-classification-card">
+          <div class="classification-header">
+            <h4>Live Mutation Classification</h4>
+            <span id="studio-mutation-badge" class="badge-neutral">Wild-Type (No Mutations)</span>
+          </div>
+          <div class="classification-details-grid">
+            <div class="detail-box">
+              <span class="detail-label">Mutation Class</span>
+              <span class="detail-value" id="studio-class-val">—</span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Functional Consequence</span>
+              <span class="detail-value" id="studio-consequence-val">—</span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Reading Frame</span>
+              <span class="detail-value" id="studio-frame-val">Normal (In-frame)</span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Polypeptide Length</span>
+              <span class="detail-value" id="studio-length-val">4 Residues</span>
+            </div>
+          </div>
+          <p class="studio-explanation-text" id="studio-explanation-text">
+            Sequence matches the original wild-type sequence. Click any nucleotide above or choose a mutation button to explore effects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: Speed Drill / Rapid Practice Mode -->
+    <section id="view-drill" class="drill-view hidden" aria-labelledby="drill-view-title">
+      <div class="drill-header">
+        <div>
+          <h2 id="drill-view-title" class="drill-title">Rapid Mutation Identification Drill</h2>
+          <p class="drill-subtitle">Test your clinical genetics mastery against randomized DNA mutations with instant grading.</p>
+        </div>
+        <div class="drill-scoreboard">
+          <div class="score-pill">
+            <span class="score-label">Score</span>
+            <span class="score-num" id="drill-score">0</span>
+          </div>
+          <div class="score-pill">
+            <span class="score-label">Streak</span>
+            <span class="score-num" id="drill-streak">0 🔥</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card drill-card">
+        <div class="drill-sequence-display">
+          <div class="drill-row">
+            <span class="drill-row-label">Wild-type DNA:</span>
+            <code class="dna-code" id="drill-wt-code">TAC-TTC-AAA-ATC</code>
+            <span class="seq-arrow">&rarr;</span>
+            <span class="peptide-chain wt-peptide" id="drill-wt-peptide">Met-Lys-Phe-Stop</span>
+          </div>
+          <div class="drill-row highlight-row">
+            <span class="drill-row-label">Mutant DNA:</span>
+            <code class="dna-code" id="drill-mut-code">TAC-TTT-AAA-ATC</code>
+            <span class="seq-arrow">&rarr;</span>
+            <span class="peptide-chain" id="drill-mut-peptide">Met-Lys-Phe-Stop</span>
+          </div>
+        </div>
+
+        <div class="drill-questions-form">
+          <div class="drill-question-group">
+            <label class="drill-q-title">Question 1: What is the Mutation Class?</label>
+            <div class="drill-options-grid" id="drill-class-options">
+              <button class="drill-opt-btn" data-type="class" data-val="SNV">Single Nucleotide Variant (SNV / Substitution)</button>
+              <button class="drill-opt-btn" data-type="class" data-val="Deletion">Deletion (Indel)</button>
+              <button class="drill-opt-btn" data-type="class" data-val="Insertion">Insertion (Indel)</button>
+              <button class="drill-opt-btn" data-type="class" data-val="Duplication">Duplication</button>
+            </div>
+          </div>
+
+          <div class="drill-question-group">
+            <label class="drill-q-title">Question 2: What is the Functional Consequence?</label>
+            <div class="drill-options-grid" id="drill-consequence-options">
+              <button class="drill-opt-btn" data-type="consequence" data-val="Silent">Silent / Synonymous (No AA Change)</button>
+              <button class="drill-opt-btn" data-type="consequence" data-val="Missense">Missense (Altered Amino Acid)</button>
+              <button class="drill-opt-btn" data-type="consequence" data-val="Nonsense">Nonsense (Premature Stop Codon)</button>
+              <button class="drill-opt-btn" data-type="consequence" data-val="Frameshift">Frameshift (Shifted Triplet Reading Frame)</button>
+              <button class="drill-opt-btn" data-type="consequence" data-val="In-frame Indel">In-frame Indel (Added/Deleted Whole Codon)</button>
+            </div>
+          </div>
+
+          <div class="drill-actions">
+            <button id="btn-drill-submit" class="btn btn-primary">Submit Answer</button>
+            <button id="btn-drill-next" class="btn btn-secondary hidden">Next Question &rarr;</button>
+          </div>
+
+          <div id="drill-feedback-box" class="drill-feedback hidden"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Interactive Codon Table Dialog -->
+  <dialog id="modal-codon-table" class="modal-dialog" aria-labelledby="modal-codon-title">
+    <div class="modal-content codon-modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 id="modal-codon-title">Genetic Code Codon Lookup</h3>
+          <p class="modal-desc">Search mRNA or DNA template triplets to find their translated amino acids.</p>
+        </div>
+        <button id="btn-close-codon-modal" class="modal-close-icon" aria-label="Close Codon Table dialog">&times;</button>
+      </div>
+
+      <div class="codon-toolbar">
+        <div class="search-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="codon-search-input" placeholder="Search codon (e.g. AUG, TTC, Lys, Stop)..." aria-label="Search codons">
+        </div>
+
+        <div class="strand-format-toggle">
+          <button id="btn-toggle-codon-strand" class="toggle-pill-btn" aria-pressed="false">
+            Display: <strong id="codon-strand-label">mRNA (5'&rarr;3')</strong>
+          </button>
+        </div>
+
+        <div class="prop-filter-chips" id="codon-filters">
+          <button class="filter-chip active" data-filter="all">All (64)</button>
+          <button class="filter-chip" data-filter="hydrophobic">Hydrophobic</button>
+          <button class="filter-chip" data-filter="polar">Polar</button>
+          <button class="filter-chip" data-filter="basic">Basic (+)</button>
+          <button class="filter-chip" data-filter="acidic">Acidic (-)</button>
+          <button class="filter-chip" data-filter="stop">Stop</button>
+        </div>
+      </div>
+
+      <div class="codon-grid-wrapper">
+        <div id="codon-cards-grid" class="codon-cards-grid">
+          <!-- 64 Codons populated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <span class="footnote-text">Standard Universal Genetic Code. mRNA 5'&rarr;3' translates AUG (Start) &rarr; Methionine.</span>
+        <button id="btn-done-codon-modal" class="btn btn-secondary">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Mutation Classification Reference Guide Dialog -->
+  <dialog id="modal-guide" class="modal-dialog" aria-labelledby="modal-guide-title">
+    <div class="modal-content guide-modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 id="modal-guide-title">Genomic Mutation Classification Guide</h3>
+          <p class="modal-desc">Clear reference for distinguishing mutation classes and functional consequences.</p>
+        </div>
+        <button id="btn-close-guide-modal" class="modal-close-icon" aria-label="Close Guide dialog">&times;</button>
+      </div>
+
+      <div class="guide-scroll-body">
+        <section class="guide-section">
+          <h4>1. Mutation Classes (Structural Alteration)</h4>
+          <div class="guide-cards-grid">
+            <div class="guide-card">
+              <span class="guide-badge snv">SNV (Single Nucleotide Variant)</span>
+              <p>A single base pair substitution where one nucleotide is replaced by another (e.g. A &rarr; G, T &rarr; C). No change in sequence length.</p>
+            </div>
+            <div class="guide-card">
+              <span class="guide-badge indel">Indel (Insertion / Deletion)</span>
+              <p>The addition or removal of one or more nucleotides. Changes the total sequence length and often disrupts downstream reading frames unless in multiples of 3.</p>
+            </div>
+            <div class="guide-card">
+              <span class="guide-badge dup">Duplication</span>
+              <p>A segment of DNA is copied one or more times adjacent to the original sequence.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="guide-section">
+          <h4>2. Functional Consequences (Protein Impact)</h4>
+          <div class="guide-cards-grid">
+            <div class="guide-card">
+              <span class="guide-badge silent">Silent (Synonymous)</span>
+              <p>The altered codon encodes the <strong>exact same amino acid</strong> due to redundancy/degeneracy of the genetic code. Protein function unchanged.</p>
+            </div>
+            <div class="guide-card">
+              <span class="guide-badge missense">Missense</span>
+              <p>The substitution alters a codon to specify a <strong>different amino acid</strong> (e.g. Lys &rarr; Glu). Can alter folding, activity, or stability.</p>
+            </div>
+            <div class="guide-card">
+              <span class="guide-badge nonsense">Nonsense</span>
+              <p>The mutation changes an amino-acid-specifying codon into a premature <strong>Stop codon</strong> (UAA, UAG, UGA), leading to a truncated, non-functional protein.</p>
+            </div>
+            <div class="guide-card">
+              <span class="guide-badge frameshift">Frameshift</span>
+              <p>An indel not divisible by 3 shifts the triplet reading frame downstream, scrambling all subsequent amino acids until an inevitable premature stop.</p>
+            </div>
+            <div class="guide-card">
+              <span class="guide-badge inframe">In-Frame Indel</span>
+              <p>An insertion or deletion of exactly 3 nucleotides (or multiples of 3). Adds or removes intact amino acids without shifting the downstream frame.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-done-guide-modal" class="btn btn-primary">Got It</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Interactive Popover for Selecting Mutation Class & Consequence -->
+  <div id="selection-popover" class="selection-popover hidden" role="dialog" aria-modal="false" aria-label="Select Mutation Class and Consequence">
+    <div class="popover-header">
+      <span class="popover-title">Configure Classification</span>
+      <button id="btn-close-popover" class="popover-close-btn" aria-label="Close popover">&times;</button>
+    </div>
+    
+    <div class="popover-body">
+      <div class="popover-group">
+        <label for="popover-class-select">Step 1: Mutation Class</label>
+        <select id="popover-class-select" class="form-select popover-select">
+          <option value="" disabled selected>-- Select Class --</option>
+          <option value="SNV">SNV (Single Nucleotide Variant)</option>
+          <option value="Deletion">Deletion (Indel)</option>
+          <option value="Insertion">Insertion (Indel)</option>
+          <option value="Duplication">Duplication</option>
+        </select>
+      </div>
+
+      <div class="popover-group">
+        <label for="popover-consequence-select">Step 2: Functional Consequence</label>
+        <select id="popover-consequence-select" class="form-select popover-select">
+          <option value="" disabled selected>-- Select Consequence --</option>
+          <option value="Silent">Silent / Synonymous</option>
+          <option value="Missense">Missense</option>
+          <option value="Nonsense">Nonsense (Stop)</option>
+          <option value="Frameshift">Frameshift</option>
+          <option value="In-frame Indel">In-frame Indel</option>
+        </select>
+      </div>
+
+      <div class="popover-preview">
+        <span class="preview-label">Selected Pill Display:</span>
+        <div class="preview-pill" id="popover-preview-pill">[ Select both ]</div>
+      </div>
+    </div>
+
+    <div class="popover-footer">
+      <button id="btn-popover-cancel" class="btn btn-ghost btn-sm">Cancel</button>
+      <button id="btn-popover-apply" class="btn btn-primary btn-sm">Apply Selection</button>
+    </div>
+  </div>
+
+  <!-- Bottom Branding Badge (Matches image watermark: Gemini Notebook) -->
+  <footer class="app-footer">
+    <div class="footer-brand">
+      <svg class="gemini-star-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z"/>
+      </svg>
+      <span>Gemini Notebook</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
