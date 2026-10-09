@@ -45,7 +45,7 @@ const slideMetadata = [
         question: "1. Physics: Define static electricity.",
         expectedAnswer: "Build-up and separation of electrical charge carried by electrons, caused by friction.",
         bounds: { x: 3.2, y: 10.5, w: 30.0, h: 41.5 },
-        answerBounds: { x: 4.5, y: 18.0, w: 14.5, h: 18.0 },
+        answerBounds: { x: 4.2, y: 17.5, w: 15.0, h: 18.5 },
         revealMode: "blur",
         confidence: 1,
         provenance: "user-adjusted",
@@ -58,7 +58,7 @@ const slideMetadata = [
         question: "2. Physics: What force causes hair to stand on end when rubbed with a balloon?",
         expectedAnswer: "Electrostatic repulsion (like charges repel).",
         bounds: { x: 34.8, y: 10.5, w: 30.0, h: 41.5 },
-        answerBounds: { x: 36.0, y: 19.0, w: 10.0, h: 13.0 },
+        answerBounds: { x: 35.8, y: 18.5, w: 10.5, h: 15.0 },
         revealMode: "blur",
         confidence: 1,
         provenance: "user-adjusted",
@@ -71,7 +71,7 @@ const slideMetadata = [
         question: "3. Chemistry: Calculate the Rf value of a chromatography spot.",
         expectedAnswer: "Rf = distance moved by spot ÷ distance moved by solvent (e.g. 4 cm ÷ 10 cm = 0.4).",
         bounds: { x: 66.4, y: 10.5, w: 30.0, h: 41.5 },
-        answerBounds: { x: 79.5, y: 28.5, w: 15.5, h: 11.0 },
+        answerBounds: { x: 78.5, y: 23.5, w: 16.5, h: 17.0 },
         revealMode: "blur",
         confidence: 1,
         provenance: "user-adjusted",
@@ -84,7 +84,7 @@ const slideMetadata = [
         question: "4. Biology: What are the main parts of natural selection?",
         expectedAnswer: "Variation (mutations), Selection pressure, Survival of the fittest, Inheritance of advantageous alleles.",
         bounds: { x: 3.2, y: 53.0, w: 30.0, h: 41.5 },
-        answerBounds: { x: 4.5, y: 61.5, w: 19.0, h: 10.0 },
+        answerBounds: { x: 4.2, y: 59.0, w: 22.5, h: 11.5 },
         revealMode: "blur",
         confidence: 1,
         provenance: "user-adjusted",
@@ -97,7 +97,7 @@ const slideMetadata = [
         question: "5. Chemistry: Describe metallic bonding.",
         expectedAnswer: "Regular lattice of positive metal ions surrounded by a sea of delocalised electrons.",
         bounds: { x: 34.8, y: 53.0, w: 30.0, h: 41.5 },
-        answerBounds: { x: 36.0, y: 61.5, w: 10.0, h: 18.0 },
+        answerBounds: { x: 35.8, y: 59.0, w: 12.5, h: 22.0 },
         revealMode: "blur",
         confidence: 1,
         provenance: "user-adjusted",
@@ -110,7 +110,7 @@ const slideMetadata = [
         question: "6. Today's Challenge: What exactly causes that 'light bulb moment' in a circuit?",
         expectedAnswer: "Potential difference pushes delocalised electrons through a wire against resistance, transferring electrical energy into light and heat.",
         bounds: { x: 66.4, y: 53.0, w: 30.0, h: 41.5 },
-        answerBounds: { x: 67.5, y: 64.5, w: 18.5, h: 12.0 },
+        answerBounds: { x: 67.2, y: 61.5, w: 19.5, h: 16.0 },
         revealMode: "blur",
         confidence: 1,
         provenance: "user-adjusted",
@@ -274,10 +274,14 @@ const slideMetadata = [
 
 manifest.slides = manifest.slides.map((slide, idx) => {
   const meta = slideMetadata.find(m => m.number === slide.number) || {};
-  return {
+  const merged = {
     ...slide,
     ...meta
   };
+  if (merged.reveals && (!merged.interactiveCells || merged.interactiveCells.length === 0)) {
+    merged.interactiveCells = merged.reveals;
+  }
+  return merged;
 });
 
 manifest.totalSlides = manifest.slides.length;
