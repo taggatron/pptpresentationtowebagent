@@ -1160,6 +1160,19 @@ function pauseSlideVideo({ broadcast = true, currentTime = null } = {}) {
 
 function toggleSlideVideoPlayback({ broadcast = true } = {}) {
   if (!slideVideo) return;
+  const activeSlide = currentDeck?.slides?.[currentSlideIndex];
+  const build = currentBuildForSlide(activeSlide);
+  const buildSteps = getStageBuildSteps(activeSlide);
+  if (
+    slideVideo.paused &&
+    build?.endTime !== null &&
+    build?.endTime !== undefined &&
+    slideVideo.currentTime >= build.endTime - 0.08 &&
+    currentMediaBuildStep < buildSteps.length
+  ) {
+    advanceMediaBuildStep();
+    return;
+  }
   if (slideVideo.paused) {
     playSlideVideo({ broadcast });
   } else {

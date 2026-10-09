@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>60-Second Challenge: Symbol Snap | Circuit Engineering Match</title>
+  <meta name="description" content="Pair-and-share interactive challenge. Match standardized circuit symbols to their engineering names within 60 seconds. Features realistic physics, sound effects, touch support, and pair discussion prompts.">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="notebook">
+  <!-- Audio Context Warning Banner if needed, handled unobtrusively -->
+  <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <div class="app-wrapper">
+    <!-- Top Action Bar -->
+    <header class="game-header">
+      <div class="header-main">
+        <h1 class="challenge-title">60-Second Challenge: Symbol Snap</h1>
+        <div class="divider-line"></div>
+        <div class="challenge-subtitle-row">
+          <p class="challenge-subtitle">
+            <span class="badge-tag">Pair-and-share</span> Match the standardized circuit symbol to its engineering name.
+          </p>
+          <div class="header-badges">
+            <span id="best-time-badge" class="stat-pill" title="Your fastest winning time">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              <span>Best: <strong id="best-time-val">--:--</strong></span>
+            </span>
+            <span class="source-credit" title="Standardized IEC Circuit Symbols">⚡ Gemini Notebook</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Toolbar -->
+      <div class="toolbar-panel">
+        <div class="toolbar-group timer-group">
+          <!-- Circular / Digital Timer -->
+          <div class="timer-widget" id="timer-widget" role="timer" aria-live="polite" aria-atomic="true">
+            <svg class="timer-ring-svg" width="46" height="46" viewBox="0 0 46 46">
+              <circle class="timer-ring-bg" cx="23" cy="23" r="19" />
+              <circle class="timer-ring-progress" id="timer-ring-progress" cx="23" cy="23" r="19" />
+            </svg>
+            <div class="timer-display">
+              <span id="timer-text" class="timer-digits">01:00</span>
+            </div>
+          </div>
+
+          <button id="btn-timer-toggle" class="btn btn-primary" title="Start or pause the 60-second challenge">
+            <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <span id="btn-timer-label">Start Challenge</span>
+          </button>
+
+          <button id="btn-reset" class="btn btn-secondary" title="Reset all matches and restart timer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            <span>Reset</span>
+          </button>
+        </div>
+
+        <div class="toolbar-group mode-group">
+          <div class="segmented-control" role="radiogroup" aria-label="Game Mode">
+            <button class="seg-btn active" id="mode-challenge" role="radio" aria-checked="true">
+              ⏱️ Challenge (60s)
+            </button>
+            <button class="seg-btn" id="mode-practice" role="radio" aria-checked="false">
+              🎯 Practice & Learn
+            </button>
+          </div>
+        </div>
+
+        <div class="toolbar-group action-group">
+          <button id="btn-check" class="btn btn-success" title="Check your matches">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Check Answers</span>
+          </button>
+
+          <button id="btn-pair-share" class="btn btn-subtle" title="Open Pair-and-Share Discussion Questions">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Pair & Share</span>
+          </button>
+
+          <button id="btn-sound-toggle" class="btn-icon" aria-label="Toggle Sound Effects" title="Toggle Sound">
+            <svg class="icon-sound-on" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <svg class="icon-sound-off" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          </button>
+
+          <button id="btn-theme-toggle" class="btn-icon" aria-label="Switch Theme" title="Toggle Theme (Notebook Grid / Blueprint / Clean Lab)">
+            <svg class="icon-theme" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+
+          <button id="btn-print" class="btn-icon" aria-label="Print Worksheet" title="Print Blank Worksheet for Class">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Status & Accessibility Hint -->
+      <div class="status-banner">
+        <div class="progress-pill">
+          <span class="progress-label">Progress:</span>
+          <strong id="match-count">0</strong> of <strong>9</strong> matched
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="interaction-hint" id="interaction-hint">
+          💡 <strong>Tip:</strong> Drag cards into slots, or <em>tap a card then tap a slot</em> to snap it!
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Game Board: Layout mirroring the authentic image -->
+    <main class="game-board-container" id="game-board">
+      
+      <!-- Left Section: 2 Columns of Symbols with Drop Targets -->
+      <section class="symbols-section" aria-label="Circuit Symbols Matching Area">
+        
+        <!-- Column 1: Cell, Open Switch, Lamp / Bulb, Ammeter, Voltmeter -->
+        <div class="symbols-column" id="col-1">
+          
+          <!-- 1. Cell -->
+          <article class="symbol-card" data-symbol-id="cell" id="card-cell">
+            <div class="symbol-illustration" aria-label="Symbol: Cell">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Positive Plate (+) on left: long thin line -->
+                <line x1="20" y1="40" x2="72" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="72" y1="18" x2="72" y2="62" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Negative Plate (-) on right: short thick line -->
+                <line x1="90" y1="28" x2="90" y2="52" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+                <line x1="90" y1="40" x2="140" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- + and - signs above plates -->
+                <text x="72" y="13" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="20" text-anchor="middle" fill="currentColor">+</text>
+                <text x="91" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24" text-anchor="middle" fill="currentColor">−</text>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="cell" tabindex="0" role="region" aria-label="Drop engineering name for Cell here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="cell" aria-label="Learn about Cell" title="Component Info">ℹ</button>
+          </article>
+
+          <!-- 2. Open Switch -->
+          <article class="symbol-card" data-symbol-id="open-switch" id="card-open-switch">
+            <div class="symbol-illustration" aria-label="Symbol: Open Switch">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Left wire -->
+                <line x1="20" y1="44" x2="62" y2="44" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Open hinged lever angled up -->
+                <line x1="62" y1="44" x2="116" y2="24" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Right wire -->
+                <line x1="120" y1="44" x2="160" y2="44" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="open-switch" tabindex="0" role="region" aria-label="Drop engineering name for Open Switch here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="open-switch" aria-label="Learn about Open Switch" title="Component Info">ℹ</button>
+          </article>
+
+          <!-- 3. Lamp / Bulb -->
+          <article class="symbol-card" data-symbol-id="lamp-bulb" id="card-lamp-bulb">
+            <div class="symbol-illustration" aria-label="Symbol: Lamp / Bulb">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Left and Right leads -->
+                <line x1="20" y1="40" x2="65" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="115" y1="40" x2="160" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Bulb Circle -->
+                <circle cx="90" cy="40" r="25" fill="none" stroke="currentColor" stroke-width="3.5"/>
+                <!-- Internal 'X' -->
+                <line x1="72.3" y1="22.3" x2="107.7" y2="57.7" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="72.3" y1="57.7" x2="107.7" y2="22.3" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="lamp-bulb" tabindex="0" role="region" aria-label="Drop engineering name for Lamp / Bulb here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="lamp-bulb" aria-label="Learn about Lamp / Bulb" title="Component Info">ℹ</button>
+          </article>
+
+          <!-- 4. Ammeter -->
+          <article class="symbol-card" data-symbol-id="ammeter" id="card-ammeter">
+            <div class="symbol-illustration" aria-label="Symbol: Ammeter">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Leads -->
+                <line x1="20" y1="40" x2="65" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="115" y1="40" x2="160" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Circle -->
+                <circle cx="90" cy="40" r="25" fill="none" stroke="currentColor" stroke-width="3.5"/>
+                <!-- Letter A -->
+                <text x="90" y="49" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="28" text-anchor="middle" fill="currentColor">A</text>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="ammeter" tabindex="0" role="region" aria-label="Drop engineering name for Ammeter here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="ammeter" aria-label="Learn about Ammeter" title="Component Info">ℹ</button>
+          </article>
+
+          <!-- 5. Voltmeter -->
+          <article class="symbol-card" data-symbol-id="voltmeter" id="card-voltmeter">
+            <div class="symbol-illustration" aria-label="Symbol: Voltmeter">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Leads -->
+                <line x1="20" y1="40" x2="65" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="115" y1="40" x2="160" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Circle -->
+                <circle cx="90" cy="40" r="25" fill="none" stroke="currentColor" stroke-width="3.5"/>
+                <!-- Letter V -->
+                <text x="90" y="49" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="28" text-anchor="middle" fill="currentColor">V</text>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="voltmeter" tabindex="0" role="region" aria-label="Drop engineering name for Voltmeter here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="voltmeter" aria-label="Learn about Voltmeter" title="Component Info">ℹ</button>
+          </article>
+
+        </div>
+
+        <!-- Column 2: Fixed Resistor, Variable Resistor, LDR, LED -->
+        <div class="symbols-column" id="col-2">
+          
+          <!-- 6. Fixed Resistor -->
+          <article class="symbol-card" data-symbol-id="fixed-resistor" id="card-fixed-resistor">
+            <div class="symbol-illustration" aria-label="Symbol: Fixed Resistor">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Left wire -->
+                <line x1="20" y1="40" x2="60" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Resistor Box -->
+                <rect x="60" y="27" width="60" height="26" fill="none" stroke="currentColor" stroke-width="3.5" rx="1"/>
+                <!-- Right wire -->
+                <line x1="120" y1="40" x2="160" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="fixed-resistor" tabindex="0" role="region" aria-label="Drop engineering name for Fixed Resistor here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="fixed-resistor" aria-label="Learn about Fixed Resistor" title="Component Info">ℹ</button>
+          </article>
+
+          <!-- 7. Variable Resistor -->
+          <article class="symbol-card" data-symbol-id="variable-resistor" id="card-variable-resistor">
+            <div class="symbol-illustration" aria-label="Symbol: Variable Resistor">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Left and Right Leads -->
+                <line x1="20" y1="40" x2="60" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="120" y1="40" x2="160" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Resistor Box -->
+                <rect x="60" y="27" width="60" height="26" fill="none" stroke="currentColor" stroke-width="3.5" rx="1"/>
+                <!-- Diagonal Arrow -->
+                <line x1="66" y1="64" x2="114" y2="16" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <polygon points="114,16 103,18 112,27" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="variable-resistor" tabindex="0" role="region" aria-label="Drop engineering name for Variable Resistor here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="variable-resistor" aria-label="Learn about Variable Resistor" title="Component Info">ℹ</button>
+          </article>
+
+          <!-- 8. LDR (Light Dependent Resistor) -->
+          <article class="symbol-card" data-symbol-id="ldr" id="card-ldr">
+            <div class="symbol-illustration" aria-label="Symbol: LDR (Light Dependent Resistor)">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Enclosing Circle -->
+                <circle cx="90" cy="40" r="28" fill="none" stroke="currentColor" stroke-width="3.5"/>
+                <!-- Vertical Resistor Box inside circle -->
+                <rect x="80" y="25" width="20" height="30" fill="none" stroke="currentColor" stroke-width="3" rx="1"/>
+                <!-- Leads -->
+                <line x1="20" y1="40" x2="62" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="118" y1="40" x2="160" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Two incoming light arrows from top-left -->
+                <!-- Arrow 1 -->
+                <line x1="50" y1="12" x2="67" y2="29" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                <polygon points="67,29 57,27 65,19" fill="currentColor"/>
+                <!-- Arrow 2 -->
+                <line x1="60" y1="5" x2="77" y2="22" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                <polygon points="77,22 67,20 75,12" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="ldr" tabindex="0" role="region" aria-label="Drop engineering name for LDR here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="ldr" aria-label="Learn about LDR" title="Component Info">ℹ</button>
+          </article>
+
+          <!-- 9. LED (Light Emitting Diode) -->
+          <article class="symbol-card" data-symbol-id="led" id="card-led">
+            <div class="symbol-illustration" aria-label="Symbol: LED (Light Emitting Diode)">
+              <svg viewBox="0 0 180 80" class="symbol-svg">
+                <!-- Enclosing Circle -->
+                <circle cx="90" cy="40" r="28" fill="none" stroke="currentColor" stroke-width="3.5"/>
+                <!-- Diode Triangle pointing right -->
+                <polygon points="77,27 100,40 77,53" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="miter"/>
+                <!-- Diode cathode bar -->
+                <line x1="100" y1="26" x2="100" y2="54" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Through leads -->
+                <line x1="20" y1="40" x2="77" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="100" y1="40" x2="160" y2="40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Two outgoing light arrows pointing top-right -->
+                <!-- Arrow 1 -->
+                <line x1="104" y1="24" x2="120" y2="8" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                <polygon points="120,8 111,16 119,17" fill="currentColor"/>
+                <!-- Arrow 2 -->
+                <line x1="113" y1="33" x2="129" y2="17" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                <polygon points="129,17 120,25 128,26" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="drop-zone" data-target-id="led" tabindex="0" role="region" aria-label="Drop engineering name for LED here">
+              <span class="drop-zone-placeholder">Drop Name Here</span>
+            </div>
+            <button class="info-bubble-btn" data-info-for="led" aria-label="Learn about LED" title="Component Info">ℹ</button>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Right Section: Draggable Engineering Name Cards Pool -->
+      <aside class="labels-pool-section" aria-label="Engineering Name Cards Bank">
+        <div class="pool-header">
+          <h2 class="pool-title">Engineering Names</h2>
+          <button id="btn-shuffle" class="btn-subtle btn-sm" title="Shuffle names">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+            <span>Shuffle</span>
+          </button>
+        </div>
+
+        <div class="labels-bank-grid" id="labels-bank" role="list" aria-label="Available engineering name labels">
+          <!-- Cards matching the layout and labels from the image -->
+          <div class="name-card" draggable="true" data-label-id="lamp-bulb" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">Lamp / Bulb</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="voltmeter" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">Voltmeter</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="ammeter" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">Ammeter</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="led" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">LED</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="open-switch" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">Open Switch</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="ldr" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">LDR</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="fixed-resistor" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">Fixed Resistor</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="cell" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">Cell</span>
+          </div>
+
+          <div class="name-card" draggable="true" data-label-id="variable-resistor" role="listitem" tabindex="0">
+            <span class="drag-grip" aria-hidden="true">⋮⋮</span>
+            <span class="card-text">Variable Resistor</span>
+          </div>
+        </div>
+
+        <!-- Instructional Card / Helper Box -->
+        <div class="pool-footer-card">
+          <div class="helper-content">
+            <h4>💡 How to play:</h4>
+            <ul>
+              <li><strong>Drag & Drop</strong> labels directly into the target slot next to each symbol.</li>
+              <li>Or <strong>Tap a card</strong>, then <strong>tap a slot</strong> to match quickly.</li>
+              <li>Beat the clock: Complete all 9 within <strong>60 seconds</strong>!</li>
+              <li>Click any matched card to return it to the bank.</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- Modals & Drawers -->
+
+    <!-- 1. Results / Game Over Modal -->
+    <div id="modal-result" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="result-title" hidden>
+      <div class="modal-card">
+        <button class="modal-close-btn" id="btn-close-result" aria-label="Close dialog">&times;</button>
+        <div class="modal-icon" id="result-icon-wrap">🏆</div>
+        <h2 id="result-title" class="modal-title">Challenge Complete!</h2>
+        <p id="result-message" class="modal-desc">You matched all circuit symbols successfully.</p>
+
+        <div class="result-stats-grid">
+          <div class="stat-box">
+            <span class="stat-number" id="res-score">9 / 9</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="res-time">00:34</span>
+            <span class="stat-label">Time Remaining</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="res-rank">⚡ Circuit Pro</span>
+            <span class="stat-label">Engineering Rank</span>
+          </div>
+        </div>
+
+        <div class="result-pair-prompt" id="result-pair-prompt">
+          <div class="pair-prompt-header">
+            <span>🗣️ Pair-and-Share Discussion</span>
+          </div>
+          <p id="result-prompt-text">
+            Explain to your partner: Why is an ammeter placed in <strong>series</strong>, but a voltmeter must always be connected in <strong>parallel</strong> across a component?
+          </p>
+        </div>
+
+        <div class="modal-actions">
+          <button id="btn-play-again" class="btn btn-primary btn-lg">Play Again (Shuffle)</button>
+          <button id="btn-review-answers" class="btn btn-secondary btn-lg">Review Matches</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Pair-and-Share Discussion Drawer / Modal -->
+    <div id="modal-pair-share" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pair-title" hidden>
+      <div class="modal-card modal-card-wide">
+        <div class="modal-header-row">
+          <div>
+            <h2 id="pair-title" class="modal-title">🗣️ Pair-and-Share Discussion Prompts</h2>
+            <p class="modal-subtitle">Work with a partner to discuss and solidify your electrical engineering concepts.</p>
+          </div>
+          <button class="modal-close-btn" id="btn-close-pair" aria-label="Close dialog">&times;</button>
+        </div>
+
+        <div class="pair-questions-list">
+          <!-- Question 1 -->
+          <div class="pair-question-card">
+            <div class="pq-header">
+              <span class="pq-number">1</span>
+              <h3>Cell vs. Battery</h3>
+            </div>
+            <p class="pq-text">What is the physical and schematic difference between a <strong>Cell</strong> and a <strong>Battery</strong>? How does connecting cells in series affect total potential difference?</p>
+            <details class="pq-reveal">
+              <summary>View Engineering Explanation</summary>
+              <div class="pq-answer">
+                A single cell is one electrochemical unit (shown as one long positive line and one short thick negative line). A battery consists of two or more cells joined together in series. In series, the total voltage is the sum of the individual cell voltages: \(V_{\text{total}} = V_1 + V_2 + \dots\)
+              </div>
+            </details>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="pair-question-card">
+            <div class="pq-header">
+              <span class="pq-number">2</span>
+              <h3>Ammeter vs. Voltmeter Wiring & Resistance</h3>
+            </div>
+            <p class="pq-text">Why must an <strong>ammeter</strong> have near-zero resistance and be connected in <em>series</em>, while a <strong>voltmeter</strong> must have extremely high resistance and be connected in <em>parallel</em>?</p>
+            <details class="pq-reveal">
+              <summary>View Engineering Explanation</summary>
+              <div class="pq-answer">
+                An ammeter measures current flowing <em>through</em> a branch; near-zero resistance prevents it from reducing circuit current. A voltmeter measures the potential difference <em>between two points</em>; extremely high resistance prevents significant current from diverting through the meter.
+              </div>
+            </details>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="pair-question-card">
+            <div class="pq-header">
+              <span class="pq-number">3</span>
+              <h3>LDR (Light Dependent Resistor) Behavior</h3>
+            </div>
+            <p class="pq-text">How does an LDR's resistance change when light intensity increases? Give a real-world engineering application where this is used in an automatic switching circuit.</p>
+            <details class="pq-reveal">
+              <summary>View Engineering Explanation</summary>
+              <div class="pq-answer">
+                Remember: <strong>LURD</strong> (Light Up, Resistance Down). In bright light, incoming photons free charge carriers, dramatically decreasing resistance. Used in automatic street lamps, smartphone ambient display brightness sensors, and solar trackers.
+              </div>
+            </details>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="pair-question-card">
+            <div class="pq-header">
+              <span class="pq-number">4</span>
+              <h3>LED (Light Emitting Diode) Polarity</h3>
+            </div>
+            <p class="pq-text">Why does an LED only conduct in one direction? What would happen if you reverse the polarity or omit a series current-limiting resistor?</p>
+            <details class="pq-reveal">
+              <summary>View Engineering Explanation</summary>
+              <div class="pq-answer">
+                Diodes are semiconductor p-n junctions that only conduct when forward-biased. In reverse bias, their resistance is enormous and negligible current flows. Without a series resistor to drop excess voltage, the exponential current in forward bias can overheat and burn out the LED instantly.
+              </div>
+            </details>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="pair-question-card">
+            <div class="pq-header">
+              <span class="pq-number">5</span>
+              <h3>Fixed Resistor vs. Variable Resistor</h3>
+            </div>
+            <p class="pq-text">How is a variable resistor (rheostat / potentiometer) used in lighting dimmers or volume dials compared to a fixed resistor?</p>
+            <details class="pq-reveal">
+              <summary>View Engineering Explanation</summary>
+              <div class="pq-answer">
+                A fixed resistor provides a constant opposition to current determined by \(R = \rho \frac{L}{A}\). A variable resistor adjusts the effective conductive length \(L\) using a sliding wiper contact, smoothly modulating current (\(I = V/R\)) to adjust bulb brightness or audio gain.
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="modal-footer-row">
+          <button class="btn btn-primary" id="btn-done-pair">Got it, back to challenge</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Component Details / Sandbox Modal -->
+    <div id="modal-info" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="info-comp-title" hidden>
+      <div class="modal-card">
+        <button class="modal-close-btn" id="btn-close-info" aria-label="Close dialog">&times;</button>
+        <div class="info-modal-header">
+          <div class="info-symbol-preview" id="info-preview-slot"></div>
+          <div>
+            <h2 id="info-comp-title" class="modal-title">Component Name</h2>
+            <span class="component-category-badge" id="info-category">Category</span>
+          </div>
+        </div>
+        <div class="info-content-body">
+          <p id="info-description">Description text...</p>
+          
+          <div class="info-meta-grid">
+            <div class="meta-item">
+              <strong>Circuit Function:</strong>
+              <span id="info-function">Function...</span>
+            </div>
+            <div class="meta-item">
+              <strong>Connection Mode:</strong>
+              <span id="info-connection">Series / Parallel</span>
+            </div>
+            <div class="meta-item">
+              <strong>SI Unit / Key Formula:</strong>
+              <span id="info-formula">Formula...</span>
+            </div>
+            <div class="meta-item">
+              <strong>Everyday Example:</strong>
+              <span id="info-example">Example...</span>
+            </div>
+          </div>
+
+          <!-- Live Interactive Mini-Sandbox for the component -->
+          <div class="interactive-sandbox" id="interactive-sandbox">
+            <div class="sandbox-title">⚡ Interactive Behavior Demo</div>
+            <div class="sandbox-stage" id="sandbox-stage">
+              <!-- Dynamically populated per component -->
+            </div>
+            <div class="sandbox-controls" id="sandbox-controls">
+              <!-- Interactive sliders / toggles -->
+            </div>
+            <div class="sandbox-readout" id="sandbox-readout"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
