@@ -293,7 +293,7 @@ export const KNOWN_SLIDE_SETS = [
     id: "ecology_atmosphere_classic",
     title: "GCSE Science · Ecology & Atmosphere (Classic)",
     category: "Biology & Chemistry",
-    icon: "🌱",
+    icon: "🌍",
     folder: "powerpoints_ecology_atmosphere_sequence_classic",
     description: "Classic classroom sequence: 6-cell retrieval grids, interactive checks, and readable diagrams."
   },
@@ -466,7 +466,14 @@ export function inferSlideSetId(deckId, manifest = null) {
       deckId
     )
   ) {
-    return "ecology_atmosphere";
+    return "ecology_atmosphere_classic";
+  }
+  if (
+    /(?:Composition|Exposure|Portraiture|Macro|Landscape|Architecture|Shadows|Silhouettes|Personal_Project|Photography)/i.test(
+      deckId
+    )
+  ) {
+    return "photography";
   }
   if (
     /(?:PERIODIC|HISTORY.*ATOM|ELECTRON|IONIC|COVALENT|GIANT|METALLIC|POLYMERS|CHROMATOGRAPHY|SEPARATION|ELECTROLYSIS)/i.test(
