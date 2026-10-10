@@ -298,12 +298,11 @@ export const KNOWN_SLIDE_SETS = [
     description: "Classic classroom sequence: 6-cell retrieval grids, interactive checks, and readable diagrams."
   },
   {
-    id: "ecology_atmosphere",
-    title: "GCSE Science · Ecology & Atmosphere",
-    category: "Biology & Chemistry",
-    icon: "🌍",
-    folder: "powerpoints_ecology_atmosphere_sequence",
-    description: "Ecosystems, material cycling, biodiversity, atmospheric evolution, hydrocarbons, and recycling."
+    id: "photography",
+    title: "Adult Photography Masterclass",
+    category: "Creative Arts",
+    icon: "📷",
+    description: "South Devon College 10-Week Adult Photography Course: Composition, Exposure Triangle, Portraiture, Macro, and Personal Project."
   },
   {
     id: "digital_literacy",
