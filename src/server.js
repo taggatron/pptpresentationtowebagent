@@ -78,7 +78,19 @@ function assertSafeDeckId(deckId) {
 }
 
 export const DECK_ALIASES = {
-  Classic_Lesson_05_Carbon_Cycle: "Classic_Lesson_05_Carbon_and_Water_Cycle"
+  Classic_Lesson_05_Carbon_Cycle: "Classic_Lesson_05_Carbon_and_Water_Cycle",
+  Lesson_01_Ecosystems: "Classic_Lesson_01_Ecosystems",
+  Lesson_02_Abundance_and_Distribution: "Classic_Lesson_02_Abundance_and_Distribution",
+  Lesson_03_Competition: "Classic_Lesson_03_Competition",
+  Lesson_04_Nitrogen_Cycle: "Classic_Lesson_04_Nitrogen_Cycle",
+  Lesson_05_Carbon_and_Water_Cycle: "Classic_Lesson_05_Carbon_and_Water_Cycle",
+  Lesson_06_Atmosphere_Evolution: "Classic_Lesson_06_Atmosphere_Evolution",
+  Lesson_07_Crude_Oil_and_Hydrocarbons: "Classic_Lesson_07_Crude_Oil_and_Hydrocarbons",
+  Lesson_08_Greenhouse_Gases_and_Climate_Change: "Classic_Lesson_08_Greenhouse_Gases_and_Climate_Change",
+  Lesson_09_Atmospheric_Pollutants: "Classic_Lesson_09_Atmospheric_Pollutants",
+  Lesson_10_Lifecycle_Assessment_and_Potable_Water: "Classic_Lesson_10_Lifecycle_Assessment_and_Potable_Water",
+  Lesson_11_Recycling_and_Circular_Economy: "Classic_Lesson_11_Recycling_and_Circular_Economy",
+  Lesson_12_Ecology_and_Atmosphere_Unit_Review: "Classic_Lesson_12_Ecology_and_Atmosphere_Unit_Review"
 };
 
 export async function findDeckLocation(decksDir, deckId) {
@@ -544,6 +556,7 @@ async function tryAutoExtractDeck(deckId, decksDir) {
 
     const dirs = await fs.readdir(outputDir);
     for (const dirName of dirs) {
+      if (dirName.includes("powerpoints_ecology_atmosphere_sequence") && !dirName.includes("classic")) continue;
       const subDirPath = path.join(outputDir, dirName);
       const subStat = await fs.stat(subDirPath).catch(() => null);
       if (!subStat || !subStat.isDirectory()) continue;
@@ -1082,35 +1095,7 @@ export function createApp({
         }
       }
 
-      // 3. Any additional converted decks not in known sets
-      const otherDecks = [];
-      for (const [dId, { manifest, unitId }] of convertedMap.entries()) {
-        if (!usedDeckIds.has(dId)) {
-          otherDecks.push({
-            id: manifest.id,
-            title: formatDisplayTitle(manifest.title || manifest.id, manifest.id || dId),
-            totalSlides: manifest.totalSlides || manifest.slides?.length || 0,
-            isExtracted: true
-          });
-        }
-      }
 
-      if (otherDecks.length > 0) {
-        otherDecks.sort(
-          (a, b) =>
-            lessonSortValue(a) - lessonSortValue(b) ||
-            a.title.localeCompare(b.title)
-        );
-        slideSets.push({
-          id: "other",
-          title: "Custom & Additional Presentations",
-          category: "Other",
-          icon: "📁",
-          description: "Ingested presentations and custom slide decks.",
-          totalLessons: otherDecks.length,
-          decks: otherDecks
-        });
-      }
 
       const defaultSlideSetId =
         slideSets.find((s) => s.id === "cell_biology")?.id ||
