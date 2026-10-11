@@ -34,10 +34,10 @@ export function buildManifest() {
   });
 
   const starterQuestions = [
-    { q: "What is the formula linking power, current, and voltage?", a: "P = V × I", cue: "P = V × I" },
-    { q: "What is the unit of electrical power?", a: "Watt (W) = 1 Joule/second", cue: "Joules per second" },
-    { q: "Calculate the power of a kettle with 230 V and 10 A.", a: "2,300 W (2.3 kW)", cue: "P = 230 × 10" },
-    { q: "What formula links energy, power, and time?", a: "E = P × t", cue: "Energy = Power × time" },
+    { q: "What formula links electrical charge (Q), current (I), and time (t)?", a: "Q = I × t", cue: "Q = I × t" },
+    { q: "What is the unit of electrical power, and what does 1 Watt equal?", a: "Watt (W) = 1 Joule/second", cue: "Joules per second" },
+    { q: "What formula links energy (E), charge (Q), and potential difference (V)?", a: "E = Q × V", cue: "E = Q × V" },
+    { q: "A kettle operates on 230 V mains and draws 10 A. Calculate its power.", a: "2,300 W (2.3 kW)", cue: "P = 230 × 10" },
     { q: "How much energy does a 2.3 kW kettle transfer in 200 seconds?", a: "460,000 J (460 kJ)", cue: "E = 2300 × 200" },
     { q: "If P = I² × R, what happens to cable heat loss if current doubles?", a: "Power quadruples (increases by 4×)", cue: "Squared relationship" }
   ];
@@ -52,14 +52,21 @@ export function buildManifest() {
   ];
 
   const titles = [
-    "The Kettle vs. The Supercharger: Decoding Electrical Power",
-    "Starter Activity: Knowledge Retrieval (Electrical Power)",
-    "Fundamental Formula: Power as the Rate of Energy Transfer (P = E / t)",
+    "Electrical Power & EV Charging Calculations",
+    "Starter Activity: Knowledge Retrieval (6-Question Grid)",
+    "The Kettle vs. The Supercharger: The 152 Kettle Puzzle",
+    "Fundamental Formula: Power as Rate of Energy Transfer (P = E / t)",
+    "Charge Flow & Energy Transfer: Inside the Battery (Q = It & E = QV)",
     "Inside the Cable: Current & Voltage Trade-offs (P = IV)",
     "The Heat Problem & Thermal Limits (P = I²R)",
     "Student Calculation Challenge: Motorway Charging Scenario",
-    "Summary & Master Formula Matrix: Flow, Power & Energy",
-    "Engineering Plenary & Real-World Grid Demands"
+    "Master Formula Matrix & Units: Flow, Power & Energy",
+    "Energy vs. Power: The Tank & Flow Analogy (kWh vs kW)",
+    "Sankey Diagram: Energy Efficiency in Rapid EV Charging",
+    "National Grid Transmission: Why Step-Up Transformers Prevent Losses",
+    "Transformer Calculations: Step-Up vs. Step-Down Conservation",
+    "GCSE Exam Pitfalls: Prefixes, Time Units & Common Traps",
+    "Plenary Knowledge Check: 3 Consolidation Questions"
   ];
 
   const slides = standardizedSlideFiles.map((file, idx) => {
