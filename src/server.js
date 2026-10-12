@@ -394,6 +394,14 @@ export const KNOWN_SLIDE_SETS = [
     icon: "⚡",
     folder: "powerpoints_physics_electricity_magnetism",
     description: "Static electricity, DC circuits, Ohm's law, series vs parallel, electromagnets, and electric motors with interactive simulations."
+  },
+  {
+    id: "electrical_installation_diploma_level_2",
+    title: "Electrical Installation Diploma Level 2",
+    category: "Electrical Engineering",
+    icon: "⚡",
+    folder: "powerpoints_electrical_installation_level_2",
+    description: "City & Guilds 2365 / EAL Level 2 Diploma in Electrical Installations · Force, Energy, Work, Power & Electrical Principles."
   }
 ];
 
