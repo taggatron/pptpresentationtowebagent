@@ -19,6 +19,7 @@ let geminiBuildRequestCounter = 0;
 let deckSessionToken = 0;
 let editPointerInteraction = null;
 let slideAutoAdvanceTimer = null;
+let slide1VideoAutoTransitionTimer = null;
 
 const deckSelect = document.getElementById("deckSelect");
 const slideSetBtn = document.getElementById("slideSetBtn");
@@ -1315,6 +1316,19 @@ function hideSlideVideo() {
   updateVideoPlaybackStateUI(false);
 }
 
+function triggerSlide1VideoCompletionTransition() {
+  if (currentSlideIndex !== 0 || !currentDeck || currentDeck.slides.length <= 1) return;
+  if (slide1VideoAutoTransitionTimer) return;
+
+  // Gracefully hold the final video frame momentarily, then auto-transition to slide 2
+  slide1VideoAutoTransitionTimer = setTimeout(() => {
+    slide1VideoAutoTransitionTimer = null;
+    if (currentSlideIndex === 0 && currentDeck && currentDeck.slides.length > 1) {
+      goToNextSlide();
+    }
+  }, 350);
+}
+
 function showVideoBuild(slide, build) {
   if (!slideVideo || !build?.videoUrl) return;
   slideVideo.pause();
@@ -1371,10 +1385,18 @@ function showVideoBuild(slide, build) {
   addVideoListener(slideVideo, "pause", () => {
     updateVideoPlaybackStateUI(false);
     if (isPresentationWindow) broadcastVideoStateFromPresentation();
+    const reachedEnd = (endTime !== null && slideVideo.currentTime >= endTime - 0.05) || slideVideo.ended;
+    if (!reachedEnd && slide1VideoAutoTransitionTimer) {
+      clearTimeout(slide1VideoAutoTransitionTimer);
+      slide1VideoAutoTransitionTimer = null;
+    }
   });
   addVideoListener(slideVideo, "ended", () => {
     updateVideoPlaybackStateUI(false);
     if (isPresentationWindow) broadcastVideoStateFromPresentation();
+    if (currentSlideIndex === 0) {
+      triggerSlide1VideoCompletionTransition();
+    }
   });
   addVideoListener(slideVideo, "timeupdate", () => {
     updateVideoTimeBadge();
@@ -1479,13 +1501,16 @@ function showVideoBuild(slide, build) {
       let segmentAnimFrame = null;
       const checkSegmentEnd = () => {
         if (token !== videoPlaybackToken) return;
-        if (slideVideo.currentTime >= endTime) {
+        if (slideVideo.currentTime >= endTime || (endTime > 0 && Math.abs(slideVideo.currentTime - endTime) < 0.04)) {
           slideVideo.pause();
           try {
             slideVideo.currentTime = endTime;
           } catch (error) {}
           updateVideoPlaybackStateUI(false);
           if (isPresentationWindow) broadcastVideoStateFromPresentation();
+          if (currentSlideIndex === 0) {
+            triggerSlide1VideoCompletionTransition();
+          }
           return;
         }
         if (!slideVideo.paused) {
@@ -1494,13 +1519,16 @@ function showVideoBuild(slide, build) {
       };
       const stopAtSegmentEnd = () => {
         if (token !== videoPlaybackToken) return;
-        if (slideVideo.currentTime >= endTime) {
+        if (slideVideo.currentTime >= endTime || (endTime > 0 && Math.abs(slideVideo.currentTime - endTime) < 0.04)) {
           slideVideo.pause();
           try {
             slideVideo.currentTime = endTime;
           } catch (error) {}
           updateVideoPlaybackStateUI(false);
           if (isPresentationWindow) broadcastVideoStateFromPresentation();
+          if (currentSlideIndex === 0) {
+            triggerSlide1VideoCompletionTransition();
+          }
         } else if (!slideVideo.paused && !segmentAnimFrame) {
           segmentAnimFrame = requestAnimationFrame(checkSegmentEnd);
         }
@@ -5618,6 +5646,55 @@ function renderSlide(index) {
   if (slideAutoAdvanceTimer) {
     clearTimeout(slideAutoAdvanceTimer);
     slideAutoAdvanceTimer = null;
+  }
+  if (slide1VideoAutoTransitionTimer) {
+    clearTimeout(slide1VideoAutoTransitionTimer);
+    slide1VideoAutoTransitionTimer = null;
+  }
+
+  const prevSlideIndex = currentSlideIndex;
+  const isTransitionToSlide2 = (index === 1 && prevSlideIndex !== 1);
+
+  // Clean up any in-flight transition clone elements
+  document.querySelectorAll(".slide-transition-clone").forEach((el) => el.remove());
+  slideImage?.classList.remove("slide-gaussian-blur-enter");
+  interactiveOverlay?.classList.remove("slide-gaussian-blur-enter");
+
+  if (isTransitionToSlide2 && slideWrapper) {
+    const isVideoVisible = Boolean(slideVideo && !slideVideo.classList.contains("hidden") && slideVideo.src);
+    if (isVideoVisible) {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.className = "slide-transition-clone slide-gaussian-blur-exit";
+        canvas.width = slideVideo.videoWidth || slideWrapper.clientWidth || 1920;
+        canvas.height = slideVideo.videoHeight || slideWrapper.clientHeight || 1080;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(slideVideo, 0, 0, canvas.width, canvas.height);
+        slideWrapper.appendChild(canvas);
+        setTimeout(() => canvas.remove(), 850);
+      } catch (err) {
+        if (slideImage?.src) {
+          const cloneImg = document.createElement("img");
+          cloneImg.className = "slide-transition-clone slide-gaussian-blur-exit";
+          cloneImg.src = slideVideo.poster || slideImage.src;
+          slideWrapper.appendChild(cloneImg);
+          setTimeout(() => cloneImg.remove(), 850);
+        }
+      }
+    } else if (slideImage?.src && !slideImage.classList.contains("hidden")) {
+      const cloneImg = document.createElement("img");
+      cloneImg.className = "slide-transition-clone slide-gaussian-blur-exit";
+      cloneImg.src = slideImage.src;
+      slideWrapper.appendChild(cloneImg);
+      setTimeout(() => cloneImg.remove(), 850);
+    }
+
+    slideImage?.classList.add("slide-gaussian-blur-enter");
+    if (interactiveOverlay) interactiveOverlay.classList.add("slide-gaussian-blur-enter");
+    setTimeout(() => {
+      slideImage?.classList.remove("slide-gaussian-blur-enter");
+      interactiveOverlay?.classList.remove("slide-gaussian-blur-enter");
+    }, 850);
   }
 
   stopAutoPlay();
