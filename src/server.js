@@ -524,6 +524,9 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (/(?:AAQ|Human_Bio|Human_Biology|Biomedical|Introductory_Unit_Synthesis)/i.test(deckId)) {
     return "intro_aaq_human_bio";
   }
+  if (/(?:Electrical|Installation|Unit_202|2365|Force_Energy_Work_Power)/i.test(deckId)) {
+    return "electrical_installation_diploma_level_2";
+  }
   return "other";
 }
 
