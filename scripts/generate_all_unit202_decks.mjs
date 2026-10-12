@@ -736,11 +736,11 @@ Slide 2: Starter Activity: Knowledge Retrieval (6-Question Grid)
   6. Transistor terminals: Base, Collector, Emitter.
 
 Slide 3: CRITICAL ENGAGING HOOK
-- Title: "The EV Charger Relay Meltdown: The £0.10 Flyback Diode That Saved a £1,200 Controller"
-- Trade Scenario: An electrician installs an intelligent 7.4 kW EV chargepoint. Every time the heavy contactor turns off, the electronic control board resets and permanently destroys its microprocessor!
-- The Dilemma: Magnetic field collapse across the inductive contactor coil induces an instantaneous reverse EMF voltage spike exceeding 1,200 V (Lenz's Law: e = -L di/dt).
-- The Consequence: Without a reverse-biased semiconductor "flyback diode" connected across the coil, the 1,200 V spike arc-flashes across the driving transistor, instantly frying the microprocessor board.
-- The Takeaway: "Modern electrical work is no longer just heavy copper and conduit; every modern building uses semiconductors to control smart relays, dimmers, solar inverters, and EV chargers."
+- Title: "The Smart Relay Failure: Why a 10p Diode Protects an Industrial Control System"
+- Trade Scenario: Installing an automated industrial HVAC control panel and EV chargepoint controller.
+- The Dilemma: When a 24V contactor or solenoid coil de-energises, the rapid magnetic field collapse induces a high-voltage back-EMF spike.
+- The Consequence: Without a reverse-biased semiconductor freewheeling diode across the coil, high back-voltage stresses the driving transistor switch.
+- The Takeaway: "Modern electrical installations integrate semiconductors throughout lighting controls, smart relays, inverters, and HVAC building systems."
 
 Slide 4: Semiconductor Physics & PN Junction Diodes
 - Atomic structure of Silicon (4 valence electrons) and doping (P-type with holes, N-type with free electrons).
@@ -755,38 +755,38 @@ Slide 5: WORKED EXAMPLE 1: Sizing an LED Dropper Resistor
 - Step 1: Calculate voltage drop required across the resistor:
   • V_resistor = V_supply - V_LED = 24 V - 2.4 V = 21.6 V.
 - Step 2: Use Ohm's Law to calculate resistance:
-  • R = V_resistor / I = 21.6 V / 0.02 A = 1,080 Ω.
-  • Standard E12/E24 preferred value: 1.1 kΩ (1,100 Ω) or 1.2 kΩ.
+  • R = V_resistor / I = 21.6 V / 0.02 A = 1,080 Ohms.
+  • Standard preferred value: 1.1 kOhm (1,100 Ohms) or 1.2 kOhm.
 - Step 3: Calculate power dissipated by the resistor:
   • P = V × I = 21.6 V × 0.02 A = 0.432 Watts (or P = I²R = 0.02² × 1,080 = 0.432 W).
-- Step 4: Trade selection: A standard 0.25 W resistor would burn out! A 1.0 Watt or 2.0 Watt rated metal-film resistor must be installed to prevent overheating.
+- Step 4: Trade selection: A standard 0.25 W resistor would overheat! A 1.0 Watt rated metal-film resistor must be installed.
 
 Slide 6: AC to DC Rectification & Filtering Circuits
-- Half-Wave Rectification: Single diode passes positive half-cycles; wastes negative half-cycles.
+- Half-Wave Rectification: Single diode passes positive half-cycles; blocks negative half-cycles.
 - Full-Wave Bridge Rectification: 4 diodes in a bridge arrangement steer both positive and negative AC half-cycles into unipolar pulsating DC.
 - Reservoir / Smoothing Capacitors: Charge storage during voltage peaks and discharging into the load during AC zero-crossings, drastically reducing ripple voltage.
 
 Slide 7: WORKED EXAMPLE 2: Capacitors: Electric Charge & Energy Storage
-- Problem Statement: A power supply filter circuit uses a 470 μF (470 × 10⁻⁶ F) electrolytic smoothing capacitor charged to a DC bus voltage of 50 V. Calculate:
+- Problem Statement: A power supply filter circuit uses a 470 microfarad (470 × 10⁻⁶ F) electrolytic smoothing capacitor charged to a DC bus voltage of 50 V. Calculate:
   1. The electrical charge (Q) stored in Coulombs.
   2. The electrostatic energy (W) stored in Joules.
 - Step 1: Calculate stored charge: Q = C × V.
   • Q = (470 × 10⁻⁶) × 50 = 0.0235 Coulombs (23.5 mC).
 - Step 2: Calculate stored energy: W = 0.5 × C × V².
   • W = 0.5 × (470 × 10⁻⁶) × 50² = 0.5 × (470 × 10⁻⁶) × 2,500 = 0.5875 Joules.
-- Step 3: Safety practice: High-voltage capacitors in VFD motor inverters store lethal energy; always verify safe zero voltage with a GS38 tester after isolating!
+- Step 3: Safety practice: High-voltage capacitors in VFD motor inverters store electrical energy; always verify safe isolation with a GS38 tester before maintenance!
 
 Slide 8: Bipolar Transistors (BJT) as Solid-State Switches
 - NPN Transistor operation:
   • Collector (C), Base (B), Emitter (E).
-  • A tiny base current (e.g. 5 mA) controls a large collector current (e.g. 500 mA) through current gain: I_C = β × I_B.
-- Solid-State switching advantages over mechanical relays: No moving parts, zero contact bounce, microsecond switching speed, infinite cycle lifespan.
+  • A tiny base current (e.g. 5 mA) controls a large collector current (e.g. 500 mA) through current gain.
+- Solid-State switching advantages over mechanical relays: No moving parts, zero contact bounce, microsecond switching speed, long operational lifespan.
 
 Slide 9: WORKED EXAMPLE 3: Thermistor / LDR Voltage Divider Sensor Circuit
-- Problem Statement: A heating control system uses a Negative Temperature Coefficient (NTC) thermistor in a potential divider circuit with a fixed 10 kΩ resistor supplied at 12 V DC.
-  • At 20°C: Thermistor resistance = 10 kΩ.
-  • At 5°C (frost condition): Thermistor resistance increases to 30 kΩ.
-  Calculate the sensor output voltage (V_out across the fixed 10 kΩ resistor) at both temperatures.
+- Problem Statement: A heating control system uses a Negative Temperature Coefficient (NTC) thermistor in a potential divider circuit with a fixed 10 kOhm resistor supplied at 12 V DC.
+  • At 20°C: Thermistor resistance = 10 kOhm.
+  • At 5°C (frost condition): Thermistor resistance increases to 30 kOhm.
+  Calculate the sensor output voltage (V_out across the fixed 10 kOhm resistor) at both temperatures.
 - Step 1: Potential divider formula: V_out = V_supply × [R_fixed / (R_thermistor + R_fixed)].
 - Step 2: At 20°C:
   • V_out = 12 × [10 / (10 + 10)] = 12 × (10 / 20) = 6.0 V.
@@ -1088,6 +1088,10 @@ export async function generateLessonDeck(lessonConfig) {
       currentTopText = (await cards.first().innerText().catch(() => "")).replace(/\s+/g, " ").trim();
     }
 
+    if (/failed|error/i.test(currentTopText)) {
+      throw new Error(`Gemini Notebook reported generation failure: "${currentTopText}"`);
+    }
+
     const isTopCardGenerating = /generating|sync\b/i.test(currentTopText);
     const matchesTitle = titleWords.some(kw => currentTopText.toLowerCase().includes(kw));
 
@@ -1107,6 +1111,15 @@ export async function generateLessonDeck(lessonConfig) {
   }
 
   await page.waitForTimeout(3000);
+
+  // If viewer is not open, click the top artifact card to open it
+  const isViewerCurrentlyOpen = (await page.locator('.studio-panel button[aria-label="More options"]').count()) > 0;
+  if (!isViewerCurrentlyOpen) {
+    log("Opening top artifact card in Studio panel...");
+    const topCard = page.locator("artifact-library-item").first();
+    await topCard.click().catch(() => {});
+    await page.waitForTimeout(3000);
+  }
 
   // Trigger PowerPoint download
   const pptxTargetFile = path.join(PPTX_OUTPUT_DIR, `${lessonConfig.deckId}.pptx`);
@@ -1241,29 +1254,31 @@ export async function ingestLessonDeck(lessonConfig, pptxTargetFile) {
 }
 
 // CLI Runner
-const args = process.argv.slice(2);
-if (args[0] === "all") {
-  const lessonsToRun = [2, 3, 4, 6, 7, 8];
-  for (const num of lessonsToRun) {
-    const lesson = UNIT_202_LESSONS.find(l => l.number === num);
-    if (lesson) {
-      log(`Starting batch generation for Lesson ${num}...`);
-      await generateLessonDeck(lesson);
-      log(`Completed generation for Lesson ${num}. Waiting 5 seconds before next...`);
-      await new Promise(r => setTimeout(r, 5000));
+if (process.argv[1] && process.argv[1].endsWith('generate_all_unit202_decks.mjs')) {
+  const args = process.argv.slice(2);
+  if (args[0] === "all") {
+    const lessonsToRun = [2, 3, 4, 6, 7, 8];
+    for (const num of lessonsToRun) {
+      const lesson = UNIT_202_LESSONS.find(l => l.number === num);
+      if (lesson) {
+        log(`Starting batch generation for Lesson ${num}...`);
+        await generateLessonDeck(lesson);
+        log(`Completed generation for Lesson ${num}. Waiting 5 seconds before next...`);
+        await new Promise(r => setTimeout(r, 5000));
+      }
     }
-  }
-  log("All Unit 202 lessons successfully generated and ingested!");
-  process.exit(0);
-} else {
-  const lessonNum = parseInt(args[0], 10) || 1;
-  const selectedLesson = UNIT_202_LESSONS.find(l => l.number === lessonNum) || UNIT_202_LESSONS[0];
-
-  generateLessonDeck(selectedLesson).then(() => {
-    log(`Successfully completed generation and ingestion for Lesson ${selectedLesson.number}!`);
+    log("All Unit 202 lessons successfully generated and ingested!");
     process.exit(0);
-  }).catch((err) => {
-    console.error("Fatal error during lesson generation:", err);
-    process.exit(1);
-  });
+  } else {
+    const lessonNum = parseInt(args[0], 10) || 1;
+    const selectedLesson = UNIT_202_LESSONS.find(l => l.number === lessonNum) || UNIT_202_LESSONS[0];
+
+    generateLessonDeck(selectedLesson).then(() => {
+      log(`Successfully completed generation and ingestion for Lesson ${selectedLesson.number}!`);
+      process.exit(0);
+    }).catch((err) => {
+      console.error("Fatal error during lesson generation:", err);
+      process.exit(1);
+    });
+  }
 }
