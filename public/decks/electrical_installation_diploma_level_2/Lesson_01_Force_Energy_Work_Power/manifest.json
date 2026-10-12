@@ -17,6 +17,55 @@
       "sourceMediaPath": "ppt/media/image1.png",
       "isInteractive": false,
       "interactiveType": null,
+      "hasProgressiveBuilds": true,
+      "progressiveBuilds": [
+        {
+          "id": "build_hook_teaser_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Build 1: Hook Question (Who would win?)",
+          "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_boxer_vs_mma_teaser.png",
+          "posterUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_boxer_vs_mma_teaser.png"
+        },
+        {
+          "id": "build_physics_reveal_2",
+          "version": 2,
+          "kind": "image",
+          "label": "Build 2: Physics Revelation (Linear Force vs. Levers & Torque)",
+          "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_boxer_vs_mma_clean.png",
+          "posterUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_boxer_vs_mma_clean.png",
+          "transition": "crossfade"
+        },
+        {
+          "id": "build_scientists_reveal_3",
+          "version": 3,
+          "kind": "image",
+          "label": "Build 3: Scientific Pioneers (Newton the Boxer, Joule the MMA Fighter)",
+          "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_scientists_newton_joule_showdown.png",
+          "posterUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_scientists_newton_joule_showdown.png",
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "build_hook_teaser_1",
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "build_physics_reveal_2",
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "build_scientists_reveal_3",
+            "revealType": "crossfade"
+          }
+        ]
+      },
       "cognitiveGuide": {
         "estimatedTimeSeconds": 90,
         "timeGuideDisplay": "90s",
@@ -28,18 +77,28 @@
       },
       "history": [
         {
+          "id": "ver_boxer_vs_mma_teaser",
+          "label": "Build 1: Hook Question Teaser (No Badges, Question Banner)",
+          "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_boxer_vs_mma_teaser.png"
+        },
+        {
           "id": "ver_boxer_vs_mma_clean",
-          "label": "Version 3: Heavyweight Boxer vs MMA Fighter (Clean Artwork - No Clutter)",
+          "label": "Build 2: Physics Revelation (Clean Artwork with Badges & Science Banner)",
           "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_boxer_vs_mma_clean.png"
         },
         {
+          "id": "ver_scientists_showdown",
+          "label": "Build 3: Scientific Pioneers (Newton the Boxer, Joule the MMA Fighter)",
+          "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_scientists_newton_joule_showdown.png"
+        },
+        {
           "id": "ver_boxer_vs_mma_bullets",
-          "label": "Version 2: Heavyweight Boxer vs MMA Fighter (With Text Bullets)",
+          "label": "Version: Heavyweight Boxer vs MMA Fighter (With Text Bullets)",
           "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_boxer_vs_mma_with_text.png"
         },
         {
           "id": "ver_orig_pioneers",
-          "label": "Version 1: Historical Pioneers (Newton & Joule)",
+          "label": "Version: Historical Pioneers (Newton & Joule)",
           "imageUrl": "/decks/electrical_installation_diploma_level_2/Lesson_01_Force_Energy_Work_Power/slides/slide_01_pioneers_newton_joule.png"
         }
       ]
