@@ -3,7 +3,7 @@ export const NOTEBOOK_URL = "https://notebook.google.com/notebook/d1431642-e474-
 export const INTRO_VIDEO_URL = NOTEBOOK_URL;
 export const OUTPUT_DIR_NAME = "powerpoints_aaq_genetics";
 export const CHECKPOINT_FILE_NAME = "checkpoint_aaq_genetics.json";
-export const END_LESSON_DEFAULT = 8;
+export const END_LESSON_DEFAULT = 9;
 export const DRIVE_FOLDER_NAME = "AAQ Human Biology Genetics";
 export const LESSON_LEVEL = "OCR Level 3 Cambridge Advanced National (AAQ) and A Level Biology learners";
 export const INCLUDE_LESSON1_COURSE_OUTLINE = true;
@@ -15,7 +15,8 @@ export const MAXIMIZE_LEARNING_GAMES = true;
 
 export const courseParts = [
   "Part 1: Molecular Foundations, Replication & Expression (Lessons 1–4)",
-  "Part 2: Mutation Biology, Monogenic & Cytogenetic Pathology (Lessons 5–8)"
+  "Part 2: Mutation Biology, Monogenic & Cytogenetic Pathology (Lessons 5–8)",
+  "Part 3: NEA Synoptic Case Study, Clinical Genetics & Research Skills (Lesson 9)"
 ];
 
 export const lessons = [
@@ -655,7 +656,105 @@ export const lessons = [
     plenary: [
       "Complex human disease represents the intersection of polygenic risk architectures and environmental exposures.",
       "GWAS and Polygenic Risk Scores represent the frontier of precision medicine, moving healthcare from reactive treatment to proactive risk stratification.",
-      "Unit F172 Genetics Synthesis: We have journeyed from DNA structure, through expression and mutation, to the population genomics of human disease."
+      "Unit F172 Genetics Synthesis: We have journeyed from DNA structure, through expression and mutation, to the population genomics of human disease.",
+      "Next Lesson: Genetics NEA Task 1: Huntington's disease inheritance — synoptic clinical case study revision (Ben), molecular pathology, genetic anticipation, and academic research & referencing."
+    ]
+  },
+  {
+    number: 9,
+    part: 3,
+    teacher: "Dan",
+    deckId: "Lesson_09_Genetics_NEA_Task_1_Huntingtons_Case_Study_Revision",
+    title: "Genetics NEA Task 1: Huntington's disease inheritance (Ben case study)",
+    focus: "Huntington's Disease Inheritance, CAG Triplet Repeats, Striatal Neuronal Degeneration, Genetic Anticipation, and Academic Research & Referencing for NEA Task 1",
+    deliverable: "Complete the synoptic NEA Task 1 portfolio scaffold: analyze Ben's clinical case study (autosomal dominant transmission, 50% inheritance risk across all 3 children, CAG expansion mechanisms, and striatal MSN apoptosis), evaluate genetic testing and reproductive ethics (presymptomatic testing in minors, prenatal CVS/amniocentesis, and PGD/IVF), and construct an academic literature review with full Harvard referencing.",
+    details: "Comprehensive revision of all core genetic knowledge and coursework research skills required to achieve top marks in Task 1 of the Unit F172 Genetics Non-Exam Assessment (NEA). 1. Clinical Case Study Analysis (Ben, 40-year-old teacher): Early-stage Huntington's disease diagnosis following a 1-year history of motor chorea (involuntary jerky movements of arms, legs, face), progressive loss of fine motor coordination (struggling to grip pens, affecting teaching and causing professional embarrassment), and brain MRI scan showing neurodegenerative striatal atrophy (caudate nucleus and putamen loss, ventricular enlargement). Critical adoption context: Ben was adopted at age two with unknown biological medical history; highlights how late-onset autosomal dominant conditions (symptoms appearing at age 30–50) can remain entirely unrecognised across generations when biological parentage is severed or ancestors die young from unlinked causes. 2. Molecular Pathology & The HTT Gene: Located on chromosome 4p16.3, the HTT gene encodes the large huntingtin protein essential for neurogenesis, vesicular transport, and BDNF transcription. Pathology is driven by an unstable trinucleotide CAG repeat expansion in exon 1, encoding an elongated polyglutamine (polyQ) tract. Diagnostic CAG repeat thresholds: Normal alleles (<=26 repeats, stable transmission); Intermediate alleles (27–35 repeats, clinically unaffected but meiotically mutable, posing risk to offspring); Reduced penetrance alleles (36–39 repeats, variable late onset); Full penetrance alleles (>=40 repeats, 100% lifetime probability of developing HD; inverse correlation between repeat length and age of onset; juvenile onset >60 repeats). 3. Cellular & Neuronal Pathophysiology: Mutant huntingtin (mHTT) undergoes toxic gain-of-function due to altered tertiary structure and misfolding into insoluble beta-sheet oligomers and intranuclear inclusion bodies. Cellular consequences: disruption of microtubule axonal transport of vesicles, mitochondrial respiratory dysfunction and increased oxidative stress, and sequestration of transcription factors and coactivators (such as CREB-binding protein / CBP), which silences transcription of Brain-Derived Neurotrophic Factor (BDNF) in the cortex and striatum. This triggers selective apoptotic neurodegeneration of GABAergic Medium Spiny Neurons (MSNs) within the striatum (caudate nucleus and putamen of the basal ganglia). Loss of GABAergic inhibitory output disinhibits the motor thalamus and cerebral cortex, causing hyperkinetic choreiform motor symptoms, alongside progressive executive cognitive dysfunction and affective psychiatric symptoms (depression, apathy). 4. Mode of Inheritance & Pedigree Risk for Ben's Family: Autosomal dominant monogenic transmission. Ben is heterozygous (genotype Hh; carrying one expanded CAG allele and one normal allele); his wife is homozygous unaffected (hh). Punnett square cross Hh x hh demonstrates: 50% (1 in 2) probability for EACH biological child inheriting the mutant HTT allele and developing Huntington's disease. Crucial genetic counselling principle: risk is entirely independent for each conception (the birth of an unaffected child does not reduce or alter the 50% risk for subsequent siblings); therefore, Ben's 6-year-old daughter, 3-year-old son, and unborn 3rd child each face an independent 50% risk of inheriting the fatal condition. 5. Genetic Anticipation & Parental Transmission Bias: Anticipation is the clinical phenomenon whereby a genetic condition manifests at an earlier age and with increasing clinical severity in successive generations. Biological mechanism: replication slippage by DNA polymerase during meiotic gametogenesis, where the repetitive CAG tract forms unstable secondary hairpin loop structures that are erroneously repaired with additional repeats. Paternal transmission bias: spermatogenesis involves continuous, lifelong mitotic and meiotic stem cell divisions (hundreds of cycles) with high replication slippage and reduced DNA repair efficiency compared to oogenesis (which arrests in prophase I dictyotene with fewer total divisions). Because Ben is a biological father transmitting the gene, his children are at significant risk of receiving an expanded CAG repeat tract (> Ben's repeat count), potentially causing juvenile-onset Huntington's disease (onset <20 years) or earlier onset than Ben's presentation at age 39. 6. Clinical Genetic Testing, Reproductive Genetics & Medical Technologies: (a) Presymptomatic / predictive testing: UK clinical consensus and British Society for Genetic Medicine guidelines strictly prohibit testing asymptomatic minor children (the 6-year-old daughter and 3-year-old son) until they reach the age of majority (18 years) to preserve their future autonomy and 'right not to know', as testing offers no childhood preventative therapy and carries severe psychological implications. (b) Prenatal diagnosis for the current pregnancy: Invasive procedures such as Chorionic Villus Sampling (CVS at 11–14 weeks) or Amniocentesis (15–20 weeks) to harvest fetal DNA for PCR CAG sizing (~0.5% miscarriage risk; raises ethical dilemma regarding termination of an affected pregnancy). (c) Pre-implantation Genetic Diagnosis (PGD / PGT-M) with IVF: For future pregnancies, embryos created in vitro undergo blastocyst biopsy and PCR testing; only embryos carrying two normal alleles (hh) are transferred, guaranteeing an unaffected child without requiring termination. Non-disclosure PGD protocol can be utilised if an at-risk parent does not want to learn their own status. (d) Current vs Emerging Therapies: Current management is purely symptomatic (tetrabenazine / deutetrabenazine to reduce chorea by inhibiting vesicular monoamine transporter 2 [VMAT2], depleting presynaptic dopamine; physiotherapy; speech therapy). Emerging technologies: disease-modifying therapies in clinical development include antisense oligonucleotides (ASOs, e.g. tominersen) targeting HTT pre-mRNA to downregulate toxic mutant protein synthesis, RNA interference (RNAi), and CRISPR-Cas9 / zinc-finger epigenetic repression targeting expanded CAG repeats. 7. Coursework Skills Workshop — Research & Referencing for NEA Task 1: (a) Formulating academic literature search strategies using Boolean logic (AND, OR, NOT), wildcard truncation (*), and MeSH headings across PubMed, Europe PMC, NICE Clinical Knowledge Summaries, and the NHS Huntington's Disease clinical network. (b) Evaluating source validity using the CRAAP framework (Currency, Relevance, Authority, Accuracy, Purpose) to distinguish high-impact peer-reviewed medical journals and clinical consensus guidelines from commercial blog posts or patient advocacy opinion. (c) Strict Harvard referencing: precise in-text author-date citations (e.g. 'Walker (2007) states...' or '...selective striatal neurodegeneration (Bates et al., 2015)') and complete bibliographic entries formatted according to institutional academic standards (Author surname, Initials., Year. Title of article. Full Title of Journal, Volume(Issue), pp. Page numbers. DOI/URL).",
+    starterQuestions: [
+      { q: "What is the genotype of an individual affected by a heterozygous autosomal dominant disorder such as Huntington's disease?", a: "Hh (heterozygous, carrying one mutant expanded HTT allele and one normal allele)." },
+      { q: "What is the mathematical probability that an affected heterozygous parent (Hh) transmits Huntington's disease to each biological child when mated with an unaffected partner (hh)?", a: "50% (1 in 2, or a probability of 0.5) for each pregnancy, independent of the sex or health of previous children." },
+      { q: "Which specific trinucleotide triplet sequence undergoes pathological expansion in exon 1 of the HTT gene on chromosome 4p16.3?", a: "Cytosine-Adenine-Guanine (CAG), encoding an elongated polyglutamine (polyQ) tract." },
+      { q: "What is the diagnostic full-penetrance CAG repeat threshold for Huntington's disease?", a: "40 or more CAG repeats (>=40 CAG repeats confers 100% lifetime penetrance of Huntington's disease)." },
+      { q: "Which specific population of neurons within the basal ganglia undergoes selective degeneration in early-stage Huntington's disease?", a: "GABAergic Medium Spiny Neurons (MSNs) within the striatum (caudate nucleus and putamen)." },
+      { q: "Why is genetic anticipation in Huntington's disease significantly more pronounced when the mutant allele is transmitted paternally rather than maternally?", a: "Continuous, lifelong meiotic cell divisions in spermatogenesis generate high rates of DNA replication slippage compared to oogenesis." }
+    ],
+    objectives: {
+      knowledge: "Explain how CAG repeat expansions in the HTT gene cause mutant huntingtin protein aggregation, selective striatal MSN apoptosis, and motor chorea, defining genetic anticipation.",
+      application: "Apply autosomal dominant inheritance principles (Punnett square cross Hh x hh) to calculate transmission probabilities (50% per child) and evaluate clinical testing pathways for Ben's family.",
+      evaluation: "Evaluate ethical dilemmas in predictive testing of minors versus prenatal diagnosis (CVS/amniocentesis) and PGD/IVF, applying CRAAP criteria and Harvard referencing to NEA Task 1 evidence."
+    },
+    terminology: [
+      { term: "Trinucleotide CAG Repeat", def: "An unstable tandem repeat of Cytosine-Adenine-Guanine in exon 1 of the HTT gene encoding an expanded polyglutamine (polyQ) tract." },
+      { term: "Toxic Gain-of-Function", def: "Pathological property where mutant huntingtin protein misfolds, aggregates, and destroys striatal GABAergic medium spiny neurons." },
+      { term: "Autosomal Dominant Inheritance", def: "A pattern of monogenic inheritance where a single copy of a mutant allele on a non-sex chromosome is sufficient to cause the disease." },
+      { term: "Genetic Anticipation", def: "The phenomenon where symptoms manifest at an earlier age and with greater clinical severity in successive generations due to meiotic repeat expansion." },
+      { term: "Paternal Transmission Bias", def: "Pronounced repeat expansion occurring during spermatogenesis due to continuous germline replication slippage, risking juvenile HD." },
+      { term: "Pre-implantation Genetic Diagnosis (PGD/PGT-M)", def: "Testing in vitro embryos prior to uterine implantation, selecting only unaffected (hh) embryos to prevent disease transmission." }
+    ],
+    theoryPoints: [
+      "Case Study Grounding (Ben): Adopted background explains the absence of family history; 40-year-old presentation reflects classic midlife choreiform onset with bilateral striatal atrophy on brain MRI.",
+      "Molecular & Cellular Mechanism: Unstable CAG expansion (>=40 repeats) in HTT encodes polyglutamine tract; mutant protein misfolding sequesters transcription factors (CBP), decreases BDNF, and triggers striatal MSN apoptosis.",
+      "Transmission & Anticipation Risk: Autosomal dominant cross (Hh x hh) gives a 50% recurrence risk for each child (6yo daughter, 3yo son, unborn baby); paternal transmission risks meiotic slippage expansion and earlier juvenile onset.",
+      "Coursework Skills for NEA Task 1: Rigorous academic literature search (PubMed/NICE), source critique using CRAAP criteria, and accurate Harvard author-date citation formatting."
+    ],
+    workedExample: {
+      title: "Ben's Family Genetic Risk & Clinical Pathway Scaffolding",
+      subtitle: "Constructing the Mendelian cross, evaluating anticipation, and planning clinical testing",
+      steps: [
+        { label: "Step 1: Parental Genotype Assignment", detail: "Ben is diagnosed with HD and is heterozygous (Hh). His wife is clinically unaffected with no family history, giving genotype hh." },
+        { label: "Step 2: Punnett Square Cross (Hh x hh)", detail: "Gametes: Ben produces 50% H and 50% h; Wife produces 100% h. Offspring genotypes: 50% Hh (affected), 50% hh (unaffected). Each child has an independent 50% (1 in 2) risk." },
+        { label: "Step 3: Paternal Anticipation Evaluation", detail: "Because Ben is the biological father, meiotic DNA polymerase slippage during spermatogenesis can expand his CAG tract (e.g. from 42 to >55 repeats), exposing his children to earlier-onset or juvenile Huntington's disease." },
+        { label: "Step 4: Clinical & Reproductive Testing Plan", detail: "Presymptomatic testing for the 6yo and 3yo is deferred until age 18 (autonomy/right not to know); prenatal testing (CVS at 11-14 wks or amniocentesis at 15-20 wks) is evaluated for the unborn fetus; PGD with IVF is proposed for future reproductive planning." }
+      ]
+    },
+    hingeQuestions: [
+      {
+        question: "Ben asks his genetic counsellor whether having two healthy children already means their third, unborn child has a lower chance of inheriting Huntington's disease. What is the scientifically accurate response?",
+        options: [
+          "Yes, because the binomial probability of having three affected children is only 12.5%",
+          "No, because each conception is an independent event with an unvarying 50% probability of inheriting the mutant HTT allele",
+          "Yes, because maternal alleles compensate for paternal mutations in later pregnancies",
+          "No, the risk actually increases to 75% for the third child"
+        ],
+        correctIndex: 1,
+        explanation: "In autosomal dominant monogenic inheritance, each conception represents an independent meiotic segregation event. The outcome of previous pregnancies has zero effect on subsequent pregnancies (each child faces an exact 50% risk)."
+      },
+      {
+        question: "Why do UK clinical genetics guidelines recommend AGAINST predictive genetic testing for Ben's 6-year-old daughter and 3-year-old son?",
+        options: [
+          "Polymerase Chain Reaction (PCR) cannot amplify DNA from children under 10 years old",
+          "Huntington's disease testing requires full adult skeletal maturity for accurate results",
+          "To protect the child's future autonomy and 'right not to know' their genetic destiny, given that no preventative childhood intervention exists for this adult-onset condition",
+          "Because adoption laws prohibit testing biological offspring"
+        ],
+        correctIndex: 2,
+        explanation: "International and UK clinical consensus dictates that presymptomatic testing for adult-onset conditions without childhood preventative treatments should be deferred until the individual reaches the age of majority (18 years) to make an informed, autonomous decision."
+      },
+      {
+        question: "Which molecular mechanism explains why genetic anticipation in Huntington's disease is significantly more pronounced when inherited from an affected father compared to an affected mother?",
+        options: [
+          "The HTT gene is located on the Y chromosome",
+          "Spermatogenesis involves continuous lifelong germline cell divisions, leading to frequent replication slippage and repeat expansion in secondary hairpin structures",
+          "Oocytes actively methylate and excise CAG repeat codons during meiosis I",
+          "Mitochondrial DNA accelerates polyglutamine translation in males"
+        ],
+        correctIndex: 1,
+        explanation: "Sperm production involves hundreds of cell divisions throughout male adult life, creating vast opportunities for DNA polymerase replication slippage across tandem repetitive sequences, whereas female gametogenesis involves far fewer divisions."
+      }
+    ],
+    examQuestion: {
+      question: "Ben, a 40-year-old adopted teacher, has been diagnosed with early-stage Huntington's disease following symptoms of chorea. He and his wife have two young children (aged 6 and 3) and are expecting a third child. (a) Explain the molecular and cellular mechanism by which a CAG triplet repeat expansion in the HTT gene causes neuronal damage, and explain why his children are at risk of genetic anticipation. (b) Explain how Huntington's disease is inherited in Ben's family, and evaluate the clinical and ethical options available to Ben and his wife regarding genetic testing for their children, prenatal diagnosis, and future reproductive technologies. [8 marks]",
+      marks: "8 marks",
+      guidance: [
+        "Molecular & Cellular Pathophysiology: Unstable CAG repeat expansion (>=40 repeats) in exon 1 of HTT (chr 4p16.3) causes polyglutamine expansion; mutant huntingtin misfolds (toxic gain-of-function), forming inclusion bodies, disrupting axonal transport and BDNF expression, triggering selective apoptosis of GABAergic medium spiny neurons (MSNs) in the striatum (caudate and putamen), leading to motor chorea [3 marks].",
+        "Genetic Anticipation Mechanism: DNA polymerase replication slippage during meiosis expands the CAG tract; paternal transmission bias during spermatogenesis causes substantial repeat expansion, conferring risk of earlier age of onset and greater severity in his offspring [2 marks].",
+        "Inheritance & Testing Evaluation: Autosomal dominant cross (Ben Hh x Wife hh) confers a 50% independent risk per pregnancy. Presymptomatic testing of minor children (aged 6 and 3) is ethically deferred until adulthood (age 18) to preserve autonomy and right not to know. For the unborn fetus, prenatal diagnosis (CVS/amniocentesis) carries miscarriage risk and raises abortion dilemmas. Pre-implantation Genetic Diagnosis (PGD/PGT-M) with IVF offers an embryo-screening alternative for future pregnancies [3 marks]."
+      ]
+    },
+    plenary: [
+      "Huntington's disease exemplifies an autosomal dominant trinucleotide repeat disorder characterized by toxic gain-of-function and selective striatal MSN apoptosis.",
+      "Each child of an affected heterozygous parent faces an independent 50% transmission risk, with paternal transmission posing heightened risk of genetic anticipation.",
+      "Ethical clinical management balances predictive testing autonomy in minors against prenatal diagnosis (CVS/amniocentesis) and PGD-IVF options.",
+      "Mastery of Boolean database searching, CRAAP source evaluation, and Harvard referencing provides the foundational toolkit for high-scoring NEA coursework."
     ]
   }
 ];

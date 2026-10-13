@@ -83,6 +83,7 @@ export async function ingestDecks(startLesson = 1, endLesson = 8) {
         if (lessonNum === 6) return fLower.includes("pedigree") || fLower.includes("monohybrid") || fLower.includes("cross") || fLower.includes("risk") || fLower.includes("single") || fLower.includes("cystic") || fLower.includes("sickle");
         if (lessonNum === 7) return fLower.includes("chromosomal") || fLower.includes("abnormalit") || fLower.includes("aneuploidy") || fLower.includes("karyotyp");
         if (lessonNum === 8) return fLower.includes("polygenic") || fLower.includes("complex") || fLower.includes("traits") || fLower.includes("gwas");
+        if (lessonNum === 9) return fLower.includes("huntington") || fLower.includes("nea") || fLower.includes("ben") || fLower.includes("case") || fLower.includes("task");
 
         return false;
       });
