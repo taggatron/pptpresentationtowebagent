@@ -383,12 +383,109 @@
     },
     {
       "number": 3,
-      "title": "The 152 Kettle Puzzle: The 60-Second Hook",
-      "imageFileName": "slide_03.png",
-      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03.png",
+      "title": "The Kettle Puzzle: The 60-Second Hook",
+      "imageFileName": "slide_03_puzzle_question.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03_puzzle_question.png",
+      "originalImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03.png",
       "sourceMediaPath": "ppt/media/slide_03.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "The Kettle Puzzle 2-step click sequence: Step 1 presents the kettle vs EV supercharger puzzle with unknown kettles '= [ ? ] Kettles'; Step 2 reveals the ~152 boiling kettles solution and engineering challenge.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "analyzedComponentCount": 2,
+        "plannedCellCount": 2,
+        "approvedCellCount": 2,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "build_1_kettle_puzzle_question",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: The Kettle Puzzle (Question & Unknown)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03_puzzle_question.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_2_kettle_puzzle_reveal",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: ~152 Simultaneous Boiling Kettles (Answer Reveal)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 0,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "build_1_kettle_puzzle_question",
+            "title": "Build 1: The Kettle Puzzle (Question & Unknown)",
+            "componentIds": [
+              "build_1_kettle_puzzle_question"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "build_2_kettle_puzzle_reveal",
+            "title": "Build 2: ~152 Simultaneous Boiling Kettles (Answer Reveal)",
+            "componentIds": [
+              "build_2_kettle_puzzle_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
+      "history": [
+        {
+          "id": "build_1_kettle_puzzle_question",
+          "label": "Build 1: The Kettle Puzzle (Question & Unknown)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03_puzzle_question.png"
+        },
+        {
+          "id": "ver_orig",
+          "label": "Build 2: ~152 Simultaneous Boiling Kettles (Answer Reveal)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_03.png"
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "45s",
+        "vciScore": "3.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "amber",
+        "ragColor": "amber",
+        "ragLabel": "Dual-Step Hook & Reveal"
+      }
     },
     {
       "number": 4,
@@ -450,15 +547,6 @@
     },
     {
       "number": 7,
-      "title": "The Heat Trap: The Physics of Dissipated Energy (P = I²R)",
-      "imageFileName": "slide_07.png",
-      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_07.png",
-      "sourceMediaPath": "ppt/media/slide_07.png",
-      "isInteractive": false,
-      "interactiveType": null
-    },
-    {
-      "number": 8,
       "title": "The Voltage Solution: Outsmarting Resistance (400V vs. 800V)",
       "imageFileName": "slide_08.png",
       "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_08.png",
@@ -467,29 +555,157 @@
       "interactiveType": null
     },
     {
+      "number": 8,
+      "title": "The Heat Trap: The Physics of Dissipated Energy (P = I²R)",
+      "imageFileName": "slide_08_heat_trap_base.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_08_heat_trap_base.png",
+      "originalImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_07.png",
+      "sourceMediaPath": "ppt/media/slide_07.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "The Heat Trap 2-step click sequence: Step 1 introduces resistance and the P = I²R formula cleanly; Step 2 reveals the orange warning glow symbol on the squared current and the bottom callout explaining the squared effect.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "analyzedComponentCount": 2,
+        "plannedCellCount": 2,
+        "approvedCellCount": 2,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "build_1_heat_trap_formula",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: The Heat Trap Formula (P = I²R)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_08_heat_trap_base.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_07.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_2_heat_trap_warning_callout",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Orange Warning Glow & The Squared Effect Callout",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_07.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_07.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 0,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "build_1_heat_trap_formula",
+            "title": "Build 1: The Heat Trap Formula (P = I²R)",
+            "componentIds": [
+              "build_1_heat_trap_formula"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "build_2_heat_trap_warning_callout",
+            "title": "Build 2: Orange Warning Glow & The Squared Effect Callout",
+            "componentIds": [
+              "build_2_heat_trap_warning_callout"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
+      "history": [
+        {
+          "id": "build_1_heat_trap_formula",
+          "label": "Build 1: The Heat Trap Formula (P = I²R)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_08_heat_trap_base.png"
+        },
+        {
+          "id": "ver_orig",
+          "label": "Build 2: Orange Warning Glow & The Squared Effect Callout",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_07.png"
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "45s",
+        "vciScore": "3.5",
+        "complexityCategory": "Moderate",
+        "ragLevel": "amber",
+        "ragColor": "amber",
+        "ragLabel": "Formula to Hazard Warning"
+      }
+    },
+    {
       "number": 9,
       "title": "Where Does the Lost Energy Go? (Sankey Diagram & Cable Cooling)",
       "imageFileName": "slide_09.png",
       "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_09.png",
       "sourceMediaPath": "ppt/media/slide_09.png",
-      "isInteractive": false,
-      "interactiveType": null
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "interactiveCells": [
+        {
+          "id": "reveal_9_mv6hhokl",
+          "question": "Custom reveal",
+          "bounds": {
+            "x": 2.9,
+            "y": 78.5,
+            "w": 93.3,
+            "h": 17.9
+          },
+          "answerBounds": {
+            "x": 2.9,
+            "y": 78.5,
+            "w": 93.3,
+            "h": 17.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-created",
+          "locked": true
+        }
+      ]
     },
     {
       "number": 10,
-      "title": "The Examiner's Trap: Units & Significant Figures",
-      "imageFileName": "slide_10.png",
-      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_10.png",
-      "sourceMediaPath": "ppt/media/slide_10.png",
+      "title": "The EV Charging Network Matrix: Voltage, Current, Power & Time",
+      "imageFileName": "slide_11.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_11.png",
+      "sourceMediaPath": "ppt/media/slide_11.png",
       "isInteractive": false,
       "interactiveType": null
     },
     {
       "number": 11,
-      "title": "The EV Charging Network Matrix: Voltage, Current, Power & Time",
-      "imageFileName": "slide_11.png",
-      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_11.png",
-      "sourceMediaPath": "ppt/media/slide_11.png",
+      "title": "The Examiner's Trap: Units & Significant Figures",
+      "imageFileName": "slide_10.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_10.png",
+      "sourceMediaPath": "ppt/media/slide_10.png",
       "isInteractive": false,
       "interactiveType": null
     },
