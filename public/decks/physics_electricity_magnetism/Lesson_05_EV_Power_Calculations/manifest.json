@@ -712,11 +712,201 @@
     {
       "number": 12,
       "title": "Step-by-Step: The 6-Mark Exam Challenge (Interlocking Formulas)",
-      "imageFileName": "slide_12.png",
-      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
+      "imageFileName": "slide_12_step1_question_only.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step1_question_only.png",
+      "originalImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
       "sourceMediaPath": "ppt/media/slide_12.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "The 6-Mark Exam Challenge 5-step click sequence animation: Step 1 poses the calculation prompt and unknown energy; Step 2 reveals Step 1 (The Trap: Conversions from minutes to seconds); Step 3 reveals Step 2 (Power Equation: P = IV); Step 4 reveals Step 3 (Energy Equation: E = Pt) alongside the interlocking charge alternative callout; Step 5 reveals the final polish with significant figures and scientific notation.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "analyzedComponentCount": 5,
+        "plannedCellCount": 5,
+        "approvedCellCount": 5,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "build_1_exam_question_prompt",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: The 6-Mark Challenge Prompt (Question & Unknown)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step1_question_only.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_2_step1_conversions_trap",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Step 1 · The Trap (Time Conversion: 45 min = 2,700 s)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step2_trap_conversions.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_3_step2_power_equation",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Step 2 · Power Equation (P = I × V = 48,000 W)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step3_power_equation.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_4_step3_energy_equation",
+          "version": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 4: Step 3 · Energy Equation (E = P × t = 129,600,000 J)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step4_energy_equation.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_5_step4_final_polish_sigfigs",
+          "version": 5,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 5: Step 4 · Final Polish (Sig Figs: 1.3 × 10⁸ J Answer)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 5,
+        "autoAdvanceDelayMs": 0,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "build_1_exam_question_prompt",
+            "title": "Build 1: The 6-Mark Challenge Prompt (Question & Unknown)",
+            "componentIds": [
+              "build_1_exam_question_prompt"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "build_2_step1_conversions_trap",
+            "title": "Build 2: Step 1 · The Trap (Time Conversion: 45 min = 2,700 s)",
+            "componentIds": [
+              "build_2_step1_conversions_trap"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "build_3_step2_power_equation",
+            "title": "Build 3: Step 2 · Power Equation (P = I × V = 48,000 W)",
+            "componentIds": [
+              "build_3_step2_power_equation"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 4,
+            "buildId": "build_4_step3_energy_equation",
+            "title": "Build 4: Step 3 · Energy Equation (E = P × t = 129,600,000 J)",
+            "componentIds": [
+              "build_4_step3_energy_equation"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 5,
+            "buildId": "build_5_step4_final_polish_sigfigs",
+            "title": "Build 5: Step 4 · Final Polish (Sig Figs: 1.3 × 10⁸ J Answer)",
+            "componentIds": [
+              "build_5_step4_final_polish_sigfigs"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
+      "history": [
+        {
+          "id": "build_1_exam_question_prompt",
+          "label": "Build 1: The 6-Mark Challenge Prompt (Question & Unknown)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step1_question_only.png"
+        },
+        {
+          "id": "build_2_step1_conversions_trap",
+          "label": "Build 2: Step 1 · The Trap (Time Conversion: 45 min = 2,700 s)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step2_trap_conversions.png"
+        },
+        {
+          "id": "build_3_step2_power_equation",
+          "label": "Build 3: Step 2 · Power Equation (P = I × V = 48,000 W)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step3_power_equation.png"
+        },
+        {
+          "id": "build_4_step3_energy_equation",
+          "label": "Build 4: Step 3 · Energy Equation (E = P × t = 129,600,000 J)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12_step4_energy_equation.png"
+        },
+        {
+          "id": "ver_orig",
+          "label": "Build 5: Step 4 · Final Polish (Sig Figs: 1.3 × 10⁸ J Answer)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_12.png"
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 60,
+        "timeGuideDisplay": "60s",
+        "vciScore": "4.5",
+        "complexityCategory": "High",
+        "ragLevel": "amber",
+        "ragColor": "amber",
+        "ragLabel": "5-Step Multi-Stage Worked Calculation"
+      }
     },
     {
       "number": 13,
