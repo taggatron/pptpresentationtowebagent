@@ -29,19 +29,19 @@
 
     header {
       background: #060a10; border-bottom: 1px solid var(--border);
-      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; flex-shrink: 0;
+      padding: 6px 20px; display: flex; align-items: center; justify-content: space-between; height: 44px; flex-shrink: 0;
     }
     .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-logo { font-size: 13px; font-weight: 900; letter-spacing: 1.5px; background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: #060a10; padding: 4px 10px; border-radius: 5px; }
-    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
-    .badge { background: #152942; border: 1px solid #23456e; color: #00d2ff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 12px; text-transform: uppercase; }
+    .brand-logo { font-size: 12px; font-weight: 900; letter-spacing: 1.5px; background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: #060a10; padding: 3px 8px; border-radius: 4px; }
+    .brand-title { font-size: 14px; font-weight: 700; color: #fff; }
+    .badge { background: #152942; border: 1px solid #23456e; color: #00d2ff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; }
 
     .tabs-bar {
-      display: flex; gap: 10px; padding: 10px 24px; background: #0c1421; border-bottom: 1px solid var(--border); flex-shrink: 0;
+      display: flex; gap: 8px; padding: 6px 20px; background: #0c1421; border-bottom: 1px solid var(--border); flex-shrink: 0;
     }
     .tab-btn {
       background: var(--card); border: 1px solid var(--border); color: var(--muted);
-      padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;
+      padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease;
     }
     .tab-btn:hover { border-color: var(--border-highlight); color: #fff; }
     .tab-btn.active[data-component="resistor"] {
@@ -55,14 +55,14 @@
     }
     .tab-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.1); }
 
-    .lab-container { display: flex; flex: 1; height: calc(100vh - 110px); overflow: hidden; }
+    .lab-container { display: flex; flex: 1; min-height: 0; overflow: hidden; }
 
     /* Left Sidebar: Data & Controls */
     .sidebar-left {
-      width: 360px; background: var(--panel); border-right: 1px solid var(--border);
-      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex-shrink: 0;
+      width: 310px; background: var(--panel); border-right: 1px solid var(--border);
+      padding: 12px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex-shrink: 0;
     }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
     .card-title { font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
 
     .data-table-container {
@@ -122,10 +122,10 @@
       display: flex; flex-direction: column; padding: 16px 20px; overflow: hidden;
     }
     .graph-header {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 16px;
     }
-    .graph-title { font-size: 16px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 8px; }
-    .graph-chip { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+    .graph-title { font-size: 15px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+    .graph-chip { font-size: 11px; padding: 3px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; white-space: nowrap; letter-spacing: 0.5px; }
     .graph-chip.ohmic { background: rgba(0, 210, 255, 0.15); color: #00d2ff; border: 1px solid #00d2ff; }
     .graph-chip.non-ohmic { background: rgba(255, 183, 3, 0.15); color: #ffb703; border: 1px solid #ffb703; }
 
@@ -144,8 +144,8 @@
 
     /* Right Sidebar: Theory & Assessment */
     .sidebar-right {
-      width: 380px; background: var(--panel); border-left: 1px solid var(--border);
-      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex-shrink: 0;
+      width: 320px; background: var(--panel); border-left: 1px solid var(--border);
+      padding: 12px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex-shrink: 0;
     }
     .metric-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .metric-card {
@@ -173,6 +173,23 @@
     .quiz-opt.incorrect { background: rgba(255, 71, 87, 0.2); border-color: var(--danger); color: var(--danger); }
     .feedback-text { font-size: 11px; margin-top: 8px; line-height: 1.4; display: none; padding: 6px 8px; border-radius: 4px; }
     .feedback-text.show { display: block; }
+
+    /* Responsive scaling for compact iframe displays */
+    @media (max-width: 1280px) {
+      header { padding: 8px 16px; height: 50px; }
+      .tabs-bar { padding: 8px 16px; gap: 8px; }
+      .tab-btn { padding: 6px 12px; font-size: 12px; }
+      .sidebar-left { width: 290px; padding: 12px; gap: 10px; }
+      .sidebar-right { width: 300px; padding: 12px; gap: 10px; }
+      .viewport { padding: 12px 14px; min-width: 0; }
+      .canvas-wrapper { min-width: 0; }
+      .metric-val { font-size: 19px; }
+      .data-table-container { max-height: 200px; }
+    }
+    @media (max-width: 960px) {
+      .sidebar-left { width: 250px; }
+      .sidebar-right { width: 260px; }
+    }
   </style>
 </head>
 <body>
@@ -437,6 +454,9 @@ function resizeCanvas() {
 }
 
 window.addEventListener("resize", resizeCanvas);
+if (window.ResizeObserver) {
+  new ResizeObserver(() => resizeCanvas()).observe(wrapper);
+}
 
 function setComponent(key) {
   currentCompKey = key;
