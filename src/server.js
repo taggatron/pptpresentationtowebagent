@@ -402,6 +402,14 @@ export const KNOWN_SLIDE_SETS = [
     icon: "⚡",
     folder: "powerpoints_electrical_installation_level_2",
     description: "City & Guilds 2365 / EAL Level 2 Diploma in Electrical Installations · Force, Energy, Work, Power & Electrical Principles."
+  },
+  {
+    id: "physics_matter_pressure_heat",
+    title: "GCSE Physics · Matter, Pressure & Heat",
+    category: "Physics",
+    icon: "🌡️",
+    folder: "powerpoints_physics_matter_pressure_heat",
+    description: "States of matter, fluid & gas pressure, density, Archimedes' principle, latent heat, and specific heat capacity."
   }
 ];
 
@@ -526,6 +534,9 @@ export function inferSlideSetId(deckId, manifest = null) {
   }
   if (/(?:Electrical|Installation|Unit_202|2365|Force_Energy_Work_Power)/i.test(deckId)) {
     return "electrical_installation_diploma_level_2";
+  }
+  if (/(?:States_of_Matter|Pressure|Archimedes|Density|Latent_Heat|Specific_Heat|Matter_Pressure)/i.test(deckId)) {
+    return "physics_matter_pressure_heat";
   }
   return "other";
 }
