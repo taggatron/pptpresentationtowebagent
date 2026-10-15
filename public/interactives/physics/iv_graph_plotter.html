@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCSE Physics Practical Lab — I-V Characteristics & Graph Plotting</title>
+  <style>
+    :root {
+      --bg: #090e17;
+      --panel: #111a28;
+      --card: #172437;
+      --border: #223753;
+      --border-highlight: #3b5f8c;
+      --text: #f0f6fc;
+      --muted: #8b9eb5;
+      --accent: #00d2ff;
+      --accent-rgb: 0, 210, 255;
+      --resistor-color: #00d2ff;
+      --lamp-color: #ffb703;
+      --diode-color: #ff007f;
+      --success: #2ed573;
+      --danger: #ff4757;
+      --grid-major: rgba(255, 255, 255, 0.16);
+      --grid-minor: rgba(255, 255, 255, 0.06);
+      --axis-line: rgba(255, 255, 255, 0.85);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+    header {
+      background: #060a10; border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; flex-shrink: 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { font-size: 13px; font-weight: 900; letter-spacing: 1.5px; background: linear-gradient(135deg, #00d2ff, #3a7bd5); color: #060a10; padding: 4px 10px; border-radius: 5px; }
+    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .badge { background: #152942; border: 1px solid #23456e; color: #00d2ff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 12px; text-transform: uppercase; }
+
+    .tabs-bar {
+      display: flex; gap: 10px; padding: 10px 24px; background: #0c1421; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .tab-btn {
+      background: var(--card); border: 1px solid var(--border); color: var(--muted);
+      padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;
+    }
+    .tab-btn:hover { border-color: var(--border-highlight); color: #fff; }
+    .tab-btn.active[data-component="resistor"] {
+      background: rgba(0, 210, 255, 0.15); border-color: var(--resistor-color); color: var(--resistor-color); box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+    }
+    .tab-btn.active[data-component="lamp"] {
+      background: rgba(255, 183, 3, 0.15); border-color: var(--lamp-color); color: var(--lamp-color); box-shadow: 0 0 15px rgba(255, 183, 3, 0.25);
+    }
+    .tab-btn.active[data-component="diode"] {
+      background: rgba(255, 0, 127, 0.15); border-color: var(--diode-color); color: var(--diode-color); box-shadow: 0 0 15px rgba(255, 0, 127, 0.25);
+    }
+    .tab-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.1); }
+
+    .lab-container { display: flex; flex: 1; height: calc(100vh - 110px); overflow: hidden; }
+
+    /* Left Sidebar: Data & Controls */
+    .sidebar-left {
+      width: 360px; background: var(--panel); border-right: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex-shrink: 0;
+    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .card-title { font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+
+    .data-table-container {
+      max-height: 240px; overflow-y: auto; border: 1px solid var(--border); border-radius: 6px;
+    }
+    table.data-table {
+      width: 100%; border-collapse: collapse; font-size: 12px; text-align: center;
+    }
+    table.data-table th {
+      background: #0e1826; color: var(--muted); font-weight: 700; padding: 8px 6px; position: sticky; top: 0; border-bottom: 1px solid var(--border);
+    }
+    table.data-table td {
+      padding: 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #e6f1f8;
+    }
+    table.data-table tr.plotted {
+      background: rgba(0, 210, 255, 0.08); font-weight: 700;
+    }
+    table.data-table tr.current-step {
+      background: rgba(255, 183, 3, 0.18); outline: 1px solid var(--lamp-color);
+    }
+    .plot-dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #44566c;
+    }
+    .plot-dot.active { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+
+    .btn-group { display: flex; gap: 8px; }
+    .btn {
+      flex: 1; background: var(--card); border: 1px solid var(--border); color: #fff;
+      padding: 9px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; text-align: center; transition: all 0.2s ease;
+    }
+    .btn:hover { background: #223753; border-color: var(--accent); }
+    .btn.primary {
+      background: linear-gradient(135deg, #00d2ff, #0077b6); border: none; color: #060a10; font-weight: 800;
+    }
+    .btn.primary:hover { filter: brightness(1.15); box-shadow: 0 0 12px rgba(0, 210, 255, 0.4); }
+
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+    .toggle-label { font-size: 13px; font-weight: 600; color: #e6f1f8; }
+    .switch {
+      position: relative; display: inline-block; width: 44px; height: 22px;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #233b59; transition: .2s; border-radius: 22px;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
+      background-color: white; transition: .2s; border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--accent); }
+    input:checked + .slider:before { transform: translateX(22px); }
+
+    /* Center: Graph Viewport */
+    .viewport {
+      flex: 1; position: relative; background: radial-gradient(circle at 50% 50%, #101c2e 0%, #070c14 100%);
+      display: flex; flex-direction: column; padding: 16px 20px; overflow: hidden;
+    }
+    .graph-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+    }
+    .graph-title { font-size: 16px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .graph-chip { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+    .graph-chip.ohmic { background: rgba(0, 210, 255, 0.15); color: #00d2ff; border: 1px solid #00d2ff; }
+    .graph-chip.non-ohmic { background: rgba(255, 183, 3, 0.15); color: #ffb703; border: 1px solid #ffb703; }
+
+    .canvas-wrapper {
+      flex: 1; position: relative; width: 100%; height: 100%; border-radius: 12px;
+      background: #080e18; border: 1px solid var(--border); overflow: hidden; box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+    canvas#graphCanvas {
+      width: 100%; height: 100%; display: block;
+    }
+    .graph-tooltip {
+      position: absolute; display: none; background: rgba(14, 24, 38, 0.95); border: 1px solid var(--accent);
+      color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; pointer-events: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); z-index: 10;
+    }
+
+    /* Right Sidebar: Theory & Assessment */
+    .sidebar-right {
+      width: 380px; background: var(--panel); border-left: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex-shrink: 0;
+    }
+    .metric-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .metric-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center;
+    }
+    .metric-val { font-size: 24px; font-weight: 900; color: var(--accent); }
+    .metric-lbl { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-top: 4px; }
+
+    .physics-box {
+      background: #09121d; border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 12px; font-size: 12px; line-height: 1.5; color: #d0e1f3;
+    }
+    .physics-box strong { color: #fff; }
+
+    .quiz-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+    }
+    .quiz-title { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+    .quiz-q { font-size: 12px; font-weight: 600; margin-bottom: 10px; color: #e6f1f8; line-height: 1.4; }
+    .quiz-options { display: flex; flex-direction: column; gap: 6px; }
+    .quiz-opt {
+      background: #0d1724; border: 1px solid var(--border); color: #c0d3e8; padding: 8px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; text-align: left; transition: all 0.15s ease;
+    }
+    .quiz-opt:hover { border-color: var(--accent); color: #fff; }
+    .quiz-opt.correct { background: rgba(46, 213, 115, 0.2); border-color: var(--success); color: var(--success); }
+    .quiz-opt.incorrect { background: rgba(255, 71, 87, 0.2); border-color: var(--danger); color: var(--danger); }
+    .feedback-text { font-size: 11px; margin-top: 8px; line-height: 1.4; display: none; padding: 6px 8px; border-radius: 4px; }
+    .feedback-text.show { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-logo">PRACTICAL LAB</span>
+    <span class="brand-title">Lesson 4: I-V Characteristics & Graph Plotting</span>
+    <span class="badge">OCR GCSE Physics (PAG P3)</span>
+  </div>
+  <div style="font-size: 12px; color: var(--muted); font-weight: 600;">
+    Teacher: Dan · Current-Potential Difference Characteristics
+  </div>
+</header>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" data-component="resistor" onclick="setComponent('resistor')">
+    <span>1. Fixed Resistor</span>
+    <span class="tab-badge">Ohmic</span>
+  </button>
+  <button class="tab-btn" data-component="lamp" onclick="setComponent('lamp')">
+    <span>2. Filament Lamp</span>
+    <span class="tab-badge">Non-Ohmic</span>
+  </button>
+  <button class="tab-btn" data-component="diode" onclick="setComponent('diode')">
+    <span>3. Semiconductor Diode</span>
+    <span class="tab-badge">Non-Ohmic</span>
+  </button>
+</div>
+
+<div class="lab-container">
+  <!-- Left Column: Data & Controls -->
+  <div class="sidebar-left">
+    <div class="card">
+      <div class="card-title">
+        <span>Experimental Results Table</span>
+        <span id="plottedCountBadge" style="color: var(--accent); font-weight: 700;">0 / 7 plotted</span>
+      </div>
+      <div class="data-table-container">
+        <table class="data-table" id="dataTable">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>P.D. (V)</th>
+              <th>Current (A)</th>
+              <th>R = V/I (Ω)</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Graph Plotting Actions</div>
+      <div class="btn-group" style="margin-bottom: 8px;">
+        <button class="btn primary" onclick="plotNextPoint()">Plot Next Point (+)</button>
+        <button class="btn" onclick="plotAllPoints()">Plot All Points</button>
+      </div>
+      <button class="btn" style="width: 100%; color: var(--muted);" onclick="resetPlot()">Clear Plotted Points</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Analysis Overlays</div>
+      <div class="toggle-row">
+        <span class="toggle-label">Line of Best Fit</span>
+        <label class="switch">
+          <input type="checkbox" id="toggleBestFit" onchange="redraw()">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">Gradient & Resistance Triangle</span>
+        <label class="switch">
+          <input type="checkbox" id="toggleGradient" onchange="redraw()">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">Show Negative Quadrant (Reversed Polarity)</span>
+        <label class="switch">
+          <input type="checkbox" id="toggleNegative" checked onchange="redraw()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center: Graph Viewport -->
+  <div class="viewport">
+    <div class="graph-header">
+      <div class="graph-title">
+        <span id="graphComponentTitle">Fixed Resistor (10 Ω)</span>
+        <span id="graphOhmicBadge" class="graph-chip ohmic">Ohmic Conductor</span>
+      </div>
+      <div style="font-size: 12px; color: var(--muted);">
+        Hover points to inspect coordinates · Scale: 2mm grid calibration
+      </div>
+    </div>
+    <div class="canvas-wrapper" id="canvasWrapper">
+      <canvas id="graphCanvas"></canvas>
+      <div class="graph-tooltip" id="graphTooltip"></div>
+    </div>
+  </div>
+
+  <!-- Right Column: Scientific Theory & Checks -->
+  <div class="sidebar-right">
+    <div class="card">
+      <div class="card-title">Calculated Live Metrics</div>
+      <div class="metric-row">
+        <div class="metric-card">
+          <div class="metric-val" id="metricGradient">0.100 A/V</div>
+          <div class="metric-lbl">Gradient (ΔI / ΔV)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="metricResistance">10.0 Ω</div>
+          <div class="metric-lbl">Effective Resistance (1/m)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">The Physics Inside the Component</div>
+      <div class="physics-box" id="physicsExplanation">
+        <strong>Fixed Resistor:</strong> Current is directly proportional to potential difference. The gradient remains completely constant because the temperature of the resistor is kept constant. It obeys Ohm's Law (V = IR).
+      </div>
+    </div>
+
+    <div class="card quiz-card">
+      <div class="quiz-title">
+        <span>Checkpoint Challenge</span>
+        <span style="color: var(--accent); font-size: 11px;">Target: 100%</span>
+      </div>
+      <div class="quiz-q" id="quizQuestion">
+        Why does the I-V graph for a fixed resistor pass straight through the origin (0,0)?
+      </div>
+      <div class="quiz-options" id="quizOptions">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="feedback-text" id="quizFeedback"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const COMPONENT_DATA = {
+  resistor: {
+    name: "Fixed Resistor (10 Ω)",
+    category: "Ohmic Conductor",
+    isOhmic: true,
+    color: "#00d2ff",
+    xRange: [-6, 6],
+    yRange: [-0.65, 0.65],
+    xLabel: "Potential Difference (V) in Volts",
+    yLabel: "Current (I) in Amps",
+    data: [
+      { v: -6.0, i: -0.60, r: "10.0 Ω" },
+      { v: -4.0, i: -0.40, r: "10.0 Ω" },
+      { v: -2.0, i: -0.20, r: "10.0 Ω" },
+      { v:  0.0, i:  0.00, r: "10.0 Ω" },
+      { v:  2.0, i:  0.20, r: "10.0 Ω" },
+      { v:  4.0, i:  0.40, r: "10.0 Ω" },
+      { v:  6.0, i:  0.60, r: "10.0 Ω" }
+    ],
+    formula: "Gradient = ΔI / ΔV = 0.100 A/V → R = 1 / Gradient = 10.0 Ω",
+    gradientText: "0.100 A/V",
+    resistanceText: "10.0 Ω",
+    explanation: "<strong>Fixed Resistor:</strong> Current is directly proportional to potential difference. The gradient remains completely constant because the temperature is kept constant. It obeys Ohm's Law (V = IR) across all voltages.",
+    quiz: {
+      q: "What does the constant straight-line gradient through the origin tell us about this resistor?",
+      options: [
+        { text: "Current is directly proportional to voltage; resistance is constant.", correct: true, exp: "Correct! Directly proportional means constant resistance (Ohmic conductor)." },
+        { text: "Resistance increases as the voltage increases.", correct: false, exp: "Incorrect. The straight line has a constant gradient, so resistance stays unchanged." },
+        { text: "Current flows only in the forward direction.", correct: false, exp: "Incorrect. Current flows equally in both directions with reversed polarity." }
+      ]
+    }
+  },
+  lamp: {
+    name: "12V Filament Lamp",
+    category: "Non-Ohmic Conductor",
+    isOhmic: false,
+    color: "#ffb703",
+    xRange: [-6, 6],
+    yRange: [-0.55, 0.55],
+    xLabel: "Potential Difference (V) in Volts",
+    yLabel: "Current (I) in Amps",
+    data: [
+      { v: -6.0, i: -0.48, r: "12.5 Ω" },
+      { v: -4.0, i: -0.40, r: "10.0 Ω" },
+      { v: -2.0, i: -0.28, r: "7.1 Ω" },
+      { v:  0.0, i:  0.00, r: "—" },
+      { v:  2.0, i:  0.28, r: "7.1 Ω" },
+      { v:  4.0, i:  0.40, r: "10.0 Ω" },
+      { v:  6.0, i:  0.48, r: "12.5 Ω" }
+    ],
+    formula: "Gradient decreases at higher V → R increases from 7.1 Ω up to 12.5 Ω",
+    gradientText: "Decreases",
+    resistanceText: "7.1 → 12.5 Ω",
+    explanation: "<strong>Filament Lamp:</strong> As current increases, the thin tungsten filament heats up rapidly. Metal lattice ions vibrate more vigorously, causing more frequent collisions with moving electrons. This increases resistance, flattening out the curve at high voltages.",
+    quiz: {
+      q: "Why does the gradient of the filament lamp curve flatten out at higher voltages?",
+      options: [
+        { text: "The filament gets hotter, metal ions vibrate more, collision rate rises, increasing resistance.", correct: true, exp: "Spot on! Higher temperature increases ion vibrations, which resists electron flow." },
+        { text: "The battery runs out of electrical charge.", correct: false, exp: "Incorrect. The power supply maintains the potential difference; the component itself changes." },
+        { text: "The lamp behaves as an ideal superconductor.", correct: false, exp: "Incorrect. Superconductors have zero resistance, whereas the lamp resistance is increasing." }
+      ]
+    }
+  },
+  diode: {
+    name: "Semiconductor Diode / LED",
+    category: "Non-Ohmic (Unidirectional)",
+    isOhmic: false,
+    color: "#ff007f",
+    xRange: [-3, 1.0],
+    yRange: [-0.02, 0.22],
+    xLabel: "Potential Difference (V) in Volts",
+    yLabel: "Current (I) in Amps (200 mA max)",
+    data: [
+      { v: -3.0, i: 0.000, r: "Very High (~∞)" },
+      { v: -2.0, i: 0.000, r: "Very High (~∞)" },
+      { v: -1.0, i: 0.000, r: "Very High (~∞)" },
+      { v:  0.0, i: 0.000, r: "—" },
+      { v:  0.4, i: 0.005, r: "80.0 Ω" },
+      { v:  0.6, i: 0.030, r: "20.0 Ω" },
+      { v:  0.7, i: 0.090, r: "7.8 Ω" },
+      { v:  0.8, i: 0.200, r: "4.0 Ω" }
+    ],
+    formula: "Reverse Bias: R ≈ ∞ | Forward Bias above 0.6 V: R drops rapidly to ~4 Ω",
+    gradientText: "Sharp Rise",
+    resistanceText: "~∞ → 4.0 Ω",
+    explanation: "<strong>Semiconductor Diode:</strong> Has an asymmetrical p-n junction. In reverse bias (left), the depletion layer widens, blocking current completely (extremely high resistance). In forward bias (right), above the threshold voltage (~0.6 V), resistance collapses and current surges sharply.",
+    quiz: {
+      q: "What is the threshold voltage of this silicon semiconductor diode, above which current flows readily?",
+      options: [
+        { text: "Approximately +0.6 V", correct: true, exp: "Exactly! Silicon diodes typically have a forward knee voltage around 0.6 V to 0.7 V." },
+        { text: "-2.0 V", correct: false, exp: "Incorrect. In the negative quadrant (reverse bias), current is completely blocked." },
+        { text: "+6.0 V", correct: false, exp: "Incorrect. 6.0 V would destroy most standard signal diodes without current-limiting resistors." }
+      ]
+    }
+  }
+};
+
+let currentCompKey = "resistor";
+let plottedCount = 0;
+let hoveredPoint = null;
+
+const canvas = document.getElementById("graphCanvas");
+const ctx = canvas.getContext("2d");
+const wrapper = document.getElementById("canvasWrapper");
+const tooltip = document.getElementById("graphTooltip");
+
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = wrapper.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.resetTransform();
+  ctx.scale(dpr, dpr);
+  redraw();
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+function setComponent(key) {
+  currentCompKey = key;
+  plottedCount = 0;
+  hoveredPoint = null;
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.getAttribute("data-component") === key);
+  });
+
+  const comp = COMPONENT_DATA[key];
+  document.getElementById("graphComponentTitle").innerText = comp.name;
+  const badge = document.getElementById("graphOhmicBadge");
+  badge.innerText = comp.category;
+  badge.className = "graph-chip " + (comp.isOhmic ? "ohmic" : "non-ohmic");
+
+  document.getElementById("metricGradient").innerText = comp.gradientText;
+  document.getElementById("metricResistance").innerText = comp.resistanceText;
+  document.getElementById("physicsExplanation").innerHTML = comp.explanation;
+
+  renderTable();
+  renderQuiz();
+  redraw();
+}
+
+function renderTable() {
+  const comp = COMPONENT_DATA[currentCompKey];
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+
+  comp.data.forEach((pt, idx) => {
+    const tr = document.createElement("tr");
+    const isPlotted = idx < plottedCount;
+    if (isPlotted) tr.classList.add("plotted");
+    if (idx === plottedCount) tr.classList.add("current-step");
+
+    tr.innerHTML = `
+      <td><span class="plot-dot ${isPlotted ? 'active' : ''}"></span></td>
+      <td>${pt.v.toFixed(1)}</td>
+      <td>${pt.i.toFixed(3)}</td>
+      <td>${pt.r}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById("plottedCountBadge").innerText = `${plottedCount} / ${comp.data.length} plotted`;
+}
+
+function renderQuiz() {
+  const comp = COMPONENT_DATA[currentCompKey];
+  document.getElementById("quizQuestion").innerText = comp.quiz.q;
+  const optBox = document.getElementById("quizOptions");
+  const fb = document.getElementById("quizFeedback");
+  optBox.innerHTML = "";
+  fb.className = "feedback-text";
+  fb.innerHTML = "";
+
+  comp.quiz.options.forEach((opt) => {
+    const btn = document.createElement("button");
+    btn.className = "quiz-opt";
+    btn.innerText = opt.text;
+    btn.onclick = () => {
+      optBox.querySelectorAll(".quiz-opt").forEach(b => b.disabled = true);
+      if (opt.correct) {
+        btn.classList.add("correct");
+        fb.className = "feedback-text show";
+        fb.style.background = "rgba(46, 213, 115, 0.15)";
+        fb.style.border = "1px solid var(--success)";
+        fb.style.color = "var(--success)";
+        fb.innerHTML = `✓ ${opt.exp}`;
+      } else {
+        btn.classList.add("incorrect");
+        fb.className = "feedback-text show";
+        fb.style.background = "rgba(255, 71, 87, 0.15)";
+        fb.style.border = "1px solid var(--danger)";
+        fb.style.color = "var(--danger)";
+        fb.innerHTML = `✗ ${opt.exp}`;
+      }
+    };
+    optBox.appendChild(btn);
+  });
+}
+
+function plotNextPoint() {
+  const comp = COMPONENT_DATA[currentCompKey];
+  if (plottedCount < comp.data.length) {
+    plottedCount++;
+    renderTable();
+    redraw();
+  }
+}
+
+function plotAllPoints() {
+  const comp = COMPONENT_DATA[currentCompKey];
+  plottedCount = comp.data.length;
+  renderTable();
+  redraw();
+}
+
+function resetPlot() {
+  plottedCount = 0;
+  renderTable();
+  redraw();
+}
+
+// Convert data coordinates (V, I) to Canvas Pixel Coordinates
+function toCanvasCoords(v, i, comp, width, height, padding) {
+  const plotW = width - padding.left - padding.right;
+  const plotH = height - padding.top - padding.bottom;
+
+  const [xMin, xMax] = comp.xRange;
+  const [yMin, yMax] = comp.yRange;
+
+  const px = padding.left + ((v - xMin) / (xMax - xMin)) * plotW;
+  const py = height - padding.bottom - ((i - yMin) / (yMax - yMin)) * plotH;
+
+  return { x: px, y: py };
+}
+
+function redraw() {
+  const dpr = window.devicePixelRatio || 1;
+  const width = canvas.width / dpr;
+  const height = canvas.height / dpr;
+
+  ctx.clearRect(0, 0, width, height);
+
+  const comp = COMPONENT_DATA[currentCompKey];
+  const padding = { top: 30, right: 30, bottom: 45, left: 60 };
+
+  const plotW = width - padding.left - padding.right;
+  const plotH = height - padding.top - padding.bottom;
+
+  const [xMin, xMax] = comp.xRange;
+  const [yMin, yMax] = comp.yRange;
+
+  // 1. Draw Grid Lines
+  ctx.lineWidth = 1;
+
+  // X Grid (Voltage)
+  const xStep = currentCompKey === "diode" ? 0.5 : 1.0;
+  for (let vx = Math.ceil(xMin / xStep) * xStep; vx <= xMax; vx += xStep) {
+    const px = padding.left + ((vx - xMin) / (xMax - xMin)) * plotW;
+    ctx.strokeStyle = Math.abs(vx) < 0.001 ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.08)";
+    ctx.beginPath();
+    ctx.moveTo(px, padding.top);
+    ctx.lineTo(px, height - padding.bottom);
+    ctx.stroke();
+
+    // Axis labels
+    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.font = "10px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(vx.toFixed(currentCompKey === "diode" && vx !== 0 ? 1 : 0), px, height - padding.bottom + 16);
+  }
+
+  // Y Grid (Current)
+  const yStep = currentCompKey === "diode" ? 0.05 : 0.2;
+  for (let vy = Math.ceil(yMin / yStep) * yStep; vy <= yMax; vy += yStep) {
+    const py = height - padding.bottom - ((vy - yMin) / (yMax - yMin)) * plotH;
+    ctx.strokeStyle = Math.abs(vy) < 0.0001 ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.08)";
+    ctx.beginPath();
+    ctx.moveTo(padding.left, py);
+    ctx.lineTo(width - padding.right, py);
+    ctx.stroke();
+
+    // Axis labels
+    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.font = "10px sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(vy.toFixed(currentCompKey === "diode" ? 2 : 1), padding.left - 8, py + 3);
+  }
+
+  // 2. Main Axes (X and Y with arrows)
+  const origin = toCanvasCoords(0, 0, comp, width, height, padding);
+
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+  ctx.lineWidth = 1.5;
+
+  // Horizontal X-Axis (Voltage)
+  if (origin.y >= padding.top && origin.y <= height - padding.bottom) {
+    ctx.beginPath();
+    ctx.moveTo(padding.left, origin.y);
+    ctx.lineTo(width - padding.right, origin.y);
+    ctx.stroke();
+  }
+
+  // Vertical Y-Axis (Current)
+  if (origin.x >= padding.left && origin.x <= width - padding.right) {
+    ctx.beginPath();
+    ctx.moveTo(origin.x, height - padding.bottom);
+    ctx.lineTo(origin.x, padding.top);
+    ctx.stroke();
+  }
+
+  // Axis Titles
+  ctx.fillStyle = "#fff";
+  ctx.font = "bold 12px sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText(comp.xLabel, padding.left + plotW / 2, height - 10);
+
+  ctx.save();
+  ctx.translate(18, padding.top + plotH / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText(comp.yLabel, 0, 0);
+  ctx.restore();
+
+  // 3. Line of Best Fit (if toggled)
+  const showBestFit = document.getElementById("toggleBestFit").checked;
+  if (showBestFit) {
+    ctx.save();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = comp.color;
+    ctx.shadowColor = comp.color;
+    ctx.shadowBlur = 10;
+    ctx.beginPath();
+
+    const sampleSteps = 120;
+    for (let s = 0; s <= sampleSteps; s++) {
+      const v = xMin + (s / sampleSteps) * (xMax - xMin);
+      let i = 0;
+
+      if (currentCompKey === "resistor") {
+        i = v * 0.1;
+      } else if (currentCompKey === "lamp") {
+        // Sigmoid curve passing smoothly through (0,0)
+        // I = 0.52 * tanh(v / 3.0)
+        i = 0.52 * Math.tanh(v / 3.0);
+      } else if (currentCompKey === "diode") {
+        if (v <= 0.4) {
+          i = 0;
+        } else {
+          // Exponential knee above 0.5V
+          i = 0.005 * Math.exp((v - 0.4) * 9.2);
+          if (i > 0.22) i = 0.22;
+        }
+      }
+
+      const p = toCanvasCoords(v, i, comp, width, height, padding);
+      if (s === 0) ctx.moveTo(p.x, p.y);
+      else ctx.lineTo(p.x, p.y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // 4. Gradient / Resistance Triangle (if toggled)
+  const showGradient = document.getElementById("toggleGradient").checked;
+  if (showGradient && currentCompKey === "resistor") {
+    const pt1 = toCanvasCoords(1.0, 0.1, comp, width, height, padding);
+    const pt2 = toCanvasCoords(5.0, 0.5, comp, width, height, padding);
+
+    ctx.save();
+    ctx.strokeStyle = "#ffb703";
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+
+    // Triangle base (ΔV)
+    ctx.beginPath();
+    ctx.moveTo(pt1.x, pt1.y);
+    ctx.lineTo(pt2.x, pt1.y);
+    ctx.stroke();
+
+    // Triangle height (ΔI)
+    ctx.beginPath();
+    ctx.moveTo(pt2.x, pt1.y);
+    ctx.lineTo(pt2.x, pt2.y);
+    ctx.stroke();
+
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#ffb703";
+    ctx.font = "bold 11px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("ΔV = 4.0 V", (pt1.x + pt2.x) / 2, pt1.y + 16);
+    ctx.textAlign = "left";
+    ctx.fillText("ΔI = 0.40 A", pt2.x + 8, (pt1.y + pt2.y) / 2);
+
+    ctx.restore();
+  }
+
+  // 5. Plotted Points
+  for (let idx = 0; idx < plottedCount; idx++) {
+    const pt = comp.data[idx];
+    const p = toCanvasCoords(pt.v, pt.i, comp, width, height, padding);
+
+    ctx.save();
+    // Crosshair (+)
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 2.5;
+    const size = 6;
+    ctx.beginPath();
+    ctx.moveTo(p.x - size, p.y);
+    ctx.lineTo(p.x + size, p.y);
+    ctx.moveTo(p.x, p.y - size);
+    ctx.lineTo(p.x, p.y + size);
+    ctx.stroke();
+
+    // Glowing inner ring
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = comp.color;
+    ctx.shadowColor = comp.color;
+    ctx.shadowBlur = 8;
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+// Mouse interaction for tooltip
+canvas.addEventListener("mousemove", (e) => {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+
+  const comp = COMPONENT_DATA[currentCompKey];
+  const width = canvas.width / dpr;
+  const height = canvas.height / dpr;
+  const padding = { top: 30, right: 30, bottom: 45, left: 60 };
+
+  let found = null;
+  for (let idx = 0; idx < plottedCount; idx++) {
+    const pt = comp.data[idx];
+    const p = toCanvasCoords(pt.v, pt.i, comp, width, height, padding);
+    const dist = Math.hypot(p.x - mouseX, p.y - mouseY);
+    if (dist < 12) {
+      found = { pt, px: p.x, py: p.y };
+      break;
+    }
+  }
+
+  if (found) {
+    tooltip.style.display = "block";
+    tooltip.style.left = `${found.px + 12}px`;
+    tooltip.style.top = `${found.py - 24}px`;
+    tooltip.innerHTML = `<strong>(${found.pt.v > 0 ? '+' : ''}${found.pt.v.toFixed(1)} V, ${found.pt.i > 0 ? '+' : ''}${found.pt.i.toFixed(3)} A)</strong><br><span style="color:var(--accent);">R = ${found.pt.r}</span>`;
+  } else {
+    tooltip.style.display = "none";
+  }
+});
+
+canvas.addEventListener("mouseleave", () => {
+  tooltip.style.display = "none";
+});
+
+// Initialize
+setComponent("resistor");
+setTimeout(resizeCanvas, 100);
+</script>
+
+</body>
+</html>
