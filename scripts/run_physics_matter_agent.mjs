@@ -259,10 +259,14 @@ async function findStudioPage(browser) {
       }
     }
   }
-  if (contexts[0] && contexts[0].pages().length > 0) {
-    return contexts[0].pages()[0];
+  if (contexts[0]) {
+    log(`Creating a new tab for notebook: ${TARGET_NOTEBOOK_URL}`);
+    const page = await contexts[0].newPage();
+    await page.goto(TARGET_NOTEBOOK_URL, { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    return page;
   }
-  throw new Error("No open Notebook tab found on CDP port 9333.");
+  throw new Error("No open context found on CDP port 9333.");
 }
 
 async function dismissTransientDialogs(page) {
@@ -652,7 +656,8 @@ export async function runAgent(startLesson = 1, endLesson = 5) {
     }
   }
 
-  log("\n✦ ALL 5 PHYSICS LESSONS GENERATED AND IMPORTED SUCCESSFULLY! ✦");
+  await browser.close().catch(() => {});
+  log("\n✦ ALL SPECIFIED LESSONS GENERATED AND IMPORTED SUCCESSFULLY! ✦");
 }
 
 const args = process.argv.slice(2);
