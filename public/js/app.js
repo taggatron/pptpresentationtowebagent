@@ -518,7 +518,11 @@ function answerOrderKey(slide) {
 }
 
 function getInteractiveCells(slide) {
-  const cells = Array.isArray(slide?.interactiveCells) ? slide.interactiveCells : [];
+  const cells = Array.isArray(slide?.interactiveCells)
+    ? slide.interactiveCells
+    : Array.isArray(slide?.reveals)
+      ? slide.reveals
+      : [];
   cells.forEach((cell, index) => {
     if (cell && !cell.id) cell.id = `question_${index + 1}`;
   });

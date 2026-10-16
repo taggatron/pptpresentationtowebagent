@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkpoint: Concept Match — Series vs Parallel Circuits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --scale: 1;
+      --bg-base: #f8fafc;
+      --canvas-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-dark: #0f172a;
+      --series-blue: #0284c7;
+      --series-blue-glow: rgba(56, 189, 248, 0.45);
+      --series-bg: #f0f9ff;
+      --parallel-gold: #d97706;
+      --parallel-gold-glow: rgba(245, 158, 11, 0.45);
+      --parallel-bg: #fffbeb;
+      --success-green: #10b981;
+      --success-bg: #ecfdf5;
+      --error-red: #ef4444;
+      --error-bg: #fef2f2;
+      --card-shadow: 0 calc(4px * var(--scale)) calc(14px * var(--scale)) rgba(15, 23, 42, 0.08);
+      --card-hover-shadow: 0 calc(8px * var(--scale)) calc(22px * var(--scale)) rgba(15, 23, 42, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0f172a;
+      color: var(--text-main);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 16:9 Scaled Container */
+    #app-viewport {
+      width: var(--viewport-w, 100vw);
+      height: var(--viewport-h, 100vh);
+      max-width: 100vw;
+      max-height: 100vh;
+      aspect-ratio: 16 / 9;
+      background: var(--canvas-bg);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: calc(20px * var(--scale)) calc(36px * var(--scale)) calc(20px * var(--scale)) calc(36px * var(--scale));
+      box-shadow: 0 0 calc(50px * var(--scale)) rgba(0, 0, 0, 0.35);
+    }
+
+    /* Confetti Canvas Overlay */
+    #confetti-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Header Bar */
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: calc(14px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: baseline;
+      gap: calc(14px * var(--scale));
+    }
+
+    .main-title {
+      font-size: calc(34px * var(--scale));
+      font-weight: 900;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .subtitle-badge {
+      font-size: calc(13px * var(--scale));
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: calc(4px * var(--scale)) calc(12px * var(--scale));
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+      border: calc(1px * var(--scale)) solid #e2e8f0;
+    }
+
+    /* Controls Strip */
+    .controls-strip {
+      display: flex;
+      align-items: center;
+      gap: calc(10px * var(--scale));
+    }
+
+    .metric-pill {
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(14px * var(--scale));
+      background: #f8fafc;
+      border: calc(1.5px * var(--scale)) solid #e2e8f0;
+      border-radius: 999px;
+      font-size: calc(13px * var(--scale));
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .metric-pill strong {
+      color: var(--series-blue);
+      font-weight: 900;
+    }
+
+    .btn {
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(6px * var(--scale));
+      padding: calc(7px * var(--scale)) calc(16px * var(--scale));
+      border-radius: calc(10px * var(--scale));
+      font-size: calc(13px * var(--scale));
+      font-weight: 800;
+      cursor: pointer;
+      border: calc(1.5px * var(--scale)) solid transparent;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 calc(2px * var(--scale)) calc(6px * var(--scale)) rgba(0, 0, 0, 0.05);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-check {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      border-color: #059669;
+      box-shadow: 0 calc(4px * var(--scale)) calc(14px * var(--scale)) rgba(16, 185, 129, 0.35);
+    }
+    .btn-check:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      transform: translateY(calc(-1px * var(--scale)));
+      box-shadow: 0 calc(6px * var(--scale)) calc(18px * var(--scale)) rgba(16, 185, 129, 0.45);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #334155;
+      border-color: #cbd5e1;
+    }
+    .btn-secondary:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    .btn-icon {
+      padding: calc(7px * var(--scale)) calc(10px * var(--scale));
+    }
+
+    /* Main Match Stage */
+    .match-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: calc(32px * var(--scale));
+      flex: 1;
+      min-height: 0;
+      position: relative;
+    }
+
+    /* Column Styles */
+    .column-panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      gap: calc(14px * var(--scale));
+    }
+
+    /* Left Target Containers */
+    .targets-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: calc(16px * var(--scale));
+      height: 100%;
+      min-height: 0;
+    }
+
+    .circuit-target-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-radius: calc(18px * var(--scale));
+      padding: calc(12px * var(--scale)) calc(14px * var(--scale));
+      background: #ffffff;
+      border: calc(2px * var(--scale)) dashed #cbd5e1;
+      position: relative;
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 0;
+    }
+
+    .circuit-target-box.is-armed {
+      border-style: solid;
+      transform: scale(1.01);
+    }
+
+    .circuit-target-box.series-box {
+      border-color: #93c5fd;
+      background: #f8fbff;
+    }
+    .circuit-target-box.series-box.is-armed,
+    .circuit-target-box.series-box.drag-over {
+      border-color: var(--series-blue);
+      background: #e0f2fe;
+      box-shadow: 0 0 calc(24px * var(--scale)) var(--series-blue-glow);
+    }
+
+    .circuit-target-box.parallel-box {
+      border-color: #fde68a;
+      background: #fffdf7;
+    }
+    .circuit-target-box.parallel-box.is-armed,
+    .circuit-target-box.parallel-box.drag-over {
+      border-color: var(--parallel-gold);
+      background: #fef3c7;
+      box-shadow: 0 0 calc(24px * var(--scale)) var(--parallel-gold-glow);
+    }
+
+    /* Header Pill within Target */
+    .target-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: calc(10px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .circuit-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(10px * var(--scale)) calc(28px * var(--scale));
+      border-radius: 9999px;
+      border: calc(3.5px * var(--scale)) solid var(--border-dark);
+      background: #ffffff;
+      font-size: calc(24px * var(--scale));
+      font-weight: 800;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .circuit-pill-btn:hover {
+      transform: translateY(calc(-2px * var(--scale))) scale(1.02);
+    }
+
+    .pill-series {
+      box-shadow: 0 0 calc(22px * var(--scale)) var(--series-blue-glow);
+    }
+    .pill-series:hover,
+    .series-box.is-armed .pill-series {
+      box-shadow: 0 0 calc(32px * var(--scale)) rgba(56, 189, 248, 0.8),
+                  0 0 calc(12px * var(--scale)) #0284c7;
+      border-color: #0284c7;
+      color: #0369a1;
+    }
+
+    .pill-parallel {
+      box-shadow: 0 0 calc(22px * var(--scale)) var(--parallel-gold-glow);
+    }
+    .pill-parallel:hover,
+    .parallel-box.is-armed .pill-parallel {
+      box-shadow: 0 0 calc(32px * var(--scale)) rgba(245, 158, 11, 0.8),
+                  0 0 calc(12px * var(--scale)) #d97706;
+      border-color: #d97706;
+      color: #b45309;
+    }
+
+    .target-count-badge {
+      font-size: calc(12px * var(--scale));
+      font-weight: 800;
+      padding: calc(4px * var(--scale)) calc(10px * var(--scale));
+      border-radius: 999px;
+      background: #ffffff;
+      border: calc(1.5px * var(--scale)) solid #cbd5e1;
+      color: var(--text-muted);
+    }
+
+    /* Target Drop Slots Container */
+    .target-slots {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: calc(8px * var(--scale));
+      overflow-y: auto;
+      min-height: 0;
+      padding-right: calc(4px * var(--scale));
+    }
+
+    .target-slots::-webkit-scrollbar {
+      width: calc(4px * var(--scale));
+    }
+    .target-slots::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 999px;
+    }
+
+    .empty-slot-hint {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #94a3b8;
+      font-size: calc(13px * var(--scale));
+      font-weight: 600;
+      border: calc(1.5px * var(--scale)) dashed #cbd5e1;
+      border-radius: calc(12px * var(--scale));
+      padding: calc(12px * var(--scale));
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Right Pool Container */
+    .pool-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      background: #f8fafc;
+      border: calc(2px * var(--scale)) solid #e2e8f0;
+      border-radius: calc(18px * var(--scale));
+      padding: calc(14px * var(--scale));
+    }
+
+    .pool-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: calc(10px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .pool-title {
+      font-size: calc(14px * var(--scale));
+      font-weight: 800;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pool-hint {
+      font-size: calc(12px * var(--scale));
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .pool-cards-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: calc(8px * var(--scale));
+      overflow-y: auto;
+      min-height: 0;
+      padding-right: calc(4px * var(--scale));
+    }
+
+    .pool-cards-list::-webkit-scrollbar {
+      width: calc(4px * var(--scale));
+    }
+    .pool-cards-list::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 999px;
+    }
+
+    /* Concept Card Style (faithfully mirrors original slide design) */
+    .concept-card {
+      background: #ffffff;
+      border: calc(3px * var(--scale)) solid var(--border-dark);
+      border-radius: calc(12px * var(--scale));
+      padding: calc(10px * var(--scale)) calc(16px * var(--scale));
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(52px * var(--scale));
+    }
+
+    .concept-card:hover {
+      box-shadow: var(--card-hover-shadow);
+      transform: translateY(calc(-2px * var(--scale)));
+      border-color: #334155;
+    }
+
+    .concept-card.is-selected {
+      border-color: #3b82f6;
+      box-shadow: 0 0 calc(20px * var(--scale)) rgba(59, 130, 246, 0.6),
+                  0 calc(4px * var(--scale)) calc(14px * var(--scale)) rgba(0, 0, 0, 0.1);
+      transform: translateY(calc(-3px * var(--scale))) scale(1.02);
+      background: #eff6ff;
+    }
+
+    .concept-card.is-selected::after {
+      content: "Click Series or Parallel to place";
+      position: absolute;
+      bottom: calc(-18px * var(--scale));
+      font-size: calc(9px * var(--scale));
+      font-weight: 800;
+      color: #2563eb;
+      background: #dbeafe;
+      padding: calc(2px * var(--scale)) calc(8px * var(--scale));
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 calc(2px * var(--scale)) calc(6px * var(--scale)) rgba(0, 0, 0, 0.08);
+      z-index: 10;
+    }
+
+    .concept-card.is-matched-series {
+      border-color: #0284c7;
+      background: #f0f9ff;
+      box-shadow: 0 0 calc(12px * var(--scale)) rgba(56, 189, 248, 0.25);
+    }
+
+    .concept-card.is-matched-parallel {
+      border-color: #d97706;
+      background: #fffbeb;
+      box-shadow: 0 0 calc(12px * var(--scale)) rgba(245, 158, 11, 0.25);
+    }
+
+    /* Verification Status Styles */
+    .concept-card.status-correct {
+      border-color: var(--success-green) !important;
+      background: var(--success-bg) !important;
+      box-shadow: 0 0 calc(16px * var(--scale)) rgba(16, 185, 129, 0.35) !important;
+    }
+
+    .concept-card.status-incorrect {
+      border-color: var(--error-red) !important;
+      background: var(--error-bg) !important;
+      animation: cardShake 0.4s ease;
+      box-shadow: 0 0 calc(16px * var(--scale)) rgba(239, 68, 68, 0.35) !important;
+    }
+
+    @keyframes cardShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(calc(-5px * var(--scale))); }
+      40%, 80% { transform: translateX(calc(5px * var(--scale))); }
+    }
+
+    .card-text {
+      font-size: calc(16.5px * var(--scale));
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      pointer-events: none;
+    }
+
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+      margin-top: calc(4px * var(--scale));
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: calc(4px * var(--scale));
+      font-size: calc(11px * var(--scale));
+      font-weight: 800;
+      padding: calc(2px * var(--scale)) calc(8px * var(--scale));
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-correct {
+      background: #dcfce7;
+      color: #15803d;
+      border: calc(1px * var(--scale)) solid #86efac;
+    }
+
+    .badge-incorrect {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: calc(1px * var(--scale)) solid #fca5a5;
+    }
+
+    /* Compact placed cards in target slots */
+    .target-slots .concept-card {
+      min-height: calc(44px * var(--scale));
+      padding: calc(8px * var(--scale)) calc(14px * var(--scale));
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: calc(10px * var(--scale));
+      text-align: left;
+    }
+
+    .target-slots .concept-card .card-text {
+      font-size: calc(14.5px * var(--scale));
+      font-weight: 750;
+      text-align: left;
+      flex: 1;
+    }
+
+    .target-slots .concept-card .card-meta-row {
+      margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    .target-slots .concept-card .status-badge {
+      font-size: calc(10.5px * var(--scale));
+      padding: calc(3px * var(--scale)) calc(8px * var(--scale));
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* Right Panel Summary & Principles Review */
+    .review-panel {
+      display: flex;
+      flex-direction: column;
+      gap: calc(8px * var(--scale));
+      height: 100%;
+      overflow-y: auto;
+      padding-right: calc(4px * var(--scale));
+    }
+
+    .review-banner {
+      display: flex;
+      align-items: center;
+      gap: calc(10px * var(--scale));
+      padding: calc(8px * var(--scale)) calc(12px * var(--scale));
+      border-radius: calc(10px * var(--scale));
+      border: calc(1.5px * var(--scale)) solid;
+      flex-shrink: 0;
+    }
+
+    .review-banner.perfect {
+      background: #ecfdf5;
+      border-color: #86efac;
+      color: #065f46;
+    }
+
+    .review-banner.partial {
+      background: #fffbeb;
+      border-color: #fde68a;
+      color: #92400e;
+    }
+
+    .review-banner-icon {
+      font-size: calc(22px * var(--scale));
+    }
+
+    .review-banner-title {
+      font-size: calc(13px * var(--scale));
+      font-weight: 900;
+    }
+
+    .review-banner-desc {
+      font-size: calc(11px * var(--scale));
+      opacity: 0.9;
+    }
+
+    .review-item {
+      background: #ffffff;
+      border: calc(1.5px * var(--scale)) solid #e2e8f0;
+      border-radius: calc(8px * var(--scale));
+      padding: calc(6px * var(--scale)) calc(10px * var(--scale));
+      display: flex;
+      flex-direction: column;
+      gap: calc(2px * var(--scale));
+      flex-shrink: 0;
+    }
+
+    .review-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: calc(6px * var(--scale));
+    }
+
+    .review-item-title {
+      font-size: calc(12px * var(--scale));
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .review-item-circuit {
+      font-size: calc(9.5px * var(--scale));
+      font-weight: 800;
+      padding: calc(1px * var(--scale)) calc(6px * var(--scale));
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .circuit-badge-series {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: calc(1px * var(--scale)) solid #93c5fd;
+    }
+
+    .circuit-badge-parallel {
+      background: #fef3c7;
+      color: #b45309;
+      border: calc(1px * var(--scale)) solid #fde68a;
+    }
+
+    .review-item-explanation {
+      font-size: calc(10.5px * var(--scale));
+      color: #64748b;
+      line-height: 1.3;
+    }
+
+    .pool-ready-banner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(16px * var(--scale));
+      background: #ffffff;
+      border: calc(2px * var(--scale)) dashed #94a3b8;
+      border-radius: calc(12px * var(--scale));
+      gap: calc(8px * var(--scale));
+    }
+
+    .pool-ready-title {
+      font-size: calc(16px * var(--scale));
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .pool-ready-desc {
+      font-size: calc(12px * var(--scale));
+      color: #64748b;
+      max-width: calc(280px * var(--scale));
+    }
+
+    /* Instructions Banner */
+    .instruction-bar {
+      margin-top: calc(10px * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: calc(8px * var(--scale)) calc(16px * var(--scale));
+      background: #f1f5f9;
+      border-radius: calc(10px * var(--scale));
+      font-size: calc(12.5px * var(--scale));
+      color: #475569;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .instruction-steps {
+      display: flex;
+      align-items: center;
+      gap: calc(14px * var(--scale));
+    }
+
+    .instruction-step {
+      display: flex;
+      align-items: center;
+      gap: calc(6px * var(--scale));
+    }
+
+    .step-number {
+      width: calc(18px * var(--scale));
+      height: calc(18px * var(--scale));
+      border-radius: 50%;
+      background: var(--text-main);
+      color: #ffffff;
+      font-size: calc(10px * var(--scale));
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Celebration Banner */
+    .celebration-toast {
+      position: absolute;
+      bottom: calc(52px * var(--scale));
+      left: 50%;
+      transform: translateX(-50%) translateY(calc(30px * var(--scale)));
+      background: #ffffff;
+      border: calc(2.5px * var(--scale)) solid var(--success-green);
+      box-shadow: 0 calc(12px * var(--scale)) calc(30px * var(--scale)) rgba(16, 185, 129, 0.35);
+      border-radius: calc(16px * var(--scale));
+      padding: calc(8px * var(--scale)) calc(22px * var(--scale));
+      display: flex;
+      align-items: center;
+      gap: calc(12px * var(--scale));
+      z-index: 120;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .celebration-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .toast-icon {
+      font-size: calc(26px * var(--scale));
+    }
+
+    .toast-title {
+      font-size: calc(16px * var(--scale));
+      font-weight: 900;
+      color: #065f46;
+    }
+
+    .toast-desc {
+      font-size: calc(12px * var(--scale));
+      color: #047857;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app-viewport">
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Celebration Banner -->
+  <div id="celebrationToast" class="celebration-toast" role="alert">
+    <span class="toast-icon">⚡</span>
+    <div>
+      <div class="toast-title">Perfect Concept Match! 6/6</div>
+      <div class="toast-desc">You've mastered the rules governing series and parallel circuits.</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header-bar">
+    <div class="title-group">
+      <h1 class="main-title">Checkpoint: Concept Match</h1>
+      <span class="subtitle-badge">Series vs Parallel Circuits</span>
+    </div>
+
+    <div class="controls-strip">
+      <div class="metric-pill">
+        <span>Matched:</span>
+        <strong id="matchedCounter">0 / 6</strong>
+      </div>
+      <div class="metric-pill" id="scorePill" style="display: none;">
+        <span>Score:</span>
+        <strong id="scoreVal">--</strong>
+      </div>
+      <button type="button" class="btn btn-secondary btn-icon" id="soundBtn" title="Toggle Sound FX" aria-label="Toggle Sound FX">
+        <span id="soundIcon">🔊</span>
+      </button>
+      <button type="button" class="btn btn-secondary" id="shuffleBtn" title="Randomize Statements">
+        <span>🔀</span> Shuffle
+      </button>
+      <button type="button" class="btn btn-secondary" id="resetBtn" title="Clear all and restart">
+        <span>↺</span> Reset
+      </button>
+      <button type="button" class="btn btn-secondary" id="solutionBtn" title="Show all correct matches">
+        <span>💡</span> Show Solution
+      </button>
+      <button type="button" class="btn btn-check" id="checkBtn">
+        <span>✓</span> Check Answers
+      </button>
+    </div>
+  </header>
+
+  <!-- Interactive Matching Stage -->
+  <main class="match-stage">
+    <!-- Left Column: Circuit Targets -->
+    <div class="column-panel">
+      <div class="targets-wrapper">
+        <!-- Series Circuit Target -->
+        <section 
+          class="circuit-target-box series-box" 
+          id="targetSeries" 
+          data-circuit="series"
+          tabindex="0"
+          role="region"
+          aria-label="Series Circuit drop and match target"
+        >
+          <div class="target-header-row">
+            <button 
+              type="button" 
+              class="circuit-pill-btn pill-series" 
+              id="pillSeriesBtn"
+              title="Click to match selected statement to Series Circuit"
+            >
+              Series Circuit
+            </button>
+            <span class="target-count-badge" id="seriesCountBadge">0 / 3</span>
+          </div>
+          <div class="target-slots" id="seriesSlots">
+            <div class="empty-slot-hint" id="seriesEmptyHint">
+              <span>Drop statements here or click this zone when a card is selected</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Parallel Circuit Target -->
+        <section 
+          class="circuit-target-box parallel-box" 
+          id="targetParallel" 
+          data-circuit="parallel"
+          tabindex="0"
+          role="region"
+          aria-label="Parallel Circuit drop and match target"
+        >
+          <div class="target-header-row">
+            <button 
+              type="button" 
+              class="circuit-pill-btn pill-parallel" 
+              id="pillParallelBtn"
+              title="Click to match selected statement to Parallel Circuit"
+            >
+              Parallel Circuit
+            </button>
+            <span class="target-count-badge" id="parallelCountBadge">0 / 3</span>
+          </div>
+          <div class="target-slots" id="parallelSlots">
+            <div class="empty-slot-hint" id="parallelEmptyHint">
+              <span>Drop statements here or click this zone when a card is selected</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Right Column: Statement Pool -->
+    <div class="column-panel">
+      <div class="pool-wrapper" id="poolWrapper">
+        <div class="pool-header-row">
+          <span class="pool-title">Circuit Statements</span>
+          <span class="pool-hint">Click card, then click category — or drag directly</span>
+        </div>
+        <div 
+          class="pool-cards-list" 
+          id="poolList"
+          role="region"
+          aria-label="Available circuit statements pool"
+        >
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Instructions Bar -->
+  <footer class="instruction-bar">
+    <div class="instruction-steps">
+      <div class="instruction-step">
+        <span class="step-number">1</span>
+        <span>Click any statement card to select it</span>
+      </div>
+      <div class="instruction-step">
+        <span class="step-number">2</span>
+        <span>Click either <strong>Series Circuit</strong> or <strong>Parallel Circuit</strong></span>
+      </div>
+      <div class="instruction-step">
+        <span class="step-number">3</span>
+        <span>Press <strong>Check Answers</strong> to test your mastery</span>
+      </div>
+    </div>
+    <div style="font-size: calc(11.5px * var(--scale)); color: #94a3b8;">
+      Keyboard: <kbd>Tab</kbd> to focus, <kbd>Enter</kbd> to select, <kbd>1</kbd>=Series, <kbd>2</kbd>=Parallel
+    </div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  // Scientific Concept Catalog
+  const STATEMENTS = [
+    {
+      id: "card_1",
+      text: "Adding components lowers total resistance.",
+      correctCircuit: "parallel",
+      explanation: "Each parallel branch provides an additional path for charge, decreasing overall resistance (1/R_total = 1/R₁ + 1/R₂)."
+    },
+    {
+      id: "card_2",
+      text: "If one component breaks, the whole circuit dies.",
+      correctCircuit: "series",
+      explanation: "A series circuit consists of a single closed loop. Breaking the loop halts the current flow everywhere."
+    },
+    {
+      id: "card_3",
+      text: "Voltage is shared across components.",
+      correctCircuit: "series",
+      explanation: "The total supply potential difference splits among components in proportion to resistance (V_total = V₁ + V₂)."
+    },
+    {
+      id: "card_4",
+      text: "Current is split across different branches.",
+      correctCircuit: "parallel",
+      explanation: "Charge divides at junctions according to Kirchhoff's first law (I_total = I₁ + I₂)."
+    },
+    {
+      id: "card_5",
+      text: "Current is exactly the same everywhere.",
+      correctCircuit: "series",
+      explanation: "Charge cannot accumulate; electron flow rate (amperes) is identical through every series component."
+    },
+    {
+      id: "card_6",
+      text: "Voltage is equal across all branches.",
+      correctCircuit: "parallel",
+      explanation: "Each branch connects directly between the same two supply terminals, receiving the full potential difference."
+    }
+  ];
+
+  // State
+  let statementCards = [...STATEMENTS];
+  let placements = {}; // { card_id: 'series' | 'parallel' | 'pool' }
+  let selectedCardId = null;
+  let armedCircuit = null; // 'series' | 'parallel' | null
+  let isChecked = false;
+  let soundEnabled = true;
+
+  // Initialize placements in pool
+  statementCards.forEach(c => placements[c.id] = "pool");
+
+  // DOM Elements
+  const viewport = document.getElementById("app-viewport");
+  const poolList = document.getElementById("poolList");
+  const seriesSlots = document.getElementById("seriesSlots");
+  const parallelSlots = document.getElementById("parallelSlots");
+  const seriesEmptyHint = document.getElementById("seriesEmptyHint");
+  const parallelEmptyHint = document.getElementById("parallelEmptyHint");
+  const matchedCounter = document.getElementById("matchedCounter");
+  const scorePill = document.getElementById("scorePill");
+  const scoreVal = document.getElementById("scoreVal");
+  const targetSeries = document.getElementById("targetSeries");
+  const targetParallel = document.getElementById("targetParallel");
+  const pillSeriesBtn = document.getElementById("pillSeriesBtn");
+  const pillParallelBtn = document.getElementById("pillParallelBtn");
+  const seriesCountBadge = document.getElementById("seriesCountBadge");
+  const parallelCountBadge = document.getElementById("parallelCountBadge");
+  const checkBtn = document.getElementById("checkBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const shuffleBtn = document.getElementById("shuffleBtn");
+  const solutionBtn = document.getElementById("solutionBtn");
+  const soundBtn = document.getElementById("soundBtn");
+  const soundIcon = document.getElementById("soundIcon");
+  const celebrationToast = document.getElementById("celebrationToast");
+  const confettiCanvas = document.getElementById("confetti-canvas");
+  const ctx = confettiCanvas.getContext("2d");
+
+  // Audio Synthesis via Web Audio API
+  let audioCtx = null;
+  function getAudioContext() {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) audioCtx = new AudioContextClass();
+    }
+    if (audioCtx && audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playTone(freq, type = "sine", duration = 0.12, gainLevel = 0.15) {
+    if (!soundEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      gain.gain.setValueAtTime(gainLevel, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch (_) {}
+  }
+
+  function playClick() { playTone(580, "sine", 0.08, 0.1); }
+  function playSnap() { playTone(880, "triangle", 0.15, 0.18); }
+  function playSuccessChord() {
+    if (!soundEnabled) return;
+    [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+      setTimeout(() => playTone(f, "sine", 0.35, 0.14), i * 70);
+    });
+  }
+  function playError() {
+    if (!soundEnabled) return;
+    playTone(260, "sawtooth", 0.2, 0.12);
+  }
+
+  // Responsive 16:9 Aspect Ratio Scaling
+  function updateViewportScale() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const targetRatio = 16 / 9;
+    const currentRatio = w / h;
+
+    let finalW, finalH;
+    if (currentRatio > targetRatio) {
+      finalH = h;
+      finalW = h * targetRatio;
+    } else {
+      finalW = w;
+      finalH = w / targetRatio;
+    }
+
+    const scale = finalW / 1280; // normalized to standard 1280x720 baseline
+    viewport.style.setProperty("--scale", Math.max(0.65, Math.min(1.6, scale)));
+    viewport.style.setProperty("--viewport-w", `${finalW}px`);
+    viewport.style.setProperty("--viewport-h", `${finalH}px`);
+
+    confettiCanvas.width = finalW;
+    confettiCanvas.height = finalH;
+  }
+
+  window.addEventListener("resize", updateViewportScale);
+  updateViewportScale();
+
+  // Create Card Element
+  function renderCard(item) {
+    const card = document.createElement("div");
+    card.className = "concept-card";
+    card.id = item.id;
+    card.dataset.id = item.id;
+    card.setAttribute("data-id", item.id);
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.setAttribute("draggable", "true");
+    card.setAttribute("aria-label", `Statement: ${item.text}`);
+
+    const textEl = document.createElement("div");
+    textEl.className = "card-text";
+    textEl.textContent = item.text;
+    card.appendChild(textEl);
+
+    // Current placement class
+    const currentLoc = placements[item.id];
+    if (currentLoc === "series") card.classList.add("is-matched-series");
+    if (currentLoc === "parallel") card.classList.add("is-matched-parallel");
+
+    // Selection status
+    if (selectedCardId === item.id) {
+      card.classList.add("is-selected");
+    }
+
+    // Checked status
+    if (isChecked && currentLoc !== "pool") {
+      const isCorrect = currentLoc === item.correctCircuit;
+      card.classList.add(isCorrect ? "status-correct" : "status-incorrect");
+
+      const metaRow = document.createElement("div");
+      metaRow.className = "card-meta-row";
+
+      const badge = document.createElement("span");
+      badge.className = `status-badge ${isCorrect ? "badge-correct" : "badge-incorrect"}`;
+      badge.textContent = isCorrect ? "✓ Correct" : "✗ Recheck";
+      metaRow.appendChild(badge);
+      card.appendChild(metaRow);
+    }
+
+    // Click handler for Click-to-Match
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
+      playClick();
+
+      // If user clicks a card while a category is already armed, place it directly
+      if (armedCircuit) {
+        assignCardToCircuit(item.id, armedCircuit);
+        return;
+      }
+
+      // If already selected, deselect
+      if (selectedCardId === item.id) {
+        selectedCardId = null;
+      } else {
+        selectedCardId = item.id;
+      }
+      refreshUI();
+    });
+
+    // Keyboard navigation
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        card.click();
+      } else if (e.key === "1") {
+        e.preventDefault();
+        assignCardToCircuit(item.id, "series");
+      } else if (e.key === "2") {
+        e.preventDefault();
+        assignCardToCircuit(item.id, "parallel");
+      } else if (e.key === "Backspace" || e.key === "Delete" || e.key === "0") {
+        e.preventDefault();
+        assignCardToCircuit(item.id, "pool");
+      }
+    });
+
+    // Drag and Drop Handlers
+    card.addEventListener("dragstart", (e) => {
+      selectedCardId = item.id;
+      e.dataTransfer.setData("text/plain", item.id);
+      e.dataTransfer.effectAllowed = "move";
+      card.classList.add("is-dragging");
+    });
+
+    card.addEventListener("dragend", () => {
+      card.classList.remove("is-dragging");
+    });
+
+    return card;
+  }
+
+  // Refresh and Render DOM according to placements state
+  function refreshUI() {
+    poolList.innerHTML = "";
+    seriesSlots.innerHTML = "";
+    parallelSlots.innerHTML = "";
+
+    let seriesCount = 0;
+    let parallelCount = 0;
+    let totalMatched = 0;
+
+    statementCards.forEach(item => {
+      const loc = placements[item.id];
+      const cardEl = renderCard(item);
+
+      if (loc === "series") {
+        seriesSlots.appendChild(cardEl);
+        seriesCount++;
+        totalMatched++;
+      } else if (loc === "parallel") {
+        parallelSlots.appendChild(cardEl);
+        parallelCount++;
+        totalMatched++;
+      } else {
+        poolList.appendChild(cardEl);
+      }
+    });
+
+    // Empty hint states
+    if (seriesCount === 0) {
+      seriesSlots.appendChild(seriesEmptyHint);
+      seriesEmptyHint.style.display = "flex";
+    } else {
+      seriesEmptyHint.style.display = "none";
+    }
+
+    if (parallelCount === 0) {
+      parallelSlots.appendChild(parallelEmptyHint);
+      parallelEmptyHint.style.display = "flex";
+    } else {
+      parallelEmptyHint.style.display = "none";
+    }
+
+    // Pool empty / review state
+    const unplaced = statementCards.filter(item => placements[item.id] === "pool");
+    if (unplaced.length === 0) {
+      if (isChecked) {
+        renderReviewPanel(poolList);
+      } else {
+        const readyEl = document.createElement("div");
+        readyEl.className = "pool-ready-banner";
+        readyEl.innerHTML = `
+          <div style="font-size: calc(26px * var(--scale));">⚡</div>
+          <div class="pool-ready-title">All Statements Placed!</div>
+          <div class="pool-ready-desc">You've sorted all 6 rules into Series and Parallel. Click <strong>Check Answers</strong> to verify your choices.</div>
+        `;
+        poolList.appendChild(readyEl);
+      }
+    }
+
+    // Badges & Counters
+    seriesCountBadge.textContent = `${seriesCount} / 3`;
+    parallelCountBadge.textContent = `${parallelCount} / 3`;
+    matchedCounter.textContent = `${totalMatched} / 6`;
+
+    // Highlight target boxes if a card is selected
+    targetSeries.classList.toggle("is-armed", armedCircuit === "series" || (selectedCardId && placements[selectedCardId] !== "series"));
+    targetParallel.classList.toggle("is-armed", armedCircuit === "parallel" || (selectedCardId && placements[selectedCardId] !== "parallel"));
+  }
+
+  // Render review panel with educational principles
+  function renderReviewPanel(container) {
+    let correctCount = 0;
+    statementCards.forEach(c => {
+      if (placements[c.id] === c.correctCircuit) correctCount++;
+    });
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "review-panel";
+
+    const banner = document.createElement("div");
+    banner.className = `review-banner ${correctCount === 6 ? "perfect" : "partial"}`;
+    banner.innerHTML = `
+      <div class="review-banner-icon">${correctCount === 6 ? "🏆" : "💡"}</div>
+      <div>
+        <div class="review-banner-title">${correctCount === 6 ? "Mastery Confirmed! (6 / 6)" : `${correctCount} of 6 Correct`}</div>
+        <div class="review-banner-desc">${correctCount === 6 ? "Every statement has been classified according to its physical law." : "Inspect the principles below to correct any flagged items."}</div>
+      </div>
+    `;
+    wrapper.appendChild(banner);
+
+    statementCards.forEach(item => {
+      const reviewItem = document.createElement("div");
+      reviewItem.className = "review-item";
+      reviewItem.innerHTML = `
+        <div class="review-item-header">
+          <span class="review-item-title">${item.text}</span>
+          <span class="review-item-circuit circuit-badge-${item.correctCircuit}">${item.correctCircuit === "series" ? "Series" : "Parallel"}</span>
+        </div>
+        <div class="review-item-explanation">${item.explanation}</div>
+      `;
+      wrapper.appendChild(reviewItem);
+    });
+
+    container.appendChild(wrapper);
+  }
+
+  // Assign card to target
+  function assignCardToCircuit(cardId, circuitType) {
+    if (!cardId) return;
+    isChecked = false;
+    scorePill.style.display = "none";
+    celebrationToast.classList.remove("active");
+
+    placements[cardId] = circuitType;
+    selectedCardId = null;
+    armedCircuit = null;
+    playSnap();
+    refreshUI();
+
+    // Notify parent if embedded in iframe
+    broadcastState();
+  }
+
+  // Target Click / Arm Handlers
+  function handleTargetClick(circuitType) {
+    playClick();
+    if (selectedCardId) {
+      assignCardToCircuit(selectedCardId, circuitType);
+    } else {
+      // Toggle armed state for fast batch clicking
+      armedCircuit = (armedCircuit === circuitType) ? null : circuitType;
+      refreshUI();
+    }
+  }
+
+  targetSeries.addEventListener("click", () => handleTargetClick("series"));
+  pillSeriesBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    handleTargetClick("series");
+  });
+
+  targetParallel.addEventListener("click", () => handleTargetClick("parallel"));
+  pillParallelBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    handleTargetClick("parallel");
+  });
+
+  // Clicking pool list returns card to pool if selected
+  poolList.addEventListener("click", () => {
+    if (selectedCardId) {
+      assignCardToCircuit(selectedCardId, "pool");
+    }
+  });
+
+  // Drag and Drop Zone Bindings
+  [
+    { zone: targetSeries, type: "series" },
+    { zone: targetParallel, type: "parallel" },
+    { zone: poolList, type: "pool" }
+  ].forEach(({ zone, type }) => {
+    zone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      zone.classList.add("drag-over");
+    });
+
+    zone.addEventListener("dragleave", () => {
+      zone.classList.remove("drag-over");
+    });
+
+    zone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      zone.classList.remove("drag-over");
+      const cardId = e.dataTransfer.getData("text/plain") || selectedCardId;
+      if (cardId) {
+        assignCardToCircuit(cardId, type);
+      }
+    });
+  });
+
+  // Check Answers
+  checkBtn.addEventListener("click", () => {
+    playClick();
+    isChecked = true;
+    selectedCardId = null;
+    armedCircuit = null;
+
+    let correctCount = 0;
+    statementCards.forEach(item => {
+      if (placements[item.id] === item.correctCircuit) {
+        correctCount++;
+      }
+    });
+
+    scorePill.style.display = "flex";
+    scoreVal.textContent = `${correctCount} / 6`;
+    scoreVal.style.color = correctCount === 6 ? "var(--success-green)" : (correctCount >= 4 ? "var(--parallel-gold)" : "var(--error-red)");
+
+    refreshUI();
+
+    if (correctCount === 6) {
+      playSuccessChord();
+      triggerConfetti();
+      celebrationToast.classList.add("active");
+      setTimeout(() => celebrationToast.classList.remove("active"), 5000);
+    } else {
+      playError();
+    }
+  });
+
+  // Show Solution
+  solutionBtn.addEventListener("click", () => {
+    playClick();
+    statementCards.forEach(c => {
+      placements[c.id] = c.correctCircuit;
+    });
+    isChecked = true;
+    selectedCardId = null;
+    armedCircuit = null;
+
+    scorePill.style.display = "flex";
+    scoreVal.textContent = "6 / 6 (Solution)";
+    scoreVal.style.color = "var(--success-green)";
+    playSnap();
+    refreshUI();
+    broadcastState();
+  });
+
+  // Reset
+  resetBtn.addEventListener("click", () => {
+    playClick();
+    statementCards.forEach(c => placements[c.id] = "pool");
+    selectedCardId = null;
+    armedCircuit = null;
+    isChecked = false;
+    scorePill.style.display = "none";
+    celebrationToast.classList.remove("active");
+    refreshUI();
+    broadcastState();
+  });
+
+  // Shuffle
+  shuffleBtn.addEventListener("click", () => {
+    playClick();
+    statementCards = [...statementCards].sort(() => Math.random() - 0.5);
+    refreshUI();
+  });
+
+  // Sound toggle
+  soundBtn.addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+    soundIcon.textContent = soundEnabled ? "🔊" : "🔇";
+    playClick();
+  });
+
+  // Canvas Confetti
+  let confettiParticles = [];
+  function triggerConfetti() {
+    confettiParticles = [];
+    const colors = ["#0284c7", "#38bdf8", "#d97706", "#fbbf24", "#10b981", "#6366f1", "#ec4899"];
+    for (let i = 0; i < 90; i++) {
+      confettiParticles.push({
+        x: confettiCanvas.width * (0.3 + Math.random() * 0.4),
+        y: confettiCanvas.height * 0.4,
+        vx: (Math.random() - 0.5) * 14,
+        vy: (Math.random() - 0.9) * 16,
+        size: Math.random() * 8 + 5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rSpeed: (Math.random() - 0.5) * 10,
+        alpha: 1
+      });
+    }
+    requestAnimationFrame(renderConfetti);
+  }
+
+  function renderConfetti() {
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    let active = false;
+
+    confettiParticles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.45; // gravity
+      p.rotation += p.rSpeed;
+      p.alpha -= 0.012;
+
+      if (p.alpha > 0) {
+        active = true;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.restore();
+      }
+    });
+
+    if (active) {
+      requestAnimationFrame(renderConfetti);
+    } else {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    }
+  }
+
+  // Cross-frame sync with parent slide viewer
+  function broadcastState() {
+    try {
+      window.parent?.postMessage({
+        type: "interactive-state-sync",
+        interactiveUrl: window.location.pathname,
+        state: { placements, isChecked }
+      }, "*");
+    } catch (_) {}
+  }
+
+  window.addEventListener("message", (e) => {
+    if (e.data?.type === "restore-interactive-state" && e.data?.state?.placements) {
+      placements = { ...e.data.state.placements };
+      isChecked = Boolean(e.data.state.isChecked);
+      refreshUI();
+    }
+  });
+
+  // Initial render
+  refreshUI();
+})();
+</script>
+</body>
+</html>
