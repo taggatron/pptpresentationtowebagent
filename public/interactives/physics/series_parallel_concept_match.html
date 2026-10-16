@@ -383,10 +383,10 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: calc(8px * var(--scale));
+      gap: calc(10px * var(--scale));
       overflow-y: auto;
       min-height: 0;
-      padding-right: calc(4px * var(--scale));
+      padding-right: calc(2px * var(--scale));
     }
 
     .pool-cards-list::-webkit-scrollbar {
@@ -395,6 +395,12 @@
     .pool-cards-list::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, 0.15);
       border-radius: 999px;
+    }
+
+    .pool-cards-list .concept-card {
+      flex: 1;
+      min-height: 0;
+      padding: calc(8px * var(--scale)) calc(18px * var(--scale));
     }
 
     /* Concept Card Style (faithfully mirrors original slide design) */
@@ -477,7 +483,7 @@
     }
 
     .card-text {
-      font-size: calc(16.5px * var(--scale));
+      font-size: calc(18px * var(--scale));
       font-weight: 800;
       color: var(--text-main);
       line-height: 1.25;
@@ -670,50 +676,10 @@
       max-width: calc(280px * var(--scale));
     }
 
-    /* Instructions Banner */
-    .instruction-bar {
-      margin-top: calc(10px * var(--scale));
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: calc(8px * var(--scale)) calc(16px * var(--scale));
-      background: #f1f5f9;
-      border-radius: calc(10px * var(--scale));
-      font-size: calc(12.5px * var(--scale));
-      color: #475569;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    .instruction-steps {
-      display: flex;
-      align-items: center;
-      gap: calc(14px * var(--scale));
-    }
-
-    .instruction-step {
-      display: flex;
-      align-items: center;
-      gap: calc(6px * var(--scale));
-    }
-
-    .step-number {
-      width: calc(18px * var(--scale));
-      height: calc(18px * var(--scale));
-      border-radius: 50%;
-      background: var(--text-main);
-      color: #ffffff;
-      font-size: calc(10px * var(--scale));
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     /* Celebration Banner */
     .celebration-toast {
       position: absolute;
-      bottom: calc(52px * var(--scale));
+      bottom: calc(20px * var(--scale));
       left: 50%;
       transform: translateX(-50%) translateY(calc(30px * var(--scale)));
       background: #ffffff;
@@ -880,27 +846,6 @@
       </div>
     </div>
   </main>
-
-  <!-- Instructions Bar -->
-  <footer class="instruction-bar">
-    <div class="instruction-steps">
-      <div class="instruction-step">
-        <span class="step-number">1</span>
-        <span>Click any statement card to select it</span>
-      </div>
-      <div class="instruction-step">
-        <span class="step-number">2</span>
-        <span>Click either <strong>Series Circuit</strong> or <strong>Parallel Circuit</strong></span>
-      </div>
-      <div class="instruction-step">
-        <span class="step-number">3</span>
-        <span>Press <strong>Check Answers</strong> to test your mastery</span>
-      </div>
-    </div>
-    <div style="font-size: calc(11.5px * var(--scale)); color: #94a3b8;">
-      Keyboard: <kbd>Tab</kbd> to focus, <kbd>Enter</kbd> to select, <kbd>1</kbd>=Series, <kbd>2</kbd>=Parallel
-    </div>
-  </footer>
 </div>
 
 <script>
