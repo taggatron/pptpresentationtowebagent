@@ -1,0 +1,683 @@
+{
+  "id": "Lesson_02_Pressure_Alternative",
+  "title": "2. Pressure and Temperature (Alternative)",
+  "slideSet": "physics_matter_pressure_heat",
+  "filename": "Lesson_02_Pressure_Alternative.pptx",
+  "totalSlides": 15,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Slide 1: Pressure, Temperature & the Particle Model",
+      "imageFileName": "slide_01.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png",
+      "sourceMediaPath": "ppt/media/image1.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "hasProgressiveBuilds": true,
+      "videoUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/gemini_generated_video_13f6cac2.mp4",
+      "posterUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png",
+      "originalImageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png",
+      "progressiveBuilds": [
+        {
+          "id": "build_1_title",
+          "version": 1,
+          "kind": "image",
+          "label": "Build 1: Hook Question – Why should we not heat up aerosol cans?",
+          "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png",
+          "posterUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png"
+        },
+        {
+          "id": "build_2_video",
+          "version": 2,
+          "kind": "video",
+          "label": "Build 2: Aerosol Can Explosion Video",
+          "videoUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/gemini_generated_video_13f6cac2.mp4",
+          "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png",
+          "posterUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png",
+          "startTime": 0,
+          "transition": "crossfade"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "build_1_title",
+            "title": "Build 1: Hook Question – Why should we not heat up aerosol cans?",
+            "componentIds": [
+              "build_1_title"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "build_2_video",
+            "title": "Build 2: Aerosol Can Explosion Video",
+            "componentIds": [
+              "build_2_video"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
+      "history": [
+        {
+          "id": "ver_orig",
+          "label": "Build 1: Hook Question – Why should we not heat up aerosol cans?",
+          "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png"
+        },
+        {
+          "id": "ver_video_intro",
+          "label": "Build 2: Aerosol Can Explosion Video",
+          "videoUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/gemini_generated_video_13f6cac2.mp4",
+          "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_01.png"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Starter Activity: Particle Model Retrieval Grid",
+      "imageFileName": "slide_02.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_02.png",
+      "isInteractive": true,
+      "interactiveType": "starter_qa_grid",
+      "gridTitle": "Starter Activity: Particle Model Retrieval Grid",
+      "starterQuestions": [
+        {
+          "q": "How are particles arranged and how do they move in a solid compared to a gas?",
+          "a": "Solids: tightly packed in regular lattice, vibrating in place. Gases: far apart, rapid random motion.",
+          "cue": "Regular lattice vs random motion"
+        },
+        {
+          "q": "What does temperature measure in terms of the particle model?",
+          "a": "Temperature is directly proportional to the average kinetic energy (mean speed) of the particles.",
+          "cue": "Average kinetic energy & speed"
+        },
+        {
+          "q": "How do gas particles exert pressure on the walls of their container?",
+          "a": "Particles collide with container walls; each impact exerts a normal force. Pressure is total force divided by area (P = F / A).",
+          "cue": "Collision force per unit area (P = F / A)"
+        },
+        {
+          "q": "Why does heating a sealed aerosol can cause internal pressure to increase?",
+          "a": "Particles gain kinetic energy and speed, striking container walls harder (greater force) and more frequently.",
+          "cue": "Faster collisions + higher frequency"
+        },
+        {
+          "q": "If gas volume is halved at constant temperature, what happens to pressure and why?",
+          "a": "Pressure doubles (P ∝ 1/V); particles are crowded into half the space, doubling wall collision frequency.",
+          "cue": "More frequent wall collisions"
+        },
+        {
+          "q": "When ice melts or liquid boils, why is mass conserved and which bonds break?",
+          "a": "Particle number stays constant (mass conserved); weak intermolecular forces break, not strong covalent bonds.",
+          "cue": "Particle number stays constant"
+        }
+      ],
+      "interactiveCells": [
+        {
+          "id": "cell_1",
+          "row": 0,
+          "col": 0,
+          "bounds": {
+            "x": 2.62,
+            "y": 14.58,
+            "w": 46.37,
+            "h": 25
+          },
+          "answerBounds": {
+            "x": 4.47,
+            "y": 28.89,
+            "w": 43.1,
+            "h": 8.93
+          },
+          "question": "How are particles arranged and how do they move in a solid compared to a gas?",
+          "expectedAnswer": "Solids: tightly packed in regular lattice, vibrating in place. Gases: far apart, rapid random motion.",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        },
+        {
+          "id": "cell_2",
+          "row": 0,
+          "col": 1,
+          "bounds": {
+            "x": 51.02,
+            "y": 14.58,
+            "w": 46.37,
+            "h": 25
+          },
+          "answerBounds": {
+            "x": 52.87,
+            "y": 28.89,
+            "w": 43.1,
+            "h": 8.93
+          },
+          "question": "What does temperature measure in terms of the particle model?",
+          "expectedAnswer": "Temperature is directly proportional to the average kinetic energy (mean speed) of the particles.",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        },
+        {
+          "id": "cell_3",
+          "row": 1,
+          "col": 0,
+          "bounds": {
+            "x": 2.62,
+            "y": 41.41,
+            "w": 46.37,
+            "h": 25
+          },
+          "answerBounds": {
+            "x": 4.47,
+            "y": 55.71,
+            "w": 43.1,
+            "h": 8.93
+          },
+          "question": "How do gas particles exert pressure on the walls of their container?",
+          "expectedAnswer": "Particles collide with container walls; each impact exerts a normal force. Pressure is total force divided by area (P = F / A).",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        },
+        {
+          "id": "cell_4",
+          "row": 1,
+          "col": 1,
+          "bounds": {
+            "x": 51.02,
+            "y": 41.41,
+            "w": 46.37,
+            "h": 25
+          },
+          "answerBounds": {
+            "x": 52.87,
+            "y": 55.71,
+            "w": 43.1,
+            "h": 8.93
+          },
+          "question": "Why does heating a sealed aerosol can cause internal pressure to increase?",
+          "expectedAnswer": "Particles gain kinetic energy and speed, striking container walls harder (greater force) and more frequently.",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        },
+        {
+          "id": "cell_5",
+          "row": 2,
+          "col": 0,
+          "bounds": {
+            "x": 2.62,
+            "y": 68.23,
+            "w": 46.37,
+            "h": 25
+          },
+          "answerBounds": {
+            "x": 4.47,
+            "y": 82.54,
+            "w": 43.1,
+            "h": 8.93
+          },
+          "question": "If gas volume is halved at constant temperature, what happens to pressure and why?",
+          "expectedAnswer": "Pressure doubles (P ∝ 1/V); particles are crowded into half the space, doubling wall collision frequency.",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        },
+        {
+          "id": "cell_6",
+          "row": 2,
+          "col": 1,
+          "bounds": {
+            "x": 51.02,
+            "y": 68.23,
+            "w": 46.37,
+            "h": 25
+          },
+          "answerBounds": {
+            "x": 52.87,
+            "y": 82.54,
+            "w": 43.1,
+            "h": 8.93
+          },
+          "question": "When ice melts or liquid boils, why is mass conserved and which bonds break?",
+          "expectedAnswer": "Particle number stays constant (mass conserved); weak intermolecular forces break, not strong covalent bonds.",
+          "answerVisibleInImage": true,
+          "answerIsBaked": true,
+          "revealMode": "unmask",
+          "confidence": 1
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 110,
+        "timeGuideDisplay": "93–127s",
+        "vciScore": "10.0",
+        "complexityCategory": "High",
+        "ragLevel": "high",
+        "ragColor": "red",
+        "ragLabel": "High Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 7378,
+          "readingMs": 60300,
+          "semanticProcessingMs": 42000,
+          "wordCount": 181,
+          "visualElementsCount": 17
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      },
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: How are particles arranged and how do they move in a solid compared to a gas?",
+            "componentIds": [
+              "cell_1"
+            ],
+            "targetBounds": {
+              "x": 4.47,
+              "y": 28.89,
+              "w": 43.1,
+              "h": 8.93
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: What does temperature measure in terms of the particle model?",
+            "componentIds": [
+              "cell_2"
+            ],
+            "targetBounds": {
+              "x": 52.87,
+              "y": 28.89,
+              "w": 43.1,
+              "h": 8.93
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: How do gas particles exert pressure on the walls of their container?",
+            "componentIds": [
+              "cell_3"
+            ],
+            "targetBounds": {
+              "x": 4.47,
+              "y": 55.71,
+              "w": 43.1,
+              "h": 8.93
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: Why does heating a sealed aerosol can cause internal pressure to increase?",
+            "componentIds": [
+              "cell_4"
+            ],
+            "targetBounds": {
+              "x": 52.87,
+              "y": 55.71,
+              "w": 43.1,
+              "h": 8.93
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: If gas volume is halved at constant temperature, what happens to pressure and why?",
+            "componentIds": [
+              "cell_5"
+            ],
+            "targetBounds": {
+              "x": 4.47,
+              "y": 82.54,
+              "w": 43.1,
+              "h": 8.93
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: When ice melts or liquid boils, why is mass conserved and which bonds break?",
+            "componentIds": [
+              "cell_6"
+            ],
+            "targetBounds": {
+              "x": 52.87,
+              "y": 82.54,
+              "w": 43.1,
+              "h": 8.93
+            },
+            "revealType": "unmask"
+          }
+        ]
+      },
+      "animationPlan": {
+        "mode": "starter-grid-unmask",
+        "strategy": "unmask-grid",
+        "totalSteps": 6
+      }
+    },
+    {
+      "number": 3,
+      "title": "Starter Activity: Knowledge Retrieval (Physical States & Latent Heat)",
+      "imageFileName": "slide_03.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_03.png",
+      "sourceMediaPath": "ppt/media/image2.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "reveals": [
+        {
+          "id": "reveal_s2_cell_1",
+          "question": "1. What must be broken or overcome when a substance changes physical state?",
+          "expectedAnswer": "Intermolecular forces (or bonds) between particles",
+          "bounds": {
+            "x": 9.5,
+            "y": 38.5,
+            "w": 27,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 9.5,
+            "y": 38.5,
+            "w": 27,
+            "h": 6.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_2",
+          "question": "2. How do intermolecular forces compare in strength to intramolecular forces?",
+          "expectedAnswer": "Intermolecular forces are much weaker than intramolecular forces",
+          "bounds": {
+            "x": 38,
+            "y": 38.5,
+            "w": 27,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 38,
+            "y": 38.5,
+            "w": 27,
+            "h": 6.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_3",
+          "question": "3. State the equation linking pressure, force, and area.",
+          "expectedAnswer": "Pressure = Force / Area (P = F / A)",
+          "bounds": {
+            "x": 66.5,
+            "y": 38.5,
+            "w": 27,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 66.5,
+            "y": 38.5,
+            "w": 27,
+            "h": 6.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_4",
+          "question": "4. In which state of matter do particles have the highest kinetic energy?",
+          "expectedAnswer": "Gas (steam / vapour)",
+          "bounds": {
+            "x": 9.5,
+            "y": 72,
+            "w": 27,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 9.5,
+            "y": 72,
+            "w": 27,
+            "h": 6.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_5",
+          "question": "5. What is temperature a measure of in terms of the particle model?",
+          "expectedAnswer": "The average kinetic energy (speed) of the particles",
+          "bounds": {
+            "x": 38,
+            "y": 72,
+            "w": 27,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 38,
+            "y": 72,
+            "w": 27,
+            "h": 6.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_6",
+          "question": "6. What causes gas pressure on the inside walls of a container?",
+          "expectedAnswer": "Collisions of gas particles exerting a force per unit area on the walls",
+          "bounds": {
+            "x": 66.5,
+            "y": 72,
+            "w": 27,
+            "h": 6.5
+          },
+          "answerBounds": {
+            "x": 66.5,
+            "y": 72,
+            "w": 27,
+            "h": 6.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Slide 3",
+      "imageFileName": "slide_04.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_04.png",
+      "sourceMediaPath": "ppt/media/image3.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 5,
+      "title": "Slide 4",
+      "imageFileName": "slide_05.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_05.png",
+      "sourceMediaPath": "ppt/media/image4.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 6,
+      "title": "Slide 5",
+      "imageFileName": "slide_06.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_06.png",
+      "sourceMediaPath": "ppt/media/image5.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 7,
+      "title": "Slide 6",
+      "imageFileName": "slide_07.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_07.png",
+      "sourceMediaPath": "ppt/media/image6.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 8,
+      "title": "Slide 7",
+      "imageFileName": "slide_08.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_08.png",
+      "sourceMediaPath": "ppt/media/image7.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 9,
+      "title": "Slide 8",
+      "imageFileName": "slide_09.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_09.png",
+      "sourceMediaPath": "ppt/media/image8.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 10,
+      "title": "Slide 9",
+      "imageFileName": "slide_10.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_10.png",
+      "sourceMediaPath": "ppt/media/image9.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 11,
+      "title": "Slide 10",
+      "imageFileName": "slide_11.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_11.png",
+      "sourceMediaPath": "ppt/media/image10.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 12,
+      "title": "Slide 11",
+      "imageFileName": "slide_12.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_12.png",
+      "sourceMediaPath": "ppt/media/image11.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 13,
+      "title": "Slide 12",
+      "imageFileName": "slide_13.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_13.png",
+      "sourceMediaPath": "ppt/media/image12.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 14,
+      "title": "Slide 13",
+      "imageFileName": "slide_14.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_14.png",
+      "sourceMediaPath": "ppt/media/image13.png",
+      "isInteractive": false,
+      "interactiveType": null
+    },
+    {
+      "number": 15,
+      "title": "Interactive Simulation: Gas Properties & Pressure",
+      "imageFileName": "slide_15_practical.png",
+      "imageUrl": "/decks/physics_matter_pressure_heat/Lesson_02_Pressure_Alternative/slides/slide_15_practical.png",
+      "sourceMediaPath": "web_embed/slide_14_practical.png",
+      "isInteractive": false,
+      "interactiveType": "web_embed",
+      "webEmbed": {
+        "url": "https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_en.html",
+        "title": "Interactive Simulation: Gas Properties & Pressure",
+        "label": "PhET Simulation · Gas Properties & Particle Kinetic Lab"
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "40–60s",
+        "vciScore": "4.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Active Simulation",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1100,
+          "readingMs": 18000,
+          "semanticProcessingMs": 12000,
+          "wordCount": 45,
+          "visualElementsCount": 4
+        }
+      }
+    }
+  ],
+  "shortTitle": "Pressure & Temperature (Alt)",
+  "fullTitle": "Pressure, Temperature & the Particle Model – Why Should We Not Heat Up Aerosol Cans?",
+  "courseName": "GCSE Physics: Matter, Pressure & Thermal Physics",
+  "teacher": "Dan",
+  "practicalsCount": 1
+}
