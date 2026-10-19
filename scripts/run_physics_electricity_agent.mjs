@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { extractPptxDeck } from "../src/pptx-extractor.js";
+import { analyzeSlideCognitiveLoad } from "../src/cognitive-model.js";
 
 const NOTEBOOK_AGENT_DIR = path.resolve("../NotebookLMagent");
 const PPTX_OUTPUT_DIR = path.join(NOTEBOOK_AGENT_DIR, "output", "powerpoints_physics_electricity_magnetism");
@@ -251,6 +252,58 @@ Practical 1 (The Motor Effect & Left Hand Rule): Suspending a rigid wire between
         title: "Interactive Practical: Motor Effect & Fleming's Left Hand Rule Simulator",
         url: "/interactives/physics/electric_motor_sim.html",
         label: "Motor Effect & Left Hand Rule Simulator"
+      }
+    ]
+  },
+  {
+    number: 9,
+    title: "Fuses and Earthing",
+    teacher: "Dan",
+    practicalsCount: 1,
+    deckId: "Lesson_09_Fuses_and_Earthing",
+    practicalNames: ["Investigating Appliance Power, Fuse Selection, and Earthing Fault Protection"],
+    details: `Domestic Electricity, Electrical Safety, Fuses, and Earthing:
+1. Mains Electricity Supply: Alternating Current (AC) vs Direct Current (DC). UK domestic mains supply is 230 V AC at 50 Hz.
+2. Three-Pin Plug Wiring & Wire Functions:
+   - Live wire (Brown, bottom right): Carries 230 V alternating potential difference into the appliance. Most dangerous wire.
+   - Neutral wire (Blue, bottom left): Completes the circuit, held at or close to 0 V.
+   - Earth wire (Green and Yellow striped, top centre): Safety wire connected to the metal casing of the appliance, held at 0 V. Only carries current during a fault.
+   - Safety features of the plug: Stiff plastic/rubber insulating casing, cable grip securing outer sheath, brass pins (excellent electrical conductor, hard-wearing).
+3. The Fuse:
+   - Contains a thin metal wire with a low melting point in a ceramic/glass tube.
+   - Connected in series with the Live wire before the appliance switch.
+   - Operates by the heating effect of electric current (P = I²R). When current exceeds the fuse rating, the wire heats up, melts ("blows"), and breaks the circuit.
+   - Disconnects the appliance from the 230 V live supply, preventing cable overheating and electrical fires.
+   - Standard UK domestic fuse ratings: 3 A, 5 A, and 13 A.
+   - Selecting correct fuse: Calculate normal operating current using I = P / V. Choose the fuse rating immediately above normal operating current (e.g. 2300 W kettle / 230 V = 10 A → 13 A fuse; 690 W toaster / 230 V = 3 A → 5 A fuse).
+4. Earthing & Fault Protection:
+   - How electrical shocks occur: If a live wire becomes loose and touches the metal casing of an appliance, touching the casing would provide a path to ground through the human body, causing severe or fatal electric shock.
+   - How earthing protects: The earth wire connects the metal casing directly to ground. It has an extremely low resistance.
+   - If a fault occurs, a huge surge of current flows through the live wire, into the casing, and straight down the earth wire to ground (I = V / R is very large).
+   - This huge surge current exceeds the fuse rating, instantly melting the fuse (or tripping a circuit breaker / RCCB).
+   - This completely isolates the appliance from the live supply, cutting off current and making the casing safe before anyone touches it.
+5. Double Insulation:
+   - Appliances with plastic outer casings (e.g. hair dryers, vacuum cleaners, electric drills) have no exposed metal parts.
+   - Marked with the double square symbol (回).
+   - Since the casing cannot become live, they do not require an earth wire (use 2-core cable: live and neutral only).
+MANDATORY PRACTICAL SLIDE:
+Practical 1 (Fuse Ratings & Earthing Protection Investigation):
+- Examining and correctly wiring a 3-pin plug (identifying wire colours, correct pin connections, cable grip position, fuse location).
+- Calculating current drawn by household appliances (kettle, toaster, lamp, heater) using I = P / V and selecting the appropriate fuse (3 A, 5 A, or 13 A).
+- Model fault circuit demonstration: Demonstrating what happens when a live wire touches an unearthed metal case vs an earthed metal case with a fuse, measuring current surge and observing fuse blow.`,
+    starterQuestions: [
+      { q: "What is the voltage and frequency of UK domestic mains electricity?", a: "230 V AC at 50 Hz", cue: "Standard UK domestic supply" },
+      { q: "State the colours of the live, neutral, and earth wires in a UK 3-pin plug.", a: "Live = Brown, Neutral = Blue, Earth = Green/Yellow stripes", cue: "B-L-U-E = bottom left; B-R-O-W-N = bottom right" },
+      { q: "Which wire in a plug contains the fuse and why?", a: "Live wire, so melting isolates appliance from 230 V supply", cue: "Cuts off high voltage" },
+      { q: "How does an earth wire and fuse together prevent electric shock?", a: "Fault current surges to earth, melting fuse and cutting off power", cue: "Low-resistance path to ground" },
+      { q: "Calculate current drawn by a 2300 W kettle connected to 230 V mains.", a: "10 A (I = P / V = 2300 / 230)", cue: "I = P / V" },
+      { q: "What does the double insulation symbol (two concentric squares) mean?", a: "Appliance has plastic casing; cannot become live so needs no earth wire", cue: "Plastic casing, 2-core cable" }
+    ],
+    interactives: [
+      {
+        title: "Interactive Practical: Appliance Fuses, Earthing & Fault Protection Lab",
+        url: "/interactives/physics/fuses_and_earthing_sim.html",
+        label: "Fuses & Earthing Simulation Lab"
       }
     ]
   }
@@ -650,11 +703,17 @@ export async function ingestAndEnhanceDeck(pptxTargetFile, lesson) {
     }
   }
 
+  for (const s of currentManifest.slides) {
+    if (!s.cognitiveGuide) {
+      s.cognitiveGuide = analyzeSlideCognitiveLoad(s);
+    }
+  }
+
   await fs.writeFile(manifestPath, JSON.stringify(currentManifest, null, 2), "utf8");
   log(`Updated manifest for ${deckFolder} (${currentManifest.slides.length} slides).`);
 }
 
-export async function runAgent(startLesson = 1, endLesson = 8) {
+export async function runAgent(startLesson = 1, endLesson = 9) {
   log("Connecting to Google Chrome over CDP on port 9333...");
   const browser = await chromium.connectOverCDP(CDP_URL);
   
@@ -675,13 +734,17 @@ export async function runAgent(startLesson = 1, endLesson = 8) {
   }
 
   log("\n✦ ALL SPECIFIED LESSONS GENERATED AND IMPORTED SUCCESSFULLY! ✦");
+  await browser.close().catch(() => {});
+  process.exit(0);
 }
 
-const args = process.argv.slice(2);
-const start = args[0] ? parseInt(args[0], 10) : 1;
-const end = args[1] ? parseInt(args[1], 10) : 8;
+if (process.argv[1] && process.argv[1].endsWith("run_physics_electricity_agent.mjs")) {
+  const args = process.argv.slice(2);
+  const start = args[0] ? parseInt(args[0], 10) : 1;
+  const end = args[1] ? parseInt(args[1], 10) : 9;
 
-runAgent(start, end).catch(err => {
-  console.error("FATAL RUNNER ERROR:", err);
-  process.exit(1);
-});
+  runAgent(start, end).catch(err => {
+    console.error("FATAL RUNNER ERROR:", err);
+    process.exit(1);
+  });
+}

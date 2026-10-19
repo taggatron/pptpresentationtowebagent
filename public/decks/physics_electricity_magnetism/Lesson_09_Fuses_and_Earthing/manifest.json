@@ -1,0 +1,823 @@
+{
+  "id": "Lesson_09_Fuses_and_Earthing",
+  "title": "9. Fuses and Earthing",
+  "slideSet": "physics_electricity_magnetism",
+  "filename": "Lesson_09_Fuses_and_Earthing.pptx",
+  "totalSlides": 17,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Lesson 9: Fuses and Earthing",
+      "imageFileName": "slide_01.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_01.png",
+      "sourceMediaPath": "ppt/media/image1.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 6,
+        "timeGuideDisplay": "5–7s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 600,
+          "semanticProcessingMs": 3600,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "title": "Starter Activity: 6-Question Retrieval Grid (Power, Current, Plug Pins & Transformers)",
+      "imageFileName": "slide_02.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_02.png",
+      "sourceMediaPath": "gemini-image-creation/starter_2col_grid_bg_1792403260128.jpg",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "reveals": [
+        {
+          "id": "reveal_s2_cell_1",
+          "question": "1. State the equation linking power (P), current (I), and potential difference (V). Calculate the power of a toaster running at 230 V that draws a current of 4 A.",
+          "expectedAnswer": "P = I × V = 4 A × 230 V = 920 W (requires a 5 A or 13 A fuse).",
+          "bounds": {
+            "x": 5.73,
+            "y": 15.93,
+            "w": 42.19,
+            "h": 23.89
+          },
+          "answerBounds": {
+            "x": 7.19,
+            "y": 33.52,
+            "w": 39.27,
+            "h": 4.81
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "gemini-image-creation",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_2",
+          "question": "2. State the equation linking power (P), current (I), and resistance (R). By what factor does heating power increase if the current flowing through a resistor triples?",
+          "expectedAnswer": "P = I² × R. Power is proportional to current squared (I²), so tripling current increases power by 9× (3² = 9).",
+          "bounds": {
+            "x": 52.08,
+            "y": 15.93,
+            "w": 42.19,
+            "h": 23.89
+          },
+          "answerBounds": {
+            "x": 53.54,
+            "y": 32.86,
+            "w": 39.27,
+            "h": 5.48
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "gemini-image-creation",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_3",
+          "question": "3. Define electric current and state the equation linking charge (Q), current (I), and time (t). How does the direction of electron flow compare to conventional current?",
+          "expectedAnswer": "Current is the rate of flow of electric charge (Q = I × t). Electrons flow from negative to positive; conventional current flows positive to negative.",
+          "bounds": {
+            "x": 5.73,
+            "y": 43.98,
+            "w": 42.19,
+            "h": 23.89
+          },
+          "answerBounds": {
+            "x": 7.19,
+            "y": 60.91,
+            "w": 39.27,
+            "h": 5.48
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "gemini-image-creation",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_4",
+          "question": "4. Identify the 3 pins in a UK plug (Live, Neutral, Earth) by their positions and wire colours. Which pin connects directly to the fuse, and why?",
+          "expectedAnswer": "Live = Brown (bottom right, connects to fuse); Neutral = Blue (bottom left); Earth = Green/Yellow (top center). Fuse isolates live 230 V supply.",
+          "bounds": {
+            "x": 52.08,
+            "y": 43.98,
+            "w": 42.19,
+            "h": 23.89
+          },
+          "answerBounds": {
+            "x": 53.54,
+            "y": 60.91,
+            "w": 39.27,
+            "h": 5.48
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "gemini-image-creation",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_5",
+          "question": "5. Why is the earth pin made longer than the live and neutral pins, and why are all plug pins manufactured from solid brass?",
+          "expectedAnswer": "Longer earth pin opens socket safety shutters and connects earth first for protection. Brass is a rigid, corrosion-resistant, high conductor.",
+          "bounds": {
+            "x": 5.73,
+            "y": 72.04,
+            "w": 42.19,
+            "h": 23.89
+          },
+          "answerBounds": {
+            "x": 7.19,
+            "y": 88.97,
+            "w": 39.27,
+            "h": 5.48
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "gemini-image-creation",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_6",
+          "question": "6. Explain why step-up and step-down transformers are used in the National Grid transmission system.",
+          "expectedAnswer": "Step-up transformers increase voltage (up to 400 kV) to reduce current, drastically cutting thermal energy losses (P = I²R) in cables. Step-down reduces to 230 V for safety.",
+          "bounds": {
+            "x": 52.08,
+            "y": 72.04,
+            "w": 42.19,
+            "h": 23.89
+          },
+          "answerBounds": {
+            "x": 53.54,
+            "y": 88.97,
+            "w": 39.27,
+            "h": 5.48
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "gemini-image-creation",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        }
+      ],
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 19,
+        "timeGuideDisplay": "16–22s",
+        "vciScore": "4.3",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 11288,
+          "semanticProcessingMs": 6000,
+          "wordCount": 35,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 3,
+      "title": "Learning Objectives",
+      "imageFileName": "slide_03.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_03.png",
+      "sourceMediaPath": "ppt/media/image2.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 22,
+        "timeGuideDisplay": "18–26s",
+        "vciScore": "5.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 5550,
+          "semanticProcessingMs": 15400,
+          "wordCount": 13,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "title": "The UK Mains Supply",
+      "imageFileName": "slide_04.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_04.png",
+      "sourceMediaPath": "ppt/media/image3.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 9,
+        "timeGuideDisplay": "7–11s",
+        "vciScore": "2.8",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1200,
+          "semanticProcessingMs": 6000,
+          "wordCount": 4,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 5,
+      "title": "Anatomy of the 3-Pin Plug",
+      "imageFileName": "slide_05.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_05.png",
+      "sourceMediaPath": "ppt/media/image4.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 9,
+        "timeGuideDisplay": "7–11s",
+        "vciScore": "2.9",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1500,
+          "semanticProcessingMs": 6000,
+          "wordCount": 5,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "title": "Inside the Cable (Wire Colours & Roles)",
+      "imageFileName": "slide_06.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_06.png",
+      "sourceMediaPath": "ppt/media/image5.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 14,
+        "timeGuideDisplay": "11–17s",
+        "vciScore": "2.9",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 2100,
+          "semanticProcessingMs": 11000,
+          "wordCount": 7,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 7,
+      "title": "The Fuse (Structure & Properties)",
+      "imageFileName": "slide_07.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_07.png",
+      "sourceMediaPath": "ppt/media/image6.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 18,
+        "timeGuideDisplay": "15–21s",
+        "vciScore": "5.0",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 6450,
+          "semanticProcessingMs": 10400,
+          "wordCount": 16,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 8,
+      "title": "How Fuses Work (Heating & Breaking)",
+      "imageFileName": "slide_08.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_08.png",
+      "sourceMediaPath": "ppt/media/image7.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 10,
+        "timeGuideDisplay": "8–12s",
+        "vciScore": "3.3",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1950,
+          "semanticProcessingMs": 6400,
+          "wordCount": 6,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 9,
+      "title": "Choosing the Right Fuse (I = P ÷ V)",
+      "imageFileName": "slide_09.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_09.png",
+      "sourceMediaPath": "ppt/media/image8.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 22,
+        "timeGuideDisplay": "18–26s",
+        "vciScore": "3.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 2850,
+          "semanticProcessingMs": 17400,
+          "wordCount": 9,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 10,
+      "title": "Knowledge Checkpoint",
+      "imageFileName": "slide_10.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_10.png",
+      "sourceMediaPath": "ppt/media/image9.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 9,
+        "timeGuideDisplay": "7–11s",
+        "vciScore": "5.3",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 900,
+          "semanticProcessingMs": 6800,
+          "wordCount": 2,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 11,
+      "title": "The Hazard: Electric Shock",
+      "imageFileName": "slide_11.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_11.png",
+      "sourceMediaPath": "ppt/media/image10.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 9,
+        "timeGuideDisplay": "7–11s",
+        "vciScore": "3.5",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1350,
+          "semanticProcessingMs": 6400,
+          "wordCount": 4,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 12,
+      "title": "The Hero: Earthing & Low Resistance",
+      "imageFileName": "slide_12.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_12.png",
+      "sourceMediaPath": "ppt/media/image11.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 15,
+        "timeGuideDisplay": "12–18s",
+        "vciScore": "3.7",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 2100,
+          "semanticProcessingMs": 11800,
+          "wordCount": 6,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 13,
+      "title": "The Sequence of Protection",
+      "imageFileName": "slide_13.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_13.png",
+      "sourceMediaPath": "ppt/media/image12.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 10,
+        "timeGuideDisplay": "8–12s",
+        "vciScore": "4.1",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1500,
+          "semanticProcessingMs": 6800,
+          "wordCount": 4,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 14,
+      "title": "Double Insulation (Class II Appliances)",
+      "imageFileName": "slide_14.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_14.png",
+      "sourceMediaPath": "ppt/media/image13.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 10,
+        "timeGuideDisplay": "8–12s",
+        "vciScore": "3.9",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1800,
+          "semanticProcessingMs": 6800,
+          "wordCount": 5,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 15,
+      "title": "Practical: Fuses & Earthing Workflow",
+      "imageFileName": "slide_15.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_15.png",
+      "sourceMediaPath": "ppt/media/image14.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 15,
+        "timeGuideDisplay": "12–18s",
+        "vciScore": "4.4",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1950,
+          "semanticProcessingMs": 12200,
+          "wordCount": 5,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 16,
+      "title": "Plenary Summary & Core Equations",
+      "imageFileName": "slide_16.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_16.png",
+      "sourceMediaPath": "ppt/media/image15.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 15,
+        "timeGuideDisplay": "12–18s",
+        "vciScore": "3.4",
+        "complexityCategory": "Low",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 1650,
+          "semanticProcessingMs": 12400,
+          "wordCount": 5,
+          "visualElementsCount": 3
+        },
+        "academicReferences": [
+          {
+            "citation": "Rosenholtz, R., Li, Y., & Nakano, L. (2007). Measuring visual clutter. Journal of Vision, 7(2), 17.",
+            "relevance": "Quantifies visual feature congestion & visual search scanning time."
+          },
+          {
+            "citation": "Donderi, D. C. (2006). Visual complexity and information processing. Canadian Psychology, 47(1), 71.",
+            "relevance": "Establishes relationship between visual complexity index and cognitive decision time."
+          },
+          {
+            "citation": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257.",
+            "relevance": "Models intrinsic and extraneous cognitive load during visual information integration."
+          }
+        ]
+      }
+    },
+    {
+      "number": 17,
+      "title": "Interactive Practical: Appliance Fuses, Earthing & Fault Protection Lab",
+      "imageFileName": "slide_17_practical.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_09_Fuses_and_Earthing/slides/slide_17_practical.png",
+      "sourceMediaPath": "web_embed/slide_17_practical.png",
+      "isInteractive": false,
+      "interactiveType": "web_embed",
+      "webEmbed": {
+        "url": "/interactives/physics/fuses_and_earthing_sim.html",
+        "title": "Interactive Practical: Appliance Fuses, Earthing & Fault Protection Lab",
+        "label": "Fuses & Earthing Simulation Lab"
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 45,
+        "timeGuideDisplay": "40–60s",
+        "vciScore": "4.8",
+        "complexityCategory": "Moderate",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Active Simulation",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1100,
+          "readingMs": 18000,
+          "semanticProcessingMs": 12000,
+          "wordCount": 45,
+          "visualElementsCount": 4
+        }
+      }
+    }
+  ],
+  "courseName": "GCSE Physics: Electricity and Magnetism",
+  "teacher": "Dan",
+  "practicalsCount": 1
+}

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Lab — Domestic Electricity: Fuses & Earthing</title>
+  <style>
+    :root {
+      --bg: #090e17;
+      --panel: #111a27;
+      --card: #182436;
+      --border: #22354e;
+      --text: #e6f1f8;
+      --muted: #8ba2be;
+      --accent: #00d2ff;
+      --live-brown: #a0522d;
+      --neutral-blue: #2563eb;
+      --earth-green: #22c55e;
+      --earth-yellow: #eab308;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+    header {
+      background: #060b11; border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; height: 56px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { font-size: 13px; font-weight: 900; letter-spacing: 1.5px; background: var(--accent); color: #060b11; padding: 4px 8px; border-radius: 4px; }
+    .brand-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .badge { background: #1e3a5f; color: var(--accent); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 12px; text-transform: uppercase; }
+
+    .lab-container { display: flex; flex: 1; height: calc(100vh - 56px); }
+
+    /* Left Sidebar: Controls */
+    .sidebar-left {
+      width: 320px; background: var(--panel); border-right: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto;
+    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .card-title { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+
+    .opt-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .opt-btn {
+      background: var(--panel); border: 1px solid var(--border); color: var(--text);
+      padding: 9px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left;
+      display: flex; justify-content: space-between; align-items: center; transition: all 0.2s;
+    }
+    .opt-btn:hover { border-color: var(--accent); background: rgba(0, 210, 255, 0.08); }
+    .opt-btn.active { border-color: var(--accent); background: rgba(0, 210, 255, 0.16); color: #fff; }
+    .opt-detail { font-size: 11px; color: var(--muted); }
+
+    .switch-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+    .switch-label { font-size: 13px; font-weight: 600; }
+    .toggle-switch {
+      position: relative; width: 48px; height: 26px; display: inline-block; cursor: pointer;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #2b394e; transition: .3s; border-radius: 26px; border: 1px solid var(--border);
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+      background-color: white; transition: .3s; border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--accent); }
+    input:checked + .slider:before { transform: translateX(22px); }
+
+    .danger-slider input:checked + .slider { background-color: var(--danger); }
+    .success-slider input:checked + .slider { background-color: var(--success); }
+
+    .btn-action {
+      width: 100%; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13px;
+      cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-power-on { background: #10b981; color: #042416; }
+    .btn-power-on:hover { background: #34d399; }
+    .btn-power-off { background: #ef4444; color: #350808; }
+    .btn-reset { background: #374151; color: #fff; margin-top: 6px; }
+    .btn-reset:hover { background: #4b5563; }
+
+    /* Center Viewport */
+    .viewport {
+      flex: 1; position: relative; background: radial-gradient(circle at 50% 50%, #131d2b 0%, #060a10 100%);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    canvas#stage { width: 100%; height: 100%; display: block; }
+
+    .hud-metrics {
+      position: absolute; top: 16px; left: 20px; display: flex; gap: 16px; pointer-events: none;
+    }
+    .metric-card {
+      background: rgba(17, 26, 39, 0.88); border: 1px solid var(--border); padding: 8px 14px;
+      border-radius: 8px; backdrop-filter: blur(8px);
+    }
+    .metric-val { font-size: 22px; font-weight: 900; color: var(--accent); }
+    .metric-lbl { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+
+    .status-banner {
+      position: absolute; bottom: 20px; left: 20px; right: 20px;
+      padding: 12px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(8px); border: 1px solid transparent;
+      transition: all 0.3s;
+    }
+    .status-normal { background: rgba(16, 185, 129, 0.15); border-color: var(--success); color: #a7f3d0; }
+    .status-warning { background: rgba(245, 158, 11, 0.15); border-color: var(--warning); color: #fde68a; }
+    .status-danger { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); color: #fca5a5; }
+    .status-blown { background: rgba(59, 130, 246, 0.2); border-color: var(--accent); color: #bae6fd; }
+
+    /* Right Sidebar: Teaching Guide */
+    .sidebar-right {
+      width: 330px; background: var(--panel); border-left: 1px solid var(--border);
+      padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto;
+    }
+    .step-box { display: flex; gap: 10px; font-size: 12px; line-height: 1.45; margin-bottom: 12px; }
+    .step-num {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #060b11;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; flex-shrink: 0;
+    }
+    .formula-box {
+      background: #060b11; border-left: 3px solid var(--accent); padding: 10px; border-radius: 0 6px 6px 0; font-size: 12px;
+    }
+    .formula-title { font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .formula-math { font-family: "Courier New", monospace; color: var(--accent); font-size: 13px; }
+
+    .color-legend { display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+    .color-item { display: flex; align-items: center; gap: 8px; }
+    .color-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-logo">GCSE PHYSICS</div>
+      <div class="brand-title">Practical Lab: Domestic Electricity, Fuses & Earthing</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span class="badge">OCR Gateway P3.2</span>
+      <span class="badge" style="background:#22354e; color:#fff;">Live Interactive Simulator</span>
+    </div>
+  </header>
+
+  <div class="lab-container">
+    <!-- Left Controls -->
+    <div class="sidebar-left">
+      <div class="card">
+        <div class="card-title">1. Appliance Selection</div>
+        <div class="opt-group">
+          <button class="opt-btn active" onclick="selectAppliance('kettle')">
+            <div><strong>Metal Electric Kettle</strong><div class="opt-detail">2300 W · Metal Casing</div></div>
+            <span style="color:var(--accent); font-weight:700;">10.0 A</span>
+          </button>
+          <button class="opt-btn" onclick="selectAppliance('toaster')">
+            <div><strong>2-Slice Toaster</strong><div class="opt-detail">920 W · Metal Casing</div></div>
+            <span style="color:var(--accent); font-weight:700;">4.0 A</span>
+          </button>
+          <button class="opt-btn" onclick="selectAppliance('lamp')">
+            <div><strong>Desk Lamp</strong><div class="opt-detail">69 W · Plastic Double-Insulated</div></div>
+            <span style="color:var(--accent); font-weight:700;">0.3 A</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">2. Installed Fuse Rating</div>
+        <div class="opt-group">
+          <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:6px;">
+            <button id="fuse-3" class="opt-btn" style="justify-content:center;" onclick="selectFuse(3)"><strong>3 A</strong></button>
+            <button id="fuse-5" class="opt-btn" style="justify-content:center;" onclick="selectFuse(5)"><strong>5 A</strong></button>
+            <button id="fuse-13" class="opt-btn active" style="justify-content:center;" onclick="selectFuse(13)"><strong>13 A</strong></button>
+          </div>
+          <button id="fuse-none" class="opt-btn" style="margin-top:4px;" onclick="selectFuse(0)">
+            <span style="color:var(--danger)">⚠️ Bypassed (Solid Copper Nail)</span>
+            <span style="color:var(--muted); font-size:11px;">Danger</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">3. Circuit & Safety Faults</div>
+        
+        <div class="switch-row">
+          <span class="switch-label">Earth Wire Connected</span>
+          <label class="toggle-switch success-slider">
+            <input type="checkbox" id="earthToggle" checked onchange="updateEarthState(this.checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="switch-row" style="margin-top:8px;">
+          <span class="switch-label">Live Wire Fault (Touches Case)</span>
+          <label class="toggle-switch danger-slider">
+            <input type="checkbox" id="faultToggle" onchange="updateFaultState(this.checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="switch-row" style="margin-top:8px;">
+          <span class="switch-label">Person Touching Case</span>
+          <label class="toggle-switch danger-slider">
+            <input type="checkbox" id="personToggle" onchange="updatePersonState(this.checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">4. Master Controls</div>
+        <button id="powerBtn" class="btn-action btn-power-on" onclick="togglePower()">
+          ⚡ Power Supply: ON (230 V)
+        </button>
+        <button class="btn-action btn-reset" onclick="resetCircuit()">
+          🔄 Replace Fuse & Reset System
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Stage -->
+    <div class="viewport">
+      <canvas id="stage"></canvas>
+
+      <div class="hud-metrics">
+        <div class="metric-card">
+          <div class="metric-val" id="metricV">230 V</div>
+          <div class="metric-lbl">Supply Voltage</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="metricI">10.0 A</div>
+          <div class="metric-lbl">Circuit Current</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="metricP">2300 W</div>
+          <div class="metric-lbl">Power Dissipation</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="metricChassis">0 V</div>
+          <div class="metric-lbl">Chassis Potential</div>
+        </div>
+      </div>
+
+      <div id="statusBanner" class="status-banner status-normal">
+        <span id="statusText">System operating normally. Live current running through heating element into neutral.</span>
+        <span id="statusTag" style="font-size:11px; padding:2px 8px; border-radius:4px; background:rgba(255,255,255,0.15)">SAFE</span>
+      </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="sidebar-right">
+      <div class="card">
+        <div class="card-title">Plug Wiring Standard (BS 1363)</div>
+        <div class="color-legend">
+          <div class="color-item">
+            <div class="color-dot" style="background:#a0522d;"></div>
+            <div><strong>Live (Brown)</strong>: 230 V AC. Connected to Fuse.</div>
+          </div>
+          <div class="color-item">
+            <div class="color-dot" style="background:#2563eb;"></div>
+            <div><strong>Neutral (Blue)</strong>: ~0 V. Completes circuit.</div>
+          </div>
+          <div class="color-item">
+            <div class="color-dot" style="background:linear-gradient(45deg, #22c55e 50%, #eab308 50%);"></div>
+            <div><strong>Earth (Green/Yellow)</strong>: 0 V safety to metal chassis.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Core Equations</div>
+        <div class="formula-box">
+          <div class="formula-title">Current Calculation (Ohm / Power)</div>
+          <div class="formula-math">I = P ÷ V</div>
+          <div style="color:var(--muted); font-size:11px; margin-top:3px;">
+            E.g. 2300 W ÷ 230 V = 10 A → Use 13 A fuse
+          </div>
+        </div>
+        <div class="formula-box" style="margin-top:8px;">
+          <div class="formula-title">Fault Heating & Fuse Melting</div>
+          <div class="formula-math">P = I² × R</div>
+          <div style="color:var(--muted); font-size:11px; margin-top:3px;">
+            Earth short circuit gives massive I (>100 A), melting thin fuse wire instantly.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Investigation Steps</div>
+        <div class="step-box">
+          <div class="step-num">1</div>
+          <div>Select the <strong>2300 W Kettle</strong>. Notice current is 10 A. Test with a 3 A or 5 A fuse — observe the fuse blow instantly!</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">2</div>
+          <div>Install the correct <strong>13 A fuse</strong>. Turn power ON. The kettle element heats up normally.</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">3</div>
+          <div>Toggle <strong>Live Wire Fault</strong> with Earth connected. Observe the huge current surge to ground melting the fuse, rendering the appliance safe!</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">4</div>
+          <div>Disconnect the <strong>Earth wire</strong> with the fault active. The chassis is now energized at 230 V! Toggle "Person Touching Case" to demonstrate lethal electric shock!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("stage");
+    const ctx = canvas.getContext("2d");
+
+    // State
+    const appliances = {
+      kettle: { name: "Electric Kettle", power: 2300, normalI: 10.0, hasMetalChassis: true, elementR: 23 },
+      toaster: { name: "2-Slice Toaster", power: 920, normalI: 4.0, hasMetalChassis: true, elementR: 57.5 },
+      lamp: { name: "Desk Lamp", power: 69, normalI: 0.3, hasMetalChassis: false, elementR: 766.7, doubleInsulated: true }
+    };
+
+    let selectedApplianceKey = "kettle";
+    let selectedFuseRating = 13; // 3, 5, 13, 0 (bypassed)
+    let earthConnected = true;
+    let faultActive = false;
+    let personTouching = false;
+    let powerOn = true;
+    let fuseBlown = false;
+    let fuseMeltAnim = 0; // 0 to 1
+    let animTime = 0;
+    let particles = [];
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function selectAppliance(key) {
+      selectedApplianceKey = key;
+      document.querySelectorAll(".opt-group .opt-btn").forEach(b => b.classList.remove("active"));
+      event.currentTarget.classList.add("active");
+      evaluateCircuit();
+    }
+
+    function selectFuse(rating) {
+      selectedFuseRating = rating;
+      document.querySelectorAll("#fuse-3, #fuse-5, #fuse-13, #fuse-none").forEach(b => b.classList.remove("active"));
+      if (rating === 3) document.getElementById("fuse-3").classList.add("active");
+      else if (rating === 5) document.getElementById("fuse-5").classList.add("active");
+      else if (rating === 13) document.getElementById("fuse-13").classList.add("active");
+      else document.getElementById("fuse-none").classList.add("active");
+      evaluateCircuit();
+    }
+
+    function updateEarthState(val) { earthConnected = val; evaluateCircuit(); }
+    function updateFaultState(val) { faultActive = val; evaluateCircuit(); }
+    function updatePersonState(val) { personTouching = val; evaluateCircuit(); }
+
+    function togglePower() {
+      powerOn = !powerOn;
+      const btn = document.getElementById("powerBtn");
+      if (powerOn) {
+        btn.className = "btn-action btn-power-on";
+        btn.innerHTML = "⚡ Power Supply: ON (230 V)";
+      } else {
+        btn.className = "btn-action btn-power-off";
+        btn.innerHTML = "⭕ Power Supply: OFF (0 V)";
+      }
+      evaluateCircuit();
+    }
+
+    function resetCircuit() {
+      fuseBlown = false;
+      fuseMeltAnim = 0;
+      faultActive = false;
+      personTouching = false;
+      document.getElementById("faultToggle").checked = false;
+      document.getElementById("personToggle").checked = false;
+      evaluateCircuit();
+    }
+
+    function evaluateCircuit() {
+      const app = appliances[selectedApplianceKey];
+      let current = 0;
+      let chassisV = 0;
+      let bannerClass = "status-normal";
+      let bannerText = "";
+      let bannerTag = "SAFE";
+
+      if (!powerOn) {
+        current = 0;
+        chassisV = 0;
+        bannerClass = "status-normal";
+        bannerText = "Mains power is switched off. The entire circuit is at 0 V.";
+        bannerTag = "OFF";
+      } else if (fuseBlown) {
+        current = 0;
+        chassisV = 0;
+        bannerClass = "status-blown";
+        bannerText = "FUSE BLOWN! The thin wire melted, isolating the appliance from the 230 V live supply. System safe.";
+        bannerTag = "ISOLATED";
+      } else {
+        // Normal operating current
+        current = app.normalI;
+
+        // Check if normal current exceeds fuse rating
+        if (selectedFuseRating > 0 && current > selectedFuseRating) {
+          fuseBlown = true;
+          fuseMeltAnim = 1.0;
+          spawnSparks(280, 220);
+          bannerClass = "status-blown";
+          bannerText = `OVERCURRENT! Operating current (${current.toFixed(1)} A) exceeded ${selectedFuseRating} A fuse rating. The fuse melted!`;
+          bannerTag = "FUSE BLOWN";
+        } else if (faultActive) {
+          // Fault: Live wire touches metal casing
+          if (app.doubleInsulated) {
+            bannerClass = "status-warning";
+            bannerText = "Double insulated appliance! Non-conductive plastic casing prevents metal contact hazard.";
+            bannerTag = "INSULATED";
+          } else if (earthConnected) {
+            // Earth wire provides low resistance path (<0.5 ohm)
+            const faultI = 230 / 0.5; // ~460 A
+            current = faultI;
+            if (selectedFuseRating > 0) {
+              fuseBlown = true;
+              fuseMeltAnim = 1.0;
+              spawnSparks(280, 220);
+              bannerClass = "status-blown";
+              bannerText = `FAULT DETECTED: Live touched metal casing! Huge surge (${faultI} A) flowed down Earth wire to ground, instantly blowing the ${selectedFuseRating} A fuse!`;
+              bannerTag = "EARTH TRIP";
+            } else {
+              // Bypassed fuse! Fire hazard
+              bannerClass = "status-danger";
+              bannerText = "EXTREME FIRE HAZARD! Live wire touched casing with no fuse protection! Over 400 A flowing continuously down earth cable — wires overheating rapidly!";
+              bannerTag = "FIRE RISK";
+            }
+          } else {
+            // Unearthed casing with live fault!
+            chassisV = 230;
+            if (personTouching) {
+              // Person provides path to ground (~1000 ohm)
+              const shockI = (230 / 1000) * 1000; // 230 mA
+              bannerClass = "status-danger";
+              bannerText = `LETHAL ELECTRIC SHOCK! Unearthed metal case at 230 V! Current through person: ${shockI} mA (Lethal threshold: 30–50 mA).`;
+              bannerTag = "LETHAL SHOCK";
+            } else {
+              bannerClass = "status-danger";
+              bannerText = "DANGEROUS FAULT! Live wire touches unearthed metal chassis. Metal case is charged at 230 V! Touching it will cause lethal shock.";
+              bannerTag = "LIVE CASING";
+            }
+          }
+        } else {
+          bannerClass = "status-normal";
+          bannerText = `Normal operation: ${app.name} drawing ${current.toFixed(1)} A through ${selectedFuseRating > 0 ? selectedFuseRating + " A fuse" : "bypass"}. Metal chassis safely at 0 V.`;
+          bannerTag = "SAFE";
+        }
+      }
+
+      // Update UI metrics
+      document.getElementById("metricV").innerText = powerOn && !fuseBlown ? "230 V" : "0 V";
+      document.getElementById("metricI").innerText = current.toFixed(1) + " A";
+      document.getElementById("metricP").innerText = (powerOn && !fuseBlown ? (faultActive && !app.doubleInsulated && !earthConnected ? "0 W" : app.power + " W") : "0 W");
+      document.getElementById("metricChassis").innerText = chassisV + " V";
+
+      const banner = document.getElementById("statusBanner");
+      banner.className = "status-banner " + bannerClass;
+      document.getElementById("statusText").innerText = bannerText;
+      document.getElementById("statusTag").innerText = bannerTag;
+    }
+
+    function spawnSparks(x, y) {
+      for (let i = 0; i < 35; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 6 + 2;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1.0,
+          color: Math.random() > 0.3 ? "#00d2ff" : "#f59e0b"
+        });
+      }
+    }
+
+    // Render loop
+    function draw() {
+      const rect = canvas.getBoundingClientRect();
+      const W = rect.width;
+      const H = rect.height;
+      ctx.clearRect(0, 0, W, H);
+
+      animTime += 0.03;
+
+      // Layout coordinates
+      const plugX = W * 0.18;
+      const plugY = H * 0.52;
+      const appX = W * 0.62;
+      const appY = H * 0.52;
+      const appW = Math.min(260, W * 0.28);
+      const appH = Math.min(240, H * 0.42);
+
+      // 1. Draw 3-Pin UK Plug Shell
+      ctx.save();
+      ctx.fillStyle = "#1e293b";
+      ctx.strokeStyle = "#334155";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.roundRect(plugX - 110, plugY - 140, 220, 280, 24);
+      ctx.fill();
+      ctx.stroke();
+
+      // Plug label
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "bold 13px sans-serif";
+      ctx.fillText("UK 3-PIN PLUG (BS 1363)", plugX - 85, plugY - 115);
+
+      // Pins: Earth (top), Neutral (left), Live (right)
+      const pinEW = 18, pinEH = 32;
+      const pinNW = 28, pinNH = 14;
+      ctx.fillStyle = "#d97706"; // Brass
+      ctx.fillRect(plugX - pinEW/2, plugY - 95, pinEW, pinEH); // Earth pin
+      ctx.fillRect(plugX - 75, plugY + 30, pinNW, pinNH); // Neutral pin
+      ctx.fillRect(plugX + 45, plugY + 30, pinNW, pinNH); // Live pin
+
+      // Pin labels
+      ctx.font = "10px sans-serif";
+      ctx.fillStyle = "#cbd5e1";
+      ctx.fillText("EARTH", plugX - 18, plugY - 55);
+      ctx.fillText("NEUTRAL", plugX - 80, plugY + 60);
+      ctx.fillText("LIVE", plugX + 48, plugY + 60);
+
+      // Fuse inside plug (between Live terminal and cable exit)
+      const fuseX = plugX + 50;
+      const fuseY = plugY - 15;
+      const fuseW = 18;
+      const fuseH = 40;
+
+      ctx.fillStyle = fuseBlown ? "#334155" : "#f8fafc";
+      ctx.strokeStyle = "#64748b";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(fuseX - fuseW/2, fuseY - fuseH/2, fuseW, fuseH, 4);
+      ctx.fill();
+      ctx.stroke();
+
+      // Fuse end caps
+      ctx.fillStyle = "#94a3b8";
+      ctx.fillRect(fuseX - fuseW/2, fuseY - fuseH/2, fuseW, 7);
+      ctx.fillRect(fuseX - fuseW/2, fuseY + fuseH/2 - 7, fuseW, 7);
+
+      // Fuse wire inside
+      ctx.strokeStyle = fuseBlown ? "#ef4444" : (selectedFuseRating === 0 ? "#f59e0b" : "#e2e8f0");
+      ctx.lineWidth = selectedFuseRating === 0 ? 3 : 1.5;
+      ctx.beginPath();
+      if (!fuseBlown) {
+        ctx.moveTo(fuseX, fuseY - fuseH/2 + 7);
+        ctx.lineTo(fuseX, fuseY + fuseH/2 - 7);
+      } else {
+        ctx.moveTo(fuseX, fuseY - fuseH/2 + 7);
+        ctx.lineTo(fuseX - 3, fuseY - 3);
+        ctx.moveTo(fuseX + 3, fuseY + 3);
+        ctx.lineTo(fuseX, fuseY + fuseH/2 - 7);
+      }
+      ctx.stroke();
+
+      // Fuse label
+      ctx.fillStyle = fuseBlown ? "#ef4444" : "#00d2ff";
+      ctx.font = "bold 11px sans-serif";
+      ctx.fillText(selectedFuseRating === 0 ? "NAIL" : `${selectedFuseRating}A`, fuseX + 14, fuseY + 4);
+
+      ctx.restore();
+
+      // 2. Draw Appliance (Metal Casing vs Plastic)
+      const app = appliances[selectedApplianceKey];
+      ctx.save();
+
+      // Chassis glow if live fault active
+      if (faultActive && !app.doubleInsulated && !fuseBlown && powerOn) {
+        ctx.shadowColor = earthConnected ? "#f59e0b" : "#ef4444";
+        ctx.shadowBlur = earthConnected ? 15 : 30;
+      }
+
+      ctx.fillStyle = app.doubleInsulated ? "#0f172a" : "#1e293b";
+      ctx.strokeStyle = (faultActive && !app.doubleInsulated && !fuseBlown && powerOn)
+        ? (earthConnected ? "#f59e0b" : "#ef4444")
+        : (app.doubleInsulated ? "#38bdf8" : "#475569");
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.roundRect(appX - appW/2, appY - appH/2, appW, appH, 16);
+      ctx.fill();
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Appliance title
+      ctx.fillStyle = "#fff";
+      ctx.font = "bold 15px sans-serif";
+      ctx.fillText(app.name, appX - appW/2 + 20, appY - appH/2 + 30);
+
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "12px sans-serif";
+      ctx.fillText(`${app.power} W · 230 V · ${app.normalI} A`, appX - appW/2 + 20, appY - appH/2 + 50);
+
+      if (app.doubleInsulated) {
+        // Double insulation symbol
+        ctx.strokeStyle = "#38bdf8";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(appX + appW/2 - 50, appY - appH/2 + 20, 24, 24);
+        ctx.strokeRect(appX + appW/2 - 45, appY - appH/2 + 25, 14, 14);
+        ctx.fillStyle = "#38bdf8";
+        ctx.font = "10px sans-serif";
+        ctx.fillText("Class II (回)", appX + appW/2 - 68, appY - appH/2 + 60);
+      } else {
+        // Metal chassis label
+        ctx.fillStyle = (faultActive && !fuseBlown && powerOn) ? (earthConnected ? "#f59e0b" : "#ef4444") : "#94a3b8";
+        ctx.font = "bold 11px sans-serif";
+        const chassisTxt = (faultActive && !fuseBlown && powerOn)
+          ? (earthConnected ? "CHASSIS LIVE (EARTH DUMPING SURGE)" : "⚠️ CHASSIS LIVE AT 230 V!")
+          : "Conductive Metal Casing (Class I)";
+        ctx.fillText(chassisTxt, appX - appW/2 + 20, appY + appH/2 - 16);
+      }
+
+      // Heating element inside
+      const elemX = appX;
+      const elemY = appY + 10;
+      ctx.strokeStyle = (powerOn && !fuseBlown && (!faultActive || app.doubleInsulated)) ? "#f97316" : "#475569";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      // Zigzag element
+      ctx.moveTo(elemX - 60, elemY);
+      for (let i = -50; i <= 50; i += 20) {
+        ctx.lineTo(elemX + i - 10, elemY + (i % 40 === 0 ? -25 : 25));
+      }
+      ctx.lineTo(elemX + 60, elemY);
+      ctx.stroke();
+
+      ctx.fillStyle = (powerOn && !fuseBlown && (!faultActive || app.doubleInsulated)) ? "#fb923c" : "#64748b";
+      ctx.font = "11px sans-serif";
+      ctx.fillText("Load / Heating Element", elemX - 55, elemY + 45);
+
+      ctx.restore();
+
+      // 3. Draw Connecting Cables (Live Brown, Neutral Blue, Earth Green/Yellow)
+      // Live wire: from plug Live pin through fuse to Appliance element
+      ctx.save();
+      ctx.lineWidth = 3.5;
+
+      // Live Wire (Brown)
+      ctx.strokeStyle = "#a0522d";
+      ctx.beginPath();
+      ctx.moveTo(plugX + 50, plugY + 30); // Live pin
+      ctx.lineTo(plugX + 50, plugY + 15);
+      ctx.moveTo(plugX + 50, plugY - 35); // Out of fuse
+      ctx.bezierCurveTo(plugX + 160, plugY - 80, appX - appW/2 - 80, elemY - 50, appX - 60, elemY);
+      ctx.stroke();
+
+      // If fault active, show loose live wire touching chassis
+      if (faultActive && !app.doubleInsulated) {
+        ctx.strokeStyle = "#ef4444";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(appX - 60, elemY);
+        ctx.lineTo(appX - appW/2 + 5, appY - appH/2 + 40);
+        ctx.stroke();
+
+        // Spark at fault contact point
+        ctx.fillStyle = "#facc15";
+        ctx.beginPath();
+        ctx.arc(appX - appW/2 + 5, appY - appH/2 + 40, 6 + Math.sin(animTime * 15) * 3, 0, Math.PI*2);
+        ctx.fill();
+      }
+
+      // Neutral Wire (Blue): from element back to Neutral pin
+      ctx.strokeStyle = "#2563eb";
+      ctx.beginPath();
+      ctx.moveTo(appX + 60, elemY);
+      ctx.bezierCurveTo(appX - appW/2 - 40, elemY + 80, plugX + 80, plugY + 120, plugX - 60, plugY + 45);
+      ctx.stroke();
+
+      // Earth Wire (Green & Yellow): from Earth pin to Metal Chassis (if connected)
+      if (earthConnected && !app.doubleInsulated) {
+        ctx.strokeStyle = "#22c55e";
+        ctx.beginPath();
+        ctx.moveTo(plugX - pinEW/2 + 9, plugY - 95);
+        ctx.bezierCurveTo(plugX + 60, plugY - 180, appX - appW/2 - 40, appY - appH/2 - 60, appX - appW/2 + 20, appY - appH/2);
+        ctx.stroke();
+
+        // Earth terminal symbol on casing
+        const tX = appX - appW/2 + 20;
+        const tY = appY - appH/2;
+        ctx.fillStyle = "#22c55e";
+        ctx.beginPath(); ctx.arc(tX, tY, 5, 0, Math.PI*2); ctx.fill();
+        ctx.strokeStyle = "#22c55e";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(tX - 8, tY - 6); ctx.lineTo(tX + 8, tY - 6);
+        ctx.moveTo(tX - 5, tY - 10); ctx.lineTo(tX + 5, tY - 10);
+        ctx.moveTo(tX - 2, tY - 14); ctx.lineTo(tX + 2, tY - 14);
+        ctx.stroke();
+      } else if (!app.doubleInsulated) {
+        // Disconnected earth indicator
+        ctx.fillStyle = "#ef4444";
+        ctx.font = "bold 11px sans-serif";
+        ctx.fillText("❌ NO EARTH CONNECTION", appX - appW/2 + 10, appY - appH/2 - 12);
+      }
+
+      // 4. Person touching casing (if toggled)
+      if (personTouching) {
+        const pX = appX + appW/2 + 70;
+        const pY = appY + 20;
+        ctx.fillStyle = (faultActive && !earthConnected && !app.doubleInsulated && powerOn && !fuseBlown) ? "#ef4444" : "#94a3b8";
+        
+        // Head
+        ctx.beginPath(); ctx.arc(pX, pY - 50, 16, 0, Math.PI*2); ctx.fill();
+        // Body
+        ctx.fillRect(pX - 10, pY - 30, 20, 50);
+        // Arm touching casing
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = ctx.fillStyle;
+        ctx.beginPath();
+        ctx.moveTo(pX - 10, pY - 15);
+        ctx.lineTo(appX + appW/2, appY - 10);
+        ctx.stroke();
+
+        // Legs to ground
+        ctx.beginPath();
+        ctx.moveTo(pX - 5, pY + 20); ctx.lineTo(pX - 15, pY + 80);
+        ctx.moveTo(pX + 5, pY + 20); ctx.lineTo(pX + 15, pY + 80);
+        ctx.stroke();
+
+        // Warning lightning if shocked
+        if (faultActive && !earthConnected && !app.doubleInsulated && powerOn && !fuseBlown) {
+          ctx.fillStyle = "#facc15";
+          ctx.font = "bold 20px sans-serif";
+          ctx.fillText("⚡ SHOCK!", pX - 35, pY - 75);
+        }
+      }
+
+      // 5. Draw particles (sparks)
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.03;
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+        } else {
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.life;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 2.5, 0, Math.PI*2);
+          ctx.fill();
+          ctx.globalAlpha = 1.0;
+        }
+      }
+
+      ctx.restore();
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+    evaluateCircuit();
+  </script>
+</body>
+</html>
