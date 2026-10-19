@@ -206,9 +206,10 @@ def generate_builds_deck():
         ("slide_05_calculation_task.png", 5, "Slide 5 [Build 2]: Student Task — Calculate Power for 3 Scenarios & Check Battery Graphics"),
         ("slide_05.png", 5, "Slide 5 [Build 3]: Power Dictates Charging Speed (Calculated Solutions & Graphic Flaw Reveal)"),
 
-        # Slide 6: Physics Inside the Battery & Power P = IV Synthesis
+        # Slide 6: Physics Inside the Battery & Power P = IV Split Slides
         ("slide_06.png", 6, "Slide 6 [Build 1]: Charge Flow (Q = It) & Energy per Charge (E = QV)"),
-        ("slide_06_power_p_iv.png", 6, "Slide 6 [Build 2]: Electrical Power in Circuits (P = I × V)"),
+        ("slide_06_power_p_iv_part1_intuition.png", 6, "Slide 6 [Build 2]: Physical Intuition: Why Power = Current × Voltage"),
+        ("slide_06_power_p_iv_part2_formula.png", 6, "Slide 6 [Build 3]: The Circuit Power Formula (P = I × V & 800V EV Metric)"),
 
         # Slide 7: The Heat Trap Build 1 (Base Formula) & Build 2 (Heat Callout)
         ("slide_08_heat_trap_base.png", 7, "Slide 7 [Build 1]: The Heat Trap Formula (P = I²R)"),

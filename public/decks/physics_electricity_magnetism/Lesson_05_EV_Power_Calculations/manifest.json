@@ -661,19 +661,30 @@
           "qaStatus": "approved"
         },
         {
-          "id": "build_6_2_power_p_iv",
+          "id": "build_6_2_power_intuition",
           "version": 2,
           "kind": "image",
           "mediaType": "image",
-          "label": "Build 2: Electrical Power in Circuits (P = I × V)",
-          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06_power_p_iv.png",
+          "label": "Build 2: Physical Intuition: Why Power = Current × Voltage",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06_power_p_iv_part1_intuition.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_6_3_power_formula",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: The Circuit Power Formula (P = I × V & 800V EV Metric)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06_power_p_iv_part2_formula.png",
           "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
           "generationStatus": "ready",
           "qaStatus": "approved"
         }
       ],
       "serialAnimation": {
-        "totalBuildSteps": 2,
+        "totalBuildSteps": 3,
         "autoAdvanceDelayMs": 0,
         "serialSteps": [
           {
@@ -693,10 +704,25 @@
           },
           {
             "step": 2,
-            "buildId": "build_6_2_power_p_iv",
-            "title": "Build 2: Electrical Power in Circuits (P = I × V)",
+            "buildId": "build_6_2_power_intuition",
+            "title": "Build 2: Physical Intuition: Why Power = Current × Voltage",
             "componentIds": [
-              "build_6_2_power_p_iv"
+              "build_6_2_power_intuition"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "build_6_3_power_formula",
+            "title": "Build 3: The Circuit Power Formula (P = I × V & 800V EV Metric)",
+            "componentIds": [
+              "build_6_3_power_formula"
             ],
             "targetBounds": {
               "x": 0,
