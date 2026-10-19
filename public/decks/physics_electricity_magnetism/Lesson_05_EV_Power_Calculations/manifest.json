@@ -627,12 +627,87 @@
     },
     {
       "number": 6,
-      "title": "The Physics Inside the Battery: Charge Flow (Q = It) & Energy (E = QV)",
+      "title": "The Physics Inside the Battery: Charge Flow (Q = It), Energy (E = QV) & Power (P = IV)",
       "imageFileName": "slide_06.png",
       "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
       "sourceMediaPath": "ppt/media/slide_06.png",
       "isInteractive": true,
       "interactiveType": "question_reveal",
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Slide 6 2-step sequence: Step 1 models charge carriers (Q = It) and voltage energy payloads (E = QV); Step 2 synthesizes them into Electrical Power in Circuits (P = I × V) with formula triangle and 800V EV charging metric.",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "analyzedComponentCount": 2,
+        "plannedCellCount": 2,
+        "approvedCellCount": 2,
+        "qaRequired": false,
+        "questionReveal": true,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "build_6_1_charge_and_energy",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Charge Flow (Q = It) & Energy per Charge (E = QV)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_6_2_power_p_iv",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Electrical Power in Circuits (P = I × V)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06_power_p_iv.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 0,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "build_6_1_charge_and_energy",
+            "title": "Build 1: Charge Flow (Q = It) & Energy per Charge (E = QV)",
+            "componentIds": [
+              "build_6_1_charge_and_energy"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "build_6_2_power_p_iv",
+            "title": "Build 2: Electrical Power in Circuits (P = I × V)",
+            "componentIds": [
+              "build_6_2_power_p_iv"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
       "interactiveCells": [
         {
           "id": "reveal_6_mv54rb0t",
