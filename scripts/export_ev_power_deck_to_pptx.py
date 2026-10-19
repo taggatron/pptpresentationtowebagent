@@ -181,8 +181,8 @@ def generate_standard_deck():
 
 
 def generate_builds_deck():
-    """Generates the interactive 19-slide deck with progressive reveal steps."""
-    print("\nBuilding Interactive 19-Slide Progressive Builds PowerPoint...")
+    """Generates the interactive 24-slide deck with progressive reveal steps."""
+    print("\nBuilding Interactive 24-Slide Progressive Builds PowerPoint...")
     prs = Presentation()
     prs.slide_width = SLIDE_WIDTH
     prs.slide_height = SLIDE_HEIGHT
@@ -206,10 +206,11 @@ def generate_builds_deck():
         ("slide_05_calculation_task.png", 5, "Slide 5 [Build 2]: Student Task — Calculate Power for 3 Scenarios & Check Battery Graphics"),
         ("slide_05.png", 5, "Slide 5 [Build 3]: Power Dictates Charging Speed (Calculated Solutions & Graphic Flaw Reveal)"),
 
-        # Slide 6: Physics Inside the Battery & Power P = IV Split Slides
+        # Slide 6: Physics Inside the Battery, P = IV Derivation & Real-World EV Engineering
         ("slide_06.png", 6, "Slide 6 [Build 1]: Charge Flow (Q = It) & Energy per Charge (E = QV)"),
         ("slide_06_power_p_iv_part1_intuition.png", 6, "Slide 6 [Build 2]: Physical Intuition: Why Power = Current × Voltage"),
-        ("slide_06_power_p_iv_part2_formula.png", 6, "Slide 6 [Build 3]: The Circuit Power Formula (P = I × V & 800V EV Metric)"),
+        ("slide_06_power_p_iv_part2_formula.png", 6, "Slide 6 [Build 3]: The Circuit Power Formula (P = I × V & Full-Width Triangle)"),
+        ("slide_06_power_p_iv_part3_ev_engineering.png", 6, "Slide 6 [Build 4]: Real-World EV Engineering: The 350 kW Ultra-Rapid Charger (400V vs 800V)"),
 
         # Slide 7: The Heat Trap Build 1 (Base Formula) & Build 2 (Heat Callout)
         ("slide_08_heat_trap_base.png", 7, "Slide 7 [Build 1]: The Heat Trap Formula (P = I²R)"),

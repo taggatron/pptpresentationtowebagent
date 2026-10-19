@@ -637,12 +637,12 @@
       "animationPlan": {
         "version": 2,
         "mode": "gemini-image-cells",
-        "reason": "Slide 6 2-step sequence: Step 1 models charge carriers (Q = It) and voltage energy payloads (E = QV); Step 2 synthesizes them into Electrical Power in Circuits (P = I × V) with formula triangle and 800V EV charging metric.",
+        "reason": "Slide 6 4-step sequence: Step 1 models charge carriers (Q = It) and voltage energy payloads (E = QV); Step 2 provides physical intuition for P = IV; Step 3 features the full-width formula triangle and rearrangements; Step 4 applies P = IV to high-power 800V EV charging engineering.",
         "strategy": "component-reveal",
         "planningSource": "gemini-image-chat",
-        "analyzedComponentCount": 2,
-        "plannedCellCount": 2,
-        "approvedCellCount": 2,
+        "analyzedComponentCount": 4,
+        "plannedCellCount": 4,
+        "approvedCellCount": 4,
         "qaRequired": false,
         "questionReveal": true,
         "webEmbedPreserved": false,
@@ -676,15 +676,26 @@
           "version": 3,
           "kind": "image",
           "mediaType": "image",
-          "label": "Build 3: The Circuit Power Formula (P = I × V & 800V EV Metric)",
+          "label": "Build 3: The Circuit Power Formula (P = I × V & Full-Width Triangle)",
           "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06_power_p_iv_part2_formula.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_6_4_ev_engineering",
+          "version": 4,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 4: Real-World EV Engineering: The 350 kW Ultra-Rapid Charger (400V vs 800V)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06_power_p_iv_part3_ev_engineering.png",
           "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_06.png",
           "generationStatus": "ready",
           "qaStatus": "approved"
         }
       ],
       "serialAnimation": {
-        "totalBuildSteps": 3,
+        "totalBuildSteps": 4,
         "autoAdvanceDelayMs": 0,
         "serialSteps": [
           {
@@ -720,9 +731,24 @@
           {
             "step": 3,
             "buildId": "build_6_3_power_formula",
-            "title": "Build 3: The Circuit Power Formula (P = I × V & 800V EV Metric)",
+            "title": "Build 3: The Circuit Power Formula (P = I × V & Full-Width Triangle)",
             "componentIds": [
               "build_6_3_power_formula"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 4,
+            "buildId": "build_6_4_ev_engineering",
+            "title": "Build 4: Real-World EV Engineering: The 350 kW Ultra-Rapid Charger (400V vs 800V)",
+            "componentIds": [
+              "build_6_4_ev_engineering"
             ],
             "targetBounds": {
               "x": 0,
