@@ -508,11 +508,122 @@
     {
       "number": 5,
       "title": "Power Dictates Charging Speed (P = E / t)",
-      "imageFileName": "slide_05.png",
-      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05.png",
+      "imageFileName": "slide_05_formula_explained.png",
+      "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05_formula_explained.png",
+      "originalImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05.png",
       "sourceMediaPath": "ppt/media/slide_05.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "hasProgressiveBuilds": true,
+      "animationPlan": {
+        "version": 2,
+        "mode": "gemini-image-cells",
+        "reason": "Slide 5 3-step progressive sequence: Step 1 explains the electrical power formula P = E / t with formula triangle and units; Step 2 presents the student calculation task across 3 real-world charging scenarios and prompts critical evaluation of the battery graphics; Step 3 reveals the calculated power ratings (2.3 kW, 7.4 kW, 150 kW).",
+        "strategy": "component-reveal",
+        "planningSource": "gemini-image-chat",
+        "analyzedComponentCount": 3,
+        "plannedCellCount": 3,
+        "approvedCellCount": 3,
+        "qaRequired": false,
+        "questionReveal": false,
+        "webEmbedPreserved": false,
+        "protectedVideoCount": 0
+      },
+      "progressiveBuilds": [
+        {
+          "id": "build_5_1_formula_explained",
+          "version": 1,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 1: Electrical Power Formula Explained (P = E / t)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05_formula_explained.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_5_2_calculation_task",
+          "version": 2,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 2: Student Task — Calculate Power for 3 Scenarios & Check Battery Graphics",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05_calculation_task.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        },
+        {
+          "id": "build_5_3_solution_reveal",
+          "version": 3,
+          "kind": "image",
+          "mediaType": "image",
+          "label": "Build 3: Solution — Calculated Power Ratings (2.3 kW, 7.4 kW, 150 kW)",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05.png",
+          "sourceImageUrl": "/decks/physics_electricity_magnetism/Lesson_05_EV_Power_Calculations/slides/slide_05.png",
+          "generationStatus": "ready",
+          "qaStatus": "approved"
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 3,
+        "autoAdvanceDelayMs": 0,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "build_5_1_formula_explained",
+            "title": "Build 1: Electrical Power Formula Explained (P = E / t)",
+            "componentIds": [
+              "build_5_1_formula_explained"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "build_5_2_calculation_task",
+            "title": "Build 2: Student Task — Calculate Power for 3 Scenarios & Check Battery Graphics",
+            "componentIds": [
+              "build_5_2_calculation_task"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 3,
+            "buildId": "build_5_3_solution_reveal",
+            "title": "Build 3: Solution — Calculated Power Ratings (2.3 kW, 7.4 kW, 150 kW)",
+            "componentIds": [
+              "build_5_3_solution_reveal"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          }
+        ]
+      },
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 60,
+        "timeGuideDisplay": "60s",
+        "vciScore": "3.2",
+        "complexityCategory": "Moderate",
+        "ragLevel": "amber",
+        "ragColor": "amber",
+        "ragLabel": "Formula & Calculation Challenge"
+      }
     },
     {
       "number": 6,
