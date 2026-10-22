@@ -7,12 +7,96 @@
   "slides": [
     {
       "number": 1,
-      "title": "Slide 1",
+      "title": "8. Motors and Left Hand Rule",
       "imageFileName": "slide_01.png",
       "imageUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png",
       "sourceMediaPath": "ppt/media/image1.png",
       "isInteractive": false,
-      "interactiveType": null
+      "interactiveType": null,
+      "hasProgressiveBuilds": true,
+      "originalImageUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png",
+      "posterUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png",
+      "videoUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/gemini_generated_video_e8c033e2.mp4",
+      "startTime": 0,
+      "endTime": 10,
+      "progressiveBuilds": [
+        {
+          "id": "image_build_1",
+          "version": 1,
+          "kind": "image",
+          "label": "Build 1: Lesson Title & Hook",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png"
+        },
+        {
+          "id": "video_build_2",
+          "version": 2,
+          "kind": "video",
+          "label": "Build 2: Video Hook (Electric Motor & Left Hand Rule)",
+          "videoUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/gemini_generated_video_e8c033e2.mp4",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png",
+          "posterUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png",
+          "startTime": 0,
+          "endTime": 10,
+          "transition": "blur-disintegrate"
+        }
+      ],
+      "history": [
+        {
+          "id": "ver_orig",
+          "label": "Build 1: Lesson Title & Hook",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png"
+        },
+        {
+          "id": "ver_video_intro",
+          "label": "Build 2: Video Hook (Electric Motor & Left Hand Rule)",
+          "videoUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/gemini_generated_video_e8c033e2.mp4",
+          "imageUrl": "/decks/physics_electricity_magnetism/Lesson_08_Motors_and_Left_Hand_Rule/slides/slide_01.png",
+          "startTime": 0,
+          "endTime": 10
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 2,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "buildId": "image_build_1",
+            "title": "Build 1: Lesson Title & Hook",
+            "componentIds": [
+              "image_build_1"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "crossfade"
+          },
+          {
+            "step": 2,
+            "buildId": "video_build_2",
+            "title": "Build 2: Video Hook (Electric Motor & Left Hand Rule)",
+            "componentIds": [
+              "video_build_2"
+            ],
+            "targetBounds": {
+              "x": 0,
+              "y": 0,
+              "w": 100,
+              "h": 100
+            },
+            "revealType": "play-video"
+          }
+        ]
+      },
+      "animationPlan": {
+        "version": 2,
+        "mode": "protected-video",
+        "reason": "Introductory video hook illustrating electric motor and Fleming's left hand rule.",
+        "protectedVideoCount": 1
+      }
     },
     {
       "number": 2,
@@ -26,142 +110,398 @@
         {
           "id": "reveal_s2_cell_1",
           "question": "1. What is the motor effect?",
-          "expectedAnswer": "A current-carrying wire in a magnetic field experiences a mechanical force",
+          "expectedAnswer": "A current-carrying wire in a magnetic field experiences a mechanical force.",
           "bounds": {
-            "x": 9.5,
-            "y": 38.5,
-            "w": 27,
-            "h": 6.5
+            "x": 3.5,
+            "y": 11.5,
+            "w": 45.6,
+            "h": 28.5
           },
           "answerBounds": {
-            "x": 9.5,
-            "y": 38.5,
-            "w": 27,
-            "h": 6.5
+            "x": 4.8,
+            "y": 30.1,
+            "w": 44.2,
+            "h": 9.9
           },
-          "revealMode": "overlay",
+          "revealMode": "blur",
           "confidence": 1,
           "provenance": "user-adjusted",
           "locked": true,
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
         },
         {
           "id": "reveal_s2_cell_2",
           "question": "2. State Fleming's Left Hand Rule for thumb, first finger, second finger.",
           "expectedAnswer": "Thumb = Motion/Force, First finger = Field (N→S), Second finger = Current (+→-)",
           "bounds": {
-            "x": 38,
-            "y": 38.5,
-            "w": 27,
-            "h": 6.5
+            "x": 50.8,
+            "y": 11.5,
+            "w": 45.6,
+            "h": 28.5
           },
           "answerBounds": {
-            "x": 38,
-            "y": 38.5,
-            "w": 27,
-            "h": 6.5
+            "x": 50.8,
+            "y": 30.1,
+            "w": 44.2,
+            "h": 9.9
           },
-          "revealMode": "overlay",
+          "revealMode": "blur",
           "confidence": 1,
           "provenance": "user-adjusted",
           "locked": true,
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
         },
         {
           "id": "reveal_s2_cell_3",
           "question": "3. What formula calculates the force on a conductor in a magnetic field?",
           "expectedAnswer": "F = B × I × L",
           "bounds": {
-            "x": 66.5,
-            "y": 38.5,
-            "w": 27,
-            "h": 6.5
+            "x": 3.5,
+            "y": 42.5,
+            "w": 45.6,
+            "h": 26
           },
           "answerBounds": {
-            "x": 66.5,
-            "y": 38.5,
-            "w": 27,
-            "h": 6.5
+            "x": 4.8,
+            "y": 60.8,
+            "w": 44.2,
+            "h": 7.3
           },
-          "revealMode": "overlay",
+          "revealMode": "blur",
           "confidence": 1,
           "provenance": "user-adjusted",
           "locked": true,
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
         },
         {
           "id": "reveal_s2_cell_4",
           "question": "4. What is the unit of magnetic flux density (B)?",
           "expectedAnswer": "Tesla (T)",
           "bounds": {
-            "x": 9.5,
-            "y": 72,
-            "w": 27,
-            "h": 6.5
+            "x": 50.8,
+            "y": 42.5,
+            "w": 45.6,
+            "h": 26
           },
           "answerBounds": {
-            "x": 9.5,
-            "y": 72,
-            "w": 27,
-            "h": 6.5
+            "x": 50.8,
+            "y": 60.8,
+            "w": 44.2,
+            "h": 7.3
           },
-          "revealMode": "overlay",
+          "revealMode": "blur",
           "confidence": 1,
           "provenance": "user-adjusted",
           "locked": true,
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
         },
         {
           "id": "reveal_s2_cell_5",
           "question": "5. What is the vital function of the split-ring commutator in a DC motor?",
-          "expectedAnswer": "Reverses current direction every half-turn to keep coil rotating in same direction",
+          "expectedAnswer": "Reverses current direction every half-turn to keep coil rotating in same direction.",
           "bounds": {
-            "x": 38,
-            "y": 72,
-            "w": 27,
-            "h": 6.5
+            "x": 3.5,
+            "y": 70,
+            "w": 45.6,
+            "h": 27.5
           },
           "answerBounds": {
-            "x": 38,
-            "y": 72,
-            "w": 27,
-            "h": 6.5
+            "x": 4.8,
+            "y": 87.9,
+            "w": 44.2,
+            "h": 8.6
           },
-          "revealMode": "overlay",
+          "revealMode": "blur",
           "confidence": 1,
           "provenance": "user-adjusted",
           "locked": true,
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
         },
         {
           "id": "reveal_s2_cell_6",
           "question": "6. Name two ways to increase the turning effect (torque) of an electric motor.",
-          "expectedAnswer": "Increase current, use stronger magnets, or increase turns on the coil",
+          "expectedAnswer": "Larger current, stronger magnetic field, or more turns in the coil.",
           "bounds": {
-            "x": 66.5,
-            "y": 72,
-            "w": 27,
-            "h": 6.5
+            "x": 50.8,
+            "y": 70,
+            "w": 45.6,
+            "h": 27.5
           },
           "answerBounds": {
-            "x": 66.5,
-            "y": 72,
-            "w": 27,
-            "h": 6.5
+            "x": 50.8,
+            "y": 87.9,
+            "w": 44.2,
+            "h": 8.6
           },
-          "revealMode": "overlay",
+          "revealMode": "blur",
           "confidence": 1,
           "provenance": "user-adjusted",
           "locked": true,
-          "answerVisibleInImage": false,
-          "answerIsBaked": false
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
         }
-      ]
+      ],
+      "interactiveCells": [
+        {
+          "id": "reveal_s2_cell_1",
+          "question": "1. What is the motor effect?",
+          "expectedAnswer": "A current-carrying wire in a magnetic field experiences a mechanical force.",
+          "bounds": {
+            "x": 3.5,
+            "y": 11.5,
+            "w": 45.6,
+            "h": 28.5
+          },
+          "answerBounds": {
+            "x": 4.8,
+            "y": 30.1,
+            "w": 44.2,
+            "h": 9.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_2",
+          "question": "2. State Fleming's Left Hand Rule for thumb, first finger, second finger.",
+          "expectedAnswer": "Thumb = Motion/Force, First finger = Field (N→S), Second finger = Current (+→-)",
+          "bounds": {
+            "x": 50.8,
+            "y": 11.5,
+            "w": 45.6,
+            "h": 28.5
+          },
+          "answerBounds": {
+            "x": 50.8,
+            "y": 30.1,
+            "w": 44.2,
+            "h": 9.9
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_3",
+          "question": "3. What formula calculates the force on a conductor in a magnetic field?",
+          "expectedAnswer": "F = B × I × L",
+          "bounds": {
+            "x": 3.5,
+            "y": 42.5,
+            "w": 45.6,
+            "h": 26
+          },
+          "answerBounds": {
+            "x": 4.8,
+            "y": 60.8,
+            "w": 44.2,
+            "h": 7.3
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_4",
+          "question": "4. What is the unit of magnetic flux density (B)?",
+          "expectedAnswer": "Tesla (T)",
+          "bounds": {
+            "x": 50.8,
+            "y": 42.5,
+            "w": 45.6,
+            "h": 26
+          },
+          "answerBounds": {
+            "x": 50.8,
+            "y": 60.8,
+            "w": 44.2,
+            "h": 7.3
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_5",
+          "question": "5. What is the vital function of the split-ring commutator in a DC motor?",
+          "expectedAnswer": "Reverses current direction every half-turn to keep coil rotating in same direction.",
+          "bounds": {
+            "x": 3.5,
+            "y": 70,
+            "w": 45.6,
+            "h": 27.5
+          },
+          "answerBounds": {
+            "x": 4.8,
+            "y": 87.9,
+            "w": 44.2,
+            "h": 8.6
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        },
+        {
+          "id": "reveal_s2_cell_6",
+          "question": "6. Name two ways to increase the turning effect (torque) of an electric motor.",
+          "expectedAnswer": "Larger current, stronger magnetic field, or more turns in the coil.",
+          "bounds": {
+            "x": 50.8,
+            "y": 70,
+            "w": 45.6,
+            "h": 27.5
+          },
+          "answerBounds": {
+            "x": 50.8,
+            "y": 87.9,
+            "w": 44.2,
+            "h": 8.6
+          },
+          "revealMode": "blur",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": true,
+          "answerIsBaked": true
+        }
+      ],
+      "starterQuestions": [
+        {
+          "q": "1. What is the motor effect?",
+          "a": "A current-carrying wire in a magnetic field experiences a mechanical force."
+        },
+        {
+          "q": "2. State Fleming's Left Hand Rule for thumb, first finger, second finger.",
+          "a": "Thumb = Motion/Force, First finger = Field (N→S), Second finger = Current (+→-)"
+        },
+        {
+          "q": "3. What formula calculates the force on a conductor in a magnetic field?",
+          "a": "F = B × I × L"
+        },
+        {
+          "q": "4. What is the unit of magnetic flux density (B)?",
+          "a": "Tesla (T)"
+        },
+        {
+          "q": "5. What is the vital function of the split-ring commutator in a DC motor?",
+          "a": "Reverses current direction every half-turn to keep coil rotating in same direction."
+        },
+        {
+          "q": "6. Name two ways to increase the turning effect (torque) of an electric motor.",
+          "a": "Larger current, stronger magnetic field, or more turns in the coil."
+        }
+      ],
+      "serialAnimation": {
+        "totalBuildSteps": 6,
+        "autoAdvanceDelayMs": 3200,
+        "serialSteps": [
+          {
+            "step": 1,
+            "title": "Reveal: 1. What is the motor effect?",
+            "componentIds": [
+              "reveal_s2_cell_1"
+            ],
+            "targetBounds": {
+              "x": 4.8,
+              "y": 30.1,
+              "w": 44.2,
+              "h": 9.9
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 2,
+            "title": "Reveal: 2. State Fleming's Left Hand Rule for thumb, first finger, second finger.",
+            "componentIds": [
+              "reveal_s2_cell_2"
+            ],
+            "targetBounds": {
+              "x": 50.8,
+              "y": 30.1,
+              "w": 44.2,
+              "h": 9.9
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 3,
+            "title": "Reveal: 3. What formula calculates the force on a conductor in a magnetic field?",
+            "componentIds": [
+              "reveal_s2_cell_3"
+            ],
+            "targetBounds": {
+              "x": 4.8,
+              "y": 60.8,
+              "w": 44.2,
+              "h": 7.3
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 4,
+            "title": "Reveal: 4. What is the unit of magnetic flux density (B)?",
+            "componentIds": [
+              "reveal_s2_cell_4"
+            ],
+            "targetBounds": {
+              "x": 50.8,
+              "y": 60.8,
+              "w": 44.2,
+              "h": 7.3
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 5,
+            "title": "Reveal: 5. What is the vital function of the split-ring commutator in a DC motor?",
+            "componentIds": [
+              "reveal_s2_cell_5"
+            ],
+            "targetBounds": {
+              "x": 4.8,
+              "y": 87.9,
+              "w": 44.2,
+              "h": 8.6
+            },
+            "revealType": "unmask"
+          },
+          {
+            "step": 6,
+            "title": "Reveal: 6. Name two ways to increase the turning effect (torque) of an electric motor.",
+            "componentIds": [
+              "reveal_s2_cell_6"
+            ],
+            "targetBounds": {
+              "x": 50.8,
+              "y": 87.9,
+              "w": 44.2,
+              "h": 8.6
+            },
+            "revealType": "unmask"
+          }
+        ]
+      }
     },
     {
       "number": 3,
