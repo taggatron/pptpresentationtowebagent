@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andragogical Inclusion: A Professional Knowledge Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-border: #e2e8f0;
+      --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --rose: #e11d48;
+      --rose-light: #fff1f2;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-canvas);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top App Bar */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .counter-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--card-border);
+      background: #fff;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    /* Main Stage */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      max-width: 1380px;
+      width: 100%;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    /* Slide Card Container */
+    .slide-stage {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      aspect-ratio: 16 / 9;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at top right, rgba(239, 246, 255, 0.7), transparent 45%),
+                  radial-gradient(circle at bottom left, rgba(240, 253, 244, 0.5), transparent 40%),
+                  #ffffff;
+    }
+
+    .slide {
+      display: none;
+      height: 100%;
+      padding: 34px 44px;
+      flex-direction: column;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Common Slide Typography */
+    .slide-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      width: fit-content;
+      margin-bottom: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.15);
+    }
+
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    /* Content Cards Grid */
+    .cards-row {
+      display: grid;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+    .content-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+      position: relative;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .bullet-list li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: bold;
+      margin-top: 1px;
+    }
+
+    .lead-keyword {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Banner / Provocation Box */
+    .provocation-banner {
+      background: linear-gradient(135deg, #f8fafc, #eff6ff);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .provocation-icon {
+      font-size: 22px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .provocation-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1e3a8a;
+      line-height: 1.45;
+    }
+
+    /* Table Styles */
+    .table-container {
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #f8fafc;
+      padding: 8px 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      padding: 7px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Interactive Elements */
+    .station-card {
+      border-top: 4px solid var(--primary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .station-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .interactive-path-card {
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .interactive-path-card:hover {
+      border-color: var(--primary);
+      background: #fafcff;
+    }
+
+    .interactive-path-card.active-choice {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    /* Facilitator Speaker Notes Drawer */
+    .notes-drawer {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      padding: 18px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .notes-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notes-body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    /* Footer Nav */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+    }
+
+    .shortcuts-hint {
+      font-size: 12px;
+      color: var(--text-subtle);
+    }
+
+    kbd {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span class="brand-badge">HE / FE Staff CPD</span>
+      <h1 class="brand-title">Andragogical Inclusion: A Professional Knowledge Exchange</h1>
+    </div>
+    <div class="header-actions">
+      <div class="counter-pill" id="slideCounter">Slide 1 / 11</div>
+      <button class="btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="slide-stage" id="slideStage">
+
+      <!-- SLIDE 1 -->
+      <section class="slide active" id="slide-1">
+        <span class="slide-tag">Slide 01 • Title & Scholarly Framing</span>
+        <h2 class="slide-title">Andragogical Inclusion: A Professional Knowledge Exchange</h2>
+        <p class="slide-subtitle">Bridging Lived Experience, Equity, and Academic Rigour in Adult Learning</p>
+        
+        <div class="cards-row grid-3">
+          <div class="content-card" style="border-top: 4px solid var(--primary);">
+            <div class="card-header">
+              <div class="card-icon" style="background: var(--primary-light); color: var(--primary);">🏛️</div>
+              <h3 class="card-title">Community of Practice</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Colleague-Led:</span> Convening as scholarly practitioners sharing classroom expertise.</li>
+              <li><span class="lead-keyword">Non-Deficit:</span> Recognizing every participant brings deep pedagogical wisdom.</li>
+              <li><span class="lead-keyword">Safe Enquiry:</span> Candour around teaching friction without institutional judgment.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--emerald);">
+            <div class="card-header">
+              <div class="card-icon" style="background: var(--emerald-light); color: var(--emerald);">⚖️</div>
+              <h3 class="card-title">Critical Andragogy</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Beyond Knowles:</span> Interrogating power, systemic precarity, and trauma.</li>
+              <li><span class="lead-keyword">Lived Realities:</span> Centering diverse adult responsibilities and cultural capital.</li>
+              <li><span class="lead-keyword">Cognitive Access:</span> Removing invisible barriers to deep conceptual learning.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--purple);">
+            <div class="card-header">
+              <div class="card-icon" style="background: var(--purple-light); color: var(--purple);">🎯</div>
+              <h3 class="card-title">Action Horizon</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Concrete Output:</span> Redesigning one immediate teaching activity for next week.</li>
+              <li><span class="lead-keyword">Dual Pathways:</span> Differentiated actions respecting lecturer experience.</li>
+              <li><span class="lead-keyword">Equitable Rigour:</span> Enhancing academic challenge by dismantling friction.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner">
+          <div class="provocation-icon">💬</div>
+          <div class="provocation-text">
+            <strong>Room Framing Provocation:</strong> "We are not here to 'fix' adult students or mandate checklists. We are here to interrogate how institutional design choices shape who thrives in our classrooms."
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 -->
+      <section class="slide" id="slide-2">
+        <span class="slide-tag">Slide 02 • Conceptual Framework</span>
+        <h2 class="slide-title">Knowles’ Andragogy Meets Critical Equity</h2>
+        <p class="slide-subtitle">Expanding Classical Adult Learning Theory with Sociocultural Realities</p>
+
+        <div class="cards-row grid-2">
+          <div class="content-card" style="border-top: 4px solid var(--primary);">
+            <div class="card-header">
+              <div class="card-icon" style="background: var(--primary-light); color: var(--primary);">📚</div>
+              <h3 class="card-title">Classical Andragogy (Malcolm Knowles)</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Self-Concept:</span> Adults move from dependency toward autonomous self-direction.</li>
+              <li><span class="lead-keyword">Experience Pool:</span> Life experience constitutes the richest learning resource.</li>
+              <li><span class="lead-keyword">Problem-Centred:</span> Motivation aligns with immediate problem-solving needs.</li>
+              <li><span class="lead-keyword">Internal Drive:</span> Driven by personal efficacy and vocational mastery.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--rose);">
+            <div class="card-header">
+              <div class="card-icon" style="background: var(--rose-light); color: var(--rose);">🔍</div>
+              <h3 class="card-title">The Equity Expansion (Critical Lens)</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Unequal Safety:</span> Trauma, class, and racism condition who speaks freely.</li>
+              <li><span class="lead-keyword">Selective Validation:</span> Traditional curricula privilege dominant cultural capital.</li>
+              <li><span class="lead-keyword">Resource Asymmetry:</span> Motivation cannot overcome structural poverty or digital gaps.</li>
+              <li><span class="lead-keyword">Intentional Design:</span> Autonomy must be actively structured and scaffolded.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner" style="background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: #fde68a;">
+          <div class="provocation-icon" style="color: #b45309;">⚡</div>
+          <div class="provocation-text" style="color: #92400e;">
+            <strong>Table Pair Provocation (3 Mins):</strong> "Whose 'lived experience' is most effortlessly validated in your current curriculum—and who has to work significantly harder to be recognized as legitimate?"
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 -->
+      <section class="slide" id="slide-3">
+        <span class="slide-tag">Slide 03 • Interactive Activity Part 1</span>
+        <h2 class="slide-title">The Inclusion Marketplace: 5 Core Adult Barriers</h2>
+        <p class="slide-subtitle">Interrogating Systemic Friction Points in Higher & Further Education</p>
+
+        <div class="cards-row grid-5">
+          <div class="content-card station-card" style="border-top-color: #ef4444;">
+            <div class="card-header"><span class="lead-keyword">Station 1</span></div>
+            <h4 style="font-size: 14px; font-weight:700; margin-bottom:8px;">Time Poverty & Role Conflict</h4>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Load:</span> Shift rotas, caregiving, commuter precarity.</li>
+              <li><span class="lead-keyword">Friction:</span> Rigid synchronous attendance policies.</li>
+            </ul>
+          </div>
+
+          <div class="content-card station-card" style="border-top-color: #f59e0b;">
+            <div class="card-header"><span class="lead-keyword">Station 2</span></div>
+            <h4 style="font-size: 14px; font-weight:700; margin-bottom:8px;">Neurodivergence & Invisible Needs</h4>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Load:</span> ADHD masking, executive fatigue, sensory overload.</li>
+              <li><span class="lead-keyword">Friction:</span> Ambiguous unwritten grading expectations.</li>
+            </ul>
+          </div>
+
+          <div class="content-card station-card" style="border-top-color: #10b981;">
+            <div class="card-header"><span class="lead-keyword">Station 3</span></div>
+            <h4 style="font-size: 14px; font-weight:700; margin-bottom:8px;">Linguistic & Cultural Diversity</h4>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Load:</span> ESOL cognitive tax, idiomatic alienation.</li>
+              <li><span class="lead-keyword">Friction:</span> Mono-cultural case examples.</li>
+            </ul>
+          </div>
+
+          <div class="content-card station-card" style="border-top-color: #3b82f6;">
+            <div class="card-header"><span class="lead-keyword">Station 4</span></div>
+            <h4 style="font-size: 14px; font-weight:700; margin-bottom:8px;">Financial & Digital Divide</h4>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Load:</span> Mobile-only data caps, shared family laptops.</li>
+              <li><span class="lead-keyword">Friction:</span> Software paywalls and heavy PDFs.</li>
+            </ul>
+          </div>
+
+          <div class="content-card station-card" style="border-top-color: #8b5cf6;">
+            <div class="card-header"><span class="lead-keyword">Station 5</span></div>
+            <h4 style="font-size: 14px; font-weight:700; margin-bottom:8px;">Imposter Syndrome & Trauma</h4>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Load:</span> Prior schooling shame, defensive silence.</li>
+              <li><span class="lead-keyword">Friction:</span> Cold-calling and punitive grading.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner">
+          <div class="provocation-icon">📌</div>
+          <div class="provocation-text">
+            <strong>Marketplace Premise:</strong> Barriers are not personal inadequacies. They represent design mismatches between institutional assumptions and the complex reality of modern adult lives.
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 -->
+      <section class="slide" id="slide-4">
+        <span class="slide-tag">Slide 04 • Interactive Activity Part 2</span>
+        <h2 class="slide-title">Marketplace Protocol: From Exclusion to Adjustment</h2>
+        <p class="slide-subtitle">Evidence-Informed Adjustments & Your 15-Minute Carousel Task</p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">Adult Barrier Area</th>
+                <th style="width: 35%;">Traditional (Exclusive) Practice</th>
+                <th style="width: 40%;">Inclusive Pedagogical Adjustment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Time Poverty</strong></td>
+                <td>Zero-tolerance attendance; penalties for late arrivals.</td>
+                <td><span style="color:var(--emerald); font-weight:600;">Asynchronous Scaffolding:</span> Micro-recordings, 72-hour advance briefs.</td>
+              </tr>
+              <tr>
+                <td><strong>Neurodivergence</strong></td>
+                <td>Vague "Write 2,500 words on a topic of your choice".</td>
+                <td><span style="color:var(--emerald); font-weight:600;">TILT Framework:</span> Transparent Purpose, Task, and Criteria matrices.</td>
+              </tr>
+              <tr>
+                <td><strong>Linguistic Diversity</strong></td>
+                <td>Jargon-dense delivery; penalized non-native syntax.</td>
+                <td><span style="color:var(--emerald); font-weight:600;">Funds of Knowledge:</span> Bilingual concept glossaries; international assets.</td>
+              </tr>
+              <tr>
+                <td><strong>Digital Divide</strong></td>
+                <td>Proprietary desktop software; bandwidth-heavy downloads.</td>
+                <td><span style="color:var(--emerald); font-weight:600;">Low-Bandwidth Parity:</span> Mobile-friendly LMS; cloud browser tools.</td>
+              </tr>
+              <tr>
+                <td><strong>Past Trauma</strong></td>
+                <td>Public cold-calling; single high-stakes final assessment.</td>
+                <td><span style="color:var(--emerald); font-weight:600;">Psychological Safety:</span> Anonymous polling; low-stakes iterative drafts.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cards-row grid-2">
+          <div class="content-card" style="background:#f0fdf4; border-color:#bbf7d0;">
+            <div class="card-header">
+              <span style="font-size:18px;">🟢</span>
+              <h4 style="color:#166534; font-size:14px; font-weight:700;">Green Post-it Prompt</h4>
+            </div>
+            <p style="font-size:13px; color:#15803d; line-height:1.4;">"What inclusive adjustment already works brilliantly in your studio, seminar, or workshop?"</p>
+          </div>
+
+          <div class="content-card" style="background:#fffbeb; border-color:#fde68a;">
+            <div class="card-header">
+              <span style="font-size:18px;">🟡</span>
+              <h4 style="color:#92400e; font-size:14px; font-weight:700;">Amber Post-it Prompt</h4>
+            </div>
+            <p style="font-size:13px; color:#b45309; line-height:1.4;">"Where do you still hit stubborn institutional or assessment friction with this barrier?"</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 -->
+      <section class="slide" id="slide-5">
+        <span class="slide-tag">Slide 05 • Applied Case Studies Intro</span>
+        <h2 class="slide-title">Applied Case Studies: Choose Your Breakout</h2>
+        <p class="slide-subtitle">Select the Analytical Context Most Relevant to Your Curricular Practice</p>
+
+        <div class="cards-row grid-3">
+          <div class="content-card interactive-path-card" onclick="goToSlide(6)">
+            <div class="card-header">
+              <div class="card-icon" style="background:#eff6ff; color:#2563eb;">🩺</div>
+              <h3 class="card-title">Case Study A</h3>
+            </div>
+            <span style="font-size:12px; font-weight:700; color:#2563eb; margin-bottom:6px;">Audiology & Clinical Training</span>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Focus:</span> Co-designing ground rules in high-stakes clinical testing.</li>
+              <li><span class="lead-keyword">Cohort:</span> Diverse healthcare returners and mature practitioners.</li>
+              <li><span class="lead-keyword">Challenge:</span> Peer otoscopy vulnerability & psychological safety.</li>
+            </ul>
+            <button class="btn btn-primary" style="margin-top:14px; width:100%; justify-content:center;">View Case Study A →</button>
+          </div>
+
+          <div class="content-card interactive-path-card" onclick="goToSlide(7)">
+            <div class="card-header">
+              <div class="card-icon" style="background:#ecfdf5; color:#059669;">🏥</div>
+              <h3 class="card-title">Case Study B</h3>
+            </div>
+            <span style="font-size:12px; font-weight:700; color:#059669; margin-bottom:6px;">HyFlex Learning in Health</span>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Focus:</span> Equitable parity without doubling lecturer workload.</li>
+              <li><span class="lead-keyword">Cohort:</span> Adult nursing & allied health balancing hospital shifts.</li>
+              <li><span class="lead-keyword">Challenge:</span> Synchronous room, live remote, and asynchronous equity.</li>
+            </ul>
+            <button class="btn btn-primary" style="margin-top:14px; width:100%; justify-content:center; background:#059669; border-color:#059669;">View Case Study B →</button>
+          </div>
+
+          <div class="content-card interactive-path-card" onclick="goToSlide(8)">
+            <div class="card-header">
+              <div class="card-icon" style="background:#f5f3ff; color:#7c3aed;">📊</div>
+              <h3 class="card-title">Case Study C</h3>
+            </div>
+            <span style="font-size:12px; font-weight:700; color:#7c3aed; margin-bottom:6px;">UDL in Level 5 Coaching</span>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Focus:</span> Multiple Means of Action & Expression in assessment.</li>
+              <li><span class="lead-keyword">Cohort:</span> Mid-career professionals moving into executive roles.</li>
+              <li><span class="lead-keyword">Challenge:</span> Triad audio logs and systems mapping vs academic essays.</li>
+            </ul>
+            <button class="btn btn-primary" style="margin-top:14px; width:100%; justify-content:center; background:#7c3aed; border-color:#7c3aed;">View Case Study C →</button>
+          </div>
+        </div>
+
+        <div class="provocation-banner">
+          <div class="provocation-icon">👥</div>
+          <div class="provocation-text">
+            <strong>Breakout Protocol (20 Mins):</strong> Self-select into triad groups at designated tables. Analyse the scenario, diagnose the exclusive hidden assumption, and formulate one high-leverage inclusive adjustment.
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 -->
+      <section class="slide" id="slide-6">
+        <span class="slide-tag">Slide 06 • Case Study A</span>
+        <h2 class="slide-title">Case Study A: Psychological Safety in Clinical Audiology</h2>
+        <p class="slide-subtitle">From Tutor Compliance to Co-Constructed Norms in Sensory Testing</p>
+
+        <div class="cards-row grid-3">
+          <div class="content-card" style="border-top: 4px solid var(--rose);">
+            <div class="card-header">
+              <h3 class="card-title" style="color:var(--rose);">The Tension</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Clinical Intimacy:</span> Otoscopy requires close physical peer contact.</li>
+              <li><span class="lead-keyword">Vulnerability:</span> Mature learners fear diagnostic incompetence in public.</li>
+              <li><span class="lead-keyword">Compliance Trap:</span> Tutor-imposed rules generate silence, not safety.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--emerald);">
+            <div class="card-header">
+              <h3 class="card-title" style="color:var(--emerald);">The Co-Design Shift</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Day 1 Protocol:</span> Cohort co-authors boundaries for physical feedback.</li>
+              <li><span class="lead-keyword">Safe-Fail Zones:</span> Ungraded diagnostic peer rounds before tutors observe.</li>
+              <li><span class="lead-keyword">Opt-Out Flags:</span> Non-verbal stop signals during invasive procedures.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--primary);">
+            <div class="card-header">
+              <h3 class="card-title" style="color:var(--primary);">The Pedagogical Payoff</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Clinical Empathy:</span> Experiencing patient vulnerability deepens bed-side care.</li>
+              <li><span class="lead-keyword">Shared Accountability:</span> Students actively uphold high clinical standards.</li>
+              <li><span class="lead-keyword">Anxiety Drop:</span> 40% reduction in pre-assessment OSCE panic scores.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner">
+          <div class="provocation-icon">❓</div>
+          <div class="provocation-text">
+            <strong>Facilitator Provocation:</strong> "In high-stakes technical training, how do we distinguish between genuine professional standards and arbitrary tutor control?"
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 -->
+      <section class="slide" id="slide-7">
+        <span class="slide-tag">Slide 07 • Case Study B</span>
+        <h2 class="slide-title">Case Study B: Workload-Sustainable HyFlex in Health</h2>
+        <p class="slide-subtitle">Tripartite Cohort Parity for Adult Nursing & Allied Health Shift Workers</p>
+
+        <div class="cards-row grid-3">
+          <div class="content-card" style="border-top: 4px solid #3b82f6;">
+            <div class="card-header">
+              <div class="card-icon" style="background:#eff6ff; color:#3b82f6;">🏫</div>
+              <h3 class="card-title">In-Room Learners</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Hands-On Simulation:</span> Ward mannequins and physical equipment tasks.</li>
+              <li><span class="lead-keyword">Peer Pods:</span> In-person collaborative problem-solving pods.</li>
+              <li><span class="lead-keyword">Microphone Duty:</span> Room mics ensure remote peers hear every question.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid #10b981;">
+            <div class="card-header">
+              <div class="card-icon" style="background:#ecfdf5; color:#10b981;">💻</div>
+              <h3 class="card-title">Live Remote Joiners</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Digital Anchor:</span> Co-facilitated live chat with dedicated triage student.</li>
+              <li><span class="lead-keyword">Breakout Triads:</span> Parallel virtual simulation debriefs.</li>
+              <li><span class="lead-keyword">Single Task Canvas:</span> Shared digital whiteboards bridging both spaces.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid #f59e0b;">
+            <div class="card-header">
+              <div class="card-icon" style="background:#fffbeb; color:#f59e0b;">⏱️</div>
+              <h3 class="card-title">Asynchronous Catch-Up</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Timestamped Clips:</span> 8-minute core concept summaries, not 2-hour recordings.</li>
+              <li><span class="lead-keyword">Collaborative Padlet:</span> Shift-workers post questions answered by cohort.</li>
+              <li><span class="lead-keyword">Micro-Checkpoints:</span> 3 self-marking diagnostic questions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner">
+          <div class="provocation-icon">⚡</div>
+          <div class="provocation-text">
+            <strong>Workload Golden Rule:</strong> Do not teach two classes at once. Anchor the entire session around ONE single collaborative artifact that all three modes interact with simultaneously or sequentially.
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 -->
+      <section class="slide" id="slide-8">
+        <span class="slide-tag">Slide 08 • Case Study C</span>
+        <h2 class="slide-title">Case Study C: UDL Expression in Level 5 Coaching</h2>
+        <p class="slide-subtitle">Multiple Means of Action & Expression without Diluting Academic Rigour</p>
+
+        <div class="cards-row grid-3">
+          <div class="content-card" style="border-top: 4px solid var(--purple);">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--purple-light); color:var(--purple);">🎙️</div>
+              <h3 class="card-title">Option 1: Coaching Triad Audio</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Authentic Evidence:</span> 15-minute unedited client/peer coaching session.</li>
+              <li><span class="lead-keyword">Reflective Log:</span> 500-word timestamped critique citing theory.</li>
+              <li><span class="lead-keyword">Direct Mastery:</span> Assesses somatic pacing and questioning presence.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--primary);">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--primary-light); color:var(--primary);">🗺️</div>
+              <h3 class="card-title">Option 2: Systems Mapping</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Visual Rigour:</span> Detailed diagram of organizational systemic blocks.</li>
+              <li><span class="lead-keyword">Annotation:</span> Scholarly literature callouts justifying intervention.</li>
+              <li><span class="lead-keyword">Synthesis:</span> Evaluates multi-stakeholder psychological dynamics.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--emerald);">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--emerald-light); color:var(--emerald);">📄</div>
+              <h3 class="card-title">Option 3: Written Case Critique</h3>
+            </div>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Scholarly Essay:</span> 2,000-word critical evaluation of coaching arc.</li>
+              <li><span class="lead-keyword">Literature Depth:</span> Classical APA referencing and comparative theory.</li>
+              <li><span class="lead-keyword">Reflective Framework:</span> Brookfield’s Four Lenses methodology.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner">
+          <div class="provocation-icon">⚖️</div>
+          <div class="provocation-text">
+            <strong>The UDL Standard:</strong> "All three options are marked against the EXACT same Level 5 rubric criteria: Critical Evaluation, Theoretical Application, and Reflexive Growth. The medium changes; the intellectual standard remains unyielding."
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 -->
+      <section class="slide" id="slide-9">
+        <span class="slide-tag">Slide 09 • Core Takeaway Action</span>
+        <h2 class="slide-title">Next Week’s Redesign: Differentiated Action</h2>
+        <p class="slide-subtitle">Translating Scholarly Insights into Immediate Classroom Reality</p>
+
+        <div class="content-card" style="margin-bottom:20px; border-left: 6px solid var(--primary); background: #fafcff;">
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:8px; color:var(--primary);">The Activity Brief</h3>
+          <p style="font-size:14px; line-height:1.5; color:var(--text-muted);">
+            Every participant selects <strong>ONE learning activity, assessment brief, or facilitation strategy</strong> they are delivering next week. Using today’s insights, redesign this single touchpoint to remove friction while maintaining scholarly rigour.
+          </p>
+        </div>
+
+        <div class="cards-row grid-2">
+          <div class="content-card" style="border-top: 4px solid var(--emerald);">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--emerald-light); color:var(--emerald);">🌱</div>
+              <h3 class="card-title">Pathway 1: Developing Practice</h3>
+            </div>
+            <p style="font-size:13px; font-weight:600; color:var(--text-subtle); margin-bottom:12px;">For Less-Experienced / Early-Career Lecturers</p>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Low-Prep Leverage:</span> Immediate practical strategies with zero administrative overhead.</li>
+              <li><span class="lead-keyword">Peer Templates:</span> Replicate proven scaffolding methods shared by colleagues today.</li>
+              <li><span class="lead-keyword">Delivery Confidence:</span> Proactive moves to eliminate recurring student confusion.</li>
+              <li><span class="lead-keyword">Goal:</span> Embed 2–3 ready-to-use techniques into next week's session plan.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-top: 4px solid var(--purple);">
+            <div class="card-header">
+              <div class="card-icon" style="background:var(--purple-light); color:var(--purple);">🔬</div>
+              <h3 class="card-title">Pathway 2: Refining & Stretching</h3>
+            </div>
+            <p style="font-size:13px; font-weight:600; color:var(--text-subtle); margin-bottom:12px;">For Experienced / Senior Academic Developers</p>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Friction Audit:</span> Critically evaluate mature courses to unearth hidden systemic barriers.</li>
+              <li><span class="lead-keyword">Edge-Case Inquiry:</span> Interrogate tensions between professional body standards and equity.</li>
+              <li><span class="lead-keyword">Evidence Generation:</span> Design a micro-evaluation to measure student cognitive depth.</li>
+              <li><span class="lead-keyword">Goal:</span> Execute a bold pedagogical pilot and track learner agency impact.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10 -->
+      <section class="slide" id="slide-10">
+        <span class="slide-tag">Slide 10 • Concrete Implementation Toolkit</span>
+        <h2 class="slide-title">Redesign Protocols: Choose Your Practical Track</h2>
+        <p class="slide-subtitle">Actionable Frameworks for Developing vs Stretching Practice</p>
+
+        <div class="cards-row grid-2">
+          <div class="content-card" style="border-color: #bbf7d0; background: #ffffff;">
+            <div class="card-header" style="border-bottom: 2px solid #bbf7d0;">
+              <span class="lead-keyword" style="color:var(--emerald); font-size:15px;">Pathway 1 Protocols (Developing Practice)</span>
+            </div>
+            <ul class="bullet-list" style="margin-top:10px;">
+              <li><span class="lead-keyword">Apply TILT:</span> Clarify Purpose, Task, and Criteria on next week's slide or rubric.</li>
+              <li><span class="lead-keyword">72-Hour Runway:</span> Release key vocabulary and slides 3 days before lecture.</li>
+              <li><span class="lead-keyword">Think-Pair-Share:</span> Insert 90-second whispered partner talk before whole-room sharing.</li>
+              <li><span class="lead-keyword">Low-Stakes Exit Ticket:</span> 1-minute anonymous poll checking conceptual clarity.</li>
+            </ul>
+          </div>
+
+          <div class="content-card" style="border-color: #ddd6fe; background: #ffffff;">
+            <div class="card-header" style="border-bottom: 2px solid #ddd6fe;">
+              <span class="lead-keyword" style="color:var(--purple); font-size:15px;">Pathway 2 Protocols (Refining & Stretching)</span>
+            </div>
+            <ul class="bullet-list" style="margin-top:10px;">
+              <li><span class="lead-keyword">Unbundle The Brief:</span> Separate technical knowledge verification from written syntax.</li>
+              <li><span class="lead-keyword">Co-Constructed Criteria:</span> Spend 15 minutes having students negotiate marking descriptors.</li>
+              <li><span class="lead-keyword">Micro-Evaluation Probe:</span> Compare student reasoning depth between written vs audio reflections.</li>
+              <li><span class="lead-keyword">Cross-Modular Review:</span> Audit whether prerequisite course sequencing causes drop-off.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner">
+          <div class="provocation-icon">⚡</div>
+          <div class="provocation-text">
+            <strong>Dignity in Differentiation:</strong> "Just as we reject one-size-fits-all curricula for our students, we reject one-size-fits-all professional development for faculty."
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11 -->
+      <section class="slide" id="slide-11">
+        <span class="slide-tag">Slide 11 • Plenary & Exit Commitment</span>
+        <h2 class="slide-title">Plenary Choice Board: Your Exit Commitment</h2>
+        <p class="slide-subtitle">Synthesizing the Golden Thread: Andragogy + Equity + Intentional Design</p>
+
+        <div class="cards-row grid-3">
+          <div class="content-card interactive-path-card" id="choiceA" onclick="selectExitChoice('A')">
+            <div class="card-header">
+              <div class="card-icon" style="background:#eff6ff; color:#2563eb;">🚀</div>
+              <h3 class="card-title">Option A: The Quick Win</h3>
+            </div>
+            <p style="font-size:13px; font-weight:700; color:var(--primary); margin-bottom:8px;">60-Second Verbal Commitment</p>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Identify:</span> Name the single barrier you are dismantling next week.</li>
+              <li><span class="lead-keyword">Action:</span> Detail the exact procedural adjustment you will execute.</li>
+              <li><span class="lead-keyword">Check:</span> How you will know students felt the difference.</li>
+            </ul>
+          </div>
+
+          <div class="content-card interactive-path-card" id="choiceB" onclick="selectExitChoice('B')">
+            <div class="card-header">
+              <div class="card-icon" style="background:#fffbeb; color:#d97706;">⚖️</div>
+              <h3 class="card-title">Option B: The Critical Tension</h3>
+            </div>
+            <p style="font-size:13px; font-weight:700; color:#d97706; margin-bottom:8px;">Pose an Unresolved Dilemma</p>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Tension:</span> Where professional body standards clash with flexibility.</li>
+              <li><span class="lead-keyword">Institutional Block:</span> A policy that hinders inclusive adult practice.</li>
+              <li><span class="lead-keyword">Collective Thinking:</span> Invite cross-departmental peer advice.</li>
+            </ul>
+          </div>
+
+          <div class="content-card interactive-path-card" id="choiceC" onclick="selectExitChoice('C')">
+            <div class="card-header">
+              <div class="card-icon" style="background:#ecfdf5; color:#059669;">🤝</div>
+              <h3 class="card-title">Option C: The Peer Pact</h3>
+            </div>
+            <p style="font-size:13px; font-weight:700; color:#059669; margin-bottom:8px;">Pair Across Disciplines</p>
+            <ul class="bullet-list">
+              <li><span class="lead-keyword">Buddy Up:</span> Swap contact with a colleague outside your department.</li>
+              <li><span class="lead-keyword">Peer Review:</span> Review each other's redesigned brief before delivery.</li>
+              <li><span class="lead-keyword">Coffee Debrief:</span> Meet next Friday for 15 minutes to evaluate impact.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="provocation-banner" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #86efac;">
+          <div class="provocation-icon" style="color: #15803d;">🌱</div>
+          <div class="provocation-text" style="color: #14532d;">
+            <strong>Closing Scholarly Synthesis:</strong> "Inclusion is not an administrative compliance burden; it is the ultimate expression of academic excellence. When we design for the edges, every adult learner thrives."
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Collapsible Facilitator Speaker Notes Drawer -->
+    <div class="notes-drawer">
+      <div class="notes-header">
+        <div class="notes-title">
+          <span>🎙️</span>
+          <span>Facilitator Speaker Notes & Provocations (Slide <span id="notesSlideNum">1</span>)</span>
+        </div>
+        <button class="btn" style="padding:4px 8px; font-size:11px;" onclick="toggleNotes()">Toggle Notes</button>
+      </div>
+      <div class="notes-body" id="notesContent">
+        Welcome colleagues to this session. Position the room immediately as a collegial community of practice. Remind participants that between them, they hold hundreds of hours of lived teaching experience. Emphasise that this session is a peer-to-peer knowledge exchange, not a top-down training mandate. Our goal is to surface practical frontline wisdom and dismantle the barriers that hold our adult learners back.
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="shortcuts-hint">
+        Use <kbd>←</kbd> and <kbd>→</kbd> arrow keys to navigate slides. Press <kbd>N</kbd> to toggle speaker notes.
+      </div>
+      <div style="font-size: 12px; color: var(--text-subtle);">
+        Built for HE / FE Academic Developers • Adapted from GCSE Biology Cognitive Clarity Architecture
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const totalSlides = 11;
+    let currentSlide = 1;
+
+    const speakerNotes = {
+      1: "Welcome colleagues. Frame the room as a peer-to-peer community of practice. State explicitly: 'Nobody in this room has all the answers, but collectively we possess immense pedagogical wisdom.' Position inclusion not as a checklist or compliance drill, but as an ongoing scholarly enquiry into how our curriculum design choices impact adult autonomy.",
+      2: "Knowles gave us a foundational vision of the self-directed adult, but his model assumed an unencumbered student with equal social capital. Prompt colleagues to consider how race, class, caring duties, and prior educational trauma dictate who feels safe speaking up. Give 3 minutes for pairs to discuss: 'Whose lived experience is most effortlessly validated in your course?'",
+      3: "Introduce the 5 marketplace stations. Emphasise that these barriers are structural interface challenges, not student deficits. When an adult misses class due to a 12-hour NHS shift, that is not lack of commitment; it is an institutional design mismatch with modern working lives.",
+      4: "Explain the Marketplace Task. Triads circulate every 3 minutes. Green post-its celebrate frontline staff creativity; Amber post-its surface deep institutional friction (e.g. rigid attendance software, bureaucratic assignment extensions). Acknowledge that confronting friction is necessary to innovate.",
+      5: "Introduce the three applied case studies. Explain that in adult education, autonomy is non-negotiable—so faculty get autonomy too! Participants choose the case study closest to their teaching modality: clinical hands-on (Audiology), hybrid shift-work (HyFlex Health), or professional expression (Level 5 Coaching).",
+      6: "Facilitate Case Study A. Note the intense vulnerability of clinical examinations. Mature learners often mask their fear behind defensive silence. Co-designing ground rules on Day 1 shifts ownership from tutor authority to collective professional standard-setting.",
+      7: "Facilitate Case Study B. HyFlex often collapses because lecturers try to teach two separate classes simultaneously and burn out. Share the golden rule: Use a single unified collaborative workspace (like a live Padlet or Miro board) that in-room, remote, and asynchronous students all contribute to.",
+      8: "Facilitate Case Study C. Address the deep-seated academic myth that 'rigour equals a 3,000-word written essay'. Ask: 'What are we actually assessing?' If we are assessing critical evaluation and reflexivity, an unedited coaching audio recording with timestamped analysis can demonstrate far deeper mastery than a ghostwritten essay.",
+      9: "Introduce 'Next Week’s Redesign'. Avoid the trap of making experienced lecturers feel patronised. The dual pathway honors where colleagues are: Pathway 1 gives newer lecturers immediate, high-leverage procedural wins; Pathway 2 gives seasoned academics space to critique curricular edge cases.",
+      10: "Walk through the concrete protocols on Slide 10. For Pathway 1, highlight the TILT framework (Mary-Ann Winkelmes) as a 15-minute tweak that dramatically closes attainment gaps. For Pathway 2, challenge experienced staff to formulate a micro-evaluation measuring depth of thinking rather than attendance.",
+      11: "Run the Plenary Choice Board. Do not do a generic round-robin. Have participants commit to Option A (60-second quick win), Option B (an unresolved dilemma), or Option C (the cross-department peer pact). Close with the golden thread: Andragogy + Equity + Intentional Design = Autonomous Adult Learners."
+    };
+
+    function updateSlide() {
+      document.querySelectorAll('.slide').forEach((slide, idx) => {
+        slide.classList.toggle('active', idx + 1 === currentSlide);
+      });
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+      document.getElementById('notesSlideNum').textContent = currentSlide;
+      document.getElementById('notesContent').textContent = speakerNotes[currentSlide] || "Facilitator notes for this slide.";
+      document.getElementById('prevBtn').disabled = currentSlide === 1;
+      document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+    }
+
+    function changeSlide(direction) {
+      currentSlide = Math.max(1, Math.min(totalSlides, currentSlide + direction));
+      updateSlide();
+    }
+
+    function goToSlide(slideNum) {
+      currentSlide = slideNum;
+      updateSlide();
+    }
+
+    function toggleNotes() {
+      const notesBody = document.getElementById('notesContent');
+      notesBody.style.display = notesBody.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function selectExitChoice(choice) {
+      ['choiceA', 'choiceB', 'choiceC'].forEach(id => {
+        document.getElementById(id).classList.remove('active-choice');
+      });
+      document.getElementById(`choice${choice}`).classList.add('active-choice');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        changeSlide(-1);
+      } else if (e.key.toLowerCase() === 'n') {
+        toggleNotes();
+      }
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>
