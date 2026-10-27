@@ -88,43 +88,49 @@ async function generateLesson(lessonIndex) {
   console.log("Generation started! Monitoring progress in Studio...");
 
   // 7. Monitor generation until complete
-  let generating = true;
-  let elapsed = 0;
-  for (let i = 0; i < 50; i++) { // up to 250s
+  console.log("Monitoring generation of item 0...");
+  let isDone = false;
+  for (let i = 0; i < 90; i++) { // up to 450s
     await page.waitForTimeout(5000);
-    elapsed += 5;
-    
-    // Check if progress indicator is visible
-    const status = await page.evaluate(() => {
-      const panel = document.querySelector('.studio-panel');
-      const text = panel ? panel.innerText : '';
-      const isGen = /Generating slide deck|Generating\.\.\.|Bringing it to life|Creating the content|Shaping the output|Rendering visual details|Wrapping things up/i.test(text);
-      const activity = !!document.querySelector('.progress_activity, mat-progress-spinner, [class*="progress"]');
-      return { isGen, activity, textSample: text.slice(0, 150) };
-    });
+    const status = await page.$eval("artifact-library-item", el => {
+      const btn = el.querySelector("button.artifact-stretched-button");
+      const icons = Array.from(el.querySelectorAll("mat-icon")).map(m => m.textContent.trim());
+      const hasProgress = icons.includes("progress_activity") || /Generating|Shaping|Rendering|Wrapping|Almost|Getting ready/i.test(el.innerText);
+      const disabled = btn ? (btn.disabled || btn.getAttribute("disabled") === "true") : false;
+      return {
+        text: el.innerText.replace(/\n+/g, " | ").slice(0, 100),
+        hasProgress,
+        disabled
+      };
+    }).catch(err => ({ text: err.message, hasProgress: true, disabled: true }));
 
-    console.log(`[${elapsed}s] Generating: ${status.isGen || status.activity}`);
-    if (!status.isGen && !status.activity && elapsed > 25) {
-      console.log("Generation complete!");
-      generating = false;
+    console.log(`[Wait ${(i + 1) * 5}s] ${status.text}`);
+    if (!status.hasProgress && !status.disabled && i > 3) {
+      console.log("✓ Slide deck generation has finished!");
+      isDone = true;
       break;
     }
   }
 
-  if (generating) {
-    console.warn("Reached maximum wait time, checking artifact list...");
+  if (!isDone) {
+    throw new Error("Slide deck generation timed out!");
   }
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(2000);
 
   // 8. Open the newly generated slide deck
   console.log("Opening newly generated slide deck from Studio list...");
-  const firstItem = page.locator("artifact-library-item").first();
-  await firstItem.waitFor({ state: "visible", timeout: 10000 });
-  
-  const titleContainer = firstItem.locator(".title-container, button.artifact-stretched-button").first();
-  await titleContainer.click();
-  console.log("Clicked top artifact item. Waiting for viewer to open...");
+  try {
+    const firstItem = page.locator("artifact-library-item").first();
+    const btn = firstItem.locator("button.artifact-stretched-button, .title-container").first();
+    await btn.click({ force: true, timeout: 5000 });
+  } catch (e) {
+    console.log("Fallback click via evaluate...");
+    await page.evaluate(() => {
+      const el = document.querySelector('artifact-library-item button.artifact-stretched-button, artifact-library-item .title-container');
+      if (el) el.click();
+    });
+  }
 
   // Wait for viewer to open
   const viewerClose = page.locator('button[aria-label="Close slide deck"], button[aria-label="Close"]').first();
@@ -218,6 +224,14 @@ async function generateLesson(lessonIndex) {
   console.log(`Studio root ready for next action: ${isReady}`);
 
   await browser.close();
+
+  // Run Ingestion immediately
+  console.log(`Ingesting Lesson ${lesson.number} into web app...`);
+  try {
+    execSync(`node scripts/ingest_f172_lessons.mjs ${lesson.number}`, { stdio: "inherit" });
+  } catch (err) {
+    console.error("Ingestion warning:", err.message);
+  }
 
   console.log(`======================================================`);
   console.log(`=== SUCCESSFULLY COMPLETED: ${lesson.title} ===`);

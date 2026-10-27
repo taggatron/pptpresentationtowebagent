@@ -1,0 +1,163 @@
+{
+  "id": "Lesson_12_CRISPR_Cas9_Gene_Editing_Research_Workshop",
+  "title": "F172 - Lesson 12: CRISPR-Cas9 Gene Editing & Research Workshop",
+  "slideSet": "genetics_aaq",
+  "filename": "Lesson_12_CRISPR_Cas9_Gene_Editing_Research_Workshop.pptx",
+  "pdfFilename": "Lesson_12_CRISPR_Cas9_Gene_Editing_Research_Workshop.pdf",
+  "lessonNumber": 12,
+  "courseName": "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology - Unit F172: Genetics",
+  "teacher": "Dan",
+  "focus": "CRISPR-Cas9 Gene Editing & Research Workshop: Molecular Engine, NHEJ vs HDR, Casgevy Case Study, and NEA Task 2 Distinction Checklist",
+  "deliverable": "OCR AAQ Level 3 Human Biology (Unit F172: Genetics) Lesson 12 presentation covering bacterial CRISPR immunity origins, sgRNA and PAM 5'-NGG-3' targeting, Cas9 endonuclease cleavage, cellular repair pathways (NHEJ knockout vs HDR template correction), clinical milestone Casgevy (ex-vivo BCL11A editing for sickle cell disease), and an advanced evaluative workshop for NEA Task 2.",
+  "totalSlides": 10,
+  "objectives": {
+    "knowledge": "Explain the molecular anatomy and action of the CRISPR-Cas9 endonuclease system (crRNA/tracrRNA sgRNA, PAM motif, RuvC/HNH catalytic domains).",
+    "application": "Compare DNA repair mechanisms: error-prone Non-Homologous End Joining (NHEJ) knockout vs precision Homology-Directed Repair (HDR) knock-in.",
+    "evaluation": "Critique clinical applications (Casgevy BCL11A silencing) against ANT-130 RNAi and apply Distinction criteria to coursework evaluations."
+  },
+  "terminology": [
+    {
+      "term": "CRISPR-Cas9",
+      "def": "Adaptive bacterial immune system repurposed as a precision gene-editing tool; uses a single guide RNA (sgRNA) to direct Cas9 endonuclease to cut target DNA."
+    },
+    {
+      "term": "Protospacer Adjacent Motif (PAM)",
+      "def": "A short 5'-NGG-3' DNA sequence immediately adjacent to the target site, required for Cas9 binding and strand unwinding."
+    },
+    {
+      "term": "Non-Homologous End Joining (NHEJ)",
+      "def": "An error-prone repair pathway directly re-ligating double-strand breaks, frequently creating indels that knockout gene function."
+    },
+    {
+      "term": "Homology-Directed Repair (HDR)",
+      "def": "A high-fidelity repair pathway using an exogenous DNA donor template to introduce precise sequence corrections or insertions."
+    },
+    {
+      "term": "Casgevy (Exa-cel)",
+      "def": "The first approved CRISPR therapy; edits patient HSPCs via NHEJ to disrupt the BCL11A erythroid enhancer, reactivating fetal hemoglobin (HbF) in sickle cell disease."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "F172 Lesson 12: CRISPR-Cas9 Gene Editing & Research Workshop",
+      "subtitle": "OCR AAQ Level 3 Human Biology · Unit F172: Genetics (Dan)",
+      "type": "title",
+      "image": "slides/slide_01.png",
+      "keyTakeaways": [
+        "Molecular engine of CRISPR-Cas9, repair pathways, and clinical therapies.",
+        "Dedicated NEA Task 2 Distinction evaluative research workshop."
+      ]
+    },
+    {
+      "slideNumber": 2,
+      "title": "Biological Origins: Adaptive Bacterial Immunity",
+      "subtitle": "CRISPR loci, viral memory spacers, and targeted cleavage of bacteriophages",
+      "type": "content",
+      "image": "slides/slide_02.png",
+      "keyTakeaways": [
+        "CRISPR loci store captured fragments of invading bacteriophage DNA as spacers.",
+        "Transcribed crRNA and tracrRNA guide Cas endonucleases to recognize re-invading phage genomes.",
+        "Cleaves viral DNA upon re-infection, providing adaptive prokaryotic immune defense."
+      ]
+    },
+    {
+      "slideNumber": 3,
+      "title": "The CRISPR-Cas9 Engine: 3 Essential Components",
+      "subtitle": "Single guide RNA (sgRNA), PAM motif (5'-NGG-3'), and Cas9 endonuclease",
+      "type": "molecular_engine",
+      "image": "slides/slide_03.png",
+      "keyTakeaways": [
+        "sgRNA: 20-nucleotide synthetic spacer matching genomic target fused to tracrRNA scaffold.",
+        "PAM Motif: 5'-NGG-3' sequence essential for initial Cas9 binding and DNA strand separation.",
+        "Cas9 Endonuclease: Catalytic RuvC and HNH domains induce targeted blunt double-strand breaks."
+      ]
+    },
+    {
+      "slideNumber": 4,
+      "title": "Step-by-Step Mechanism of Cas9 Target Cleavage",
+      "subtitle": "PAM interrogation, DNA unwinding, R-loop formation, and double-strand break",
+      "type": "mechanism",
+      "image": "slides/slide_04.png",
+      "keyTakeaways": [
+        "1. PAM Interrogation: Cas9 scans genomic DNA for 5'-NGG-3' motifs.",
+        "2. DNA Unwinding: Cas9 unwinds adjacent duplex, testing sgRNA complementarity.",
+        "3. R-Loop Formation: Stable 20 bp RNA:DNA hybrid locks endonuclease in place.",
+        "4. Double-Strand Break: RuvC and HNH domains cut both DNA strands 3 bp upstream of PAM."
+      ]
+    },
+    {
+      "slideNumber": 5,
+      "title": "DNA Repair Pathway 1: NHEJ Gene Knockout",
+      "subtitle": "Error-prone re-ligation, indel creation, and targeted gene disruption",
+      "type": "pathway",
+      "image": "slides/slide_05.png",
+      "keyTakeaways": [
+        "Non-Homologous End Joining directly re-ligates broken ends without a repair template.",
+        "Frequently inserts or deletes nucleotides (indels), creating reading frame-shifts.",
+        "Ideal for knocking out pathogenic dominant genes, viral entry receptors, or silencer enhancers."
+      ]
+    },
+    {
+      "slideNumber": 6,
+      "title": "DNA Repair Pathway 2: HDR Gene Correction",
+      "subtitle": "High-fidelity template-directed repair for precise base correction",
+      "type": "pathway",
+      "image": "slides/slide_06.png",
+      "keyTakeaways": [
+        "Homology-Directed Repair utilizes an exogenous synthetic donor DNA repair template.",
+        "Enables exact nucleotide substitution, point mutation repair, or sequence knock-in.",
+        "Active primarily in S/G2 phases of dividing cells; inefficient in non-dividing adult neurons."
+      ]
+    },
+    {
+      "slideNumber": 7,
+      "title": "Clinical Landmark: Casgevy for Sickle Cell Disease",
+      "subtitle": "First regulatory-approved CRISPR-Cas9 ex vivo therapy (Vertex / CRISPR Therapeutics)",
+      "type": "case_study",
+      "image": "slides/slide_07.png",
+      "keyTakeaways": [
+        "Ex vivo editing of autologous CD34+ hematopoietic stem and progenitor cells (HSPCs).",
+        "NHEJ disrupts the GATA1-binding site in the erythroid enhancer of BCL11A.",
+        "Reactivates fetal hemoglobin (HbF, α2γ2), preventing sickle polymerization and pain crises."
+      ]
+    },
+    {
+      "slideNumber": 8,
+      "title": "Technical Obstacles: Off-Target Cleavage & Delivery",
+      "subtitle": "Mismatch tolerance, p53 activation, and in vivo vector packaging limits",
+      "type": "limitations",
+      "image": "slides/slide_08.png",
+      "keyTakeaways": [
+        "Cas9 tolerates 1-3 base mismatches, risking off-target double-strand breaks elsewhere in genome.",
+        "DSBs trigger p53-mediated apoptosis, risking selective outgrowth of p53-deficient oncogenic clones.",
+        "SpCas9 (4.1 kb) plus sgRNA approaches AAV packaging ceiling, requiring dual AAVs or LNPs."
+      ]
+    },
+    {
+      "slideNumber": 9,
+      "title": "Technology Face-Off: CRISPR Editing vs RNAi Silencing",
+      "subtitle": "Permanent genomic DNA modification vs post-transcriptional mRNA regulation",
+      "type": "comparative_table",
+      "image": "slides/slide_09.png",
+      "keyTakeaways": [
+        "CRISPR modifies genomic DNA permanently; risk of off-target chromosomal rearrangements.",
+        "ANT-130 (AAV5-miRNA) acts post-transcriptionally; leaves DNA intact with non-permanent episomes.",
+        "Coursework requires contrasting irreversible DNA excision against mRNA knockdown."
+      ]
+    },
+    {
+      "slideNumber": 10,
+      "title": "NEA Task 2 Distinction Workshop: Evaluative Checklist",
+      "subtitle": "Actionable rubric checklist for securing top marks in Genetics coursework",
+      "type": "workshop_rubric",
+      "image": "slides/slide_10.png",
+      "keyTakeaways": [
+        "Compare in vivo intracranial stereotaxis vs ex vivo hematopoietic electroporation.",
+        "Evaluate cohort size, follow-up duration, and surrogate biomarkers (mHTT/NfL vs clinical scores).",
+        "Critique irreversible risk profiles and evaluate compliance under UK MHRA/HFEA frameworks.",
+        "Include flawless Harvard referencing from primary peer-reviewed journals (NEJM, Nature, Lancet)."
+      ]
+    }
+  ]
+}

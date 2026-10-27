@@ -233,6 +233,7 @@ async function main() {
   console.log("Generating 16:9 PowerPoint (.pptx) with embedded speaker notes...");
   const pptxScript = `
 import os
+import json
 import pptx
 from pptx.util import Inches
 
@@ -241,9 +242,11 @@ prs.slide_width = Inches(13.333)
 prs.slide_height = Inches(7.5)
 blank_layout = prs.slide_layouts[6]
 
-slides_data = ${JSON.stringify(slides)}
+manifest_file = "${path.join(DECK_DIR, "manifest.json")}"
+with open(manifest_file, "r", encoding="utf-8") as f:
+    manifest_data = json.load(f)
 
-for s in slides_data:
+for s in manifest_data.get("slides", []):
     slide = prs.slides.add_slide(blank_layout)
     img_path = os.path.join("${SLIDES_DIR}", s["imageFileName"])
     slide.shapes.add_picture(img_path, 0, 0, width=prs.slide_width, height=prs.slide_height)
