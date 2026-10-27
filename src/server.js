@@ -324,6 +324,14 @@ export const KNOWN_SLIDE_SETS = [
     description: "Re-thinking digital literacy in the age of algorithms."
   },
   {
+    id: "staff_cpd",
+    title: "Staff CPD · Andragogical Inclusion",
+    category: "Professional Development",
+    icon: "🤝",
+    folder: "powerpoints_andragogical_inclusion",
+    description: "Andragogical Inclusion: Bridging Lived Experience, Equity, and Academic Rigour in Adult Learning."
+  },
+  {
     id: "chemistry",
     title: "GCSE Chemistry · Fundamentals",
     category: "Chemistry",
