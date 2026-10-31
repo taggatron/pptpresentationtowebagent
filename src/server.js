@@ -418,6 +418,14 @@ export const KNOWN_SLIDE_SETS = [
     icon: "🌡️",
     folder: "powerpoints_physics_matter_pressure_heat",
     description: "States of matter, fluid & gas pressure, density, Archimedes' principle, latent heat, and specific heat capacity."
+  },
+  {
+    id: "chemistry_groups_metals",
+    title: "GCSE Chemistry · Groups, Reactivity & Extraction",
+    category: "Chemistry",
+    icon: "⚗️",
+    folder: "powerpoints_chemistry_groups_metals",
+    description: "Alkali metals, halogens, halogen displacement, noble gases, reactivity of metals, metal displacement, metal extraction (blast furnace, bioleaching & phytomining), and electrolysis with half equations."
   }
 ];
 
@@ -510,6 +518,13 @@ export function inferSlideSetId(deckId, manifest = null) {
     )
   ) {
     return "photography";
+  }
+  if (
+    /(?:Alkali_Metals|Halogens|Halogen_Displacement|Noble_Gases|Reactivity_of_Metals|Reactivity_Series|Displacement_of_Metals|Metal_Extraction|Blast_Furnace|Bioleaching|Phytomining|Half_Equations)/i.test(
+      deckId
+    )
+  ) {
+    return "chemistry_groups_metals";
   }
   if (
     /(?:PERIODIC|HISTORY.*ATOM|ELECTRON|IONIC|COVALENT|GIANT|METALLIC|POLYMERS|CHROMATOGRAPHY|SEPARATION|ELECTROLYSIS)/i.test(

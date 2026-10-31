@@ -23,21 +23,16 @@ This document catalogs every **agentic terminal command, Node.js CLI script, and
 
 ---
 
-## 1. Prerequisites & Chrome CDP Agent Setup
+## 1. Prerequisites & Microsoft Edge CDP Agent Setup (Default)
 
-Several agent workflows (Gemini multimodal analysis, generative image builds, NotebookLM revisions) connect to an authenticated browser session using the **Chrome DevTools Protocol (CDP)** on port `9333`.
+All Gemini Notebook (`notebook.google.com`) and NotebookLM slide deck automations **default to your already logged-in Microsoft Edge browser** via [`scripts/edge_cdp_helper.mjs`](file:///Users/danieltagg/Desktop/Desktop%20-%20Daniel%E2%80%99s%20MacBook%20Pro/pptpresentationtowebagent/scripts/edge_cdp_helper.mjs).
 
-### Launch Chrome with CDP Enabled
-Run this in a separate terminal before running browser-dependent agent tasks:
+### Enable Remote Debugging in Your Logged-In Microsoft Edge (One-Time Toggle)
+1. In your logged-in Microsoft Edge window, open `edge://inspect/#remote-debugging`
+2. Tick **"Allow remote debugging for this browser instance"**
+3. Click **Allow** when Edge prompts on first Playwright connection (`chromium.connectOverCDP("msedge")`).
 
-```bash
-# Launch Google Chrome with remote debugging on port 9333
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --remote-debugging-port=9333 \
-  --user-data-dir="/tmp/chrome-cdp-agent" &
-```
-
-> **Note**: Log in to [gemini.google.com](https://gemini.google.com) and [notebooklm.google.com](https://notebooklm.google.com) in this browser window once. The background agent workers will reuse the active authenticated session.
+> **Fallback (Optional Explicit Port)**: Scripts also support connecting to Microsoft Edge over HTTP CDP on port `9334` (`http://127.0.0.1:9334`) or `9222`.
 
 ---
 

@@ -29,6 +29,10 @@ test("inferSlideSetId maps decks to appropriate slide set categories", () => {
   assert.equal(inferSlideSetId("Lesson_02_MICROSCOPES"), "cell_biology");
   assert.equal(inferSlideSetId("digital_literacy_conference_deck"), "digital_literacy");
   assert.equal(inferSlideSetId("Lesson_01_THE_PERIODIC_TABLE"), "chemistry");
+  assert.equal(inferSlideSetId("Lesson_11_ELECTROLYSIS"), "chemistry");
+  assert.equal(inferSlideSetId("Lesson_01_Alkali_Metals"), "chemistry_groups_metals");
+  assert.equal(inferSlideSetId("Lesson_07_Metal_Extraction_Blast_Furnace_Bioleaching_Phytomining"), "chemistry_groups_metals");
+  assert.equal(inferSlideSetId("Lesson_08_Electrolysis_and_Half_Equations"), "chemistry_groups_metals");
   assert.equal(inferSlideSetId("Lesson_01_Forces_and_NEWTON_S_1st_LAW"), "forces_energy");
   assert.equal(inferSlideSetId("Lesson_01_Reaction_rates"), "reaction_rates");
   assert.equal(inferSlideSetId("Lesson_01_Ecosystems"), "ecology_atmosphere");
