@@ -187,33 +187,55 @@ async function generateLessonViaEdgeAppleEvents(lesson) {
   const runJs = (code) => evalInLoggedInEdgeTab(TARGET_NOTEBOOK_URL, code);
 
   // 1. Ensure Studio root is clean & close any open viewer or modal
-  await runJs(`(function() {
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-    const closeBtn = document.querySelector('.studio-panel button[aria-label="Close slide deck"], button[aria-label="Close slide deck"], .studio-panel button[aria-label="Close"]');
-    if (closeBtn && closeBtn.offsetParent !== null) closeBtn.click();
-    const studioHeaders = Array.from(document.querySelectorAll('.panel-header-clickable, .panel-header-content'));
-    const studioHdr = studioHeaders.find(el => /\\bStudio\\b/i.test(el.innerText || ''));
-    const slideBtn = document.querySelector('div.create-artifact-button-container[aria-label="Slide deck"], [aria-label="Slide deck"]');
-    if (!slideBtn && studioHdr) studioHdr.click();
-    document.querySelectorAll('.panel-content-scrollable, .studio-panel').forEach(el => { el.scrollTop = 0; });
-    return JSON.stringify({ ready: true });
-  })()`);
-  await sleep(1200);
+  const closeStudioViewer = async () => {
+    await runJs(`(function() {
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      const closeSelectors = [
+        '.studio-panel button[aria-label="Close slide deck"]',
+        'button[aria-label="Close slide deck"]',
+        '.studio-panel button[aria-label="Close"]',
+        '.studio-panel button[aria-label*="Back"]'
+      ];
+      for (const sel of closeSelectors) {
+        const btn = document.querySelector(sel);
+        if (btn && btn.offsetParent !== null) btn.click();
+      }
+      const iconClose = Array.from(document.querySelectorAll('.studio-panel button')).find(b => {
+        const ic = b.querySelector('mat-icon');
+        const txt = ic ? (ic.textContent || '').trim() : '';
+        return (txt === 'close' || txt === 'arrow_back') && b.offsetParent !== null;
+      });
+      if (iconClose) iconClose.click();
+      const studioHeaders = Array.from(document.querySelectorAll('.panel-header-clickable, .panel-header-content'));
+      const studioHdr = studioHeaders.find(el => /\\bStudio\\b/i.test(el.innerText || ''));
+      const slideBtn = document.querySelector('div.create-artifact-button-container[aria-label="Slide deck"], [aria-label="Slide deck"]');
+      if (!slideBtn && studioHdr) studioHdr.click();
+      document.querySelectorAll('.panel-content-scrollable, .studio-panel').forEach(el => { el.scrollTop = 0; });
+      return JSON.stringify({ ready: true });
+    })()`);
+    await sleep(1500);
+  };
+
+  await closeStudioViewer();
 
   const getStudioState = async () => {
     return await runJs(`(function() {
       const items = Array.from(document.querySelectorAll('artifact-library-item'));
-      const viewerMore = document.querySelector('.studio-panel button[aria-label="More options"]');
+      const titleInp = document.querySelector('.studio-panel input[aria-label="Artifact title"], input[aria-label="Artifact title"]');
       const viewerClose = document.querySelector('button[aria-label="Close slide deck"], .studio-panel button[aria-label="Close"]');
-      const isViewerOpen = Boolean((viewerMore && viewerMore.offsetParent !== null) || (viewerClose && viewerClose.offsetParent !== null));
+      const isViewerOpen = Boolean((titleInp && titleInp.offsetParent !== null) || (viewerClose && viewerClose.offsetParent !== null));
       if (items.length === 0) {
         return JSON.stringify({ count: 0, text: '', hasProgress: false, disabled: false, isViewerOpen });
       }
-      const el = items[0];
+      const anyProgressItem = items.slice(0, 5).find(item => {
+        const icons = Array.from(item.querySelectorAll('mat-icon')).map(m => (m.textContent || '').trim());
+        const txt = (item.innerText || '').replace(/\\s+/g, ' ').trim();
+        return icons.includes('progress_activity') || /Generating slide deck|Shaping|Rendering|Wrapping|Almost|Getting ready|Sync/i.test(txt);
+      });
+      const el = anyProgressItem || items[0];
       const btn = el.querySelector('button.artifact-stretched-button');
-      const icons = Array.from(el.querySelectorAll('mat-icon')).map(m => (m.textContent || '').trim());
       const rawText = (el.innerText || '').replace(/\\s+/g, ' ').trim();
-      const hasProgress = icons.includes('progress_activity') || /Generating|Shaping|Rendering|Wrapping|Almost|Getting ready|Sync/i.test(rawText);
+      const hasProgress = Boolean(anyProgressItem);
       const disabled = btn ? Boolean(btn.disabled || btn.getAttribute('disabled') === 'true') : false;
       return JSON.stringify({
         count: items.length,
@@ -310,17 +332,17 @@ async function generateLessonViaEdgeAppleEvents(lesson) {
 
   while (Date.now() < deadline) {
     const cur = await getStudioState();
-    if (cur.isViewerOpen) {
-      log("Slide deck viewer opened automatically — generation complete!");
-      break;
-    }
     if (cur.hasProgress || cur.disabled || cur.count > beforeState.count || cur.text !== beforeState.text) {
       sawActivity = true;
+    }
+    if (!cur.hasProgress && sawActivity && cur.isViewerOpen) {
+      log("Slide deck viewer opened automatically — generation complete!");
+      break;
     }
     if (cur.hasProgress || cur.disabled) {
       settled = 0;
       log(`Generating Lesson ${lesson.number}: ${cur.text}`);
-    } else if (sawActivity && cur.count > 0) {
+    } else if (sawActivity && cur.count > beforeState.count) {
       settled += 1;
       log(`Artifact ready check (${settled}/2): "${cur.text}"`);
       if (settled >= 2) {
@@ -413,12 +435,7 @@ async function generateLessonViaEdgeAppleEvents(lesson) {
   log(`✓ Saved PPTX -> ${savedPptxPath}`);
 
   // 10. Close viewer to return Studio cleanly to root
-  await runJs(`(function() {
-    const closeBtn = document.querySelector('button[aria-label="Close slide deck"], .studio-panel button[aria-label="Close"]');
-    if (closeBtn && closeBtn.offsetParent !== null) closeBtn.click();
-    return JSON.stringify({ closed: true });
-  })()`);
-  await sleep(1500);
+  await closeStudioViewer();
 
   // 11. Ingest into web app
   await ingestChemistryLessonDeck(savedPptxPath, null, lesson);
