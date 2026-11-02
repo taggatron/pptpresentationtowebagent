@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Activity: Summarise the Role of microRNA (miRNA)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 55%, #e2e8f0 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(6, 182, 212, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(6, 182, 212, 0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .slide-wrapper {
+      width: 100%;
+      max-width: 1380px;
+      height: 100%;
+      max-height: 780px;
+      padding: 18px 34px 14px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+      gap: 10px;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 9999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .badge-video {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
+    }
+
+    .badge-criteria {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #7dd3fc;
+    }
+
+    .badge-amt {
+      background: #ccfbf1;
+      color: #0f766e;
+      border: 1px solid #5eead4;
+    }
+
+    h1.title {
+      font-size: clamp(21px, 2.2vw, 29px);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.18;
+    }
+
+    p.subtitle {
+      font-size: 13px;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 18px;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .panel-card {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #cbd5e1;
+      border-top: 6px solid #06b6d4;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .panel-card.question-panel {
+      border-top-color: #0284c7;
+    }
+
+    .panel-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #020617;
+      border: 1.5px solid #94a3b8;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
+      flex-shrink: 1;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .obs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .obs-pill {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3.5px solid #06b6d4;
+      border-radius: 8px;
+      padding: 6px 9px;
+      font-size: 11.5px;
+      line-height: 1.3;
+      color: #334155;
+    }
+
+    .obs-pill strong {
+      color: #0f172a;
+      display: block;
+      font-size: 11.5px;
+      margin-bottom: 1px;
+    }
+
+    .question-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 1.5px solid #38bdf8;
+      border-radius: 10px;
+      padding: 11px 14px;
+      margin-bottom: 8px;
+    }
+
+    .question-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0369a1;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .question-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #0c4a6e;
+      line-height: 1.32;
+    }
+
+    .notes-area {
+      width: 100%;
+      height: 58px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      padding: 7px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #0f172a;
+      resize: none;
+      margin-bottom: 8px;
+    }
+
+    .notes-area:focus {
+      outline: 2px solid #0284c7;
+      background: #ffffff;
+    }
+
+    .reveal-btn {
+      width: 100%;
+      padding: 9px 14px;
+      border-radius: 9px;
+      border: none;
+      background: #0284c7;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s ease, transform 0.1s ease;
+      margin-bottom: 8px;
+    }
+
+    .reveal-btn:hover {
+      background: #0369a1;
+    }
+
+    .answer-box {
+      flex: 1;
+      background: #f8fafc;
+      border: 1.5px dashed #94a3b8;
+      border-radius: 10px;
+      padding: 10px 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .answer-box.revealed {
+      background: #ecfdf5;
+      border: 1.5px solid #10b981;
+      justify-content: flex-start;
+    }
+
+    .answer-placeholder {
+      text-align: center;
+      color: #64748b;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .answer-content {
+      display: none;
+      font-size: 12px;
+      line-height: 1.42;
+      color: #064e3b;
+    }
+
+    .answer-box.revealed .answer-placeholder {
+      display: none;
+    }
+
+    .answer-box.revealed .answer-content {
+      display: block;
+    }
+
+    .answer-content ul {
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .answer-content li strong {
+      color: #047857;
+    }
+
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: #64748b;
+    }
+
+    .fallback-link {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+      background: #ffffff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .fallback-link:hover {
+      background: #f0f9ff;
+      border-color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-wrapper">
+    <header class="header">
+      <div class="badge-row">
+        <span class="badge badge-video">▶ Video Activity · Starts at 2:28</span>
+        <span class="badge badge-criteria">OCR Unit F172 NEA Task 2 | Criteria P5 (PO2) & M3 (PO3)</span>
+        <span class="badge badge-amt">AMT-130 RNAi Mechanism</span>
+      </div>
+      <h1 class="title">Video Activity: Summarise the Role of microRNA (miRNA)</h1>
+      <p class="subtitle">Watch the molecular animation from 2:28 and synthesise how microRNA regulates gene expression post-transcriptionally.</p>
+    </header>
+
+    <div class="main-grid">
+      <!-- Left Column: Embedded YouTube Video Player -->
+      <div class="panel-card">
+        <div class="panel-title">
+          <span>Molecular Animation: microRNA Biogenesis & Gene Silencing</span>
+          <span style="font-size:11px; color:#0369a1; font-family:'JetBrains Mono',monospace;">t = 148s (2:28)</span>
+        </div>
+        <div class="video-container">
+          <iframe
+            id="ytIframe"
+            src="https://www.youtube-nocookie.com/embed/cK-OGB1_ELE?start=148&enablejsapi=1&rel=0&modestbranding=1&iv_load_policy=3"
+            title="Role of microRNA (miRNA) in Gene Regulation"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="obs-grid">
+          <div class="obs-pill">
+            <strong>1. Hairpin Transcription & Export</strong>
+            Pri-miRNA / pre-miRNA stem-loop hairpins are transcribed in the nucleus and exported to the cytoplasm.
+          </div>
+          <div class="obs-pill">
+            <strong>2. Cytoplasmic Dicer Cleavage</strong>
+            The Dicer endonuclease enzyme cleaves the hairpin loop into a short (~22 nt) double-stranded miRNA duplex.
+          </div>
+          <div class="obs-pill">
+            <strong>3. RISC Complex Activation</strong>
+            The single-stranded guide miRNA loads into the RNA-Induced Silencing Complex (RISC) with Argonaute.
+          </div>
+          <div class="obs-pill">
+            <strong>4. Target mRNA Silencing</strong>
+            Complementary base-pairing cleaves target mRNA or blocks ribosome translation—lowering protein output.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Learner Question & Interactive Model Answer -->
+      <div class="panel-card question-panel">
+        <div>
+          <div class="panel-title">
+            <span>Learner Synthesis Question (Criteria P5 & M3)</span>
+          </div>
+          <div class="question-box">
+            <span class="question-label">Core Assessment Question · P5 (PO2) & M3 (PO3)</span>
+            <div class="question-text">
+              “Summarise the role of microRNA (miRNA) in regulating gene expression, and explain how AMT-130 uses this pathway in Huntington’s disease.”
+            </div>
+          </div>
+          <textarea
+            class="notes-area"
+            placeholder="Learner Scratchpad: Jotting down key steps from the video (Dicer, RISC, complementary mRNA binding, translation block/cleavage)..."
+          ></textarea>
+          <button class="reveal-btn" id="revealBtn" type="button">
+            <span id="revealBtnIcon">👁️</span>
+            <span id="revealBtnText">Click to Reveal Model Answer (Criteria P5 & M3)</span>
+          </button>
+        </div>
+
+        <div class="answer-box" id="answerBox">
+          <div class="answer-placeholder">
+            Watch the video clip from <strong>2:28</strong>, draft your summary above, then click <strong>Reveal Model Answer</strong> to check your P5/M3 response.
+          </div>
+          <div class="answer-content">
+            <ul>
+              <li><strong>Core Role (Post-Transcriptional Silencing):</strong> MicroRNAs (miRNAs) are short (~21–23 nt) non-coding RNAs that fine-tune and silence gene expression <strong>post-transcriptionally</strong> by binding target mRNA molecules before ribosome translation.</li>
+              <li><strong>Dicer Processing & RISC Loading:</strong> Pre-miRNA hairpins are cleaved in the cytoplasm by the <strong>Dicer</strong> enzyme; the guide strand is loaded into the <strong>RNA-Induced Silencing Complex (RISC)</strong>.</li>
+              <li><strong>mRNA Cleavage vs Translation Block:</strong> Guided by complementary base-pairing, RISC either <strong>catalytically cleaves and degrades the target mRNA</strong> (high complementarity) or <strong>blocks ribosome translation</strong>.</li>
+              <li><strong>Link to AMT-130 (P5 & M3):</strong> AMT-130 delivers an AAV5 vector encoding an artificial <strong>miHTT</strong> transgene; striatal neurons process miHTT via Dicer and RISC to cleave human <strong>HTT mRNA</strong>, permanently reducing toxic mutant huntingtin (mHTT) protein.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-bar">
+      <a class="fallback-link" href="https://www.youtube.com/watch?v=cK-OGB1_ELE&t=148s" target="_blank" rel="noopener noreferrer">
+        <span>↗</span>
+        <span>Open Video on YouTube at 2:28 (https://www.youtube.com/watch?v=cK-OGB1_ELE&t=148s)</span>
+      </a>
+      <span>OCR AAQ Level 3 Human Biology · Unit F172: Genetics · Lesson 10 (AMT-130)</span>
+    </footer>
+  </div>
+
+  <script>
+    const revealBtn = document.getElementById("revealBtn");
+    const revealBtnText = document.getElementById("revealBtnText");
+    const answerBox = document.getElementById("answerBox");
+
+    function toggleReveal(forceState) {
+      const nextState = typeof forceState === "boolean" ? forceState : !answerBox.classList.contains("revealed");
+      answerBox.classList.toggle("revealed", nextState);
+      revealBtnText.textContent = nextState
+        ? "Hide Model Answer (Criteria P5 & M3)"
+        : "Click to Reveal Model Answer (Criteria P5 & M3)";
+    }
+
+    revealBtn.addEventListener("click", () => toggleReveal());
+    answerBox.addEventListener("click", () => {
+      if (!answerBox.classList.contains("revealed")) toggleReveal(true);
+    });
+
+    window.addEventListener("message", (event) => {
+      if (!event.data) return;
+      const iframe = document.getElementById("ytIframe");
+      if (event.data.type === "SLIDE_CHANGED" || event.data.action === "pause") {
+        if (iframe && iframe.contentWindow) {
+          try {
+            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          } catch (_) {}
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
