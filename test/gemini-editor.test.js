@@ -241,13 +241,24 @@ test("processSerialBuildSteps delegates to the real slide animation planner inst
   assert.equal(allIds.includes("header") && allIds.includes("footer_summary"), false);
 });
 
-test("queue runner configures 1 Gemini call at a time with concurrency 1", async () => {
+test("queue runner configures 1 Gemini call at a time with concurrency 1", async (t) => {
+  let queueModule;
+  try {
+    queueModule = await import("../scripts/gemini-browser-queue-runner.mjs");
+  } catch (err) {
+    if (err.code === "ERR_MODULE_NOT_FOUND") {
+      t.skip("Local scripts/ directory is gitignored in public repository");
+      return;
+    }
+    throw err;
+  }
+
   const {
     buildAnalysisQueues,
     buildMissingQueues,
     runParallelBrowserQueue,
     createGeminiBrowserQueueRunner
-  } = await import("../scripts/gemini-browser-queue-runner.mjs");
+  } = queueModule;
 
   const repoRoot = process.cwd();
   const deckGroups = [["Lesson_01_CELL_STRUCTURE"]];

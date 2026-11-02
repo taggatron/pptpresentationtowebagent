@@ -5480,7 +5480,7 @@ async function fetchDecks() {
       body: JSON.stringify({
         pathway: DEFAULT_AGENT_PATHWAY,
         pptxPath:
-          "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/NotebookLMagent/output/powerpoints_cellbio_sequence_v2/Lesson_01_CELL_STRUCTURE.pptx"
+          "../NotebookLMagent/output/powerpoints_cellbio_sequence_v2/Lesson_01_CELL_STRUCTURE.pptx"
       })
     });
 

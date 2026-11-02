@@ -25,7 +25,7 @@
     "gemini-agent:intro-aaq-human-bio": "cd \"../NotebookLMagent\" && npm run agent:intro-aaq-human-bio",
     "gemini-agent:intro-aaq-human-bio:lessons5-7": "cd \"../NotebookLMagent\" && npm run agent:intro-aaq-human-bio:lessons5-7",
     "test": "NODE_ENV=test node --test --test-concurrency=1",
-    "check": "node --check src/server.js && node --check src/gemini-image-gen.js && node --check src/image-build-qa.js && node --check src/slide-animation-planner.js && node --check src/current-slide-catalog.js && node --check src/current-question-catalog.js && node --check src/enrich-current-decks.js && node --check public/js/app.js && node --check scripts/gemini-browser-queue-runner.mjs && NODE_ENV=test node --test --test-concurrency=1"
+    "check": "node --check src/server.js && node --check src/gemini-image-gen.js && node --check src/image-build-qa.js && node --check src/slide-animation-planner.js && node --check src/current-slide-catalog.js && node --check src/current-question-catalog.js && node --check src/enrich-current-decks.js && node --check public/js/app.js && ([ ! -f scripts/gemini-browser-queue-runner.mjs ] || node --check scripts/gemini-browser-queue-runner.mjs) && NODE_ENV=test node --test --test-concurrency=1"
   },
   "dependencies": {
     "express": "^4.19.2",

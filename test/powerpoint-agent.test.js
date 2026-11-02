@@ -16,9 +16,11 @@ import { AGENT_PATHWAYS } from "../src/agent-config.js";
 
 const TEST_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(TEST_DIR, "..");
-const CELLBIO_DIR = "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/NotebookLMagent/output/powerpoints_cellbio_sequence_v2";
+const CELLBIO_DIR =
+  process.env.NOTEBOOKLM_INPUT_DIR ||
+  path.resolve(ROOT_DIR, "..", "NotebookLMagent", "output", "powerpoints_cellbio_sequence_v2");
 const LESSON_ONE_PATH = path.join(CELLBIO_DIR, "Lesson_01_CELL_STRUCTURE.pptx");
-const DIGITAL_LITERACY_PATH = "/Users/danieltagg/Desktop/digital_literacy_conference_deck.pptx";
+const DIGITAL_LITERACY_PATH = path.join(os.homedir(), "Desktop", "digital_literacy_conference_deck.pptx");
 
 test("PowerPoint Agent: isPowerPointAvailable detects installed PowerPoint on macOS", async () => {
   const available = await isPowerPointAvailable();

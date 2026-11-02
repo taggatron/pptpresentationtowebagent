@@ -1,10 +1,15 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { fileURLToPath } from "node:url";
 import { extractPptxDeck } from "./pptx-extractor.js";
 import { generateSlideInteractivity } from "./gemini-segmenter.js";
 
-const DEFAULT_INPUT_DIR = "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/NotebookLMagent/output/powerpoints_cellbio_sequence_v2";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT_DIR = path.resolve(__dirname, "..");
+const DEFAULT_INPUT_DIR =
+  process.env.NOTEBOOKLM_INPUT_DIR ||
+  path.resolve(ROOT_DIR, "..", "NotebookLMagent", "output", "powerpoints_cellbio_sequence_v2");
 const DEFAULT_PPTX = path.join(DEFAULT_INPUT_DIR, "Lesson_01_CELL_STRUCTURE.pptx");
 const PUBLIC_DECKS_DIR = path.resolve("./public/decks");
 

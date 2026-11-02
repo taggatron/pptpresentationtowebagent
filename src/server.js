@@ -274,7 +274,9 @@ function lessonSortValue(deck) {
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
-const KNOWN_OUTPUT_DIR = "/Users/danieltagg/Desktop/Desktop - Daniel’s MacBook Pro/NotebookLMagent/output";
+const KNOWN_OUTPUT_DIR =
+  process.env.NOTEBOOKLM_OUTPUT_DIR ||
+  path.resolve(ROOT_DIR, "..", "NotebookLMagent", "output");
 
 export const KNOWN_SLIDE_SETS = [
   {
@@ -990,9 +992,45 @@ export function createApp({
 
   app.use(express.json({ limit: "2mb" }));
 
-  // Prevent crawlers from indexing, caching, or following any API endpoints
-  app.use("/api", (_req, res, next) => {
+  // Prevent crawlers from indexing, caching, or following any API endpoints,
+  // and block cross-origin / drive-by browser requests to state-changing routes.
+  app.use("/api", (req, res, next) => {
     res.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive");
+
+    if (req.method !== "GET" && req.method !== "HEAD" && req.method !== "OPTIONS") {
+      const secFetchSite = String(req.headers["sec-fetch-site"] || "").toLowerCase();
+      if (secFetchSite === "cross-site") {
+        return res.status(403).json({
+          error: "Cross-site API requests are not permitted."
+        });
+      }
+
+      const origin = req.headers.origin;
+      if (origin) {
+        try {
+          const originUrl = new URL(origin);
+          const reqHost = String(req.headers.host || "").toLowerCase();
+          const isLoopbackOrigin = ["localhost", "127.0.0.1", "[::1]"].includes(
+            originUrl.hostname.toLowerCase()
+          );
+          const isLoopbackHost =
+            reqHost.startsWith("localhost") ||
+            reqHost.startsWith("127.0.0.1") ||
+            reqHost.startsWith("[::1]");
+
+          if (originUrl.host.toLowerCase() !== reqHost && !(isLoopbackOrigin && isLoopbackHost)) {
+            return res.status(403).json({
+              error: "Cross-origin API requests are not permitted."
+            });
+          }
+        } catch {
+          return res.status(403).json({
+            error: "Invalid Origin header."
+          });
+        }
+      }
+    }
+
     next();
   });
 
@@ -2111,8 +2149,9 @@ export function startServer(port = Number(process.env.PORT) || 3000) {
   });
 
   const app = createApp();
-  const server = app.listen(port, () => {
-    console.log(`[Presentation Web Agent] Server listening at http://127.0.0.1:${port}`);
+  const host = process.env.HOST || "127.0.0.1";
+  const server = app.listen(port, host, () => {
+    console.log(`[Presentation Web Agent] Server listening at http://${host}:${port}`);
   });
 
   server.on("error", (error) => {

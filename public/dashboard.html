@@ -403,7 +403,7 @@
             <input
               type="text"
               id="pptFilePathInput"
-              placeholder="Enter absolute path to PPTX file (e.g. /Users/danieltagg/Desktop/digital_literacy_conference_deck.pptx)"
+              placeholder="Enter path to PPTX file (e.g. ./GCSE_Electrical_Circuits.pptx)"
               style="width:100%; padding:0.75rem 1rem; background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:8px; color:#fff; font-family:'Inter',sans-serif; font-size:0.875rem; outline:none; transition:border-color 0.2s;"
               onfocus="this.style.borderColor='var(--accent-primary)'"
               onblur="this.style.borderColor='var(--border-subtle)'"
@@ -412,9 +412,7 @@
           </div>
           <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; font-size:0.75rem;">
             <span style="color:var(--text-muted);">Quick Sample Decks:</span>
-            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="setSamplePath('/Users/danieltagg/Desktop/digital_literacy_conference_deck.pptx')">Digital Literacy Deck (22 slides)</button>
-            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="setSamplePath('/Users/danieltagg/Desktop/Year_10_Science_Masterclass.pptx')">Year 10 Science Deck</button>
-            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="setSamplePath('/Users/danieltagg/Desktop/First Pass - Maximising successful first assignment submissions.pptx')">Assignment Strategy Deck</button>
+            <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="setSamplePath('./GCSE_Electrical_Circuits.pptx')">Electrical Circuits Deck</button>
           </div>
           <div style="display:flex; gap:1.5rem; align-items:center; margin-top:0.25rem; font-size:0.8rem; color:var(--text-muted);">
             <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
