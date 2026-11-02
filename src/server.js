@@ -487,7 +487,7 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (deckId === "digital_literacy_conference_deck") return "digital_literacy";
   if (/(?:Essential_Skills|Starting_Strong)/i.test(deckId)) return "essential_skills";
   if (
-    /(?:genetics_aaq|Phenotypic_variation|telomeres|Central_Dogma|transcriptional_regulation|Gene_mutations|mutations|single_gene_disorders|Chromosomal_abnormalities|Polygenic_and_complex_traits|Huntington|NEA)/i.test(
+    /(?:genetics_aaq|Phenotypic_variation|telomeres|Central_Dogma|transcriptional_regulation|Gene_mutations|mutations|single_gene_disorders|Chromosomal_abnormalities|Polygenic_and_complex_traits|Huntington|NEA|Gene_Therapy|Genetic_Engineering|ANT130|CRISPR)/i.test(
       deckId
     )
   ) {
