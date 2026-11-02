@@ -8,8 +8,8 @@
   "courseName": "OCR Level 3 Cambridge Advanced National (AAQ) in Human Biology - Unit F172: Genetics",
   "teacher": "Matt",
   "focus": "Gene Therapy Clinical Trials & Task 2 Research: ANT-130 (AMT-130) Case Study, Biomarkers, and OCR Genetics NEA Marking Criteria",
-  "deliverable": "OCR AAQ Level 3 Human Biology (Unit F172: Genetics) Lesson 10 presentation focusing on clinical trial phases (I-III), uniQure ANT-130 (AMT-130) AAV5-miRNA striatal microinfusion for Huntington's disease, CSF biomarker analysis (mHTT and NfL), functional metrics (cUHDRS, TMS), genetic counselling ethics, and comprehensive alignment to OCR Genetics NEA Task 2 marking rubrics (Pass P5/P7/P8, Merit M3/M4/M5, Distinction D3/D4/D5).",
-  "totalSlides": 10,
+  "deliverable": "OCR AAQ Level 3 Human Biology (Unit F172: Genetics) Lesson 10 presentation with embedded Assessment Points and Learner Activities: Starter 6-box retrieval grid, clinical trial phases (I-III), uniQure ANT-130 (AMT-130) AAV5-miRNA striatal microinfusion for Huntington's disease, CSF biomarker data workshop (mHTT and NfL), functional metrics (cUHDRS, TMS), genetic counselling consultation roleplay, and NEA Task 2 Distinction writing workshop (Pass P3-P8, Merit M2-M5, Distinction D1-D3).",
+  "totalSlides": 17,
   "objectives": {
     "knowledge": "Explain clinical trial architecture (Phases I–III) and the molecular mechanism of ANT-130 (AAV5-miRNA targeting HTT mRNA via RNAi).",
     "application": "Interpret primary clinical trial data: dose-dependent CSF mHTT reduction, transient vs chronic Neurofilament Light (NfL) dynamics, and cUHDRS functional deceleration.",
@@ -46,6 +46,29 @@
       "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_01.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 26,
+        "timeGuideDisplay": "21–31s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 14100,
+          "semanticProcessingMs": 10340,
+          "wordCount": 47,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "Core focus on ANT-130 / AMT-130 clinical trial architecture and NEA Task 2 criteria.",
         "Detailed analysis of biomarker curves, sham surgical controls, and evaluative grading."
@@ -55,15 +78,223 @@
     {
       "number": 2,
       "slideNumber": 2,
-      "title": "Clinical Trial Architecture: From Bench to Bedside",
-      "subtitle": "Phases I, II, and III investigational design and regulatory thresholds",
-      "type": "content",
+      "title": "Starter Retrieval Grid: Genetics & Gene Delivery Recall",
+      "subtitle": "Do Now Activity (5 Minutes) · Retrieve Prior Knowledge from Lessons 3–9",
+      "type": "starter_retrieval",
       "imageFileName": "slide_02.png",
       "image": "slides/slide_02.png",
       "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_02.png",
       "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_02.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 62,
+        "timeGuideDisplay": "57–67s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 35100,
+          "semanticProcessingMs": 25740,
+          "wordCount": 117,
+          "visualElementsCount": 6
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 6,
+        "detectionSource": "gemini-notebook-assessment"
+      },
+      "keyTakeaways": [
+        "1. HTT Mutation: CAG trinucleotide repeat expansion (>36 repeats) in exon 1 of HTT on chromosome 4.",
+        "2. AAV5 Tropism: High neuronal tropism and stable non-integrating episomal expression in post-mitotic neurons.",
+        "3. Delivery Routes: In vivo (systemic/local into patient), Ex vivo (cells modified in lab), In situ (direct into target structure).",
+        "4. Stereotactic CED: Positive-pressure microinfusion via intracranial cannulae directly bypasses endothelial tight junctions of the BBB.",
+        "5. miRNA Stage: Post-transcriptional gene silencing (translation stage) via RISC-mediated mRNA cleavage.",
+        "6. Autosomal Dominant Risk: 50% (1 in 2) probability of inheriting the mutant allele from a heterozygous parent."
+      ],
+      "text": "Starter Retrieval Grid: Genetics & Gene Delivery Recall\nDo Now Activity (5 Minutes) · Retrieve Prior Knowledge from Lessons 3–9\n1. HTT Mutation: CAG trinucleotide repeat expansion (>36 repeats) in exon 1 of HTT on chromosome 4.\n2. AAV5 Tropism: High neuronal tropism and stable non-integrating episomal expression in post-mitotic neurons.\n3. Delivery Routes: In vivo (systemic/local into patient), Ex vivo (cells modified in lab), In situ (direct into target structure).\n4. Stereotactic CED: Positive-pressure microinfusion via intracranial cannulae directly bypasses endothelial tight junctions of the BBB.\n5. miRNA Stage: Post-transcriptional gene silencing (translation stage) via RISC-mediated mRNA cleavage.\n6. Autosomal Dominant Risk: 50% (1 in 2) probability of inheriting the mutant allele from a heterozygous parent.",
+      "reveals": [
+        {
+          "id": "reveal_s2_cell_1",
+          "question": "1. What trinucleotide repeat expansion on chromosome 4 causes Huntington's disease, and what is the pathological threshold?",
+          "expectedAnswer": "CAG repeat expansion in exon 1 of the HTT gene on chromosome 4; pathological threshold is >36 CAG repeats (≥40 = full penetrance).",
+          "bounds": {
+            "x": 4.5,
+            "y": 33,
+            "w": 28.8,
+            "h": 26.5
+          },
+          "answerBounds": {
+            "x": 4.5,
+            "y": 33,
+            "w": 28.8,
+            "h": 26.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_2",
+          "question": "2. Why is Adeno-Associated Virus serotype 5 (AAV5) selected for adult striatal neurons instead of a lentiviral vector?",
+          "expectedAnswer": "Adult striatal neurons are post-mitotic (non-dividing); AAV5 has high CNS tropism and persists safely as non-integrating episomes without insertional mutagenesis risk.",
+          "bounds": {
+            "x": 35.2,
+            "y": 33,
+            "w": 29.5,
+            "h": 26.5
+          },
+          "answerBounds": {
+            "x": 35.2,
+            "y": 33,
+            "w": 29.5,
+            "h": 26.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_3",
+          "question": "3. Distinguish between In Vivo, Ex Vivo, and In Situ gene therapy administration routes.",
+          "expectedAnswer": "In Vivo: delivered into the body; Ex Vivo: patient cells modified outside the body & re-infused; In Situ: injected directly into the target anatomical tissue (e.g., striatum).",
+          "bounds": {
+            "x": 66.6,
+            "y": 33,
+            "w": 28.8,
+            "h": 26.5
+          },
+          "answerBounds": {
+            "x": 66.6,
+            "y": 33,
+            "w": 28.8,
+            "h": 26.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_4",
+          "question": "4. How does stereotactic Convection-Enhanced Delivery (CED) overcome the Blood-Brain Barrier?",
+          "expectedAnswer": "MRI-guided microcannulae bypass capillary tight junctions physically, using continuous positive-pressure bulk flow to distribute vectors evenly across the caudate and putamen.",
+          "bounds": {
+            "x": 4.5,
+            "y": 70.5,
+            "w": 28.8,
+            "h": 25.5
+          },
+          "answerBounds": {
+            "x": 4.5,
+            "y": 70.5,
+            "w": 28.8,
+            "h": 25.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_5",
+          "question": "5. At which stage of gene expression (transcription vs translation) does microRNA (miRNA) gene silencing operate?",
+          "expectedAnswer": "Post-transcriptional / Translation stage: miRNA loads into RISC to bind and cleave target mRNA transcripts before ribosomal translation into protein.",
+          "bounds": {
+            "x": 35.2,
+            "y": 70.5,
+            "w": 29.5,
+            "h": 25.5
+          },
+          "answerBounds": {
+            "x": 35.2,
+            "y": 70.5,
+            "w": 29.5,
+            "h": 25.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_s2_cell_6",
+          "question": "6. Huntington's disease is autosomal dominant. What is the inheritance probability from a heterozygous affected parent?",
+          "expectedAnswer": "50% (1 in 2 or 0.5) probability for each child, regardless of sex, because a single copy of the expanded HTT allele is sufficient to cause the disorder.",
+          "bounds": {
+            "x": 66.6,
+            "y": 70.5,
+            "w": 28.8,
+            "h": 25.5
+          },
+          "answerBounds": {
+            "x": 66.6,
+            "y": 70.5,
+            "w": 28.8,
+            "h": 25.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "slideNumber": 3,
+      "title": "Clinical Trial Architecture: From Bench to Bedside",
+      "subtitle": "Phases I, II, and III investigational design and regulatory thresholds",
+      "type": "content",
+      "imageFileName": "slide_03.png",
+      "image": "slides/slide_03.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_03.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_03.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 27,
+        "timeGuideDisplay": "22–32s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 15000,
+          "semanticProcessingMs": 11000,
+          "wordCount": 50,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "Phase I assesses safety, dose escalation, and toxicity in small cohorts (N=10-30).",
         "Phase II demonstrates biological activity, target engagement, and surrogate biomarkers (N=30-100).",
@@ -72,17 +303,40 @@
       "text": "Clinical Trial Architecture: From Bench to Bedside\nPhases I, II, and III investigational design and regulatory thresholds\nPhase I assesses safety, dose escalation, and toxicity in small cohorts (N=10-30).\nPhase II demonstrates biological activity, target engagement, and surrogate biomarkers (N=30-100).\nPhase III conducts multi-centre randomized controlled trials for definitive efficacy."
     },
     {
-      "number": 3,
-      "slideNumber": 3,
+      "number": 4,
+      "slideNumber": 4,
       "title": "Huntington's Disease: Pathology & Genetic Architecture",
       "subtitle": "Autosomal dominant CAG expansion, mHTT aggregation, and striatal degeneration",
       "type": "pathology",
-      "imageFileName": "slide_03.png",
-      "image": "slides/slide_03.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_03.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_03.png",
+      "imageFileName": "slide_04.png",
+      "image": "slides/slide_04.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_04.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_04.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 28,
+        "timeGuideDisplay": "23–33s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 15300,
+          "semanticProcessingMs": 11220,
+          "wordCount": 51,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "CAG trinucleotide repeat expansion (>36 repeats) in HTT gene exon 1 on chromosome 4.",
         "Misfolded toxic mutant huntingtin (mHTT) protein triggers medium spiny neuron apoptosis.",
@@ -91,17 +345,40 @@
       "text": "Huntington's Disease: Pathology & Genetic Architecture\nAutosomal dominant CAG expansion, mHTT aggregation, and striatal degeneration\nCAG trinucleotide repeat expansion (>36 repeats) in HTT gene exon 1 on chromosome 4.\nMisfolded toxic mutant huntingtin (mHTT) protein triggers medium spiny neuron apoptosis.\nLeads to progressive motor chorea, cognitive executive decline, and psychiatric symptoms."
     },
     {
-      "number": 4,
-      "slideNumber": 4,
+      "number": 5,
+      "slideNumber": 5,
       "title": "ANT-130 (AMT-130) Molecular Mechanism of Action",
       "subtitle": "AAV5 vector capsid, microRNA expression, and RNAi-mediated HTT knockdown",
       "type": "molecular_mechanism",
-      "imageFileName": "slide_04.png",
-      "image": "slides/slide_04.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_04.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_04.png",
+      "imageFileName": "slide_05.png",
+      "image": "slides/slide_05.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_05.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_05.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 27,
+        "timeGuideDisplay": "22–32s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 14700,
+          "semanticProcessingMs": 10780,
+          "wordCount": 49,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "Recombinant AAV5 carries artificial microRNA engineered to target human HTT transcripts.",
         "Administered via bilateral stereotactic Convection-Enhanced Delivery into striatal nuclei.",
@@ -110,17 +387,153 @@
       "text": "ANT-130 (AMT-130) Molecular Mechanism of Action\nAAV5 vector capsid, microRNA expression, and RNAi-mediated HTT knockdown\nRecombinant AAV5 carries artificial microRNA engineered to target human HTT transcripts.\nAdministered via bilateral stereotactic Convection-Enhanced Delivery into striatal nuclei.\nmiRNA loads into RISC complex, cleaving HTT mRNA and reducing toxic mHTT protein levels."
     },
     {
-      "number": 5,
-      "slideNumber": 5,
+      "number": 6,
+      "slideNumber": 6,
+      "title": "Assessment Point 1: Molecular Pathology & RNAi Mechanism",
+      "subtitle": "Formative Checkpoint · OCR NEA Task 2 Pass Criteria (P3, P4, P6, P7) & Merit (M2)",
+      "type": "assessment_checkpoint",
+      "imageFileName": "slide_06.png",
+      "image": "slides/slide_06.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_06.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_06.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 50,
+        "timeGuideDisplay": "45–55s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 28200,
+          "semanticProcessingMs": 20680,
+          "wordCount": 94,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "gemini-notebook-assessment"
+      },
+      "keyTakeaways": [
+        "Checkpoint 1 (P3/P4): >36 CAG repeats in HTT exon 1 -> expanded polyglutamine tract -> misfolded mHTT aggregates -> selective apoptosis of striatal GABAergic MSNs.",
+        "Checkpoint 2 (P6/P7): Tight junctions of the BBB block systemic AAV5; MRI-guided stereotactic CED delivers vectors directly into the caudate and putamen.",
+        "Checkpoint 3 (P6/M2): Pri-miHTT is processed by Dicer into mature miRNA, loaded into RISC, and binds exon 1 HTT mRNA for catalytic cleavage."
+      ],
+      "text": "Assessment Point 1: Molecular Pathology & RNAi Mechanism\nFormative Checkpoint · OCR NEA Task 2 Pass Criteria (P3, P4, P6, P7) & Merit (M2)\nCheckpoint 1 (P3/P4): >36 CAG repeats in HTT exon 1 -> expanded polyglutamine tract -> misfolded mHTT aggregates -> selective apoptosis of striatal GABAergic MSNs.\nCheckpoint 2 (P6/P7): Tight junctions of the BBB block systemic AAV5; MRI-guided stereotactic CED delivers vectors directly into the caudate and putamen.\nCheckpoint 3 (P6/M2): Pri-miHTT is processed by Dicer into mature miRNA, loaded into RISC, and binds exon 1 HTT mRNA for catalytic cleavage.",
+      "reveals": [
+        {
+          "id": "reveal_ap1_1",
+          "question": "Checkpoint 1 (Pathology Chain — P3/P4): Trace the pathogenic cascade from >36 CAG repeats in HTT exon 1 to MSN loss.",
+          "expectedAnswer": "Model Answer (P3/P4 & M2): >36 CAG repeats in HTT exon 1 (Chr 4) translate into an expanded polyglutamine (polyQ) tract. Mutant huntingtin (mHTT) misfolds into toxic intracellular aggregates, causing selective apoptosis of GABAergic medium spiny neurons (MSNs) in the caudate and putamen, leading to chorea and cognitive decline.",
+          "bounds": {
+            "x": 4.5,
+            "y": 31.5,
+            "w": 28.8,
+            "h": 61.5
+          },
+          "answerBounds": {
+            "x": 4.5,
+            "y": 31.5,
+            "w": 28.8,
+            "h": 61.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_ap1_2",
+          "question": "Checkpoint 2 (Stereotactic CED — P6/P7): Justify why ANT-130 requires bilateral MRI-guided CED rather than IV injection.",
+          "expectedAnswer": "Model Answer (P6/P7): The Blood-Brain Barrier (BBB) blocks >98% of systemic viral vectors. Bilateral MRI-guided Convection-Enhanced Delivery (CED) places microcatheters directly into the caudate and putamen, using positive pressure to achieve homogeneous striatal transduction with a single surgical dose.",
+          "bounds": {
+            "x": 35.5,
+            "y": 31.5,
+            "w": 29,
+            "h": 61.5
+          },
+          "answerBounds": {
+            "x": 35.5,
+            "y": 31.5,
+            "w": 29,
+            "h": 61.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_ap1_3",
+          "question": "Checkpoint 3 (RNAi Silencing — P6/M2): Explain how Dicer and RISC enable miHTT to lower toxic mHTT protein.",
+          "expectedAnswer": "Model Answer (P6/M2): Episomal AAV5 DNA transcribes artificial pri-miHTT, which is cleaved by cytoplasmic Dicer into mature microRNA and loaded into the RNA-Induced Silencing Complex (RISC). RISC binds complementary HTT mRNA and degrades it, preventing ribosomal translation of toxic mHTT.",
+          "bounds": {
+            "x": 66.7,
+            "y": 31.5,
+            "w": 28.8,
+            "h": 61.5
+          },
+          "answerBounds": {
+            "x": 66.7,
+            "y": 31.5,
+            "w": 28.8,
+            "h": 61.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "slideNumber": 7,
       "title": "ANT-130 Clinical Trial Design & Control Methodology",
       "subtitle": "Phase I/II multi-centre trial (NCT04120493) and sham surgical control",
       "type": "clinical_trial_design",
-      "imageFileName": "slide_05.png",
-      "image": "slides/slide_05.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_05.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_05.png",
+      "imageFileName": "slide_07.png",
+      "image": "slides/slide_07.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_07.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_07.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 29,
+        "timeGuideDisplay": "24–34s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 15900,
+          "semanticProcessingMs": 11660,
+          "wordCount": 53,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "Multi-centre randomized trial evaluating low-dose, high-dose, and imitation surgical controls.",
         "Sham surgery involves partial burr holes without dural penetration to control for placebo effect.",
@@ -129,17 +542,153 @@
       "text": "ANT-130 Clinical Trial Design & Control Methodology\nPhase I/II multi-centre trial (NCT04120493) and sham surgical control\nMulti-centre randomized trial evaluating low-dose, high-dose, and imitation surgical controls.\nSham surgery involves partial burr holes without dural penetration to control for placebo effect.\nLongitudinal follow-up tracks patients across 24, 36, and up to 60 months post-infusion."
     },
     {
-      "number": 6,
-      "slideNumber": 6,
+      "number": 8,
+      "slideNumber": 8,
+      "title": "Learner Activity 1: Auditing NCT04120493 Trial Architecture",
+      "subtitle": "Paired Critical Thinking Task (8 Minutes) · Criteria M3 & D2",
+      "type": "learner_activity",
+      "imageFileName": "slide_08.png",
+      "image": "slides/slide_08.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_08.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_08.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 46,
+        "timeGuideDisplay": "41–51s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 25800,
+          "semanticProcessingMs": 18920,
+          "wordCount": 86,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "gemini-notebook-assessment"
+      },
+      "keyTakeaways": [
+        "Task A: Combined Phase I/II design simultaneously tests surgical safety/dose escalation (Phase I) and biomarker target engagement (Phase II) in N=29 rare-disease patients.",
+        "Task B: Partial-thickness burr-hole sham surgery blinds patients and clinical raters, isolating true pharmacological efficacy from surgical placebo effects.",
+        "Task C: Unblinding sham controls at 12 months is ethically necessary so patients can cross over, but requires external propensity-matched natural history controls at 36 months."
+      ],
+      "text": "Learner Activity 1: Auditing NCT04120493 Trial Architecture\nPaired Critical Thinking Task (8 Minutes) · Criteria M3 & D2\nTask A: Combined Phase I/II design simultaneously tests surgical safety/dose escalation (Phase I) and biomarker target engagement (Phase II) in N=29 rare-disease patients.\nTask B: Partial-thickness burr-hole sham surgery blinds patients and clinical raters, isolating true pharmacological efficacy from surgical placebo effects.\nTask C: Unblinding sham controls at 12 months is ethically necessary so patients can cross over, but requires external propensity-matched natural history controls at 36 months.",
+      "reveals": [
+        {
+          "id": "reveal_la1_1",
+          "question": "Task A (Phase I/II Classification): Why is NCT04120493 (N=29) a combined Phase I/II trial rather than Phase III?",
+          "expectedAnswer": "Model Guidance: With N=29 (N=12 low-dose, N=17 high-dose), the trial combines Phase I acute neurosurgical safety & dose escalation with Phase II proof-of-concept biomarker tracking (CSF mHTT/NfL), whereas Phase III requires 100s of patients for definitive regulatory approval.",
+          "bounds": {
+            "x": 4.2,
+            "y": 30.5,
+            "w": 91.5,
+            "h": 14
+          },
+          "answerBounds": {
+            "x": 4.2,
+            "y": 30.5,
+            "w": 91.5,
+            "h": 14
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_la1_2",
+          "question": "Task B (Sham Surgery Justification): Why did the control arm undergo superficial cranial bone drilling without dural penetration?",
+          "expectedAnswer": "Model Guidance: Motor and functional scores (cUHDRS/TMS) are susceptible to patient and clinician expectation bias. Partial burr-hole imitation surgery maintains double-blinding without exposing control patients to intracranial catheter penetration risk.",
+          "bounds": {
+            "x": 4.2,
+            "y": 55,
+            "w": 91.5,
+            "h": 14
+          },
+          "answerBounds": {
+            "x": 4.2,
+            "y": 55,
+            "w": 91.5,
+            "h": 14
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_la1_3",
+          "question": "Task C (Unblinding Critique — D2): How does unblinding sham controls after 12 months impact 36-month data validity?",
+          "expectedAnswer": "Model Guidance (Distinction D2): Unblinding after 12 months removes the internal randomized placebo group for Years 2–3, forcing reliance on an external propensity score-matched natural history cohort (TRACK-HD/Enroll-HD), which may introduce residual confounding.",
+          "bounds": {
+            "x": 4.2,
+            "y": 79.5,
+            "w": 91.5,
+            "h": 14
+          },
+          "answerBounds": {
+            "x": 4.2,
+            "y": 79.5,
+            "w": 91.5,
+            "h": 14
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "slideNumber": 9,
       "title": "Objective Biomarker Findings: mHTT & Neurofilament Light (NfL)",
       "subtitle": "CSF target knockdown and neuroaxonal preservation trajectories",
       "type": "biomarker_analysis",
-      "imageFileName": "slide_06.png",
-      "image": "slides/slide_06.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_06.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_06.png",
+      "imageFileName": "slide_09.png",
+      "image": "slides/slide_09.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_09.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_09.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 25,
+        "timeGuideDisplay": "20–30s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 13800,
+          "semanticProcessingMs": 10120,
+          "wordCount": 46,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "High-dose ANT-130 demonstrated sustained, dose-dependent CSF mHTT reduction.",
         "CSF NfL exhibits transient acute elevation from surgical trauma, followed by drop below baseline.",
@@ -148,17 +697,40 @@
       "text": "Objective Biomarker Findings: mHTT & Neurofilament Light (NfL)\nCSF target knockdown and neuroaxonal preservation trajectories\nHigh-dose ANT-130 demonstrated sustained, dose-dependent CSF mHTT reduction.\nCSF NfL exhibits transient acute elevation from surgical trauma, followed by drop below baseline.\nLong-term NfL reduction proves deceleration in underlying neuronal degeneration."
     },
     {
-      "number": 7,
-      "slideNumber": 7,
+      "number": 10,
+      "slideNumber": 10,
       "title": "Clinical Functional Efficacy: cUHDRS & Total Motor Score",
       "subtitle": "Deceleration of clinical disease progression compared to natural history",
       "type": "clinical_outcomes",
-      "imageFileName": "slide_07.png",
-      "image": "slides/slide_07.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_07.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_07.png",
+      "imageFileName": "slide_10.png",
+      "image": "slides/slide_10.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_10.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_10.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 28,
+        "timeGuideDisplay": "23–33s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 15600,
+          "semanticProcessingMs": 11440,
+          "wordCount": 52,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "High-dose cohort showed significant preservation on composite UHDRS (cUHDRS) at 24-36 months.",
         "Total Motor Score (TMS) demonstrated marked slowing of chorea and motor deterioration.",
@@ -167,60 +739,559 @@
       "text": "Clinical Functional Efficacy: cUHDRS & Total Motor Score\nDeceleration of clinical disease progression compared to natural history\nHigh-dose cohort showed significant preservation on composite UHDRS (cUHDRS) at 24-36 months.\nTotal Motor Score (TMS) demonstrated marked slowing of chorea and motor deterioration.\nDistinguishes between statistical p-value significance and meaningful clinical quality of life."
     },
     {
-      "number": 8,
-      "slideNumber": 8,
-      "title": "Role of Genetic Counselling & Ethical Considerations",
-      "subtitle": "Predictive presymptomatic testing, autosomal dominance, and patient autonomy",
-      "type": "ethics_and_counselling",
-      "imageFileName": "slide_08.png",
-      "image": "slides/slide_08.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_08.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_08.png",
+      "number": 11,
+      "slideNumber": 11,
+      "title": "Learner Activity 2: Interpreting CSF Biomarkers & cUHDRS Data",
+      "subtitle": "Data Analysis Workshop (10 Minutes) · Criteria M4, D1 & D2",
+      "type": "learner_activity",
+      "imageFileName": "slide_11.png",
+      "image": "slides/slide_11.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_11.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_11.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 44,
+        "timeGuideDisplay": "39–49s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 24900,
+          "semanticProcessingMs": 18260,
+          "wordCount": 83,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "gemini-notebook-assessment"
+      },
+      "keyTakeaways": [
+        "Challenge 1: Post-op CSF NfL spike reflects physical microcannula insertion trauma; 36-month -8.2% drop below baseline demonstrates true neuroprotection.",
+        "Challenge 2: CSF mHTT is a molecular surrogate marker of target engagement, while cUHDRS (75% slowing, p=0.003) and TFC (60% slowing) measure real-world patient function.",
+        "Challenge 3: Propensity score-matched natural history comparisons provide strong Phase II evidence but require confirmatory randomized Phase III trials."
+      ],
+      "text": "Learner Activity 2: Interpreting CSF Biomarkers & cUHDRS Data\nData Analysis Workshop (10 Minutes) · Criteria M4, D1 & D2\nChallenge 1: Post-op CSF NfL spike reflects physical microcannula insertion trauma; 36-month -8.2% drop below baseline demonstrates true neuroprotection.\nChallenge 2: CSF mHTT is a molecular surrogate marker of target engagement, while cUHDRS (75% slowing, p=0.003) and TFC (60% slowing) measure real-world patient function.\nChallenge 3: Propensity score-matched natural history comparisons provide strong Phase II evidence but require confirmatory randomized Phase III trials.",
+      "reveals": [
+        {
+          "id": "reveal_la2_1",
+          "question": "Challenge 1 (The CSF NfL Curve): Why does CSF NfL spike acutely after surgery before dropping -8.2% below baseline at 36 months?",
+          "expectedAnswer": "Data Key: Physical insertion of stereotactic catheters causes transient localized axonal disruption (acute NfL release). Once healed, AAV5-miHTT silences mHTT toxicity, slowing ongoing MSN neurodegeneration so NfL falls -8.2% below pre-treatment baseline by Month 36.",
+          "bounds": {
+            "x": 5,
+            "y": 27,
+            "w": 89.8,
+            "h": 18.5
+          },
+          "answerBounds": {
+            "x": 5,
+            "y": 27,
+            "w": 89.8,
+            "h": 18.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_la2_2",
+          "question": "Challenge 2 (Surrogate vs Functional Endpoints): Contrast CSF mHTT lowering against cUHDRS (75% slowing) and TMS (59% slowing).",
+          "expectedAnswer": "Data Key (D1/D2): Lowering CSF mHTT proves molecular target engagement, but does not automatically guarantee clinical recovery. Preserving cUHDRS (+75% slowing, p=0.003), TMS (+59%), and TFC (+60%) proves that mHTT knockdown translates into preserved motor and daily living independence.",
+          "bounds": {
+            "x": 5,
+            "y": 56.5,
+            "w": 43.5,
+            "h": 36.5
+          },
+          "answerBounds": {
+            "x": 5,
+            "y": 56.5,
+            "w": 43.5,
+            "h": 36.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_la2_3",
+          "question": "Challenge 3 (Statistical vs Clinical Significance): Why does a propensity-matched natural history comparison require Phase III confirmation?",
+          "expectedAnswer": "Data Key (D2/D3): Although p=0.003 shows strong statistical significance, the high-dose cohort is small (N=17) and compared against external natural history controls rather than a concurrent 36-month blinded placebo group. A larger Phase III RCT is required to confirm effect size.",
+          "bounds": {
+            "x": 51.3,
+            "y": 56.5,
+            "w": 43.5,
+            "h": 36.5
+          },
+          "answerBounds": {
+            "x": 51.3,
+            "y": 56.5,
+            "w": 43.5,
+            "h": 36.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "slideNumber": 12,
+      "title": "Evaluating Gene Therapy: Challenges & Delivery Risks",
+      "subtitle": "Surgical delivery risks, irreversibility, immune responses, and off-target effects",
+      "type": "evaluation_matrix",
+      "imageFileName": "slide_12.png",
+      "image": "slides/slide_12.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_12.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_12.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 23,
+        "timeGuideDisplay": "18–28s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 12600,
+          "semanticProcessingMs": 9240,
+          "wordCount": 42,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
+      "keyTakeaways": [
+        "Invasive CED neurosurgery carries risks of intracranial hemorrhage, infection, and edema.",
+        "AAV5-miHTT delivery is irreversible ('no undo button') and non-selectively lowers wild-type HTT alongside mutant mHTT."
+      ],
+      "text": "Evaluating Gene Therapy: Challenges & Delivery Risks\nSurgical delivery risks, irreversibility, immune responses, and off-target effects\nInvasive CED neurosurgery carries risks of intracranial hemorrhage, infection, and edema.\nAAV5-miHTT delivery is irreversible ('no undo button') and non-selectively lowers wild-type HTT alongside mutant mHTT."
+    },
+    {
+      "number": 13,
+      "slideNumber": 13,
+      "title": "Assessment Point 2: Evaluating Clinical & Molecular Risks",
+      "subtitle": "Diagnostic Risk-Benefit Evaluation · Criteria M3, M4 & D2",
+      "type": "assessment_checkpoint",
+      "imageFileName": "slide_13.png",
+      "image": "slides/slide_13.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_13.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_13.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 39,
+        "timeGuideDisplay": "34–44s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 21600,
+          "semanticProcessingMs": 15840,
+          "wordCount": 72,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "gemini-notebook-assessment"
+      },
+      "keyTakeaways": [
+        "Prompt 1 (Irreversibility): Episomal AAV5 cassettes cannot be switched off or removed once infused into post-mitotic striatal neurons.",
+        "Prompt 2 (Wild-Type HTT): Wild-type huntingtin supports axonal transport and BDNF neurotrophic survival; excessive knockdown could impair neuronal health.",
+        "Prompt 3 (Immunity): Pre-existing anti-AAV5 neutralizing antibodies block vector transduction, while high capsid doses can trigger cytotoxic neuroinflammation."
+      ],
+      "text": "Assessment Point 2: Evaluating Clinical & Molecular Risks\nDiagnostic Risk-Benefit Evaluation · Criteria M3, M4 & D2\nPrompt 1 (Irreversibility): Episomal AAV5 cassettes cannot be switched off or removed once infused into post-mitotic striatal neurons.\nPrompt 2 (Wild-Type HTT): Wild-type huntingtin supports axonal transport and BDNF neurotrophic survival; excessive knockdown could impair neuronal health.\nPrompt 3 (Immunity): Pre-existing anti-AAV5 neutralizing antibodies block vector transduction, while high capsid doses can trigger cytotoxic neuroinflammation.",
+      "reveals": [
+        {
+          "id": "reveal_ap2_1",
+          "question": "Prompt 1 (Irreversible Delivery): Evaluate the clinical risk if delayed neurotoxicity emerges years post-infusion.",
+          "expectedAnswer": "Model Evaluation (M3/D2): Because AAV5 episomes persist indefinitely in non-dividing neurons and constitutively express miHTT without an off-switch, treatment cannot be discontinued if late-onset off-target toxicity or excessive HTT depletion occurs.",
+          "bounds": {
+            "x": 4.8,
+            "y": 33,
+            "w": 27.2,
+            "h": 59.5
+          },
+          "answerBounds": {
+            "x": 4.8,
+            "y": 33,
+            "w": 27.2,
+            "h": 59.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_ap2_2",
+          "question": "Prompt 2 (Wild-Type HTT Depletion): Why must clinicians monitor long-term wild-type HTT knockdown?",
+          "expectedAnswer": "Model Evaluation (M4/D2): Wild-type huntingtin protein is essential for vesicular transport, synaptic function, and BDNF transcription. Non-allele-specific silencing lowers both healthy and mutant HTT, requiring careful dosing so wild-type levels remain sufficient for cell survival.",
+          "bounds": {
+            "x": 36.3,
+            "y": 33,
+            "w": 27.2,
+            "h": 59.5
+          },
+          "answerBounds": {
+            "x": 36.3,
+            "y": 33,
+            "w": 27.2,
+            "h": 59.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_ap2_3",
+          "question": "Prompt 3 (Immunological Screening): Explain why pre-existing AAV5 antibodies or neuroinflammation compromise efficacy.",
+          "expectedAnswer": "Model Evaluation (M3/M4): Neutralizing antibodies bind AAV5 capsids and prevent neuronal receptor attachment, while T-cell immune responses against viral capsid proteins can trigger striatal neuroinflammation, requiring perioperative immunosuppression.",
+          "bounds": {
+            "x": 68,
+            "y": 33,
+            "w": 27.2,
+            "h": 59.5
+          },
+          "answerBounds": {
+            "x": 68,
+            "y": 33,
+            "w": 27.2,
+            "h": 59.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "number": 14,
+      "slideNumber": 14,
+      "title": "Patient Support: The Role of Genetic Counselling",
+      "subtitle": "Predictive presymptomatic testing, autosomal dominance, and patient autonomy",
+      "type": "ethics_and_counselling",
+      "imageFileName": "slide_14.png",
+      "image": "slides/slide_14.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_14.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_14.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 28,
+        "timeGuideDisplay": "23–33s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 15300,
+          "semanticProcessingMs": 11220,
+          "wordCount": 51,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
         "50% inheritance risk requires pre-test counselling on psychological and family implications.",
         "'The Right Not to Know' protects autonomy for asymptomatic individuals in affected pedigrees.",
         "Counsellors manage expectations: ANT-130 stabilizes disease but cannot reverse lost brain tissue."
       ],
-      "text": "Role of Genetic Counselling & Ethical Considerations\nPredictive presymptomatic testing, autosomal dominance, and patient autonomy\n50% inheritance risk requires pre-test counselling on psychological and family implications.\n'The Right Not to Know' protects autonomy for asymptomatic individuals in affected pedigrees.\nCounsellors manage expectations: ANT-130 stabilizes disease but cannot reverse lost brain tissue."
+      "text": "Patient Support: The Role of Genetic Counselling\nPredictive presymptomatic testing, autosomal dominance, and patient autonomy\n50% inheritance risk requires pre-test counselling on psychological and family implications.\n'The Right Not to Know' protects autonomy for asymptomatic individuals in affected pedigrees.\nCounsellors manage expectations: ANT-130 stabilizes disease but cannot reverse lost brain tissue.",
+      "hidden": true
     },
     {
-      "number": 9,
-      "slideNumber": 9,
-      "title": "Critical Evaluation: Strengths vs Structural Limitations",
-      "subtitle": "Merit analytical depth vs Distinction critical evaluation",
-      "type": "evaluation_matrix",
-      "imageFileName": "slide_09.png",
-      "image": "slides/slide_09.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_09.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_09.png",
-      "isInteractive": false,
-      "interactiveType": null,
+      "number": 15,
+      "slideNumber": 15,
+      "title": "Learner Activity 3: Genetic Counselling & Bioethics Case Study",
+      "subtitle": "Clinical Consultation Roleplay (10 Minutes) · Criteria P8 & M5",
+      "type": "learner_activity",
+      "imageFileName": "slide_15.png",
+      "image": "slides/slide_15.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_15.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_15.png",
+      "isInteractive": true,
+      "interactiveType": "question_reveal",
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 36,
+        "timeGuideDisplay": "31–41s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 20100,
+          "semanticProcessingMs": 14740,
+          "wordCount": 67,
+          "visualElementsCount": 2
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 2,
+        "detectionSource": "gemini-notebook-assessment"
+      },
       "keyTakeaways": [
-        "Strengths (Merit): Direct CSF biomarkers, CED delivery bypassing BBB, multi-year monitoring.",
-        "Limitations (Distinction): Small sample size (N<30), sham control unblinding after 12 months, non-selective wild-type HTT knockdown, irreversible intracranial surgery."
+        "Consultation Task 1 (P8): Support Maya's autonomous choice regarding predictive testing (50% risk, 100% penetrance at 44 CAG repeats) and discuss PGD/IVF reproductive options.",
+        "Consultation Task 2 (M5): Clarify that ANT-130 slows progression by preserving surviving MSNs rather than restoring lost neurons, and explain sham surgery trial consent."
       ],
-      "text": "Critical Evaluation: Strengths vs Structural Limitations\nMerit analytical depth vs Distinction critical evaluation\nStrengths (Merit): Direct CSF biomarkers, CED delivery bypassing BBB, multi-year monitoring.\nLimitations (Distinction): Small sample size (N<30), sham control unblinding after 12 months, non-selective wild-type HTT knockdown, irreversible intracranial surgery."
+      "text": "Learner Activity 3: Genetic Counselling & Bioethics Case Study\nClinical Consultation Roleplay (10 Minutes) · Criteria P8 & M5\nConsultation Task 1 (P8): Support Maya's autonomous choice regarding predictive testing (50% risk, 100% penetrance at 44 CAG repeats) and discuss PGD/IVF reproductive options.\nConsultation Task 2 (M5): Clarify that ANT-130 slows progression by preserving surviving MSNs rather than restoring lost neurons, and explain sham surgery trial consent.",
+      "reveals": [
+        {
+          "id": "reveal_la3_1",
+          "question": "Consultation Task 1 (Autonomy & Testing — P8): How should the genetic counsellor advise Maya on predictive testing and reproductive options?",
+          "expectedAnswer": "Counselling Protocol (P8): Explain her 50% autosomal dominant inheritance risk and that 44 CAG repeats carries 100% lifetime penetrance. Respect 'The Right Not to Know' (non-directive counselling), assess psychological readiness, and outline IVF with Pre-implantation Genetic Diagnosis (PGD) to have unaffected children.",
+          "bounds": {
+            "x": 42.2,
+            "y": 34,
+            "w": 52.2,
+            "h": 23.5
+          },
+          "answerBounds": {
+            "x": 42.2,
+            "y": 34,
+            "w": 52.2,
+            "h": 23.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_la3_2",
+          "question": "Consultation Task 2 (Managing Expectations — M5): How should you explain ANT-130's realistic clinical benefit and trial consent?",
+          "expectedAnswer": "Counselling Protocol (M5): Clarify that ANT-130 is a disease-modifying therapy that slows functional decline (75% cUHDRS slowing) by protecting surviving MSNs, NOT a regenerative cure for neurons already lost. Ensure informed consent covers irreversible brain surgery and the possibility of randomization to the sham surgical arm.",
+          "bounds": {
+            "x": 42.2,
+            "y": 70,
+            "w": 52.2,
+            "h": 22.5
+          },
+          "answerBounds": {
+            "x": 42.2,
+            "y": 70,
+            "w": 52.2,
+            "h": 22.5
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ]
     },
     {
-      "number": 10,
-      "slideNumber": 10,
-      "title": "OCR AAQ Unit F172 Genetics NEA Task 2 Marking Rubric",
+      "number": 16,
+      "slideNumber": 16,
+      "title": "NEA Task 2: Genetics Coursework Alignment Matrix",
       "subtitle": "Grading criteria breakdown across Pass, Merit, and Distinction tiers",
       "type": "marking_rubric",
-      "imageFileName": "slide_10.png",
-      "image": "slides/slide_10.png",
-      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_10.png",
-      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_10.png",
+      "imageFileName": "slide_16.png",
+      "image": "slides/slide_16.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_16.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_16.png",
       "isInteractive": false,
       "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 39,
+        "timeGuideDisplay": "34–44s",
+        "vciScore": "4.1",
+        "complexityCategory": "Moderate",
+        "ragLevel": "low",
+        "ragColor": "green",
+        "ragLabel": "Low Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 21600,
+          "semanticProcessingMs": 15840,
+          "wordCount": 72,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": false,
+        "confidence": "low",
+        "questionCount": 0,
+        "detectionSource": "manifest-text"
+      },
       "keyTakeaways": [
-        "Pass (P5, P7, P8): Accurate disorder description, AAV5 delivery route, and RNAi mechanism.",
-        "Merit (M3, M4, M5): Trial methodology critique, sham control evaluation, and biomarker interpretation.",
-        "Distinction (D3, D4, D5): Evaluative synthesis, sample size critique, irreversible surgical risk analysis, and Harvard referencing."
+        "Pass (P3, P4, P6, P7, P8): Accurate disorder description, AAV5 delivery route, RNAi mechanism, and genetic counselling role.",
+        "Merit (M2, M3, M4, M5): Polyglutamine expression analysis, surgical/immune risk analysis, and psychological counselling benefits.",
+        "Distinction (D1, D2, D3): MSN physiological impact, clinical efficacy vs permanent surgical risks, and justification of AAV5-miHTT as a viable functional cure path."
       ],
-      "text": "OCR AAQ Unit F172 Genetics NEA Task 2 Marking Rubric\nGrading criteria breakdown across Pass, Merit, and Distinction tiers\nPass (P5, P7, P8): Accurate disorder description, AAV5 delivery route, and RNAi mechanism.\nMerit (M3, M4, M5): Trial methodology critique, sham control evaluation, and biomarker interpretation.\nDistinction (D3, D4, D5): Evaluative synthesis, sample size critique, irreversible surgical risk analysis, and Harvard referencing."
+      "text": "NEA Task 2: Genetics Coursework Alignment Matrix\nGrading criteria breakdown across Pass, Merit, and Distinction tiers\nPass (P3, P4, P6, P7, P8): Accurate disorder description, AAV5 delivery route, RNAi mechanism, and genetic counselling role.\nMerit (M2, M3, M4, M5): Polyglutamine expression analysis, surgical/immune risk analysis, and psychological counselling benefits.\nDistinction (D1, D2, D3): MSN physiological impact, clinical efficacy vs permanent surgical risks, and justification of AAV5-miHTT as a viable functional cure path."
+    },
+    {
+      "number": 17,
+      "slideNumber": 17,
+      "title": "Learner Activity 4: NEA Task 2 Distinction Writing Workshop",
+      "subtitle": "Coursework Paragraph Drafting & Peer Rubric Audit (12 Minutes) · Criteria D1, D2 & D3",
+      "type": "workshop_rubric",
+      "imageFileName": "slide_17.png",
+      "image": "slides/slide_17.png",
+      "imageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_17.png",
+      "originalImageUrl": "/decks/genetics_aaq/Lesson_10_Gene_Therapy_Clinical_Trials_ANT130_NEA_Task_2/slides/slide_17.png",
+      "isInteractive": false,
+      "interactiveType": null,
+      "cognitiveGuide": {
+        "estimatedTimeSeconds": 41,
+        "timeGuideDisplay": "36–46s",
+        "vciScore": "5.3",
+        "complexityCategory": "High",
+        "ragLevel": "medium",
+        "ragColor": "amber",
+        "ragLabel": "Medium Processing",
+        "breakdown": {
+          "visualGistMs": 250,
+          "visualScanMs": 1050,
+          "readingMs": 23100,
+          "semanticProcessingMs": 16940,
+          "wordCount": 77,
+          "visualElementsCount": 3
+        }
+      },
+      "questionAnalysis": {
+        "detected": true,
+        "confidence": "high",
+        "questionCount": 3,
+        "detectionSource": "gemini-notebook-assessment"
+      },
+      "keyTakeaways": [
+        "Step 1 (D2/D3): Synthesize quantitative trial outcomes (75% cUHDRS slowing, -8.2% CSF NfL) against methodological and biological limitations (N=29, non-selective HTT knockdown, irreversible surgery).",
+        "Step 2: Peer-audit coursework paragraphs against Pass (P3–P8), Merit (M2–M5), and Distinction (D1–D3) descriptors.",
+        "Step 3: Apply accurate Harvard in-text citations and bibliography formatting for NCT04120493 clinical trial releases."
+      ],
+      "text": "Learner Activity 4: NEA Task 2 Distinction Writing Workshop\nCoursework Paragraph Drafting & Peer Rubric Audit (12 Minutes) · Criteria D1, D2 & D3\nStep 1 (D2/D3): Synthesize quantitative trial outcomes (75% cUHDRS slowing, -8.2% CSF NfL) against methodological and biological limitations (N=29, non-selective HTT knockdown, irreversible surgery).\nStep 2: Peer-audit coursework paragraphs against Pass (P3–P8), Merit (M2–M5), and Distinction (D1–D3) descriptors.\nStep 3: Apply accurate Harvard in-text citations and bibliography formatting for NCT04120493 clinical trial releases.",
+      "reveals": [
+        {
+          "id": "reveal_la4_1",
+          "question": "Step 1 (Evaluative Synthesis Draft — D2/D3): View Exemplar Distinction Evaluation Excerpt",
+          "expectedAnswer": "Exemplar D2/D3 Excerpt: 'While high-dose ANT-130 demonstrated a 75% slowing on cUHDRS (p=0.003) and an 8.2% CSF NfL reduction at 36 months—indicating genuine striatal MSN preservation—these findings rely on a small cohort (N=29) compared against external natural history controls, and must be weighed against irreversible neurosurgery and non-selective wild-type HTT silencing.'",
+          "bounds": {
+            "x": 5.3,
+            "y": 36.5,
+            "w": 26,
+            "h": 54
+          },
+          "answerBounds": {
+            "x": 5.3,
+            "y": 36.5,
+            "w": 26,
+            "h": 54
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_la4_2",
+          "question": "Step 2 (Three-Tier Peer Audit): View Pass / Merit / Distinction Audit Key",
+          "expectedAnswer": "Audit Checklist: Pass = names CAG >36, AAV5-miHTT, CED & RISC; Merit = explains polyQ MSN toxicity, surgical hemorrhage/immune risks & pre-test counselling; Distinction = evaluates surrogate (mHTT/NfL) vs functional (cUHDRS) endpoints, critiques N=29 & unblinding, and justifies why one-time AAV5-miHTT remains the strongest disease-modifying candidate.",
+          "bounds": {
+            "x": 36.9,
+            "y": 36.5,
+            "w": 26,
+            "h": 54
+          },
+          "answerBounds": {
+            "x": 36.9,
+            "y": 36.5,
+            "w": 26,
+            "h": 54
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        },
+        {
+          "id": "reveal_la4_3",
+          "question": "Step 3 (Harvard Academic Referencing): View Standard Harvard Reference Format",
+          "expectedAnswer": "Harvard Citation Exemplar: In-text: (uniQure, 2024; Tabrizi et al., 2022). Reference List: uniQure (2024) Phase I/II clinical trial data of AMT-130 in Huntington's disease (NCT04120493): 24- and 36-month interim analysis. Amsterdam: uniQure N.V.",
+          "bounds": {
+            "x": 68.5,
+            "y": 36.5,
+            "w": 26,
+            "h": 54
+          },
+          "answerBounds": {
+            "x": 68.5,
+            "y": 36.5,
+            "w": 26,
+            "h": 54
+          },
+          "revealMode": "overlay",
+          "confidence": 1,
+          "provenance": "user-adjusted",
+          "locked": true,
+          "answerVisibleInImage": false,
+          "answerIsBaked": false
+        }
+      ]
     }
   ]
 }
