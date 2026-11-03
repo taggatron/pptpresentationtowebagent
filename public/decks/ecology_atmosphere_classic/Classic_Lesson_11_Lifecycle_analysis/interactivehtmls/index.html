@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inside iPhone · Materials & Carbon</title>
+<meta name="description" content="Explore the components inside an iPhone and compare their carbon footprint and material mass across generations using the supplied illustrative dataset.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%231e4b40'/%3E%3Crect x='13' y='7' width='14' height='26' rx='4' fill='none' stroke='%23d9eea6' stroke-width='2'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#explore">Skip to explorer</a>
+<main>
+<section id="explore" aria-label="Explore the device">
+<div class="timeline" id="timeline" aria-label="Choose an iPhone model"></div>
+<div class="explorer">
+<div class="phone-panel" id="interactive-stage">
+<div class="phone-heading"><div><p class="eyebrow">01 / EXPLORE THE DEVICE</p><h2 id="model-name"></h2><p id="model-spec"></p></div><span class="outline-badge" id="model-year"></span></div>
+<svg id="phone-scene" class="phone-scene" viewBox="220 245 410 350" aria-label="Interactive phone components"><image id="phone-image" width="1024" height="576"/><image id="component-image" width="1024" height="576" opacity="0" pointer-events="none"/><g id="phone-hotspots-group"></g></svg>
+<div class="phone-caption"><span class="crosshair" aria-hidden="true">⌖</span><span id="phone-hint">Select a phone part or a component in the list</span><button id="reset" title="Show whole phone">Reset ↺</button></div>
+<div id="phone-part-tooltip" class="part-tooltip" role="tooltip"></div>
+</div>
+<div class="inspector">
+<div class="inspector-heading"><div><p class="eyebrow" id="selection-category">COMPLETE DEVICE</p><h2 id="selection-name">The whole picture</h2></div><span class="dataset-tag">Supplied estimates</span></div>
+<div class="stats donut-stats" aria-live="polite">
+<div class="donut-stat"><h3 class="stat-label">Lifecycle carbon footprint</h3><div class="donut-display"><div id="emissions-donut" class="donut-host"></div><div class="donut-center"><strong id="carbon-value"></strong></div></div><span class="stat-detail" id="carbon-share"></span></div>
+<div class="donut-stat"><h3 class="stat-label">Material mass by component</h3><div class="donut-display"><div id="materials-donut" class="donut-host"></div><div class="donut-center"><strong id="mass-value"></strong></div></div><span class="stat-detail" id="mass-share"></span></div>
+</div>
+<div class="lifecycle"><div class="subheading"><h3>Where emissions occur</h3><span id="phase-caption">Share of lifecycle CO₂e</span></div><div id="phase-legend" class="phase-legend"></div></div>
+<div class="component-table"><div class="component-table-head"><h3>Inside this model</h3><span>Mass</span><span>kg CO₂e</span></div><div id="component-list"></div></div>
+<details class="source-facts"><summary>Notes from the supplied interactive <span>Unverified</span></summary><ul id="source-facts"></ul></details>
+</div>
+</div>
+<p class="explorer-footnote"><span>CO₂e includes greenhouse gases expressed as carbon dioxide equivalents.</span><span>Click a component to follow it through time ↓</span></p>
+</section>
+<section id="compare" class="comparison" aria-labelledby="compare-title">
+<div class="section-heading"><div><p class="eyebrow">02 / COMPARE OVER TIME</p><h2 id="compare-title">Small parts. Changing footprints.</h2><p>Compare the same component groups across iPhone generations.</p></div><button id="download" class="outline-button">Export data <span aria-hidden="true">↓</span></button></div>
+<div class="compare-controls"><div class="range-controls"><label>From<select id="from-model" aria-label="Compare from model"></select></label><span aria-hidden="true">→</span><label>To<select id="to-model" aria-label="Compare to model"></select></label></div><div class="view-toggle" role="group" aria-label="Chart values"><button data-mode="absolute" aria-pressed="true">Actual values</button><button data-mode="indexed" aria-pressed="false">Change from start</button></div><label class="scenario-toggle"><input type="checkbox" id="include-scenarios"> Include 2025–26 scenarios</label></div>
+<div class="selection-heading"><span>COMPARE COMPONENTS</span><button class="text-button" id="select-all">Select all</button><button class="text-button" id="whole-phone">Whole phone</button></div><div id="component-filters" class="component-filters" aria-label="Components to compare"></div>
+<div id="comparison-status" class="comparison-status" aria-live="polite"></div>
+<div class="chart-grid"><article class="chart-card"><div class="chart-heading"><div><p class="eyebrow">CARBON FOOTPRINT</p><h3>Component CO₂e</h3></div><span id="carbon-unit">kg CO₂e / device</span></div><div id="carbon-chart" class="chart-host"></div></article><article class="chart-card"><div class="chart-heading"><div><p class="eyebrow">MATERIAL USE</p><h3>Material mass over time</h3></div><span id="mass-unit">grams / device</span></div><div id="mass-chart" class="chart-host"></div></article></div>
+<p class="chart-note">Each point represents a model’s release year, not the ageing of one phone. Hover or focus a point for values; select it to explore that model. Material mass is a proxy for material use, not the mass of extracted raw resources.</p>
+<div class="comparison-table-wrap"><table id="comparison-table"><caption id="comparison-caption"></caption><thead><tr><th scope="col">Component group</th><th scope="col">CO₂e at start → end</th><th scope="col">Change</th><th scope="col">Mass at start → end</th><th scope="col">Change</th></tr></thead><tbody></tbody></table></div>
+<details id="all-values"><summary>View values for every year</summary><div class="data-table-scroll" id="all-values-table"></div></details>
+</section>
+</main><div id="chart-tooltip" role="tooltip" class="chart-tooltip" hidden></div>
+<script src="js/data.js"></script><script src="js/phone-hotspots.js"></script><script src="js/app.js"></script>
+</body></html>
