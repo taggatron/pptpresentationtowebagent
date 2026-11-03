@@ -560,7 +560,7 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (/(?:Electrical|Installation|Unit_202|2365|Force_Energy_Work_Power)/i.test(deckId)) {
     return "electrical_installation_diploma_level_2";
   }
-  if (/(?:States_of_Matter|Pressure|Archimedes|Density|Latent_Heat|Specific_Heat|Matter_Pressure)/i.test(deckId)) {
+  if (/(?:States_of_Matter|Pressure|Archimedes|Density|Latent_Heat|Specific_Heat|Matter_Pressure|Thermal_Physics)/i.test(deckId)) {
     return "physics_matter_pressure_heat";
   }
   return "other";
