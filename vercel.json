@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "framework": null,
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -8,10 +9,9 @@
   ],
   "functions": {
     "api/index.js": {
-      "includeFiles": "{public/decks/**/manifest.json,data/**}"
-    },
-    "src/server.js": {
-      "includeFiles": "{public/decks/**/manifest.json,data/**}"
+      "includeFiles": "{public/decks/**/manifest.json,data/**}",
+      "excludeFiles": "{public/**/*.{png,jpg,jpeg,mp4,pptx,pdf,xlsx,gif,webp,webm},public/decks/**/slides/**,output/**,scratch/**}"
     }
   }
 }
+
