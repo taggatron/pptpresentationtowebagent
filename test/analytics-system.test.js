@@ -485,3 +485,38 @@ test("Bot & Crawler Protections: robots.txt disallows /api/, X-Robots-Tag header
   }
 });
 
+test("Vibe Deck 2.0 Lesson Intelligence modal structure, pp variance, reflective insights, and preserved controls", async () => {
+  const fs = await import("node:fs/promises");
+  const path = await import("node:path");
+
+  const html = await fs.readFile(path.resolve("public", "index.html"), "utf-8");
+  const css = await fs.readFile(path.resolve("public", "css", "styles.css"), "utf-8");
+  const js = await fs.readFile(path.resolve("public", "js", "app.js"), "utf-8");
+
+  // 1. Header & toolbar hierarchy
+  assert.ok(html.includes('<h3 id="analyticsModalTitle">Lesson Intelligence</h3>'), "Modal title is Lesson Intelligence");
+  assert.ok(html.includes('id="analyticsOptionsBtn"'), "Secondary Options menu button exists");
+  assert.ok(html.includes('id="analyticsDeleteLatestBtn"'), "Delete Latest button is preserved");
+  assert.ok(html.includes('id="analyticsResetBtn"'), "Reset Set button is preserved");
+  assert.ok(html.includes('id="analyticsExportBtn"'), "Export Summary button is preserved");
+
+  // 2. Stacked comparison bars, compact donut, teaching intelligence callout, and reflective insights
+  assert.ok(html.includes('id="actualStackBar"'), "Recorded stacked comparison bar exists");
+  assert.ok(html.includes('id="targetStackBar"'), "Target plan stacked comparison bar exists");
+  assert.ok(html.includes('id="stageComparisonLegend"'), "Interactive stage legend exists");
+  assert.ok(html.includes('id="analyticsSideCallout"'), "Teaching intelligence side callout exists");
+  assert.ok(html.includes('id="analyticsInsightsGrid"'), "Reflective teaching insights grid exists");
+
+  // 3. Percentage-point (pp) variance and reflective insights logic in app.js
+  assert.ok(js.includes("function formatPercentagePointsDelta(delta)"), "formatPercentagePointsDelta helper is defined");
+  assert.ok(js.includes("function renderComparisonBarsAndLegend("), "renderComparisonBarsAndLegend is defined");
+  assert.ok(js.includes("function renderReflectiveInsights("), "renderReflectiveInsights is defined");
+
+  // 4. Phase cards list has no nested vertical scrollbar
+  assert.ok(
+    /\.phase-cards-list\s*\{[^}]*max-height:\s*none;[^}]*overflow:\s*visible;/.test(css),
+    "Phase cards list eliminates nested scrollbar in favor of single modal scroll container"
+  );
+});
+
+
