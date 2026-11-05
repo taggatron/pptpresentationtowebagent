@@ -109,19 +109,32 @@ const analyticsModalBtn = document.getElementById("analyticsModalBtn");
 const analyticsModal = document.getElementById("analyticsModal");
 const closeAnalyticsModalBtn = document.getElementById("closeAnalyticsModalBtn");
 const analyticsStatusBadge = document.getElementById("analyticsStatusBadge");
+const analyticsOverviewTitle = document.getElementById("analyticsOverviewTitle");
+const analyticsScopeCaption = document.getElementById("analyticsScopeCaption");
+const analyticsAllDecksNotice = document.getElementById("analyticsAllDecksNotice");
 const analyticsTotalTime = document.getElementById("analyticsTotalTime");
 const analyticsSessionCount = document.getElementById("analyticsSessionCount");
 const analyticsSlidesTracked = document.getElementById("analyticsSlidesTracked");
 const analyticsCurrentSlidePhase = document.getElementById("analyticsCurrentSlidePhase");
 const analyticsAvgPace = document.getElementById("analyticsAvgPace");
+const analyticsPaceGuide = document.getElementById("analyticsPaceGuide");
+const actualStackRowLabel = document.getElementById("actualStackRowLabel");
+const actualStackBar = document.getElementById("actualStackBar");
+const targetStackBar = document.getElementById("targetStackBar");
+const stageComparisonLegend = document.getElementById("stageComparisonLegend");
 const donutChartSvg = document.getElementById("donutChartSvg");
 const donutCenterMetric = document.getElementById("donutCenterMetric");
 const donutCenterInfo = document.getElementById("donutCenterInfo");
 const chartLegend = document.getElementById("chartLegend");
+const analyticsSideCallout = document.getElementById("analyticsSideCallout");
+const sideCalloutTitle = document.getElementById("sideCalloutTitle");
+const sideCalloutBody = document.getElementById("sideCalloutBody");
+const analyticsInsightsGrid = document.getElementById("analyticsInsightsGrid");
 const phaseCardsList = document.getElementById("phaseCardsList");
 const toggleSlideTableBtn = document.getElementById("toggleSlideTableBtn");
 const slideTableExpandIcon = document.getElementById("slideTableExpandIcon");
 const slideDwellTableWrap = document.getElementById("slideDwellTableWrap");
+const slideDwellTable = document.getElementById("slideDwellTable");
 const slideDwellTableBody = document.getElementById("slideDwellTableBody");
 const analyticsSlideCountBadge = document.getElementById("analyticsSlideCountBadge");
 const chartModeActualBtn = document.getElementById("chartModeActualBtn");
@@ -142,6 +155,9 @@ const activeFilterTopicText = document.getElementById("activeFilterTopicText");
 const activeFilterSlotTag = document.getElementById("activeFilterSlotTag");
 const loadFilteredDeckBtn = document.getElementById("loadFilteredDeckBtn");
 const clearLessonFilterBtn = document.getElementById("clearLessonFilterBtn");
+const analyticsOptionsBtn = document.getElementById("analyticsOptionsBtn");
+const analyticsOptionsMenu = document.getElementById("analyticsOptionsMenu");
+const analyticsOptionsDropdownWrap = document.getElementById("analyticsOptionsDropdownWrap");
 const analyticsExportBtn = document.getElementById("analyticsExportBtn");
 const analyticsExportMenu = document.getElementById("analyticsExportMenu");
 const analyticsExportDropdownWrap = document.getElementById("analyticsExportDropdownWrap");
@@ -3687,6 +3703,61 @@ function getCurrentLessonSlot(date = new Date()) {
   }) || null;
 }
 
+const DEFAULT_STAGE_BENCHMARKS = [
+  {
+    phaseKey: "starter",
+    name: "Warm-Up / Retrieval Practice (Starter)",
+    shortName: "Starter",
+    targetPercentage: 10,
+    actualPercentage: 0,
+    color: "#3c73a8"
+  },
+  {
+    phaseKey: "direct_instruction",
+    name: "Teacher Direct Instruction",
+    shortName: "Direct instruction",
+    targetPercentage: 10,
+    actualPercentage: 0,
+    color: "#f28522"
+  },
+  {
+    phaseKey: "modelling",
+    name: "Modelling ('I Do')",
+    shortName: "Modelling (I do)",
+    targetPercentage: 10,
+    actualPercentage: 0,
+    color: "#fb923c"
+  },
+  {
+    phaseKey: "guided_practice",
+    name: "Guided Practice ('We Do')",
+    shortName: "Guided practice (We do)",
+    targetPercentage: 25,
+    actualPercentage: 0,
+    color: "#e05353"
+  },
+  {
+    phaseKey: "independent_practice",
+    name: "Independent Practice ('You Do')",
+    shortName: "Independent practice (You do)",
+    targetPercentage: 35,
+    actualPercentage: 0,
+    color: "#65aba0"
+  },
+  {
+    phaseKey: "plenary",
+    name: "Review & Plenary / Exit Ticket",
+    shortName: "Plenary / review",
+    targetPercentage: 10,
+    actualPercentage: 0,
+    color: "#529c42"
+  }
+];
+
+const STAGE_SHORT_NAMES = Object.fromEntries(
+  DEFAULT_STAGE_BENCHMARKS.map((item) => [item.phaseKey, item.shortName])
+);
+
 const analyticsTracker = {
   sessionId: null,
   active: false,
@@ -3701,11 +3772,17 @@ const analyticsTracker = {
   cachedLessonAnalysis: null,
   cachedTimetable: null,
   hoveredPhaseKey: null,
+  selectedPhaseKey: null,
   deckScope: "current", // "current" | "timetable" | "all"
   timetableComponentOpen: true,
   selectedLessonId: null,
   selectionClearedExplicitly: false,
   selectedWeekId: "year11-week-4",
+  logSortCol: "slideNumber",
+  logSortAsc: true,
+  lastRenderedSlides: [],
+  lastRenderedCurrentSlide: 1,
+  lastFocusedElement: null,
   noticeTimeout: null
 };
 
@@ -3717,6 +3794,20 @@ function formatAnalyticsDuration(ms) {
     return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
   }
   return `${seconds}s`;
+}
+
+function formatPercentagePointsDelta(delta) {
+  const numeric = Number(delta) || 0;
+  if (Math.abs(numeric) < 0.05) {
+    return "0.0 pp";
+  }
+  const sign = numeric > 0 ? "+" : "";
+  return `${sign}${numeric.toFixed(1)} pp`;
+}
+
+function getStageShortName(phase) {
+  const key = phase?.phaseKey || phase?.key || "";
+  return phase?.shortLabel || phase?.shortName || STAGE_SHORT_NAMES[key] || phase?.name || phase?.label || "Stage";
 }
 
 function updateAnalyticsButtonStatus(active) {
@@ -4355,6 +4446,233 @@ function describeDonutSegment(cx, cy, rOuter, rInner, startAngleDeg, endAngleDeg
   ].join(" ");
 }
 
+function syncFocusedStageHighlight(phases = [], isPreview = false, totalDwellMs = 0) {
+  const activeKey = analyticsTracker.hoveredPhaseKey || analyticsTracker.selectedPhaseKey || null;
+  const focusedPhase = activeKey
+    ? phases.find((p) => (p.phaseKey || p.key) === activeKey)
+    : null;
+
+  // 1. Update donut slices & center info
+  const slices = donutChartSvg?.querySelectorAll(".donut-slice");
+  slices?.forEach((slice) => {
+    const isMatch = Boolean(activeKey && slice.dataset.phaseKey === activeKey);
+    slice.classList.toggle("active", isMatch);
+    slice.classList.toggle("dimmed", Boolean(activeKey && !isMatch));
+  });
+
+  if (donutCenterInfo && donutCenterMetric) {
+    const titleEl = donutCenterInfo.querySelector(".center-title");
+    const subEl = donutCenterInfo.querySelector(".center-sub");
+    if (focusedPhase) {
+      if (titleEl) titleEl.textContent = getStageShortName(focusedPhase);
+      if (isPreview) {
+        if (subEl) subEl.textContent = "Target Plan";
+        donutCenterMetric.textContent = `${focusedPhase.targetPercentage}%`;
+      } else {
+        if (subEl) subEl.textContent = `Plan ${focusedPhase.targetPercentage}%`;
+        donutCenterMetric.textContent = `${focusedPhase.actualPercentage}%`;
+      }
+      donutCenterMetric.style.color = focusedPhase.color;
+    } else {
+      if (isPreview) {
+        if (titleEl) titleEl.textContent = "Target plan";
+        if (subEl) subEl.textContent = "6 lesson stages";
+        donutCenterMetric.textContent = "100%";
+      } else {
+        if (titleEl) titleEl.textContent = "Total time";
+        if (subEl) subEl.textContent = "Recorded";
+        donutCenterMetric.textContent = totalDwellMs > 0 ? formatAnalyticsDuration(totalDwellMs) : "0m 00s";
+      }
+      donutCenterMetric.style.color = "";
+    }
+  }
+
+  // 2. Update stacked comparison bars
+  [actualStackBar, targetStackBar].forEach((bar) => {
+    bar?.querySelectorAll(".segment").forEach((seg) => {
+      const isMatch = Boolean(activeKey && seg.dataset.phaseKey === activeKey);
+      seg.classList.toggle("is-focused", isMatch);
+      seg.classList.toggle("is-dimmed", Boolean(activeKey && !isMatch));
+    });
+  });
+
+  // 3. Update stage comparison legend & compact ring legend
+  stageComparisonLegend?.querySelectorAll(".legend-btn").forEach((btn) => {
+    const isMatch = Boolean(activeKey && btn.dataset.phaseKey === activeKey);
+    btn.classList.toggle("active", isMatch);
+    btn.setAttribute("aria-pressed", String(analyticsTracker.selectedPhaseKey === btn.dataset.phaseKey));
+  });
+  chartLegend?.querySelectorAll(".legend-item").forEach((item) => {
+    const isMatch = Boolean(activeKey && item.dataset.phaseKey === activeKey);
+    item.classList.toggle("active", isMatch);
+  });
+
+  // 4. Update full-width stage rows
+  phaseCardsList?.querySelectorAll(".phase-card").forEach((card) => {
+    const isMatch = Boolean(activeKey && card.dataset.phaseKey === activeKey);
+    card.classList.toggle("active", isMatch);
+  });
+
+  // 5. Update Teaching Intelligence side callout
+  if (sideCalloutTitle && sideCalloutBody) {
+    if (focusedPhase) {
+      const actualPct = Number(focusedPhase.actualPercentage ?? focusedPhase.actualPercent ?? 0);
+      const targetPct = Number(focusedPhase.targetPercentage ?? focusedPhase.targetPercent ?? 0);
+      const ppText = formatPercentagePointsDelta(actualPct - targetPct);
+      const dwellText = focusedPhase.actualDwellFormatted || focusedPhase.formattedDwell || "0m 00s";
+      const slideCount = Array.isArray(focusedPhase.slideNumbers) ? focusedPhase.slideNumbers.length : null;
+      const slideNote = slideCount !== null && analyticsTracker.deckScope !== "all"
+        ? ` Mapped across ${slideCount} slide${slideCount === 1 ? "" : "s"}.`
+        : "";
+      sideCalloutTitle.textContent = `${getStageShortName(focusedPhase)}: ${actualPct}% vs ${targetPct}% plan (${ppText})`;
+      sideCalloutBody.textContent = totalDwellMs > 0
+        ? `Recorded ${dwellText} in this stage (${ppText} relative to the ${targetPct}% reference allocation).${slideNote} Stage targets act as a reflective reference rather than an evaluative score.`
+        : `This stage is allocated ${targetPct}% in the reference lesson structure.${slideNote} Start a live presentation session to compare recorded dwell time.`;
+    } else {
+      sideCalloutTitle.textContent = "Stage targets are a guide, not a score";
+      sideCalloutBody.textContent =
+        "Different lessons intentionally weight explanation, modelling or independent work differently. Select or hover any stage to inspect its timing and percentage-point comparison.";
+    }
+  }
+}
+
+function toggleSelectedPhase(phaseKey, phases, isPreview, totalDwellMs) {
+  if (analyticsTracker.selectedPhaseKey === phaseKey) {
+    analyticsTracker.selectedPhaseKey = null;
+  } else {
+    analyticsTracker.selectedPhaseKey = phaseKey;
+  }
+  syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+}
+
+function renderComparisonBarsAndLegend(phases, isPreview = false, totalDwellMs = 0) {
+  if (actualStackRowLabel) {
+    actualStackRowLabel.textContent = isPreview
+      ? (totalDwellMs > 0 ? "Target view" : "Recorded (0s)")
+      : "Recorded";
+  }
+
+  if (actualStackBar) {
+    actualStackBar.innerHTML = "";
+    const hasActualValues = totalDwellMs > 0 && phases.some((p) => (p.actualPercentage || 0) > 0);
+    if (!hasActualValues && !isPreview) {
+      const emptySeg = document.createElement("div");
+      emptySeg.className = "stack-empty-placeholder";
+      emptySeg.textContent = "No live dwell time recorded yet — showing target plan below";
+      actualStackBar.appendChild(emptySeg);
+    } else {
+      phases.forEach((phase) => {
+        const key = phase.phaseKey || phase.key;
+        const actualPct = Number(phase.actualPercentage ?? phase.actualPercent ?? 0);
+        const targetPct = Number(phase.targetPercentage ?? phase.targetPercent ?? 0);
+        const pct = isPreview ? targetPct : actualPct;
+        if (pct <= 0) return;
+
+        const ppText = formatPercentagePointsDelta(actualPct - targetPct);
+        const dwell = phase.actualDwellFormatted || phase.formattedDwell || "0m 00s";
+        const label = `${getStageShortName(phase)}: ${actualPct}% (${dwell}) vs ${targetPct}% target (${ppText})`;
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "segment";
+        btn.dataset.phaseKey = key;
+        btn.style.width = `${pct}%`;
+        btn.style.backgroundColor = phase.color;
+        btn.title = label;
+        btn.setAttribute("aria-label", label);
+
+        btn.addEventListener("mouseenter", () => {
+          analyticsTracker.hoveredPhaseKey = key;
+          syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+        });
+        btn.addEventListener("mouseleave", () => {
+          analyticsTracker.hoveredPhaseKey = null;
+          syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+        });
+        btn.addEventListener("focus", () => {
+          analyticsTracker.hoveredPhaseKey = key;
+          syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+        });
+        btn.addEventListener("blur", () => {
+          analyticsTracker.hoveredPhaseKey = null;
+          syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+        });
+        btn.addEventListener("click", () => toggleSelectedPhase(key, phases, isPreview, totalDwellMs));
+
+        actualStackBar.appendChild(btn);
+      });
+    }
+  }
+
+  if (targetStackBar) {
+    targetStackBar.innerHTML = "";
+    phases.forEach((phase) => {
+      const key = phase.phaseKey || phase.key;
+      const targetPct = Number(phase.targetPercentage ?? phase.targetPercent ?? 0);
+      const actualPct = Number(phase.actualPercentage ?? phase.actualPercent ?? 0);
+      if (targetPct <= 0) return;
+
+      const ppText = formatPercentagePointsDelta(actualPct - targetPct);
+      const label = `Target plan — ${getStageShortName(phase)}: ${targetPct}% (recorded ${actualPct}%, ${ppText})`;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "segment";
+      btn.dataset.phaseKey = key;
+      btn.style.width = `${targetPct}%`;
+      btn.style.backgroundColor = phase.color;
+      btn.title = label;
+      btn.setAttribute("aria-label", label);
+
+      btn.addEventListener("mouseenter", () => {
+        analyticsTracker.hoveredPhaseKey = key;
+        syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+      });
+      btn.addEventListener("mouseleave", () => {
+        analyticsTracker.hoveredPhaseKey = null;
+        syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+      });
+      btn.addEventListener("focus", () => {
+        analyticsTracker.hoveredPhaseKey = key;
+        syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+      });
+      btn.addEventListener("blur", () => {
+        analyticsTracker.hoveredPhaseKey = null;
+        syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+      });
+      btn.addEventListener("click", () => toggleSelectedPhase(key, phases, isPreview, totalDwellMs));
+
+      targetStackBar.appendChild(btn);
+    });
+  }
+
+  if (stageComparisonLegend) {
+    stageComparisonLegend.innerHTML = "";
+    phases.forEach((phase) => {
+      const key = phase.phaseKey || phase.key;
+      const shortName = getStageShortName(phase);
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "legend-btn";
+      btn.dataset.phaseKey = key;
+      btn.setAttribute("aria-pressed", String(analyticsTracker.selectedPhaseKey === key));
+      btn.innerHTML = `<span class="dot" style="background-color: ${phase.color}" aria-hidden="true"></span>${shortName}`;
+
+      btn.addEventListener("mouseenter", () => {
+        analyticsTracker.hoveredPhaseKey = key;
+        syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+      });
+      btn.addEventListener("mouseleave", () => {
+        analyticsTracker.hoveredPhaseKey = null;
+        syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+      });
+      btn.addEventListener("click", () => toggleSelectedPhase(key, phases, isPreview, totalDwellMs));
+
+      stageComparisonLegend.appendChild(btn);
+    });
+  }
+}
+
 function renderDonutChart(phases, isPreview = false, totalDwellMs = 0) {
   if (!donutChartSvg) return;
   donutChartSvg.innerHTML = "";
@@ -4362,11 +4680,26 @@ function renderDonutChart(phases, isPreview = false, totalDwellMs = 0) {
   const cx = 180;
   const cy = 180;
   const rOuter = 145;
-  const rInner = 88;
-  const gapDeg = phases.length > 1 ? 2 : 0;
+  const rInner = 92;
+  const activePhases = phases.filter((phase) => {
+    const pct = isPreview ? phase.targetPercentage : phase.actualPercentage;
+    return pct > 0;
+  });
+  const gapDeg = activePhases.length > 1 ? 2 : 0;
+
+  // Subtle background track circle so 0% or single-slice states still look clean
+  const bgTrack = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  bgTrack.setAttribute("cx", String(cx));
+  bgTrack.setAttribute("cy", String(cy));
+  bgTrack.setAttribute("r", String((rOuter + rInner) / 2));
+  bgTrack.setAttribute("fill", "none");
+  bgTrack.setAttribute("stroke", "rgba(148, 163, 184, 0.16)");
+  bgTrack.setAttribute("stroke-width", String(rOuter - rInner));
+  donutChartSvg.appendChild(bgTrack);
 
   let currentAngle = 0;
   phases.forEach((phase) => {
+    const key = phase.phaseKey || phase.key;
     const pct = isPreview ? phase.targetPercentage : phase.actualPercentage;
     const spanDeg = (pct / 100) * 360;
     if (spanDeg <= 0) return;
@@ -4380,40 +4713,50 @@ function renderDonutChart(phases, isPreview = false, totalDwellMs = 0) {
     path.setAttribute("d", pathD);
     path.setAttribute("fill", phase.color);
     path.setAttribute("class", "donut-slice");
-    path.dataset.phaseKey = phase.phaseKey;
+    path.dataset.phaseKey = key;
     path.dataset.phaseName = phase.name;
     path.dataset.pct = pct;
     path.dataset.color = phase.color;
     path.dataset.dwell = phase.actualDwellFormatted || "0m 00s";
     path.dataset.target = phase.targetPercentage;
 
-    path.addEventListener("mouseenter", () => handleSliceHover(phase, isPreview));
-    path.addEventListener("mouseleave", () => handleSliceLeave(isPreview, totalDwellMs));
+    path.addEventListener("mouseenter", () => {
+      analyticsTracker.hoveredPhaseKey = key;
+      handleSliceHover(phase, isPreview);
+      syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+    });
+    path.addEventListener("mouseleave", () => {
+      analyticsTracker.hoveredPhaseKey = null;
+      handleSliceLeave(isPreview, totalDwellMs);
+      syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+    });
+    path.addEventListener("click", () => toggleSelectedPhase(key, phases, isPreview, totalDwellMs));
 
     donutChartSvg.appendChild(path);
   });
 
-  renderChartLegend(phases, isPreview);
+  renderChartLegend(phases, isPreview, totalDwellMs);
+  renderComparisonBarsAndLegend(phases, isPreview, totalDwellMs);
 }
 
 function handleSliceHover(phase, isPreview) {
   if (!donutCenterInfo || !donutCenterMetric) return;
   const titleEl = donutCenterInfo.querySelector(".center-title");
   const subEl = donutCenterInfo.querySelector(".center-sub");
-  if (titleEl) titleEl.textContent = phase.name;
-  
+  if (titleEl) titleEl.textContent = getStageShortName(phase);
+
   if (isPreview) {
-    if (subEl) subEl.textContent = "Benchmark Target";
+    if (subEl) subEl.textContent = "Target Plan";
     donutCenterMetric.textContent = `${phase.targetPercentage}%`;
   } else {
-    if (subEl) subEl.textContent = `Target: ${phase.targetPercentage}%`;
-    donutCenterMetric.textContent = `${phase.actualPercentage}% · ${phase.actualDwellFormatted || "0s"}`;
+    if (subEl) subEl.textContent = `Plan ${phase.targetPercentage}%`;
+    donutCenterMetric.textContent = `${phase.actualPercentage}%`;
   }
   donutCenterMetric.style.color = phase.color;
 
   const cards = phaseCardsList?.querySelectorAll(".phase-card");
   cards?.forEach((card) => {
-    const match = card.dataset.phaseKey === phase.phaseKey;
+    const match = card.dataset.phaseKey === (phase.phaseKey || phase.key);
     card.classList.toggle("active", match);
   });
 }
@@ -4422,47 +4765,49 @@ function handleSliceLeave(isPreview, totalDwellMs) {
   if (!donutCenterInfo || !donutCenterMetric) return;
   const titleEl = donutCenterInfo.querySelector(".center-title");
   const subEl = donutCenterInfo.querySelector(".center-sub");
-  
+
   if (isPreview) {
-    if (titleEl) titleEl.textContent = "Recommended Time";
-    if (subEl) subEl.textContent = "Allocation Across Stages";
-    donutCenterMetric.textContent = "100% Target";
+    if (titleEl) titleEl.textContent = "Target plan";
+    if (subEl) subEl.textContent = "6 lesson stages";
+    donutCenterMetric.textContent = "100%";
   } else {
-    if (titleEl) titleEl.textContent = "Lesson Time";
-    if (subEl) subEl.textContent = "Distribution";
+    if (titleEl) titleEl.textContent = "Total time";
+    if (subEl) subEl.textContent = "Recorded";
     donutCenterMetric.textContent = totalDwellMs > 0 ? formatAnalyticsDuration(totalDwellMs) : "0m 00s";
   }
-  donutCenterMetric.style.color = "#0284c7";
+  donutCenterMetric.style.color = "";
 
   const cards = phaseCardsList?.querySelectorAll(".phase-card");
   cards?.forEach((card) => card.classList.remove("active"));
 }
 
-function renderChartLegend(phases, isPreview) {
+function renderChartLegend(phases, isPreview, totalDwellMs = 0) {
   if (!chartLegend) return;
   chartLegend.innerHTML = "";
 
   phases.forEach((phase) => {
+    const key = phase.phaseKey || phase.key;
     const pct = isPreview ? phase.targetPercentage : phase.actualPercentage;
     const item = document.createElement("div");
     item.className = "legend-item";
-    item.dataset.phaseKey = phase.phaseKey;
+    item.dataset.phaseKey = key;
     item.innerHTML = `
       <span class="legend-swatch" style="background-color: ${phase.color}"></span>
-      <span class="legend-label" title="${phase.name}">${phase.name}</span>
+      <span class="legend-label" title="${phase.name}">${getStageShortName(phase)}</span>
       <span class="legend-pct">${pct}%</span>
     `;
 
     item.addEventListener("mouseenter", () => {
-      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
-      if (slice) slice.classList.add("active");
+      analyticsTracker.hoveredPhaseKey = key;
       handleSliceHover(phase, isPreview);
+      syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
     });
     item.addEventListener("mouseleave", () => {
-      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey}"]`);
-      if (slice) slice.classList.remove("active");
-      handleSliceLeave(isPreview, 0);
+      analyticsTracker.hoveredPhaseKey = null;
+      handleSliceLeave(isPreview, totalDwellMs);
+      syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
     });
+    item.addEventListener("click", () => toggleSelectedPhase(key, phases, isPreview, totalDwellMs));
 
     chartLegend.appendChild(item);
   });
@@ -4472,26 +4817,28 @@ function renderPhaseCards(phases, totalDwellMs, isAllDecks = false) {
   if (!phaseCardsList) return;
   phaseCardsList.innerHTML = "";
 
-  phases.forEach((phase) => {
-    const actualPct = phase.actualPercentage || phase.actualPercent || 0;
-    const targetPct = phase.targetPercentage || phase.targetPercent || 0;
-    const delta = phase.deltaPercentage !== undefined
-      ? phase.deltaPercentage
-      : (phase.delta !== undefined ? phase.delta : (actualPct - targetPct));
+  const isPreview = analyticsTracker.viewMode === "target" || totalDwellMs <= 0;
 
+  phases.forEach((phase) => {
+    const key = phase.phaseKey || phase.key;
+    const actualPct = Number(phase.actualPercentage ?? phase.actualPercent ?? 0);
+    const targetPct = Number(phase.targetPercentage ?? phase.targetPercent ?? 0);
+    const delta = phase.deltaPercentage !== undefined
+      ? Number(phase.deltaPercentage)
+      : (phase.delta !== undefined ? Number(phase.delta) : (actualPct - targetPct));
+
+    const ppText = formatPercentagePointsDelta(delta);
     let deltaClass = "balanced";
-    let deltaText = "On Target";
     if (delta > 0.5) {
       deltaClass = "positive";
-      deltaText = `+${Number(delta).toFixed(1)}%`;
     } else if (delta < -0.5) {
       deltaClass = "negative";
-      deltaText = `${Number(delta).toFixed(1)}%`;
     }
 
     const card = document.createElement("div");
-    card.className = "phase-card";
-    card.dataset.phaseKey = phase.phaseKey || phase.key;
+    card.className = "phase-card stage-row";
+    card.dataset.phaseKey = key;
+    card.tabIndex = 0;
     card.style.borderLeftColor = phase.color;
 
     // In All Decks Average mode, individual slide references MUST NOT appear
@@ -4507,42 +4854,207 @@ function renderPhaseCards(phases, totalDwellMs, isAllDecks = false) {
         </div>
       `;
 
+    const fillPct = isPreview && totalDwellMs <= 0 ? targetPct : actualPct;
+    const dwellText = phase.actualDwellFormatted || phase.formattedDwell || "0m 00s";
+
     card.innerHTML = `
-      <div class="phase-card-top">
-        <span class="phase-card-title">
-          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${phase.color}"></span>
-          ${phase.name || phase.label}
-        </span>
-        <span class="phase-card-time">${phase.actualDwellFormatted || phase.formattedDwell || "0m 00s"}</span>
+      <div class="stage-row-main">
+        <div class="stage-name-block">
+          <div class="phase-card-top">
+            <span class="phase-card-title">
+              <span class="dot" style="background:${phase.color}" aria-hidden="true"></span>
+              ${phase.name || phase.label}
+            </span>
+          </div>
+          ${slideListHtml}
+        </div>
+        <div class="mini-track-wrap" aria-hidden="true">
+          <div class="phase-bar-track mini-track">
+            <div class="phase-bar-fill mini-fill" style="width: ${Math.min(100, fillPct)}%; background-color: ${phase.color}"></div>
+            <span class="target-tick" style="left: ${Math.min(100, targetPct)}%" title="Target plan: ${targetPct}%"></span>
+          </div>
+        </div>
+        <div class="stage-metrics-block">
+          <span class="phase-card-time">${dwellText}</span>
+          <span class="pct">${actualPct}% <small>/ ${targetPct}%</small></span>
+          <span class="phase-delta-badge pp-pill ${deltaClass}" title="Percentage-point difference from ${targetPct}% target plan">${ppText}</span>
+        </div>
       </div>
-      <div class="phase-card-meta">
-        <span>Actual: <strong>${actualPct}%</strong> | Target: ${targetPct}%</span>
-        <span class="phase-delta-badge ${deltaClass}">${deltaText}</span>
-      </div>
-      <div class="phase-bar-track">
-        <div class="phase-bar-fill" style="width: ${Math.min(100, actualPct)}%; background-color: ${phase.color}"></div>
-      </div>
-      ${slideListHtml}
     `;
 
     card.addEventListener("mouseenter", () => {
-      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey || phase.key}"]`);
-      if (slice) slice.classList.add("active");
+      analyticsTracker.hoveredPhaseKey = key;
+      syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
     });
     card.addEventListener("mouseleave", () => {
-      const slice = donutChartSvg?.querySelector(`[data-phase-key="${phase.phaseKey || phase.key}"]`);
-      if (slice) slice.classList.remove("active");
+      analyticsTracker.hoveredPhaseKey = null;
+      syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+    });
+    card.addEventListener("click", () => toggleSelectedPhase(key, phases, isPreview, totalDwellMs));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleSelectedPhase(key, phases, isPreview, totalDwellMs);
+      }
     });
 
     phaseCardsList.appendChild(card);
   });
+
+  syncFocusedStageHighlight(phases, isPreview, totalDwellMs);
+}
+
+function renderReflectiveInsights(phases = [], context = {}) {
+  if (!analyticsInsightsGrid) return;
+
+  const {
+    totalTrackedMs = 0,
+    sessionCount = 0,
+    deckCount = 1,
+    visitedSlides = 0,
+    totalSlides = 0,
+    avgPaceMs = 0,
+    isAllDecks = false,
+    scopeTitle = "this deck"
+  } = context;
+
+  if (!phases.length || totalTrackedMs <= 0) {
+    const mappedSlidesCount = phases.reduce((acc, p) => acc + ((p.slideNumbers || []).length), 0) || totalSlides;
+    analyticsInsightsGrid.innerHTML = `
+      <article class="insight-card">
+        <span class="insight-tag">↗ Allocation pattern</span>
+        <h4>Ready to record stage distribution</h4>
+        <p>No live slide dwell time has been recorded for ${scopeTitle} yet. The reference curriculum plan allocates <strong>60%</strong> to learner practice (<strong>25% Guided</strong>, <strong>35% Independent</strong>) and <strong>30%</strong> across starter, direct instruction and modelling.</p>
+        <p class="question">Reflective prompt: Which stage of this lesson do you expect will benefit most from extra discussion or live examples?</p>
+      </article>
+      <article class="insight-card">
+        <span class="insight-tag">◷ Pacing &amp; coverage</span>
+        <h4>Slide structure &amp; reference rhythm</h4>
+        <p>${mappedSlidesCount > 0 ? `<strong>${mappedSlidesCount} slides</strong> are mapped across the 6 pedagogical stages.` : "Slides are ready for live stage tracking."} The reference pace guide is <strong>1m 30s – 3m 00s per slide</strong> once presentation mode is active.</p>
+        <p class="question">Reflective prompt: Are there specific slides where students will work in books or discuss in pairs while a prompt remains on screen?</p>
+      </article>
+    `;
+    return;
+  }
+
+  const normalized = phases.map((p) => {
+    const actualPct = Number(p.actualPercentage ?? p.actualPercent ?? 0);
+    const targetPct = Number(p.targetPercentage ?? p.targetPercent ?? 0);
+    const delta = p.deltaPercentage !== undefined
+      ? Number(p.deltaPercentage)
+      : (p.delta !== undefined ? Number(p.delta) : Math.round((actualPct - targetPct) * 10) / 10);
+    return {
+      ...p,
+      key: p.phaseKey || p.key,
+      shortName: getStageShortName(p),
+      actualPct,
+      targetPct,
+      delta,
+      dwellText: p.actualDwellFormatted || p.formattedDwell || "0m 00s"
+    };
+  });
+
+  const sortedByDeltaDesc = [...normalized].sort((a, b) => b.delta - a.delta);
+  const topOver = sortedByDeltaDesc[0];
+  const topUnder = sortedByDeltaDesc[sortedByDeltaDesc.length - 1];
+
+  const teacherLedKeys = new Set(["starter", "direct_instruction", "modelling"]);
+  const learnerPracticeKeys = new Set(["guided_practice", "independent_practice"]);
+
+  const teacherLedPct = Math.round(
+    normalized.filter((p) => teacherLedKeys.has(p.key)).reduce((sum, p) => sum + p.actualPct, 0) * 10
+  ) / 10;
+  const teacherLedTargetPct = Math.round(
+    normalized.filter((p) => teacherLedKeys.has(p.key)).reduce((sum, p) => sum + p.targetPct, 0) * 10
+  ) / 10;
+
+  const practiceActualPct = Math.round(
+    normalized.filter((p) => learnerPracticeKeys.has(p.key)).reduce((sum, p) => sum + p.actualPct, 0) * 10
+  ) / 10;
+  const practiceTargetPct = Math.round(
+    normalized.filter((p) => learnerPracticeKeys.has(p.key)).reduce((sum, p) => sum + p.targetPct, 0) * 10
+  ) / 10;
+  const practiceDeltaText = formatPercentagePointsDelta(practiceActualPct - practiceTargetPct);
+
+  const zeroStages = normalized.filter((p) => p.actualPct <= 0).map((p) => p.shortName);
+  const scopeContextLabel = isAllDecks
+    ? (deckCount <= 1 ? `across ${sessionCount} session${sessionCount === 1 ? "" : "s"} in 1 recorded deck` : `across ${sessionCount} sessions and ${deckCount} decks`)
+    : `across ${sessionCount} recorded session${sessionCount === 1 ? "" : "s"}`;
+
+  const card1Title = topOver && topOver.actualPct > 0
+    ? `${topOver.shortName} led allocation (${topOver.actualPct}%)`
+    : "Balanced stage distribution";
+  const card1Body = topOver && topOver.actualPct > 0
+    ? `<strong>${topOver.shortName}</strong> accounted for <strong>${topOver.actualPct}%</strong> (${topOver.dwellText}) ${scopeContextLabel}, <strong>${formatPercentagePointsDelta(topOver.delta)}</strong> compared with its ${topOver.targetPct}% reference plan. Teacher-led stages totalled <strong>${teacherLedPct}%</strong> vs the ${teacherLedTargetPct}% benchmark.`
+    : `Recorded time ${scopeContextLabel} tracked closely with the 6-stage lesson benchmark.`;
+  const card1Question = topOver && topOver.delta > 5
+    ? `Reflective prompt: Did ${topOver.shortName.toLowerCase()} stay projected while students completed off-screen tasks, or was extra explanation needed for this topic?`
+    : `Reflective prompt: Did the balance between explanation and modelling match what this class needed today?`;
+
+  const paceFormatted = formatAnalyticsDuration(avgPaceMs);
+  const coverageText = !isAllDecks && totalSlides > 0
+    ? `<strong>${visitedSlides} of ${totalSlides} slides</strong> were visited at an average pace of <strong>${paceFormatted}/slide</strong>.`
+    : `Average dwell pace was <strong>${paceFormatted} per recorded slide</strong>.`;
+  const zeroStageNote = zeroStages.length > 0
+    ? ` No live time was logged on <strong>${zeroStages.slice(0, 3).join(", ")}</strong>${topUnder ? ` (${topUnder.shortName}: ${formatPercentagePointsDelta(topUnder.delta)})` : ""}.`
+    : "";
+
+  analyticsInsightsGrid.innerHTML = `
+    <article class="insight-card">
+      <span class="insight-tag">↗ Allocation pattern</span>
+      <h4>${card1Title}</h4>
+      <p>${card1Body}</p>
+      <p class="question">${card1Question}</p>
+    </article>
+    <article class="insight-card">
+      <span class="insight-tag">◎ Learner activity &amp; pacing</span>
+      <h4>Practice share (${practiceActualPct}% vs ${practiceTargetPct}% plan)</h4>
+      <p>Guided and independent practice combined for <strong>${practiceActualPct}%</strong> of recorded time (<strong>${practiceDeltaText}</strong> vs plan). ${coverageText}${zeroStageNote}</p>
+      <p class="question">Reflective prompt: Would advancing to the practice or plenary slide earlier help make student task time visible in future sessions?</p>
+    </article>
+  `;
 }
 
 function renderSlideDwellTable(slides, currentSlideNum) {
   if (!slideDwellTableBody) return;
+  analyticsTracker.lastRenderedSlides = Array.isArray(slides) ? slides : [];
+  analyticsTracker.lastRenderedCurrentSlide = currentSlideNum;
   slideDwellTableBody.innerHTML = "";
 
-  slides.forEach((slide) => {
+  const sortCol = analyticsTracker.logSortCol || "slideNumber";
+  const sortAsc = analyticsTracker.logSortAsc !== false;
+
+  const sortedSlides = [...analyticsTracker.lastRenderedSlides].sort((a, b) => {
+    let valA = a?.[sortCol];
+    let valB = b?.[sortCol];
+    if (sortCol === "title" || sortCol === "phaseName") {
+      valA = String(valA || "").toLowerCase();
+      valB = String(valB || "").toLowerCase();
+      if (valA < valB) return sortAsc ? -1 : 1;
+      if (valA > valB) return sortAsc ? 1 : -1;
+      return (a.slideNumber || 0) - (b.slideNumber || 0);
+    }
+    const numA = Number(valA) || 0;
+    const numB = Number(valB) || 0;
+    if (numA !== numB) {
+      return sortAsc ? numA - numB : numB - numA;
+    }
+    return (a.slideNumber || 0) - (b.slideNumber || 0);
+  });
+
+  // Update header sort indicators
+  slideDwellTable?.querySelectorAll("th.sortable-th").forEach((th) => {
+    const col = th.dataset.sortCol;
+    const isMatched = col === sortCol;
+    th.classList.toggle("is-sorted", isMatched);
+    th.setAttribute("aria-sort", isMatched ? (sortAsc ? "ascending" : "descending") : "none");
+    const ind = th.querySelector(".sort-indicator");
+    if (ind) {
+      ind.textContent = isMatched ? (sortAsc ? "▴" : "▾") : "";
+    }
+  });
+
+  sortedSlides.forEach((slide) => {
     const isCurrent = slide.slideNumber === currentSlideNum;
     const row = document.createElement("tr");
     if (isCurrent) row.className = "current-active-slide";
@@ -4550,16 +5062,16 @@ function renderSlideDwellTable(slides, currentSlideNum) {
     const guidance = slide.phaseGuidance || "Class instruction & participation";
 
     row.innerHTML = `
-      <td><strong>${slide.slideNumber}</strong></td>
+      <td class="num-col"><strong>${slide.slideNumber}</strong></td>
       <td title="${slide.title || 'Slide ' + slide.slideNumber}">${slide.title || 'Slide ' + slide.slideNumber}</td>
       <td>
         <span class="slide-phase-pill" style="background-color: ${slide.phaseColor}">
           ${slide.phaseName}
         </span>
       </td>
-      <td><strong>${slide.formattedDwell || "0m 00s"}</strong></td>
-      <td>${slide.visitCount || 0}</td>
-      <td class="text-muted" style="font-size: 0.72rem;">${guidance}</td>
+      <td class="num-col"><strong>${slide.formattedDwell || "0m 00s"}</strong></td>
+      <td class="num-col">${slide.visitCount || 0}</td>
+      <td class="text-muted guidance-col">${guidance}</td>
     `;
 
     slideDwellTableBody.appendChild(row);
@@ -4568,6 +5080,8 @@ function renderSlideDwellTable(slides, currentSlideNum) {
 
 async function openAnalyticsModal() {
   if (!currentDeck?.id) return;
+
+  analyticsTracker.lastFocusedElement = document.activeElement;
 
   const bridge = typeof window !== "undefined" ? window.FirebaseBridge : null;
   if (bridge && !bridge.isUserAuthorized()) {
@@ -4591,11 +5105,19 @@ async function openAnalyticsModal() {
   }
 
   await refreshAnalyticsModalViews(true);
+  closeAnalyticsModalBtn?.focus();
 }
 
 function closeAnalyticsModal() {
   if (analyticsModal) analyticsModal.classList.add("hidden");
   if (analyticsExportMenu) analyticsExportMenu.classList.add("hidden");
+  if (analyticsExportBtn) analyticsExportBtn.setAttribute("aria-expanded", "false");
+  if (analyticsOptionsMenu) analyticsOptionsMenu.classList.add("hidden");
+  if (analyticsOptionsBtn) analyticsOptionsBtn.setAttribute("aria-expanded", "false");
+  const focusTarget = analyticsTracker.lastFocusedElement || analyticsModalBtn;
+  if (focusTarget && typeof focusTarget.focus === "function") {
+    focusTarget.focus();
+  }
 }
 
 async function refreshAnalyticsModalViews(fullFetch = true) {
@@ -4685,18 +5207,12 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
       : "Switch to Current Deck tab to delete latest session for this deck";
   }
 
-  // Subtitle update
+  // Subtitle update (clean one-line subtitle)
   const subtitle = document.getElementById("analyticsModalSubtitle");
+  const chartSubheading = document.getElementById("chartSubheading");
+  const activeDeckTitle = currentDeck?.name || currentDeck?.title || currentDeck?.id || "Active Deck";
   if (subtitle) {
-    if (isAllDecksScope) {
-      subtitle.textContent = "Cross-deck pedagogical benchmark averages across all recorded slide sets";
-    } else if (isTimetableScope) {
-      subtitle.textContent = analyticsTracker.selectedLessonId
-        ? "Viewing teaching analytics for selected timetable lesson"
-        : "Teaching Timetable: select a lesson below to view its analytics by week";
-    } else {
-      subtitle.textContent = `Tracking slide dwell time and pedagogical phase allocation for "${currentDeck?.name || currentDeck?.id || 'Active Deck'}"`;
-    }
+    subtitle.textContent = "Teaching rhythm, pacing and reflective insights";
   }
 
   if (isTimetableScope) {
@@ -4724,27 +5240,41 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
       if (lessonData) {
         const totalTrackedMs = lessonData.totalDurationMs || 0;
         const isPreview = totalTrackedMs <= 0;
+        const sessCount = lessonData.totalSessions || 0;
+        const slidesArr = lessonData.slides || [];
+        const totalSlides = slidesArr.length;
+        const visitedSlides = slidesArr.filter((s) => (s.totalDwellMs || 0) > 0).length;
 
+        if (analyticsOverviewTitle) {
+          analyticsOverviewTitle.textContent = "Timetable lesson overview";
+        }
+        if (analyticsScopeCaption) {
+          analyticsScopeCaption.textContent = `${sessCount} session${sessCount === 1 ? "" : "s"} recorded · ${lessonData.lessonGroup || "Lesson"} — ${lessonData.lessonTopic || "Scheduled slot"}`;
+        }
         if (analyticsTotalTime) {
           analyticsTotalTime.textContent = isPreview ? "0m 00s" : formatAnalyticsDuration(totalTrackedMs);
         }
         if (analyticsSessionCount) {
-          const sessCount = lessonData.totalSessions || 0;
-          analyticsSessionCount.textContent = `${sessCount} session${sessCount === 1 ? "" : "s"} recorded`;
+          analyticsSessionCount.textContent = sessCount === 1
+            ? "Latest session · 1 session recorded"
+            : (sessCount > 1 ? `Cumulative total · ${sessCount} sessions recorded` : "0 sessions recorded");
         }
         if (analyticsSlidesTracked) {
-          analyticsSlidesTracked.textContent = `${lessonData.slides?.length || 0} slides tracked`;
+          analyticsSlidesTracked.textContent = totalSlides > 0 ? `${visitedSlides || totalSlides} / ${totalSlides}` : `${totalSlides} slides`;
         }
         if (analyticsCurrentSlidePhase) {
-          analyticsCurrentSlidePhase.textContent = `${lessonData.lessonGroup || 'Lesson'} · ${lessonData.lessonPeriod || ''}`;
+          analyticsCurrentSlidePhase.textContent = `${lessonData.lessonGroup || "Lesson"} · ${lessonData.lessonPeriod || ""}`;
         }
+        const denomSlides = visitedSlides || totalSlides || 1;
+        const avgMs = denomSlides > 0 ? Math.round(totalTrackedMs / denomSlides) : 0;
         if (analyticsAvgPace) {
-          const visited = lessonData.slides?.length || 1;
-          const avgMs = visited > 0 ? Math.round(totalTrackedMs / visited) : 0;
           analyticsAvgPace.textContent = formatAnalyticsDuration(avgMs);
         }
+        if (analyticsPaceGuide) {
+          analyticsPaceGuide.textContent = "Reference guide: 1m 30s – 3m 00s";
+        }
         if (analyticsSlideCountBadge) {
-          analyticsSlideCountBadge.textContent = `${lessonData.slides?.length || 0} slides`;
+          analyticsSlideCountBadge.textContent = `${totalSlides} slides`;
         }
 
         const isTargetView = analyticsTracker.viewMode === "target" || totalTrackedMs <= 0;
@@ -4755,25 +5285,50 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
 
         const chartHeading = document.getElementById("chartHeading");
         if (chartHeading) {
-          chartHeading.textContent = isTargetView
-            ? `Curriculum Target Plan: ${lessonData.lessonTopic || lessonData.lessonGroup}`
-            : `Live Time Allocation: ${lessonData.lessonTopic || lessonData.lessonGroup}`;
+          chartHeading.textContent = "Actual vs planned allocation";
+        }
+        if (chartSubheading) {
+          chartSubheading.textContent = isTargetView
+            ? `Curriculum target plan for ${lessonData.lessonTopic || lessonData.lessonGroup}`
+            : `Recorded lesson time vs target plan for ${lessonData.lessonTopic || lessonData.lessonGroup}`;
         }
 
-        const phases = (lessonData.phases || lessonData.phaseBreakdown || []).map((p) => ({
-          ...p,
-          phaseKey: p.phaseKey || p.key,
-          name: p.name || p.label,
-          targetPercentage: p.targetPercentage || p.targetPercent,
-          actualPercentage: p.actualPercentage || p.actualPercent,
-          actualDwellFormatted: p.actualDwellFormatted || p.formattedDwell || formatAnalyticsDuration(p.totalDwellMs || 0)
-        }));
+        const phases = (lessonData.phases || lessonData.phaseBreakdown || DEFAULT_STAGE_BENCHMARKS).map((p) => {
+          const targetPercentage = Number(p.targetPercentage ?? p.targetPercent ?? 0);
+          const actualPercentage = Number(p.actualPercentage ?? p.actualPercent ?? 0);
+          return {
+            ...p,
+            phaseKey: p.phaseKey || p.key,
+            name: p.name || p.label,
+            targetPercentage,
+            actualPercentage,
+            deltaPercentage: Math.round((actualPercentage - targetPercentage) * 10) / 10,
+            actualDwellFormatted: p.actualDwellFormatted || p.formattedDwell || formatAnalyticsDuration(p.totalDwellMs || 0)
+          };
+        });
 
         renderDonutChart(phases, isTargetView, totalTrackedMs);
         handleSliceLeave(isTargetView, totalTrackedMs);
         renderPhaseCards(phases, totalTrackedMs, false);
-        renderSlideDwellTable(lessonData.slides || [], 0);
+        renderReflectiveInsights(phases, {
+          totalTrackedMs,
+          sessionCount: sessCount,
+          deckCount: 1,
+          visitedSlides: visitedSlides || totalSlides,
+          totalSlides,
+          avgPaceMs: avgMs,
+          isAllDecks: false,
+          scopeTitle: lessonData.lessonTopic || lessonData.lessonGroup || "this timetable lesson"
+        });
+        renderSlideDwellTable(slidesArr, 0);
         return;
+      }
+    } else {
+      if (analyticsOverviewTitle) {
+        analyticsOverviewTitle.textContent = "Teaching timetable overview";
+      }
+      if (analyticsScopeCaption) {
+        analyticsScopeCaption.textContent = "Select a scheduled class slot above to inspect its lesson analytics";
       }
     }
   }
@@ -4793,37 +5348,55 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
         totalSessions: 0,
         deckCount: 0,
         totalDurationMs: 0,
-        phases: [
-          { phaseKey: "starter", name: "Starter / Retrieval", targetPercentage: 15, actualPercentage: 0, color: "#f59e0b" },
-          { phaseKey: "direct_instruction", name: "Direct Instruction", targetPercentage: 25, actualPercentage: 0, color: "#3b82f6" },
-          { phaseKey: "modelling", name: "Teacher Modelling", targetPercentage: 15, actualPercentage: 0, color: "#8b5cf6" },
-          { phaseKey: "guided_practice", name: "Guided Practice", targetPercentage: 15, actualPercentage: 0, color: "#10b981" },
-          { phaseKey: "independent_practice", name: "Independent Practice", targetPercentage: 20, actualPercentage: 0, color: "#ec4899" },
-          { phaseKey: "plenary", name: "Plenary / Review", targetPercentage: 10, actualPercentage: 0, color: "#06b6d4" }
-        ]
+        phases: DEFAULT_STAGE_BENCHMARKS.map((b) => ({ ...b }))
       };
     }
 
     const totalTrackedMs = allData.totalDurationMs || 0;
     const isPreview = totalTrackedMs <= 0;
+    const sessCount = allData.totalSessions || 0;
+    const deckCount = allData.deckCount || 0;
+    const avgSessionMs = sessCount > 0 ? Math.round(totalTrackedMs / sessCount) : 0;
+    const totalSlideRecords = allData.totalSlidesTracked || 0;
+    const avgMs = (allData.avgPacePerSlideSeconds || 0) * 1000;
+
+    if (analyticsOverviewTitle) {
+      analyticsOverviewTitle.textContent = deckCount <= 1
+        ? "Cross-deck overview (1 deck recorded)"
+        : "Cross-deck overview";
+    }
+    if (analyticsScopeCaption) {
+      analyticsScopeCaption.textContent = deckCount <= 1
+        ? `${sessCount} session${sessCount === 1 ? "" : "s"} in 1 recorded deck · Additional decks will average automatically`
+        : `${sessCount} sessions across ${deckCount} recorded decks`;
+    }
+    if (analyticsAllDecksNotice) {
+      analyticsAllDecksNotice.innerHTML = deckCount <= 1
+        ? `🌐 <strong>Single-deck dataset (${deckCount} deck, ${sessCount} session${sessCount === 1 ? "" : "s"}):</strong> Currently reflecting recorded sessions from 1 slide deck (${sessCount > 0 ? `${formatAnalyticsDuration(avgSessionMs)} avg / session` : "0m 00s"}). Additional decks will be combined here automatically as they are taught.`
+        : `🌐 <strong>All Slide Sets Aggregate View (${deckCount} decks, ${sessCount} sessions):</strong> Showing cumulative stage distribution (${formatAnalyticsDuration(avgSessionMs)} avg per session) across all recorded slide decks.`;
+    }
 
     if (analyticsTotalTime) {
       analyticsTotalTime.textContent = isPreview ? "0m 00s" : formatAnalyticsDuration(totalTrackedMs);
     }
     if (analyticsSessionCount) {
-      const sessCount = allData.totalSessions || 0;
-      const deckCount = allData.deckCount || 0;
-      analyticsSessionCount.textContent = `${sessCount} session${sessCount === 1 ? "" : "s"} across ${deckCount} deck${deckCount === 1 ? "" : "s"}`;
+      analyticsSessionCount.textContent = sessCount > 0
+        ? `Cumulative (${formatAnalyticsDuration(avgSessionMs)} avg/session · ${sessCount} session${sessCount === 1 ? "" : "s"} · ${deckCount} deck${deckCount === 1 ? "" : "s"})`
+        : "0 sessions across 0 decks";
     }
     if (analyticsSlidesTracked) {
-      analyticsSlidesTracked.textContent = `${allData.totalSlidesTracked || 0} slides recorded`;
+      analyticsSlidesTracked.textContent = `${totalSlideRecords} slide dwells`;
     }
     if (analyticsCurrentSlidePhase) {
-      analyticsCurrentSlidePhase.textContent = "Global Stage Distribution";
+      analyticsCurrentSlidePhase.textContent = deckCount <= 1
+        ? `Logged across ${sessCount} session${sessCount === 1 ? "" : "s"} in 1 deck`
+        : `Logged across ${sessCount} sessions in ${deckCount} decks`;
     }
     if (analyticsAvgPace) {
-      const avgMs = (allData.avgPacePerSlideSeconds || 0) * 1000;
       analyticsAvgPace.textContent = formatAnalyticsDuration(avgMs);
+    }
+    if (analyticsPaceGuide) {
+      analyticsPaceGuide.textContent = "Reference guide: 1m 30s – 3m 00s";
     }
 
     const isTargetView = analyticsTracker.viewMode === "target" || totalTrackedMs <= 0;
@@ -4834,24 +5407,44 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
 
     const chartHeading = document.getElementById("chartHeading");
     if (chartHeading) {
-      chartHeading.textContent = isTargetView
-        ? "Curriculum Target Allocation Across Stages"
-        : "Cross-Deck Average Allocation Across Stages";
+      chartHeading.textContent = "Actual vs planned allocation";
+    }
+    if (chartSubheading) {
+      chartSubheading.textContent = isTargetView
+        ? "Reference curriculum stage allocation across all lesson sets"
+        : (deckCount <= 1
+            ? `Stage distribution across ${sessCount} session${sessCount === 1 ? "" : "s"} in 1 recorded deck`
+            : `Cross-deck stage distribution across ${sessCount} sessions in ${deckCount} decks`);
     }
 
-    const phases = (allData.phases || allData.phaseBreakdown || []).map((p) => ({
-      ...p,
-      phaseKey: p.phaseKey || p.key,
-      name: p.name || p.label,
-      targetPercentage: p.targetPercentage || p.targetPercent,
-      actualPercentage: p.actualPercentage || p.actualPercent,
-      actualDwellFormatted: p.actualDwellFormatted || p.formattedDwell || formatAnalyticsDuration(p.totalDwellMs || 0)
-    }));
+    const phases = (allData.phases || allData.phaseBreakdown || DEFAULT_STAGE_BENCHMARKS).map((p) => {
+      const targetPercentage = Number(p.targetPercentage ?? p.targetPercent ?? 0);
+      const actualPercentage = Number(p.actualPercentage ?? p.actualPercent ?? 0);
+      return {
+        ...p,
+        phaseKey: p.phaseKey || p.key,
+        name: p.name || p.label,
+        targetPercentage,
+        actualPercentage,
+        deltaPercentage: Math.round((actualPercentage - targetPercentage) * 10) / 10,
+        actualDwellFormatted: p.actualDwellFormatted || p.formattedDwell || formatAnalyticsDuration(p.totalDwellMs || 0)
+      };
+    });
 
     renderDonutChart(phases, isTargetView, totalTrackedMs);
     handleSliceLeave(isTargetView, totalTrackedMs);
     // Render phase cards with isAllDecks = true (strictly no slide reference badges)
     renderPhaseCards(phases, totalTrackedMs, true);
+    renderReflectiveInsights(phases, {
+      totalTrackedMs,
+      sessionCount: sessCount,
+      deckCount,
+      visitedSlides: totalSlideRecords,
+      totalSlides: totalSlideRecords,
+      avgPaceMs: avgMs,
+      isAllDecks: true,
+      scopeTitle: deckCount <= 1 ? "the 1 recorded deck" : `all ${deckCount} recorded decks`
+    });
     return;
   }
 
@@ -4867,14 +5460,7 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
       hasData: false,
       deckId: currentDeck?.id,
       totalDurationMs: 0,
-      phases: [
-        { phaseKey: "starter", name: "Starter / Retrieval", targetPercentage: 15, actualPercentage: 0, color: "#f59e0b" },
-        { phaseKey: "direct_instruction", name: "Direct Instruction", targetPercentage: 25, actualPercentage: 0, color: "#3b82f6" },
-        { phaseKey: "modelling", name: "Teacher Modelling", targetPercentage: 15, actualPercentage: 0, color: "#8b5cf6" },
-        { phaseKey: "guided_practice", name: "Guided Practice", targetPercentage: 15, actualPercentage: 0, color: "#10b981" },
-        { phaseKey: "independent_practice", name: "Independent Practice", targetPercentage: 20, actualPercentage: 0, color: "#ec4899" },
-        { phaseKey: "plenary", name: "Plenary / Review", targetPercentage: 10, actualPercentage: 0, color: "#06b6d4" }
-      ],
+      phases: DEFAULT_STAGE_BENCHMARKS.map((b) => ({ ...b })),
       slides: []
     };
   }
@@ -4897,38 +5483,63 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
   });
 
   const isPreview = totalTrackedMs <= 0;
+  const sessCount = (data.sessionCount || 0) + (analyticsTracker.active ? 1 : 0);
+  const totalS = data.totalSlides || currentDeck?.slides?.length || 0;
+  const visited = data.slides?.filter((s) => (s.totalDwellMs > 0 || analyticsTracker.dwells[s.slideNumber] > 0)).length || 0;
+  const visitedPct = totalS > 0 ? Math.round((visited / totalS) * 100) : 0;
 
+  if (analyticsOverviewTitle) {
+    analyticsOverviewTitle.textContent = "Current deck overview";
+  }
+  if (analyticsScopeCaption) {
+    analyticsScopeCaption.textContent = `${sessCount} session${sessCount === 1 ? "" : "s"} recorded · ${activeDeckTitle}`;
+  }
   if (analyticsTotalTime) {
     analyticsTotalTime.textContent = isPreview ? "0m 00s" : formatAnalyticsDuration(totalTrackedMs);
   }
   if (analyticsSessionCount) {
-    const count = (data.sessionCount || 0) + (analyticsTracker.active ? 1 : 0);
-    analyticsSessionCount.textContent = `${count} session${count === 1 ? "" : "s"} recorded`;
+    if (sessCount <= 0) {
+      analyticsSessionCount.textContent = "0 sessions recorded";
+    } else if (sessCount === 1) {
+      analyticsSessionCount.textContent = "Latest session · 1 session recorded";
+    } else {
+      const avgSessMs = Math.round(totalTrackedMs / sessCount);
+      analyticsSessionCount.textContent = `Cumulative · ${sessCount} sessions (${formatAnalyticsDuration(avgSessMs)} avg)`;
+    }
   }
   if (analyticsSlidesTracked) {
-    const totalS = data.totalSlides || currentDeck?.slides?.length || 0;
-    const visited = data.slides?.filter((s) => (s.totalDwellMs > 0 || analyticsTracker.dwells[s.slideNumber] > 0)).length || 0;
     analyticsSlidesTracked.textContent = `${visited} / ${totalS}`;
   }
   if (analyticsCurrentSlidePhase) {
     const currentSlideInfo = data.slides?.find((s) => s.slideNumber === currentSlide);
-    analyticsCurrentSlidePhase.textContent = currentSlideInfo
-      ? `Slide ${currentSlide}: ${currentSlideInfo.phaseName}`
-      : `Slide ${currentSlide}`;
+    const stageLabel = currentSlideInfo ? currentSlideInfo.phaseName : "Ready";
+    analyticsCurrentSlidePhase.textContent = `${visitedPct}% visited · Slide ${currentSlide}: ${stageLabel}`;
   }
+  const avgMs = visited > 0 ? Math.round(totalTrackedMs / visited) : 0;
   if (analyticsAvgPace) {
-    const visited = data.slides?.filter((s) => (s.totalDwellMs > 0 || analyticsTracker.dwells[s.slideNumber] > 0)).length || 1;
-    const avgMs = visited > 0 ? Math.round(totalTrackedMs / visited) : 0;
     analyticsAvgPace.textContent = formatAnalyticsDuration(avgMs);
   }
+  if (analyticsPaceGuide) {
+    analyticsPaceGuide.textContent = "Reference guide: 1m 30s – 3m 00s";
+  }
   if (analyticsSlideCountBadge) {
-    analyticsSlideCountBadge.textContent = `${data.totalSlides || currentDeck?.slides?.length || 0} slides`;
+    analyticsSlideCountBadge.textContent = `${totalS} slides`;
   }
 
   updateAnalyticsButtonStatus(analyticsTracker.active);
 
-  const computedPhases = (data.phases || []).map((p) => {
-    if (isPreview) return p;
+  const computedPhases = (data.phases || DEFAULT_STAGE_BENCHMARKS).map((p) => {
+    const targetPct = Number(p.targetPercentage ?? p.targetPercent ?? 0);
+    if (isPreview) {
+      return {
+        ...p,
+        actualDwellMs: 0,
+        actualDwellFormatted: "0m 00s",
+        actualPercentage: 0,
+        targetPercentage: targetPct,
+        deltaPercentage: Math.round((0 - targetPct) * 10) / 10
+      };
+    }
     let phaseDwell = p.actualDwellMs || 0;
     (p.slideNumbers || []).forEach((sNum) => {
       const localDwell = analyticsTracker.dwells[sNum] || 0;
@@ -4948,7 +5559,8 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
       actualDwellMs: phaseDwell,
       actualDwellFormatted: formatAnalyticsDuration(phaseDwell),
       actualPercentage: actualPct,
-      deltaPercentage: Math.round((actualPct - p.targetPercentage) * 10) / 10
+      targetPercentage: targetPct,
+      deltaPercentage: Math.round((actualPct - targetPct) * 10) / 10
     };
   });
 
@@ -4961,14 +5573,27 @@ async function refreshAnalyticsModalViews(fullFetch = true) {
 
   const chartHeading = document.getElementById("chartHeading");
   if (chartHeading) {
-    chartHeading.textContent = isTargetView
-      ? "Recommended Time Allocation Across Lesson Stages"
-      : "Live Time Allocation Across Lesson Stages";
+    chartHeading.textContent = "Actual vs planned allocation";
+  }
+  if (chartSubheading) {
+    chartSubheading.textContent = isTargetView
+      ? `Reference curriculum target plan for ${activeDeckTitle}`
+      : "Compare how recorded lesson time was distributed across stages";
   }
 
   renderDonutChart(computedPhases, isTargetView, totalTrackedMs);
   handleSliceLeave(isTargetView, totalTrackedMs);
   renderPhaseCards(computedPhases, totalTrackedMs, false);
+  renderReflectiveInsights(computedPhases, {
+    totalTrackedMs,
+    sessionCount: sessCount,
+    deckCount: 1,
+    visitedSlides: visited,
+    totalSlides: totalS,
+    avgPaceMs: avgMs,
+    isAllDecks: false,
+    scopeTitle: activeDeckTitle
+  });
 
   const updatedSlides = (data.slides || []).map((s) => {
     let dwell = s.totalDwellMs || 0;
@@ -7637,11 +8262,29 @@ function setupEventListeners() {
     navigateTimetableWeek(1);
   });
   clearLessonFilterBtn?.addEventListener("click", clearTimetableLessonSelection);
-  analyticsResetBtn?.addEventListener("click", handleResetDeckAnalytics);
-  analyticsDeleteLatestBtn?.addEventListener("click", handleDeleteLatestSession);
+  analyticsResetBtn?.addEventListener("click", () => {
+    analyticsOptionsMenu?.classList.add("hidden");
+    analyticsOptionsBtn?.setAttribute("aria-expanded", "false");
+    handleResetDeckAnalytics();
+  });
+  analyticsDeleteLatestBtn?.addEventListener("click", () => {
+    analyticsOptionsMenu?.classList.add("hidden");
+    analyticsOptionsBtn?.setAttribute("aria-expanded", "false");
+    handleDeleteLatestSession();
+  });
+  analyticsOptionsBtn?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    analyticsExportMenu?.classList.add("hidden");
+    analyticsExportBtn?.setAttribute("aria-expanded", "false");
+    const isNowHidden = analyticsOptionsMenu?.classList.toggle("hidden");
+    analyticsOptionsBtn?.setAttribute("aria-expanded", String(!isNowHidden));
+  });
   analyticsExportBtn?.addEventListener("click", (event) => {
     event.stopPropagation();
-    analyticsExportMenu?.classList.toggle("hidden");
+    analyticsOptionsMenu?.classList.add("hidden");
+    analyticsOptionsBtn?.setAttribute("aria-expanded", "false");
+    const isNowHidden = analyticsExportMenu?.classList.toggle("hidden");
+    analyticsExportBtn?.setAttribute("aria-expanded", String(!isNowHidden));
   });
   exportCurrentJsonBtn?.addEventListener("click", () => triggerAnalyticsExport("json", "current"));
   exportAllJsonBtn?.addEventListener("click", () => triggerAnalyticsExport("json", "all"));
@@ -7649,14 +8292,65 @@ function setupEventListeners() {
   document.addEventListener("click", (event) => {
     if (analyticsExportDropdownWrap && !analyticsExportDropdownWrap.contains(event.target)) {
       analyticsExportMenu?.classList.add("hidden");
+      analyticsExportBtn?.setAttribute("aria-expanded", "false");
+    }
+    if (analyticsOptionsDropdownWrap && !analyticsOptionsDropdownWrap.contains(event.target)) {
+      analyticsOptionsMenu?.classList.add("hidden");
+      analyticsOptionsBtn?.setAttribute("aria-expanded", "false");
     }
   });
 
   toggleSlideTableBtn?.addEventListener("click", () => {
     if (!slideDwellTableWrap) return;
     const isHidden = slideDwellTableWrap.classList.toggle("hidden");
-    slideTableExpandIcon?.classList.toggle("open", !isHidden);
+    const isOpen = !isHidden;
+    toggleSlideTableBtn.setAttribute("aria-expanded", String(isOpen));
+    if (slideTableExpandIcon) {
+      slideTableExpandIcon.classList.toggle("open", isOpen);
+      slideTableExpandIcon.textContent = isOpen ? "Hide log ▴" : "Show log ▾";
+    }
   });
+
+  slideDwellTable?.querySelectorAll("th.sortable-th").forEach((th) => {
+    const triggerSort = () => {
+      const col = th.dataset.sortCol;
+      if (!col) return;
+      if (analyticsTracker.logSortCol === col) {
+        analyticsTracker.logSortAsc = !analyticsTracker.logSortAsc;
+      } else {
+        analyticsTracker.logSortCol = col;
+        analyticsTracker.logSortAsc = col === "slideNumber" || col === "title" || col === "phaseName";
+      }
+      renderSlideDwellTable(analyticsTracker.lastRenderedSlides, analyticsTracker.lastRenderedCurrentSlide);
+    };
+    th.addEventListener("click", triggerSort);
+    th.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        triggerSort();
+      }
+    });
+  });
+
+  analyticsModal?.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab" || analyticsModal.classList.contains("hidden")) return;
+    const focusables = Array.from(
+      analyticsModal.querySelectorAll(
+        'button:not([disabled]), [href], select:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((el) => el.offsetParent !== null);
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
   chartModeActualBtn?.addEventListener("click", () => {
     analyticsTracker.viewMode = "actual";
     refreshAnalyticsModalViews(false);
@@ -7848,7 +8542,17 @@ function setupEventListeners() {
     } else if (event.key === "Escape" && !cognitiveModal?.classList.contains("hidden")) {
       closeCognitiveModal();
     } else if (event.key === "Escape" && analyticsModal && !analyticsModal.classList.contains("hidden")) {
-      closeAnalyticsModal();
+      if (analyticsExportMenu && !analyticsExportMenu.classList.contains("hidden")) {
+        analyticsExportMenu.classList.add("hidden");
+        analyticsExportBtn?.setAttribute("aria-expanded", "false");
+        analyticsExportBtn?.focus();
+      } else if (analyticsOptionsMenu && !analyticsOptionsMenu.classList.contains("hidden")) {
+        analyticsOptionsMenu.classList.add("hidden");
+        analyticsOptionsBtn?.setAttribute("aria-expanded", "false");
+        analyticsOptionsBtn?.focus();
+      } else {
+        closeAnalyticsModal();
+      }
     } else if (event.key === "Escape" && !document.getElementById("settingsDropdownMenu")?.classList.contains("hidden")) {
       const sMenu = document.getElementById("settingsDropdownMenu");
       const sBtn = document.getElementById("settingsDropdownBtn");

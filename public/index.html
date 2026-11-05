@@ -1140,55 +1140,89 @@
     </div>
   </div>
 
-  <!-- Lesson Slideshow Analytics Modal -->
+  <!-- Lesson Slideshow Analytics Modal (Vibe Deck 2.0: Learning Intelligence) -->
   <div id="analyticsModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="analyticsModalTitle">
     <div class="modal-card analytics-modal-card">
-      <div class="modal-header analytics-modal-header">
-        <div class="modal-title-wrap">
-          <div class="analytics-badge-row">
-            <h3 id="analyticsModalTitle">Lesson Slideshow Analytics</h3>
+      <header class="modal-header analytics-modal-header">
+        <div class="modal-header-top">
+          <div class="modal-title-group">
+            <div class="title-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 20h18" opacity="0.35" />
+                <rect x="5" y="12" width="3.2" height="6" rx="1.2" fill="currentColor" stroke="none" opacity="0.7" />
+                <rect x="10.4" y="8.5" width="3.2" height="9.5" rx="1.2" fill="currentColor" stroke="none" opacity="0.85" />
+                <rect x="15.8" y="5" width="3.2" height="13" rx="1.2" fill="currentColor" stroke="none" />
+                <path d="M4.5 11.5 9.5 8l4.5 2 5.5-5" />
+              </svg>
+            </div>
+            <div class="modal-title-wrap">
+              <p class="eyebrow">Vibe Deck / Analytics</p>
+              <div class="analytics-badge-row">
+                <h3 id="analyticsModalTitle">Lesson Intelligence</h3>
+                <span id="analyticsStatusBadge" class="analytics-status-pill idle">Idle</span>
+              </div>
+              <p id="analyticsModalSubtitle" class="modal-subtitle">Teaching rhythm, pacing and reflective insights</p>
+            </div>
           </div>
-          <p id="analyticsModalSubtitle" class="modal-subtitle">Tracking slide dwell time and pedagogical phase allocation</p>
+
+          <button id="closeAnalyticsModalBtn" class="close-btn modal-close" type="button" aria-label="Close analytics modal">&times;</button>
         </div>
 
-        <div class="analytics-header-controls">
+        <div class="modal-toolbar analytics-header-controls">
           <!-- Scope Toggle Tabs (Current Deck vs Timetable Lessons vs All Decks Average) -->
-          <div class="analytics-scope-toggle" role="tablist" aria-label="Analytics scope">
-            <button type="button" id="scopeDeckBtn" class="scope-toggle-btn active" role="tab" aria-selected="true" title="View Current Slide Set Analytics">Current Deck</button>
-            <button type="button" id="scopeTimetableBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="Select Lesson from Teaching Timetable Calendar">📅 Lesson Timetable</button>
-            <button type="button" id="scopeAllDecksBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="View Average Across All Slide Decks">All Decks Average</button>
+          <div class="toolbar-left">
+            <div class="analytics-scope-toggle segmented" role="tablist" aria-label="Analytics scope">
+              <button type="button" id="scopeDeckBtn" class="scope-toggle-btn active" role="tab" aria-selected="true" title="View Current Slide Set Analytics">Current Deck</button>
+              <button type="button" id="scopeTimetableBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="Select Lesson from Teaching Timetable Calendar">▦ Lesson Timetable</button>
+              <button type="button" id="scopeAllDecksBtn" class="scope-toggle-btn" role="tab" aria-selected="false" title="View Average Across All Slide Decks">All Decks Average</button>
+            </div>
+
+            <!-- Reopen Timetable Button in Nav Bar -->
+            <button type="button" id="reopenTimetableNavBtn" class="timetable-nav-reopen-btn hidden" title="Reopen Teaching Timetable Calendar">
+              <span class="btn-icon" aria-hidden="true">▦</span> Reopen Timetable
+            </button>
           </div>
 
-          <!-- Reopen Timetable Button in Nav Bar -->
-          <button type="button" id="reopenTimetableNavBtn" class="timetable-nav-reopen-btn hidden" title="Reopen Teaching Timetable Calendar">
-            <span class="btn-icon">📅</span> Reopen Timetable
-          </button>
-
-          <!-- Actions Group (Export, Delete Latest, Reset) -->
-          <div class="analytics-actions-group">
-            <div class="analytics-dropdown-wrap" id="analyticsExportDropdownWrap">
-              <button type="button" id="analyticsExportBtn" class="analytics-action-btn" title="Export Analytics Data" aria-haspopup="true" aria-expanded="false">
-                <span class="btn-icon">📥</span> Export <span class="caret">▾</span>
+          <!-- Actions Group (Secondary Options Menu + Primary Export Summary) -->
+          <div class="analytics-actions-group toolbar-actions">
+            <div class="analytics-dropdown-wrap" id="analyticsOptionsDropdownWrap">
+              <button type="button" id="analyticsOptionsBtn" class="analytics-action-btn action-btn ghost" title="Session management &amp; reset options" aria-haspopup="true" aria-expanded="false" aria-controls="analyticsOptionsMenu">
+                <span aria-hidden="true">⋯</span> Options
               </button>
-              <div class="analytics-dropdown-menu hidden" id="analyticsExportMenu" role="menu">
+              <div class="analytics-dropdown-menu hidden" id="analyticsOptionsMenu" role="menu" aria-labelledby="analyticsOptionsBtn">
+                <div class="dropdown-menu-section-label">Session management</div>
+                <button type="button" id="analyticsDeleteLatestBtn" class="dropdown-item dropdown-item-danger" role="menuitem" title="Delete Most Recent Session for this Deck">
+                  <span class="btn-icon" aria-hidden="true">🗑️</span>
+                  <span class="dropdown-item-text">
+                    <strong>Delete Latest</strong>
+                    <small>Remove the most recent session for this deck</small>
+                  </span>
+                </button>
+                <button type="button" id="analyticsResetBtn" class="dropdown-item dropdown-item-warning" role="menuitem" title="Archive &amp; Reset Analytics for this Deck">
+                  <span class="btn-icon" aria-hidden="true">↺</span>
+                  <span class="dropdown-item-text">
+                    <strong>Reset Set</strong>
+                    <small>Archive JSON backup and clear deck sessions</small>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div class="analytics-dropdown-wrap" id="analyticsExportDropdownWrap">
+              <button type="button" id="analyticsExportBtn" class="analytics-action-btn action-btn primary" title="Export Analytics Data" aria-haspopup="true" aria-expanded="false" aria-controls="analyticsExportMenu">
+                <span class="btn-icon" aria-hidden="true">⇩</span> Export summary <span class="caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="analytics-dropdown-menu hidden" id="analyticsExportMenu" role="menu" aria-labelledby="analyticsExportBtn">
+                <div class="dropdown-menu-section-label">Download dataset</div>
                 <button type="button" class="dropdown-item" id="exportCurrentJsonBtn" role="menuitem">📄 Export Current Set (JSON)</button>
                 <button type="button" class="dropdown-item" id="exportAllJsonBtn" role="menuitem">🌐 Export All Sets (JSON)</button>
                 <button type="button" class="dropdown-item" id="exportCsvBtn" role="menuitem">📊 Export Dwell Logs (CSV)</button>
               </div>
             </div>
-
-            <button type="button" id="analyticsDeleteLatestBtn" class="analytics-action-btn btn-danger-subtle" title="Delete Most Recent Session for this Deck">
-              <span class="btn-icon">🗑️</span> Delete Latest
-            </button>
-
-            <button type="button" id="analyticsResetBtn" class="analytics-action-btn btn-warning-subtle" title="Archive & Reset Analytics for this Deck">
-              <span class="btn-icon">↺</span> Reset Set
-            </button>
           </div>
-
-          <button id="closeAnalyticsModalBtn" class="close-btn" type="button" aria-label="Close analytics modal">&times;</button>
         </div>
-      </div>
+      </header>
+
       <div class="modal-body analytics-modal-body">
         <!-- Notification Notice / Toast Banner -->
         <div id="analyticsModalNotice" class="analytics-modal-notice hidden" role="status" aria-live="polite"></div>
@@ -1197,7 +1231,7 @@
         <div id="analyticsTimetableSection" class="analytics-timetable-card hidden">
           <div class="timetable-card-header">
             <div class="timetable-title-group">
-              <span class="timetable-title-icon">📅</span>
+              <span class="timetable-title-icon" aria-hidden="true">📅</span>
               <div>
                 <h4 class="timetable-title">Teaching Timetable &amp; Lesson Analytics</h4>
                 <p class="timetable-subtitle">Select a scheduled lesson to view its dwell time and phase breakdown by week</p>
@@ -1221,7 +1255,7 @@
           </div>
 
           <!-- Little Timetable Calendar Grid -->
-          <div class="planning-table-scroll">
+          <div class="planning-table-scroll" role="region" aria-label="Weekly Teaching Timetable" tabindex="0">
             <div class="planning-table" id="planningTable">
               <!-- Dynamically populated from timetable data -->
             </div>
@@ -1243,86 +1277,154 @@
           </div>
         </div>
 
-        <!-- Top Stats Row -->
-        <div class="analytics-kpi-grid">
-          <div class="analytics-kpi-card">
-            <span class="kpi-label">Total Lesson Time</span>
-            <span class="kpi-value" id="analyticsTotalTime">0m 00s</span>
-            <span class="kpi-sub" id="analyticsSessionCount">0 sessions recorded</span>
-          </div>
-          <div class="analytics-kpi-card">
-            <span class="kpi-label">Slides Tracked</span>
-            <span class="kpi-value" id="analyticsSlidesTracked">0 / 0</span>
-            <span class="kpi-sub" id="analyticsCurrentSlidePhase">Phase: Ready</span>
-          </div>
-          <div class="analytics-kpi-card">
-            <span class="kpi-label">Avg Pace per Slide</span>
-            <span class="kpi-value" id="analyticsAvgPace">0s</span>
-            <span class="kpi-sub">Target: ~90s – 180s</span>
-          </div>
+        <!-- Overview Section Heading -->
+        <div class="section-label">
+          <h2 id="analyticsOverviewTitle">Current deck overview</h2>
+          <span id="analyticsScopeCaption">1 session recorded · Active deck</span>
         </div>
 
         <!-- All Decks Average Mode Notice -->
         <div id="analyticsAllDecksNotice" class="analytics-all-decks-banner">
-          🌐 <strong>All Slide Sets Aggregate View:</strong> Showing benchmark comparisons and time distribution averaged across all recorded slide decks.
+          🌐 <strong>Cross-deck aggregation:</strong> Showing cumulative and per-session stage allocation across recorded slide sets.
         </div>
 
-        <!-- Main Chart & Comparison Split View -->
-        <div class="analytics-content-split">
-          <!-- Donut Chart Left -->
-          <div class="analytics-chart-panel">
+        <!-- Top KPI Summary Row -->
+        <section class="analytics-kpi-grid kpi-grid" aria-label="Summary metrics">
+          <article class="analytics-kpi-card kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Total lesson time</span>
+              <span class="kpi-icon blue" aria-hidden="true">◷</span>
+            </div>
+            <p class="kpi-value" id="analyticsTotalTime">0m 00s</p>
+            <p class="kpi-sub kpi-foot" id="analyticsSessionCount">0 sessions recorded</p>
+          </article>
+          <article class="analytics-kpi-card kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Slides tracked</span>
+              <span class="kpi-icon violet" aria-hidden="true">▤</span>
+            </div>
+            <p class="kpi-value" id="analyticsSlidesTracked">0 / 0</p>
+            <p class="kpi-sub kpi-foot" id="analyticsCurrentSlidePhase">Phase: Ready</p>
+          </article>
+          <article class="analytics-kpi-card kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Average pace / slide</span>
+              <span class="kpi-icon green" aria-hidden="true">◉</span>
+            </div>
+            <p class="kpi-value" id="analyticsAvgPace">0s</p>
+            <p class="kpi-sub kpi-foot" id="analyticsPaceGuide">Reference guide: 1m 30s – 3m 00s</p>
+          </article>
+        </section>
+
+        <!-- Main Visualisation: Actual vs Planned Allocation & Compact Overview -->
+        <section class="analytics-content-split analytics-grid" aria-label="Stage time allocation">
+          <!-- Dominant Left Panel: Stacked Comparison Bars + Stage Rows -->
+          <div class="analytics-chart-panel chart-panel">
             <div class="panel-header chart-panel-header">
               <div class="panel-title-group">
-                <h4 id="chartHeading">Time Allocation Across Lesson Stages</h4>
-                <span class="chart-hint">Hover segments for phase details</span>
+                <h3 id="chartHeading">Actual vs planned allocation</h3>
+                <p id="chartSubheading" class="panel-subtitle">Compare how recorded lesson time was distributed across stages</p>
               </div>
-              <div class="chart-mode-toggle" role="group" aria-label="Donut chart view mode">
+              <div class="chart-mode-toggle mini-switch" role="group" aria-label="Allocation view mode">
                 <button type="button" id="chartModeActualBtn" class="chart-mode-btn active">Live Dwells</button>
                 <button type="button" id="chartModeTargetBtn" class="chart-mode-btn">Target Plan</button>
               </div>
             </div>
-            <div class="donut-chart-container" id="donutChartContainer">
-              <svg id="donutChartSvg" class="donut-chart-svg" viewBox="0 0 360 360" aria-label="Lesson time distribution donut chart">
-                <!-- Slices will be rendered dynamically -->
-              </svg>
-              <div class="donut-center-info" id="donutCenterInfo">
-                <div class="center-title">Lesson Time</div>
-                <div class="center-sub">Distribution</div>
-                <div class="center-metric" id="donutCenterMetric"></div>
+
+            <!-- Two-row 100% Stacked Horizontal Comparison Bars -->
+            <div class="stack-comparison" aria-label="Actual versus target stage comparison bars">
+              <div class="stack-row">
+                <span class="stack-row-label" id="actualStackRowLabel">Recorded</span>
+                <div class="stack-bar" id="actualStackBar" role="group" aria-label="Recorded lesson stage allocation">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+              <div class="stack-row">
+                <span class="stack-row-label">Target plan</span>
+                <div class="stack-bar target" id="targetStackBar" role="group" aria-label="Target lesson stage allocation">
+                  <!-- Populated dynamically -->
+                </div>
               </div>
             </div>
-            <!-- Legend under chart -->
-            <div class="chart-legend" id="chartLegend">
-              <!-- Dynamically populated -->
+
+            <!-- Interactive Stage Legend -->
+            <div class="stage-legend" id="stageComparisonLegend" role="group" aria-label="Highlight lesson stage">
+              <!-- Populated dynamically -->
+            </div>
+
+            <!-- Full-width Stage Breakdown Rows (no internal scroll) -->
+            <div class="analytics-details-panel">
+              <div class="stage-rows-header">
+                <span>Stage &amp; mapped slides</span>
+                <span>Share &amp; variance vs plan</span>
+              </div>
+              <div class="phase-cards-list stage-rows" id="phaseCardsList">
+                <!-- Populated dynamically -->
+              </div>
             </div>
           </div>
 
-          <!-- Phase Breakdown & Slide Mapping Right -->
-          <div class="analytics-details-panel">
-            <div class="panel-header">
-              <h4>Phase Comparison vs. Target</h4>
+          <!-- Secondary Right Column: Compact Overview Ring + Teaching Intelligence Callout -->
+          <div class="analytics-side-column">
+            <div class="ring-panel">
+              <div class="panel-header">
+                <div class="panel-title-group">
+                  <h4>Time distribution</h4>
+                  <p class="panel-subtitle">Compact overview</p>
+                </div>
+              </div>
+              <div class="donut-chart-container ring-wrap" id="donutChartContainer">
+                <svg id="donutChartSvg" class="donut-chart-svg" viewBox="0 0 360 360" aria-label="Lesson time distribution donut chart">
+                  <!-- Slices rendered dynamically -->
+                </svg>
+                <div class="donut-center-info ring-center" id="donutCenterInfo">
+                  <div class="center-title">Total time</div>
+                  <div class="center-metric" id="donutCenterMetric">0m 00s</div>
+                  <div class="center-sub">Recorded</div>
+                </div>
+              </div>
+              <div class="chart-legend" id="chartLegend">
+                <!-- Dynamically populated -->
+              </div>
             </div>
-            <div class="phase-cards-list" id="phaseCardsList">
-              <!-- Cards for Starter, Direct Instruction, Modelling, Guided Practice, Independent Practice, Plenary -->
-            </div>
-          </div>
-        </div>
 
-        <!-- Per-slide timeline accordion / table -->
-        <div class="analytics-slides-breakdown slide-dwell-table-card">
-          <div class="panel-header collapsable-header" id="toggleSlideTableBtn">
-            <h4>Slide-by-Slide Dwell & Phase Log (<span id="analyticsSlideCountBadge">0 slides</span>)</h4>
-            <span class="expand-indicator" id="slideTableExpandIcon">▼</span>
+            <aside class="side-callout" id="analyticsSideCallout" aria-live="polite">
+              <span class="tag">✧ Teaching intelligence</span>
+              <h4 id="sideCalloutTitle">Stage targets are a guide, not a score</h4>
+              <p id="sideCalloutBody">Different lessons intentionally weight explanation, modelling or independent work differently. Select any stage to inspect its timing and percentage-point comparison.</p>
+            </aside>
           </div>
-          <div class="slide-dwell-table-wrap" id="slideDwellTableWrap">
-            <table class="slide-dwell-table">
+        </section>
+
+        <!-- Reflective Teaching Insights Section -->
+        <section class="analytics-insights-section" id="analyticsInsightsSection" aria-label="Reflective teaching insights">
+          <div class="section-label">
+            <h2>Reflective teaching insights</h2>
+            <span>Observation, not judgement</span>
+          </div>
+          <div class="insights-grid" id="analyticsInsightsGrid">
+            <!-- Dynamically populated from current scope data -->
+          </div>
+        </section>
+
+        <!-- Collapsible Slide-by-Slide Dwell & Phase Log -->
+        <section class="analytics-slides-breakdown slide-dwell-table-card log-panel" aria-label="Slide-by-slide dwell log">
+          <button type="button" class="log-toggle collapsable-header" id="toggleSlideTableBtn" aria-expanded="true" aria-controls="slideDwellTableWrap">
+            <div class="log-toggle-text">
+              <h4>Slide-by-slide dwell and phase log (<span id="analyticsSlideCountBadge">0 slides</span>)</h4>
+              <p>Detailed timing, pedagogical stage and visit count for every slide in this lesson</p>
+            </div>
+            <span class="chev expand-indicator open" id="slideTableExpandIcon">Hide log ▴</span>
+          </button>
+          <div class="slide-dwell-table-wrap log-table-wrap" id="slideDwellTableWrap" role="region" aria-label="Slide-by-slide dwell time table" tabindex="0">
+            <table class="slide-dwell-table" id="slideDwellTable">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Slide Title</th>
-                  <th>Pedagogical Phase</th>
-                  <th>Dwell Time</th>
-                  <th>Visits</th>
+                  <th data-sort-col="slideNumber" class="sortable-th is-sorted" tabindex="0" role="columnheader" aria-sort="ascending" title="Sort by slide number"># <span class="sort-indicator" aria-hidden="true">▴</span></th>
+                  <th data-sort-col="title" class="sortable-th" tabindex="0" role="columnheader" aria-sort="none" title="Sort by slide title">Slide Title <span class="sort-indicator" aria-hidden="true"></span></th>
+                  <th data-sort-col="phaseName" class="sortable-th" tabindex="0" role="columnheader" aria-sort="none" title="Sort by pedagogical phase">Pedagogical Phase <span class="sort-indicator" aria-hidden="true"></span></th>
+                  <th data-sort-col="totalDwellMs" class="sortable-th" tabindex="0" role="columnheader" aria-sort="none" title="Sort by dwell time">Dwell Time <span class="sort-indicator" aria-hidden="true"></span></th>
+                  <th data-sort-col="visitCount" class="sortable-th" tabindex="0" role="columnheader" aria-sort="none" title="Sort by visit count">Visits <span class="sort-indicator" aria-hidden="true"></span></th>
                   <th>Target Guidance</th>
                 </tr>
               </thead>
@@ -1331,12 +1433,12 @@
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
 
   <script src="/js/firebase-init.js" type="module"></script>
-  <script src="/js/app.js?v=analytics8" type="module"></script>
+  <script src="/js/app.js?v=analytics9" type="module"></script>
 </body>
 </html>
