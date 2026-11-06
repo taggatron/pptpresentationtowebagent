@@ -1338,6 +1338,15 @@ function hideSlideVideo() {
 
 function triggerSlide1VideoCompletionTransition() {
   if (currentSlideIndex !== 0 || !currentDeck || currentDeck.slides.length <= 1) return;
+  const activeSlide = currentDeck.slides[0];
+  const build = currentBuildForSlide(activeSlide);
+  if (
+    build?.holdFinalFrame ||
+    activeSlide?.holdFinalFrame ||
+    activeSlide?.autoAdvanceOnVideoEnd === false
+  ) {
+    return;
+  }
   if (slide1VideoAutoTransitionTimer) return;
 
   // Gracefully hold the final video frame momentarily, then auto-transition to slide 2
@@ -1661,7 +1670,11 @@ function triggerDisintegrationEffect() {
 }
 
 function renderMediaBuild(slide, build) {
-  const isDisintegrate = build?.kind === "video" && (build?.transition === "blur-disintegrate" || slide?.number === 1);
+  const isDisintegrate =
+    build?.kind === "video" &&
+    build?.transition !== "none" &&
+    build?.transition !== "direct" &&
+    (build?.transition === "blur-disintegrate" || slide?.number === 1);
   const wasImageVisible = Boolean(slideImage && !slideImage.classList.contains("hidden") && !slideImage.classList.contains("is-disintegrating"));
 
   if (isDisintegrate && wasImageVisible) {
