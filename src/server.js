@@ -94,9 +94,12 @@ function inferMimeTypeFromPath(filePathOrName) {
   return "application/octet-stream";
 }
 
-async function streamGoogleDriveFile(fileId, req, res, fallbackName = "") {
+async function streamGoogleDriveFile(fileId, req, res, fallbackName = "", { send404OnMiss = true } = {}) {
   if (!fileId || !/^[a-zA-Z0-9_-]{10,120}$/.test(fileId)) {
-    return res.status(400).json({ error: "Invalid Google Drive file ID." });
+    if (send404OnMiss) {
+      res.status(400).json({ error: "Invalid Google Drive file ID." });
+    }
+    return false;
   }
   const apiKey = process.env.GOOGLE_DRIVE_API_KEY || process.env.GEMINI_API_KEY || "";
   const urlsToTry = [
@@ -135,14 +138,18 @@ async function streamGoogleDriveFile(fileId, req, res, fallbackName = "") {
         if (acceptRanges) res.setHeader("Accept-Ranges", acceptRanges);
 
         const arrayBuf = await upstream.arrayBuffer();
-        return res.end(Buffer.from(arrayBuf));
+        res.end(Buffer.from(arrayBuf));
+        return true;
       }
     } catch {
       // Try next URL candidate
     }
   }
 
-  return res.status(404).json({ error: "Google Drive media asset could not be fetched." });
+  if (send404OnMiss) {
+    res.status(404).json({ error: "Google Drive media asset could not be fetched." });
+  }
+  return false;
 }
 
 const GITHUB_RAW_BASE_URL =
@@ -1186,13 +1193,20 @@ export function createApp({
   app.use(express.static(publicDir));
 
   // Cloud / Vercel fallback: if a slide image or video under /decks/... is not on local disk
-  // (e.g. excluded via .vercelignore), stream it on-demand from Google Drive (data/gdrive-media-map.json)
-  // or the remote deck asset origin.
+  // (e.g. excluded via .vercelignore), stream it on-demand from the remote deck asset origin
+  // or Google Drive (data/gdrive-media-map.json).
   app.use("/decks", async (req, res, next) => {
     if (req.method !== "GET" && req.method !== "HEAD") return next();
+    const cleanRel = decodeURIComponent(req.url.split("?")[0]).replace(/^\/+/, "");
+    const preferGDriveFirst = process.env.GOOGLE_DRIVE_PUBLIC_SHARED === "true";
+
+    if (!preferGDriveFirst) {
+      const streamedFromRemote = await streamRemoteDeckAsset(cleanRel, req, res);
+      if (streamedFromRemote) return;
+    }
+
     const gdriveMap = await loadGDriveMediaMap();
     const filesMap = gdriveMap?.files || {};
-    const cleanRel = decodeURIComponent(req.url.split("?")[0]).replace(/^\/+/, "");
     const candidateKeys = [
       `/decks/${cleanRel}`,
       `decks/${cleanRel}`,
@@ -1202,11 +1216,17 @@ export function createApp({
       const entry = filesMap[key];
       const fileId = typeof entry === "string" ? entry : entry?.fileId;
       if (fileId) {
-        return streamGoogleDriveFile(fileId, req, res, cleanRel);
+        const streamedFromDrive = await streamGoogleDriveFile(fileId, req, res, cleanRel, {
+          send404OnMiss: false
+        });
+        if (streamedFromDrive) return;
       }
     }
-    const streamedFromRemote = await streamRemoteDeckAsset(cleanRel, req, res);
-    if (streamedFromRemote) return;
+
+    if (preferGDriveFirst) {
+      const streamedFromRemote = await streamRemoteDeckAsset(cleanRel, req, res);
+      if (streamedFromRemote) return;
+    }
     return next();
   });
 
