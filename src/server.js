@@ -61,6 +61,89 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, "..");
 const PUBLIC_DIR = path.join(ROOT_DIR, "public");
 const DECKS_DIR = path.join(PUBLIC_DIR, "decks");
+const GDRIVE_MEDIA_MAP_PATH = path.join(ROOT_DIR, "data", "gdrive-media-map.json");
+
+let cachedGDriveMap = null;
+let cachedGDriveMapMtime = 0;
+
+async function loadGDriveMediaMap() {
+  try {
+    const stat = await fs.stat(GDRIVE_MEDIA_MAP_PATH);
+    if (cachedGDriveMap && stat.mtimeMs === cachedGDriveMapMtime) {
+      return cachedGDriveMap;
+    }
+    const raw = await fs.readFile(GDRIVE_MEDIA_MAP_PATH, "utf8");
+    cachedGDriveMap = JSON.parse(raw);
+    cachedGDriveMapMtime = stat.mtimeMs;
+    return cachedGDriveMap;
+  } catch {
+    return { files: {} };
+  }
+}
+
+function inferMimeTypeFromPath(filePathOrName) {
+  const ext = path.extname(String(filePathOrName || "")).toLowerCase();
+  if (ext === ".png") return "image/png";
+  if (ext === ".jpg" || ext === ".jpeg") return "image/jpeg";
+  if (ext === ".webp") return "image/webp";
+  if (ext === ".gif") return "image/gif";
+  if (ext === ".svg") return "image/svg+xml";
+  if (ext === ".mp4") return "video/mp4";
+  if (ext === ".webm") return "video/webm";
+  if (ext === ".pdf") return "application/pdf";
+  return "application/octet-stream";
+}
+
+async function streamGoogleDriveFile(fileId, req, res, fallbackName = "") {
+  if (!fileId || !/^[a-zA-Z0-9_-]{10,120}$/.test(fileId)) {
+    return res.status(400).json({ error: "Invalid Google Drive file ID." });
+  }
+  const apiKey = process.env.GOOGLE_DRIVE_API_KEY || process.env.GEMINI_API_KEY || "";
+  const urlsToTry = [
+    ...(apiKey
+      ? [`https://www.googleapis.com/drive/v3/files/${encodeURIComponent(fileId)}?alt=media&key=${encodeURIComponent(apiKey)}`]
+      : []),
+    `https://drive.google.com/uc?export=download&id=${encodeURIComponent(fileId)}`,
+    `https://lh3.googleusercontent.com/d/${encodeURIComponent(fileId)}`
+  ];
+
+  const headers = {};
+  if (req.headers.range) {
+    headers.Range = req.headers.range;
+  }
+
+  for (const targetUrl of urlsToTry) {
+    try {
+      const upstream = await fetch(targetUrl, {
+        headers,
+        redirect: "follow"
+      });
+      const contentType = upstream.headers.get("content-type") || "";
+      if (upstream.ok && !contentType.includes("text/html")) {
+        const resolvedMime =
+          contentType && contentType !== "application/octet-stream"
+            ? contentType
+            : inferMimeTypeFromPath(fallbackName);
+        res.status(upstream.status);
+        res.setHeader("Content-Type", resolvedMime);
+        res.setHeader("Cache-Control", "public, max-age=31536000, s-maxage=31536000, immutable");
+        const contentLength = upstream.headers.get("content-length");
+        if (contentLength) res.setHeader("Content-Length", contentLength);
+        const contentRange = upstream.headers.get("content-range");
+        if (contentRange) res.setHeader("Content-Range", contentRange);
+        const acceptRanges = upstream.headers.get("accept-ranges");
+        if (acceptRanges) res.setHeader("Accept-Ranges", acceptRanges);
+
+        const arrayBuf = await upstream.arrayBuffer();
+        return res.end(Buffer.from(arrayBuf));
+      }
+    } catch {
+      // Try next URL candidate
+    }
+  }
+
+  return res.status(404).json({ error: "Google Drive media asset could not be fetched." });
+}
 
 function assertSafeDeckId(deckId) {
   if (
@@ -1062,6 +1145,32 @@ export function createApp({
   });
 
   app.use(express.static(publicDir));
+
+  // Cloud / Vercel fallback: if a slide image or video under /decks/... is not on local disk
+  // (e.g. excluded via .vercelignore), stream it on-demand from Google Drive using data/gdrive-media-map.json.
+  app.use("/decks", async (req, res, next) => {
+    if (req.method !== "GET" && req.method !== "HEAD") return next();
+    const gdriveMap = await loadGDriveMediaMap();
+    const filesMap = gdriveMap?.files || {};
+    const cleanRel = decodeURIComponent(req.url.split("?")[0]).replace(/^\/+/, "");
+    const candidateKeys = [
+      `/decks/${cleanRel}`,
+      `decks/${cleanRel}`,
+      cleanRel
+    ];
+    for (const key of candidateKeys) {
+      const entry = filesMap[key];
+      const fileId = typeof entry === "string" ? entry : entry?.fileId;
+      if (fileId) {
+        return streamGoogleDriveFile(fileId, req, res, cleanRel);
+      }
+    }
+    return next();
+  });
+
+  app.get("/api/drive-media/:fileId", async (req, res) => {
+    return streamGoogleDriveFile(req.params.fileId, req, res, req.query.name || "");
+  });
 
   app.get("/api/agent-pathways", (req, res) => {
     res.json({
