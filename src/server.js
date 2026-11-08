@@ -145,6 +145,45 @@ async function streamGoogleDriveFile(fileId, req, res, fallbackName = "") {
   return res.status(404).json({ error: "Google Drive media asset could not be fetched." });
 }
 
+const GITHUB_RAW_BASE_URL =
+  process.env.DECK_MEDIA_CDN_BASE_URL ||
+  "https://raw.githubusercontent.com/taggatron/pptpresentationtowebagent/main/public/decks";
+
+async function streamRemoteDeckAsset(cleanRelPath, req, res) {
+  if (!cleanRelPath || cleanRelPath.includes("..")) {
+    return false;
+  }
+  const encodedSegments = cleanRelPath
+    .split("/")
+    .filter(Boolean)
+    .map((seg) => encodeURIComponent(seg))
+    .join("/");
+  const targetUrl = `${GITHUB_RAW_BASE_URL}/${encodedSegments}`;
+
+  const headers = {};
+  if (req.headers.range) {
+    headers.Range = req.headers.range;
+  }
+
+  try {
+    const upstream = await fetch(targetUrl, { headers, redirect: "follow" });
+    if (!upstream.ok) return false;
+    const resolvedMime = inferMimeTypeFromPath(cleanRelPath);
+    res.status(upstream.status);
+    res.setHeader("Content-Type", resolvedMime);
+    res.setHeader("Cache-Control", "public, max-age=31536000, s-maxage=31536000, immutable");
+    const contentLength = upstream.headers.get("content-length");
+    if (contentLength) res.setHeader("Content-Length", contentLength);
+    const contentRange = upstream.headers.get("content-range");
+    if (contentRange) res.setHeader("Content-Range", contentRange);
+    const arrayBuf = await upstream.arrayBuffer();
+    res.end(Buffer.from(arrayBuf));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function assertSafeDeckId(deckId) {
   if (
     !deckId ||
@@ -1147,7 +1186,8 @@ export function createApp({
   app.use(express.static(publicDir));
 
   // Cloud / Vercel fallback: if a slide image or video under /decks/... is not on local disk
-  // (e.g. excluded via .vercelignore), stream it on-demand from Google Drive using data/gdrive-media-map.json.
+  // (e.g. excluded via .vercelignore), stream it on-demand from Google Drive (data/gdrive-media-map.json)
+  // or the remote deck asset origin.
   app.use("/decks", async (req, res, next) => {
     if (req.method !== "GET" && req.method !== "HEAD") return next();
     const gdriveMap = await loadGDriveMediaMap();
@@ -1165,6 +1205,8 @@ export function createApp({
         return streamGoogleDriveFile(fileId, req, res, cleanRel);
       }
     }
+    const streamedFromRemote = await streamRemoteDeckAsset(cleanRel, req, res);
+    if (streamedFromRemote) return;
     return next();
   });
 
