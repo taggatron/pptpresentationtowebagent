@@ -143,11 +143,13 @@ test("Lesson 1 starter grid contains six valid answer masks", () => {
 test("component editing is rendered in the sidebar, not a modal", async () => {
   const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
   assert.match(html, /id="componentEditorView"/);
-  assert.match(html, /id="componentList"/);
-  assert.match(html, /id="agentPathwaySelect"/);
   assert.match(html, /id="editTargetOverlay"/);
   assert.match(html, /id="selectedTargetSummary"/);
+  assert.match(html, /id="versionSelect"/);
   assert.match(html, /Typed instructions · no microphone/);
+  assert.doesNotMatch(html, /id="componentList"/);
+  assert.doesNotMatch(html, /id="agentPathwaySelect"/);
+  assert.doesNotMatch(html, /id="geminiEditInput"/);
   assert.doesNotMatch(html, /id="componentEditorModal"/);
 });
 

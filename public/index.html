@@ -558,80 +558,24 @@
             </div>
           </div>
 
-          <div class="agent-pathway-card">
-            <div class="agent-pathway-title">
-              <span class="agent-provider-mark" aria-hidden="true">✦</span>
+          <div class="version-history-card">
+            <div class="version-history-title">
+              <span class="version-icon" aria-hidden="true">↺</span>
               <div>
-                <span class="agent-label">Default agent pathway</span>
-                <strong id="agentPathwayName">Google Gemini · Image chat</strong>
+                <strong>Version history</strong>
+                <span>Revert to original slide or any past revision</span>
               </div>
             </div>
-            <label for="agentPathwaySelect" class="sr-only">Revision agent pathway</label>
-            <select id="agentPathwaySelect" class="agent-pathway-select">
-              <option value="gemini-image-chat" selected>Google Gemini · Image chat</option>
-              <option value="notebooklm-slide-revision">NotebookLM · Slide revision</option>
-              <option value="local-grid-segmentation">Local grid segmentation</option>
+            <select id="versionSelect" class="version-select" aria-label="Select slide version">
+              <option value="original">Original Slide Image</option>
             </select>
-            <p id="agentPathwayDescription" class="agent-pathway-description">
-              The slide image and your instruction are sent through the active Gemini image chat.
-            </p>
-          </div>
-
-          <div class="panel-section-title">
-            <span aria-hidden="true">⌗</span> Detected components
-          </div>
-          <div id="componentList" class="component-list-container"></div>
-
-          <div class="notebooklm-revision-box">
-            <label for="geminiEditInput" class="revision-header-title">
-              Type your edit instruction
-            </label>
-            <textarea
-              id="geminiEditInput"
-              class="notebooklm-textarea"
-              rows="4"
-              placeholder="For example: Make this diagram larger and change its labels to white."
-            ></textarea>
-
-            <label class="animation-step-toggle" title="Check to integrate this edit as a new step in the slide animation sequence. Uncheck to edit the main slide image directly.">
-              <input type="checkbox" id="isAnimationStepCheckbox" checked />
-              <span class="toggle-switch"></span>
-              <span class="toggle-label">Integrate edit as animation step</span>
-            </label>
-
-            <div
-              id="agentStatus"
-              class="agent-status"
-              role="status"
-              aria-live="polite"
-            >Ready to revise through Google Gemini image chat.</div>
-
-            <div class="revision-actions">
-              <button id="cancelRevisionBtn" class="btn btn-outline-small" type="button">Clear</button>
-              <button id="sendGeminiEditBtn" class="btn btn-primary-bright" type="button">
-                <span aria-hidden="true">✦</span> Apply typed edit
+            <div class="version-actions-row">
+              <button id="revertVersionBtn" class="btn btn-outline-small" type="button">
+                Revert to selected version
               </button>
-            </div>
-
-            <div class="version-history-card">
-              <div class="version-history-title">
-                <span class="version-icon" aria-hidden="true">↺</span>
-                <div>
-                  <strong>Version history</strong>
-                  <span>Revert to original slide or any past revision</span>
-                </div>
-              </div>
-              <select id="versionSelect" class="version-select" aria-label="Select slide version">
-                <option value="original">Original Slide Image</option>
-              </select>
-              <div class="version-actions-row">
-                <button id="revertVersionBtn" class="btn btn-outline-small" type="button">
-                  Revert to selected version
-                </button>
-                <button id="clearSequenceBtn" class="btn btn-outline-small" type="button">
-                  Clear image builds
-                </button>
-              </div>
+              <button id="clearSequenceBtn" class="btn btn-outline-small" type="button">
+                Clear image builds
+              </button>
             </div>
           </div>
         </div>

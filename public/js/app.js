@@ -12,7 +12,6 @@ let activeSidebarTab = "overview";
 let autosaveTimer = null;
 let presenterMode = true;
 let touchStartX = null;
-let agentPathways = [];
 let editTargetsBySlide = {};
 let geminiBuildRequestStates = {};
 let geminiBuildRequestCounter = 0;
@@ -185,15 +184,7 @@ const prevAnswerBtn = document.getElementById("prevAnswerBtn");
 const nextAnswerBtn = document.getElementById("nextAnswerBtn");
 const autoPlayBuildsBtn = document.getElementById("autoPlayBuildsBtn");
 const editComponentBtn = document.getElementById("editComponentBtn");
-const componentList = document.getElementById("componentList");
-const geminiEditInput = document.getElementById("geminiEditInput");
-const sendGeminiEditBtn = document.getElementById("sendGeminiEditBtn");
 const changeSlideHeading = document.getElementById("changeSlideHeading");
-const cancelRevisionBtn = document.getElementById("cancelRevisionBtn");
-const agentStatus = document.getElementById("agentStatus");
-const agentPathwaySelect = document.getElementById("agentPathwaySelect");
-const agentPathwayName = document.getElementById("agentPathwayName");
-const agentPathwayDescription = document.getElementById("agentPathwayDescription");
 const editModeBadge = document.getElementById("editModeBadge");
 const selectedTargetSummary = document.getElementById("selectedTargetSummary");
 const selectedTargetName = document.getElementById("selectedTargetName");
@@ -452,8 +443,6 @@ function setSelectedEditTarget(target, { rerenderPanel = true, focusInput = fals
   renderEditTargetSelection();
   renderSelectedTargetSummary();
   if (rerenderPanel) renderComponentEditorPanel();
-  updateAgentPathwayCopy();
-  if (focusInput) geminiEditInput?.focus();
 }
 
 function componentEditTarget(slide, cell, index) {
@@ -5900,33 +5889,7 @@ async function init() {
   initSlideshowSync();
   setupEventListeners();
   initWelcomeModal();
-  await loadAgentPathways();
   await fetchSlideSets();
-}
-
-async function loadAgentPathways() {
-  try {
-    const response = await fetch("/api/agent-pathways");
-    if (!response.ok) throw new Error("Agent pathway configuration is unavailable.");
-    const data = await response.json();
-    agentPathways = data.pathways || [];
-
-    if (agentPathwaySelect && agentPathways.length) {
-      agentPathwaySelect.innerHTML = "";
-      agentPathways.forEach((pathway) => {
-        const option = document.createElement("option");
-        option.value = pathway.id;
-        option.textContent = pathway.label;
-        agentPathwaySelect.appendChild(option);
-      });
-      agentPathwaySelect.value = data.defaultPathway || DEFAULT_AGENT_PATHWAY;
-    }
-  } catch (error) {
-    console.warn(error.message);
-    if (agentPathwaySelect) agentPathwaySelect.value = DEFAULT_AGENT_PATHWAY;
-  }
-
-  updateAgentPathwayCopy();
 }
 
 function renderSlideSetsCards() {
@@ -7209,185 +7172,12 @@ function appendGeminiBuildSection(container, slide, cells) {
 }
 
 function renderComponentEditorPanel() {
-  if (!currentDeck || !componentList) return;
+  if (!currentDeck) return;
   const slide = currentDeck.slides[currentSlideIndex];
-  const selectedTarget = getSelectedEditTarget(slide);
-  const interactiveCells = getInteractiveCells(slide);
-  const geminiImageCells = getSidebarGeminiImageCells(slide);
-  changeSlideHeading.textContent = `Edit slide ${slide.number}`;
-  componentList.innerHTML = "";
+  if (!slide) return;
+  if (changeSlideHeading) changeSlideHeading.textContent = `Edit slide ${slide.number}`;
   renderSelectedTargetSummary();
   renderEditTargetSelection();
-
-  if (geminiImageCells.length > 0) {
-    appendGeminiBuildSection(componentList, slide, geminiImageCells);
-  }
-
-  if (interactiveCells.length === 0 && geminiImageCells.length === 0) {
-    componentList.innerHTML = `
-      <div class="empty-editor-state">
-        <strong>No pre-detected reveal components.</strong>
-        <span>Click anywhere on the slide to create a custom edit region.</span>
-      </div>
-    `;
-    renderVersionHistoryOptions(slide);
-    return;
-  }
-
-  const questionSection = document.createElement("section");
-  questionSection.className = "component-editor-section question-component-section";
-  if (interactiveCells.length > 0) {
-    questionSection.appendChild(
-      editorSubsectionHeading(
-        "Answer reveals",
-        `${interactiveCells.length} interactive ${interactiveCells.length === 1 ? "answer" : "answers"}`
-      )
-    );
-  }
-
-  interactiveCells.forEach((cell, index) => {
-    const revealed = isAnswerRevealed(slide, cell);
-    const bounds = getAnswerRegionSet(cell).primary || { x: 0, y: 0, w: 20, h: 20 };
-    const revealMode = normalizeRevealMode(cell);
-    const card = document.createElement("div");
-    const isSelected =
-      selectedTarget?.type === "component" && selectedTarget.id === cell.id;
-    card.className = `component-card-editor ${isSelected ? "selected" : ""}`;
-    card.dataset.cellId = cell.id;
-    card.innerHTML = `
-      <div class="component-card-header">
-        <div>
-          <span class="component-title-text">Answer ${index + 1}</span>
-          <div class="component-question-sub" title="${escapeHtml(cell.question)}">${escapeHtml(cell.question)}</div>
-        </div>
-        <div class="component-header-actions">
-          <button class="select-component-btn" type="button" aria-pressed="${isSelected}">
-            ${isSelected ? "⌖ Targeted" : "⌖ Target"}
-          </button>
-          <button class="btn btn-outline-small toggle-reveal-btn" type="button">
-            ${revealed ? "◉ Revealed" : "● Masked"}
-          </button>
-        </div>
-      </div>
-      <div class="boundary-grid">
-        ${[
-          ["x", "X", bounds.x],
-          ["y", "Y", bounds.y],
-          ["w", "W", bounds.w],
-          ["h", "H", bounds.h]
-        ]
-          .map(
-            ([key, label, value]) => `
-              <label class="boundary-field">
-                <span>${label} (%)</span>
-                <input
-                  type="number"
-                  min="0"
-                  max="100"
-                  step="0.5"
-                  class="bounds-input input-${key}"
-                  value="${Number(value).toFixed(1)}"
-                  aria-label="${label} boundary percentage for answer ${index + 1}"
-                >
-              </label>
-            `
-          )
-          .join("")}
-      </div>
-      <div class="reveal-mode-row">
-        <span class="reveal-mode-label">Reveal as</span>
-        <select class="reveal-mode-select" data-cell-id="${cell.id}" aria-label="Reveal mode for answer ${index + 1}">
-          <option value="unmask" ${revealMode === "unmask" ? "selected" : ""}>Unmask</option>
-          <option value="overlay" ${revealMode === "overlay" ? "selected" : ""}>Overlay text</option>
-          <option value="blur" ${revealMode === "blur" ? "selected" : ""}>Feathered blur</option>
-        </select>
-      </div>
-    `;
-
-    card.querySelector(".select-component-btn").addEventListener("click", () => {
-      setSelectedEditTarget(componentEditTarget(slide, cell, index), {
-        focusInput: true
-      });
-    });
-
-    card.querySelector(".toggle-reveal-btn").addEventListener("click", () => {
-      if (isGeneratedQuestionAnswerSequence(slide)) {
-        setQuestionAnswerRevealCount(slide, revealed ? index : index + 1);
-      } else {
-        setAnswerRevealed(slide, cell, !revealed);
-      }
-      renderSlideStage(slide);
-      renderComponentEditorPanel();
-    });
-
-    const inputs = {
-      x: card.querySelector(".input-x"),
-      y: card.querySelector(".input-y"),
-      w: card.querySelector(".input-w"),
-      h: card.querySelector(".input-h")
-    };
-
-    const updateBoundaryValues = () => {
-      const x = clamp(Number.parseFloat(inputs.x.value) || 0, 0, 99);
-      const y = clamp(Number.parseFloat(inputs.y.value) || 0, 0, 99);
-      const w = clamp(Number.parseFloat(inputs.w.value) || 1, 1, 100 - x);
-      const h = clamp(Number.parseFloat(inputs.h.value) || 1, 1, 100 - y);
-      const updatedBounds = { x, y, w, h };
-      setPrimaryAnswerBounds(cell, updatedBounds);
-      const activeTarget = getSelectedEditTarget(slide);
-      if (activeTarget?.type === "component" && activeTarget.id === cell.id) {
-        setSelectedEditTarget(
-          {
-            ...activeTarget,
-            bounds: updatedBounds,
-            point: targetPointFromBounds(updatedBounds)
-          },
-          { rerenderPanel: false }
-        );
-      }
-
-      const overlayCard = document.getElementById(`qa_card_${cell.id}`);
-      if (overlayCard) {
-        overlayCard.style.left = `${x}%`;
-        overlayCard.style.top = `${y}%`;
-        overlayCard.style.width = `${w}%`;
-        overlayCard.style.height = `${h}%`;
-      }
-      triggerAutosaveBounds(slide);
-    };
-
-    Object.values(inputs).forEach((input) => {
-      input.addEventListener("input", updateBoundaryValues);
-      input.addEventListener("focus", () => {
-        if (getSelectedEditTarget(slide)?.id !== cell.id) {
-          setSelectedEditTarget(componentEditTarget(slide, cell, index), {
-            rerenderPanel: false
-          });
-        }
-        card.classList.add("active-editing");
-      });
-      input.addEventListener("blur", () => {
-        card.classList.remove("active-editing");
-      });
-    });
-
-    const revealModeSelect = card.querySelector(".reveal-mode-select");
-    if (revealModeSelect) {
-      revealModeSelect.addEventListener("change", () => {
-        const newMode = revealModeSelect.value;
-        cell.revealMode = newMode;
-        triggerAutosaveBounds(slide);
-        renderSlideStage(slide);
-        renderComponentEditorPanel();
-        renderSelectedTargetSummary();
-      });
-    }
-
-    questionSection.appendChild(card);
-  });
-
-  if (interactiveCells.length > 0) componentList.appendChild(questionSection);
-
   renderVersionHistoryOptions(slide);
 }
 
@@ -7445,161 +7235,6 @@ function triggerAutosaveBounds(slide) {
       console.error("Autosave error:", error);
     }
   }, 400);
-}
-
-function selectedAgentPathway() {
-  return agentPathwaySelect?.value || DEFAULT_AGENT_PATHWAY;
-}
-
-function updateAgentPathwayCopy({ resetStatus = true } = {}) {
-  const selected = selectedAgentPathway();
-  const pathway = agentPathways.find((candidate) => candidate.id === selected);
-  const target = getSelectedEditTarget();
-  const label = pathway?.label ||
-    (selected === DEFAULT_AGENT_PATHWAY
-      ? "Google Gemini · Image chat"
-      : agentPathwaySelect?.selectedOptions[0]?.textContent);
-
-  if (agentPathwayName) agentPathwayName.textContent = label;
-  if (agentPathwayDescription) {
-    agentPathwayDescription.textContent =
-      pathway?.description ||
-      "The slide image and your instruction are sent through the active Gemini image chat.";
-  }
-  if (agentStatus && resetStatus) {
-    agentStatus.className = "agent-status";
-    agentStatus.textContent = target
-      ? `Ready to edit “${target.label}” through ${label}.`
-      : `No component selected. The instruction will apply to the whole slide through ${label}.`;
-  }
-
-  if (sendGeminiEditBtn) {
-    sendGeminiEditBtn.innerHTML = "<span>↗</span> Apply typed edit";
-  }
-}
-
-async function sendRevisionInstruction() {
-  if (!currentDeck) return;
-  const promptText = geminiEditInput?.value.trim();
-  if (!promptText) {
-    agentStatus.textContent = "Add a revision instruction before sending.";
-    geminiEditInput?.focus();
-    return;
-  }
-
-  const slide = currentDeck.slides[currentSlideIndex];
-  const originalImageBeforeRevision = slide.originalImageUrl || slide.imageUrl;
-  const pathway = selectedAgentPathway();
-  const selectedTarget = getSelectedEditTarget(slide);
-  const isAnimationStepCheckbox = document.getElementById("isAnimationStepCheckbox");
-  const isAnimationStep = Boolean(isAnimationStepCheckbox?.checked);
-
-  const editTarget = selectedTarget || {
-    type: "slide",
-    id: "slide",
-    label: `Whole slide ${slide.number}`,
-    bounds: { x: 0, y: 0, w: 100, h: 100 },
-    point: { x: 50, y: 50 }
-  };
-  sendGeminiEditBtn.disabled = true;
-  sendGeminiEditBtn.innerHTML = "<span>◌</span> Applying…";
-  agentStatus.className = "agent-status working";
-  agentStatus.textContent = `Preparing ${editTarget.label.toLowerCase()} and your typed instruction…`;
-
-  try {
-    const response = await fetch(
-      `/api/decks/${encodeURIComponent(currentDeck.id)}/slides/${slide.number}/revise`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          promptText,
-          pathway,
-          componentId: editTarget.id,
-          editTarget,
-          isAnimationStep
-        })
-      }
-    );
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error || "Revision request failed.");
-
-    const returnedSlide = data.slide || data.updatedSlide;
-    if (returnedSlide && typeof returnedSlide === "object") {
-      Object.assign(slide, returnedSlide);
-    } else if (Array.isArray(data.progressiveBuilds)) {
-      slide.progressiveBuilds = data.progressiveBuilds;
-    }
-
-    if (data.imageUrl) {
-      if (data.isAnimationStep) {
-        slide.hasProgressiveBuilds = true;
-        if (!Array.isArray(slide.progressiveBuilds) || slide.progressiveBuilds.length === 0) {
-          slide.progressiveBuilds = [
-            {
-              id: "build_1",
-              version: 1,
-              kind: "image",
-              label: "Build 1: Initial View",
-              imageUrl: originalImageBeforeRevision
-            }
-          ];
-        }
-        const serverReturnedSequence = Boolean(returnedSlide?.progressiveBuilds || data.progressiveBuilds);
-        const alreadyPresent = slide.progressiveBuilds.some((build) => build.imageUrl === data.imageUrl);
-        if (!serverReturnedSequence && !alreadyPresent) {
-          const nextVersion = slide.progressiveBuilds.length + 1;
-          const buildLabel = `Build ${nextVersion}: ${editTarget.label || "Custom Edit"}`;
-          slide.progressiveBuilds.push({
-            id: `build_${Date.now()}`,
-            version: nextVersion,
-            kind: "image",
-            source: "gemini-image",
-            label: buildLabel,
-            imageUrl: data.imageUrl
-          });
-        }
-        if (slide.serialAnimation) {
-          slide.serialAnimation.totalBuildSteps = normalizeBuildSteps(slide).length;
-        }
-        currentMediaBuildStep = normalizeBuildSteps(slide).length;
-      } else {
-        slide.imageUrl = data.imageUrl;
-        currentMediaBuildStep = 0;
-      }
-
-      if (!Array.isArray(slide.history)) {
-        slide.history = [
-          {
-            id: "ver_orig",
-            label: "Original Slide Image",
-            imageUrl: originalImageBeforeRevision
-          }
-        ];
-      }
-      if (!slide.history.some((entry) => entry.imageUrl === data.imageUrl)) {
-        slide.history.push({
-          id: `ver_${Date.now()}`,
-          label: data.isAnimationStep
-            ? `Build ${normalizeBuildSteps(slide).length}: ${editTarget.label}`
-            : `Edit: ${editTarget.label}`,
-          imageUrl: data.imageUrl
-        });
-      }
-      renderVersionHistoryOptions(slide);
-      renderSlideStage(slide);
-    }
-
-    agentStatus.className = `agent-status ${data.dispatched ? "success" : "queued"}`;
-    agentStatus.textContent =
-      data.status || `Edit registered for ${editTarget.label.toLowerCase()}.`;
-  } catch (error) {
-    agentStatus.className = "agent-status error";
-    agentStatus.textContent = error.message;
-  } finally {
-    sendGeminiEditBtn.disabled = false;
-    updateAgentPathwayCopy({ resetStatus: false });
-  }
 }
 
 function startEditPointerInteraction(event) {
@@ -7688,7 +7323,6 @@ function finishEditPointerInteraction(event) {
   const target = getSelectedEditTarget();
   syncSelectedComponentBounds(target);
   renderComponentEditorPanel();
-  geminiEditInput?.focus();
 }
 
 function togglePresenterMode() {
@@ -7915,11 +7549,6 @@ function setupEventListeners() {
     }
   });
   editComponentBtn?.addEventListener("click", () => switchSidebarTab("editor"));
-  cancelRevisionBtn?.addEventListener("click", () => {
-    geminiEditInput.value = "";
-    agentStatus.textContent = "Typed instruction cleared. The current target is unchanged.";
-    geminiEditInput.focus();
-  });
   clearEditTargetBtn?.addEventListener("click", () => {
     setSelectedEditTarget(null, { focusInput: true });
   });
@@ -8007,7 +7636,6 @@ function setupEventListeners() {
     renderSelectedTargetSummary();
     renderComponentEditorPanel();
   });
-  sendGeminiEditBtn?.addEventListener("click", sendRevisionInstruction);
   const revertVersionBtn = document.getElementById("revertVersionBtn");
   if (revertVersionBtn) {
     revertVersionBtn.addEventListener("click", async () => {
@@ -8058,11 +7686,8 @@ function setupEventListeners() {
           currentMediaBuildStep = protectedBuilds?.length > 0 ? 1 : 0;
           renderSlideStage(slide);
         }
-        agentStatus.className = "agent-status success";
-        agentStatus.textContent = "Slide successfully reverted to selected version!";
       } catch (err) {
-        agentStatus.className = "agent-status error";
-        agentStatus.textContent = err.message;
+        console.error("Revert error:", err);
       } finally {
         revertVersionBtn.disabled = false;
         revertVersionBtn.textContent = "Revert to selected version";
@@ -8147,40 +7772,14 @@ function setupEventListeners() {
         clearGeminiBuildRequestStatesForSlide(currentDeck.id, slide.number);
         renderSlideStage(slide);
         if (activeSidebarTab === "editor") renderComponentEditorPanel();
-
-        const retainedVideoCount = retainedBuilds.filter(isVideoMediaEntry).length;
-        const retainedFrameCount = retainedBuilds.length - retainedVideoCount;
-        const retainedDescriptions = [];
-        if (retainedVideoCount > 0) {
-          retainedDescriptions.push(
-            `${retainedVideoCount} protected video ${retainedVideoCount === 1 ? "build" : "builds"}`
-          );
-        }
-        if (retainedFrameCount > 0) {
-          retainedDescriptions.push(
-            `${retainedFrameCount} authored ${retainedFrameCount === 1 ? "frame" : "frames"}`
-          );
-        }
-        agentStatus.className = "agent-status success";
-        agentStatus.textContent = retainedBuilds.length > 0
-          ? `Generated image builds cleared. Retained ${retainedDescriptions.join(" and ")}.`
-          : "Generated image builds cleared for this slide.";
       } catch (err) {
-        agentStatus.className = "agent-status error";
-        agentStatus.textContent = err.message;
+        console.error("Clear image builds error:", err);
       } finally {
         clearSequenceBtn.disabled = false;
         clearSequenceBtn.textContent = "Clear image builds";
       }
     });
   }
-  geminiEditInput?.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
-      event.preventDefault();
-      sendRevisionInstruction();
-    }
-  });
-  agentPathwaySelect?.addEventListener("change", updateAgentPathwayCopy);
   tabOverviewBtn?.addEventListener("click", () => switchSidebarTab("overview"));
   tabEditorBtn?.addEventListener("click", () => switchSidebarTab("editor"));
   slideSetBtn?.addEventListener("click", () => {
