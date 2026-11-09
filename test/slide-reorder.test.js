@@ -305,3 +305,40 @@ test("sidebar components tab button displays pencil icon only without visible te
   assert.match(css, /\.tab-pencil-icon\s*\{/);
 });
 
+test("sidebar thumbnails scale width fluidly across screen widths and preserve 16:9 card height with an invisible scrollbar", async () => {
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(
+    css,
+    /\.sidebar\s*\{[^}]*--sidebar-width:\s*clamp\(190px,\s*24dvw,\s*400px\);[^}]*flex:\s*0\s+0\s+var\(--sidebar-width\);[^}]*container:\s*sidebar\s*\/\s*inline-size;/s,
+    ".sidebar must size width fluidly with clamp() and establish an inline-size container"
+  );
+  assert.match(css, /\.thumbnails-grid\s*\{[^}]*container:\s*thumbnails\s*\/\s*inline-size;/s, ".thumbnails-grid must establish a thumbnails inline-size container");
+  assert.match(css, /\.thumbnails-grid\s*\{[^}]*min-height:\s*0;/s, ".thumbnails-grid must set min-height: 0");
+  assert.match(css, /\.thumbnails-grid\s*\{[^}]*scrollbar-width:\s*none;/s, ".thumbnails-grid must hide scrollbar via scrollbar-width: none");
+  assert.match(css, /\.thumbnails-grid::-webkit-scrollbar/, ".thumbnails-grid must include webkit scrollbar hide fallback");
+  assert.match(css, /\.thumb-item\s*\{[^}]*flex-shrink:\s*0;/s, ".thumb-item must prevent flex shrinking");
+  assert.match(css, /\.thumb-item\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9;/s, ".thumb-item must preserve 16:9 aspect ratio");
+  assert.match(css, /@supports\s*\(min-height:\s*1cqi\)\s*\{\s*\.thumb-item\s*\{[^}]*min-height:\s*56\.25cqi;/s, ".thumb-item must enforce proportional 56.25cqi minimum height");
+});
+
+test("slide sorter popup modal provides card grid view and quick rearrange controls", async () => {
+  const html = await fs.readFile(path.join(ROOT_DIR, "public", "index.html"), "utf-8");
+  assert.match(html, /id="openSlideSorterBtn"/, "index.html must include sidebar openSlideSorterBtn");
+  assert.match(html, /id="settingsSlideSorterBtn"/, "index.html must include settingsSlideSorterBtn");
+  assert.match(html, /<dialog[^>]*id="slideSorterModal"[^>]*closedby="any"/, "index.html must include native <dialog> with closedby='any'");
+  assert.doesNotMatch(html, /<dialog[^>]*id="slideSorterModal"[^>]*role="dialog"/, "native <dialog> must not duplicate role='dialog'");
+  assert.match(html, /id="slideSorterGrid"/, "index.html must include slideSorterGrid");
+
+  const css = await fs.readFile(path.join(ROOT_DIR, "public", "css", "styles.css"), "utf-8");
+  assert.match(css, /dialog\.slide-sorter-dialog\[open\]/, "styles.css must scope display to dialog[open]");
+  assert.match(css, /dialog\.slide-sorter-dialog:modal\s*\{[^}]*overscroll-behavior:\s*contain;/s);
+  assert.match(css, /dialog\.slide-sorter-dialog::backdrop\s*\{[^}]*overscroll-behavior:\s*contain;/s);
+  assert.match(css, /\.sorter-card\.drop-target-before::before/);
+  assert.match(css, /\.sorter-card\.drop-target-after::after/);
+
+  const js = await fs.readFile(path.join(ROOT_DIR, "public", "js", "app.js"), "utf-8");
+  assert.match(js, /function\s+openSlideSorterModal\s*\(/);
+  assert.match(js, /function\s+renderSlideSorterCards\s*\(/);
+  assert.match(js, /slideSorterModal\.showModal\(\)/);
+});
+

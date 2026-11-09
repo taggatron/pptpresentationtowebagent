@@ -98,8 +98,17 @@ const thumbnailsGrid = document.getElementById("thumbnailsGrid");
 const slideCountBadge = document.getElementById("slideCountBadge");
 const slideOrderStatusBadge = document.getElementById("slideOrderStatusBadge");
 const slideHiddenBadge = document.getElementById("slideHiddenBadge");
+const openSlideSorterBtn = document.getElementById("openSlideSorterBtn");
+const settingsSlideSorterBtn = document.getElementById("settingsSlideSorterBtn");
+const slideSorterModal = document.getElementById("slideSorterModal");
+const slideSorterGrid = document.getElementById("slideSorterGrid");
+const slideSorterCountBadge = document.getElementById("slideSorterCountBadge");
+const slideSorterSaveBadge = document.getElementById("slideSorterSaveBadge");
 let draggedSlideIndex = null;
+let sorterDraggedSlideIndex = null;
 let slideOrderSaveTimer = null;
+let slideOrderPersistChain = Promise.resolve();
+let slideSorterDensity = "standard";
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 const startSlideshowBtn = document.getElementById("startSlideshowBtn");
 const presentationDisplayBadge = document.getElementById("presentationDisplayBadge");
@@ -3159,6 +3168,12 @@ function initSettingsDropdown() {
   const dashboardLink = document.getElementById("dashboardBtn");
   dashboardLink?.addEventListener("click", () => {
     closeMenu();
+  });
+
+  const sorterMenuBtn = document.getElementById("settingsSlideSorterBtn");
+  sorterMenuBtn?.addEventListener("click", () => {
+    closeMenu();
+    openSlideSorterModal();
   });
 }
 
@@ -6428,8 +6443,44 @@ function setAllAnswersRevealed(revealed) {
   }
 }
 
+function setSlideOrderFeedback(state, htmlContent, autoHideMs = 0) {
+  const badges = [slideOrderStatusBadge, slideSorterSaveBadge].filter(Boolean);
+  if (slideOrderSaveTimer) {
+    clearTimeout(slideOrderSaveTimer);
+    slideOrderSaveTimer = null;
+  }
+  badges.forEach((badge) => {
+    badge.className = `slide-order-status ${state}`;
+    badge.innerHTML = htmlContent;
+    badge.classList.remove("hidden");
+  });
+  if (autoHideMs > 0) {
+    slideOrderSaveTimer = setTimeout(() => {
+      badges.forEach((badge) => badge.classList.add("hidden"));
+    }, autoHideMs);
+  }
+}
+
+function autoScrollContainerOnDrag(container, clientY) {
+  if (!container) return;
+  const rect = container.getBoundingClientRect();
+  const edgeZone = 52;
+  if (clientY < rect.top + edgeZone) {
+    const intensity = Math.max(4, Math.round(((rect.top + edgeZone - clientY) / edgeZone) * 18));
+    container.scrollTop -= intensity;
+  } else if (clientY > rect.bottom - edgeZone) {
+    const intensity = Math.max(4, Math.round(((clientY - (rect.bottom - edgeZone)) / edgeZone) * 18));
+    container.scrollTop += intensity;
+  }
+}
+
 function renderThumbnails() {
   if (!thumbnailsGrid || !currentDeck?.slides) return;
+  const slideTotal = currentDeck.slides.length;
+  const countText = `${slideTotal} ${slideTotal === 1 ? "slide" : "slides"}`;
+  if (slideCountBadge) slideCountBadge.textContent = countText;
+  if (slideSorterCountBadge) slideSorterCountBadge.textContent = countText;
+
   thumbnailsGrid.innerHTML = "";
   currentDeck.slides.forEach((slide, index) => {
     const thumb = document.createElement("button");
@@ -6560,6 +6611,7 @@ function renderThumbnails() {
     thumb.addEventListener("dragover", (e) => {
       e.preventDefault();
       e.dataTransfer.dropEffect = "move";
+      autoScrollContainerOnDrag(thumbnailsGrid, e.clientY);
       if (draggedSlideIndex === null || draggedSlideIndex === index) {
         thumb.classList.remove("drop-target-above", "drop-target-below");
         return;
@@ -6605,6 +6657,404 @@ function renderThumbnails() {
 
     thumbnailsGrid.appendChild(thumb);
   });
+
+  if (slideSorterModal?.open) {
+    renderSlideSorterCards();
+  }
+}
+
+function renderSlideSorterCards() {
+  if (!slideSorterGrid || !currentDeck?.slides) return;
+  const slides = currentDeck.slides;
+  const total = slides.length;
+  if (slideSorterCountBadge) {
+    slideSorterCountBadge.textContent = `${total} ${total === 1 ? "slide" : "slides"}`;
+  }
+
+  slideSorterGrid.innerHTML = "";
+  slides.forEach((slide, index) => {
+    const card = document.createElement("div");
+    card.className = `sorter-card ${index === currentSlideIndex ? "active" : ""} ${slide.hidden ? "is-hidden" : ""}`;
+    card.setAttribute("role", "listitem");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("draggable", "true");
+    card.dataset.slideIndex = String(index);
+    const displayTitle = slide.title || `Slide ${index + 1}`;
+    card.setAttribute(
+      "aria-label",
+      `Slide ${index + 1} of ${total}: ${displayTitle}${slide.hidden ? " (Hidden)" : ""}. Drag to rearrange, press Alt+Left or Alt+Right to move, Enter to open.`
+    );
+
+    const preview = document.createElement("div");
+    preview.className = "sorter-card-preview";
+
+    const img = document.createElement("img");
+    img.src = slide.imageUrl;
+    img.alt = "";
+    img.loading = "lazy";
+    img.draggable = false;
+
+    const topLeft = document.createElement("div");
+    topLeft.className = "sorter-card-top-left";
+
+    const posBtn = document.createElement("button");
+    posBtn.type = "button";
+    posBtn.className = "sorter-pos-btn";
+    posBtn.title = `Slide ${index + 1} · Click to type a new position (1–${total})`;
+    posBtn.setAttribute("aria-label", `Move slide ${index + 1} to a specific position`);
+    posBtn.innerHTML = `<span class="sorter-grip-dots" aria-hidden="true">⋮⋮</span><span>#${index + 1}</span>`;
+
+    posBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (total <= 1) return;
+      const input = document.createElement("input");
+      input.type = "number";
+      input.className = "sorter-pos-input";
+      input.min = "1";
+      input.max = String(total);
+      input.value = String(index + 1);
+      input.setAttribute("aria-label", `Target position for slide ${index + 1}`);
+
+      let committed = false;
+      const commitPosition = async () => {
+        if (committed) return;
+        committed = true;
+        const parsed = Number.parseInt(input.value, 10);
+        if (Number.isInteger(parsed)) {
+          const destIdx = clamp(parsed - 1, 0, total - 1);
+          if (destIdx !== index) {
+            await moveSlideOrder(index, destIdx);
+            const movedCard = slideSorterGrid.children[destIdx];
+            movedCard?.focus();
+            return;
+          }
+        }
+        if (input.parentNode === topLeft) {
+          topLeft.replaceChild(posBtn, input);
+        }
+      };
+
+      input.addEventListener("click", (ev) => ev.stopPropagation());
+      input.addEventListener("dblclick", (ev) => ev.stopPropagation());
+      input.addEventListener("keydown", (ev) => {
+        ev.stopPropagation();
+        if (ev.key === "Enter") {
+          ev.preventDefault();
+          commitPosition();
+        } else if (ev.key === "Escape") {
+          ev.preventDefault();
+          committed = true;
+          if (input.parentNode === topLeft) {
+            topLeft.replaceChild(posBtn, input);
+          }
+          card.focus();
+        }
+      });
+      input.addEventListener("blur", () => {
+        commitPosition();
+      });
+
+      topLeft.replaceChild(input, posBtn);
+      input.focus();
+      input.select();
+    });
+
+    topLeft.appendChild(posBtn);
+
+    const actions = document.createElement("div");
+    actions.className = "sorter-card-actions";
+    actions.setAttribute("role", "toolbar");
+    actions.setAttribute("aria-label", `Slide ${index + 1} quick actions`);
+
+    const movePrevBtn = document.createElement("button");
+    movePrevBtn.type = "button";
+    movePrevBtn.className = "sorter-action-btn sorter-move-prev-btn";
+    movePrevBtn.textContent = "←";
+    movePrevBtn.disabled = index === 0;
+    movePrevBtn.title = "Move slide earlier (Alt+Left)";
+    movePrevBtn.setAttribute("aria-label", `Move slide ${index + 1} earlier`);
+    movePrevBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (index > 0) {
+        const dest = index - 1;
+        await moveSlideOrder(index, dest);
+        slideSorterGrid.children[dest]?.focus();
+      }
+    });
+
+    const moveNextBtn = document.createElement("button");
+    moveNextBtn.type = "button";
+    moveNextBtn.className = "sorter-action-btn sorter-move-next-btn";
+    moveNextBtn.textContent = "→";
+    moveNextBtn.disabled = index === total - 1;
+    moveNextBtn.title = "Move slide later (Alt+Right)";
+    moveNextBtn.setAttribute("aria-label", `Move slide ${index + 1} later`);
+    moveNextBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (index < total - 1) {
+        const dest = index + 1;
+        await moveSlideOrder(index, dest);
+        slideSorterGrid.children[dest]?.focus();
+      }
+    });
+
+    const hideBtn = document.createElement("button");
+    hideBtn.type = "button";
+    hideBtn.className = `sorter-action-btn sorter-hide-btn ${slide.hidden ? "is-hidden" : ""}`;
+    hideBtn.textContent = slide.hidden ? "⊘" : "👁";
+    hideBtn.title = slide.hidden ? "Unhide slide" : "Hide slide";
+    hideBtn.setAttribute("aria-label", slide.hidden ? `Unhide slide ${index + 1}` : `Hide slide ${index + 1}`);
+    hideBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      await toggleHideSlide(index);
+      slideSorterGrid.children[index]?.focus();
+    });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.type = "button";
+    deleteBtn.className = "sorter-action-btn sorter-delete-btn";
+    deleteBtn.textContent = "🗑";
+    deleteBtn.disabled = total <= 1;
+    deleteBtn.title = "Delete slide";
+    deleteBtn.setAttribute("aria-label", `Delete slide ${index + 1}`);
+    deleteBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      await deleteSlide(index);
+    });
+
+    actions.append(movePrevBtn, moveNextBtn, hideBtn, deleteBtn);
+
+    const rag = getRagStatus(slide.cognitiveGuide);
+    const ragDot = document.createElement("span");
+    ragDot.className = `sorter-card-rag ${rag.class}`;
+    ragDot.title = `${rag.label}: ~${slide.cognitiveGuide?.timeGuideDisplay || "20s"}`;
+
+    preview.append(img, topLeft, actions, ragDot);
+
+    if (slide.hidden) {
+      const hiddenTag = document.createElement("span");
+      hiddenTag.className = "thumb-hidden-tag";
+      hiddenTag.textContent = "⊘ Hidden";
+      preview.appendChild(hiddenTag);
+    }
+
+    const footer = document.createElement("div");
+    footer.className = "sorter-card-footer";
+
+    const titleEl = document.createElement("span");
+    titleEl.className = "sorter-card-title";
+    titleEl.textContent = displayTitle;
+    titleEl.title = displayTitle;
+
+    const badges = document.createElement("span");
+    badges.className = "sorter-card-badges";
+
+    if (index === currentSlideIndex) {
+      const currentPill = document.createElement("span");
+      currentPill.className = "sorter-current-pill";
+      currentPill.textContent = "Current";
+      badges.appendChild(currentPill);
+    }
+
+    const pacePill = document.createElement("span");
+    pacePill.className = "sorter-pace-pill";
+    pacePill.textContent = `~${slide.cognitiveGuide?.timeGuideDisplay || "20s"}`;
+    badges.appendChild(pacePill);
+
+    footer.append(titleEl, badges);
+    card.append(preview, footer);
+
+    card.addEventListener("click", () => {
+      renderSlide(index);
+    });
+
+    card.addEventListener("dblclick", () => {
+      renderSlide(index);
+      closeSlideSorterModal();
+    });
+
+    card.addEventListener("keydown", async (e) => {
+      if (e.target !== card) return;
+      if ((e.altKey || e.metaKey) && (e.key === "ArrowLeft" || e.key === "ArrowUp")) {
+        e.preventDefault();
+        if (index > 0) {
+          const dest = index - 1;
+          await moveSlideOrder(index, dest);
+          slideSorterGrid.children[dest]?.focus();
+        }
+      } else if ((e.altKey || e.metaKey) && (e.key === "ArrowRight" || e.key === "ArrowDown")) {
+        e.preventDefault();
+        if (index < total - 1) {
+          const dest = index + 1;
+          await moveSlideOrder(index, dest);
+          slideSorterGrid.children[dest]?.focus();
+        }
+      } else if (!e.altKey && !e.metaKey && !e.ctrlKey && e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (index > 0) slideSorterGrid.children[index - 1]?.focus();
+      } else if (!e.altKey && !e.metaKey && !e.ctrlKey && e.key === "ArrowRight") {
+        e.preventDefault();
+        if (index < total - 1) slideSorterGrid.children[index + 1]?.focus();
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        renderSlide(index);
+        closeSlideSorterModal();
+      } else if (e.key === " ") {
+        e.preventDefault();
+        renderSlide(index);
+      }
+    });
+
+    card.addEventListener("dragstart", (e) => {
+      if (e.target instanceof HTMLInputElement) {
+        e.preventDefault();
+        return;
+      }
+      sorterDraggedSlideIndex = index;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", String(index));
+      setTimeout(() => card.classList.add("is-dragging"), 0);
+    });
+
+    card.addEventListener("dragend", () => {
+      sorterDraggedSlideIndex = null;
+      slideSorterGrid.querySelectorAll(".sorter-card").forEach((el) => {
+        el.classList.remove("is-dragging", "drop-target-before", "drop-target-after");
+      });
+    });
+
+    card.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      autoScrollContainerOnDrag(slideSorterGrid, e.clientY);
+      if (sorterDraggedSlideIndex === null || sorterDraggedSlideIndex === index) {
+        card.classList.remove("drop-target-before", "drop-target-after");
+        return;
+      }
+
+      slideSorterGrid.querySelectorAll(".sorter-card.drop-target-before, .sorter-card.drop-target-after").forEach((el) => {
+        if (el !== card) el.classList.remove("drop-target-before", "drop-target-after");
+      });
+
+      const rect = card.getBoundingClientRect();
+      const isBefore = e.clientX < rect.left + rect.width / 2;
+      card.classList.toggle("drop-target-before", isBefore);
+      card.classList.toggle("drop-target-after", !isBefore);
+    });
+
+    card.addEventListener("dragleave", (e) => {
+      if (!card.contains(e.relatedTarget)) {
+        card.classList.remove("drop-target-before", "drop-target-after");
+      }
+    });
+
+    card.addEventListener("drop", async (e) => {
+      e.preventDefault();
+      card.classList.remove("drop-target-before", "drop-target-after");
+      const rawSource = e.dataTransfer.getData("text/plain");
+      const sourceIdx =
+        sorterDraggedSlideIndex ??
+        (rawSource !== "" ? Number.parseInt(rawSource, 10) : null);
+      sorterDraggedSlideIndex = null;
+      if (sourceIdx === null || !Number.isInteger(sourceIdx) || sourceIdx === index) return;
+
+      const rect = card.getBoundingClientRect();
+      const isBefore = e.clientX < rect.left + rect.width / 2;
+      const targetIdx = isBefore
+        ? (sourceIdx > index ? index : index - 1)
+        : (sourceIdx < index ? index : index + 1);
+
+      if (targetIdx === sourceIdx) return;
+      await moveSlideOrder(sourceIdx, targetIdx);
+      const finalIdx = clamp(targetIdx, 0, currentDeck.slides.length - 1);
+      slideSorterGrid.children[finalIdx]?.focus();
+    });
+
+    slideSorterGrid.appendChild(card);
+  });
+}
+
+function setSlideSorterDensity(density) {
+  if (!slideSorterGrid) return;
+  slideSorterDensity = density;
+  slideSorterGrid.classList.toggle("density-compact", density === "compact");
+  slideSorterGrid.classList.toggle("density-large", density === "large");
+  slideSorterModal?.querySelectorAll(".sorter-density-btn").forEach((btn) => {
+    const isActive = btn.dataset.sorterDensity === density;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function openSlideSorterModal() {
+  if (!slideSorterModal || !currentDeck?.slides) return;
+  renderSlideSorterCards();
+  if (!slideSorterModal.open) {
+    if (typeof slideSorterModal.showModal === "function") {
+      slideSorterModal.showModal();
+    } else {
+      slideSorterModal.setAttribute("open", "");
+    }
+  }
+  if (typeof requestAnimationFrame === "function") {
+    requestAnimationFrame(() => {
+      const activeCard = slideSorterGrid?.querySelector(".sorter-card.active");
+      activeCard?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    });
+  }
+}
+
+function closeSlideSorterModal() {
+  if (!slideSorterModal?.open) return;
+  if (typeof slideSorterModal.close === "function") {
+    slideSorterModal.close();
+  } else {
+    slideSorterModal.removeAttribute("open");
+  }
+}
+
+function initSlideSorterModal() {
+  openSlideSorterBtn?.addEventListener("click", () => {
+    openSlideSorterModal();
+  });
+
+  if (!slideSorterModal) return;
+
+  slideSorterModal.addEventListener("close", () => {
+    slideSorterModal.returnValue = "";
+    sorterDraggedSlideIndex = null;
+  });
+
+  slideSorterModal.querySelectorAll(".sorter-density-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (btn.dataset.sorterDensity) {
+        setSlideSorterDensity(btn.dataset.sorterDensity);
+      }
+    });
+  });
+
+  // Fallback light-dismiss for browsers without native <dialog closedby="any">
+  if (typeof HTMLDialogElement !== "undefined" && !("closedBy" in HTMLDialogElement.prototype)) {
+    const isOutsideDialog = (event) => {
+      const rect = slideSorterModal.getBoundingClientRect();
+      return (
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom
+      );
+    };
+    let pressedOutside = false;
+    slideSorterModal.addEventListener("pointerdown", (event) => {
+      pressedOutside = event.target === slideSorterModal && isOutsideDialog(event);
+    });
+    slideSorterModal.addEventListener("pointerup", (event) => {
+      if (pressedOutside && sorterDraggedSlideIndex === null && isOutsideDialog(event)) {
+        closeSlideSorterModal();
+      }
+      pressedOutside = false;
+    });
+  }
 }
 
 async function toggleHideSlide(index) {
@@ -6619,31 +7069,21 @@ async function toggleHideSlide(index) {
     slideHiddenBadge.classList.toggle("hidden", !slide.hidden);
   }
 
-  if (slideOrderStatusBadge) {
-    slideOrderStatusBadge.className = "slide-order-status saving";
-    slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⏳</span><span>Saving…</span>';
-    slideOrderStatusBadge.classList.remove("hidden");
-  }
+  setSlideOrderFeedback("saving", '<span aria-hidden="true">⏳</span><span>Saving…</span>');
 
   try {
     const res = await fetch(`/api/decks/${encodeURIComponent(currentDeck.id)}/slides/${encodeURIComponent(slideNum)}/toggle-hide`, {
       method: "POST"
     });
     if (!res.ok) throw new Error("Failed to toggle slide hide status");
-    if (slideOrderStatusBadge) {
-      slideOrderStatusBadge.className = "slide-order-status saved";
-      slideOrderStatusBadge.innerHTML = `<span aria-hidden="true">✓</span><span>${slide.hidden ? "Slide hidden" : "Slide visible"}</span>`;
-      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
-      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 2400);
-    }
+    setSlideOrderFeedback(
+      "saved",
+      `<span aria-hidden="true">✓</span><span>${slide.hidden ? "Slide hidden" : "Slide visible"}</span>`,
+      2400
+    );
   } catch (err) {
     console.error("Error toggling slide hide:", err);
-    if (slideOrderStatusBadge) {
-      slideOrderStatusBadge.className = "slide-order-status error";
-      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⚠️</span><span>Save failed</span>';
-      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
-      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 3500);
-    }
+    setSlideOrderFeedback("error", '<span aria-hidden="true">⚠️</span><span>Save failed</span>', 3500);
   }
 }
 
@@ -6680,31 +7120,17 @@ async function deleteSlide(index) {
   renderThumbnails();
   renderSlide(currentSlideIndex);
 
-  if (slideOrderStatusBadge) {
-    slideOrderStatusBadge.className = "slide-order-status saving";
-    slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⏳</span><span>Deleting…</span>';
-    slideOrderStatusBadge.classList.remove("hidden");
-  }
+  setSlideOrderFeedback("saving", '<span aria-hidden="true">⏳</span><span>Deleting…</span>');
 
   try {
     const res = await fetch(`/api/decks/${encodeURIComponent(currentDeck.id)}/slides/${encodeURIComponent(slideNum)}`, {
       method: "DELETE"
     });
     if (!res.ok) throw new Error("Failed to delete slide");
-    if (slideOrderStatusBadge) {
-      slideOrderStatusBadge.className = "slide-order-status saved";
-      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">✓</span><span>Slide deleted</span>';
-      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
-      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 2400);
-    }
+    setSlideOrderFeedback("saved", '<span aria-hidden="true">✓</span><span>Slide deleted</span>', 2400);
   } catch (err) {
     console.error("Error deleting slide:", err);
-    if (slideOrderStatusBadge) {
-      slideOrderStatusBadge.className = "slide-order-status error";
-      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⚠️</span><span>Delete failed</span>';
-      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
-      slideOrderSaveTimer = setTimeout(() => slideOrderStatusBadge.classList.add("hidden"), 3500);
-    }
+    setSlideOrderFeedback("error", '<span aria-hidden="true">⚠️</span><span>Delete failed</span>', 3500);
   }
 }
 
@@ -6718,7 +7144,12 @@ async function moveSlideOrder(fromIndex, toIndex) {
   currentDeck.slides.splice(targetIndex, 0, movedSlide);
 
   currentDeck.slides.forEach((slide, idx) => {
-    slide.number = idx + 1;
+    const oldNum = slide.number;
+    const newNum = idx + 1;
+    slide.number = newNum;
+    if (typeof slide.title === "string" && new RegExp(`^Slide\\s+${oldNum}$`, "i").test(slide.title.trim())) {
+      slide.title = `Slide ${newNum}`;
+    }
   });
 
   const newActiveIndex = currentDeck.slides.indexOf(currentActiveSlide);
@@ -6739,50 +7170,40 @@ async function moveSlideOrder(fromIndex, toIndex) {
   if (answerLiveRegion) {
     answerLiveRegion.textContent = `Slide moved from position ${fromIndex + 1} to position ${targetIndex + 1}.`;
   }
+  if (!isPresentationWindow) {
+    broadcastSlideshowSync("SLIDE_CHANGE");
+  }
 
   await persistSlideOrder(currentDeck.id, fromIndex, targetIndex);
 }
 
-async function persistSlideOrder(deckId, fromIndex, targetIndex) {
-  if (!deckId) return;
+function persistSlideOrder(deckId, fromIndex, targetIndex) {
+  if (!deckId) return Promise.resolve();
 
-  if (slideOrderStatusBadge) {
-    slideOrderStatusBadge.className = "slide-order-status saving";
-    slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⏳</span><span>Saving…</span>';
-    slideOrderStatusBadge.classList.remove("hidden");
-  }
+  setSlideOrderFeedback("saving", '<span aria-hidden="true">⏳</span><span>Saving…</span>');
 
-  try {
-    const response = await fetch(`/api/decks/${encodeURIComponent(deckId)}/reorder-slides`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fromIndex, toIndex: targetIndex })
-    });
+  const runSave = async () => {
+    try {
+      const response = await fetch(`/api/decks/${encodeURIComponent(deckId)}/reorder-slides`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fromIndex, toIndex: targetIndex })
+      });
 
-    if (!response.ok) {
-      const errData = await response.json().catch(() => ({}));
-      throw new Error(errData.error || "Failed to save slide order.");
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to save slide order.");
+      }
+
+      setSlideOrderFeedback("saved", '<span aria-hidden="true">✓</span><span>Saved</span>', 2400);
+    } catch (error) {
+      console.error("Error saving slide order:", error);
+      setSlideOrderFeedback("error", '<span aria-hidden="true">⚠️</span><span>Save failed</span>', 3500);
     }
+  };
 
-    if (slideOrderStatusBadge) {
-      slideOrderStatusBadge.className = "slide-order-status saved";
-      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">✓</span><span>Saved</span>';
-      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
-      slideOrderSaveTimer = setTimeout(() => {
-        slideOrderStatusBadge.classList.add("hidden");
-      }, 2400);
-    }
-  } catch (error) {
-    console.error("Error saving slide order:", error);
-    if (slideOrderStatusBadge) {
-      slideOrderStatusBadge.className = "slide-order-status error";
-      slideOrderStatusBadge.innerHTML = '<span aria-hidden="true">⚠️</span><span>Save failed</span>';
-      if (slideOrderSaveTimer) clearTimeout(slideOrderSaveTimer);
-      slideOrderSaveTimer = setTimeout(() => {
-        slideOrderStatusBadge.classList.add("hidden");
-      }, 3500);
-    }
-  }
+  slideOrderPersistChain = slideOrderPersistChain.then(runSave, runSave);
+  return slideOrderPersistChain;
 }
 
 function updateActiveThumbnail(index) {
@@ -6806,6 +7227,24 @@ function updateActiveThumbnail(index) {
       }
     }
   });
+
+  if (slideSorterModal?.open && slideSorterGrid) {
+    const sorterCards = slideSorterGrid.querySelectorAll(".sorter-card");
+    sorterCards.forEach((card, cardIdx) => {
+      const isActive = cardIdx === index;
+      card.classList.toggle("active", isActive);
+      const badges = card.querySelector(".sorter-card-badges");
+      const existingPill = badges?.querySelector(".sorter-current-pill");
+      if (isActive && badges && !existingPill) {
+        const currentPill = document.createElement("span");
+        currentPill.className = "sorter-current-pill";
+        currentPill.textContent = "Current";
+        badges.prepend(currentPill);
+      } else if (!isActive && existingPill) {
+        existingPill.remove();
+      }
+    });
+  }
 }
 
 function switchSidebarTab(tabName) {
@@ -7782,6 +8221,7 @@ function setupEventListeners() {
   }
   tabOverviewBtn?.addEventListener("click", () => switchSidebarTab("overview"));
   tabEditorBtn?.addEventListener("click", () => switchSidebarTab("editor"));
+  initSlideSorterModal();
   slideSetBtn?.addEventListener("click", () => {
     renderSlideSetsCards();
     if (setsModal) setsModal.classList.remove("hidden");
@@ -8089,6 +8529,8 @@ function setupEventListeners() {
       target?.isContentEditable;
     if (typing) return;
 
+    if (slideSorterModal?.open) return;
+
     if (target instanceof HTMLButtonElement && (event.key === " " || event.key === "Enter")) {
       return;
     }
@@ -8213,6 +8655,9 @@ function setupEventListeners() {
       }
     } else if (event.key.toLowerCase() === "t") {
       toggleSidebar();
+    } else if (event.key.toLowerCase() === "g" && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      event.preventDefault();
+      openSlideSorterModal();
     } else if (event.key.toLowerCase() === "f") {
       fullscreenBtn?.click();
     }
