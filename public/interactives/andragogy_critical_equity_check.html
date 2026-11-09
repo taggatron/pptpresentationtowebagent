@@ -4,28 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quick Check: Knowles’ Andragogy Meets Critical Equity | Staff CPD</title>
+  <script type="module">
+    if (!("popover" in HTMLElement.prototype)) {
+      import("https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js").catch(() => {});
+    }
+    if (!("commandForElement" in HTMLButtonElement.prototype)) {
+      import("https://esm.run/invokers-polyfill").catch(() => {});
+    }
+  </script>
   <style>
     :root {
       --bg-cream-1: #f7f3ec;
       --bg-cream-2: #efe7db;
-      --card-surface: rgba(255, 255, 255, 0.94);
+      --card-surface: rgba(255, 255, 255, 0.96);
       --text-primary: #141c2b;
       --text-secondary: #42526b;
       --text-muted: #64748b;
       --knowles-blue: #2e8bc0;
       --knowles-blue-dark: #1d6fa3;
       --knowles-blue-soft: #eef7fc;
-      --knowles-blue-glow: rgba(72, 169, 224, 0.35);
+      --knowles-blue-glow: rgba(72, 169, 224, 0.34);
       --equity-teal: #3b9b82;
       --equity-teal-dark: #287a64;
       --equity-teal-soft: #edf9f5;
-      --equity-teal-glow: rgba(77, 184, 154, 0.35);
+      --equity-teal-glow: rgba(77, 184, 154, 0.34);
       --correct-green: #15803d;
       --correct-bg: #f0fdf4;
       --incorrect-red: #b91c1c;
       --incorrect-bg: #fef2f2;
-      --border-subtle: rgba(148, 163, 184, 0.28);
-      --radius-xl: 18px;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --radius-xl: 20px;
       --radius-lg: 14px;
       --radius-md: 10px;
     }
@@ -61,7 +69,7 @@
       white-space: nowrap !important;
     }
 
-    :where(button, [role="button"], input, select):focus-visible {
+    :where(button, [role="button"], [tabindex="0"], input, select):focus-visible {
       outline: 3px solid #1d4ed8;
       outline-offset: 2px;
     }
@@ -81,15 +89,15 @@
 
     /* Top Header */
     .slide-header {
+      flex-shrink: 0;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
       border-radius: var(--radius-lg);
       padding: 10px 18px;
     }
@@ -120,94 +128,177 @@
     }
 
     h1 {
-      font-size: clamp(18px, 2.1vw, 25px);
+      font-size: clamp(19px, 2.05vw, 25px);
       font-weight: 800;
       color: var(--text-primary);
       letter-spacing: -0.02em;
     }
 
-    .header-controls {
+    /* Compact Settings Trigger & Popover */
+    .settings-wrap {
+      position: relative;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .settings-trigger-btn {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      min-block-size: 36px;
+      padding: 6px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .settings-trigger-btn:hover,
+    .settings-trigger-btn[aria-expanded="true"] {
+      background: #eef2f6;
+      border-color: #94a3b8;
+      color: var(--text-primary);
+    }
+
+    .settings-gear-svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .settings-chevron {
+      font-size: 11px;
+      opacity: 0.75;
+      transition: transform 0.15s ease;
+    }
+
+    .settings-trigger-btn[aria-expanded="true"] .settings-chevron {
+      transform: rotate(180deg);
+    }
+
+    .settings-popover {
+      width: 312px;
+      padding: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+      color: var(--text-primary);
+    }
+
+    .settings-popover:is(:popover-open, .\:popover-open) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @supports (position-area: block-end) {
+      .settings-popover {
+        position-area: block-end span-inline-start;
+        position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+        inset: auto;
+        margin-block-start: 8px;
+      }
+    }
+
+    @supports not (position-area: block-end) {
+      .settings-popover {
+        position: fixed;
+        inset: auto;
+        margin: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .settings-popover {
+        opacity: 0;
+        translate: 0 -4px;
+        transition: opacity 0.14s ease, translate 0.14s ease, display 0.14s allow-discrete, overlay 0.14s allow-discrete;
+      }
+      .settings-popover:is(:popover-open, .\:popover-open) {
+        opacity: 1;
+        translate: 0 0;
+        @starting-style {
+          opacity: 0;
+          translate: 0 -4px;
+        }
+      }
+    }
+
+    .popover-section-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 0 4px;
+    }
+
+    .popover-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .popover-divider {
+      border: 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      margin: 2px 0;
+    }
+
+    .popover-btn {
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: 9px;
+      padding: 7px 10px;
+      min-block-size: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      transition: background-color 0.12s ease, border-color 0.12s ease;
+    }
+
+    .popover-btn:hover {
+      background: #f1f5f9;
+    }
+
+    .popover-btn[aria-pressed="true"] {
+      background: var(--knowles-blue-soft);
+      border-color: rgba(46, 139, 192, 0.45);
+      color: var(--knowles-blue-dark);
+    }
+
+    .popover-btn-left {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
     }
 
-    .mode-switcher {
-      display: inline-flex;
-      background: #e9e3d8;
-      padding: 3px;
-      border-radius: 10px;
-      gap: 3px;
+    .popover-active-dot {
+      font-size: 12px;
+      font-weight: 800;
+      opacity: 0;
     }
 
-    .mode-btn {
-      border: 2px solid transparent;
-      background: transparent;
-      color: var(--text-secondary);
-      font-family: inherit;
-      font-size: 12.5px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      min-block-size: 32px;
-      transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .mode-btn[aria-pressed="true"] {
-      background: #ffffff;
-      color: var(--text-primary);
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-    }
-
-    .score-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #f8fafc;
-      border: 1px solid var(--border-subtle);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--text-secondary);
-    }
-
-    .score-pill strong {
-      color: var(--text-primary);
-    }
-
-    .action-btn {
-      font-family: inherit;
-      font-size: 12.5px;
-      font-weight: 700;
-      padding: 6px 12px;
-      min-block-size: 32px;
-      border-radius: 8px;
-      border: 1px solid var(--border-subtle);
-      background: #ffffff;
-      color: var(--text-primary);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-    }
-
-    .action-btn:hover {
-      background: #f1f5f9;
-      border-color: #94a3b8;
-    }
-
-    .action-btn.primary {
-      background: linear-gradient(135deg, var(--knowles-blue-dark), var(--equity-teal-dark));
-      color: #ffffff;
-      border-color: transparent;
-    }
-
-    .action-btn.primary:hover {
-      filter: brightness(1.06);
+    .popover-btn[aria-pressed="true"] .popover-active-dot {
+      opacity: 1;
     }
 
     /* Main Workspace */
@@ -216,28 +307,10 @@
       min-height: 0;
       display: flex;
       flex-direction: column;
-    }
-
-    .view-panel {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .view-panel[hidden] {
-      display: none !important;
-    }
-
-    /* Mode 1: 6-Scenario Classifier */
-    .classifier-layout {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
       gap: 12px;
     }
 
+    /* Persistent Theory Summaries Bar Above Flashcards */
     .lens-legend-bar {
       flex-shrink: 0;
       display: grid;
@@ -254,6 +327,7 @@
       border-radius: var(--radius-lg);
       background: var(--card-surface);
       border: 2px solid transparent;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
     }
 
     .lens-banner.knowles {
@@ -264,6 +338,18 @@
     .lens-banner.equity {
       border-color: rgba(59, 155, 130, 0.45);
       box-shadow: 0 0 18px var(--equity-teal-glow);
+    }
+
+    .lens-banner.knowles.active-highlight {
+      border-color: var(--knowles-blue-dark);
+      background: linear-gradient(90deg, #ffffff 0%, var(--knowles-blue-soft) 100%);
+      box-shadow: 0 0 26px rgba(46, 139, 192, 0.52);
+    }
+
+    .lens-banner.equity.active-highlight {
+      border-color: var(--equity-teal-dark);
+      background: linear-gradient(90deg, #ffffff 0%, var(--equity-teal-soft) 100%);
+      box-shadow: 0 0 26px rgba(59, 155, 130, 0.52);
     }
 
     .lens-banner-left {
@@ -313,25 +399,286 @@
       font-weight: 500;
     }
 
-    .lens-count-tag {
-      font-size: 13.5px;
+    .view-panel {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .view-panel[hidden] {
+      display: none !important;
+    }
+
+    /* MODE 1: Single-Scenario 3D Rotating Flashcard */
+    .flashcard-workspace {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    article.flashcard-scene {
+      flex: 1;
+      min-height: 0;
+      perspective: 1600px;
+      display: flex;
+    }
+
+    .flashcard-flipper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+      border-radius: var(--radius-xl);
+    }
+
+    .flashcard-flipper.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flashcard-flipper {
+        transition: none;
+      }
+    }
+
+    .flashcard-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius-xl);
+      background: var(--card-surface);
+      border: 2px solid rgba(148, 163, 184, 0.36);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+      padding: clamp(20px, 3vh, 32px) clamp(24px, 3.2vw, 44px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .flashcard-flipper:hover .flashcard-front {
+      border-color: rgba(46, 139, 192, 0.55);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.11);
+    }
+
+    .flashcard-back {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-back.lens-knowles {
+      border-color: var(--knowles-blue);
+      background: linear-gradient(180deg, #ffffff 0%, var(--knowles-blue-soft) 100%);
+      box-shadow: 0 16px 38px rgba(46, 139, 192, 0.18);
+    }
+
+    .flashcard-back.lens-equity {
+      border-color: var(--equity-teal);
+      background: linear-gradient(180deg, #ffffff 0%, var(--equity-teal-soft) 100%);
+      box-shadow: 0 16px 38px rgba(59, 155, 130, 0.18);
+    }
+
+    .flashcard-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .flashcard-step-badge {
+      font-size: 13px;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--knowles-blue-dark);
+      background: var(--knowles-blue-soft);
       padding: 5px 12px;
       border-radius: 999px;
-      white-space: nowrap;
     }
 
-    .lens-banner.knowles .lens-count-tag {
-      background: var(--knowles-blue-soft);
-      color: var(--knowles-blue-dark);
-    }
-
-    .lens-banner.equity .lens-count-tag {
-      background: var(--equity-teal-soft);
+    .flashcard-back.lens-equity .flashcard-step-badge {
       color: var(--equity-teal-dark);
+      background: var(--equity-teal-soft);
     }
 
-    /* 6-Card Grid */
+    .flashcard-flip-cue {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: #f1f5f9;
+      padding: 5px 13px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flashcard-front-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .flashcard-quote-large {
+      font-size: clamp(22px, 2.35vw, 32px);
+      font-weight: 700;
+      line-height: 1.38;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+
+    .flashcard-front-footer {
+      text-align: center;
+      font-size: clamp(13.5px, 1.08vw, 15.5px);
+      font-weight: 600;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Back of Flashcard Content */
+    .flashcard-back-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 14px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .answer-lens-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: clamp(18px, 1.65vw, 23px);
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .flashcard-back.lens-knowles .answer-lens-pill {
+      background: var(--knowles-blue-dark);
+    }
+
+    .flashcard-back.lens-equity .answer-lens-pill {
+      background: var(--equity-teal-dark);
+    }
+
+    .answer-pillar-heading {
+      font-size: clamp(17px, 1.45vw, 21px);
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .answer-rationale-large {
+      font-size: clamp(17px, 1.5vw, 22px);
+      line-height: 1.44;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-wrap: balance;
+    }
+
+    .flashcard-back-quote-recap {
+      font-size: clamp(13px, 1.02vw, 14.5px);
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      flex-shrink: 0;
+    }
+
+    /* Flashcard Navigation Bar */
+    .flashcard-nav-bar {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 2px 4px;
+    }
+
+    .nav-arrow-btn {
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      min-block-size: 38px;
+      padding: 7px 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .nav-arrow-btn:hover:not(:disabled) {
+      background: #ffffff;
+      border-color: #94a3b8;
+    }
+
+    .nav-arrow-btn:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+    }
+
+    .step-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-dot-btn {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 2px solid rgba(148, 163, 184, 0.38);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .step-dot-btn:hover {
+      border-color: var(--knowles-blue);
+      color: var(--text-primary);
+    }
+
+    .step-dot-btn[aria-current="step"] {
+      background: linear-gradient(135deg, var(--knowles-blue-dark), var(--equity-teal-dark));
+      border-color: transparent;
+      color: #ffffff;
+    }
+
+    .step-dot-btn.is-revealed:not([aria-current="step"]) {
+      border-color: var(--equity-teal);
+      color: var(--equity-teal-dark);
+      background: var(--equity-teal-soft);
+    }
+
+    /* MODE 2: 6-Card Grid Classifier */
     .scenarios-grid {
       flex: 1;
       min-height: 0;
@@ -347,7 +694,7 @@
       background: var(--card-surface);
       border: 2px solid rgba(148, 163, 184, 0.32);
       border-radius: var(--radius-lg);
-      padding: clamp(14px, 1.9vh, 20px) clamp(16px, 1.4vw, 20px);
+      padding: clamp(14px, 1.8vh, 18px) clamp(15px, 1.3vw, 19px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -359,13 +706,11 @@
     article.scenario-card.choice-knowles {
       border-color: var(--knowles-blue);
       background: linear-gradient(180deg, #ffffff 0%, var(--knowles-blue-soft) 100%);
-      box-shadow: 0 6px 18px rgba(46, 139, 192, 0.16);
     }
 
     article.scenario-card.choice-equity {
       border-color: var(--equity-teal);
       background: linear-gradient(180deg, #ffffff 0%, var(--equity-teal-soft) 100%);
-      box-shadow: 0 6px 18px rgba(59, 155, 130, 0.16);
     }
 
     article.scenario-card.status-correct {
@@ -387,7 +732,7 @@
     }
 
     .scenario-num {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -395,9 +740,9 @@
     }
 
     .pillar-chip {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
-      padding: 3px 10px;
+      padding: 3px 9px;
       border-radius: 999px;
       background: #f1f5f9;
       color: var(--text-secondary);
@@ -417,21 +762,21 @@
       flex: 1;
       display: flex;
       align-items: center;
-      font-size: clamp(16px, 1.34vw, 19px);
-      line-height: 1.42;
+      font-size: clamp(15.5px, 1.3vw, 18.5px);
+      line-height: 1.4;
       color: var(--text-primary);
       font-weight: 650;
     }
 
     article.scenario-card.has-rationale .scenario-quote {
-      font-size: clamp(13.5px, 1.06vw, 15px);
-      line-height: 1.32;
+      font-size: clamp(13px, 1.02vw, 14.5px);
+      line-height: 1.3;
     }
 
     .rationale-box {
-      font-size: clamp(12px, 0.94vw, 13.2px);
-      line-height: 1.34;
-      padding: 7px 10px;
+      font-size: clamp(11.5px, 0.92vw, 13px);
+      line-height: 1.32;
+      padding: 6px 9px;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.88);
       border-left: 3px solid var(--knowles-blue);
@@ -453,11 +798,11 @@
 
     .lens-choice-btn {
       font-family: inherit;
-      font-size: clamp(12.5px, 1.02vw, 14px);
+      font-size: clamp(12px, 0.98vw, 13.5px);
       font-weight: 700;
-      min-block-size: 38px;
-      padding: 6px 10px;
-      border-radius: 9px;
+      min-block-size: 36px;
+      padding: 5px 8px;
+      border-radius: 8px;
       border: 2px solid rgba(148, 163, 184, 0.35);
       background: #ffffff;
       color: var(--text-secondary);
@@ -467,18 +812,6 @@
       justify-content: center;
       gap: 5px;
       transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-    }
-
-    .lens-choice-btn.knowles-btn:hover {
-      border-color: var(--knowles-blue);
-      color: var(--knowles-blue-dark);
-      background: var(--knowles-blue-soft);
-    }
-
-    .lens-choice-btn.equity-btn:hover {
-      border-color: var(--equity-teal);
-      color: var(--equity-teal-dark);
-      background: var(--equity-teal-soft);
     }
 
     .lens-choice-btn.knowles-btn[aria-pressed="true"] {
@@ -493,7 +826,7 @@
       color: #ffffff;
     }
 
-    /* Mode 2: 3-Question Diagnostic Quiz */
+    /* MODE 3: 3-Question Diagnostic Quiz */
     .quiz-grid {
       flex: 1;
       min-height: 0;
@@ -508,27 +841,27 @@
       background: var(--card-surface);
       border: 2px solid rgba(148, 163, 184, 0.32);
       border-radius: var(--radius-lg);
-      padding: clamp(18px, 2.2vh, 24px) clamp(18px, 1.5vw, 22px);
+      padding: clamp(16px, 2vh, 22px) clamp(16px, 1.4vw, 20px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
     }
 
     .quiz-stem-kicker {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--equity-teal-dark);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .quiz-question {
-      font-size: clamp(16px, 1.32vw, 19px);
+      font-size: clamp(15.5px, 1.26vw, 18px);
       font-weight: 700;
-      line-height: 1.4;
+      line-height: 1.38;
       color: var(--text-primary);
     }
 
@@ -537,28 +870,23 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     .quiz-option-btn {
       text-align: left;
       font-family: inherit;
-      font-size: clamp(13.5px, 1.1vw, 15.5px);
-      line-height: 1.38;
+      font-size: clamp(13px, 1.05vw, 15px);
+      line-height: 1.36;
       font-weight: 600;
-      padding: 11px 13px;
-      min-block-size: 44px;
-      border-radius: 10px;
+      padding: 10px 12px;
+      min-block-size: 42px;
+      border-radius: 9px;
       border: 2px solid rgba(148, 163, 184, 0.35);
       background: #ffffff;
       color: var(--text-primary);
       cursor: pointer;
       transition: border-color 0.15s ease, background-color 0.15s ease;
-    }
-
-    .quiz-option-btn:hover {
-      border-color: var(--knowles-blue);
-      background: #f8fafc;
     }
 
     .quiz-option-btn[aria-pressed="true"] {
@@ -579,9 +907,9 @@
     }
 
     .quiz-feedback {
-      font-size: clamp(12.5px, 0.98vw, 14px);
-      line-height: 1.38;
-      padding: 9px 11px;
+      font-size: clamp(12px, 0.95vw, 13.5px);
+      line-height: 1.35;
+      padding: 8px 10px;
       border-radius: 8px;
       background: #f8fafc;
       border-left: 3px solid var(--equity-teal);
@@ -616,6 +944,9 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
       }
+      article.flashcard-scene {
+        min-height: 320px;
+      }
     }
   </style>
 </head>
@@ -632,64 +963,147 @@
         <h1>Quick Check: Classical Andragogy or Critical Equity Expansion?</h1>
       </div>
 
-      <div class="header-controls">
-        <div class="mode-switcher" role="group" aria-label="Assessment activity mode">
-          <button type="button" class="mode-btn" id="modeClassifierBtn" aria-pressed="true">
-            1. Lens Classifier (6 Scenarios)
-          </button>
-          <button type="button" class="mode-btn" id="modeQuizBtn" aria-pressed="false">
-            2. Diagnostic Quiz (3 Scenarios)
-          </button>
-        </div>
+      <div class="settings-wrap">
+        <button
+          type="button"
+          id="settingsTrigger"
+          class="settings-trigger-btn"
+          commandfor="settingsPopover"
+          command="toggle-popover"
+          aria-expanded="false"
+          aria-label="Assessment settings and controls"
+        >
+          <svg class="settings-gear-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>Settings</span>
+          <span class="settings-chevron" aria-hidden="true">▾</span>
+        </button>
 
-        <div class="score-pill" id="scoreSummaryPill">
-          <span>Progress:</span>
-          <strong id="progressCountText">0 / 6 classified</strong>
-        </div>
+        <div id="settingsPopover" popover="auto" class="settings-popover" role="group" aria-label="Assessment options and controls">
+          <div class="popover-section-label">Assessment Type</div>
+          <div class="popover-group">
+            <button type="button" class="popover-btn" id="modeFlashcardBtn" aria-pressed="true">
+              <span class="popover-btn-left"><span aria-hidden="true">🗂️</span><span>Scenario Flashcards (1 at a time)</span></span>
+              <span class="popover-active-dot" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="popover-btn" id="modeClassifierBtn" aria-pressed="false">
+              <span class="popover-btn-left"><span aria-hidden="true">🧩</span><span>Lens Classifier Grid (All 6)</span></span>
+              <span class="popover-active-dot" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="popover-btn" id="modeQuizBtn" aria-pressed="false">
+              <span class="popover-btn-left"><span aria-hidden="true">📝</span><span>Diagnostic Quiz (3 Scenarios)</span></span>
+              <span class="popover-active-dot" aria-hidden="true">✓</span>
+            </button>
+          </div>
 
-        <button type="button" class="action-btn primary" id="checkAnswersBtn">
-          ✓ Check Answers
-        </button>
-        <button type="button" class="action-btn" id="revealSolutionBtn">
-          💡 Show Key &amp; Rationale
-        </button>
-        <button type="button" class="action-btn" id="resetActivityBtn">
-          ↺ Reset
-        </button>
+          <hr class="popover-divider" />
+
+          <div class="popover-section-label">Controls</div>
+          <div class="popover-group">
+            <button type="button" class="popover-btn" id="checkAnswersBtn">
+              <span class="popover-btn-left"><span aria-hidden="true">✓</span><span>Check Answers</span></span>
+            </button>
+            <button type="button" class="popover-btn" id="revealSolutionBtn">
+              <span class="popover-btn-left"><span aria-hidden="true">💡</span><span>Show Key &amp; Rationale</span></span>
+            </button>
+            <button type="button" class="popover-btn" id="resetActivityBtn">
+              <span class="popover-btn-left"><span aria-hidden="true">↺</span><span>Reset</span></span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
     <main>
-      <!-- MODE 1: 6-Card Concept Lens Classifier -->
-      <section id="classifierView" class="view-panel classifier-layout" aria-label="Lens Classifier Activity">
-        <div class="lens-legend-bar">
-          <div class="lens-banner knowles">
-            <div class="lens-banner-left">
-              <div class="lens-icon" aria-hidden="true">📘</div>
-              <div>
-                <div class="lens-title">Malcolm Knowles (Classical Theory)</div>
-                <div class="lens-pillars">Self-Directed Autonomy · Prior Life Experience · Immediate Relevance</div>
-              </div>
+      <!-- Persistent Summaries of the Two Theories Above Flashcards -->
+      <div class="lens-legend-bar" aria-label="Summaries of the two theoretical lenses">
+        <div class="lens-banner knowles" id="knowlesSummaryBanner">
+          <div class="lens-banner-left">
+            <div class="lens-icon" aria-hidden="true">📘</div>
+            <div>
+              <div class="lens-title">Malcolm Knowles (Classical Theory)</div>
+              <div class="lens-pillars">Self-Directed Autonomy · Prior Life Experience · Immediate Relevance</div>
             </div>
-            <span class="lens-count-tag" id="knowlesCountBadge">0 assigned</span>
-          </div>
-
-          <div class="lens-banner equity">
-            <div class="lens-banner-left">
-              <div class="lens-icon" aria-hidden="true">🛡️</div>
-              <div>
-                <div class="lens-title">The Equity Expansion (Modern Reality)</div>
-                <div class="lens-pillars">Power Dynamics · Psychological Safety · Proactive Design (UDL)</div>
-              </div>
-            </div>
-            <span class="lens-count-tag" id="equityCountBadge">0 assigned</span>
           </div>
         </div>
 
+        <div class="lens-banner equity" id="equitySummaryBanner">
+          <div class="lens-banner-left">
+            <div class="lens-icon" aria-hidden="true">🛡️</div>
+            <div>
+              <div class="lens-title">The Equity Expansion (Modern Reality)</div>
+              <div class="lens-pillars">Power Dynamics · Psychological Safety · Proactive Design (UDL)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODE 1 (Default): Single Scenario Rotating Flashcard -->
+      <section id="flashcardView" class="view-panel" aria-label="Scenario Flashcards">
+        <div class="flashcard-workspace">
+          <article class="flashcard-scene" aria-label="Interactive scenario flashcard">
+            <div
+              id="flashcardFlipper"
+              class="flashcard-flipper"
+              role="button"
+              tabindex="0"
+              aria-pressed="false"
+              aria-label="Scenario flashcard. Activate to rotate and reveal the answer."
+            >
+              <!-- Front Face -->
+              <div class="flashcard-face flashcard-front" id="flashcardFront">
+                <div class="flashcard-top-bar">
+                  <span class="flashcard-step-badge" id="flashcardFrontStep">Scenario 1 of 6</span>
+                  <span class="flashcard-flip-cue"><span aria-hidden="true">↻</span> Click card to reveal answer</span>
+                </div>
+
+                <div class="flashcard-front-body">
+                  <p class="flashcard-quote-large" id="flashcardFrontQuote"></p>
+                </div>
+
+                <div class="flashcard-front-footer">
+                  Discuss: Does this scenario illustrate <strong>Malcolm Knowles (Classical Theory)</strong> or <strong>The Equity Expansion (Modern Reality)</strong>?
+                </div>
+              </div>
+
+              <!-- Back Face -->
+              <div class="flashcard-face flashcard-back" id="flashcardBack" aria-hidden="true">
+                <div class="flashcard-top-bar">
+                  <span class="flashcard-step-badge" id="flashcardBackStep">Scenario 1 of 6 · Answer</span>
+                  <span class="flashcard-flip-cue"><span aria-hidden="true">↻</span> Click card to flip back</span>
+                </div>
+
+                <div class="flashcard-back-body">
+                  <div class="answer-lens-pill" id="flashcardAnswerLens"></div>
+                  <div class="answer-pillar-heading" id="flashcardAnswerPillar"></div>
+                  <p class="answer-rationale-large" id="flashcardAnswerRationale"></p>
+                </div>
+
+                <div class="flashcard-back-quote-recap" id="flashcardBackRecap"></div>
+              </div>
+            </div>
+          </article>
+
+          <nav class="flashcard-nav-bar" aria-label="Flashcard navigation">
+            <button type="button" class="nav-arrow-btn" id="prevCardBtn">
+              <span aria-hidden="true">←</span><span>Previous</span>
+            </button>
+            <div class="step-dots" id="flashcardStepDots"></div>
+            <button type="button" class="nav-arrow-btn" id="nextCardBtn">
+              <span>Next Scenario</span><span aria-hidden="true">→</span>
+            </button>
+          </nav>
+        </div>
+      </section>
+
+      <!-- MODE 2: 6-Card Concept Lens Classifier Grid -->
+      <section id="classifierView" class="view-panel" aria-label="Lens Classifier Grid" hidden>
         <div class="scenarios-grid" id="scenariosGrid"></div>
       </section>
 
-      <!-- MODE 2: 3-Question Scenario Diagnostic Quiz -->
+      <!-- MODE 3: 3-Question Scenario Diagnostic Quiz -->
       <section id="quizView" class="view-panel" aria-label="Scenario Diagnostic Quiz" hidden>
         <div class="quiz-grid" id="quizGrid"></div>
       </section>
@@ -712,43 +1126,49 @@
           id: "sc_1",
           quote: "“Staff replace a generic 2-hour lecture with hands-on case studies solving immediate problems from this week’s classes.”",
           correctLens: "knowles",
+          lensLabel: "📘 Malcolm Knowles (Classical Theory)",
           pillar: "Immediate Relevance (Knowles, 1980)",
-          rationale: "Classical Andragogy: Adult learners are problem-centred and need immediate workplace application rather than abstract theory."
+          rationale: "Adult learners are problem-centred rather than subject-centred; they engage deeply when CPD directly solves immediate workplace challenges."
         },
         {
           id: "sc_2",
           quote: "“In an unstructured ‘open forum’, senior staff dominate while newly hired and marginalised colleagues stay silent to avoid exposure.”",
           correctLens: "equity",
+          lensLabel: "🛡️ The Equity Expansion (Modern Reality)",
           pillar: "Power Dynamics (Brookfield, 2005)",
-          rationale: "Critical Equity Expansion: Assuming all adults feel equally safe to self-direct ignores how institutional power and marginalisation silence voices."
+          rationale: "Assuming all adults feel equally free to self-direct overlooks how institutional hierarchies and marginalisation dictate who feels safe sharing."
         },
         {
           id: "sc_3",
           quote: "“An experienced lecturer writes ‘Nothing new—I already do this’ when training ignores 15 years of front-line expertise.”",
           correctLens: "knowles",
-          pillar: "Life Experience (Knowles et al., 2020)",
-          rationale: "Classical Andragogy: Adults bring a rich reservoir of prior knowledge; CPD must recognise and extend existing professional expertise."
+          lensLabel: "📘 Malcolm Knowles (Classical Theory)",
+          pillar: "Life Experience (Knowles, Holton & Swanson, 2020)",
+          rationale: "Adults bring a rich reservoir of prior knowledge; effective CPD must recognise, build upon, and extend existing professional expertise."
         },
         {
           id: "sc_4",
           quote: "“An adult apprentice resists written theory not from lack of motivation, but due to schooling trauma and fear of humiliation.”",
           correctLens: "equity",
+          lensLabel: "🛡️ The Equity Expansion (Modern Reality)",
           pillar: "Psychological Safety (Edmondson, 1999)",
-          rationale: "Critical Equity Expansion: Educational trauma and socioeconomic precarity condition participation long before a learner enters the classroom."
+          rationale: "Educational trauma and socioeconomic precarity condition participation long before an adult learner steps into the classroom."
         },
         {
           id: "sc_5",
           quote: "“Participants choose their own CPD pathway and discussion tables to match the specific teaching challenges they want to solve.”",
           correctLens: "knowles",
-          pillar: "Self-Direction (Knowles, 1980)",
-          rationale: "Classical Andragogy: Adults resist imposed sequences and thrive when given learner autonomy to shape their own professional inquiry."
+          lensLabel: "📘 Malcolm Knowles (Classical Theory)",
+          pillar: "Self-Directed Autonomy (Knowles, 1980)",
+          rationale: "Adults resist imposed sequences and thrive when given genuine learner autonomy to shape professional inquiry around identified needs."
         },
         {
           id: "sc_6",
           quote: "“Tutors embed captioned voice-notes, glossary banks, and flexible formats upfront so no learner has to disclose a deficit first.”",
           correctLens: "equity",
-          pillar: "Proactive Design (CAST, 2018)",
-          rationale: "Critical Equity Expansion: Inclusive design removes structural barriers proactively before individual adjustments are ever requested."
+          lensLabel: "🛡️ The Equity Expansion (Modern Reality)",
+          pillar: "Proactive Design — UDL (CAST, 2018)",
+          rationale: "Inclusive design removes structural barriers proactively upfront before individual adjustments ever have to be requested."
         }
       ];
 
@@ -792,59 +1212,213 @@
       ];
 
       let state = {
-        mode: "classifier", // "classifier" | "quiz"
-        choices: {},        // { sc_1: "knowles" | "equity" }
+        mode: "flashcard",    // "flashcard" | "classifier" | "quiz"
+        cardIndex: 0,         // 0..5
+        isFlipped: false,     // whether current flashcard is rotated to back
+        revealedCards: {},    // { sc_1: true }
+        choices: {},          // { sc_1: "knowles" | "equity" }
         checked: false,
-        quizChoices: {},    // { q_1: "a" | "b" | "c" }
+        quizChoices: {},      // { q_1: "a" | "b" | "c" }
         quizChecked: false
       };
 
-      const scenariosGrid = document.getElementById("scenariosGrid");
-      const quizGrid = document.getElementById("quizGrid");
-      const classifierView = document.getElementById("classifierView");
-      const quizView = document.getElementById("quizView");
+      const settingsTrigger = document.getElementById("settingsTrigger");
+      const settingsPopover = document.getElementById("settingsPopover");
+      const modeFlashcardBtn = document.getElementById("modeFlashcardBtn");
       const modeClassifierBtn = document.getElementById("modeClassifierBtn");
       const modeQuizBtn = document.getElementById("modeQuizBtn");
-      const progressCountText = document.getElementById("progressCountText");
-      const knowlesCountBadge = document.getElementById("knowlesCountBadge");
-      const equityCountBadge = document.getElementById("equityCountBadge");
       const checkAnswersBtn = document.getElementById("checkAnswersBtn");
       const revealSolutionBtn = document.getElementById("revealSolutionBtn");
       const resetActivityBtn = document.getElementById("resetActivityBtn");
+
+      const knowlesSummaryBanner = document.getElementById("knowlesSummaryBanner");
+      const equitySummaryBanner = document.getElementById("equitySummaryBanner");
+
+      const flashcardView = document.getElementById("flashcardView");
+      const classifierView = document.getElementById("classifierView");
+      const quizView = document.getElementById("quizView");
+
+      const flashcardFlipper = document.getElementById("flashcardFlipper");
+      const flashcardFront = document.getElementById("flashcardFront");
+      const flashcardBack = document.getElementById("flashcardBack");
+      const flashcardFrontStep = document.getElementById("flashcardFrontStep");
+      const flashcardBackStep = document.getElementById("flashcardBackStep");
+      const flashcardFrontQuote = document.getElementById("flashcardFrontQuote");
+      const flashcardAnswerLens = document.getElementById("flashcardAnswerLens");
+      const flashcardAnswerPillar = document.getElementById("flashcardAnswerPillar");
+      const flashcardAnswerRationale = document.getElementById("flashcardAnswerRationale");
+      const flashcardBackRecap = document.getElementById("flashcardBackRecap");
+      const prevCardBtn = document.getElementById("prevCardBtn");
+      const nextCardBtn = document.getElementById("nextCardBtn");
+      const flashcardStepDots = document.getElementById("flashcardStepDots");
+
+      const scenariosGrid = document.getElementById("scenariosGrid");
+      const quizGrid = document.getElementById("quizGrid");
       const liveAnnouncer = document.getElementById("liveAnnouncer");
 
       function announce(msg) {
-        if (!liveAnnouncer) return;
-        liveAnnouncer.textContent = msg;
+        if (liveAnnouncer) liveAnnouncer.textContent = msg;
+      }
+
+      // Popover positioning fallback & aria-expanded sync
+      function positionPopoverFallback() {
+        if (CSS.supports("position-area: block-end")) return;
+        const rect = settingsTrigger.getBoundingClientRect();
+        const popWidth = settingsPopover.offsetWidth || 290;
+        const left = Math.max(12, Math.min(window.innerWidth - popWidth - 12, rect.right - popWidth));
+        const top = rect.bottom + 8;
+        settingsPopover.style.left = `${left}px`;
+        settingsPopover.style.top = `${top}px`;
+      }
+
+      settingsPopover.addEventListener("toggle", (event) => {
+        const isOpen = event.newState === "open";
+        settingsTrigger.setAttribute("aria-expanded", String(isOpen));
+        if (isOpen) positionPopoverFallback();
+      });
+
+      if (!("commandForElement" in HTMLButtonElement.prototype)) {
+        settingsTrigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          if (typeof settingsPopover.togglePopover === "function") {
+            settingsPopover.togglePopover();
+          }
+        });
+      }
+
+      function closeSettingsPopover() {
+        try {
+          if (settingsPopover.matches(":popover-open")) {
+            settingsPopover.hidePopover();
+          }
+        } catch (_) {}
       }
 
       function render() {
-        const isClassifier = state.mode === "classifier";
-        classifierView.hidden = !isClassifier;
-        quizView.hidden = isClassifier;
-        modeClassifierBtn.setAttribute("aria-pressed", String(isClassifier));
-        modeQuizBtn.setAttribute("aria-pressed", String(!isClassifier));
+        const mode = state.mode;
+        flashcardView.hidden = mode !== "flashcard";
+        classifierView.hidden = mode !== "classifier";
+        quizView.hidden = mode !== "quiz";
 
-        if (isClassifier) {
+        modeFlashcardBtn.setAttribute("aria-pressed", String(mode === "flashcard"));
+        modeClassifierBtn.setAttribute("aria-pressed", String(mode === "classifier"));
+        modeQuizBtn.setAttribute("aria-pressed", String(mode === "quiz"));
+
+        // Highlight active theory summary banner when flashcard answer is revealed
+        knowlesSummaryBanner.classList.remove("active-highlight");
+        equitySummaryBanner.classList.remove("active-highlight");
+
+        if (mode === "flashcard") {
+          renderFlashcard();
+        } else if (mode === "classifier") {
           renderClassifier();
         } else {
           renderQuiz();
         }
       }
 
+      function renderFlashcard() {
+        const idx = Math.max(0, Math.min(SCENARIOS.length - 1, state.cardIndex || 0));
+        const sc = SCENARIOS[idx];
+        const flipped = Boolean(state.isFlipped);
+
+        flashcardFlipper.classList.toggle("is-flipped", flipped);
+        flashcardFlipper.setAttribute("aria-pressed", String(flipped));
+        flashcardFront.setAttribute("aria-hidden", String(flipped));
+        flashcardBack.setAttribute("aria-hidden", String(!flipped));
+
+        flashcardBack.classList.remove("lens-knowles", "lens-equity");
+        flashcardBack.classList.add(sc.correctLens === "knowles" ? "lens-knowles" : "lens-equity");
+
+        if (flipped) {
+          if (sc.correctLens === "knowles") {
+            knowlesSummaryBanner.classList.add("active-highlight");
+          } else {
+            equitySummaryBanner.classList.add("active-highlight");
+          }
+        }
+
+        flashcardFrontStep.textContent = `Scenario ${idx + 1} of ${SCENARIOS.length}`;
+        flashcardBackStep.textContent = `Scenario ${idx + 1} of ${SCENARIOS.length} · Answer`;
+        flashcardFrontQuote.textContent = sc.quote;
+
+        flashcardAnswerLens.textContent = sc.lensLabel;
+        flashcardAnswerPillar.textContent = sc.pillar;
+        flashcardAnswerRationale.textContent = sc.rationale;
+        flashcardBackRecap.textContent = sc.quote;
+
+        prevCardBtn.disabled = idx === 0;
+        nextCardBtn.disabled = idx === SCENARIOS.length - 1;
+
+        flashcardStepDots.innerHTML = "";
+        SCENARIOS.forEach((item, dotIdx) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "step-dot-btn";
+          if (state.revealedCards && state.revealedCards[item.id]) {
+            dot.classList.add("is-revealed");
+          }
+          if (dotIdx === idx) {
+            dot.setAttribute("aria-current", "step");
+          }
+          dot.setAttribute("aria-label", `Go to Scenario ${dotIdx + 1}`);
+          dot.textContent = String(dotIdx + 1);
+          dot.addEventListener("click", () => {
+            state.cardIndex = dotIdx;
+            state.isFlipped = false;
+            render();
+            broadcastState("jump_card");
+          });
+          flashcardStepDots.appendChild(dot);
+        });
+      }
+
+      function toggleFlashcardFlip() {
+        const sc = SCENARIOS[state.cardIndex] || SCENARIOS[0];
+        state.isFlipped = !state.isFlipped;
+        if (state.isFlipped && sc) {
+          state.revealedCards[sc.id] = true;
+          announce(`Answer revealed: ${sc.lensLabel}. ${sc.pillar}. ${sc.rationale}`);
+        } else {
+          announce(`Flipped back to Scenario ${state.cardIndex + 1} question.`);
+        }
+        render();
+        broadcastState("flip_card");
+      }
+
+      flashcardFlipper.addEventListener("click", toggleFlashcardFlip);
+      flashcardFlipper.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleFlashcardFlip();
+        }
+      });
+
+      prevCardBtn.addEventListener("click", () => {
+        if (state.cardIndex > 0) {
+          state.cardIndex -= 1;
+          state.isFlipped = false;
+          announce(`Scenario ${state.cardIndex + 1} of ${SCENARIOS.length}`);
+          render();
+          broadcastState("prev_card");
+        }
+      });
+
+      nextCardBtn.addEventListener("click", () => {
+        if (state.cardIndex < SCENARIOS.length - 1) {
+          state.cardIndex += 1;
+          state.isFlipped = false;
+          announce(`Scenario ${state.cardIndex + 1} of ${SCENARIOS.length}`);
+          render();
+          broadcastState("next_card");
+        }
+      });
+
       function renderClassifier() {
         scenariosGrid.innerHTML = "";
-        let knowlesCount = 0;
-        let equityCount = 0;
-        let correctCount = 0;
-        const total = SCENARIOS.length;
-
         SCENARIOS.forEach((sc, idx) => {
           const userChoice = state.choices[sc.id] || null;
-          if (userChoice === "knowles") knowlesCount++;
-          if (userChoice === "equity") equityCount++;
           const isCorrect = Boolean(userChoice && userChoice === sc.correctLens);
-          if (isCorrect) correctCount++;
 
           const card = document.createElement("article");
           card.className = "scenario-card";
@@ -900,7 +1474,6 @@
           btnKnowles.type = "button";
           btnKnowles.className = "lens-choice-btn knowles-btn";
           btnKnowles.setAttribute("aria-pressed", String(userChoice === "knowles"));
-          btnKnowles.setAttribute("aria-label", `Classify Scenario ${idx + 1} as Malcolm Knowles Classical Theory`);
           btnKnowles.innerHTML = `<span aria-hidden="true">📘</span><span>Knowles (Classical)</span>`;
           btnKnowles.addEventListener("click", () => {
             state.choices[sc.id] = state.choices[sc.id] === "knowles" ? null : "knowles";
@@ -913,7 +1486,6 @@
           btnEquity.type = "button";
           btnEquity.className = "lens-choice-btn equity-btn";
           btnEquity.setAttribute("aria-pressed", String(userChoice === "equity"));
-          btnEquity.setAttribute("aria-label", `Classify Scenario ${idx + 1} as The Equity Expansion Modern Reality`);
           btnEquity.innerHTML = `<span aria-hidden="true">🛡️</span><span>Critical Equity</span>`;
           btnEquity.addEventListener("click", () => {
             state.choices[sc.id] = state.choices[sc.id] === "equity" ? null : "equity";
@@ -926,28 +1498,12 @@
           card.appendChild(footer);
           scenariosGrid.appendChild(card);
         });
-
-        knowlesCountBadge.textContent = `${knowlesCount} / 3`;
-        equityCountBadge.textContent = `${equityCount} / 3`;
-
-        const classifiedCount = knowlesCount + equityCount;
-        if (state.checked) {
-          progressCountText.textContent = `Score: ${correctCount} / ${total} correct`;
-        } else {
-          progressCountText.textContent = `${classifiedCount} / ${total} classified`;
-        }
       }
 
       function renderQuiz() {
         quizGrid.innerHTML = "";
-        let answeredCount = 0;
-        let correctCount = 0;
-
-        QUIZ_QUESTIONS.forEach((q, idx) => {
+        QUIZ_QUESTIONS.forEach((q) => {
           const picked = state.quizChoices[q.id] || null;
-          if (picked) answeredCount++;
-          const isCorrect = picked === q.correctOption;
-          if (isCorrect) correctCount++;
 
           const card = document.createElement("article");
           card.className = "quiz-card";
@@ -996,60 +1552,82 @@
 
           quizGrid.appendChild(card);
         });
-
-        if (state.quizChecked) {
-          progressCountText.textContent = `Quiz Score: ${correctCount} / ${QUIZ_QUESTIONS.length}`;
-        } else {
-          progressCountText.textContent = `${answeredCount} / ${QUIZ_QUESTIONS.length} answered`;
-        }
       }
+
+      // Settings Dropdown Mode & Control Handlers
+      modeFlashcardBtn.addEventListener("click", () => {
+        state.mode = "flashcard";
+        closeSettingsPopover();
+        render();
+        broadcastState("switch_mode");
+      });
 
       modeClassifierBtn.addEventListener("click", () => {
         state.mode = "classifier";
+        closeSettingsPopover();
         render();
         broadcastState("switch_mode");
       });
 
       modeQuizBtn.addEventListener("click", () => {
         state.mode = "quiz";
+        closeSettingsPopover();
         render();
         broadcastState("switch_mode");
       });
 
       checkAnswersBtn.addEventListener("click", () => {
-        if (state.mode === "classifier") {
+        if (state.mode === "flashcard") {
+          const sc = SCENARIOS[state.cardIndex] || SCENARIOS[0];
+          state.isFlipped = true;
+          if (sc) state.revealedCards[sc.id] = true;
+          announce(`Revealed answer for Scenario ${state.cardIndex + 1}.`);
+        } else if (state.mode === "classifier") {
           state.checked = true;
           const score = SCENARIOS.filter((s) => state.choices[s.id] === s.correctLens).length;
-          announce(`Checked answers: ${score} out of ${SCENARIOS.length} scenarios classified accurately.`);
+          announce(`Checked answers: ${score} out of ${SCENARIOS.length} correct.`);
         } else {
           state.quizChecked = true;
           const score = QUIZ_QUESTIONS.filter((q) => state.quizChoices[q.id] === q.correctOption).length;
-          announce(`Checked quiz: ${score} out of ${QUIZ_QUESTIONS.length} diagnostic questions correct.`);
+          announce(`Checked quiz: ${score} out of ${QUIZ_QUESTIONS.length} correct.`);
         }
+        closeSettingsPopover();
         render();
         broadcastState("check_answers");
       });
 
       revealSolutionBtn.addEventListener("click", () => {
-        if (state.mode === "classifier") {
+        if (state.mode === "flashcard") {
+          SCENARIOS.forEach((sc) => {
+            state.revealedCards[sc.id] = true;
+          });
+          state.isFlipped = true;
+          announce("Showing key and rationale on flashcard.");
+        } else if (state.mode === "classifier") {
           SCENARIOS.forEach((sc) => {
             state.choices[sc.id] = sc.correctLens;
           });
           state.checked = true;
-          announce("Showing complete solution and academic rationales for all 6 scenarios.");
+          announce("Showing complete solution and rationales for all 6 scenarios.");
         } else {
           QUIZ_QUESTIONS.forEach((q) => {
             state.quizChoices[q.id] = q.correctOption;
           });
           state.quizChecked = true;
-          announce("Showing complete solution and academic feedback for all 3 diagnostic questions.");
+          announce("Showing complete solution and feedback for all 3 diagnostic questions.");
         }
+        closeSettingsPopover();
         render();
         broadcastState("reveal_solution");
       });
 
       resetActivityBtn.addEventListener("click", () => {
-        if (state.mode === "classifier") {
+        if (state.mode === "flashcard") {
+          state.cardIndex = 0;
+          state.isFlipped = false;
+          state.revealedCards = {};
+          announce("Flashcards reset to Scenario 1.");
+        } else if (state.mode === "classifier") {
           state.choices = {};
           state.checked = false;
           announce("Classifier reset.");
@@ -1058,6 +1636,7 @@
           state.quizChecked = false;
           announce("Diagnostic quiz reset.");
         }
+        closeSettingsPopover();
         render();
         broadcastState("reset");
       });
@@ -1081,7 +1660,10 @@
         if (!data || typeof data !== "object") return;
         if (data.type === "APPLY_INTERACTIVE_STATE" && data.state) {
           state = {
-            mode: data.state.mode || "classifier",
+            mode: data.state.mode || "flashcard",
+            cardIndex: Number(data.state.cardIndex) || 0,
+            isFlipped: Boolean(data.state.isFlipped),
+            revealedCards: { ...(data.state.revealedCards || {}) },
             choices: { ...(data.state.choices || {}) },
             checked: Boolean(data.state.checked),
             quizChoices: { ...(data.state.quizChoices || {}) },
@@ -1107,4 +1689,3 @@
   </script>
 </body>
 </html>
-
