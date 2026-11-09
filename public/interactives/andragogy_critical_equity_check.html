@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Check: Knowles’ Andragogy Meets Critical Equity | Staff CPD</title>
+  <style>
+    :root {
+      --bg-cream-1: #f7f3ec;
+      --bg-cream-2: #efe7db;
+      --card-surface: rgba(255, 255, 255, 0.94);
+      --text-primary: #141c2b;
+      --text-secondary: #42526b;
+      --text-muted: #64748b;
+      --knowles-blue: #2e8bc0;
+      --knowles-blue-dark: #1d6fa3;
+      --knowles-blue-soft: #eef7fc;
+      --knowles-blue-glow: rgba(72, 169, 224, 0.35);
+      --equity-teal: #3b9b82;
+      --equity-teal-dark: #287a64;
+      --equity-teal-soft: #edf9f5;
+      --equity-teal-glow: rgba(77, 184, 154, 0.35);
+      --correct-green: #15803d;
+      --correct-bg: #f0fdf4;
+      --incorrect-red: #b91c1c;
+      --incorrect-bg: #fef2f2;
+      --border-subtle: rgba(148, 163, 184, 0.28);
+      --radius-xl: 18px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-primary);
+      background:
+        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.85) 0%, transparent 45%),
+        radial-gradient(circle at 84% 82%, rgba(255, 255, 255, 0.7) 0%, transparent 50%),
+        linear-gradient(135deg, var(--bg-cream-1) 0%, var(--bg-cream-2) 52%, #f5efe6 100%);
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .visually-hidden:where(:not(:focus-within, :active)) {
+      position: absolute !important;
+      clip-path: inset(50%) !important;
+      overflow: hidden !important;
+      width: 1px !important;
+      height: 1px !important;
+      margin: -1px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      white-space: nowrap !important;
+    }
+
+    :where(button, [role="button"], input, select):focus-visible {
+      outline: 3px solid #1d4ed8;
+      outline-offset: 2px;
+    }
+
+    .slide-shell {
+      width: 100%;
+      max-width: 1380px;
+      height: 100vh;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: clamp(10px, 1.6vh, 18px) clamp(16px, 2vw, 28px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: clamp(10px, 1.4vh, 14px);
+    }
+
+    /* Top Header */
+    .slide-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 10px 18px;
+    }
+
+    .header-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .kicker-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--knowles-blue-dark);
+    }
+
+    .kicker-pill {
+      background: linear-gradient(90deg, var(--knowles-blue), var(--equity-teal));
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+    }
+
+    h1 {
+      font-size: clamp(18px, 2.1vw, 25px);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .header-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mode-switcher {
+      display: inline-flex;
+      background: #e9e3d8;
+      padding: 3px;
+      border-radius: 10px;
+      gap: 3px;
+    }
+
+    .mode-btn {
+      border: 2px solid transparent;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      min-block-size: 32px;
+      transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .mode-btn[aria-pressed="true"] {
+      background: #ffffff;
+      color: var(--text-primary);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    .score-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .score-pill strong {
+      color: var(--text-primary);
+    }
+
+    .action-btn {
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      min-block-size: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .action-btn:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    .action-btn.primary {
+      background: linear-gradient(135deg, var(--knowles-blue-dark), var(--equity-teal-dark));
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .action-btn.primary:hover {
+      filter: brightness(1.06);
+    }
+
+    /* Main Workspace */
+    main {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .view-panel {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .view-panel[hidden] {
+      display: none !important;
+    }
+
+    /* Mode 1: 6-Scenario Classifier */
+    .classifier-layout {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lens-legend-bar {
+      flex-shrink: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .lens-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 18px;
+      border-radius: var(--radius-lg);
+      background: var(--card-surface);
+      border: 2px solid transparent;
+    }
+
+    .lens-banner.knowles {
+      border-color: rgba(46, 139, 192, 0.45);
+      box-shadow: 0 0 18px var(--knowles-blue-glow);
+    }
+
+    .lens-banner.equity {
+      border-color: rgba(59, 155, 130, 0.45);
+      box-shadow: 0 0 18px var(--equity-teal-glow);
+    }
+
+    .lens-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lens-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      font-size: 21px;
+      flex-shrink: 0;
+    }
+
+    .lens-banner.knowles .lens-icon {
+      background: var(--knowles-blue-soft);
+      color: var(--knowles-blue-dark);
+    }
+
+    .lens-banner.equity .lens-icon {
+      background: var(--equity-teal-soft);
+      color: var(--equity-teal-dark);
+    }
+
+    .lens-title {
+      font-size: clamp(16px, 1.32vw, 18.5px);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .lens-banner.knowles .lens-title {
+      color: var(--knowles-blue-dark);
+    }
+
+    .lens-banner.equity .lens-title {
+      color: var(--equity-teal-dark);
+    }
+
+    .lens-pillars {
+      font-size: clamp(12.5px, 1vw, 14px);
+      color: var(--text-secondary);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    .lens-count-tag {
+      font-size: 13.5px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .lens-banner.knowles .lens-count-tag {
+      background: var(--knowles-blue-soft);
+      color: var(--knowles-blue-dark);
+    }
+
+    .lens-banner.equity .lens-count-tag {
+      background: var(--equity-teal-soft);
+      color: var(--equity-teal-dark);
+    }
+
+    /* 6-Card Grid */
+    .scenarios-grid {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    article.scenario-card {
+      container-type: inline-size;
+      height: 100%;
+      background: var(--card-surface);
+      border: 2px solid rgba(148, 163, 184, 0.32);
+      border-radius: var(--radius-lg);
+      padding: clamp(14px, 1.9vh, 20px) clamp(16px, 1.4vw, 20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    }
+
+    article.scenario-card.choice-knowles {
+      border-color: var(--knowles-blue);
+      background: linear-gradient(180deg, #ffffff 0%, var(--knowles-blue-soft) 100%);
+      box-shadow: 0 6px 18px rgba(46, 139, 192, 0.16);
+    }
+
+    article.scenario-card.choice-equity {
+      border-color: var(--equity-teal);
+      background: linear-gradient(180deg, #ffffff 0%, var(--equity-teal-soft) 100%);
+      box-shadow: 0 6px 18px rgba(59, 155, 130, 0.16);
+    }
+
+    article.scenario-card.status-correct {
+      border-color: var(--correct-green);
+      box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.18);
+    }
+
+    article.scenario-card.status-incorrect {
+      border-color: var(--incorrect-red);
+      background: var(--incorrect-bg);
+    }
+
+    .card-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .scenario-num {
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .pillar-chip {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: var(--text-secondary);
+    }
+
+    .scenario-card.status-correct .pillar-chip {
+      background: #dcfce7;
+      color: var(--correct-green);
+    }
+
+    .scenario-card.status-incorrect .pillar-chip {
+      background: #fee2e2;
+      color: var(--incorrect-red);
+    }
+
+    .scenario-quote {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      font-size: clamp(16px, 1.34vw, 19px);
+      line-height: 1.42;
+      color: var(--text-primary);
+      font-weight: 650;
+    }
+
+    article.scenario-card.has-rationale .scenario-quote {
+      font-size: clamp(13.5px, 1.06vw, 15px);
+      line-height: 1.32;
+    }
+
+    .rationale-box {
+      font-size: clamp(12px, 0.94vw, 13.2px);
+      line-height: 1.34;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      border-left: 3px solid var(--knowles-blue);
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .scenario-card.choice-equity .rationale-box,
+    .scenario-card[data-correct="equity"] .rationale-box {
+      border-left-color: var(--equity-teal);
+    }
+
+    .card-choice-footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .lens-choice-btn {
+      font-family: inherit;
+      font-size: clamp(12.5px, 1.02vw, 14px);
+      font-weight: 700;
+      min-block-size: 38px;
+      padding: 6px 10px;
+      border-radius: 9px;
+      border: 2px solid rgba(148, 163, 184, 0.35);
+      background: #ffffff;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .lens-choice-btn.knowles-btn:hover {
+      border-color: var(--knowles-blue);
+      color: var(--knowles-blue-dark);
+      background: var(--knowles-blue-soft);
+    }
+
+    .lens-choice-btn.equity-btn:hover {
+      border-color: var(--equity-teal);
+      color: var(--equity-teal-dark);
+      background: var(--equity-teal-soft);
+    }
+
+    .lens-choice-btn.knowles-btn[aria-pressed="true"] {
+      background: var(--knowles-blue-dark);
+      border-color: var(--knowles-blue-dark);
+      color: #ffffff;
+    }
+
+    .lens-choice-btn.equity-btn[aria-pressed="true"] {
+      background: var(--equity-teal-dark);
+      border-color: var(--equity-teal-dark);
+      color: #ffffff;
+    }
+
+    /* Mode 2: 3-Question Diagnostic Quiz */
+    .quiz-grid {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    article.quiz-card {
+      height: 100%;
+      background: var(--card-surface);
+      border: 2px solid rgba(148, 163, 184, 0.32);
+      border-radius: var(--radius-lg);
+      padding: clamp(18px, 2.2vh, 24px) clamp(18px, 1.5vw, 22px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+    }
+
+    .quiz-stem-kicker {
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--equity-teal-dark);
+      margin-bottom: 6px;
+    }
+
+    .quiz-question {
+      font-size: clamp(16px, 1.32vw, 19px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--text-primary);
+    }
+
+    .quiz-options {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .quiz-option-btn {
+      text-align: left;
+      font-family: inherit;
+      font-size: clamp(13.5px, 1.1vw, 15.5px);
+      line-height: 1.38;
+      font-weight: 600;
+      padding: 11px 13px;
+      min-block-size: 44px;
+      border-radius: 10px;
+      border: 2px solid rgba(148, 163, 184, 0.35);
+      background: #ffffff;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .quiz-option-btn:hover {
+      border-color: var(--knowles-blue);
+      background: #f8fafc;
+    }
+
+    .quiz-option-btn[aria-pressed="true"] {
+      border-color: var(--knowles-blue-dark);
+      background: var(--knowles-blue-soft);
+    }
+
+    .quiz-option-btn.opt-correct {
+      border-color: var(--correct-green);
+      background: var(--correct-bg);
+      color: #14532d;
+    }
+
+    .quiz-option-btn.opt-incorrect {
+      border-color: var(--incorrect-red);
+      background: var(--incorrect-bg);
+      color: #7f1d1d;
+    }
+
+    .quiz-feedback {
+      font-size: clamp(12.5px, 0.98vw, 14px);
+      line-height: 1.38;
+      padding: 9px 11px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border-left: 3px solid var(--equity-teal);
+      color: var(--text-secondary);
+    }
+
+    /* Footer Reference Bar */
+    .slide-footer {
+      flex-shrink: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      padding: 2px 6px 0;
+    }
+
+    .footer-refs {
+      font-weight: 600;
+    }
+
+    @media (max-width: 980px) {
+      .slide-shell {
+        height: auto;
+      }
+      .scenarios-grid,
+      .quiz-grid,
+      .lens-legend-bar {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-shell">
+    <div id="liveAnnouncer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+    <header class="slide-header">
+      <div class="header-title-wrap">
+        <div class="kicker-row">
+          <span class="kicker-pill">Interactive CPD Check</span>
+          <span>Knowles’ Andragogy × Critical Equity</span>
+        </div>
+        <h1>Quick Check: Classical Andragogy or Critical Equity Expansion?</h1>
+      </div>
+
+      <div class="header-controls">
+        <div class="mode-switcher" role="group" aria-label="Assessment activity mode">
+          <button type="button" class="mode-btn" id="modeClassifierBtn" aria-pressed="true">
+            1. Lens Classifier (6 Scenarios)
+          </button>
+          <button type="button" class="mode-btn" id="modeQuizBtn" aria-pressed="false">
+            2. Diagnostic Quiz (3 Scenarios)
+          </button>
+        </div>
+
+        <div class="score-pill" id="scoreSummaryPill">
+          <span>Progress:</span>
+          <strong id="progressCountText">0 / 6 classified</strong>
+        </div>
+
+        <button type="button" class="action-btn primary" id="checkAnswersBtn">
+          ✓ Check Answers
+        </button>
+        <button type="button" class="action-btn" id="revealSolutionBtn">
+          💡 Show Key &amp; Rationale
+        </button>
+        <button type="button" class="action-btn" id="resetActivityBtn">
+          ↺ Reset
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- MODE 1: 6-Card Concept Lens Classifier -->
+      <section id="classifierView" class="view-panel classifier-layout" aria-label="Lens Classifier Activity">
+        <div class="lens-legend-bar">
+          <div class="lens-banner knowles">
+            <div class="lens-banner-left">
+              <div class="lens-icon" aria-hidden="true">📘</div>
+              <div>
+                <div class="lens-title">Malcolm Knowles (Classical Theory)</div>
+                <div class="lens-pillars">Self-Directed Autonomy · Prior Life Experience · Immediate Relevance</div>
+              </div>
+            </div>
+            <span class="lens-count-tag" id="knowlesCountBadge">0 assigned</span>
+          </div>
+
+          <div class="lens-banner equity">
+            <div class="lens-banner-left">
+              <div class="lens-icon" aria-hidden="true">🛡️</div>
+              <div>
+                <div class="lens-title">The Equity Expansion (Modern Reality)</div>
+                <div class="lens-pillars">Power Dynamics · Psychological Safety · Proactive Design (UDL)</div>
+              </div>
+            </div>
+            <span class="lens-count-tag" id="equityCountBadge">0 assigned</span>
+          </div>
+        </div>
+
+        <div class="scenarios-grid" id="scenariosGrid"></div>
+      </section>
+
+      <!-- MODE 2: 3-Question Scenario Diagnostic Quiz -->
+      <section id="quizView" class="view-panel" aria-label="Scenario Diagnostic Quiz" hidden>
+        <div class="quiz-grid" id="quizGrid"></div>
+      </section>
+    </main>
+
+    <footer class="slide-footer">
+      <div class="footer-refs">
+        References: Knowles, M. S. (1980). <em>The Modern Practice of Adult Education</em> · Knowles, Holton &amp; Swanson (2020) · Brookfield, S. D. (2005) · Edmondson, A. (1999) · CAST (2018).
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      const INTERACTIVE_URL = "/interactives/andragogy_critical_equity_check.html";
+      const INTERACTIVE_ID = "andragogy_critical_equity_check";
+
+      const SCENARIOS = [
+        {
+          id: "sc_1",
+          quote: "“Staff replace a generic 2-hour lecture with hands-on case studies solving immediate problems from this week’s classes.”",
+          correctLens: "knowles",
+          pillar: "Immediate Relevance (Knowles, 1980)",
+          rationale: "Classical Andragogy: Adult learners are problem-centred and need immediate workplace application rather than abstract theory."
+        },
+        {
+          id: "sc_2",
+          quote: "“In an unstructured ‘open forum’, senior staff dominate while newly hired and marginalised colleagues stay silent to avoid exposure.”",
+          correctLens: "equity",
+          pillar: "Power Dynamics (Brookfield, 2005)",
+          rationale: "Critical Equity Expansion: Assuming all adults feel equally safe to self-direct ignores how institutional power and marginalisation silence voices."
+        },
+        {
+          id: "sc_3",
+          quote: "“An experienced lecturer writes ‘Nothing new—I already do this’ when training ignores 15 years of front-line expertise.”",
+          correctLens: "knowles",
+          pillar: "Life Experience (Knowles et al., 2020)",
+          rationale: "Classical Andragogy: Adults bring a rich reservoir of prior knowledge; CPD must recognise and extend existing professional expertise."
+        },
+        {
+          id: "sc_4",
+          quote: "“An adult apprentice resists written theory not from lack of motivation, but due to schooling trauma and fear of humiliation.”",
+          correctLens: "equity",
+          pillar: "Psychological Safety (Edmondson, 1999)",
+          rationale: "Critical Equity Expansion: Educational trauma and socioeconomic precarity condition participation long before a learner enters the classroom."
+        },
+        {
+          id: "sc_5",
+          quote: "“Participants choose their own CPD pathway and discussion tables to match the specific teaching challenges they want to solve.”",
+          correctLens: "knowles",
+          pillar: "Self-Direction (Knowles, 1980)",
+          rationale: "Classical Andragogy: Adults resist imposed sequences and thrive when given learner autonomy to shape their own professional inquiry."
+        },
+        {
+          id: "sc_6",
+          quote: "“Tutors embed captioned voice-notes, glossary banks, and flexible formats upfront so no learner has to disclose a deficit first.”",
+          correctLens: "equity",
+          pillar: "Proactive Design (CAST, 2018)",
+          rationale: "Critical Equity Expansion: Inclusive design removes structural barriers proactively before individual adjustments are ever requested."
+        }
+      ];
+
+      const QUIZ_QUESTIONS = [
+        {
+          id: "q_1",
+          kicker: "Diagnostic 1 · Self-Direction vs. Power",
+          question: "A CPD facilitator runs an unmoderated ‘open floor’ assuming adult autonomy (Knowles). Only 3 confident staff speak. What is the Critical Equity diagnosis?",
+          options: [
+            { id: "a", text: "Staff lack intrinsic motivation and need mandatory pre-reading quizzes." },
+            { id: "b", text: "Unstructured autonomy reproduces power hierarchies; structured turn-taking and anonymous prompts are needed so everyone can contribute safely." },
+            { id: "c", text: "Adult learners prefer passive lectures over peer discussion." }
+          ],
+          correctOption: "b",
+          feedback: "Brookfield (2005) shows that ‘neutral’ open spaces favour dominant voices. Structured protocols (e.g., silent write-first or anonymous cards) equalise participation."
+        },
+        {
+          id: "q_2",
+          kicker: "Diagnostic 2 · Experience vs. Schooling Scars",
+          question: "A mature healthcare apprentice excels on placement but becomes defensive during peer physical exams. How do Knowles and Critical Equity combine here?",
+          options: [
+            { id: "a", text: "Value their clinical experience (Knowles) while co-constructing Day 1 sensory & psychological safety contracts (Edmondson, 1999)." },
+            { id: "b", text: "Exempt mature learners from all practical assessments." },
+            { id: "c", text: "Remind the learner that professional standards require immediate compliance without discussion." }
+          ],
+          correctOption: "a",
+          feedback: "Pairing Knowles’ respect for lived clinical experience with proactive psychological safety preserves rigorous standards while removing acute vulnerability."
+        },
+        {
+          id: "q_3",
+          kicker: "Diagnostic 3 · Relevance vs. Proactive UDL",
+          question: "Why does Critical Equity insist on Proactive Design (CAST, 2018) rather than waiting for adult learners to self-advocate for adjustments?",
+          options: [
+            { id: "a", text: "Because adult learners rarely have relevant workplace goals." },
+            { id: "b", text: "Because requiring adults to disclose trauma, neurodivergence, or literacy barriers carries high stigma and executive load." },
+            { id: "c", text: "Because proactive design lowers academic rigour so everyone passes automatically." }
+          ],
+          correctOption: "b",
+          feedback: "Classical andragogy assumes learners can freely ask for what they need; Critical Equity recognises that disclosure requires safety and privileges proactive Universal Design."
+        }
+      ];
+
+      let state = {
+        mode: "classifier", // "classifier" | "quiz"
+        choices: {},        // { sc_1: "knowles" | "equity" }
+        checked: false,
+        quizChoices: {},    // { q_1: "a" | "b" | "c" }
+        quizChecked: false
+      };
+
+      const scenariosGrid = document.getElementById("scenariosGrid");
+      const quizGrid = document.getElementById("quizGrid");
+      const classifierView = document.getElementById("classifierView");
+      const quizView = document.getElementById("quizView");
+      const modeClassifierBtn = document.getElementById("modeClassifierBtn");
+      const modeQuizBtn = document.getElementById("modeQuizBtn");
+      const progressCountText = document.getElementById("progressCountText");
+      const knowlesCountBadge = document.getElementById("knowlesCountBadge");
+      const equityCountBadge = document.getElementById("equityCountBadge");
+      const checkAnswersBtn = document.getElementById("checkAnswersBtn");
+      const revealSolutionBtn = document.getElementById("revealSolutionBtn");
+      const resetActivityBtn = document.getElementById("resetActivityBtn");
+      const liveAnnouncer = document.getElementById("liveAnnouncer");
+
+      function announce(msg) {
+        if (!liveAnnouncer) return;
+        liveAnnouncer.textContent = msg;
+      }
+
+      function render() {
+        const isClassifier = state.mode === "classifier";
+        classifierView.hidden = !isClassifier;
+        quizView.hidden = isClassifier;
+        modeClassifierBtn.setAttribute("aria-pressed", String(isClassifier));
+        modeQuizBtn.setAttribute("aria-pressed", String(!isClassifier));
+
+        if (isClassifier) {
+          renderClassifier();
+        } else {
+          renderQuiz();
+        }
+      }
+
+      function renderClassifier() {
+        scenariosGrid.innerHTML = "";
+        let knowlesCount = 0;
+        let equityCount = 0;
+        let correctCount = 0;
+        const total = SCENARIOS.length;
+
+        SCENARIOS.forEach((sc, idx) => {
+          const userChoice = state.choices[sc.id] || null;
+          if (userChoice === "knowles") knowlesCount++;
+          if (userChoice === "equity") equityCount++;
+          const isCorrect = Boolean(userChoice && userChoice === sc.correctLens);
+          if (isCorrect) correctCount++;
+
+          const card = document.createElement("article");
+          card.className = "scenario-card";
+          card.dataset.correct = sc.correctLens;
+          if (userChoice === "knowles") card.classList.add("choice-knowles");
+          if (userChoice === "equity") card.classList.add("choice-equity");
+          if (state.checked && userChoice) {
+            card.classList.add(isCorrect ? "status-correct" : "status-incorrect");
+          }
+
+          const topMeta = document.createElement("div");
+          topMeta.className = "card-top-meta";
+
+          const numSpan = document.createElement("span");
+          numSpan.className = "scenario-num";
+          numSpan.textContent = `Scenario ${idx + 1}`;
+
+          const chipSpan = document.createElement("span");
+          chipSpan.className = "pillar-chip";
+          if (state.checked) {
+            chipSpan.textContent = isCorrect
+              ? `✓ ${sc.pillar}`
+              : userChoice
+                ? `✗ Recheck · ${sc.pillar}`
+                : `Unanswered · ${sc.pillar}`;
+          } else {
+            chipSpan.textContent = userChoice === "knowles"
+              ? "📘 Classical Theory"
+              : userChoice === "equity"
+                ? "🛡️ Critical Equity"
+                : "Select a lens below";
+          }
+          topMeta.append(numSpan, chipSpan);
+
+          const quoteP = document.createElement("p");
+          quoteP.className = "scenario-quote";
+          quoteP.textContent = sc.quote;
+
+          card.append(topMeta, quoteP);
+
+          if (state.checked) {
+            card.classList.add("has-rationale");
+            const rationaleDiv = document.createElement("div");
+            rationaleDiv.className = "rationale-box";
+            rationaleDiv.textContent = sc.rationale;
+            card.appendChild(rationaleDiv);
+          }
+
+          const footer = document.createElement("footer");
+          footer.className = "card-choice-footer";
+
+          const btnKnowles = document.createElement("button");
+          btnKnowles.type = "button";
+          btnKnowles.className = "lens-choice-btn knowles-btn";
+          btnKnowles.setAttribute("aria-pressed", String(userChoice === "knowles"));
+          btnKnowles.setAttribute("aria-label", `Classify Scenario ${idx + 1} as Malcolm Knowles Classical Theory`);
+          btnKnowles.innerHTML = `<span aria-hidden="true">📘</span><span>Knowles (Classical)</span>`;
+          btnKnowles.addEventListener("click", () => {
+            state.choices[sc.id] = state.choices[sc.id] === "knowles" ? null : "knowles";
+            state.checked = false;
+            render();
+            broadcastState("select_lens");
+          });
+
+          const btnEquity = document.createElement("button");
+          btnEquity.type = "button";
+          btnEquity.className = "lens-choice-btn equity-btn";
+          btnEquity.setAttribute("aria-pressed", String(userChoice === "equity"));
+          btnEquity.setAttribute("aria-label", `Classify Scenario ${idx + 1} as The Equity Expansion Modern Reality`);
+          btnEquity.innerHTML = `<span aria-hidden="true">🛡️</span><span>Critical Equity</span>`;
+          btnEquity.addEventListener("click", () => {
+            state.choices[sc.id] = state.choices[sc.id] === "equity" ? null : "equity";
+            state.checked = false;
+            render();
+            broadcastState("select_lens");
+          });
+
+          footer.append(btnKnowles, btnEquity);
+          card.appendChild(footer);
+          scenariosGrid.appendChild(card);
+        });
+
+        knowlesCountBadge.textContent = `${knowlesCount} / 3`;
+        equityCountBadge.textContent = `${equityCount} / 3`;
+
+        const classifiedCount = knowlesCount + equityCount;
+        if (state.checked) {
+          progressCountText.textContent = `Score: ${correctCount} / ${total} correct`;
+        } else {
+          progressCountText.textContent = `${classifiedCount} / ${total} classified`;
+        }
+      }
+
+      function renderQuiz() {
+        quizGrid.innerHTML = "";
+        let answeredCount = 0;
+        let correctCount = 0;
+
+        QUIZ_QUESTIONS.forEach((q, idx) => {
+          const picked = state.quizChoices[q.id] || null;
+          if (picked) answeredCount++;
+          const isCorrect = picked === q.correctOption;
+          if (isCorrect) correctCount++;
+
+          const card = document.createElement("article");
+          card.className = "quiz-card";
+
+          const topDiv = document.createElement("div");
+          const kicker = document.createElement("div");
+          kicker.className = "quiz-stem-kicker";
+          kicker.textContent = q.kicker;
+
+          const questionH2 = document.createElement("h2");
+          questionH2.className = "quiz-question";
+          questionH2.textContent = q.question;
+          topDiv.append(kicker, questionH2);
+
+          const optionsDiv = document.createElement("div");
+          optionsDiv.className = "quiz-options";
+
+          q.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "quiz-option-btn";
+            const isSelected = picked === opt.id;
+            btn.setAttribute("aria-pressed", String(isSelected));
+            if (state.quizChecked) {
+              if (opt.id === q.correctOption) btn.classList.add("opt-correct");
+              else if (isSelected) btn.classList.add("opt-incorrect");
+            }
+            btn.textContent = `${opt.id.toUpperCase()}. ${opt.text}`;
+            btn.addEventListener("click", () => {
+              state.quizChoices[q.id] = opt.id;
+              state.quizChecked = false;
+              render();
+              broadcastState("select_quiz");
+            });
+            optionsDiv.appendChild(btn);
+          });
+
+          card.append(topDiv, optionsDiv);
+
+          if (state.quizChecked) {
+            const fb = document.createElement("div");
+            fb.className = "quiz-feedback";
+            fb.textContent = q.feedback;
+            card.appendChild(fb);
+          }
+
+          quizGrid.appendChild(card);
+        });
+
+        if (state.quizChecked) {
+          progressCountText.textContent = `Quiz Score: ${correctCount} / ${QUIZ_QUESTIONS.length}`;
+        } else {
+          progressCountText.textContent = `${answeredCount} / ${QUIZ_QUESTIONS.length} answered`;
+        }
+      }
+
+      modeClassifierBtn.addEventListener("click", () => {
+        state.mode = "classifier";
+        render();
+        broadcastState("switch_mode");
+      });
+
+      modeQuizBtn.addEventListener("click", () => {
+        state.mode = "quiz";
+        render();
+        broadcastState("switch_mode");
+      });
+
+      checkAnswersBtn.addEventListener("click", () => {
+        if (state.mode === "classifier") {
+          state.checked = true;
+          const score = SCENARIOS.filter((s) => state.choices[s.id] === s.correctLens).length;
+          announce(`Checked answers: ${score} out of ${SCENARIOS.length} scenarios classified accurately.`);
+        } else {
+          state.quizChecked = true;
+          const score = QUIZ_QUESTIONS.filter((q) => state.quizChoices[q.id] === q.correctOption).length;
+          announce(`Checked quiz: ${score} out of ${QUIZ_QUESTIONS.length} diagnostic questions correct.`);
+        }
+        render();
+        broadcastState("check_answers");
+      });
+
+      revealSolutionBtn.addEventListener("click", () => {
+        if (state.mode === "classifier") {
+          SCENARIOS.forEach((sc) => {
+            state.choices[sc.id] = sc.correctLens;
+          });
+          state.checked = true;
+          announce("Showing complete solution and academic rationales for all 6 scenarios.");
+        } else {
+          QUIZ_QUESTIONS.forEach((q) => {
+            state.quizChoices[q.id] = q.correctOption;
+          });
+          state.quizChecked = true;
+          announce("Showing complete solution and academic feedback for all 3 diagnostic questions.");
+        }
+        render();
+        broadcastState("reveal_solution");
+      });
+
+      resetActivityBtn.addEventListener("click", () => {
+        if (state.mode === "classifier") {
+          state.choices = {};
+          state.checked = false;
+          announce("Classifier reset.");
+        } else {
+          state.quizChoices = {};
+          state.quizChecked = false;
+          announce("Diagnostic quiz reset.");
+        }
+        render();
+        broadcastState("reset");
+      });
+
+      function broadcastState(action = "update") {
+        const payload = {
+          type: "INTERACTIVE_STATE_UPDATE",
+          interactiveId: INTERACTIVE_ID,
+          interactiveUrl: INTERACTIVE_URL,
+          action,
+          state: JSON.parse(JSON.stringify(state)),
+          timestamp: Date.now()
+        };
+        try {
+          window.parent?.postMessage(payload, "*");
+        } catch (_) {}
+      }
+
+      window.addEventListener("message", (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") return;
+        if (data.type === "APPLY_INTERACTIVE_STATE" && data.state) {
+          state = {
+            mode: data.state.mode || "classifier",
+            choices: { ...(data.state.choices || {}) },
+            checked: Boolean(data.state.checked),
+            quizChoices: { ...(data.state.quizChoices || {}) },
+            quizChecked: Boolean(data.state.quizChecked)
+          };
+          render();
+        }
+      });
+
+      try {
+        window.parent?.postMessage(
+          {
+            type: "REQUEST_INTERACTIVE_STATE",
+            interactiveId: INTERACTIVE_ID,
+            interactiveUrl: INTERACTIVE_URL
+          },
+          "*"
+        );
+      } catch (_) {}
+
+      render();
+    })();
+  </script>
+</body>
+</html>
+
