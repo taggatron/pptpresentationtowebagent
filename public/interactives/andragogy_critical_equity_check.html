@@ -12,14 +12,21 @@
       import("https://esm.run/invokers-polyfill").catch(() => {});
     }
   </script>
+  <script>
+    if (new URLSearchParams(window.location.search).get("theme") === "dyslexia-blue") {
+      document.documentElement.dataset.theme = "dyslexia-blue";
+    }
+  </script>
   <style>
     :root {
       --bg-cream-1: #f7f3ec;
       --bg-cream-2: #efe7db;
+      --bg-cream-3: #f5efe6;
       --card-surface: rgba(255, 255, 255, 0.96);
+      --header-surface: rgba(255, 255, 255, 0.88);
       --text-primary: #141c2b;
       --text-secondary: #42526b;
-      --text-muted: #64748b;
+      --text-muted: #475569;
       --knowles-blue: #2e8bc0;
       --knowles-blue-dark: #1d6fa3;
       --knowles-blue-soft: #eef7fc;
@@ -32,10 +39,23 @@
       --correct-bg: #f0fdf4;
       --incorrect-red: #b91c1c;
       --incorrect-bg: #fef2f2;
-      --border-subtle: rgba(148, 163, 184, 0.3);
+      --border-subtle: rgba(100, 116, 139, 0.42);
       --radius-xl: 20px;
       --radius-lg: 14px;
       --radius-md: 10px;
+    }
+
+    :root[data-theme="dyslexia-blue"] {
+      --bg-cream-1: #c6e2f8;
+      --bg-cream-2: #bfdcf5;
+      --bg-cream-3: #cfe7fa;
+      --card-surface: #e4f2fc;
+      --header-surface: #dff0fc;
+      --knowles-blue-soft: #d5eaf9;
+      --equity-teal-soft: #d6efe9;
+      --correct-bg: #dcfce7;
+      --incorrect-bg: #fee2e2;
+      --border-subtle: #5b8db8;
     }
 
     * {
@@ -50,11 +70,17 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       color: var(--text-primary);
       background:
-        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.85) 0%, transparent 45%),
-        radial-gradient(circle at 84% 82%, rgba(255, 255, 255, 0.7) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-cream-1) 0%, var(--bg-cream-2) 52%, #f5efe6 100%);
+        radial-gradient(circle at 16% 18%, rgba(228, 242, 252, 0.45) 0%, transparent 45%),
+        radial-gradient(circle at 84% 82%, rgba(228, 242, 252, 0.35) 0%, transparent 50%),
+        linear-gradient(135deg, var(--bg-cream-1) 0%, var(--bg-cream-2) 52%, var(--bg-cream-3) 100%);
       overflow-x: hidden;
       overflow-y: auto;
+    }
+
+    @media (forced-colors: active) {
+      .slide-header, .flashcard, .classifier-row, .quiz-card {
+        border: 2px solid CanvasText;
+      }
     }
 
     .visually-hidden:where(:not(:focus-within, :active)) {
@@ -94,9 +120,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.88);
+      background: var(--header-surface);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-subtle);
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
       border-radius: var(--radius-lg);
       padding: 10px 18px;
