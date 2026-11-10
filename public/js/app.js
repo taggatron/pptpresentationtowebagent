@@ -2409,6 +2409,13 @@ function initVisualImpairmentMode() {
 function openMlpExportModal() {
   const modal = document.getElementById("mlpExportModal");
   if (!modal) return;
+  const themeSelect = document.getElementById("mlpThemeSelect");
+  if (themeSelect && currentDeck) {
+    const deckKey = `${currentDeck.id || ""} ${currentDeck.title || ""}`.toLowerCase();
+    if (deckKey.includes("dyslexia")) {
+      themeSelect.value = "dyslexia-blue";
+    }
+  }
   modal.classList.remove("hidden");
   const scopeSelect = document.getElementById("mlpScopeSelect");
   scopeSelect?.focus();
@@ -2434,12 +2441,33 @@ function getSlideQuestions(slide) {
   return [];
 }
 
-function formatMlpBodyText(text) {
-  if (!text) return "";
-  const rawParagraphs = text.split(/\r?\n\r?\n/);
-  return rawParagraphs
+function formatMlpBodyText(text, speakerNotes = "") {
+  const blocks = [];
+  if (Array.isArray(text)) {
+    for (const entry of text) {
+      if (typeof entry === "string" && entry.trim()) {
+        blocks.push(entry.trim());
+      } else if (entry && typeof entry === "object") {
+        const line = [entry.heading, entry.title, entry.label, entry.text, entry.description]
+          .filter(Boolean)
+          .join(": ");
+        if (line.trim()) blocks.push(line.trim());
+      }
+    }
+  } else if (typeof text === "string" && text.trim()) {
+    blocks.push(...text.split(/\r?\n\r?\n/).map((s) => s.trim()).filter(Boolean));
+  }
+
+  const notesStr = typeof speakerNotes === "string" ? speakerNotes.trim() : "";
+  if (notesStr && !blocks.includes(notesStr)) {
+    blocks.push(`Facilitator Notes: ${notesStr}`);
+  }
+
+  if (blocks.length === 0) return "";
+
+  return blocks
     .map((para) => {
-      const trimmed = para.trim();
+      const trimmed = String(para).trim();
       if (!trimmed) return "";
       const lines = trimmed.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
       const isList = lines.length > 1 && lines.every((l) => /^[-•*]|\d+\.\s/.test(l));
@@ -2471,9 +2499,10 @@ function generateMlpDocument(options = {}) {
     includeCognitive = false
   } = options;
 
+  const visibleSlides = currentDeck.slides.filter((s) => s && !s.hidden);
   const slidesToExport = scope === "current"
     ? [currentDeck.slides[currentSlideIndex]].filter(Boolean)
-    : currentDeck.slides;
+    : (visibleSlides.length > 0 ? visibleSlides : currentDeck.slides);
 
   let bg = "#ffffff";
   let text = "#000000";
@@ -2483,7 +2512,15 @@ function generateMlpDocument(options = {}) {
   let accent = "#222222";
   let themeLabel = "Black on White";
 
-  if (theme === "black-cream") {
+  if (theme === "dyslexia-blue") {
+    bg = "#c6e2f8";
+    text = "#141c2b";
+    border = "#1e3a5f";
+    softBg = "#e4f2fc";
+    answerBg = "#d5eaf9";
+    accent = "#1e3a5f";
+    themeLabel = "Black on Light Blue (Dyslexia-Friendly Pastel Sky)";
+  } else if (theme === "black-cream") {
     bg = "#fffdec";
     text = "#0a0a0a";
     border = "#1a1a1a";
@@ -2539,14 +2576,16 @@ function generateMlpDocument(options = {}) {
     day: "numeric"
   });
 
+  const isSlidesOnly = mode === "slides-only";
+  const totalNum = slidesToExport.length;
+
   const slidesHtml = slidesToExport
     .map((slide, sIdx) => {
-      const slideNum = slide.number || (scope === "current" ? currentSlideIndex + 1 : sIdx + 1);
-      const totalNum = currentDeck.totalSlides || currentDeck.slides.length;
+      const slideNum = scope === "current" ? (slide.number || currentSlideIndex + 1) : sIdx + 1;
       const slideTitle = slide.title || `Slide ${slideNum}`;
 
       let imageHtml = "";
-      if (includeImages && slide.imageUrl) {
+      if ((includeImages || isSlidesOnly) && slide.imageUrl) {
         const origin = typeof window !== "undefined" ? window.location.origin : "";
         const resolvedUrl = slide.imageUrl.startsWith("http")
           ? slide.imageUrl
@@ -2555,17 +2594,31 @@ function generateMlpDocument(options = {}) {
         imageHtml = `
           <figure class="mlp-figure">
             <img src="${escapeHtml(resolvedUrl)}" alt="${escapeHtml(slideTitle)}" class="mlp-img" />
-            <figcaption class="mlp-caption">Diagram ${slideNum}: ${escapeHtml(slideTitle)}</figcaption>
+            ${isSlidesOnly ? "" : `<figcaption class="mlp-caption">Slide ${slideNum}: ${escapeHtml(slideTitle)}</figcaption>`}
           </figure>
         `;
       }
 
+      if (isSlidesOnly) {
+        return `
+          <article class="mlp-slide-section mlp-slide-landscape">
+            <header class="mlp-slide-heading">
+              <div class="mlp-slide-kicker">Slide ${slideNum} of ${totalNum} · ${escapeHtml(slideTitle)}</div>
+            </header>
+            ${imageHtml}
+          </article>
+        `;
+      }
+
       let textHtml = "";
-      if (includeText && slide.text) {
+      const formattedBody = includeText
+        ? formatMlpBodyText(slide.text, mode === "study-guide" ? (slide.speakerNotes || slide.notes || "") : "")
+        : "";
+      if (formattedBody) {
         textHtml = `
           <section class="mlp-text-block">
             <h3>Key Concepts &amp; Lesson Notes</h3>
-            ${formatMlpBodyText(slide.text)}
+            ${formattedBody}
           </section>
         `;
       }
@@ -2658,16 +2711,18 @@ function generateMlpDocument(options = {}) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(deckTitle)} — Modified Large Print (${type.label})</title>
+  <title>${escapeHtml(deckTitle)} — ${isSlidesOnly ? "Slide Deck Print" : `Modified Large Print (${type.label})`}</title>
   <style>
     @page {
-      size: A4 portrait;
-      margin: 16mm 18mm;
+      size: ${isSlidesOnly ? "A4 landscape" : "A4 portrait"};
+      margin: ${isSlidesOnly ? "10mm 12mm" : "16mm 18mm"};
     }
     *, *:before, *:after {
       box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
-    body {
+    html, body {
       margin: 0;
       padding: 24px;
       font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
@@ -2725,8 +2780,12 @@ function generateMlpDocument(options = {}) {
       margin-bottom: 36px;
       border-bottom: 2px dashed ${border};
     }
+    .mlp-slide-section:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
     @media print {
-      body {
+      html, body {
         padding: 0;
       }
       .mlp-slide-section {
@@ -2762,11 +2821,11 @@ function generateMlpDocument(options = {}) {
     }
     .mlp-img {
       max-width: 100%;
-      max-height: 460px;
+      max-height: ${isSlidesOnly ? "165mm" : "460px"};
       object-fit: contain;
       border: 2.5px solid ${border};
       border-radius: 4px;
-      background: #ffffff;
+      background: ${softBg};
       display: block;
       margin: 0 auto;
     }
@@ -2878,9 +2937,9 @@ function generateMlpDocument(options = {}) {
     <div class="mlp-doc-meta">
       <span class="mlp-badge">${escapeHtml(type.label)}</span>
       <span class="mlp-badge">${escapeHtml(themeLabel)}</span>
-      <span class="mlp-badge">${mode === "worksheet" ? "Student Worksheet" : "Teacher / Study Guide"}</span>
+      <span class="mlp-badge">${mode === "worksheet" ? "Student Worksheet" : (mode === "slides-only" ? "Full-Slide Visual Deck" : "Teacher / Study Guide")}</span>
       <span>Date: ${escapeHtml(dateStr)}</span>
-      <span>Standards: RNIB / JCQ / APH</span>
+      <span>Standards: RNIB / JCQ / APH / BDA</span>
     </div>
     ${learnerBox}
   </header>
@@ -2894,6 +2953,11 @@ function generateMlpDocument(options = {}) {
 
 function launchMlpPrint(options) {
   const docHtml = generateMlpDocument(options);
+  const existingIframe = document.getElementById("mlpPrintIframe");
+  if (existingIframe?.parentNode) {
+    existingIframe.parentNode.removeChild(existingIframe);
+  }
+
   const printIframe = document.createElement("iframe");
   printIframe.style.position = "fixed";
   printIframe.style.right = "0";
@@ -2909,7 +2973,10 @@ function launchMlpPrint(options) {
   frameDoc.write(docHtml);
   frameDoc.close();
 
+  let hasPrinted = false;
   const triggerPrint = () => {
+    if (hasPrinted) return;
+    hasPrinted = true;
     try {
       printIframe.contentWindow.focus();
       printIframe.contentWindow.print();
@@ -2923,32 +2990,26 @@ function launchMlpPrint(options) {
         printWin.focus();
         setTimeout(() => printWin.print(), 500);
       }
-    } finally {
-      setTimeout(() => {
-        if (printIframe.parentNode) {
-          printIframe.parentNode.removeChild(printIframe);
-        }
-      }, 3000);
     }
   };
 
   const imgs = frameDoc.querySelectorAll("img");
   if (imgs.length === 0) {
-    setTimeout(triggerPrint, 300);
+    setTimeout(triggerPrint, 250);
   } else {
     let loaded = 0;
     const checkAllLoaded = () => {
       loaded++;
       if (loaded >= imgs.length) {
-        setTimeout(triggerPrint, 300);
+        setTimeout(triggerPrint, 250);
       }
     };
     imgs.forEach((img) => {
       if (img.complete) {
         checkAllLoaded();
       } else {
-        img.addEventListener("load", checkAllLoaded);
-        img.addEventListener("error", checkAllLoaded);
+        img.addEventListener("load", checkAllLoaded, { once: true });
+        img.addEventListener("error", checkAllLoaded, { once: true });
       }
     });
     setTimeout(triggerPrint, 2500);
@@ -2970,6 +3031,19 @@ function downloadMlpFile(options) {
   anchor.click();
   document.body.removeChild(anchor);
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function downloadDeckPdf() {
+  if (!currentDeck || !currentDeck.id) return;
+  const deckTitle = currentDeck.title || currentDeck.id;
+  const slug = deckTitle.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "") || currentDeck.id;
+  const pdfUrl = `/api/decks/${encodeURIComponent(currentDeck.id)}/export-pdf`;
+  const anchor = document.createElement("a");
+  anchor.href = pdfUrl;
+  anchor.download = `${slug}.pdf`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
 }
 
 function getMlpFormOptions() {
@@ -2998,7 +3072,9 @@ function initMlpExport() {
   const exportBtn = document.getElementById("mlpExportBtn");
   const closeBtn = document.getElementById("closeMlpModalBtn");
   const viLaunchBtn = document.getElementById("viLaunchMlpBtn");
+  const settingsPrintBtn = document.getElementById("settingsPrintExportBtn");
   const printBtn = document.getElementById("mlpPrintBtn");
+  const downloadPdfBtn = document.getElementById("mlpDownloadPdfBtn");
   const downloadBtn = document.getElementById("mlpDownloadBtn");
   const modal = document.getElementById("mlpExportModal");
 
@@ -3030,9 +3106,21 @@ function initMlpExport() {
     openMlpExportModal();
   });
 
+  settingsPrintBtn?.addEventListener("click", () => {
+    const settingsDropdownMenu = document.getElementById("settingsDropdownMenu");
+    const settingsDropdownBtn = document.getElementById("settingsDropdownBtn");
+    settingsDropdownMenu?.classList.add("hidden");
+    settingsDropdownBtn?.setAttribute("aria-expanded", "false");
+    openMlpExportModal();
+  });
+
   printBtn?.addEventListener("click", () => {
     const options = getMlpFormOptions();
     launchMlpPrint(options);
+  });
+
+  downloadPdfBtn?.addEventListener("click", () => {
+    downloadDeckPdf();
   });
 
   downloadBtn?.addEventListener("click", () => {

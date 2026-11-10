@@ -193,6 +193,24 @@
                 <kbd class="settings-shortcut-badge">G</kbd>
               </button>
 
+              <button
+                id="settingsPrintExportBtn"
+                class="settings-dropdown-item"
+                type="button"
+                role="menuitem"
+                title="Open Print & PDF Export (Alt+P)"
+                aria-label="Open Print and PDF Export modal"
+              >
+                <span class="settings-item-icon-box sorter-box" aria-hidden="true">
+                  <span class="settings-item-icon">🖨️</span>
+                </span>
+                <span class="settings-item-text">
+                  <span class="settings-item-title">Print / Export PDF</span>
+                  <span class="settings-item-desc">Save deck PDF or large print</span>
+                </span>
+                <kbd class="settings-shortcut-badge">Alt+P</kbd>
+              </button>
+
               <a
                 id="dashboardBtn"
                 class="settings-dropdown-item"
@@ -1015,6 +1033,7 @@
           <label class="mlp-group-label" for="mlpThemeSelect">Contrast &amp; Paper Tone</label>
           <select id="mlpThemeSelect" class="mlp-select">
             <option value="black-white" selected>Black on White (Standard Crisp Print)</option>
+            <option value="dyslexia-blue">Black on Light Blue (Dyslexia-Friendly Pastel Sky)</option>
             <option value="black-cream">Black on Soft Cream (Anti-Glare / Reduced Photophobia)</option>
             <option value="yellow-black">Yellow on Black (Digital Low-Vision / RNIB)</option>
           </select>
@@ -1026,6 +1045,7 @@
           <select id="mlpModeSelect" class="mlp-select">
             <option value="worksheet">Student Worksheet (With ruled answer write-in lines)</option>
             <option value="study-guide" selected>Teacher / Study Guide (With revealed model answers)</option>
+            <option value="slides-only">Full-Slide Visual Deck (16:9 Landscape Slides PDF)</option>
           </select>
         </div>
 
@@ -1060,6 +1080,9 @@
         <div class="mlp-actions-row">
           <button id="mlpPrintBtn" class="btn btn-primary-bright" type="button">
             <span aria-hidden="true">🖨️</span> Print / Save as PDF
+          </button>
+          <button id="mlpDownloadPdfBtn" class="btn btn-outline-small" type="button">
+            <span aria-hidden="true">📄</span> Download Deck PDF
           </button>
           <button id="mlpDownloadBtn" class="btn btn-outline-small" type="button">
             <span aria-hidden="true">💾</span> Download Standalone HTML

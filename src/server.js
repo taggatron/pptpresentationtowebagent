@@ -2308,6 +2308,46 @@ export function createApp({
     }
   });
 
+  app.get("/api/decks/:deckId/export-pdf", async (req, res) => {
+    try {
+      const deckId = String(req.params.deckId || "").trim();
+      assertSafeDeckId(deckId);
+      const location = await findDeckLocation(decksDir, deckId);
+      if (!location) {
+        return res.status(404).json({ error: `Deck '${deckId}' not found.` });
+      }
+      const mode = String(req.query.mode || "slides").toLowerCase();
+      const pdfFileName = mode === "study-guide"
+        ? "study_guide_mlp.pdf"
+        : "deck_export.pdf";
+      const pdfPath = path.join(location.deckDir, pdfFileName);
+      const fallbackPath = path.join(location.deckDir, "deck_export.pdf");
+      const targetPath = fsSync.existsSync(pdfPath)
+        ? pdfPath
+        : (fsSync.existsSync(fallbackPath) ? fallbackPath : null);
+
+      if (!targetPath) {
+        return res.status(404).json({ error: `PDF export not found for deck '${deckId}'.` });
+      }
+
+      const rawManifest = JSON.parse(await fs.readFile(location.manifestPath, "utf8"));
+      const slug = String(rawManifest.title || deckId)
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "") || deckId;
+      const downloadName = mode === "study-guide"
+        ? `${slug}_modified_large_print_study_guide.pdf`
+        : `${slug}_slides.pdf`;
+
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", `attachment; filename="${downloadName}"`);
+      const buf = await fs.readFile(targetPath);
+      return res.send(buf);
+    } catch (error) {
+      return res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  });
+
   return app;
 }
 
