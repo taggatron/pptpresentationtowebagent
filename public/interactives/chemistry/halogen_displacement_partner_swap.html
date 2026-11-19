@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Displacement Reactions: Animated Partner-Swap Model</title>
+<style>
+  :root {
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-600: #475569;
+    --slate-500: #64748b;
+    --sky-border: #56aee2;
+    --teal-border: #2dd4bf;
+    --blue-600: #2563eb;
+    --emerald-500: #10b981;
+    --amber-500: #f59e0b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: radial-gradient(circle at 50% 24%, #ffffff 0%, #f1f8fe 52%, #d8ecfa 100%);
+    color: var(--slate-900);
+    user-select: none;
+  }
+
+  /* Subtle glowing cyan circuit traces matching the zQFH9KAkqYwz luminous chemistry deck */
+  .bg-circuits {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.72;
+  }
+
+  .slide-shell {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(14px, 2.2vh, 32px) clamp(20px, 3.2vw, 56px) clamp(12px, 1.9vh, 26px);
+    gap: clamp(10px, 1.5vh, 18px);
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .title-wrap h1 {
+    font-size: clamp(20px, 2.45vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #132238;
+    line-height: 1.1;
+  }
+  .title-wrap p {
+    font-size: clamp(12px, 1.1vw, 19px);
+    font-weight: 500;
+    color: var(--slate-600);
+    margin-top: 3px;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .reaction-toggle {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid #7dd3fc;
+    border-radius: 999px;
+    padding: 3px;
+    box-shadow: 0 4px 12px rgba(30, 108, 176, 0.10);
+  }
+  .rxn-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: clamp(11px, 0.95vw, 16px);
+    font-weight: 800;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .rxn-btn.active {
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.28);
+  }
+  .pill {
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-size: clamp(11px, 0.98vw, 17px);
+    font-weight: 700;
+    background: rgba(224, 247, 244, 0.95);
+    border: 2px solid var(--teal-border);
+    color: #0f5156;
+    box-shadow: 0 4px 14px rgba(45, 212, 191, 0.18);
+    white-space: nowrap;
+  }
+
+  /* Top Info Cards */
+  .top-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(12px, 1.5vw, 24px);
+    flex-shrink: 0;
+  }
+  .def-card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 2.5px solid var(--sky-border);
+    border-left: 10px solid var(--blue-600);
+    border-radius: 18px;
+    padding: clamp(10px, 1.3vh, 18px) clamp(14px, 1.6vw, 24px);
+    box-shadow: 0 8px 22px rgba(30, 108, 176, 0.10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .def-card h2 {
+    font-size: clamp(13px, 1.25vw, 22px);
+    font-weight: 800;
+    color: var(--slate-900);
+    margin-bottom: 3px;
+  }
+  .def-card p {
+    font-size: clamp(12px, 1.15vw, 20px);
+    font-weight: 600;
+    color: var(--slate-800);
+    line-height: 1.3;
+  }
+  .quote-card {
+    background: linear-gradient(135deg, rgba(236, 253, 245, 0.96) 0%, rgba(224, 242, 254, 0.96) 100%);
+    border: 2.5px solid var(--teal-border);
+    border-radius: 18px;
+    padding: clamp(10px, 1.3vh, 18px) clamp(14px, 1.6vw, 24px);
+    box-shadow: 0 8px 22px rgba(20, 184, 166, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .quote-card .analogy-lbl {
+    font-size: clamp(10px, 0.85vw, 14px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0f766e;
+    margin-bottom: 2px;
+  }
+  .quote-card .quote {
+    font-size: clamp(14px, 1.45vw, 25px);
+    font-style: italic;
+    font-weight: 800;
+    color: #0f5156;
+    line-height: 1.22;
+  }
+
+  /* Main Interactive Animation Stage Card */
+  .stage-card {
+    flex: 1;
+    min-height: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px solid var(--sky-border);
+    border-radius: 24px;
+    padding: clamp(12px, 1.6vh, 22px) clamp(16px, 2vw, 30px);
+    box-shadow: 0 14px 36px rgba(30, 108, 176, 0.13);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.3vh, 16px);
+  }
+
+  /* Top Step Bar inside Stage Card */
+  .step-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .step-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .step-dot {
+    border: 2px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    padding: 5px 13px;
+    border-radius: 999px;
+    font-size: clamp(11px, 0.9vw, 15px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s ease;
+  }
+  .step-dot:hover {
+    border-color: #38bdf8;
+    color: #0369a1;
+  }
+  .step-dot.active {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    border-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+  }
+  .step-dot.done {
+    background: #ecfdf5;
+    border-color: #34d399;
+    color: #065f46;
+  }
+
+  .ctrl-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ctrl-btn {
+    border: 2px solid #93c5fd;
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 6px 15px;
+    border-radius: 12px;
+    font-size: clamp(11px, 0.95vw, 16px);
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ctrl-btn:hover {
+    background: #dbeafe;
+    transform: translateY(-1px);
+  }
+  .ctrl-btn.primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-color: #059669;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.28);
+  }
+  .ctrl-btn.primary:hover {
+    filter: brightness(1.06);
+  }
+  .ctrl-btn.play-active {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-color: #d97706;
+    color: #ffffff;
+  }
+
+  /* Animated Atom Arena */
+  .arena-wrap {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f4faff 70%, #e7f4fd 100%);
+    border: 2px solid #bae6fd;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .arena-wrap:hover .click-hint {
+    opacity: 1;
+  }
+  .click-hint {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1.5px solid #93c5fd;
+    color: #0369a1;
+    font-size: clamp(10px, 0.85vw, 14px);
+    font-weight: 700;
+    opacity: 0.82;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .stage-caption {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    width: min(92%, 1180px);
+    background: rgba(255, 255, 255, 0.94);
+    border: 2px solid #7dd3fc;
+    border-radius: 14px;
+    padding: 8px 20px;
+    text-align: center;
+    font-size: clamp(12px, 1.12vw, 19px);
+    font-weight: 600;
+    color: #0f172a;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    z-index: 5;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .stage-caption strong { font-weight: 800; color: #0369a1; }
+  .stage-caption .em-green { color: #059669; font-weight: 800; }
+  .stage-caption .em-amber { color: #b45309; font-weight: 800; }
+
+  svg#atomSvg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Smooth GPU-accelerated CSS transitions for atoms, bonds, and electron transfer */
+  .particle-g {
+    transition: transform 0.95s cubic-bezier(0.34, 1.24, 0.64, 1);
+  }
+  .bond-line {
+    transition: opacity 0.55s ease, stroke-dashoffset 0.6s ease;
+  }
+  .electron-dot {
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  }
+  .zone-label {
+    transition: opacity 0.45s ease;
+  }
+  .charge-badge {
+    transition: opacity 0.35s ease;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.35)); }
+    50% { filter: drop-shadow(0 0 16px rgba(14, 165, 233, 0.85)); }
+  }
+  .e-glow {
+    animation: pulseGlow 1.1s ease-in-out infinite;
+  }
+
+  @keyframes subtleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+  .float-idle {
+    animation: subtleFloat 2.8s ease-in-out infinite;
+  }
+
+  /* Bottom Equation Bar */
+  .eq-bar {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(10px, 1.3vw, 20px);
+    align-items: stretch;
+    flex-shrink: 0;
+  }
+  .word-eq {
+    background: #f0f9ff;
+    border: 2px solid #7dd3fc;
+    border-radius: 14px;
+    padding: clamp(9px, 1.2vh, 15px) 18px;
+    font-size: clamp(12px, 1.15vw, 20px);
+    font-weight: 800;
+    color: #0c4a6e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sym-eq {
+    background: #1e293b;
+    color: #ffffff;
+    border-radius: 14px;
+    padding: clamp(9px, 1.2vh, 15px) 18px;
+    font-size: clamp(14px, 1.45vw, 25px);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    border: 2.5px solid #38bdf8;
+  }
+  .eq-part {
+    transition: opacity 0.35s ease, transform 0.35s ease, color 0.35s ease;
+  }
+  .eq-dim { opacity: 0.34; }
+  .eq-hi-green { color: #5eead4; }
+  .eq-hi-amber { color: #fcd34d; }
+</style>
+</head>
+<body>
+  <!-- Subtle background circuit traces -->
+  <svg class="bg-circuits" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+    <g stroke="#7dd3fc" stroke-width="2" fill="none" opacity="0.55">
+      <polyline points="0,120 75,120 120,75 120,0" />
+      <polyline points="0,210 55,210 95,170 95,95 160,30" />
+      <circle cx="160" cy="30" r="5" fill="#bae6fd" />
+      <polyline points="1920,900 1820,900 1765,955 1765,1080" />
+      <polyline points="1920,975 1845,975 1795,1025 1680,1025" />
+      <circle cx="1680" cy="1025" r="5" fill="#bae6fd" />
+    </g>
+  </svg>
+
+  <div class="slide-shell">
+    <div class="header">
+      <div class="title-wrap">
+        <h1>Displacement Reactions: Partner-Swap Model</h1>
+        <p>Click the stage or press Next Step to animate the halogen atoms swapping partners</p>
+      </div>
+      <div class="header-right">
+        <div class="reaction-toggle" role="group" aria-label="Choose displacement reaction">
+          <button class="rxn-btn active" data-rxn="f_nacl" type="button">F₂ + 2NaCl</button>
+          <button class="rxn-btn" data-rxn="cl_kbr" type="button">Cl₂ + 2KBr</button>
+        </div>
+        <span class="pill">Why Displacement Happens (2/2)</span>
+      </div>
+    </div>
+
+    <div class="top-row">
+      <div class="def-card">
+        <h2>Definition: Displacement Reaction</h2>
+        <p>When a <strong>more reactive element</strong> replaces (pushes out) a <strong>less reactive element</strong> from its compound.</p>
+      </div>
+      <div class="quote-card">
+        <div class="analogy-lbl">Classroom Analogy</div>
+        <div class="quote">“It’s like a chemical dance where you swap partners!”</div>
+      </div>
+    </div>
+
+    <div class="stage-card">
+      <div class="step-toolbar">
+        <div class="step-pills" id="stepPills">
+          <button class="step-dot active" data-step="0" type="button">1. Reactants</button>
+          <button class="step-dot" data-step="1" type="button">2. Approach &amp; Split</button>
+          <button class="step-dot" data-step="2" type="button">3. Electron Transfer</button>
+          <button class="step-dot" data-step="3" type="button">4. Partner Swap</button>
+          <button class="step-dot" data-step="4" type="button">5. Products</button>
+        </div>
+        <div class="ctrl-group">
+          <button class="ctrl-btn" id="prevBtn" type="button">← Back</button>
+          <button class="ctrl-btn primary" id="nextBtn" type="button">Next Step →</button>
+          <button class="ctrl-btn" id="playBtn" type="button">▶ Play All</button>
+          <button class="ctrl-btn" id="resetBtn" type="button">↺ Reset</button>
+        </div>
+      </div>
+
+      <div class="arena-wrap" id="arenaWrap" title="Click anywhere on the reaction stage to advance to the next step">
+        <div class="click-hint" id="clickHint">Click stage to advance (1 / 5)</div>
+
+        <svg id="atomSvg" viewBox="0 0 1200 410" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="gradAttacker" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#34d399" />
+              <stop offset="100%" stop-color="#059669" />
+            </linearGradient>
+            <linearGradient id="gradMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#60a5fa" />
+              <stop offset="100%" stop-color="#1d4ed8" />
+            </linearGradient>
+            <linearGradient id="gradDefender" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fbbf24" />
+              <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+            <filter id="orbShadow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.18" />
+            </filter>
+            <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+            </marker>
+          </defs>
+
+          <!-- Soft background stage guides -->
+          <rect x="34" y="22" width="1132" height="304" rx="22" fill="rgba(255,255,255,0.55)" stroke="#e0f2fe" stroke-width="2" />
+
+          <!-- Static/Dynamic Phase Zone Labels -->
+          <g id="zoneReactantLeft" class="zone-label">
+            <text id="lblAttackerMain" x="260" y="302" text-anchor="middle" font-size="22" font-weight="800" fill="#065f46">Fluorine (F₂)</text>
+            <text id="lblAttackerSub" x="260" y="324" text-anchor="middle" font-size="15" font-weight="700" fill="#64748b">More reactive halogen</text>
+          </g>
+
+          <g id="zonePlus" class="zone-label">
+            <text x="455" y="182" text-anchor="middle" font-size="44" font-weight="800" fill="#0284c7">+</text>
+          </g>
+
+          <g id="zoneSaltCenter" class="zone-label">
+            <text id="lblSaltMain" x="670" y="302" text-anchor="middle" font-size="22" font-weight="800" fill="#1e3a8a">2 Sodium chloride</text>
+            <text id="lblSaltSub" x="670" y="324" text-anchor="middle" font-size="15" font-weight="700" fill="#64748b">2NaCl(aq) · Colourless salt</text>
+          </g>
+
+          <g id="zoneProductRight" class="zone-label" style="opacity: 0;">
+            <text id="lblDisplacedMain" x="805" y="302" text-anchor="middle" font-size="22" font-weight="800" fill="#92400e">Chlorine (Cl₂)</text>
+            <text id="lblDisplacedSub" x="805" y="324" text-anchor="middle" font-size="15" font-weight="700" fill="#64748b">Displaced diatomic element</text>
+          </g>
+
+          <g id="zonePlusRight" class="zone-label" style="opacity: 0;">
+            <text x="612" y="182" text-anchor="middle" font-size="44" font-weight="800" fill="#0284c7">+</text>
+          </g>
+
+          <!-- Dynamic Bond Lines -->
+          <!-- Covalent bond between Attacker 1 and Attacker 2 (Step 0) -->
+          <line id="bondAttacker" class="bond-line" x1="215" y1="168" x2="305" y2="168" stroke="#059669" stroke-width="10" stroke-linecap="round" opacity="0.65" />
+
+          <!-- Ionic attraction dashes between Metal & Defender (Steps 0-2) -->
+          <line id="bondSalt1" class="bond-line" x1="628" y1="114" x2="712" y2="114" stroke="#64748b" stroke-width="4" stroke-dasharray="7 6" opacity="0.7" />
+          <line id="bondSalt2" class="bond-line" x1="628" y1="224" x2="712" y2="224" stroke="#64748b" stroke-width="4" stroke-dasharray="7 6" opacity="0.7" />
+
+          <!-- New Ionic bond dashes between Metal & Attacker (Steps 3-4) -->
+          <line id="bondNew1" class="bond-line" x1="352" y1="114" x2="438" y2="114" stroke="#10b981" stroke-width="5" stroke-dasharray="7 5" opacity="0" />
+          <line id="bondNew2" class="bond-line" x1="352" y1="224" x2="438" y2="224" stroke="#10b981" stroke-width="5" stroke-dasharray="7 5" opacity="0" />
+
+          <!-- New Covalent bond between Displaced Defender 1 & 2 (Step 4) -->
+          <line id="bondDisplaced" class="bond-line" x1="760" y1="168" x2="850" y2="168" stroke="#d97706" stroke-width="10" stroke-linecap="round" opacity="0" />
+
+          <!-- Electron transfer guide arcs (Step 2) -->
+          <path id="eArc1" class="bond-line" d="M 702 74 Q 585 26 468 74" fill="none" stroke="#0284c7" stroke-width="3.5" stroke-dasharray="8 6" marker-end="url(#arrowCyan)" opacity="0" />
+          <path id="eArc2" class="bond-line" d="M 702 264 Q 585 312 468 264" fill="none" stroke="#0284c7" stroke-width="3.5" stroke-dasharray="8 6" marker-end="url(#arrowCyan)" opacity="0" />
+          <text id="eArcLbl" class="zone-label" x="585" y="18" text-anchor="middle" font-size="16" font-weight="800" fill="#0369a1" opacity="0">2e⁻ transferred (OIL RIG)</text>
+
+          <!-- PARTICLES (6 animated atoms/ions!) -->
+          <!-- Attacker 1 (F or Cl) -->
+          <g id="pA1" class="particle-g" filter="url(#orbShadow)" transform="translate(215, 168)">
+            <circle r="44" fill="url(#gradAttacker)" stroke="#ffffff" stroke-width="3.5" />
+            <text id="txtA1" y="9" text-anchor="middle" font-size="30" font-weight="800" fill="#ffffff">F</text>
+            <g id="chgA1" class="charge-badge" opacity="0">
+              <circle cx="31" cy="-29" r="16" fill="#0f172a" stroke="#5eead4" stroke-width="2.5" />
+              <text x="31" y="-23" text-anchor="middle" font-size="18" font-weight="800" fill="#5eead4">−</text>
+            </g>
+          </g>
+
+          <!-- Attacker 2 (F or Cl) -->
+          <g id="pA2" class="particle-g" filter="url(#orbShadow)" transform="translate(305, 168)">
+            <circle r="44" fill="url(#gradAttacker)" stroke="#ffffff" stroke-width="3.5" />
+            <text id="txtA2" y="9" text-anchor="middle" font-size="30" font-weight="800" fill="#ffffff">F</text>
+            <g id="chgA2" class="charge-badge" opacity="0">
+              <circle cx="31" cy="-29" r="16" fill="#0f172a" stroke="#5eead4" stroke-width="2.5" />
+              <text x="31" y="-23" text-anchor="middle" font-size="18" font-weight="800" fill="#5eead4">−</text>
+            </g>
+          </g>
+
+          <!-- Metal Cation 1 (Na+ or K+) -->
+          <g id="pM1" class="particle-g" filter="url(#orbShadow)" transform="translate(625, 114)">
+            <circle r="42" fill="url(#gradMetal)" stroke="#ffffff" stroke-width="3.5" />
+            <text id="txtM1" y="9" text-anchor="middle" font-size="27" font-weight="800" fill="#ffffff">Na⁺</text>
+          </g>
+
+          <!-- Metal Cation 2 (Na+ or K+) -->
+          <g id="pM2" class="particle-g" filter="url(#orbShadow)" transform="translate(625, 224)">
+            <circle r="42" fill="url(#gradMetal)" stroke="#ffffff" stroke-width="3.5" />
+            <text id="txtM2" y="9" text-anchor="middle" font-size="27" font-weight="800" fill="#ffffff">Na⁺</text>
+          </g>
+
+          <!-- Defender 1 (Cl- or Br-) -->
+          <g id="pD1" class="particle-g" filter="url(#orbShadow)" transform="translate(715, 114)">
+            <circle r="44" fill="url(#gradDefender)" stroke="#ffffff" stroke-width="3.5" />
+            <text id="txtD1" y="9" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff">Cl⁻</text>
+          </g>
+
+          <!-- Defender 2 (Cl- or Br-) -->
+          <g id="pD2" class="particle-g" filter="url(#orbShadow)" transform="translate(715, 224)">
+            <circle r="44" fill="url(#gradDefender)" stroke="#ffffff" stroke-width="3.5" />
+            <text id="txtD2" y="9" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff">Cl⁻</text>
+          </g>
+
+          <!-- Animated Electron Sparks (fly from D1->A1 and D2->A2 on Step 2!) -->
+          <g id="eSpark1" class="electron-dot e-glow" opacity="0" transform="translate(715, 114)">
+            <circle r="17" fill="#0ea5e9" stroke="#ffffff" stroke-width="3" />
+            <text y="6" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">e⁻</text>
+          </g>
+          <g id="eSpark2" class="electron-dot e-glow" opacity="0" transform="translate(715, 224)">
+            <circle r="17" fill="#0ea5e9" stroke="#ffffff" stroke-width="3" />
+            <text y="6" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">e⁻</text>
+          </g>
+        </svg>
+
+        <div class="stage-caption" id="stageCaption"></div>
+      </div>
+
+      <div class="eq-bar">
+        <div class="word-eq" id="wordEqBar"></div>
+        <div class="sym-eq" id="symEqBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const INTERACTIVE_ID = "halogen_displacement_partner_swap";
+      const INTERACTIVE_URL = "/interactives/chemistry/halogen_displacement_partner_swap.html";
+
+      const REACTIONS = {
+        f_nacl: {
+          attackerSym: "F",
+          attackerIon: "F⁻",
+          attackerName: "Fluorine",
+          attackerFormula: "F₂",
+          metalIon: "Na⁺",
+          metalName: "Sodium",
+          defenderSym: "Cl",
+          defenderIon: "Cl⁻",
+          defenderName: "Chlorine",
+          defenderFormula: "Cl₂",
+          saltReactant: "2 Sodium chloride",
+          saltReactantFormula: "2NaCl(aq) · Colourless salt",
+          saltProduct: "2 Sodium fluoride",
+          saltProductFormula: "2NaF(aq) · More stable partner!",
+          wordLeft: "Fluorine + Sodium chloride",
+          wordRight: "Sodium fluoride + Chlorine",
+          symLeft: '<span class="eq-hi-green">F₂(g)</span> + 2NaCl(aq)',
+          symRight: '2Na<span class="eq-hi-green">F</span>(aq) + <span class="eq-hi-amber">Cl₂(g)</span>',
+          captions: [
+            '<strong>Step 1 — Reactants:</strong> Diatomic <span class="em-green">Fluorine (F₂)</span> approaches two aqueous <strong>Sodium chloride (Na⁺Cl⁻)</strong> ionic pairs.',
+            '<strong>Step 2 — Approach &amp; Split:</strong> More reactive <span class="em-green">F₂</span> breaks apart and lines up near the chloride ions, pulling strongly on their outer electrons.',
+            '<strong>Step 3 — Electron Transfer (Redox):</strong> Each <span class="em-amber">Cl⁻</span> ion loses an electron (<strong>oxidation</strong>); each <span class="em-green">F</span> atom gains an electron (<strong>reduction</strong>) to form <span class="em-green">F⁻</span>!',
+            '<strong>Step 4 — The Partner Swap:</strong> <span class="em-green">F⁻</span> bonds tightly with <strong>Na⁺</strong> (lower, more stable energy state), pushing neutral <span class="em-amber">Cl</span> atoms out!',
+            '<strong>Step 5 — Products Formed:</strong> Displaced <span class="em-amber">Cl</span> atoms pair covalently into <span class="em-amber">Cl₂(g)</span> alongside aqueous <strong>2NaF(aq)</strong>!'
+          ]
+        },
+        cl_kbr: {
+          attackerSym: "Cl",
+          attackerIon: "Cl⁻",
+          attackerName: "Chlorine",
+          attackerFormula: "Cl₂",
+          metalIon: "K⁺",
+          metalName: "Potassium",
+          defenderSym: "Br",
+          defenderIon: "Br⁻",
+          defenderName: "Bromine",
+          defenderFormula: "Br₂",
+          saltReactant: "2 Potassium bromide",
+          saltReactantFormula: "2KBr(aq) · Colourless salt",
+          saltProduct: "2 Potassium chloride",
+          saltProductFormula: "2KCl(aq) · More stable partner!",
+          wordLeft: "Chlorine + Potassium bromide",
+          wordRight: "Potassium chloride + Bromine",
+          symLeft: '<span class="eq-hi-green">Cl₂(aq)</span> + 2KBr(aq)',
+          symRight: '2K<span class="eq-hi-green">Cl</span>(aq) + <span class="eq-hi-amber">Br₂(aq)</span>',
+          captions: [
+            '<strong>Step 1 — Reactants:</strong> Aqueous <span class="em-green">Chlorine (Cl₂)</span> approaches two colourless <strong>Potassium bromide (K⁺Br⁻)</strong> ionic pairs.',
+            '<strong>Step 2 — Approach &amp; Split:</strong> More reactive <span class="em-green">Cl₂</span> splits apart and exerts a stronger nuclear attraction on the outer electrons of <span class="em-amber">Br⁻</span>.',
+            '<strong>Step 3 — Electron Transfer (Redox):</strong> Each <span class="em-amber">Br⁻</span> ion loses an electron (<strong>oxidation</strong>); each <span class="em-green">Cl</span> atom gains an electron (<strong>reduction</strong>) to form <span class="em-green">Cl⁻</span>!',
+            '<strong>Step 4 — The Partner Swap:</strong> <span class="em-green">Cl⁻</span> pairs up with <strong>K⁺</strong>, displacing neutral <span class="em-amber">Br</span> atoms out of the salt!',
+            '<strong>Step 5 — Products Formed:</strong> Displaced <span class="em-amber">Br</span> atoms bond into orange <span class="em-amber">Br₂(aq)</span> alongside colourless <strong>2KCl(aq)</strong>!'
+          ]
+        }
+      };
+
+      let state = {
+        step: 0,
+        rxnKey: "f_nacl"
+      };
+      let playTimer = null;
+
+      // DOM elements
+      const pA1 = document.getElementById("pA1");
+      const pA2 = document.getElementById("pA2");
+      const pM1 = document.getElementById("pM1");
+      const pM2 = document.getElementById("pM2");
+      const pD1 = document.getElementById("pD1");
+      const pD2 = document.getElementById("pD2");
+      const txtA1 = document.getElementById("txtA1");
+      const txtA2 = document.getElementById("txtA2");
+      const txtM1 = document.getElementById("txtM1");
+      const txtM2 = document.getElementById("txtM2");
+      const txtD1 = document.getElementById("txtD1");
+      const txtD2 = document.getElementById("txtD2");
+      const chgA1 = document.getElementById("chgA1");
+      const chgA2 = document.getElementById("chgA2");
+
+      const bondAttacker = document.getElementById("bondAttacker");
+      const bondSalt1 = document.getElementById("bondSalt1");
+      const bondSalt2 = document.getElementById("bondSalt2");
+      const bondNew1 = document.getElementById("bondNew1");
+      const bondNew2 = document.getElementById("bondNew2");
+      const bondDisplaced = document.getElementById("bondDisplaced");
+      const eArc1 = document.getElementById("eArc1");
+      const eArc2 = document.getElementById("eArc2");
+      const eArcLbl = document.getElementById("eArcLbl");
+      const eSpark1 = document.getElementById("eSpark1");
+      const eSpark2 = document.getElementById("eSpark2");
+
+      const zoneReactantLeft = document.getElementById("zoneReactantLeft");
+      const zonePlus = document.getElementById("zonePlus");
+      const zoneSaltCenter = document.getElementById("zoneSaltCenter");
+      const zoneProductRight = document.getElementById("zoneProductRight");
+      const zonePlusRight = document.getElementById("zonePlusRight");
+      const lblAttackerMain = document.getElementById("lblAttackerMain");
+      const lblAttackerSub = document.getElementById("lblAttackerSub");
+      const lblSaltMain = document.getElementById("lblSaltMain");
+      const lblSaltSub = document.getElementById("lblSaltSub");
+      const lblDisplacedMain = document.getElementById("lblDisplacedMain");
+      const lblDisplacedSub = document.getElementById("lblDisplacedSub");
+
+      const stageCaption = document.getElementById("stageCaption");
+      const clickHint = document.getElementById("clickHint");
+      const wordEqBar = document.getElementById("wordEqBar");
+      const symEqBar = document.getElementById("symEqBar");
+      const playBtn = document.getElementById("playBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      function setPos(el, x, y) {
+        el.setAttribute("transform", `translate(${x}, ${y})`);
+      }
+
+      function stopAutoPlay() {
+        if (playTimer) {
+          clearInterval(playTimer);
+          playTimer = null;
+        }
+        playBtn.classList.remove("play-active");
+        playBtn.textContent = "▶ Play All";
+      }
+
+      function render() {
+        const r = REACTIONS[state.rxnKey] || REACTIONS.f_nacl;
+        const s = Math.max(0, Math.min(4, Number(state.step) || 0));
+
+        // Update reaction toggle buttons
+        document.querySelectorAll(".rxn-btn").forEach((b) => {
+          b.classList.toggle("active", b.dataset.rxn === state.rxnKey);
+        });
+
+        // Update step pills
+        document.querySelectorAll(".step-dot").forEach((dot) => {
+          const idx = Number(dot.dataset.step);
+          dot.classList.toggle("active", idx === s);
+          dot.classList.toggle("done", idx < s);
+        });
+
+        nextBtn.textContent = s >= 4 ? "↺ Replay" : "Next Step →";
+        clickHint.textContent = s >= 4 ? "Click stage to replay (5 / 5)" : `Click stage to advance (${s + 1} / 5)`;
+
+        // Update particle symbols based on electron transfer stage
+        const transferred = s >= 2;
+        txtA1.textContent = transferred ? r.attackerIon : r.attackerSym;
+        txtA2.textContent = transferred ? r.attackerIon : r.attackerSym;
+        txtM1.textContent = r.metalIon;
+        txtM2.textContent = r.metalIon;
+        txtD1.textContent = transferred ? r.defenderSym : r.defenderIon;
+        txtD2.textContent = transferred ? r.defenderSym : r.defenderIon;
+
+        chgA1.setAttribute("opacity", s === 2 ? "1" : "0");
+        chgA2.setAttribute("opacity", s === 2 ? "1" : "0");
+
+        // Positions across the 5 stages
+        if (s === 0) {
+          // Reactants Ready
+          setPos(pA1, 215, 168);
+          setPos(pA2, 305, 168);
+          setPos(pM1, 625, 114);
+          setPos(pM2, 625, 224);
+          setPos(pD1, 715, 114);
+          setPos(pD2, 715, 224);
+
+          bondAttacker.setAttribute("opacity", "0.65");
+          bondSalt1.setAttribute("opacity", "0.7");
+          bondSalt2.setAttribute("opacity", "0.7");
+          bondNew1.setAttribute("opacity", "0");
+          bondNew2.setAttribute("opacity", "0");
+          bondDisplaced.setAttribute("opacity", "0");
+          eArc1.setAttribute("opacity", "0");
+          eArc2.setAttribute("opacity", "0");
+          eArcLbl.setAttribute("opacity", "0");
+          eSpark1.setAttribute("opacity", "0");
+          eSpark2.setAttribute("opacity", "0");
+          setPos(eSpark1, 715, 114);
+          setPos(eSpark2, 715, 224);
+
+          zoneReactantLeft.style.opacity = "1";
+          zonePlus.style.opacity = "1";
+          zoneSaltCenter.style.opacity = "1";
+          zoneSaltCenter.setAttribute("transform", "translate(0,0)");
+          zoneProductRight.style.opacity = "0";
+          zonePlusRight.style.opacity = "0";
+
+          lblAttackerMain.textContent = `${r.attackerName} (${r.attackerFormula})`;
+          lblAttackerSub.textContent = "More reactive halogen";
+          lblSaltMain.textContent = r.saltReactant;
+          lblSaltSub.textContent = r.saltReactantFormula;
+        } else if (s === 1) {
+          // Approach & Split
+          setPos(pA1, 452, 114);
+          setPos(pA2, 452, 224);
+          setPos(pM1, 625, 114);
+          setPos(pM2, 625, 224);
+          setPos(pD1, 715, 114);
+          setPos(pD2, 715, 224);
+
+          bondAttacker.setAttribute("opacity", "0");
+          bondSalt1.setAttribute("opacity", "0.6");
+          bondSalt2.setAttribute("opacity", "0.6");
+          bondNew1.setAttribute("opacity", "0");
+          bondNew2.setAttribute("opacity", "0");
+          bondDisplaced.setAttribute("opacity", "0");
+          eArc1.setAttribute("opacity", "0");
+          eArc2.setAttribute("opacity", "0");
+          eArcLbl.setAttribute("opacity", "0");
+          eSpark1.setAttribute("opacity", "0");
+          eSpark2.setAttribute("opacity", "0");
+          setPos(eSpark1, 715, 114);
+          setPos(eSpark2, 715, 224);
+
+          zoneReactantLeft.style.opacity = "0";
+          zonePlus.style.opacity = "0";
+          zoneSaltCenter.style.opacity = "1";
+          zoneSaltCenter.setAttribute("transform", "translate(0,0)");
+          zoneProductRight.style.opacity = "0";
+          zonePlusRight.style.opacity = "0";
+
+          lblSaltMain.textContent = `${r.attackerName} atoms approach ${r.saltReactant}`;
+          lblSaltSub.textContent = "Stronger nuclear attraction pulls on halide electrons";
+        } else if (s === 2) {
+          // Electron Transfer (e- fly from Defender to Attacker!)
+          setPos(pA1, 452, 114);
+          setPos(pA2, 452, 224);
+          setPos(pM1, 625, 114);
+          setPos(pM2, 625, 224);
+          setPos(pD1, 715, 114);
+          setPos(pD2, 715, 224);
+
+          bondAttacker.setAttribute("opacity", "0");
+          bondSalt1.setAttribute("opacity", "0.25");
+          bondSalt2.setAttribute("opacity", "0.25");
+          bondNew1.setAttribute("opacity", "0");
+          bondNew2.setAttribute("opacity", "0");
+          bondDisplaced.setAttribute("opacity", "0");
+
+          eArc1.setAttribute("opacity", "1");
+          eArc2.setAttribute("opacity", "1");
+          eArcLbl.setAttribute("opacity", "1");
+          eSpark1.setAttribute("opacity", "1");
+          eSpark2.setAttribute("opacity", "1");
+          setPos(eSpark1, 520, 62);
+          setPos(eSpark2, 520, 276);
+
+          zoneReactantLeft.style.opacity = "0";
+          zonePlus.style.opacity = "0";
+          zoneSaltCenter.style.opacity = "0";
+          zoneProductRight.style.opacity = "0";
+          zonePlusRight.style.opacity = "0";
+        } else if (s === 3) {
+          // Partner Swap: Metal + Attacker lock together; Displaced Defender pushed right!
+          setPos(pM1, 350, 114);
+          setPos(pM2, 350, 224);
+          setPos(pA1, 440, 114);
+          setPos(pA2, 440, 224);
+          setPos(pD1, 760, 114);
+          setPos(pD2, 760, 224);
+
+          bondAttacker.setAttribute("opacity", "0");
+          bondSalt1.setAttribute("opacity", "0");
+          bondSalt2.setAttribute("opacity", "0");
+          bondNew1.setAttribute("opacity", "0.85");
+          bondNew2.setAttribute("opacity", "0.85");
+          bondDisplaced.setAttribute("opacity", "0");
+          eArc1.setAttribute("opacity", "0");
+          eArc2.setAttribute("opacity", "0");
+          eArcLbl.setAttribute("opacity", "0");
+          eSpark1.setAttribute("opacity", "0");
+          eSpark2.setAttribute("opacity", "0");
+
+          zoneReactantLeft.style.opacity = "0";
+          zonePlus.style.opacity = "0";
+          zoneSaltCenter.style.opacity = "1";
+          zoneSaltCenter.setAttribute("transform", "translate(-275, 0)");
+          zoneProductRight.style.opacity = "0";
+          zonePlusRight.style.opacity = "1";
+
+          lblSaltMain.textContent = r.saltProduct;
+          lblSaltSub.textContent = r.saltProductFormula;
+        } else {
+          // Step 4: Final Products (2NaF + Cl2 covalent molecule)
+          setPos(pM1, 350, 114);
+          setPos(pM2, 350, 224);
+          setPos(pA1, 440, 114);
+          setPos(pA2, 440, 224);
+          setPos(pD1, 760, 168);
+          setPos(pD2, 850, 168);
+
+          bondAttacker.setAttribute("opacity", "0");
+          bondSalt1.setAttribute("opacity", "0");
+          bondSalt2.setAttribute("opacity", "0");
+          bondNew1.setAttribute("opacity", "0.85");
+          bondNew2.setAttribute("opacity", "0.85");
+          bondDisplaced.setAttribute("opacity", "0.75");
+          eArc1.setAttribute("opacity", "0");
+          eArc2.setAttribute("opacity", "0");
+          eArcLbl.setAttribute("opacity", "0");
+          eSpark1.setAttribute("opacity", "0");
+          eSpark2.setAttribute("opacity", "0");
+
+          zoneReactantLeft.style.opacity = "0";
+          zonePlus.style.opacity = "0";
+          zoneSaltCenter.style.opacity = "1";
+          zoneSaltCenter.setAttribute("transform", "translate(-275, 0)");
+          zoneProductRight.style.opacity = "1";
+          zonePlusRight.style.opacity = "1";
+
+          lblSaltMain.textContent = r.saltProduct;
+          lblSaltSub.textContent = r.saltProductFormula;
+          lblDisplacedMain.textContent = `${r.defenderName} (${r.defenderFormula})`;
+          lblDisplacedSub.textContent = "Displaced diatomic element";
+        }
+
+        // Caption & Equation highlight
+        stageCaption.innerHTML = r.captions[s];
+
+        const productsRevealed = s >= 3;
+        wordEqBar.innerHTML = `
+          <span class="eq-part">${r.wordLeft}</span>
+          <span class="eq-part ${productsRevealed ? "" : "eq-dim"}">→</span>
+          <span class="eq-part ${productsRevealed ? "" : "eq-dim"}">${r.wordRight}</span>
+        `;
+        symEqBar.innerHTML = `
+          <span class="eq-part">${r.symLeft}</span>
+          <span class="eq-part ${productsRevealed ? "" : "eq-dim"}">→</span>
+          <span class="eq-part ${productsRevealed ? "" : "eq-dim"}">${r.symRight}</span>
+        `;
+      }
+
+      function broadcastState(action = "update") {
+        try {
+          window.parent?.postMessage({
+            type: "INTERACTIVE_STATE_UPDATE",
+            interactiveId: INTERACTIVE_ID,
+            interactiveUrl: INTERACTIVE_URL,
+            action,
+            state: { ...state },
+            timestamp: Date.now()
+          }, "*");
+        } catch (_) {}
+      }
+
+      function setStep(nextStep, { broadcast = true } = {}) {
+        state.step = Math.max(0, Math.min(4, nextStep));
+        render();
+        if (broadcast) broadcastState("step");
+      }
+
+      function advanceStep() {
+        stopAutoPlay();
+        if (state.step >= 4) setStep(0);
+        else setStep(state.step + 1);
+      }
+
+      // Event bindings
+      document.getElementById("arenaWrap").addEventListener("click", () => advanceStep());
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        advanceStep();
+      });
+      document.getElementById("prevBtn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        stopAutoPlay();
+        setStep(Math.max(0, state.step - 1));
+      });
+      document.getElementById("resetBtn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        stopAutoPlay();
+        setStep(0);
+      });
+      playBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (playTimer) {
+          stopAutoPlay();
+          return;
+        }
+        if (state.step >= 4) setStep(0);
+        playBtn.classList.add("play-active");
+        playBtn.textContent = "⏸ Pause";
+        playTimer = setInterval(() => {
+          if (state.step >= 4) {
+            stopAutoPlay();
+            return;
+          }
+          setStep(state.step + 1);
+        }, 1650);
+      });
+
+      document.querySelectorAll(".step-dot").forEach((dot) => {
+        dot.addEventListener("click", (e) => {
+          e.stopPropagation();
+          stopAutoPlay();
+          setStep(Number(dot.dataset.step));
+        });
+      });
+
+      document.querySelectorAll(".rxn-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          stopAutoPlay();
+          state.rxnKey = btn.dataset.rxn;
+          state.step = 0;
+          render();
+          broadcastState("reaction_switch");
+        });
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === " " || e.key === "Enter") {
+          e.preventDefault();
+          advanceStep();
+        } else if (e.key === "r" || e.key === "R") {
+          stopAutoPlay();
+          setStep(0);
+        }
+      });
+
+      // Dual-screen sync with Presenter / Presentation window
+      window.addEventListener("message", (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") return;
+        if (data.type === "APPLY_INTERACTIVE_STATE" && data.state) {
+          stopAutoPlay();
+          if (typeof data.state.rxnKey === "string" && REACTIONS[data.state.rxnKey]) {
+            state.rxnKey = data.state.rxnKey;
+          }
+          if (Number.isFinite(Number(data.state.step))) {
+            state.step = Math.max(0, Math.min(4, Number(data.state.step)));
+          }
+          render();
+        }
+      });
+
+      try {
+        window.parent?.postMessage({
+          type: "REQUEST_INTERACTIVE_STATE",
+          interactiveId: INTERACTIVE_ID,
+          interactiveUrl: INTERACTIVE_URL
+        }, "*");
+      } catch (_) {}
+
+      render();
+    })();
+  </script>
+</body>
+</html>
