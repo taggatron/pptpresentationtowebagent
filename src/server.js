@@ -618,6 +618,7 @@ export function inferSlideSetId(deckId, manifest = null) {
   if (/(?:Essential_Skills|Starting_Strong)/i.test(deckId)) return "essential_skills";
   if (
     /(?:genetics_aaq|Phenotypic_variation|telomeres|Central_Dogma|transcriptional_regulation|Gene_mutations|mutations|single_gene_disorders|Chromosomal_abnormalities|Polygenic_and_complex_traits|Huntington|NEA|Gene_Therapy|Genetic_Engineering|ANT130|CRISPR)/i.test(
+    /(?:genetics_aaq|Phenotypic_variation|telomeres|Central_Dogma|transcriptional_regulation|Gene_mutations|mutations|single_gene_disorders|Chromosomal_abnormalities|Polygenic_and_complex_traits|Huntington|NEA|Gene_Therapy|Gene_Therapies|Genetic_Engineering|ANT130|CRISPR|Genetic_Counselling|Pedigree|Genetic_Testing|Privacy_Confidentiality|Management_Options)/i.test(
       deckId
     )
   ) {
